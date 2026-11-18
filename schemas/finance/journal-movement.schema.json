@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Journal Movement",
+  "type": "object",
+  "properties": {
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "journal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "customerInvoice",
+            "bankMovement"
+          ]
+        },
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "reference",
+        "date"
+      ],
+      "additionalProperties": false
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "minLength": 1
+          },
+          "auxiliaryAccount": {
+            "type": "string",
+            "minLength": 1
+          },
+          "side": {
+            "enum": [
+              "debit",
+              "credit"
+            ]
+          },
+          "amount": {
+            "$ref": "#/$defs/positive"
+          }
+        },
+        "required": [
+          "account",
+          "side",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "side": {
+                "const": "debit"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "side": {
+                "const": "credit"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "entityId",
+    "journal",
+    "source",
+    "currency",
+    "lines"
+  ],
+  "additionalProperties": false,
+  "description": "Ordinary sales and bank journal posting shape. At the configured amount precision, debit sum must equal credit sum. Posting also resolves accounts, source eligibility, duplicates and fiscal period.",
+  "$defs": {
+    "positive": {
+      "type": "string",
+      "pattern": "^([1-9][0-9]*(\\.[0-9]+)?|0\\.0*[1-9][0-9]*)$"
+    }
+  }
+}

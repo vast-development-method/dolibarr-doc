@@ -1,0 +1,25 @@
+{
+  "vatRounding": "perLine",
+  "amountScale": 2,
+  "lines": [
+    {
+      "basis": "net",
+      "unitPrice": "0.03",
+      "quantity": "1",
+      "discountPercent": 0,
+      "vatPercent": 20
+    },
+    {
+      "basis": "net",
+      "unitPrice": "0.03",
+      "quantity": "1",
+      "discountPercent": 0,
+      "vatPercent": 20
+    }
+  ],
+  "expected": {
+    "net": "0.06",
+    "vat": "0.02",
+    "gross": "0.08"
+  }
+}
