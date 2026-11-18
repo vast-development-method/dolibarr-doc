@@ -1,0 +1,7 @@
+{
+  "action": "activateService",
+  "contractId": 6,
+  "lineId": 11,
+  "actualStart": "2026-11-18T09:00:00Z",
+  "plannedEnd": "2027-11-18T08:59:59Z"
+}
