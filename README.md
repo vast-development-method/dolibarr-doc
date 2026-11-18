@@ -1,8 +1,20 @@
 # Integrated enterprise resource planning
 
-A language-neutral blueprint for rebuilding an integrated ERP. It describes how the ERP joins customer and supplier documents, stock, services, people, cash and accounting. Each chapter connects a business decision to its data, permissions, state changes, failure behaviour and acceptance cases. Schemas use portable business terms. Source locators identify the reference implementation behind individual rules. [Release baseline](docs/baseline.md)
+A language-neutral blueprint for rebuilding an integrated ERP. It describes how the ERP joins customer and supplier documents, stock, services, people, cash and accounting. Operation chapters trace business decisions through their data, permissions, state changes and failure outcomes. Schemas use portable business terms. Source locators identify the reference implementation behind individual rules. [Release baseline](docs/baseline.md)
 
 **Start with the [worked trading cycle](docs/trade/worked-cycle.md).** Trace ten units received and six sold through two shipments, two collections, a supplier payment and the ledger. The example explains why stock value, commercial margin, cash and tax end at different amounts. The [rebuild contract](docs/platform/rebuild-contract.md) shows which records own each fact and which results an equivalent implementation should reproduce.
+
+## Read the detailed blueprint
+
+| To understand | Start here |
+| --- | --- |
+| How the decisions in a business process fit together | [Detailed business specifications](docs/specification/README.md) |
+| Who owns an amount, quantity, status or relationship | [Record and field dictionary](docs/records/README.md) · [Installation structures and their status](docs/records/installation-boundaries.md) |
+| What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) |
+| Which changes can trigger action in another module | [Business events and subscribers](docs/events/README.md) · [Commercial automation](docs/events/commercial-automation.md) |
+| Why two reports disagree | [Reporting and reconciliation](docs/reporting/README.md) |
+| How policy changes a transaction | [Company settings](docs/policies/company-and-settings.md) · [Reference numbers](docs/policies/identity-and-numbering.md) · [Stock posting](docs/policies/stock-posting-decisions.md) · [Invoice admission](docs/policies/form-defaults-and-invoice-admission.md) |
+| How to reconcile a whole transaction | [Trading and settlement](docs/trade/worked-cycle.md) · [Make to order with a shortage](docs/journeys/building-against-a-shortage.md) · [Commissioning time to cash](docs/journeys/commissioning-time-to-cash.md) |
 
 ## Find a business operation
 
