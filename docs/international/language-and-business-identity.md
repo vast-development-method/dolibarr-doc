@@ -1,0 +1,38 @@
+# Language across the operator, customer and document
+
+An English-speaking clerk can invoice a German-speaking customer for installation work priced in USD. The interface language controls the clerk's menus. The customer language can select catalogue wording and document headings. The invoice currency establishes the monetary amounts. The customer's country can change the name of a professional identifier or the tax-selection decision. These preferences belong to different records and can vary independently within one transaction.
+
+## Which language is being selected?
+
+| Context | Inputs and fallback | What persists |
+| --- | --- | --- |
+| Page startup | A request may specify a language. The company default otherwise supplies one, including automatic selection. A page can force its own startup language. | The translation context is created for the request. |
+| Authenticated operator | The ordinary post-login path uses the user's language preference when the URL has no explicit language. Login handling can also initialise a language as the user is loaded. | User preference and company default are separate settings. |
+| Commercial record | The counterparty may have a default language. With the corresponding product-text policy enabled, a customer invoice line can take a description in that language during entry. | The resulting line text is stored on the transaction. The party and product keep their own defaults. |
+| Generated copy | With multiple languages enabled, the common document action first uses the chosen output language, then the linked party's preference, then the target object's own default where defined. With no chosen value it reuses the active language. | A generated file records what the reader saw. Its model, source document and financial figures have separate identities. |
+| Country-specific wording | When a country-qualified translation key has a value, use that label. Otherwise look up the ordinary key in the current language. | The professional identifier or other underlying value remains attached to the original record. |
+
+For automatic selection the resolver reads the first browser language token after removing quality weights and normalising separators. It does not rank all installed languages by the numerical weights. Short codes have specific mappings, such as `de` becoming `de_DE` by the general rule, `en` becoming `en_US`, and `zh` becoming `zh_CN` by an explicit mapping. A missing preference falls back to `en_US`. Normalising a language code is independent of whether a corresponding catalogue ships. The release uses these rules in `htdocs/master.inc.php:318–327`, `htdocs/main.inc.php:919–930,1312–1323`, `htdocs/core/class/translate.class.php:123–193,834–845` and `htdocs/core/actions_builddoc.inc.php:86–110`.
+
+## Bundled terms, local terms and missing entries
+
+The [locale-pack register](locale-packs.csv) accounts for all 119 language-and-territory directories in the release's `htdocs/langs/` directory. Each row gives its domain-file count and its direct coverage of the English reference pack's 15,859 distinct domain/key pairs. A pair means a domain filename plus a nonempty assignment to a conventional alphanumeric, underscore, hyphen or dotted key in that file. Repeated keys within one file count once. This is a count of shipped assignments. It cannot establish whether the text was translated accurately or matches the business terminology an enterprise prefers.
+
+For a regional pack the loader reads the requested domain, then fills missing keys from its parent-language directory, then the English reference pack. For example, `fr_CA` can fall back to `fr_FR` and finally to `en_US`. Arabic and Greek have explicit parent exceptions. A more general pack fills a gap without overwriting an already loaded nonempty term. English (South Africa) ships three domain files and supplies 23 reference pairs directly. Most English terms shown in that locale therefore come from fallback. The English names dictionary also contains a display name for Afrikaans (South Africa), while the release does not ship an `af_ZA` directory. A named language, an installed pack, a fallback label and a translated product description are different facts.
+
+Where local translation overrides are enabled, the database reader selects entries for the current language or an unspecified language from global and permitted entities. It orders by language and fills entries that are empty in the translation context at the time of loading. The effective label depends on the contexts and load order. This mechanism deals with interface keys. Translation of a product description, category label, website page or an operator's invoice note has its own storage and lifecycle. Source locations are `htdocs/core/class/translate.class.php:292–311,353–424,484–582,901–967`. [Classification and translated values](../specification/information/category-trees-and-localized-values.md)
+
+## Keeping negotiated commercial text
+
+Consider a catalogue item whose base description is “On-site commissioning,” with a German product description. The invoice-entry screen can request a particular language or use the party default. When the corresponding product-text option is active, it uses the matching product description when available and otherwise starts with the base text. The autofill mode determines whether that description is concatenated with the operator's line text or the submitted line text supplies the result. The language decision happens before the resulting text is saved.
+
+A second decision occurs when producing a commercial PDF. Where multilingual output is enabled and the chosen language differs from the active language, the common formatter considers the current product wording, the stored line wording and the product translation. An unchanged label can use the translation. A manually changed label normally keeps its negotiated wording. For descriptions the formatter can replace the original product text within a longer description, leaving its added terms in place. It has a fallback for markup or entity encoding that makes semantically identical text fail a literal comparison. Where the description has been rewritten, the explicit translate-even-if-modified option permits replacement by the product translation. A translated public note has a separate comparison.
+
+| Situation | Expected business outcome |
+| --- | --- |
+| Clerk requests German output, item has a German translation and the label still matches the base catalogue | Document headings and eligible product text can render in German. Invoice lines keep their original IDs, quantities and stored amounts. |
+| Invoice line was rewritten to specify serial equipment and restricted service hours | Under ordinary rendering, edited wording can survive. With forced replacement enabled, printed wording can revert to the generic translated description. Retain the issued copy when exact wording matters. |
+| The language pack includes the invoice heading but no product translation exists for this customer | Document headings can change language even though the commercial description remains in the stored language. |
+| Reprint an invoice in another language | Compare the printed descriptions and labels separately from the signed values in both currencies. Changing the rendering language does not request a currency-rate recalculation. |
+
+The entry path is `htdocs/compta/facture/card.php:2761–2791`. Line rendering is in `htdocs/core/lib/pdf.lib.php:1917–1933,1958–2029`. For currency selection, outstanding amounts and bank posting, see [currency from quotation to settlement](currency-from-quotation-to-settlement.md).
