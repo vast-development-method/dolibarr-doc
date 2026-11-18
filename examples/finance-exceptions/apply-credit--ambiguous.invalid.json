@@ -1,0 +1,9 @@
+{
+  "creditId": 17,
+  "customerId": 21,
+  "invoiceId": 220,
+  "application": [
+    "negativeInvoiceLine",
+    "headerSettlement"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Apply Credit",
+  "description": "Apply one available customer adjustment to one destination invoice, creating either a line or a header-level settlement link.",
+  "type": "object",
+  "properties": {
+    "creditId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "customerId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "invoiceId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "application": {
+      "enum": [
+        "negativeInvoiceLine",
+        "headerSettlement"
+      ]
+    }
+  },
+  "required": [
+    "creditId",
+    "customerId",
+    "invoiceId",
+    "application"
+  ],
+  "additionalProperties": false
+}
