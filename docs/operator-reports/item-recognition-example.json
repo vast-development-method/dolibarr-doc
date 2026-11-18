@@ -1,0 +1,52 @@
+{
+  "title": "Catalogue measures for a partial shipment, a customer invoice and a credit",
+  "scope": {
+    "period": "2026-05",
+    "entity": 1,
+    "customer": 12,
+    "item": 23,
+    "unit": "each",
+    "currency": "EUR",
+    "lineAmountsExcludeTax": true,
+    "unrestrictedPartyVisibility": true,
+    "includeKitParents": false
+  },
+  "order": {
+    "id": 700,
+    "line": 701,
+    "orderDate": "2026-04-30",
+    "orderedUnits": 10,
+    "unitNetPrice": 20,
+    "discountPercent": 0
+  },
+  "shipments": [
+    { "id": 800, "created": "2026-05-02", "sourceOrderLine": 701, "units": 4 }
+  ],
+  "invoices": [
+    { "id": 201, "type": "standard", "state": "validated", "date": "2026-05-04", "line": 301, "storedUnits": 5, "signedNet": 100 },
+    { "id": 202, "type": "credit", "state": "validated", "date": "2026-05-09", "line": 302, "storedUnits": 1, "signedNet": -20 }
+  ],
+  "expected": {
+    "invoiceChartUnits": 6,
+    "invoiceChartDocuments": 2,
+    "invoiceChartNet": 80,
+    "invoiceSummaryDistinctCustomers": 1,
+    "invoiceSummaryDistinctInvoices": 2,
+    "invoiceSummarySignedUnits": 4,
+    "shipmentSummaryDistinctShipments": 1,
+    "shipmentSummaryUnits": 4,
+    "shipmentHistoryNetAtOrderPrice": 80,
+    "orderUnitsRemainingAfterAllocations": 6
+  },
+  "variation": {
+    "addInvoice": { "id": 203, "type": "standard", "state": "draft", "date": "2026-05-18", "line": 303, "storedUnits": 2, "signedNet": 40 },
+    "expected": {
+      "invoiceChartUnits": 8,
+      "invoiceChartDocuments": 3,
+      "invoiceChartNet": 120,
+      "invoiceSummarySignedUnits": 6,
+      "issuedOrClosedTurnoverNet": 80,
+      "shipmentSummaryUnits": 4
+    }
+  }
+}
