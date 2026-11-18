@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scheduled job attempt snapshot",
+  "description": "Normalized attempt for a method or command job. A start is durable before work completes. Failure and success describe the runner outcome.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "jobId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "entityId": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "attemptNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "state": {
+      "enum": [
+        "running",
+        "succeeded",
+        "failed"
+      ]
+    },
+    "output": {
+      "type": "string"
+    },
+    "result": {
+      "type": [
+        "string",
+        "number",
+        "boolean"
+      ]
+    }
+  },
+  "required": [
+    "jobId",
+    "entityId",
+    "attemptNumber",
+    "startedAt",
+    "state"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "running"
+          }
+        }
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "finishedAt"
+              ]
+            },
+            {
+              "required": [
+                "result"
+              ]
+            }
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "finishedAt",
+          "result"
+        ]
+      }
+    }
+  ]
+}
