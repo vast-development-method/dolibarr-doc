@@ -106,6 +106,8 @@ Source lines `327–400` with `_validate 1065–1075`.
 
 ## `addContact` — Add contact
 
+This source declaration shares its route with `addToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
+
 Route `POST {id}/contacts`.
 
 **Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer).
@@ -123,6 +125,8 @@ The method attaches a participant role.
 Source lines `421–442`.
 
 ## `deleteContact` — Remove a contact role
+
+This source declaration shares its route with `deleteToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 

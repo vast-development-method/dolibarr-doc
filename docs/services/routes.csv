@@ -1,0 +1,628 @@
+resource,handler,verb,path,registration,path_arguments,query_arguments,body_arguments,header_arguments,source_file,line
+accountancy,exportData,GET,/accountancy/exportdata,explicit,,period date_min date_max format lettering alreadyexport notnotifiedasexport,,,htdocs/accountancy/class/api_accountancy.class.php,91
+agendaevents,index,GET,/agendaevents,convention,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/comm/action/class/api_agendaevents.class.php,123
+agendaevents,post,POST,/agendaevents,convention,,,request_data,,htdocs/comm/action/class/api_agendaevents.class.php,241
+agendaevents,index,GET,/agendaevents/index,index alias,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/comm/action/class/api_agendaevents.class.php,123
+agendaevents,delete,DELETE,/agendaevents/{id},convention,id,,,,htdocs/comm/action/class/api_agendaevents.class.php,360
+agendaevents,get,GET,/agendaevents/{id},convention,id,,,,htdocs/comm/action/class/api_agendaevents.class.php,73
+agendaevents,put,PUT,/agendaevents/{id},convention,id,,request_data,,htdocs/comm/action/class/api_agendaevents.class.php,291
+bankaccounts,index,GET,/bankaccounts,convention,,sortfield sortorder limit page category sqlfilters properties,,,htdocs/compta/bank/class/api_bankaccounts.class.php,71
+bankaccounts,post,POST,/bankaccounts,convention,,,request_data,,htdocs/compta/bank/class/api_bankaccounts.class.php,159
+bankaccounts,index,GET,/bankaccounts/index,index alias,,sortfield sortorder limit page category sqlfilters properties,,,htdocs/compta/bank/class/api_bankaccounts.class.php,71
+bankaccounts,getDetailAccountLine,GET,/bankaccounts/lines/{line_id},explicit,line_id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,655
+bankaccounts,transfer,POST,/bankaccounts/transfer,explicit,,,bankaccount_from_id bankaccount_to_id date description amount amount_to cheque_number,,htdocs/compta/bank/class/api_bankaccounts.class.php,210
+bankaccounts,delete,DELETE,/bankaccounts/{id},convention,id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,382
+bankaccounts,get,GET,/bankaccounts/{id},convention,id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,136
+bankaccounts,put,PUT,/bankaccounts/{id},convention,id,,request_data,,htdocs/compta/bank/class/api_bankaccounts.class.php,336
+bankaccounts,getBalance,GET,/bankaccounts/{id}/balance,explicit,id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,765
+bankaccounts,getLines,GET,/bankaccounts/{id}/lines,explicit,id,sqlfilters,,,htdocs/compta/bank/class/api_bankaccounts.class.php,461
+bankaccounts,addLine,POST,/bankaccounts/{id}/lines,explicit,id,,date type label amount category cheque_number cheque_writer cheque_bank accountancycode datev num_releve,,htdocs/compta/bank/class/api_bankaccounts.class.php,527
+bankaccounts,deleteLine,DELETE,/bankaccounts/{id}/lines/{line_id},explicit,id line_id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,722
+bankaccounts,updateLine,PUT,/bankaccounts/{id}/lines/{line_id},explicit,id line_id,,label,,htdocs/compta/bank/class/api_bankaccounts.class.php,680
+bankaccounts,getLinks,GET,/bankaccounts/{id}/lines/{line_id}/links,explicit,id line_id,,,,htdocs/compta/bank/class/api_bankaccounts.class.php,626
+bankaccounts,addLink,POST,/bankaccounts/{id}/lines/{line_id}/links,explicit,id line_id,,url_id url label type,,htdocs/compta/bank/class/api_bankaccounts.class.php,580
+boms,index,GET,/boms,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/bom/class/api_boms.class.php,110
+boms,post,POST,/boms,convention,,,request_data,,htdocs/bom/class/api_boms.class.php,196
+boms,index,GET,/boms/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/bom/class/api_boms.class.php,110
+boms,delete,DELETE,/boms/{id},convention,id,,,,htdocs/bom/class/api_boms.class.php,328
+boms,get,GET,/boms/{id},explicit,id,,,,htdocs/bom/class/api_boms.class.php,72
+boms,put,PUT,/boms/{id},convention,id,,request_data,,htdocs/bom/class/api_boms.class.php,237
+boms,getLines,GET,/boms/{id}/lines,explicit,id,,,,htdocs/bom/class/api_boms.class.php,368
+boms,postLine,POST,/boms/{id}/lines,explicit,id,,request_data,,htdocs/bom/class/api_boms.class.php,406
+boms,deleteLine,DELETE,/boms/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/bom/class/api_boms.class.php,525
+boms,putLine,PUT,/boms/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/bom/class/api_boms.class.php,460
+boms,validate,POST,/boms/{id}/validate,explicit,id,,notrigger,,htdocs/bom/class/api_boms.class.php,294
+categories,index,GET,/categories,convention,,sortfield sortorder limit page type sqlfilters properties,,,htdocs/categories/class/api_categories.class.php,128
+categories,post,POST,/categories,convention,,,request_data,,htdocs/categories/class/api_categories.class.php,215
+categories,index,GET,/categories/index,index alias,,sortfield sortorder limit page type sqlfilters properties,,,htdocs/categories/class/api_categories.class.php,128
+categories,getListForObject,GET,/categories/object/{type}/{id},explicit,id type,sortfield sortorder limit page,,,htdocs/categories/class/api_categories.class.php,346
+categories,getTypes,GET,/categories/types,explicit,,,,,htdocs/categories/class/api_categories.class.php,197
+categories,delete,DELETE,/categories/{id},convention,id,,,,htdocs/categories/class/api_categories.class.php,301
+categories,get,GET,/categories/{id},convention,id,include_childs,,,htdocs/categories/class/api_categories.class.php,81
+categories,put,PUT,/categories/{id},convention,id,,request_data,,htdocs/categories/class/api_categories.class.php,250
+categories,getObjects,GET,/categories/{id}/objects,explicit,id,type onlyids,,,htdocs/categories/class/api_categories.class.php,890
+categories,unlinkObjectByRef,DELETE,/categories/{id}/objects/{type}/ref/{object_ref},explicit,id type object_ref,,,,htdocs/categories/class/api_categories.class.php,702
+categories,linkObjectByRef,POST,/categories/{id}/objects/{type}/ref/{object_ref},explicit,id type object_ref,,,,htdocs/categories/class/api_categories.class.php,517
+categories,unlinkObjectById,DELETE,/categories/{id}/objects/{type}/{object_id},explicit,id type object_id,,,,htdocs/categories/class/api_categories.class.php,616
+categories,linkObjectById,POST,/categories/{id}/objects/{type}/{object_id},explicit,id type object_id,,,,htdocs/categories/class/api_categories.class.php,413
+contacts,index,GET,/contacts,convention,,sortfield sortorder limit page thirdparty_ids category sqlfilters includecount includeroles properties pagination_data,,,htdocs/societe/class/api_contacts.class.php,186
+contacts,post,POST,/contacts,convention,,,request_data,,htdocs/societe/class/api_contacts.class.php,341
+contacts,getByEmail,GET,/contacts/email/{email},explicit,email,includecount includeroles,,,htdocs/societe/class/api_contacts.class.php,129
+contacts,index,GET,/contacts/index,index alias,,sortfield sortorder limit page thirdparty_ids category sqlfilters includecount includeroles properties pagination_data,,,htdocs/societe/class/api_contacts.class.php,186
+contacts,delete,DELETE,/contacts/{id},convention,id,,,,htdocs/societe/class/api_contacts.class.php,477
+contacts,get,GET,/contacts/{id},convention,id,includecount includeroles,,,htdocs/societe/class/api_contacts.class.php,79
+contacts,put,PUT,/contacts/{id},convention,id,,request_data,,htdocs/societe/class/api_contacts.class.php,411
+contacts,getCategories,GET,/contacts/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/societe/class/api_contacts.class.php,577
+contacts,deleteCategory,DELETE,/contacts/{id}/categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_contacts.class.php,655
+contacts,addCategory,PUT,/contacts/{id}/categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_contacts.class.php,613
+contacts,createUser,POST,/contacts/{id}/createUser,explicit,id,,request_data,,htdocs/societe/class/api_contacts.class.php,518
+contracts,index,GET,/contracts,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data withLines,,,htdocs/contrat/class/api_contracts.class.php,119
+contracts,post,POST,/contracts,convention,,,request_data,,htdocs/contrat/class/api_contracts.class.php,230
+contracts,index,GET,/contracts/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data withLines,,,htdocs/contrat/class/api_contracts.class.php,119
+contracts,delete,DELETE,/contracts/{id},convention,id,,,,htdocs/contrat/class/api_contracts.class.php,835
+contracts,get,GET,/contracts/{id},convention,id,properties withLines,,,htdocs/contrat/class/api_contracts.class.php,71
+contracts,put,PUT,/contracts/{id},convention,id,,request_data,,htdocs/contrat/class/api_contracts.class.php,744
+contracts,close,POST,/contracts/{id}/close,explicit,id,,notrigger,,htdocs/contrat/class/api_contracts.class.php,945
+contracts,getLines,GET,/contracts/{id}/lines,explicit,id,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/contrat/class/api_contracts.class.php,308
+contracts,postLine,POST,/contracts/{id}/lines,explicit,id,,request_data,,htdocs/contrat/class/api_contracts.class.php,399
+contracts,deleteLine,DELETE,/contracts/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/contrat/class/api_contracts.class.php,699
+contracts,putLine,PUT,/contracts/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/contrat/class/api_contracts.class.php,459
+contracts,activateLine,PUT,/contracts/{id}/lines/{lineid}/activate,explicit,id lineid,,datestart dateend comment,,htdocs/contrat/class/api_contracts.class.php,618
+contracts,unactivateLine,PUT,/contracts/{id}/lines/{lineid}/unactivate,explicit,id lineid,,datestart comment,,htdocs/contrat/class/api_contracts.class.php,659
+contracts,validate,POST,/contracts/{id}/validate,explicit,id,,notrigger,,htdocs/contrat/class/api_contracts.class.php,888
+documents,delete,DELETE,/documents,explicit,,modulepart original_file,,,htdocs/api/class/api_documents.class.php,1127
+documents,getDocumentsListByElement,GET,/documents,explicit,,modulepart id ref sortfield sortorder limit page content_type pagination_data,,,htdocs/api/class/api_documents.class.php,471
+documents,builddoc,PUT,/documents/builddoc,explicit,,,modulepart original_file doctemplate langcode,,htdocs/api/class/api_documents.class.php,178
+documents,index,GET,/documents/download,explicit,,modulepart original_file,,,htdocs/api/class/api_documents.class.php,72
+documents,index,GET,/documents/download/index,index alias,,modulepart original_file,,,htdocs/api/class/api_documents.class.php,72
+documents,post,POST,/documents/upload,explicit,,,filename modulepart ref subdir filecontent fileencoding overwriteifexists createdirifnotexists position cover array_options generateThumbs share,,htdocs/api/class/api_documents.class.php,766
+donations,index,GET,/donations,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/don/class/api_donations.class.php,105
+donations,post,POST,/donations,convention,,,request_data,,htdocs/don/class/api_donations.class.php,201
+donations,index,GET,/donations/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/don/class/api_donations.class.php,105
+donations,delete,DELETE,/donations/{id},convention,id,,,,htdocs/don/class/api_donations.class.php,292
+donations,get,GET,/donations/{id},convention,id,,,,htdocs/don/class/api_donations.class.php,65
+donations,put,PUT,/donations/{id},convention,id,,request_data,,htdocs/don/class/api_donations.class.php,243
+donations,validate,POST,/donations/{id}/validate,explicit,id,,idwarehouse notrigger,,htdocs/don/class/api_donations.class.php,341
+emailtemplates,index,GET,/emailtemplates,explicit,,sortfield sortorder limit page fk_user sqlfilters properties pagination_data,,,htdocs/api/class/api_emailtemplates.class.php,225
+emailtemplates,post,POST,/emailtemplates,explicit,,,request_data,,htdocs/api/class/api_emailtemplates.class.php,324
+emailtemplates,index,GET,/emailtemplates/index,index alias,,sortfield sortorder limit page fk_user sqlfilters properties pagination_data,,,htdocs/api/class/api_emailtemplates.class.php,225
+emailtemplates,deleteByLabel,DELETE,/emailtemplates/label/{label},explicit,label,,,,htdocs/api/class/api_emailtemplates.class.php,135
+emailtemplates,getByLabel,GET,/emailtemplates/label/{label},explicit,label,,,,htdocs/api/class/api_emailtemplates.class.php,198
+emailtemplates,putbyLabel,PUT,/emailtemplates/label/{label},explicit,label,,request_data,,htdocs/api/class/api_emailtemplates.class.php,451
+emailtemplates,deleteById,DELETE,/emailtemplates/{id},explicit,id,,,,htdocs/api/class/api_emailtemplates.class.php,93
+emailtemplates,getById,GET,/emailtemplates/{id},explicit,id,,,,htdocs/api/class/api_emailtemplates.class.php,178
+emailtemplates,putById,PUT,/emailtemplates/{id},explicit,id,,request_data,,htdocs/api/class/api_emailtemplates.class.php,387
+eventattendees,index,GET,/eventattendees,explicit,,sortfield sortorder limit page sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/eventorganization/class/api_eventattendees.class.php,213
+eventattendees,post,POST,/eventattendees,explicit,,,request_data,,htdocs/eventorganization/class/api_eventattendees.class.php,334
+eventattendees,index,GET,/eventattendees/index,index alias,,sortfield sortorder limit page sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/eventorganization/class/api_eventattendees.class.php,213
+eventattendees,deleteByRef,DELETE,/eventattendees/ref/{ref},explicit,ref,,,,htdocs/eventorganization/class/api_eventattendees.class.php,127
+eventattendees,getByRef,GET,/eventattendees/ref/{ref},explicit,ref,,,,htdocs/eventorganization/class/api_eventattendees.class.php,186
+eventattendees,putByRef,PUT,/eventattendees/ref/{ref},explicit,ref,,request_data,,htdocs/eventorganization/class/api_eventattendees.class.php,434
+eventattendees,deleteById,DELETE,/eventattendees/{id},explicit,id,,,,htdocs/eventorganization/class/api_eventattendees.class.php,86
+eventattendees,getById,GET,/eventattendees/{id},explicit,id,,,,htdocs/eventorganization/class/api_eventattendees.class.php,166
+eventattendees,putById,PUT,/eventattendees/{id},explicit,id,,request_data,,htdocs/eventorganization/class/api_eventattendees.class.php,380
+expensereports,index,GET,/expensereports,convention,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/expensereport/class/api_expensereports.class.php,149
+expensereports,post,POST,/expensereports,convention,,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,246
+expensereports,index,GET,/expensereports/index,index alias,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/expensereport/class/api_expensereports.class.php,149
+expensereports,getAllPayments,GET,/expensereports/payments,explicit,,sortfield sortorder limit page,,,htdocs/expensereport/class/api_expensereports.class.php,914
+expensereports,getPayment,GET,/expensereports/payments/{pid},explicit,pid,,,,htdocs/expensereport/class/api_expensereports.class.php,974
+expensereports,delete,DELETE,/expensereports/{id},convention,id,,,,htdocs/expensereport/class/api_expensereports.class.php,606
+expensereports,get,GET,/expensereports/{id},convention,id,,,,htdocs/expensereport/class/api_expensereports.class.php,109
+expensereports,put,PUT,/expensereports/{id},convention,id,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,543
+expensereports,approve,POST,/expensereports/{id}/approve,explicit,id,,notrigger,,htdocs/expensereport/class/api_expensereports.class.php,737
+expensereports,cancel,POST,/expensereports/{id}/cancel,explicit,id,,detail notrigger,,htdocs/expensereport/class/api_expensereports.class.php,871
+expensereports,deny,POST,/expensereports/{id}/deny,explicit,id,,details notrigger,,htdocs/expensereport/class/api_expensereports.class.php,783
+expensereports,postLine,POST,/expensereports/{id}/line,explicit,id,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,353
+expensereports,getLines,GET,/expensereports/{id}/lines,explicit,id,,,,htdocs/expensereport/class/api_expensereports.class.php,315
+expensereports,deleteLine,DELETE,/expensereports/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/expensereport/class/api_expensereports.class.php,485
+expensereports,putLine,PUT,/expensereports/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,417
+expensereports,addPayment,POST,/expensereports/{id}/payments,explicit,id,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,1013
+expensereports,updatePayment,PUT,/expensereports/{id}/payments/{idp},explicit,id idp,,request_data,,htdocs/expensereport/class/api_expensereports.class.php,1102
+expensereports,setPaid,POST,/expensereports/{id}/setpaid,explicit,id,,notrigger,,htdocs/expensereport/class/api_expensereports.class.php,829
+expensereports,setToDraft,POST,/expensereports/{id}/settodraft,explicit,id,,,,htdocs/expensereport/class/api_expensereports.class.php,648
+expensereports,validate,POST,/expensereports/{id}/validate,explicit,id,,notrigger,,htdocs/expensereport/class/api_expensereports.class.php,692
+holidays,index,GET,/holidays,convention,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/holiday/class/api_holidays.class.php,134
+holidays,post,POST,/holidays,convention,,,request_data,,htdocs/holiday/class/api_holidays.class.php,248
+holidays,index,GET,/holidays/index,index alias,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/holiday/class/api_holidays.class.php,134
+holidays,delete,DELETE,/holidays/{id},convention,id,,,,htdocs/holiday/class/api_holidays.class.php,375
+holidays,get,GET,/holidays/{id},convention,id,,,,htdocs/holiday/class/api_holidays.class.php,96
+holidays,put,PUT,/holidays/{id},convention,id,,request_data,,htdocs/holiday/class/api_holidays.class.php,306
+holidays,approve,POST,/holidays/{id}/approve,explicit,id,,notrigger,,htdocs/holiday/class/api_holidays.class.php,480
+holidays,cancel,POST,/holidays/{id}/cancel,explicit,id,,notrigger,,htdocs/holiday/class/api_holidays.class.php,561
+holidays,refuse,POST,/holidays/{id}/refuse,explicit,id,,detail_refuse notrigger,,htdocs/holiday/class/api_holidays.class.php,665
+holidays,reopen,POST,/holidays/{id}/reopen,explicit,id,,notrigger,,htdocs/holiday/class/api_holidays.class.php,725
+holidays,validate,POST,/holidays/{id}/validate,explicit,id,,notrigger,,htdocs/holiday/class/api_holidays.class.php,426
+interventions,index,GET,/interventions,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties contact_type pagination_data loadlinkedobjects,,,htdocs/fichinter/class/api_interventions.class.php,146
+interventions,post,POST,/interventions,convention,,,request_data,,htdocs/fichinter/class/api_interventions.class.php,272
+interventions,index,GET,/interventions/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties contact_type pagination_data loadlinkedobjects,,,htdocs/fichinter/class/api_interventions.class.php,146
+interventions,delete,DELETE,/interventions/{id},convention,id,,,,htdocs/fichinter/class/api_interventions.class.php,451
+interventions,get,GET,/interventions/{id},convention,id,ref ref_ext contact_list,,,htdocs/fichinter/class/api_interventions.class.php,91
+interventions,put,PUT,/interventions/{id},convention,id,,request_data,,htdocs/fichinter/class/api_interventions.class.php,309
+interventions,close,POST,/interventions/{id}/close,explicit,id,,notrigger,,htdocs/fichinter/class/api_interventions.class.php,544
+interventions,deleteContact,DELETE,/interventions/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/fichinter/class/api_interventions.class.php,770
+interventions,getContacts,GET,/interventions/{id}/contacts,explicit,id,type source,,,htdocs/fichinter/class/api_interventions.class.php,724
+interventions,addContact,POST,/interventions/{id}/contacts,explicit,id,,fk_socpeople type_contact source notrigger,,htdocs/fichinter/class/api_interventions.class.php,683
+interventions,postLine,POST,/interventions/{id}/lines,explicit,id,,request_data,,htdocs/fichinter/class/api_interventions.class.php,398
+interventions,deleteLine,DELETE,/interventions/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/fichinter/class/api_interventions.class.php,587
+interventions,putLine,PUT,/interventions/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/fichinter/class/api_interventions.class.php,816
+interventions,settodraft,POST,/interventions/{id}/settodraft,explicit,id,,,,htdocs/fichinter/class/api_interventions.class.php,639
+interventions,validate,POST,/interventions/{id}/validate,explicit,id,,notrigger,,htdocs/fichinter/class/api_interventions.class.php,496
+invoices,index,GET,/invoices,convention,,sortfield sortorder limit page thirdparty_ids status sqlfilters properties pagination_data loadlinkedobjects withLines,,,htdocs/compta/facture/class/api_invoices.class.php,218
+invoices,post,POST,/invoices,convention,,,request_data,,htdocs/compta/facture/class/api_invoices.class.php,361
+invoices,createInvoiceFromContract,POST,/invoices/createfromcontract/{contractid},explicit,contractid,,,,htdocs/compta/facture/class/api_invoices.class.php,487
+invoices,createInvoiceFromOrder,POST,/invoices/createfromorder/{orderid},explicit,orderid,,,,htdocs/compta/facture/class/api_invoices.class.php,435
+invoices,index,GET,/invoices/index,index alias,,sortfield sortorder limit page thirdparty_ids status sqlfilters properties pagination_data loadlinkedobjects withLines,,,htdocs/compta/facture/class/api_invoices.class.php,218
+invoices,putPayment,PUT,/invoices/payments/{id},explicit,id,,num_payment,,htdocs/compta/facture/class/api_invoices.class.php,2031
+invoices,addPaymentDistributed,POST,/invoices/paymentsdistributed,explicit,,,arrayofamounts datepaye paymentid closepaidinvoices accountid num_payment comment chqemetteur chqbank ref_ext accepthigherpayment,,htdocs/compta/facture/class/api_invoices.class.php,1888
+invoices,getByRef,GET,/invoices/ref/{ref},explicit,ref,contact_list,,,htdocs/compta/facture/class/api_invoices.class.php,108
+invoices,getByRefExt,GET,/invoices/ref_ext/{ref_ext},explicit,ref_ext,contact_list,,,htdocs/compta/facture/class/api_invoices.class.php,128
+invoices,indexTemplateInvoices,GET,/invoices/templates,explicit,,sortfield sortorder limit page thirdparty_ids status sqlfilters properties pagination_data loadlinkedobjects withLines,,,htdocs/compta/facture/class/api_invoices.class.php,2170
+invoices,getTemplateInvoice,GET,/invoices/templates/{id},explicit,id,contact_list,,,htdocs/compta/facture/class/api_invoices.class.php,2137
+invoices,delete,DELETE,/invoices/{id},convention,id,,,,htdocs/compta/facture/class/api_invoices.class.php,971
+invoices,get,GET,/invoices/{id},convention,id,contact_list properties withLines,,,htdocs/compta/facture/class/api_invoices.class.php,82
+invoices,put,PUT,/invoices/{id},convention,id,,request_data,,htdocs/compta/facture/class/api_invoices.class.php,906
+invoices,deleteContact,DELETE,/invoices/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/compta/facture/class/api_invoices.class.php,819
+invoices,postContact,POST,/invoices/{id}/contact/{contactid}/{type},explicit,id contactid type,,source notrigger,,htdocs/compta/facture/class/api_invoices.class.php,657
+invoices,getContacts,GET,/invoices/{id}/contacts,explicit,id,type,,,htdocs/compta/facture/class/api_invoices.class.php,780
+invoices,addContact,POST,/invoices/{id}/contacts,explicit,id,,fk_socpeople type_contact source notrigger,,htdocs/compta/facture/class/api_invoices.class.php,1119
+invoices,getDiscount,GET,/invoices/{id}/discount,explicit,id,,,,htdocs/compta/facture/class/api_invoices.class.php,1373
+invoices,getLines,GET,/invoices/{id}/lines,explicit,id,,,,htdocs/compta/facture/class/api_invoices.class.php,530
+invoices,postLine,POST,/invoices/{id}/lines,explicit,id,,request_data,,htdocs/compta/facture/class/api_invoices.class.php,1030
+invoices,deleteLine,DELETE,/invoices/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/compta/facture/class/api_invoices.class.php,866
+invoices,putLine,PUT,/invoices/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/compta/facture/class/api_invoices.class.php,570
+invoices,markAsCreditAvailable,POST,/invoices/{id}/markAsCreditAvailable,explicit,id,,,,htdocs/compta/facture/class/api_invoices.class.php,1418
+invoices,getPayments,GET,/invoices/{id}/payments,explicit,id,,,,htdocs/compta/facture/class/api_invoices.class.php,1711
+invoices,addPayment,POST,/invoices/{id}/payments,explicit,id,,datepaye paymentid closepaidinvoices accountid num_payment comment chqemetteur chqbank,,htdocs/compta/facture/class/api_invoices.class.php,1761
+invoices,settodraft,POST,/invoices/{id}/settodraft,explicit,id,,idwarehouse,,htdocs/compta/facture/class/api_invoices.class.php,1169
+invoices,settopaid,POST,/invoices/{id}/settopaid,explicit,id,,close_code close_note,,htdocs/compta/facture/class/api_invoices.class.php,1275
+invoices,settounpaid,POST,/invoices/{id}/settounpaid,explicit,id,,,,htdocs/compta/facture/class/api_invoices.class.php,1327
+invoices,useCreditNote,POST,/invoices/{id}/usecreditnote/{discountid},explicit,id discountid,,,,htdocs/compta/facture/class/api_invoices.class.php,1663
+invoices,useDiscount,POST,/invoices/{id}/usediscount/{discountid},explicit,id discountid,,,,htdocs/compta/facture/class/api_invoices.class.php,1616
+invoices,validate,POST,/invoices/{id}/validate,explicit,id,,force_number idwarehouse notrigger,,htdocs/compta/facture/class/api_invoices.class.php,1219
+knowledgemanagement,index,GET,/knowledgemanagement/knowledgerecords,explicit,,sortfield sortorder limit page category sqlfilters properties pagination_data,,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,142
+knowledgemanagement,post,POST,/knowledgemanagement/knowledgerecords,explicit,,,request_data,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,257
+knowledgemanagement,index,GET,/knowledgemanagement/knowledgerecords/index,index alias,,sortfield sortorder limit page category sqlfilters properties pagination_data,,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,142
+knowledgemanagement,delete,DELETE,/knowledgemanagement/knowledgerecords/{id},explicit,id,,,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,355
+knowledgemanagement,get,GET,/knowledgemanagement/knowledgerecords/{id},explicit,id,,,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,73
+knowledgemanagement,put,PUT,/knowledgemanagement/knowledgerecords/{id},explicit,id,,request_data,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,298
+knowledgemanagement,getCategories,GET,/knowledgemanagement/knowledgerecords/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,104
+knowledgemanagement,cancel,POST,/knowledgemanagement/{id}/cancel,explicit,id,,notrigger,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,499
+knowledgemanagement,validate,POST,/knowledgemanagement/{id}/validate,explicit,id,,notrigger,,htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php,462
+mailings,index,GET,/mailings,convention,,sortfield sortorder limit page fk_projects sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/comm/mailing/class/api_mailings.class.php,147
+mailings,post,POST,/mailings,convention,,,request_data,,htdocs/comm/mailing/class/api_mailings.class.php,395
+mailings,clone,GET,/mailings/clone/{id},convention,id,cloneContent cloneRecipients notrigger,,,htdocs/comm/mailing/class/api_mailings.class.php,356
+mailings,index,GET,/mailings/index,index alias,,sortfield sortorder limit page fk_projects sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/comm/mailing/class/api_mailings.class.php,147
+mailings,delete,DELETE,/mailings/{id},convention,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,498
+mailings,get,GET,/mailings/{id},convention,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,85
+mailings,put,PUT,/mailings/{id},convention,id,,request_data,,htdocs/comm/mailing/class/api_mailings.class.php,440
+mailings,postTarget,POST,/mailings/{id}/createTarget,explicit,id,,request_data,,htdocs/comm/mailing/class/api_mailings.class.php,612
+mailings,deleteTarget,DELETE,/mailings/{id}/deleteTarget/{targetid},explicit,id targetid,,,,htdocs/comm/mailing/class/api_mailings.class.php,740
+mailings,deleteTargets,DELETE,/mailings/{id}/deleteTargets,explicit,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,792
+mailings,getTarget,GET,/mailings/{id}/getTarget/{targetid},explicit,id targetid,,,,htdocs/comm/mailing/class/api_mailings.class.php,677
+mailings,resetTargetsStatus,PUT,/mailings/{id}/resetTargetsStatus,explicit,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,839
+mailings,settodraft,PUT,/mailings/{id}/settodraft,explicit,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,885
+mailings,indexTargets,GET,/mailings/{id}/targets,explicit,id,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/comm/mailing/class/api_mailings.class.php,258
+mailings,updateTarget,PUT,/mailings/{id}/updateTarget/{targetid},explicit,id targetid,,request_data,,htdocs/comm/mailing/class/api_mailings.class.php,546
+mailings,validate,PUT,/mailings/{id}/validate,explicit,id,,,,htdocs/comm/mailing/class/api_mailings.class.php,937
+members,index,GET,/members,convention,,sortfield sortorder limit page typeid category sqlfilters properties pagination_data,,,htdocs/adherents/class/api_members.class.php,281
+members,post,POST,/members,convention,,,request_data,,htdocs/adherents/class/api_members.class.php,373
+members,index,GET,/members/index,index alias,,sortfield sortorder limit page typeid category sqlfilters properties pagination_data,,,htdocs/adherents/class/api_members.class.php,281
+members,getAmountByMonth,GET,/members/stats/amountbymonth,explicit,,year format,,,htdocs/adherents/class/api_members.class.php,1104
+members,getLastModifiedMembers,GET,/members/stats/lastmodifiedmembers,explicit,,max,,,htdocs/adherents/class/api_members.class.php,1126
+members,getNbByMonth,GET,/members/stats/nbbymonth,explicit,,year format,,,htdocs/adherents/class/api_members.class.php,1064
+members,getNbByYear,GET,/members/stats/nbbyyear,explicit,,,,,htdocs/adherents/class/api_members.class.php,1083
+members,getByThirdpartyAccounts,GET,/members/thirdparty/accounts/{site}/{key_account},explicit,site key_account,,,,htdocs/adherents/class/api_members.class.php,142
+members,getByThirdpartyBarcode,GET,/members/thirdparty/barcode/{barcode},explicit,barcode,,,,htdocs/adherents/class/api_members.class.php,232
+members,getByThirdpartyEmail,GET,/members/thirdparty/email/{email},explicit,email,,,,htdocs/adherents/class/api_members.class.php,193
+members,getByThirdparty,GET,/members/thirdparty/{thirdparty},explicit,thirdparty,,,,htdocs/adherents/class/api_members.class.php,111
+members,indexType,GET,/members/types,explicit,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/adherents/class/api_members.class.php,840
+members,postType,POST,/members/types,explicit,,,request_data,,htdocs/adherents/class/api_members.class.php,924
+members,deleteType,DELETE,/members/types/{id},explicit,id,,,,htdocs/adherents/class/api_members.class.php,1022
+members,getType,GET,/members/types/{id},explicit,id,,,,htdocs/adherents/class/api_members.class.php,799
+members,putType,PUT,/members/types/{id},explicit,id,,request_data,,htdocs/adherents/class/api_members.class.php,963
+members,delete,DELETE,/members/{id},convention,id,,,,htdocs/adherents/class/api_members.class.php,506
+members,get,GET,/members/{id},convention,id,,,,htdocs/adherents/class/api_members.class.php,74
+members,put,PUT,/members/{id},convention,id,,request_data,,htdocs/adherents/class/api_members.class.php,418
+members,getCategories,GET,/members/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/adherents/class/api_members.class.php,756
+members,getSubscriptions,GET,/members/{id}/subscriptions,explicit,id,,,,htdocs/adherents/class/api_members.class.php,669
+members,createSubscription,POST,/members/{id}/subscriptions,explicit,id,,start_date end_date amount label,,htdocs/adherents/class/api_members.class.php,709
+memberstypes,index,GET,/memberstypes,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/adherents/class/api_memberstypes.class.php,94
+memberstypes,post,POST,/memberstypes,convention,,,request_data,,htdocs/adherents/class/api_memberstypes.class.php,153
+memberstypes,index,GET,/memberstypes/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/adherents/class/api_memberstypes.class.php,94
+memberstypes,delete,DELETE,/memberstypes/{id},convention,id,,,,htdocs/adherents/class/api_memberstypes.class.php,239
+memberstypes,get,GET,/memberstypes/{id},convention,id,,,,htdocs/adherents/class/api_memberstypes.class.php,58
+memberstypes,put,PUT,/memberstypes/{id},convention,id,,request_data,,htdocs/adherents/class/api_memberstypes.class.php,186
+mos,index,GET,/mos,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/mrp/class/api_mos.class.php,137
+mos,post,POST,/mos,convention,,,request_data,,htdocs/mrp/class/api_mos.class.php,224
+mos,index,GET,/mos/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/mrp/class/api_mos.class.php,137
+mos,delete,DELETE,/mos/{id},convention,id,,,,htdocs/mrp/class/api_mos.class.php,355
+mos,get,GET,/mos/{id},explicit,id,,,,htdocs/mrp/class/api_mos.class.php,67
+mos,put,PUT,/mos/{id},convention,id,,request_data,,htdocs/mrp/class/api_mos.class.php,262
+mos,getCategories,GET,/mos/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/mrp/class/api_mos.class.php,102
+mos,produceAndConsume,POST,/mos/{id}/produceandconsume,explicit,id,,request_data,,htdocs/mrp/class/api_mos.class.php,801
+mos,produceAndConsumeAll,POST,/mos/{id}/produceandconsumeall,explicit,id,,request_data,,htdocs/mrp/class/api_mos.class.php,414
+mos,validate,POST,/mos/{id}/validate,explicit,id,,notrigger,,htdocs/mrp/class/api_mos.class.php,320
+multicurrencies,index,GET,/multicurrencies,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/multicurrency/class/api_multicurrencies.class.php,60
+multicurrencies,post,POST,/multicurrencies,convention,,,request_data,,htdocs/multicurrency/class/api_multicurrencies.class.php,205
+multicurrencies,getByCode,GET,/multicurrencies/bycode/{code},explicit,code,,,,htdocs/multicurrency/class/api_multicurrencies.class.php,147
+multicurrencies,index,GET,/multicurrencies/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/multicurrency/class/api_multicurrencies.class.php,60
+multicurrencies,delete,DELETE,/multicurrencies/{id},convention,id,,,,htdocs/multicurrency/class/api_multicurrencies.class.php,301
+multicurrencies,get,GET,/multicurrencies/{id},convention,id,,,,htdocs/multicurrency/class/api_multicurrencies.class.php,122
+multicurrencies,put,PUT,/multicurrencies/{id},convention,id,,request_data,,htdocs/multicurrency/class/api_multicurrencies.class.php,260
+multicurrencies,getRates,GET,/multicurrencies/{id}/rates,explicit,id,,,,htdocs/multicurrency/class/api_multicurrencies.class.php,172
+multicurrencies,updateRate,PUT,/multicurrencies/{id}/rates,explicit,id,,request_data,,htdocs/multicurrency/class/api_multicurrencies.class.php,337
+objectlinks,deleteByValues,DELETE,/objectlinks,explicit,,fk_source sourcetype fk_target targettype relationtype notrigger,,,htdocs/api/class/api_objectlinks.class.php,351
+objectlinks,getByValues,GET,/objectlinks,explicit,,fk_source sourcetype fk_target targettype relationtype,,,htdocs/api/class/api_objectlinks.class.php,275
+objectlinks,create,POST,/objectlinks,explicit,,,request_data,,htdocs/api/class/api_objectlinks.class.php,136
+objectlinks,deleteById,DELETE,/objectlinks/{id},explicit,id,,,,htdocs/api/class/api_objectlinks.class.php,210
+objectlinks,getById,GET,/objectlinks/{id},explicit,id,,,,htdocs/api/class/api_objectlinks.class.php,81
+orders,index,GET,/orders,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters sqlfilterlines properties pagination_data loadlinkedobjects,,,htdocs/commande/class/api_orders.class.php,189
+orders,post,POST,/orders,convention,,,request_data,,htdocs/commande/class/api_orders.class.php,327
+orders,createOrderFromProposal,POST,/orders/createfromproposal/{proposalid},explicit,proposalid,,,,htdocs/commande/class/api_orders.class.php,1196
+orders,index,GET,/orders/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters sqlfilterlines properties pagination_data loadlinkedobjects,,,htdocs/commande/class/api_orders.class.php,189
+orders,getByRef,GET,/orders/ref/{ref},explicit,ref,contact_list,,,htdocs/commande/class/api_orders.class.php,90
+orders,getByRefExt,GET,/orders/ref_ext/{ref_ext},explicit,ref_ext,contact_list,,,htdocs/commande/class/api_orders.class.php,109
+orders,delete,DELETE,/orders/{id},convention,id,,,,htdocs/commande/class/api_orders.class.php,916
+orders,get,GET,/orders/{id},convention,id,contact_list,,,htdocs/commande/class/api_orders.class.php,71
+orders,put,PUT,/orders/{id},convention,id,,request_data,,htdocs/commande/class/api_orders.class.php,858
+orders,close,POST,/orders/{id}/close,explicit,id,,notrigger,,htdocs/commande/class/api_orders.class.php,1097
+orders,deleteContact,DELETE,/orders/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/commande/class/api_orders.class.php,812
+orders,postContact,POST,/orders/{id}/contact/{contactid}/{type},explicit,id contactid type,,source notrigger,,htdocs/commande/class/api_orders.class.php,690
+orders,getContacts,GET,/orders/{id}/contacts,explicit,id,type,,,htdocs/commande/class/api_orders.class.php,647
+orders,getLines,GET,/orders/{id}/lines,explicit,id,,,,htdocs/commande/class/api_orders.class.php,390
+orders,postLine,POST,/orders/{id}/lines,explicit,id,,request_data,,htdocs/commande/class/api_orders.class.php,461
+orders,deleteLine,DELETE,/orders/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/commande/class/api_orders.class.php,610
+orders,getLine,GET,/orders/{id}/lines/{lineid},explicit,id lineid,properties,,,htdocs/commande/class/api_orders.class.php,424
+orders,putLine,PUT,/orders/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/commande/class/api_orders.class.php,531
+orders,reopen,POST,/orders/{id}/reopen,explicit,id,,,,htdocs/commande/class/api_orders.class.php,1019
+orders,setinvoiced,POST,/orders/{id}/setinvoiced,explicit,id,,,,htdocs/commande/class/api_orders.class.php,1060
+orders,settodraft,POST,/orders/{id}/settodraft,explicit,id,,idwarehouse,,htdocs/commande/class/api_orders.class.php,1144
+orders,getOrderShipments,GET,/orders/{id}/shipment,explicit,id,,,,htdocs/commande/class/api_orders.class.php,1245
+orders,createOrderShipment,POST,/orders/{id}/shipment/{warehouse_id},explicit,id warehouse_id,,,,htdocs/commande/class/api_orders.class.php,1307
+orders,validate,POST,/orders/{id}/validate,explicit,id,,idwarehouse notrigger,,htdocs/commande/class/api_orders.class.php,967
+paiements,index,GET,/paiements,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/compta/facture/class/api_paiements.class.php,112
+paiements,index,GET,/paiements/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/compta/facture/class/api_paiements.class.php,112
+paiements,delete,DELETE,/paiements/{id},convention,id,,,,htdocs/compta/facture/class/api_paiements.class.php,241
+paiements,get,GET,/paiements/{id},convention,id,,,,htdocs/compta/facture/class/api_paiements.class.php,75
+paiements,put,PUT,/paiements/{id},convention,id,,request_data,,htdocs/compta/facture/class/api_paiements.class.php,190
+partnerships,index,GET,/partnerships/partnerships,explicit,,sortfield sortorder limit page sqlfilters properties,,,htdocs/partnership/class/api_partnerships.class.php,108
+partnerships,post,POST,/partnerships/partnerships,explicit,,,request_data,,htdocs/partnership/class/api_partnerships.class.php,196
+partnerships,index,GET,/partnerships/partnerships/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/partnership/class/api_partnerships.class.php,108
+partnerships,delete,DELETE,/partnerships/partnerships/{id},explicit,id,,,,htdocs/partnership/class/api_partnerships.class.php,293
+partnerships,get,GET,/partnerships/partnerships/{id},explicit,id,,,,htdocs/partnership/class/api_partnerships.class.php,70
+partnerships,put,PUT,/partnerships/partnerships/{id},explicit,id,,request_data,,htdocs/partnership/class/api_partnerships.class.php,237
+productlots,index,GET,/productlots,explicit,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_productlots.class.php,119
+productlots,post,POST,/productlots,convention,,,request_data,,htdocs/product/stock/class/api_productlots.class.php,222
+productlots,index,GET,/productlots/index,index alias,,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_productlots.class.php,119
+productlots,delete,DELETE,/productlots/{id},convention,id,,,,htdocs/product/stock/class/api_productlots.class.php,326
+productlots,get,GET,/productlots/{id},convention,id,,,,htdocs/product/stock/class/api_productlots.class.php,71
+productlots,put,PUT,/productlots/{id},convention,id,,request_data,,htdocs/product/stock/class/api_productlots.class.php,269
+products,index,GET,/products,convention,,sortfield sortorder limit page mode category sqlfilters ids_only variant_filter pagination_data includestockdata properties,,,htdocs/product/class/api_products.class.php,203
+products,post,POST,/products,convention,,,request_data,,htdocs/product/class/api_products.class.php,335
+products,getAttributes,GET,/products/attributes,explicit,,sortfield sortorder limit page sqlfilters properties,,,htdocs/product/class/api_products.class.php,1242
+products,addAttributes,POST,/products/attributes,explicit,,,ref label ref_ext,,htdocs/product/class/api_products.class.php,1461
+products,getAttributesByRef,GET,/products/attributes/ref/{ref},explicit,ref,,,,htdocs/product/class/api_products.class.php,1353
+products,getAttributeValuesByRef,GET,/products/attributes/ref/{ref}/values,explicit,ref,,,,htdocs/product/class/api_products.class.php,1754
+products,getAttributesByRefExt,GET,/products/attributes/ref_ext/{ref_ext},explicit,ref_ext,,,,htdocs/product/class/api_products.class.php,1407
+products,deleteAttributeValueById,DELETE,/products/attributes/values/{id},explicit,id,,,,htdocs/product/class/api_products.class.php,1889
+products,getAttributeValueById,GET,/products/attributes/values/{id},explicit,id,,,,htdocs/product/class/api_products.class.php,1583
+products,putAttributeValue,PUT,/products/attributes/values/{id},explicit,id,,request_data,,htdocs/product/class/api_products.class.php,1835
+products,deleteAttributes,DELETE,/products/attributes/{id},explicit,id,,,,htdocs/product/class/api_products.class.php,1551
+products,getAttributeById,GET,/products/attributes/{id},explicit,id,,,,htdocs/product/class/api_products.class.php,1306
+products,putAttributes,PUT,/products/attributes/{id},explicit,id,,request_data,,htdocs/product/class/api_products.class.php,1497
+products,getAttributeValues,GET,/products/attributes/{id}/values,explicit,id,,,,htdocs/product/class/api_products.class.php,1719
+products,addAttributeValue,POST,/products/attributes/{id}/values,explicit,id,,ref value,,htdocs/product/class/api_products.class.php,1798
+products,deleteAttributeValueByRef,DELETE,/products/attributes/{id}/values/ref/{ref},explicit,id ref,,,,htdocs/product/class/api_products.class.php,1672
+products,getAttributeValueByRef,GET,/products/attributes/{id}/values/ref/{ref},explicit,id ref,,,,htdocs/product/class/api_products.class.php,1628
+products,getByBarcode,GET,/products/barcode/{barcode},explicit,barcode,includestockdata includesubproducts includeparentid includetrans,,,htdocs/product/class/api_products.class.php,173
+products,index,GET,/products/index,index alias,,sortfield sortorder limit page mode category sqlfilters ids_only variant_filter pagination_data includestockdata properties,,,htdocs/product/class/api_products.class.php,203
+products,getSupplierProducts,GET,/products/purchase_prices,explicit,,sortfield sortorder limit page mode category supplier sqlfilters,,,htdocs/product/class/api_products.class.php,1029
+products,getByRef,GET,/products/ref/{ref},explicit,ref,includestockdata includesubproducts includeparentid includetrans,,,htdocs/product/class/api_products.class.php,121
+products,getVariantsByProdRef,GET,/products/ref/{ref}/variants,explicit,ref,,,,htdocs/product/class/api_products.class.php,1960
+products,addVariantByProductRef,POST,/products/ref/{ref}/variants,explicit,ref,,weight_impact price_impact price_impact_is_percent features,,htdocs/product/class/api_products.class.php,2074
+products,getByRefExt,GET,/products/ref_ext/{ref_ext},explicit,ref_ext,includestockdata includesubproducts includeparentid includetrans,,,htdocs/product/class/api_products.class.php,147
+products,deleteVariant,DELETE,/products/variants/{id},explicit,id,,,,htdocs/product/class/api_products.class.php,2180
+products,putVariant,PUT,/products/variants/{id},explicit,id,,request_data,,htdocs/product/class/api_products.class.php,2135
+products,delete,DELETE,/products/{id},convention,id,,,,htdocs/product/class/api_products.class.php,573
+products,get,GET,/products/{id},convention,id,includestockdata includesubproducts includeparentid includetrans,,,htdocs/product/class/api_products.class.php,92
+products,put,PUT,/products/{id},convention,id,,request_data,,htdocs/product/class/api_products.class.php,400
+products,getCategories,GET,/products/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/product/class/api_products.class.php,733
+products,deleteContact,DELETE,/products/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/product/class/api_products.class.php,2343
+products,postContact,POST,/products/{id}/contact/{contactid}/{type},explicit,id contactid type,,source notrigger,,htdocs/product/class/api_products.class.php,2295
+products,getContacts,GET,/products/{id}/contacts,explicit,id,type,,,htdocs/product/class/api_products.class.php,2256
+products,getPurchasePrices,GET,/products/{id}/purchase_prices,explicit,id,ref ref_ext barcode,,,htdocs/product/class/api_products.class.php,1141
+products,addPurchasePrice,POST,/products/{id}/purchase_prices,explicit,id,,qty buyprice price_base_type fourn_id availability ref_fourn tva_tx charges remise_percent remise newnpr delivery_time_days supplier_reputation localtaxes_array newdefaultvatcode multicurrency_buyprice multicurrency_price_base_type multicurrency_tx multicurrency_code desc_fourn barcode fk_barcode_type,,htdocs/product/class/api_products.class.php,927
+products,getPurchasePriceLogs,GET,/products/{id}/purchase_prices/logs,explicit,id,ref ref_ext barcode,,,htdocs/product/class/api_products.class.php,1197
+products,deletePurchasePrice,DELETE,/products/{id}/purchase_prices/{priceid},explicit,id priceid,,,,htdocs/product/class/api_products.class.php,986
+products,getCustomerPricesPerCustomer,GET,/products/{id}/selling_multiprices/per_customer,explicit,id,thirdparty_id,,,htdocs/product/class/api_products.class.php,809
+products,getCustomerPricesPerQuantity,GET,/products/{id}/selling_multiprices/per_quantity,explicit,id,,,,htdocs/product/class/api_products.class.php,862
+products,getCustomerPricesPerSegment,GET,/products/{id}/selling_multiprices/per_segment,explicit,id,,,,htdocs/product/class/api_products.class.php,763
+products,getStock,GET,/products/{id}/stock,explicit,id,selected_warehouse_id,,,htdocs/product/class/api_products.class.php,2214
+products,getSubproducts,GET,/products/{id}/subproducts,explicit,id,,,,htdocs/product/class/api_products.class.php,625
+products,addSubproducts,POST,/products/{id}/subproducts/add,explicit,id,,subproduct_id qty incdec,,htdocs/product/class/api_products.class.php,665
+products,delSubproducts,DELETE,/products/{id}/subproducts/remove/{subproduct_id},explicit,id subproduct_id,,,,htdocs/product/class/api_products.class.php,698
+products,getVariants,GET,/products/{id}/variants,explicit,id,includestock,,,htdocs/product/class/api_products.class.php,1920
+products,addVariant,POST,/products/{id}/variants,explicit,id,,weight_impact price_impact price_impact_is_percent features reference ref_ext,,htdocs/product/class/api_products.class.php,2007
+projects,index,GET,/projects,convention,,sortfield sortorder limit page thirdparty_ids category sqlfilters properties pagination_data,,,htdocs/projet/class/api_projects.class.php,212
+projects,post,POST,/projects,convention,,,request_data,,htdocs/projet/class/api_projects.class.php,327
+projects,listTimespent,GET,/projects/alltimespent,explicit,,sortfield sortorder limit page thirdparty_ids category sqlfilters properties pagination_data,,,htdocs/projet/class/api_projects.class.php,868
+projects,getByMsgId,GET,/projects/email_msgid/{email_msgid},explicit,email_msgid,,,,htdocs/projet/class/api_projects.class.php,174
+projects,index,GET,/projects/index,index alias,,sortfield sortorder limit page thirdparty_ids category sqlfilters properties pagination_data,,,htdocs/projet/class/api_projects.class.php,212
+projects,getByRef,GET,/projects/ref/{ref},explicit,ref,,,,htdocs/projet/class/api_projects.class.php,110
+projects,getByRefExt,GET,/projects/ref_ext/{ref_ext},explicit,ref_ext,,,,htdocs/projet/class/api_projects.class.php,142
+projects,delete,DELETE,/projects/{id},convention,id,,,,htdocs/projet/class/api_projects.class.php,771
+projects,get,GET,/projects/{id},convention,id,,,,htdocs/projet/class/api_projects.class.php,78
+projects,put,PUT,/projects/{id},convention,id,,request_data,,htdocs/projet/class/api_projects.class.php,721
+projects,deleteToContact,DELETE,/projects/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/projet/class/api_projects.class.php,1197
+projects,getContacts,GET,/projects/{id}/contacts,explicit,id,type,,,htdocs/projet/class/api_projects.class.php,1094
+projects,addToContact,POST,/projects/{id}/contacts,explicit,id,,fk_socpeople type_contact source notrigger affect_to_tasks,,htdocs/projet/class/api_projects.class.php,1137
+projects,getRoles,GET,/projects/{id}/roles,explicit,id,userid,,,htdocs/projet/class/api_projects.class.php,542
+projects,getLines,GET,/projects/{id}/tasks,explicit,id,includetimespent,,,htdocs/projet/class/api_projects.class.php,501
+projects,getTimespent,GET,/projects/{id}/timespent,explicit,id,,,,htdocs/projet/class/api_projects.class.php,1240
+projects,validate,POST,/projects/{id}/validate,explicit,id,,notrigger,,htdocs/projet/class/api_projects.class.php,820
+proposals,index,GET,/proposals,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/comm/propal/class/api_proposals.class.php,190
+proposals,post,POST,/proposals,convention,,,request_data,,htdocs/comm/propal/class/api_proposals.class.php,311
+proposals,index,GET,/proposals/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data loadlinkedobjects,,,htdocs/comm/propal/class/api_proposals.class.php,190
+proposals,getByRef,GET,/proposals/ref/{ref},explicit,ref,contact_list,,,htdocs/comm/propal/class/api_proposals.class.php,96
+proposals,getByRefExt,GET,/proposals/ref_ext/{ref_ext},explicit,ref_ext,contact_list,,,htdocs/comm/propal/class/api_proposals.class.php,116
+proposals,delete,DELETE,/proposals/{id},convention,id,,,,htdocs/comm/propal/class/api_proposals.class.php,975
+proposals,get,GET,/proposals/{id},convention,id,contact_list,,,htdocs/comm/propal/class/api_proposals.class.php,76
+proposals,put,PUT,/proposals/{id},convention,id,,request_data,,htdocs/comm/propal/class/api_proposals.class.php,911
+proposals,close,POST,/proposals/{id}/close,explicit,id,,status note_private notrigger note_public,,htdocs/comm/propal/class/api_proposals.class.php,1129
+proposals,deleteContact,DELETE,/proposals/{id}/contact/{contactid}/{type},explicit,id contactid type,,,,htdocs/comm/propal/class/api_proposals.class.php,868
+proposals,postContact,POST,/proposals/{id}/contact/{contactid}/{type},explicit,id contactid type,,source notrigger,,htdocs/comm/propal/class/api_proposals.class.php,744
+proposals,getContacts,GET,/proposals/{id}/contacts,explicit,id,type,,,htdocs/comm/propal/class/api_proposals.class.php,700
+proposals,postLine,POST,/proposals/{id}/line,explicit,id,,request_data,,htdocs/comm/propal/class/api_proposals.class.php,425
+proposals,getLines,GET,/proposals/{id}/lines,explicit,id,sqlfilters,,,htdocs/comm/propal/class/api_proposals.class.php,377
+proposals,postLines,POST,/proposals/{id}/lines,explicit,id,,request_data,,htdocs/comm/propal/class/api_proposals.class.php,495
+proposals,deleteLine,DELETE,/proposals/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/comm/propal/class/api_proposals.class.php,665
+proposals,putLine,PUT,/proposals/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/comm/propal/class/api_proposals.class.php,582
+proposals,setinvoiced,POST,/proposals/{id}/setinvoiced,explicit,id,,,,htdocs/comm/propal/class/api_proposals.class.php,1178
+proposals,settodraft,POST,/proposals/{id}/settodraft,explicit,id,,,,htdocs/comm/propal/class/api_proposals.class.php,1017
+proposals,validate,POST,/proposals/{id}/validate,explicit,id,,notrigger,,htdocs/comm/propal/class/api_proposals.class.php,1076
+receptions,index,GET,/receptions,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/reception/class/api_receptions.class.php,107
+receptions,post,POST,/receptions,convention,,,request_data,,htdocs/reception/class/api_receptions.class.php,211
+receptions,index,GET,/receptions/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/reception/class/api_receptions.class.php,107
+receptions,delete,DELETE,/receptions/{id},convention,id,,,,htdocs/reception/class/api_receptions.class.php,538
+receptions,get,GET,/receptions/{id},convention,id,,,,htdocs/reception/class/api_receptions.class.php,67
+receptions,put,PUT,/receptions/{id},convention,id,,request_data,,htdocs/reception/class/api_receptions.class.php,489
+receptions,close,POST,/receptions/{id}/close,explicit,id,,notrigger,,htdocs/reception/class/api_receptions.class.php,705
+receptions,deleteLine,DELETE,/receptions/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/reception/class/api_receptions.class.php,444
+receptions,validate,POST,/receptions/{id}/validate,explicit,id,,notrigger,,htdocs/reception/class/api_receptions.class.php,583
+recruitments,indexCandidature,GET,/recruitments/candidature,explicit,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/recruitment/class/api_recruitments.class.php,265
+recruitments,postCandidature,POST,/recruitments/candidature,explicit,,,request_data,,htdocs/recruitment/class/api_recruitments.class.php,414
+recruitments,deleteCandidature,DELETE,/recruitments/candidature/{id},explicit,id,,,,htdocs/recruitment/class/api_recruitments.class.php,597
+recruitments,getCandidature,GET,/recruitments/candidature/{id},explicit,id,,,,htdocs/recruitment/class/api_recruitments.class.php,109
+recruitments,putCandidature,PUT,/recruitments/candidature/{id},explicit,id,,request_data,,htdocs/recruitment/class/api_recruitments.class.php,508
+recruitments,indexJobPosition,GET,/recruitments/jobposition,explicit,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/recruitment/class/api_recruitments.class.php,147
+recruitments,postJobPosition,POST,/recruitments/jobposition,explicit,,,request_data,,htdocs/recruitment/class/api_recruitments.class.php,374
+recruitments,deleteJobPosition,DELETE,/recruitments/jobposition/{id},explicit,id,,,,htdocs/recruitment/class/api_recruitments.class.php,559
+recruitments,getJobPosition,GET,/recruitments/jobposition/{id},explicit,id,,,,htdocs/recruitment/class/api_recruitments.class.php,78
+recruitments,putJobPosition,PUT,/recruitments/jobposition/{id},explicit,id,,request_data,,htdocs/recruitment/class/api_recruitments.class.php,457
+salaries,index,GET,/salaries,convention,,sortfield sortorder limit page sqlfilters,,,htdocs/salaries/class/api_salaries.class.php,78
+salaries,post,POST,/salaries,convention,,,request_data,,htdocs/salaries/class/api_salaries.class.php,184
+salaries,index,GET,/salaries/index,index alias,,sortfield sortorder limit page sqlfilters,,,htdocs/salaries/class/api_salaries.class.php,78
+salaries,getAllPayments,GET,/salaries/payments,explicit,,sortfield sortorder limit page,,,htdocs/salaries/class/api_salaries.class.php,283
+salaries,getPayments,GET,/salaries/payments/{pid},explicit,pid,,,,htdocs/salaries/class/api_salaries.class.php,345
+salaries,get,GET,/salaries/{id},convention,id,,,,htdocs/salaries/class/api_salaries.class.php,146
+salaries,put,PUT,/salaries/{id},convention,id,,request_data,,htdocs/salaries/class/api_salaries.class.php,212
+salaries,addPayment,POST,/salaries/{id}/payments,explicit,id,,request_data,,htdocs/salaries/class/api_salaries.class.php,377
+salaries,updatePayment,PUT,/salaries/{id}/payments,explicit,id,,request_data,,htdocs/salaries/class/api_salaries.class.php,444
+setup,getListOfActionTriggers,GET,/setup/actiontriggers,explicit,,sortfield sortorder limit page elementtype lang sqlfilters,,,htdocs/api/class/api_setup.class.php,79
+setup,getCheckIntegrity,GET,/setup/checkintegrity,explicit,,target,,,htdocs/api/class/api_setup.class.php,2902
+setup,getCompany,GET,/setup/company,explicit,,,,,htdocs/api/class/api_setup.class.php,2688
+setup,getConfs,GET,/setup/conf,explicit,,,,,htdocs/api/class/api_setup.class.php,2857
+setup,getConf,GET,/setup/conf/{constantname},explicit,constantname,,,,htdocs/api/class/api_setup.class.php,2824
+setup,getAvailability,GET,/setup/dictionary/availability,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,826
+setup,getListOfCivilities,GET,/setup/dictionary/civilities,explicit,,sortfield sortorder limit page module active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,1319
+setup,getListOfContactTypes,GET,/setup/dictionary/contact_types,explicit,,sortfield sortorder limit page type module active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,1244
+setup,getListOfCountries,GET,/setup/dictionary/countries,explicit,,sortfield sortorder limit page filter lang sqlfilters loadregions loadstates,,,htdocs/api/class/api_setup.class.php,583
+setup,getCountryByCode,GET,/setup/dictionary/countries/byCode/{code},explicit,code,lang loadregions loadstates,,,htdocs/api/class/api_setup.class.php,686
+setup,getCountryByISO,GET,/setup/dictionary/countries/byISO/{iso},explicit,iso,lang loadregions loadstates,,,htdocs/api/class/api_setup.class.php,707
+setup,getCountryByID,GET,/setup/dictionary/countries/{id},explicit,id,lang loadregions loadstates,,,htdocs/api/class/api_setup.class.php,661
+setup,getListOfCurrencies,GET,/setup/dictionary/currencies,explicit,,multicurrency sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,1386
+setup,getListOfEventTypes,GET,/setup/dictionary/event_types,explicit,,sortfield sortorder limit page type module active sqlfilters,,,htdocs/api/class/api_setup.class.php,944
+setup,getListOfExpenseReportsTypes,GET,/setup/dictionary/expensereport_types,explicit,,sortfield sortorder limit page module active sqlfilters,,,htdocs/api/class/api_setup.class.php,1013
+setup,getListOfHolidayTypes,GET,/setup/dictionary/holiday_types,explicit,,sortfield sortorder limit page fk_country active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,1083
+setup,getListOfIncoterms,GET,/setup/dictionary/incoterms,explicit,,sortfield sortorder limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,2560
+setup,getListOfLegalForm,GET,/setup/dictionary/legal_form,explicit,,sortfield sortorder limit page country active sqlfilters,,,htdocs/api/class/api_setup.class.php,2106
+setup,getOrderingMethods,GET,/setup/dictionary/ordering_methods,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,152
+setup,getOrderingOrigins,GET,/setup/dictionary/ordering_origins,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,218
+setup,getPaymentTerms,GET,/setup/dictionary/payment_terms,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,1914
+setup,getPaymentTypes,GET,/setup/dictionary/payment_types,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,285
+setup,getListOfPublicHolidays,GET,/setup/dictionary/public_holiday,explicit,,sortfield sortorder limit page fk_country active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,1163
+setup,getListOfRegions,GET,/setup/dictionary/regions,explicit,,sortfield sortorder limit page country filter sqlfilters,,,htdocs/api/class/api_setup.class.php,354
+setup,getRegionByCode,GET,/setup/dictionary/regions/byCode/{code},explicit,code,,,,htdocs/api/class/api_setup.class.php,437
+setup,getRegionByID,GET,/setup/dictionary/regions/{id},explicit,id,,,,htdocs/api/class/api_setup.class.php,419
+setup,getShippingModes,GET,/setup/dictionary/shipping_methods,explicit,,limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,1980
+setup,getListOfsocialNetworks,GET,/setup/dictionary/socialnetworks,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,2231
+setup,getListOfStaff,GET,/setup/dictionary/staff,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,2170
+setup,getListOfStates,GET,/setup/dictionary/states,explicit,,sortfield sortorder limit page country filter sqlfilters,,,htdocs/api/class/api_setup.class.php,466
+setup,getStateByCode,GET,/setup/dictionary/states/byCode/{code},explicit,code,,,,htdocs/api/class/api_setup.class.php,552
+setup,getStateByID,GET,/setup/dictionary/states/{id},explicit,id,,,,htdocs/api/class/api_setup.class.php,534
+setup,getThirdpartiesTypes,GET,/setup/dictionary/thirdparty_types,explicit,,sortfield sortorder limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,2496
+setup,getTicketsCategories,GET,/setup/dictionary/ticket_categories,explicit,,sortfield sortorder limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,2300
+setup,getTicketsSeverities,GET,/setup/dictionary/ticket_severities,explicit,,sortfield sortorder limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,2365
+setup,getTicketsTypes,GET,/setup/dictionary/ticket_types,explicit,,sortfield sortorder limit page active lang sqlfilters,,,htdocs/api/class/api_setup.class.php,2430
+setup,getListOfTowns,GET,/setup/dictionary/towns,explicit,,sortfield sortorder limit page zipcode town active sqlfilters,,,htdocs/api/class/api_setup.class.php,1845
+setup,getListOfMeasuringUnits,GET,/setup/dictionary/units,explicit,,sortfield sortorder limit page active sqlfilters,,,htdocs/api/class/api_setup.class.php,2044
+setup,getListOfVAT,GET,/setup/dictionary/vat,explicit,,sortfield sortorder limit page active fk_country sqlfilters,,,htdocs/api/class/api_setup.class.php,2623
+setup,getEstablishments,GET,/setup/establishments,explicit,,,,,htdocs/api/class/api_setup.class.php,2748
+setup,getEtablishmentByID,GET,/setup/establishments/{id},explicit,id,,,,htdocs/api/class/api_setup.class.php,2790
+setup,getListOfExtrafields,GET,/setup/extrafields,explicit,,sortfield sortorder elementtype sqlfilters,,,htdocs/api/class/api_setup.class.php,1458
+setup,deleteExtrafieldsFromNames,DELETE,/setup/extrafields/{elementtype}/{attrname},explicit,attrname elementtype,,,,htdocs/api/class/api_setup.class.php,1544
+setup,getExtrafields,GET,/setup/extrafields/{elementtype}/{attrname},explicit,attrname elementtype,,,,htdocs/api/class/api_setup.class.php,1583
+setup,postExtrafields,POST,/setup/extrafields/{elementtype}/{attrname},explicit,attrname elementtype,,request_data,,htdocs/api/class/api_setup.class.php,1662
+setup,updateExtrafields,PUT,/setup/extrafields/{elementtype}/{attrname},explicit,attrname elementtype,,request_data,,htdocs/api/class/api_setup.class.php,1752
+setup,getModules,GET,/setup/modules,explicit,,,,,htdocs/api/class/api_setup.class.php,3222
+setup,getModulesList,GET,/setup/modules/status/{origin},explicit,origin,status,,,htdocs/api/class/api_setup.class.php,3248
+setup,disableModules,PUT,/setup/modules/{modulename}/disable,explicit,modulename,,,,htdocs/api/class/api_setup.class.php,3334
+setup,enableModules,PUT,/setup/modules/{modulename}/enable,explicit,modulename,,,,htdocs/api/class/api_setup.class.php,3319
+shipments,index,GET,/shipments,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/expedition/class/api_shipments.class.php,109
+shipments,post,POST,/shipments,convention,,,request_data,,htdocs/expedition/class/api_shipments.class.php,222
+shipments,index,GET,/shipments/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/expedition/class/api_shipments.class.php,109
+shipments,delete,DELETE,/shipments/{id},convention,id,,,,htdocs/expedition/class/api_shipments.class.php,553
+shipments,get,GET,/shipments/{id},convention,id,,,,htdocs/expedition/class/api_shipments.class.php,69
+shipments,put,PUT,/shipments/{id},convention,id,,request_data,,htdocs/expedition/class/api_shipments.class.php,504
+shipments,close,POST,/shipments/{id}/close,explicit,id,,notrigger,,htdocs/expedition/class/api_shipments.class.php,720
+shipments,deleteLine,DELETE,/shipments/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/expedition/class/api_shipments.class.php,465
+shipments,validate,POST,/shipments/{id}/validate,explicit,id,,notrigger,,htdocs/expedition/class/api_shipments.class.php,598
+status,index,GET,/status,convention,,,,,htdocs/api/class/api_status.class.php,49
+status,index,GET,/status/index,index alias,,,,,htdocs/api/class/api_status.class.php,49
+stockmovements,index,GET,/stockmovements,convention,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_stockmovements.class.php,115
+stockmovements,post,POST,/stockmovements,convention,,,product_id warehouse_id qty type batch movementcode label price datem sellBy eatBy origin_type origin_id,,htdocs/product/stock/class/api_stockmovements.class.php,217
+stockmovements,index,GET,/stockmovements/index,index alias,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_stockmovements.class.php,115
+stockmovements,get,GET,/stockmovements/{id},explicit,id,,,,htdocs/product/stock/class/api_stockmovements.class.php,77
+subscriptions,index,GET,/subscriptions,convention,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/adherents/class/api_subscriptions.class.php,108
+subscriptions,post,POST,/subscriptions,convention,,,request_data,,htdocs/adherents/class/api_subscriptions.class.php,192
+subscriptions,index,GET,/subscriptions/index,index alias,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/adherents/class/api_subscriptions.class.php,108
+subscriptions,delete,DELETE,/subscriptions/{id},convention,id,,,,htdocs/adherents/class/api_subscriptions.class.php,290
+subscriptions,get,GET,/subscriptions/{id},convention,id,,,,htdocs/adherents/class/api_subscriptions.class.php,67
+subscriptions,put,PUT,/subscriptions/{id},convention,id,,request_data,,htdocs/adherents/class/api_subscriptions.class.php,234
+supplier_invoices,index,GET,/supplierinvoices,convention,,sortfield sortorder limit page thirdparty_ids status sqlfilters properties pagination_data,,,htdocs/fourn/class/api_supplier_invoices.class.php,111
+supplier_invoices,post,POST,/supplierinvoices,convention,,,request_data,,htdocs/fourn/class/api_supplier_invoices.class.php,231
+supplier_invoices,index,GET,/supplierinvoices/index,index alias,,sortfield sortorder limit page thirdparty_ids status sqlfilters properties pagination_data,,,htdocs/fourn/class/api_supplier_invoices.class.php,111
+supplier_invoices,delete,DELETE,/supplierinvoices/{id},convention,id,,,,htdocs/fourn/class/api_supplier_invoices.class.php,333
+supplier_invoices,get,GET,/supplierinvoices/{id},convention,id,,,,htdocs/fourn/class/api_supplier_invoices.class.php,69
+supplier_invoices,put,PUT,/supplierinvoices/{id},convention,id,,request_data,,htdocs/fourn/class/api_supplier_invoices.class.php,275
+supplier_invoices,getLines,GET,/supplierinvoices/{id}/lines,explicit,id,,,,htdocs/fourn/class/api_supplier_invoices.class.php,712
+supplier_invoices,postLine,POST,/supplierinvoices/{id}/lines,explicit,id,,request_data,,htdocs/fourn/class/api_supplier_invoices.class.php,753
+supplier_invoices,deleteLine,DELETE,/supplierinvoices/{id}/lines/{lineid},explicit,id lineid,,,,htdocs/fourn/class/api_supplier_invoices.class.php,901
+supplier_invoices,putLine,PUT,/supplierinvoices/{id}/lines/{lineid},explicit,id lineid,,request_data,,htdocs/fourn/class/api_supplier_invoices.class.php,824
+supplier_invoices,getPayments,GET,/supplierinvoices/{id}/payments,explicit,id,,,,htdocs/fourn/class/api_supplier_invoices.class.php,471
+supplier_invoices,addPayment,POST,/supplierinvoices/{id}/payments,explicit,id,,datepaye payment_mode_id closepaidinvoices accountid num_payment comment chqemetteur chqbank amount,,htdocs/fourn/class/api_supplier_invoices.class.php,520
+supplier_invoices,settodraft,POST,/supplierinvoices/{id}/settodraft,explicit,id,,idwarehouse notrigger,,htdocs/fourn/class/api_supplier_invoices.class.php,426
+supplier_invoices,settopaid,POST,/supplierinvoices/{id}/settopaid,explicit,id,,close_code close_note,,htdocs/fourn/class/api_supplier_invoices.class.php,623
+supplier_invoices,settounpaid,POST,/supplierinvoices/{id}/settounpaid,explicit,id,,,,htdocs/fourn/class/api_supplier_invoices.class.php,667
+supplier_invoices,validate,POST,/supplierinvoices/{id}/validate,explicit,id,,idwarehouse notrigger,,htdocs/fourn/class/api_supplier_invoices.class.php,380
+supplier_orders,index,GET,/supplierorders,convention,,sortfield sortorder limit page thirdparty_ids product_ids status sqlfilters sqlfilterlines properties pagination_data,,,htdocs/fourn/class/api_supplier_orders.class.php,106
+supplier_orders,post,POST,/supplierorders,convention,,,request_data,,htdocs/fourn/class/api_supplier_orders.class.php,248
+supplier_orders,index,GET,/supplierorders/index,index alias,,sortfield sortorder limit page thirdparty_ids product_ids status sqlfilters sqlfilterlines properties pagination_data,,,htdocs/fourn/class/api_supplier_orders.class.php,106
+supplier_orders,delete,DELETE,/supplierorders/{id},convention,id,,,,htdocs/fourn/class/api_supplier_orders.class.php,567
+supplier_orders,get,GET,/supplierorders/{id},convention,id,,,,htdocs/fourn/class/api_supplier_orders.class.php,65
+supplier_orders,put,PUT,/supplierorders/{id},convention,id,,request_data,,htdocs/fourn/class/api_supplier_orders.class.php,298
+supplier_orders,approve,POST,/supplierorders/{id}/approve,explicit,id,,idwarehouse secondlevel,,htdocs/fourn/class/api_supplier_orders.class.php,666
+supplier_orders,deleteContact,DELETE,/supplierorders/{id}/contact/{contactid}/{type}/{source},explicit,id contactid type source,,,,htdocs/fourn/class/api_supplier_orders.class.php,516
+supplier_orders,postContact,POST,/supplierorders/{id}/contact/{contactid}/{type}/{source},explicit,id contactid type source,,,,htdocs/fourn/class/api_supplier_orders.class.php,465
+supplier_orders,getContacts,GET,/supplierorders/{id}/contacts,explicit,id,source type,,,htdocs/fourn/class/api_supplier_orders.class.php,420
+supplier_orders,postLine,POST,/supplierorders/{id}/lines,explicit,id,,request_data,,htdocs/fourn/class/api_supplier_orders.class.php,351
+supplier_orders,makeOrder,POST,/supplierorders/{id}/makeorder,explicit,id,,date method comment,,htdocs/fourn/class/api_supplier_orders.class.php,720
+supplier_orders,receiveOrder,POST,/supplierorders/{id}/receive,explicit,id,,closeopenorder comment lines,,htdocs/fourn/class/api_supplier_orders.class.php,787
+supplier_orders,validate,POST,/supplierorders/{id}/validate,explicit,id,,idwarehouse notrigger,,htdocs/fourn/class/api_supplier_orders.class.php,615
+supplier_proposals,index,GET,/supplierproposals,convention,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,233
+supplier_proposals,post,POST,/supplierproposals,convention,,,request_data,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,127
+supplier_proposals,index,GET,/supplierproposals/index,index alias,,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,233
+supplier_proposals,delete,DELETE,/supplierproposals/{id},convention,id,,,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,64
+supplier_proposals,get,GET,/supplierproposals/{id},convention,id,,,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,100
+supplier_proposals,put,PUT,/supplierproposals/{id},convention,id,,request_data,,htdocs/supplier_proposal/class/api_supplier_proposals.class.php,177
+tasks,index,GET,/tasks,convention,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/projet/class/api_tasks.class.php,121
+tasks,post,POST,/tasks,convention,,,request_data,,htdocs/projet/class/api_tasks.class.php,227
+tasks,index,GET,/tasks/index,index alias,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/projet/class/api_tasks.class.php,121
+tasks,delete,DELETE,/tasks/{id},convention,id,,,,htdocs/projet/class/api_tasks.class.php,579
+tasks,get,GET,/tasks/{id},convention,id,includetimespent,,,htdocs/projet/class/api_tasks.class.php,76
+tasks,put,PUT,/tasks/{id},convention,id,,request_data,,htdocs/projet/class/api_tasks.class.php,527
+tasks,addTimeSpent,POST,/tasks/{id}/addtimespent,explicit,id,,date duration product_id user_id note progress,,htdocs/projet/class/api_tasks.class.php,669
+tasks,getContacts,GET,/tasks/{id}/contacts,explicit,id,type,,,htdocs/projet/class/api_tasks.class.php,1051
+tasks,addContact,POST,/tasks/{id}/contacts,explicit,id,,fk_socpeople type_contact source notrigger,,htdocs/projet/class/api_tasks.class.php,1094
+tasks,deleteContact,DELETE,/tasks/{id}/contacts/{contactid}/{type},explicit,id contactid type,,,,htdocs/projet/class/api_tasks.class.php,1139
+tasks,getTimeSpentByID,GET,/tasks/{id}/getTimeSpent/{timespent_id},explicit,id timespent_id,,,,htdocs/projet/class/api_tasks.class.php,619
+tasks,getRoles,GET,/tasks/{id}/roles,explicit,id,userid,,,htdocs/projet/class/api_tasks.class.php,350
+tasks,getTimespent,GET,/tasks/{id}/timespent,explicit,id,,,,htdocs/projet/class/api_tasks.class.php,312
+tasks,deleteTimeSpent,DELETE,/tasks/{id}/timespent/{timespent_id},explicit,id timespent_id,,,,htdocs/projet/class/api_tasks.class.php,789
+tasks,putTimeSpent,PUT,/tasks/{id}/timespent/{timespent_id},explicit,id timespent_id,,date duration product_id user_id note,,htdocs/projet/class/api_tasks.class.php,739
+thirdparties,index,GET,/thirdparties,convention,,sortfield sortorder limit page mode category sqlfilters properties pagination_data,,,htdocs/societe/class/api_thirdparties.class.php,156
+thirdparties,post,POST,/thirdparties,convention,,,request_data,,htdocs/societe/class/api_thirdparties.class.php,309
+thirdparties,getSocieteByAccounts,GET,/thirdparties/accounts/{site}/{key_account},explicit,site key_account,,,,htdocs/societe/class/api_thirdparties.class.php,2319
+thirdparties,getByBarcode,GET,/thirdparties/barcode/{barcode},explicit,barcode,,,,htdocs/societe/class/api_thirdparties.class.php,125
+thirdparties,getByEmail,GET,/thirdparties/email/{email},explicit,email,,,,htdocs/societe/class/api_thirdparties.class.php,106
+thirdparties,index,GET,/thirdparties/index,index alias,,sortfield sortorder limit page mode category sqlfilters properties pagination_data,,,htdocs/societe/class/api_thirdparties.class.php,156
+thirdparties,delete,DELETE,/thirdparties/{id},convention,id,,,,htdocs/societe/class/api_thirdparties.class.php,488
+thirdparties,get,GET,/thirdparties/{id},convention,id,,,,htdocs/societe/class/api_thirdparties.class.php,85
+thirdparties,put,PUT,/thirdparties/{id},convention,id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,373
+thirdparties,deleteSocieteAccounts,DELETE,/thirdparties/{id}/accounts,explicit,id,,,,htdocs/societe/class/api_thirdparties.class.php,2651
+thirdparties,getSocieteAccounts,GET,/thirdparties/{id}/accounts,explicit,id,site,,,htdocs/societe/class/api_thirdparties.class.php,2242
+thirdparties,createSocieteAccount,POST,/thirdparties/{id}/accounts,explicit,id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,2368
+thirdparties,deleteSocieteAccount,DELETE,/thirdparties/{id}/accounts/{site},explicit,id site,,,,htdocs/societe/class/api_thirdparties.class.php,2610
+thirdparties,postSocieteAccount,POST,/thirdparties/{id}/accounts/{site},explicit,id site,,request_data,,htdocs/societe/class/api_thirdparties.class.php,2440
+thirdparties,putSocieteAccount,PUT,/thirdparties/{id}/accounts/{site},explicit,id site,,request_data,,htdocs/societe/class/api_thirdparties.class.php,2542
+thirdparties,getCompanyBankAccount,GET,/thirdparties/{id}/bankaccounts,explicit,id,,,,htdocs/societe/class/api_thirdparties.class.php,1884
+thirdparties,createCompanyBankAccount,POST,/thirdparties/{id}/bankaccounts,explicit,id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,1974
+thirdparties,deleteCompanyBankAccount,DELETE,/thirdparties/{id}/bankaccounts/{bankaccount_id},explicit,id bankaccount_id,,,,htdocs/societe/class/api_thirdparties.class.php,2097
+thirdparties,updateCompanyBankAccount,PUT,/thirdparties/{id}/bankaccounts/{bankaccount_id},explicit,id bankaccount_id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,2036
+thirdparties,getCategories,GET,/thirdparties/{id}/categories,explicit,id,sortfield sortorder limit page,,,htdocs/societe/class/api_thirdparties.class.php,669
+thirdparties,deleteCategory,DELETE,/thirdparties/{id}/categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_thirdparties.class.php,760
+thirdparties,addCategory,PUT,/thirdparties/{id}/categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_thirdparties.class.php,716
+thirdparties,getFixedAmountDiscounts,GET,/thirdparties/{id}/fixedamountdiscounts,explicit,id,mode filter sortfield sortorder,,,htdocs/societe/class/api_thirdparties.class.php,1129
+thirdparties,createFixedAmountDiscount,POST,/thirdparties/{id}/fixedamountdiscounts,explicit,id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,1214
+thirdparties,generateBankAccountDocument,GET,/thirdparties/{id}/generateBankAccountDocument/{companybankid}/{model},explicit,id companybankid model,,,,htdocs/societe/class/api_thirdparties.class.php,2138
+thirdparties,getInvoicesQualifiedForCreditNote,GET,/thirdparties/{id}/getinvoicesqualifiedforcreditnote,explicit,id,,,,htdocs/societe/class/api_thirdparties.class.php,1531
+thirdparties,getInvoicesQualifiedForReplacement,GET,/thirdparties/{id}/getinvoicesqualifiedforreplacement,explicit,id,,,,htdocs/societe/class/api_thirdparties.class.php,1482
+thirdparties,merge,PUT,/thirdparties/{id}/merge/{idtodelete},explicit,id idtodelete,,,,htdocs/societe/class/api_thirdparties.class.php,438
+thirdparties,getCompanyNotification,GET,/thirdparties/{id}/notifications,explicit,id,,,,htdocs/societe/class/api_thirdparties.class.php,1574
+thirdparties,createCompanyNotification,POST,/thirdparties/{id}/notifications,explicit,id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,1653
+thirdparties,deleteCompanyNotification,DELETE,/thirdparties/{id}/notifications/{notification_id},explicit,id notification_id,,,,htdocs/societe/class/api_thirdparties.class.php,1796
+thirdparties,updateCompanyNotification,PUT,/thirdparties/{id}/notifications/{notification_id},explicit,id notification_id,,request_data,,htdocs/societe/class/api_thirdparties.class.php,1836
+thirdparties,createCompanyNotificationByCode,POST,/thirdparties/{id}/notificationsbycode/{code},explicit,id code,,request_data,,htdocs/societe/class/api_thirdparties.class.php,1721
+thirdparties,getOutStandingInvoices,GET,/thirdparties/{id}/outstandinginvoices,explicit,id,mode,,,htdocs/societe/class/api_thirdparties.class.php,1036
+thirdparties,getOutStandingOrder,GET,/thirdparties/{id}/outstandingorders,explicit,id,mode,,,htdocs/societe/class/api_thirdparties.class.php,991
+thirdparties,getOutStandingProposals,GET,/thirdparties/{id}/outstandingproposals,explicit,id,mode,,,htdocs/societe/class/api_thirdparties.class.php,945
+thirdparties,deleteRepresentative,DELETE,/thirdparties/{id}/representative/{representative_id},explicit,id representative_id,,,,htdocs/societe/class/api_thirdparties.class.php,629
+thirdparties,addRepresentative,POST,/thirdparties/{id}/representative/{representative_id},explicit,id representative_id,,,,htdocs/societe/class/api_thirdparties.class.php,593
+thirdparties,getSalesRepresentatives,GET,/thirdparties/{id}/representatives,explicit,id,mode,,,htdocs/societe/class/api_thirdparties.class.php,1081
+thirdparties,setThirdpartyPriceLevel,PUT,/thirdparties/{id}/setpricelevel/{priceLevel},explicit,id priceLevel,,,,htdocs/societe/class/api_thirdparties.class.php,534
+thirdparties,splitdiscount,POST,/thirdparties/{id}/splitdiscount/{discountid},explicit,id discountid,,amount_ttc_1 amount_ttc_2,,htdocs/societe/class/api_thirdparties.class.php,1321
+thirdparties,getSupplierCategories,GET,/thirdparties/{id}/supplier_categories,explicit,id,sortfield sortorder limit page,,,htdocs/societe/class/api_thirdparties.class.php,807
+thirdparties,deleteSupplierCategory,DELETE,/thirdparties/{id}/supplier_categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_thirdparties.class.php,898
+thirdparties,addSupplierCategory,PUT,/thirdparties/{id}/supplier_categories/{category_id},explicit,id category_id,,,,htdocs/societe/class/api_thirdparties.class.php,854
+tickets,index,GET,/tickets,convention,,socid sortfield sortorder limit page sqlfilters properties loadcontacts pagination_data,,,htdocs/ticket/class/api_tickets.class.php,232
+tickets,post,POST,/tickets,convention,,,request_data,,htdocs/ticket/class/api_tickets.class.php,351
+tickets,index,GET,/tickets/index,index alias,,socid sortfield sortorder limit page sqlfilters properties loadcontacts pagination_data,,,htdocs/ticket/class/api_tickets.class.php,232
+tickets,postNewMessage,POST,/tickets/newmessage,convention,,,request_data,,htdocs/ticket/class/api_tickets.class.php,407
+tickets,getByRef,GET,/tickets/ref/{ref},explicit,ref,contact_list,,,htdocs/ticket/class/api_tickets.class.php,118
+tickets,getByTrackId,GET,/tickets/track_id/{track_id},explicit,track_id,contact_list,,,htdocs/ticket/class/api_tickets.class.php,98
+tickets,delete,DELETE,/tickets/{id},convention,id,,,,htdocs/ticket/class/api_tickets.class.php,603
+tickets,get,GET,/tickets/{id},convention,id,contact_list,,,htdocs/ticket/class/api_tickets.class.php,78
+tickets,put,PUT,/tickets/{id},convention,id,,request_data,,htdocs/ticket/class/api_tickets.class.php,540
+tickets,deleteContact,DELETE,/tickets/{id}/contact/{contactid}/{type},explicit,id contactid type,source,,,htdocs/ticket/class/api_tickets.class.php,898
+tickets,postContact,POST,/tickets/{id}/contact/{contactid}/{type},explicit,id contactid type,,source notrigger,,htdocs/ticket/class/api_tickets.class.php,788
+users,index,GET,/users,convention,,sortfield sortorder limit page user_ids category sqlfilters properties,,,htdocs/user/class/api_users.class.php,86
+users,post,POST,/users,convention,,,request_data,,htdocs/user/class/api_users.class.php,359
+users,getByEmail,GET,/users/email/{email},explicit,email,includepermissions,,,htdocs/user/class/api_users.class.php,274
+users,listGroups,GET,/users/groups,explicit,,sortfield sortorder limit page group_ids sqlfilters properties,,,htdocs/user/class/api_users.class.php,864
+users,postGroups,POST,/users/groups,explicit,,,request_data,,htdocs/user/class/api_users.class.php,706
+users,deleteGroups,DELETE,/users/groups/{group},explicit,group,,,,htdocs/user/class/api_users.class.php,1038
+users,infoGroups,GET,/users/groups/{group},explicit,group,load_members includepermissions,,,htdocs/user/class/api_users.class.php,940
+users,putGroups,PUT,/users/groups/{group},explicit,group,,request_data,,htdocs/user/class/api_users.class.php,749
+users,index,GET,/users/index,index alias,,sortfield sortorder limit page user_ids category sqlfilters properties,,,htdocs/user/class/api_users.class.php,86
+users,getInfo,GET,/users/info,explicit,,includepermissions,,,htdocs/user/class/api_users.class.php,315
+users,getByLogin,GET,/users/login/{login},explicit,login,includepermissions,,,htdocs/user/class/api_users.class.php,231
+users,delete,DELETE,/users/{id},convention,id,,,,htdocs/user/class/api_users.class.php,988
+users,get,GET,/users/{id},convention,id,includepermissions,,,htdocs/user/class/api_users.class.php,184
+users,put,PUT,/users/{id},convention,id,,request_data,,htdocs/user/class/api_users.class.php,438
+users,getGroups,GET,/users/{id}/groups,explicit,id,,,,htdocs/user/class/api_users.class.php,615
+users,getUserNotification,GET,/users/{id}/notifications,explicit,id,,,,htdocs/user/class/api_users.class.php,1084
+users,createUserNotification,POST,/users/{id}/notifications,explicit,id,,request_data,,htdocs/user/class/api_users.class.php,1160
+users,deleteUserNotification,DELETE,/users/{id}/notifications/{notification_id},explicit,id notification_id,,,,htdocs/user/class/api_users.class.php,1289
+users,updateUserNotification,PUT,/users/{id}/notifications/{notification_id},explicit,id notification_id,,request_data,,htdocs/user/class/api_users.class.php,1325
+users,createUserNotificationByCode,POST,/users/{id}/notificationsbycode/{code},explicit,id code,,request_data,,htdocs/user/class/api_users.class.php,1221
+users,removeUserFromGroup,POST,/users/{id}/remove-group/{group},explicit,id group,,,,htdocs/user/class/api_users.class.php,808
+users,setGroup,GET,/users/{id}/setGroup/{group},explicit,id group,entity,,,htdocs/user/class/api_users.class.php,660
+users,setPassword,GET,/users/{id}/setPassword,explicit,id,send_password,,,htdocs/user/class/api_users.class.php,556
+warehouses,index,GET,/warehouses,explicit,,sortfield sortorder limit page category sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_warehouses.class.php,120
+warehouses,post,POST,/warehouses,explicit,,,request_data,,htdocs/product/stock/class/api_warehouses.class.php,216
+warehouses,index,GET,/warehouses/index,index alias,,sortfield sortorder limit page category sqlfilters properties pagination_data,,,htdocs/product/stock/class/api_warehouses.class.php,120
+warehouses,delete,DELETE,/warehouses/{id},explicit,id,,,,htdocs/product/stock/class/api_warehouses.class.php,336
+warehouses,get,GET,/warehouses/{id},explicit,id,,,,htdocs/product/stock/class/api_warehouses.class.php,74
+warehouses,put,PUT,/warehouses/{id},explicit,id,,request_data,,htdocs/product/stock/class/api_warehouses.class.php,266
+warehouses,listProducts,GET,/warehouses/{id}/products,explicit,id,sortfield sortorder limit page includestockdata includesubproducts includeparentid includetrans properties pagination_data,,,htdocs/product/stock/class/api_warehouses.class.php,396
+webhook,index,GET,/webhook,convention,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/webhook/class/api_webhook.class.php,87
+webhook,post,POST,/webhook,convention,,,request_data,,htdocs/webhook/class/api_webhook.class.php,168
+webhook,index,GET,/webhook/index,index alias,,sortfield sortorder limit page sqlfilters properties pagination_data,,,htdocs/webhook/class/api_webhook.class.php,87
+webhook,listOfTriggers,GET,/webhook/triggers,explicit,,,,,htdocs/webhook/class/api_webhook.class.php,275
+webhook,delete,DELETE,/webhook/{id},convention,id,,,,htdocs/webhook/class/api_webhook.class.php,242
+webhook,get,GET,/webhook/{id},convention,id,,,,htdocs/webhook/class/api_webhook.class.php,66
+webhook,put,PUT,/webhook/{id},convention,id,,request_data,,htdocs/webhook/class/api_webhook.class.php,209
+workstations,index,GET,/workstations,convention,,sortfield sortorder limit page sqlfilters properties,,,htdocs/workstation/class/api_workstations.class.php,111
+workstations,index,GET,/workstations/index,index alias,,sortfield sortorder limit page sqlfilters properties,,,htdocs/workstation/class/api_workstations.class.php,111
+workstations,getByRef,GET,/workstations/ref/{ref},explicit,ref,,,,htdocs/workstation/class/api_workstations.class.php,91
+workstations,get,GET,/workstations/{id},explicit,id,,,,htdocs/workstation/class/api_workstations.class.php,71

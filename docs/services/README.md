@@ -1,8 +1,8 @@
 # Service contracts
 
-Each chapter describes one service resource. Operation identifiers retain their wire spelling. Arguments appear in declaration order. An omitted default in the argument list means the parameter has no declaration default. A default of null can still lead to a missing-field response when required values are absent from the request body. An empty list is written as `[]`.
+Each chapter describes one service resource. The chapter headings retain the method names used by the implementation. Arguments appear in declaration order. An omitted default in the argument list means the parameter has no declaration default. A default of null can still lead to a missing-field response when required values are absent from the request body. An empty list is written as `[]`.
 
-A route shown beside an operation is the relative route explicitly registered on that operation. Other operations are identified by their resource and method. Response codes refer to failure branches in the operation and its cited local delegates. Domain validators, the authentication layer and document delivery can also return errors.
+A route shown beside an operation is the relative route explicitly registered on that operation. The [effective route register](routes.csv) gives the resolved verb, resource path and argument locations, including convention-based routes and index aliases. [Route selection](route-selection.md) explains the two colliding declarations. Response codes refer to failure branches in the operation and its cited local delegates. Domain validators, the authentication layer and document delivery can also return errors.
 
 | Resource | Operations |
 | --- | ---: |
@@ -54,9 +54,11 @@ A route shown beside an operation is the relative route explicitly registered on
 | [Outbound event targets](webhook.md) | 6 |
 | [Manufacturing workstations](workstations.md) | 3 |
 
+The table counts public method declarations. Of 586 declarations, 584 own an effective route.
+
 ## Shared entry points and scope
 
-[Credential lifecycle and acting identity](credential-lifecycle.md) describes the shared login exchange and the access layer used to resolve each protected request. They precede business dispatch and are documented separately from the 47 service resources and their 586 operations. The module-builder starter is scaffolding for new development. The optional Zapier connector is marked experimental in the release and falls outside the stable resource inventory.
+[Credential lifecycle and acting identity](credential-lifecycle.md) describes the shared login exchange and the access layer used to resolve each protected request. They precede business dispatch and are documented separately from the 47 service resources and their 586 method declarations. The module-builder starter is scaffolding for new development. The optional Zapier connector is marked experimental in the release and falls outside the stable resource inventory.
 
 [Method and route index](../reference/service-methods.csv) · [Stable module inventory](../coverage/README.md)
 
