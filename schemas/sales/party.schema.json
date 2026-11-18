@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Third-party commercial identity",
+  "description": "Read projection. The sales role and supplier flag can coexist for the same identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "partyId",
+    "entityId",
+    "name",
+    "salesRole",
+    "supplier"
+  ],
+  "properties": {
+    "partyId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "salesRole": {
+      "enum": [
+        "neither",
+        "customer",
+        "prospect",
+        "customer-and-prospect"
+      ]
+    },
+    "supplier": {
+      "type": "boolean"
+    },
+    "customerCode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supplierCode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "representativeUserIds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

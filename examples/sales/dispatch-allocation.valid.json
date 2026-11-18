@@ -1,0 +1,21 @@
+{
+  "orderId": 71,
+  "partyId": 31,
+  "allocations": [
+    {
+      "orderLineId": 701,
+      "warehouseId": 3,
+      "quantity": "4",
+      "lots": [
+        {
+          "lot": "A",
+          "quantity": "1.5"
+        },
+        {
+          "lot": "B",
+          "quantity": "2.5"
+        }
+      ]
+    }
+  ]
+}

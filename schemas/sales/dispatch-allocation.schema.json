@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Order-backed outbound dispatch allocation",
+  "description": "Portable write contract for positive physical dispatches. The application resolves party, order, line, warehouse, stock policy and lot sums.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "orderId",
+    "partyId",
+    "allocations"
+  ],
+  "properties": {
+    "orderId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "partyId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "allocations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "orderLineId",
+          "warehouseId",
+          "quantity"
+        ],
+        "properties": {
+          "orderLineId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "warehouseId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "quantity": {
+            "$ref": "#/$defs/positiveQuantity"
+          },
+          "lots": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "lot",
+                "quantity"
+              ],
+              "properties": {
+                "lot": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "$ref": "#/$defs/positiveQuantity"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "positiveQuantity": {
+      "type": "string",
+      "pattern": "^(?:[1-9][0-9]*(?:\\.[0-9]+)?|0\\.0*[1-9][0-9]*)$"
+    }
+  }
+}
