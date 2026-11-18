@@ -21,7 +21,7 @@ There are 21 named built-in formats. The registry gives each a numeric selector.
 | 45 | Sage 50 Swiss | Twenty-column comma-separated header. Supports collective postings by comparing nearby rows with the same piece. The document date uses dots. | 1962 |
 | 50 | Charlemagne | A translated tab-separated header introduces amount, direction and positions for three analytical code/label pairs. | 2536 |
 | 60 | Quadratus | Fixed-position movement records. Auxiliary values and optional source-document attachments have separate handling. | 912 |
-| 70 | Winfic | Fixed-position records with operation date and entry day in different representations, using the document date for both. | 1159 |
+| 70 | Winfic | Padded fields separated by vertical bars, with operation date and entry day both derived from document date. | 1159 |
 | 100 | OpenConcerto | Seven semicolon-separated fields, including account, source reference, label, debit and credit. | 1336 |
 | 110 | LDCompta | Semicolon-separated entry records, with a two-character journal prefix and a source-specific subsidiary treatment. | 2116 |
 | 120 | LDCompta 10 | Includes separate party-information and movement record types. A customer record and a journal row have different shapes. | 2256 |
@@ -31,6 +31,15 @@ There are 21 named built-in formats. The registry gives each a numeric selector.
 | 205 | ISTEA | Twelve quoted fields. Resolves a party label per piece, computes separate account representations and converts output to ISO-8859-1. | 1412 |
 | 1000 | FEC | Tab-separated, 21 named fields, with separate piece/entry dates, validation date, lettering, optional document file and source invoice reference. | 1474 |
 | 1010 | FEC variant | Same header as 1000. Uses a different mapping of document and creation dates. | 1720 |
+
+## Detailed writer specifications
+
+| Format IDs | Layout, branch and worked output |
+| --- | --- |
+| 40, 60, 70 | [Ciel, Quadratus and Winfic field positions](fixed-position-records.md) and [exact output for one customer receivable](fixed-position-example.json) |
+| 110, 120 | [LDCompta movement and customer records](party-and-movement-records.md), including the different invoice-nature and date rules |
+| 45, 50, 130, 135 | [Swiss, education and commercial ledger formats](specialist-journal-formats.md), including counterpart grouping, translations and literal currency indicators |
+| 1000, 1010 | [Audit-file field positions, foreign currency and document evidence](audit-file-dates-and-currency.md) |
 
 ## Positional mappings for separated records
 
@@ -68,4 +77,4 @@ Suppose a tax-free sale of 100 produces piece 72 in journal SALES, dated 30 Apri
 
 The two signed amounts sum to zero. The Cegid amount column on its own sums to 200. The receiver must apply the direction to balance the piece. OpenConcerto exports the customer subsidiary in the account column, so reconstructing the control account in the receiving system also needs its chart or subsidiary mapping.
 
-The release registry and dispatch are at `htdocs/accountancy/class/accountancyexport.class.php:50–94,144–199,245–341,495–558`. Row selection and marking are at `htdocs/accountancy/bookkeeping/export.php:504–610,611–735`. General and subsidiary account lengths are at `htdocs/core/lib/accounting.lib.php:152–219`. Numeric presentation is at `htdocs/core/lib/functions2.lib.php:2783–2804`. Full byte positions for the other fixed-width records, all package-specific auxiliary record types and per-recipient import behaviour are separate from the ten positional mappings above.
+The release registry and dispatch are at `htdocs/accountancy/class/accountancyexport.class.php:50–94,144–199,245–341,495–558`. Row selection and marking are at `htdocs/accountancy/bookkeeping/export.php:504–610,611–735`. General and subsidiary account lengths are at `htdocs/core/lib/accounting.lib.php:152–219`. Numeric presentation is at `htdocs/core/lib/functions2.lib.php:2783–2804`. The related specifications above cover the remaining built-in writers. They describe files emitted by this release. Import behavior, error handling and reconciliation in third-party packages depend on their own versions and configuration.
