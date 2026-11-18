@@ -1,0 +1,8 @@
+{
+  "currency": "NAD",
+  "sellingUnitAfterDiscount": "90.00",
+  "costUnit": "60.00",
+  "marginUnit": "30.00",
+  "marginOnCostPercent": "50.00",
+  "marginOnSalesPercent": "33.333333"
+}

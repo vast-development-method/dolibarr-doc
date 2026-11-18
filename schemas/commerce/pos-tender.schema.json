@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TakePOS tender instruction for an ordinary sale",
+  "description": "Explicit portable instruction. Accounts are selected by terminal policy. Excess cash is separate from the invoice allocation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "terminalId",
+    "invoiceId",
+    "method"
+  ],
+  "properties": {
+    "terminalId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "invoiceId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "method": {
+      "enum": [
+        "cash",
+        "card",
+        "cheque",
+        "other",
+        "delayed"
+      ]
+    },
+    "methodCode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "amount": {
+      "type": "string",
+      "pattern": "^(?:[1-9][0-9]*(?:\\.[0-9]+)?|0\\.0*[1-9][0-9]*)$"
+    },
+    "changeReturned": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "method": {
+            "const": "delayed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "amount": false
+        }
+      },
+      "else": {
+        "required": [
+          "amount"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "method": {
+            "const": "other"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "methodCode"
+        ]
+      },
+      "else": {
+        "properties": {
+          "methodCode": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "method": {
+            "const": "cash"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "changeReturned": false
+        }
+      }
+    }
+  ]
+}
