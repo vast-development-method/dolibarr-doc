@@ -1,15 +1,31 @@
-# Specification coverage
+# What the blueprint covers
 
-Release 24.0.3 is the reference point for this edition. All 84 stable module descriptors have a subject guide. This inventory establishes **module breadth**. It does not establish that every operation, configuration combination or statutory variation has a complete specification.
+Release **24.0.3** is the functional baseline. Business workflows, persistent records and callable services each have a different unit of coverage. An implementer can use the published chapters to rebuild named operations. Full behavioral equivalence across the release remains open.
 
-| Area | Documented behaviour | Further design detail |
+## Accounted-for populations
+
+| Population | Extent in this edition | Limit of that claim |
 | --- | --- | --- |
-| Trading and procurement | Party roles, offers, order lines, approval, allocation, receipts, pricing, fulfilment, cancellations, supplier and customer credits | Cross-company sharing, country-specific commercial numbering and every configured conversion route |
-| Stock and manufacturing | Receipts and issues, warehouses, batch balances, valuation, inventory count, bills of materials and production postings | Full combinations of lot control, costing method, reversal and manufacturing policy |
-| Billing and ledger | Document and tax calculations, invoice types, credit allocation, reconciliation, postings, period close, fixed assets and loans | Each jurisdiction's statutory reports, accounting exports and tax treatments |
-| People and services | Recruitment, leave, expenses, service contracts, interventions, tickets, members and subscriptions | Complete delegation combinations, document and notification variants, regional employment rules |
-| Administration and integrations | Grants, entity access, scheduled actions, document management, API contracts, payment providers and portal workflows | Each provider profile, extension hook context, board or list view, document model and report filter |
+| Bundled module descriptors | All 95 classified. Each of the 84 meeting the stable filter has one or more [subject guides](guide-map.json). | A descriptor establishes availability, prerequisites and declared rights. A module can contain dozens of independent actions and supported configuration branches. |
+| Installed tables | All 410 definitions accounted for. The [dictionary](../records/README.md) describes 288 operational and reference tables plus 81 configurable-value companions, with 4,951 declared column positions across those 369 tables. | The other 41 have [individual dispositions](../records/installation-boundaries.md). Eighteen belong to outside-scope features or extensions. Twenty-three have unresolved or separately gated operational use. Dynamic fields, external records and generated documents have their own contracts. |
+| Service resources | [47 business resources and 586 public methods](../services/README.md), plus the shared credential lifecycle. The chapters identify parameters, source locations, access decisions, outcomes and explicit routes. | Framework-derived routes, site extensions and all possible nested business payloads require additional treatment beyond the named method inventory. A screen may also support decisions that have no service equivalent. |
+| Permission declarations | [323 declarations](../permissions/README.md) across the eligible descriptors, including conditional declarations. [Six complete decision traces](../permissions/decisions.md) compare entry points and record scope. | A grant is only one input. Visibility, ownership, user-to-party relationships and state can all change the outcome for a particular record. |
+| Business events | [371 named codes](../events/README.md) from the union of the standard dictionary and direct literal emissions surveyed. Automatic sales workflows have a separate [subscriber chapter](../events/commercial-automation.md). | Some names are constructed dynamically. The enabled subscriber set and its transaction boundary depend on the operation. |
+| Portable data contracts | The [schemas](../../schemas/) describe selected commands, records and report projections. The [examples](../../examples/) contain worked values. | The business chapters establish the cross-record and monetary rules. A schema's presence alone establishes the shape of that projection. |
 
-Read the business guide for its initial state, settings, role, resulting records and amounts. The module inventory identifies availability; a field listing describes storage; a service entry describes one way of invoking an operation. Each is a distinct level of coverage.
+## Business coverage and remaining source work
 
-When expanding a subject, choose a business decision small enough to finish in one chapter. Record its preconditions, the decision path, its data and effects, corrections, and links to adjoining domains. Identify any untraced branch by name. The next author can then resume at a particular operation.
+| Area | What the book currently explains | Named work still open |
+| --- | --- | --- |
+| Sales, procurement and fulfilment | Pricing precedence, discounts, signatures, line origins, partial billing, second approval, receipt inspection and split deliveries. | Trace the available multi-order batch actions, per-party language and document-selection overrides across every conversion and correction route. |
+| Warehouse and production | Count adjustments, dated stock, lots, kits, negative transfers, shortages, nested production, outputs and workstations. | Trace concurrent allocation and completion across multiple warehouses and the interactions among lot expiry, partial reversal and adjustments to cost. |
+| Billing, cash and ledger | Date/credit policy, recurring charges, retention, VAT rounding, allocation, statement matching, source journals, lettering, balance extraction and fiscal close. | Write field-by-field export layouts for each supported accounting format and trace each statutory selector from domestic sources to the final filing output. |
+| People, projects and service | Hiring, employment values, leave counters, reimbursement, task costing, recurring appointments, event attendance, tickets, agreements and intervention records. | Trace bulk actions, advanced delegation and notification substitutions for every HR and service transition, including effects on private records. |
+| Customer channels, files and administration | Register close, public settlement, portal authority, site publication, email intake, document access, classification, retention and shared platform settings. | Cover provider-specific state transitions and correction after asynchronous delivery, every supported public view and the field mappings of remaining document templates. |
+| Reporting and optional modules | [Report chapters](../reporting/README.md) define populations, time basis and grouping for sales, cash, stock, production, projects and participation. | Inventory every remaining list, board, filter, export and executive widget in its owning module. Some measures and outputs vary with jurisdiction or installed options. |
+
+## Continue from a business decision
+
+A bounded next chapter is the customer ledger export for one named format. Start at the export selector in `htdocs/accountancy/bookkeeping/` and the owning operation in `htdocs/accountancy/class/bookkeeping.class.php`. Trace the record grain, dated selection, journal scope, field order, identifiers, encoding, signs, decimal and date representation. Use an invoice followed by a credit and a partial payment as the worked example. Record how a missing auxiliary account changes the result. Once that format is described, another author can take the next export family without reconstructing the sales and collections chapters.
+
+The [detailed chapter directory](../specification/README.md) and [module map](guide-map.json) support the same process in other areas. A useful stopping point is a named decision with its inputs, outputs, reversals and source locations all recorded. A line count cannot distinguish that from another index entry.
