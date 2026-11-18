@@ -34,7 +34,7 @@ The first audit-file writer emits a header and tab-separated rows with carriage-
 | 5–8 | Formatted general account and label, formatted subsidiary account and label. |
 | 9–11 | Document reference, movement creation date and operation label. Tab and newline characters in textual fields are replaced to preserve column boundaries. |
 | 12–16 | Debit, credit, matching code, matching date and validation date. |
-| 17–18 | Foreign-currency amount and currency code from the movement. |
+| 17–18 | Foreign amount and currency code when populated on the row supplied to the writer. The standard screen and service export reader omits these fields. [Audit-file currency and evidence](../../exports/audit-file-dates-and-currency.md) |
 | 19–21 | Due date, invoice reference and representative invoice filename where found. The customer reference comes from the invoice; the supplier reference comes from the supplier's own reference. |
 
 When source documents are included, the writer looks for the customer's generated invoice document or the most recent matching supplier-uploaded document. It skips the generated supplier printout in this search. A cached file association by piece number avoids adding the same attachment repeatedly. An unmatched file leaves the filename field empty. The format registry also exposes a second audit-file variant and specialized accounting-package layouts. Those writers have their own sequence, formatting and attachment rules.
