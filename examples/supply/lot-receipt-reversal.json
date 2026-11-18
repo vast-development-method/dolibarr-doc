@@ -1,0 +1,113 @@
+{
+  "productReference": "FITTING-7",
+  "warehouseReference": "CENTRAL",
+  "companyCurrency": "NAD",
+  "acquisitionUnitCost": "16.00",
+  "stages": [
+    {
+      "action": "opening",
+      "stockChanged": false,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "8"
+        },
+        {
+          "lot": "B",
+          "quantity": "2"
+        }
+      ],
+      "productAverageUnitCost": "10.00"
+    },
+    {
+      "action": "close-receipt",
+      "stockChanged": true,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "13"
+        },
+        {
+          "lot": "B",
+          "quantity": "7"
+        }
+      ],
+      "productAverageUnitCost": "13.00"
+    },
+    {
+      "action": "issue",
+      "stockChanged": true,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "13"
+        },
+        {
+          "lot": "B",
+          "quantity": "3"
+        }
+      ],
+      "productAverageUnitCost": "13.00"
+    },
+    {
+      "action": "refuse-reopen",
+      "stockChanged": false,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "13"
+        },
+        {
+          "lot": "B",
+          "quantity": "3"
+        }
+      ],
+      "productAverageUnitCost": "13.00"
+    },
+    {
+      "action": "receive-at-zero-price",
+      "stockChanged": true,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "13"
+        },
+        {
+          "lot": "B",
+          "quantity": "7"
+        }
+      ],
+      "productAverageUnitCost": "13.00"
+    },
+    {
+      "action": "reopen-receipt",
+      "stockChanged": true,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "8"
+        },
+        {
+          "lot": "B",
+          "quantity": "2"
+        }
+      ],
+      "productAverageUnitCost": "13.00"
+    },
+    {
+      "action": "reclose-receipt",
+      "stockChanged": true,
+      "positions": [
+        {
+          "lot": "A",
+          "quantity": "13"
+        },
+        {
+          "lot": "B",
+          "quantity": "7"
+        }
+      ],
+      "productAverageUnitCost": "14.50"
+    }
+  ]
+}

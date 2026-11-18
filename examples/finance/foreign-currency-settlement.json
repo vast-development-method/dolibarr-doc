@@ -1,0 +1,36 @@
+{
+  "invoiceReference": "INV-72",
+  "companyCurrency": "NAD",
+  "documentCurrency": "USD",
+  "documentUnitsPerCompanyUnit": "0.05",
+  "openingBalance": {
+    "companyAmount": "100.01",
+    "documentAmount": "5.00"
+  },
+  "allocations": [
+    {
+      "receiptReference": "R-1",
+      "basis": "partial-at-invoice-rate",
+      "applied": {
+        "companyAmount": "20.00",
+        "documentAmount": "1.00"
+      },
+      "balanceAfter": {
+        "companyAmount": "80.01",
+        "documentAmount": "4.00"
+      }
+    },
+    {
+      "receiptReference": "R-2",
+      "basis": "full-document-residual",
+      "applied": {
+        "companyAmount": "80.01",
+        "documentAmount": "4.00"
+      },
+      "balanceAfter": {
+        "companyAmount": "0.00",
+        "documentAmount": "0.00"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer settlement in two currencies",
+  "description": "Portable reconciliation projection for a customer invoice paid in its document currency. Amounts are decimal strings. Opening, allocations and closing balances are recorded independently in both currencies. The referenced chapter defines when the last instalment takes the stored company residual.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "invoiceReference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "companyCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "documentCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "documentUnitsPerCompanyUnit": {
+      "type": "string",
+      "pattern": "^(?:[1-9][0-9]*(?:\\.[0-9]+)?|0\\.0*[1-9][0-9]*)$"
+    },
+    "openingBalance": {
+      "$ref": "#/$defs/amounts"
+    },
+    "allocations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "receiptReference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "enum": [
+              "partial-at-invoice-rate",
+              "full-document-residual"
+            ]
+          },
+          "applied": {
+            "$ref": "#/$defs/amounts"
+          },
+          "balanceAfter": {
+            "$ref": "#/$defs/amounts"
+          }
+        },
+        "required": [
+          "receiptReference",
+          "basis",
+          "applied",
+          "balanceAfter"
+        ]
+      }
+    }
+  },
+  "required": [
+    "invoiceReference",
+    "companyCurrency",
+    "documentCurrency",
+    "documentUnitsPerCompanyUnit",
+    "openingBalance",
+    "allocations"
+  ],
+  "$defs": {
+    "decimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "amounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "companyAmount": {
+          "$ref": "#/$defs/decimal"
+        },
+        "documentAmount": {
+          "$ref": "#/$defs/decimal"
+        }
+      },
+      "required": [
+        "companyAmount",
+        "documentAmount"
+      ]
+    }
+  }
+}
