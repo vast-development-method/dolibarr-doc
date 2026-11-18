@@ -1,0 +1,10 @@
+{
+  "recordId": 56,
+  "entityId": 1,
+  "question": "When can I reopen a ticket?",
+  "state": "draft",
+  "categoryIds": [
+    11
+  ],
+  "suggestedTicketCategoryId": 24
+}

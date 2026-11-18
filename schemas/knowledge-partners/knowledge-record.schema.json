@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge record projection",
+  "type": "object",
+  "properties": {
+    "recordId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "answer": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 6
+    },
+    "categoryIds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    },
+    "suggestedTicketCategoryId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "state": {
+      "enum": [
+        "draft",
+        "validated",
+        "obsolete"
+      ]
+    }
+  },
+  "required": [
+    "recordId",
+    "entityId",
+    "question",
+    "state"
+  ],
+  "additionalProperties": false
+}

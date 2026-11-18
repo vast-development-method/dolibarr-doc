@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Partnership decisions",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "partnershipId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "operation": {
+          "enum": [
+            "validate",
+            "approve",
+            "terminate",
+            "reopen"
+          ]
+        }
+      },
+      "required": [
+        "partnershipId",
+        "operation"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "partnershipId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "operation": {
+          "const": "refuse"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "partnershipId",
+        "operation",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
