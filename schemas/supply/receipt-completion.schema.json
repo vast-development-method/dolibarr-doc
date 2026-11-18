@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supplier order receipt reconciliation",
+  "description": "A comparison for a supplier order with eligible stock-managed goods. Validation groups units by product. Closure compares closed receipts with each eligible originating line. The chapter defines the different populations and the over-receipt branch.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "orderId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ordered": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "orderLineId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "productId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "quantity": {
+            "$ref": "#/$defs/signedDecimal"
+          }
+        },
+        "required": [
+          "orderLineId",
+          "productId",
+          "quantity"
+        ]
+      }
+    },
+    "allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "orderLineId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "productId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "receiptId": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "receiptState": {
+            "enum": [
+              "draft",
+              "validated",
+              "closed"
+            ]
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "quantity": {
+            "$ref": "#/$defs/signedDecimal"
+          }
+        },
+        "required": [
+          "orderLineId",
+          "productId",
+          "receiptId",
+          "receiptState",
+          "approved",
+          "quantity"
+        ]
+      }
+    },
+    "approvalRequiredAtValidation": {
+      "type": "boolean"
+    },
+    "overReceiptCompletionEnabled": {
+      "type": "boolean"
+    },
+    "completeByProductAtValidation": {
+      "type": "boolean"
+    },
+    "completeByLineAtClosure": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "orderId",
+    "ordered",
+    "allocations",
+    "approvalRequiredAtValidation",
+    "overReceiptCompletionEnabled",
+    "completeByProductAtValidation",
+    "completeByLineAtClosure"
+  ],
+  "$defs": {
+    "signedDecimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    }
+  }
+}

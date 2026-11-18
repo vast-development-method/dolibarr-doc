@@ -36,3 +36,5 @@ Source locations: `htdocs/compta/cashcontrol/cashcontrol_card.php:218â€“226,299â
 ## Worked drawer close
 
 Terminal 2 starts with 120.00 in the drawer. Customers settle 90.00 and 35.00 in cash and receive one cash refund of 12.00. A second customer settles 85.00 by card. The three signed cash allocations sum to 113.00. The expected cash is 233.00 and the expected card total is 85.00. The cashier counts 231.00 and confirms the full card batch. Closing retains the 113.00 cash turnover and the 231.00 declaration, displays the 2.00 cash difference, and closes the terminal for the period. The amount to investigate is 2.00. Posting another sale for 2.00 would increase expected cash and widen the discrepancy.
+
+The [close projection](../../../schemas/commerce/register-close.schema.json) represents a single closed period. Its [worked drawer](../../../examples/commerce/register-close.json) uses signed differences calculated as declared less expected. Amounts use decimal strings in one currency. The period identifies a calendar unit in the register's business time. The expected and difference fields are report projections.

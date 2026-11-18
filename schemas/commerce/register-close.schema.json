@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed register count",
+  "description": "A portable projection of an entity and terminal close. All amounts use the same currency. Declared, earned and expected balances have distinct meanings. The chapter defines period membership and the arithmetic.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "terminalId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "registerApplication": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "day"
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "month": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12
+            },
+            "day": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 31
+            }
+          },
+          "required": [
+            "unit",
+            "year",
+            "month",
+            "day"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "month"
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "month": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12
+            }
+          },
+          "required": [
+            "unit",
+            "year",
+            "month"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "year"
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "unit",
+            "year"
+          ]
+        }
+      ]
+    },
+    "openingCash": {
+      "$ref": "#/$defs/signedDecimal"
+    },
+    "earned": {
+      "$ref": "#/$defs/tenders"
+    },
+    "declared": {
+      "$ref": "#/$defs/tenders"
+    },
+    "expected": {
+      "$ref": "#/$defs/tenders"
+    },
+    "declaredLessExpected": {
+      "$ref": "#/$defs/tenders"
+    }
+  },
+  "required": [
+    "entityId",
+    "terminalId",
+    "registerApplication",
+    "period",
+    "openingCash",
+    "earned",
+    "declared",
+    "expected",
+    "declaredLessExpected"
+  ],
+  "$defs": {
+    "signedDecimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "tenders": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cash": {
+          "$ref": "#/$defs/signedDecimal"
+        },
+        "cheque": {
+          "$ref": "#/$defs/signedDecimal"
+        },
+        "card": {
+          "$ref": "#/$defs/signedDecimal"
+        }
+      },
+      "required": [
+        "cash",
+        "cheque",
+        "card"
+      ]
+    }
+  }
+}

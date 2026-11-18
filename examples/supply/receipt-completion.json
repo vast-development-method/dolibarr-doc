@@ -1,0 +1,29 @@
+{
+  "orderId": 30,
+  "ordered": [
+    {
+      "orderLineId": 41,
+      "productId": 7,
+      "quantity": "5"
+    },
+    {
+      "orderLineId": 42,
+      "productId": 7,
+      "quantity": "7"
+    }
+  ],
+  "allocations": [
+    {
+      "orderLineId": 41,
+      "productId": 7,
+      "receiptId": 85,
+      "receiptState": "closed",
+      "approved": true,
+      "quantity": "12"
+    }
+  ],
+  "approvalRequiredAtValidation": true,
+  "overReceiptCompletionEnabled": false,
+  "completeByProductAtValidation": true,
+  "completeByLineAtClosure": false
+}
