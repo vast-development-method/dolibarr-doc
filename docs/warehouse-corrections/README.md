@@ -8,5 +8,7 @@ A physical correction needs the product, warehouse, quantity, lot where applicab
 | [Reverse a dispatch or reopen an order](dispatch-and-order-corrections.md) | Compares closure, cancellation, deletion and draft, including the difference between a positive signed quantity and an input-type movement. |
 | [Allocate a lot to competing demands](shared-lot-and-posting-order.md) | Follows a form suggestion into draft allocations, posting and source-order completion. Explains the transaction and concurrency boundaries visible in the stock writer. |
 | [Correct the journal, a count or a transfer](movement-journal-and-counts.md) | Shows why a manual reversal, a stocktake price override and an undo of transfer custody can produce different values and document states. |
+| [Change an existing product’s tracking mode](tracking-mode-conversion.md) | Accounts for old stock by warehouse, default lot, serial policy, corrective pairs and retained lot history. |
+| [Correct manufacturing actuals](manufacturing-actuals.md) | Selects a single original movement or a complete job and follows a blocked finished-lot reversal back through component balances. |
 
 [Posting policies](../policies/stock-posting-decisions.md) · [Physical record dictionary](../records/warehouse.md) · [Stock at a date](../specification/operations/stock-at-date-and-value.md)
