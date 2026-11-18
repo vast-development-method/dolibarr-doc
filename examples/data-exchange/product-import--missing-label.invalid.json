@@ -1,9 +1,0 @@
-{
-  "dataset": "products",
-  "phase": "execute",
-  "matchBy": "reference",
-  "rows": [
-    {"reference": "BOLT-08", "label": "8 mm bolt, zinc plated", "kind": "product", "forSale": true, "forPurchase": true},
-    {"reference": "BOLT-10", "kind": "product", "forSale": true, "forPurchase": true}
-  ]
-}

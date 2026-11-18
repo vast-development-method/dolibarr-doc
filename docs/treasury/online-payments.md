@@ -21,11 +21,11 @@ The payer opens an online payment page for a business source such as an invoice.
 | TR-WEB-04 | Provider confirms a payment, but local company-currency expectation or account configuration fails. | Report the local allocation failure against the provider transaction. Reconcile actual provider funds before any attempt to collect again. |
 | TR-WEB-05 | PayPal confirm response contains failure acknowledgement, even though the customer reached the return page. | No normal successful-payment posting for that response. |
 
-[guide]: https://wiki.dolibarr.org/index.php/Online_Payment_Module_Architecture
-[stripewiki]: https://wiki.dolibarr.org/index.php/Module_Stripe
-[paypalwiki]: https://wiki.dolibarr.org/index.php/Module_PayPal_En
-[start]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/public/payment/newpayment.php#L316-L557
-[verify]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/public/payment/paymentok.php#L294-L484
-[ipn]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/public/stripe/ipn.php#L375-L615
-[repeat]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/public/payment/paymentok.php#L535-L555
-[book]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/public/payment/paymentok.php#L1047-L1189
+[guide]: ../reference/locators/treasury.md#ref-0158cf6e2016
+[stripewiki]: ../reference/locators/treasury.md#ref-4cdd18e345c9
+[paypalwiki]: ../reference/locators/treasury.md#ref-9c937445f597
+[start]: ../reference/locators/treasury.md#ref-c2342ddb70b7
+[verify]: ../reference/locators/treasury.md#ref-c7cd1cd025fa
+[ipn]: ../reference/locators/treasury.md#ref-22ada40e613a
+[repeat]: ../reference/locators/treasury.md#ref-c352dd270176
+[book]: ../reference/locators/treasury.md#ref-64af0fb1d3b6

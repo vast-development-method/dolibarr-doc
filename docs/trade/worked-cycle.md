@@ -46,4 +46,4 @@ Margin, closing stock value, tax difference and bank movement are four distinct 
 4. A journal transfer with a missing binding on a nonzero sales line must leave that invoice unposted. Bind it and retry the outstanding transfer. The same invoice supplies one balanced sales movement.
 5. Fetch the settlement state as well as the remaining balance. Exact settlement with automatic closure disabled can leave an open invoice with zero due.
 
-[Portable event and balance schema](../../schemas/trade/trade-cycle.schema.json) · [Worked event sequence with expected balances](../../examples/trade/trade-cycle--warehouse.valid.json) · [Executable arithmetic check](../../conformance/trade/check.py)
+[Portable event and balance schema](../../schemas/trade/trade-cycle.schema.json) · [Worked event sequence with expected balances](../../examples/trade/trade-cycle--warehouse.json)

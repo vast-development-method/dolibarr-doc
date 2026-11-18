@@ -37,15 +37,15 @@ With stock enabled, invoice-based stock movements active and a warehouse selecte
 
 The service contract's [application command](../../schemas/finance-exceptions/apply-credit.schema.json) names a single destination mode. Matching customer, unused status, sufficient balance and concurrency are service-level checks. A rebuild should atomically claim a credit before applying it and verify that exactly one eligible record changed. [Adjustment deletion and links][adjustment]
 
-[eligible]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L5364-L5470
-[replacement]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3745-L3816
-[creditprogress]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3944-L3961
-[deposit]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L1745-L1986
-[convert]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L1418-L1598
-[excess]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L1506-L1550
-[lineapply]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L2928-L3048
-[settlement]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L1613-L1694
-[links]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/discount.class.php#L532-L615
-[adjustment]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/discount.class.php#L416-L482
-[stock]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3823-L3851
-[unstock]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L4165-L4219
+[eligible]: ../reference/locators/finance-exceptions.md#ref-758f1ed40a00
+[replacement]: ../reference/locators/finance-exceptions.md#ref-f93355c1536c
+[creditprogress]: ../reference/locators/finance-exceptions.md#ref-17ef3197566d
+[deposit]: ../reference/locators/finance-exceptions.md#ref-3bd5145796e6
+[convert]: ../reference/locators/finance-exceptions.md#ref-c799eedbfa84
+[excess]: ../reference/locators/finance-exceptions.md#ref-aa0ab384ca5a
+[lineapply]: ../reference/locators/finance-exceptions.md#ref-92a14856b8ac
+[settlement]: ../reference/locators/finance-exceptions.md#ref-71914fffb84e
+[links]: ../reference/locators/finance-exceptions.md#ref-b78181d3fca1
+[adjustment]: ../reference/locators/finance-exceptions.md#ref-c417c07d52d7
+[stock]: ../reference/locators/finance-exceptions.md#ref-2c131f43a23b
+[unstock]: ../reference/locators/finance-exceptions.md#ref-fc83a0ecbade

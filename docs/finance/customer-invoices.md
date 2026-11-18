@@ -11,7 +11,7 @@ A customer invoice records the amount billed for goods or services. Validation a
 | Customer adjustment | Belongs to a customer, may originate on a deposit, credit note or overpayment. One application command takes either an invoice-line target or an invoice-header target. | Net, tax, gross, foreign amounts, source invoice and destination link. A line application affects the bill. A settlement application affects its outstanding balance. |
 | Origin link | Sales order to invoice or contract to invoice. The order conversion copies the amounts, quantities, taxes and discounts onto new lines. | Preserve both records and their references so the issued bill remains intelligible when an upstream record is viewed later. |
 
-The invoice-line table stores the selling price and acquisition cost separately. The pricing fixture models the selling-price inputs and tax amounts. Margin calculation also needs the acquisition cost. An invoice payment links through an allocation record, covered in [Customer payments](collections.md). [Header definition][header] · [Line definition][line] · [Order conversion][fromorder] · [Adjustment application][adjust]
+The invoice-line table stores the selling price and acquisition cost separately. The pricing example models the selling-price inputs and tax amounts. Margin calculation also needs the acquisition cost. An invoice payment links through an allocation record, covered in [Customer payments](collections.md). [Header definition][header] · [Line definition][line] · [Order conversion][fromorder] · [Adjustment application][adjust]
 
 ## Lifecycle and command contracts
 
@@ -53,17 +53,17 @@ The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALO
 | FIN-INV-06 | Invoiced line at 100.00 net, VAT 20%, local tax 2% on applicable items, no discount. | A type 1 local tax is 2.00 and gross is 122.00. A type 2 local tax is 2.40 and gross is 122.40. |
 | FIN-INV-07 | Validated invoice with an empty cash journal, close with a reason and a shortfall. | Closing metadata changes. Payment allocations and bank lines stay at their previous counts. A write-off or bank transaction needs its own evidence. |
 
-[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate fixture](../../examples/finance/pricing-case--rate-rounding.valid.json). The schema describes the benchmark's data shape. [Pricing verification](pricing-verification.md) records which calculations were executed against the pinned source.
+[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate example](../../examples/finance/pricing-case--rate-rounding.json). The schema describes the example's data shape. [Pricing verification](pricing-verification.md) records which calculations were executed against the pinned source.
 
-[invoice]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L399-L460
-[wiki]: https://wiki.dolibarr.org/index.php/Module_Customers_Invoices
-[header]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_facture.sql
-[line]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_facturedet.sql
-[adjust]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/discount.class.php#L532-L615
-[fromorder]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L1464-L1592
-[api]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L361-L419
-[validate]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3612-L3825
-[stock]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3825-L3969
-[close]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3394-L3596
-[price]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/lib/price.lib.php#L179-L456
-[totals]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/commonobject.class.php#L4128-L4338
+[invoice]: ../reference/locators/finance.md#ref-f0205e8de33b
+[wiki]: ../reference/locators/finance.md#ref-07f1d5ed7e3b
+[header]: ../reference/locators/finance.md#ref-f000f1cdd363
+[line]: ../reference/locators/finance.md#ref-cf1cf1aaf15e
+[adjust]: ../reference/locators/finance.md#ref-b78181d3fca1
+[fromorder]: ../reference/locators/finance.md#ref-25929f528366
+[api]: ../reference/locators/finance.md#ref-7bca854bc316
+[validate]: ../reference/locators/finance.md#ref-09777759efa1
+[stock]: ../reference/locators/finance.md#ref-bff0b4f7532a
+[close]: ../reference/locators/finance.md#ref-6c301ccf3091
+[price]: ../reference/locators/finance.md#ref-81f305a3c1e2
+[totals]: ../reference/locators/finance.md#ref-b3033fb6dd03

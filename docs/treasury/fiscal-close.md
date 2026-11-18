@@ -14,7 +14,7 @@ Closing a period transfers a reporting boundary. Operational invoices and paymen
 
 **TR-CLOSE-01.** Suppose the only ledger activity in the year is a sale of 100.00 without tax, paid immediately, and a bank-paid expense of 40.00. Closing balances are debit bank 60.00, credit revenue 100.00 and debit expense 40.00. With bank in the balance-sheet groups and revenue/expense in the income groups, expect two opening lines dated the first day of the next period, bank debit 60.00 and profit credit 60.00. Sales and expense remain visible in the old year. **TR-CLOSE-02.** Attempt to close into a period starting on the final day of the old period. Reject before status or opening rows change. **TR-CLOSE-03.** Run the closure with entry generation requested and a missing closure journal. The period status change inside the transaction is rolled back. **TR-CLOSE-04.** If receivables contain debit 80.00 for customer A and credit 20.00 for customer B, separate auxiliaries preserve an 80.00 debit and a 20.00 credit. Without the auxiliary grouping the opening receivables line is debit 60.00.
 
-[ui]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/closure/index.php#L140-L196
-[validate]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L2924-L2997
-[close]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L3008-L3278
-[reverse]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L3291-L3420
+[ui]: ../reference/locators/treasury.md#ref-1295869ace62
+[validate]: ../reference/locators/treasury.md#ref-e684d03310f5
+[close]: ../reference/locators/treasury.md#ref-28e10792dc29
+[reverse]: ../reference/locators/treasury.md#ref-f6916a16b774

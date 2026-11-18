@@ -28,13 +28,13 @@ Observe document classification separately after settlement or rejection. The se
 | TR-ORD-04 | Bank returns the first 100.00 debit after settlement. Record a rejection for that line. | When the unpaid-state update succeeds, the first invoice reopens. Its negative allocation restores the 100.00 receivable and the linked counter-entry reverses its receipt in the bank. The other customer remains settled. |
 | TR-ORD-05 | Outgoing transfer against an unpaid supplier invoice or a salary. | Selected source determines payee, allocation type and outgoing bank label. The same numeric terminal state means debited on this order. |
 
-[Bank-order schema](../../schemas/treasury/bank-order.schema.json) · [One-off debit example](../../examples/treasury/bank-order--debit.valid.json). The normalized command captures one order kind and source category. Eligibility, actual mandate data, amount aggregation and lifecycle guards require the live records.
+[Bank-order schema](../../schemas/treasury/bank-order.schema.json) · [One-off debit example](../../examples/treasury/bank-order--debit.json). The normalized command captures one order kind and source category. Eligibility, actual mandate data, amount aggregation and lifecycle guards require the live records.
 
-[recur]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture-rec.class.php#L1390-L1546
-[schedule]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture-rec.class.php#L2279-L2308
-[order]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/class/bonprelevement.class.php#L159-L217
-[generate]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/class/bonprelevement.class.php#L1097-L1568
-[encode]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/class/bonprelevement.class.php#L2049-L2252
-[rights]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/card.php#L83-L193
-[settle]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/class/bonprelevement.class.php#L590-L844
-[reject]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/prelevement/class/rejetprelevement.class.php#L123-L245
+[recur]: ../reference/locators/treasury.md#ref-a7d01543b59c
+[schedule]: ../reference/locators/treasury.md#ref-02952cf7fb6f
+[order]: ../reference/locators/treasury.md#ref-987537844471
+[generate]: ../reference/locators/treasury.md#ref-e9871a92b36d
+[encode]: ../reference/locators/treasury.md#ref-282bdc09e732
+[rights]: ../reference/locators/treasury.md#ref-2a0476935da8
+[settle]: ../reference/locators/treasury.md#ref-7b977f6d8ed4
+[reject]: ../reference/locators/treasury.md#ref-118b565f8b4b

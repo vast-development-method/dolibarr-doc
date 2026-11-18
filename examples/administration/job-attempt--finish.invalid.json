@@ -1,9 +1,0 @@
-{
-  "jobId": 41,
-  "entityId": 1,
-  "attemptNumber": 8,
-  "startedAt": "2026-11-17T10:05:00Z",
-  "state": "failed",
-  "result": 1,
-  "output": "Record update did not complete."
-}
