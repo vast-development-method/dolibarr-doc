@@ -37,4 +37,5 @@ See `htdocs/core/modules/modCommande.class.php:80–90`, `htdocs/core/modules/mo
 - [Commercial documents and language selection](commercial-copies.md)
 - [Shipping, transfer and progress certificate layouts](physical-and-stage-documents.md)
 - [Editable templates, party contacts and installed fields](office-templates.md)
+- [Project reporting and manufacturing work sheets](project-and-manufacturing-sheets.md)
 - [Generation, indexing and mail delivery](../specification/output/document-models-and-delivery.md)

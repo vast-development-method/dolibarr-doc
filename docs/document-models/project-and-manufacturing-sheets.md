@@ -1,0 +1,29 @@
+# Project reporting and manufacturing work sheets
+
+A supervisor can print a project's plan, time report and associated documents for the same customer job. They answer three different questions. The production team's work sheet for the same job introduces a fourth quantity based on the bill of materials. Reconciliation depends on preserving the population and units used by each model.
+
+## Project reports
+
+| Selected output | Grain and source | What the reader sees |
+| --- | --- | --- |
+| Task plan, Baleine | One retrieved task for the selected project. The model loads the task array with the project identifier. In specimen mode it caps the list at five rows. | Reference, task label, planned workload converted from seconds, stored progress percentage and task dates. Zero progress is rendered as a blank percentage. |
+| Time spent, Timespent | The same project task-list operation supplies the rows. The printed duration comes from each task's stored effective duration. | Task reference and description, recorded duration converted to hours/minutes, date information and a user cell populated from the user identifier on the returned task row. The writer does not enumerate each person's time entries. |
+| Associated records, Beluga | Separate sections for supported record types, drawn from their links to the project and subject to the configured module and read-right conditions. The model passes no lower or upper date to the project element lookup. | Document identity, third party, status and, where supported, amount excluding and including tax. For an invoice the status label also receives its payment total. Interventions and agenda entries suppress monetary columns. |
+
+Beluga considers customer proposals, orders, invoices and recurring invoice templates, supplier orders and invoices, contracts, interventions, expense reports and agenda activity. Combined supplier access and the separately enabled supplier components have different rights expressions. The agenda condition requires the all-activities read grant. An installed extension can amend the family list before it is traversed. A project with orders and invoices can therefore yield different reports for two authorized project viewers with different commercial or activity grants.
+
+In the expense section the model dereferences the expense detail selected through the project to obtain its parent claim. In the customer invoice section an invoice whose closure code is “replaced” can appear as a document but is excluded from the amount accumulation. A linked replacement can appear separately. A document count and the financial total can therefore have different contributing rows. Summing customer proposal, order and invoice totals across their sections would count successive stages of the same sale.
+
+Consider an installation task planned for eight hours and 50% complete. Two workers have logged 75 and 105 minutes. The effective time is three hours. The plan shows eight hours and 50%; the time model can show three hours for the task. It cannot reconstruct separate employee effort just from that row. There is also no rule that three hours against eight must produce 37.5% completion: physical progress is a separate stored value. The [project cost and margin chapter](../specification/planning/project-budget-and-realized-margin.md) explains the different basis used for financial contribution.
+
+The writers are `htdocs/core/modules/project/doc/pdf_baleine.modules.php:225–235,307–316,395–425`, `htdocs/core/modules/project/doc/pdf_timespent.modules.php:220–232,304–315,395–421` and `htdocs/core/modules/project/doc/pdf_beluga.modules.php:351–462,514–534,656–690`. The common task population is in `htdocs/projet/class/task.class.php:1152–1192,1320–1361`.
+
+## Manufacturing work sheet, stored plan and actual consumption
+
+The Vinci work sheet fetches the **linked bill of materials** while generating the report and iterates that bill's lines. For each line it fetches the component's product record. The reference and description use the product. The dimensions field joins nonzero length, width and height with “x”. A blank dimension can drop out of that string. In the two numeric columns the first quantity is the bill line quantity as stored. The displayed total multiplies manufacturing order quantity by bill line quantity.
+
+The executable manufacturing plan instead divides the job quantity by the bill's base output quantity. For an ordinary unfrozen line it then multiplies by the component requirement and divides by its efficiency, using one if the efficiency is empty. A frozen line keeps its specified quantity. A later posting against the order has its own actual input quantity, lot and stock movement. Reprinting the sheet reads the reference bill again regardless of whether a saved plan or partial actual already exists.
+
+Suppose a bill yielding **four assemblies** lists eight units of a component, with efficiency 0.8. Create an order for six assemblies. The printed component quantity is eight and its printed total is `6 × 8 = 48`. The normal plan quantity is `8 × (6 ÷ 4) ÷ 0.8 = 15`. If the first production run actually consumes six units, the stock movement for that run is six. Each number traces to a different source. Using the printed 48 to post consumption would over-issue inventory. For a second component with frozen quantity three, the corresponding print product is 18, while the frozen plan keeps three.
+
+The sheet's header can show the planned start and the product being made. Those make the output legible on a shop floor while the linked actuals still supply definitive evidence for material use and finished receipts. The work sheet is in `htdocs/core/modules/mrp/doc/pdf_vinci.modules.php:418–444,489–499,547–569,1088–1124`. Plan expansion is in `htdocs/mrp/class/mo.class.php:814–854`. See [Planning and posting a nested production order](../specification/operations/nested-production-orders.md).
