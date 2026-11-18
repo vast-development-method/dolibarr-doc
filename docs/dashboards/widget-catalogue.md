@@ -7,7 +7,7 @@ The 62 entries identify the shipped widget implementations at the 24.0.3 baselin
 | Widget source key | Definition | Access and activation | Population and ordering |
 | --- | --- | --- | --- |
 | `lastlogin` | `User:82` | Current user | Previous sign-in time and address, plus the most recent password-validation timestamp. Missing timestamps display as unknown. |
-| `birthdays` | `User:83` | Internal user directory read | Enabled users with a birthday or employment anniversary in the current month. Both dates must predate this year. The two sets share a day-of-month sort and one row limit, including days already passed. |
+| `birthdays` | `User:83` | Internal user directory read | Enabled users with a birthday or employment anniversary in the current month. Each date qualifies independently if it falls before January 1 of the current year. A recent hire can still appear for a birthday. The two sets share a day-of-month sort and one row limit, including days already passed. |
 | `bookmarks` | `Bookmark:72` | Bookmark read | Current user’s saved bookmarks in the current entity, ascending saved position. Create permission changes the shortcut. |
 | `actions` | `Agenda:117` | Own agenda read | Events with progress from 0 up to, but excluding, 100. Oldest scheduled start first. Without all-agenda read, author or owner must match the viewer. |
 | `actions_future` | `Agenda:118` | Own agenda read | Events strictly after now, earliest scheduled start first. There is no incomplete-progress test. Uses the same author/owner restriction as the outstanding-event shortlist. |
