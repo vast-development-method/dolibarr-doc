@@ -16,7 +16,14 @@
         "docs/specification/accounting/tax-recognition-and-remittance.md",
         "docs/reporting/cash-and-ledger-balances.md",
         "docs/localization/chart-models-and-reports.md",
-        "docs/exports/ledger-layouts.md"
+        "docs/exports/ledger-layouts.md",
+        "docs/exports/fixed-position-records.md",
+        "docs/exports/party-and-movement-records.md",
+        "docs/exports/specialist-journal-formats.md",
+        "docs/exports/audit-file-dates-and-currency.md",
+        "docs/regional-reporting/README.md",
+        "docs/records/operational-evidence.md",
+        "docs/finance/supplier-account-preparation.md"
       ],
       "focus": "Chart import and balance accounts, source bindings, journal transfer and fiscal close."
     },
@@ -26,7 +33,8 @@
         "docs/engagement/membership-and-donations.md",
         "docs/specification/people-and-services/member-renewals-and-collections.md",
         "docs/specification/channels/payment-to-order-membership-and-event.md",
-        "docs/reporting/operational-dashboards-and-replenishment.md"
+        "docs/reporting/operational-dashboards-and-replenishment.md",
+        "docs/public-workflows/membership-and-giving.md"
       ],
       "focus": "Subscription periods, renewal and optional invoice or bank evidence."
     },
@@ -36,14 +44,16 @@
         "docs/engagement/agenda-and-events.md",
         "docs/specification/operations/task-hierarchy-and-resource-booking.md",
         "docs/specification/planning/calendar-series-and-reminders.md",
-        "docs/reporting/event-participation.md"
+        "docs/reporting/event-participation.md",
+        "docs/dashboards/home-work-queues.md"
       ],
       "focus": "Event ownership, participants, completion and access to one's own versus all events."
     },
     {
       "key": "Ai",
       "guides": [
-        "docs/integrations/authoring-and-workspace.md"
+        "docs/integrations/authoring-and-workspace.md",
+        "docs/records/operational-evidence.md"
       ],
       "focus": "Stable text tasks, request validation, provider errors and review before saving generated content."
     },
@@ -55,7 +65,9 @@
         "docs/platform/rebuild-contract.md",
         "docs/policies/company-and-settings.md",
         "docs/services/credential-lifecycle.md",
-        "docs/services/README.md"
+        "docs/services/README.md",
+        "docs/services/route-selection.md",
+        "docs/services/supplier-invoice-line-inputs.md"
       ],
       "focus": "Resource discovery, entity and record access, link creation and retrieval."
     },
@@ -82,7 +94,9 @@
         "docs/reporting/receivables-aging-and-cash-forecast.md",
         "docs/journeys/commissioning-time-to-cash.md",
         "docs/settings/billing-and-payments.md",
-        "docs/specification/channels/provider-notices-and-payout-reconciliation.md"
+        "docs/specification/channels/provider-notices-and-payout-reconciliation.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/records/operational-evidence.md"
       ],
       "focus": "Inter-account transfers, payment links, reconciliation and bank-journal mapping."
     },
@@ -108,7 +122,9 @@
       "guides": [
         "docs/operations/manufacturing.md",
         "docs/specification/operations/nested-production-orders.md",
-        "docs/specification/planning/workstation-requirements-and-cost.md"
+        "docs/specification/planning/workstation-requirements-and-cost.md",
+        "docs/warehouse-corrections/manufacturing-actuals.md",
+        "docs/document-models/project-and-manufacturing-sheets.md"
       ],
       "focus": "Recipe structure, efficiency, fixed components and material and service costing."
     },
@@ -123,7 +139,8 @@
       "key": "Categorie",
       "guides": [
         "docs/data-exchange/documents-and-classification.md",
-        "docs/specification/information/category-trees-and-localized-values.md"
+        "docs/specification/information/category-trees-and-localized-values.md",
+        "docs/international/language-and-business-identity.md"
       ],
       "focus": "Category hierarchy and typed associations with business records."
     },
@@ -145,7 +162,14 @@
         "docs/reporting/commercial-statistics-and-turnover.md",
         "docs/events/commercial-automation.md",
         "docs/permissions/decisions.md",
-        "docs/settings/commercial.md"
+        "docs/settings/commercial.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/warehouse-corrections/dispatch-and-order-corrections.md",
+        "docs/bulk-operations/README.md",
+        "docs/operator-reports/customer-order-line-list.md",
+        "docs/list-filters/README.md",
+        "docs/document-models/README.md"
       ],
       "focus": "Customer order validation, proposal conversion, partial dispatch and billed classification."
     },
@@ -155,7 +179,12 @@
         "docs/additional-domains/chart-and-reporting.md",
         "docs/specification/financial/payment-terms-and-settlement-adjustments.md",
         "docs/specification/accounting/tax-recognition-and-remittance.md",
-        "docs/localization/chart-models-and-reports.md"
+        "docs/localization/chart-models-and-reports.md",
+        "docs/exports/fixed-position-records.md",
+        "docs/exports/party-and-movement-records.md",
+        "docs/exports/specialist-journal-formats.md",
+        "docs/exports/audit-file-dates-and-currency.md",
+        "docs/regional-reporting/README.md"
       ],
       "focus": "Simplified accounting mode, dated turnover and comparison of invoiced versus collected amounts."
     },
@@ -164,7 +193,10 @@
       "guides": [
         "docs/people-services/service-delivery.md",
         "docs/specification/people-and-services/contract-services-and-work-templates.md",
-        "docs/reporting/operational-dashboards-and-replenishment.md"
+        "docs/reporting/operational-dashboards-and-replenishment.md",
+        "docs/workforce-operations/service-teams-and-batch-resolution.md",
+        "docs/list-filters/README.md",
+        "docs/public-workflows/document-decisions.md"
       ],
       "focus": "Contract validation, activation and closure of individual service lines."
     },
@@ -202,7 +234,9 @@
     {
       "key": "Don",
       "guides": [
-        "docs/engagement/membership-and-donations.md"
+        "docs/engagement/membership-and-donations.md",
+        "docs/public-workflows/membership-and-giving.md",
+        "docs/regional-reporting/french-donation-receipt.md"
       ],
       "focus": "Donation pledges, payment allocation, bank posting and closure."
     },
@@ -230,7 +264,8 @@
         "docs/engagement/agenda-and-events.md",
         "docs/specification/planning/event-capacity-registration-and-payments.md",
         "docs/specification/channels/payment-to-order-membership-and-event.md",
-        "docs/reporting/event-participation.md"
+        "docs/reporting/event-participation.md",
+        "docs/public-workflows/contributors-and-conference-votes.md"
       ],
       "focus": "Public registration, project capacity, invoice generation and attendee validation after payment."
     },
@@ -244,7 +279,12 @@
         "docs/specification/output/shipment-and-reception-notes.md",
         "docs/reporting/stock-fulfillment-and-production.md",
         "docs/policies/stock-posting-decisions.md",
-        "docs/settings/commercial.md"
+        "docs/settings/commercial.md",
+        "docs/warehouse-corrections/dispatch-and-order-corrections.md",
+        "docs/bulk-operations/README.md",
+        "docs/list-filters/README.md",
+        "docs/document-models/README.md",
+        "docs/public-workflows/document-decisions.md"
       ],
       "focus": "Source order quantities, shipment validation, warehouse effects and billing from dispatched lines."
     },
@@ -255,7 +295,9 @@
         "docs/specification/accounting/source-journal-postings.md",
         "docs/specification/people-and-services/expense-scales-and-ceilings.md",
         "docs/permissions/decisions.md",
-        "docs/settings/projects-and-workforce.md"
+        "docs/settings/projects-and-workforce.md",
+        "docs/workforce-operations/expense-review-and-reimbursement.md",
+        "docs/dashboards/home-work-queues.md"
       ],
       "focus": "Expense calculation, submission and approval, reimbursement and journal posting."
     },
@@ -265,14 +307,19 @@
         "docs/data-exchange/import-export.md",
         "docs/specification/financial/trial-balances-and-ledger-exports.md",
         "docs/specification/information/import-matching-and-export-projection.md",
-        "docs/exports/ledger-layouts.md"
+        "docs/exports/ledger-layouts.md",
+        "docs/exports/fixed-position-records.md",
+        "docs/exports/party-and-movement-records.md",
+        "docs/exports/specialist-journal-formats.md",
+        "docs/exports/audit-file-dates-and-currency.md"
       ],
       "focus": "Dataset fields, selection profiles, permissions and file generation."
     },
     {
       "key": "ExternalRss",
       "guides": [
-        "docs/integrations/authoring-and-workspace.md"
+        "docs/integrations/authoring-and-workspace.md",
+        "docs/dashboards/README.md"
       ],
       "focus": "Feed configuration, retrieval and presentation of external items."
     },
@@ -302,7 +349,12 @@
         "docs/journeys/commissioning-time-to-cash.md",
         "docs/localization/tax-selection.md",
         "docs/settings/billing-and-payments.md",
-        "docs/specification/administration/commercial-message-delivery.md"
+        "docs/specification/administration/commercial-message-delivery.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/bulk-operations/README.md",
+        "docs/list-filters/README.md",
+        "docs/document-models/README.md"
       ],
       "focus": "Invoice state, tax-inclusive and exclusive line pricing, cash allocation and recurring billing."
     },
@@ -317,7 +369,9 @@
       "key": "Ficheinter",
       "guides": [
         "docs/people-services/service-delivery.md",
-        "docs/specification/people-and-services/contract-services-and-work-templates.md"
+        "docs/specification/people-and-services/contract-services-and-work-templates.md",
+        "docs/workforce-operations/service-teams-and-batch-resolution.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Intervention detail, completion and the optional ticket closure handoff."
     },
@@ -330,7 +384,12 @@
         "docs/specification/commercial/purchase-receipt-inspection.md",
         "docs/specification/commercial/supplier-sourcing-and-approval.md",
         "docs/specification/operations/receipts-allocations-and-order-completion.md",
-        "docs/settings/commercial.md"
+        "docs/settings/commercial.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/bulk-operations/README.md",
+        "docs/document-models/README.md",
+        "docs/services/supplier-invoice-line-inputs.md",
+        "docs/finance/supplier-account-preparation.md"
       ],
       "focus": "Combined supplier module's quotation, order, receipt and invoice flows and configuration boundary."
     },
@@ -353,7 +412,8 @@
       "guides": [
         "docs/workforce/recruitment-and-skills.md",
         "docs/specification/organization/positions-pay-and-skill-decisions.md",
-        "docs/specification/organization/recruitment-intake-and-employee-handoff.md"
+        "docs/specification/organization/recruitment-intake-and-employee-handoff.md",
+        "docs/workforce-operations/evaluation-and-hiring-queues.md"
       ],
       "focus": "Job assignments, evaluation snapshots and updates to employee skill ranks on closure."
     },
@@ -362,7 +422,9 @@
       "guides": [
         "docs/people-services/leave.md",
         "docs/specification/people-and-services/leave-entitlement-ledger.md",
-        "docs/settings/projects-and-workforce.md"
+        "docs/settings/projects-and-workforce.md",
+        "docs/workforce-operations/leave-routing-and-group-decisions.md",
+        "docs/dashboards/home-work-queues.md"
       ],
       "focus": "Request states, balances, overlap and chargeable day calculations."
     },
@@ -399,7 +461,8 @@
     {
       "key": "Loan",
       "guides": [
-        "docs/capital/loans.md"
+        "docs/capital/loans.md",
+        "docs/capital/loan-schedule-and-settlement.md"
       ],
       "focus": "Loan setup, repayment schedule and allocation of principal, interest and insurance to bank and ledger."
     },
@@ -417,7 +480,8 @@
       "guides": [
         "docs/commerce/commercial-margins.md",
         "docs/specification/planning/project-budget-and-realized-margin.md",
-        "docs/reporting/sales-profitability-and-attribution.md"
+        "docs/reporting/sales-profitability-and-attribution.md",
+        "docs/operator-reports/people-and-sales-attribution.md"
       ],
       "focus": "Line cost selection and distinction between margin on cost and margin on selling price."
     },
@@ -436,7 +500,9 @@
         "docs/specification/operations/stock-at-date-and-value.md",
         "docs/specification/planning/workstation-requirements-and-cost.md",
         "docs/reporting/stock-fulfillment-and-production.md",
-        "docs/journeys/building-against-a-shortage.md"
+        "docs/journeys/building-against-a-shortage.md",
+        "docs/warehouse-corrections/manufacturing-actuals.md",
+        "docs/document-models/project-and-manufacturing-sheets.md"
       ],
       "focus": "Manufacturing order quantities, material consumption, production and correction."
     },
@@ -444,7 +510,8 @@
       "key": "MultiCurrency",
       "guides": [
         "docs/treasury/bank-and-obligations.md",
-        "docs/finance/collections.md"
+        "docs/finance/collections.md",
+        "docs/international/currency-from-quotation-to-settlement.md"
       ],
       "focus": "Historical exchange rate selection and foreign-currency invoice settlement."
     },
@@ -460,14 +527,17 @@
     {
       "key": "Oauth",
       "guides": [
-        "docs/integrations/identity-directories-and-files.md"
+        "docs/integrations/identity-directories-and-files.md",
+        "docs/records/operational-evidence.md"
       ],
       "focus": "Provider authorization, scope and callback checks, token metadata storage and local removal."
     },
     {
       "key": "OpenSurvey",
       "guides": [
-        "docs/communications/surveys.md"
+        "docs/communications/surveys.md",
+        "docs/public-workflows/README.md",
+        "docs/records/operational-evidence.md"
       ],
       "focus": "Poll publication, voting modes, answer choices and participation controls."
     },
@@ -507,7 +577,8 @@
       "key": "Printing",
       "guides": [
         "docs/integrations/authoring-and-workspace.md",
-        "docs/specification/output/document-models-and-delivery.md"
+        "docs/specification/output/document-models-and-delivery.md",
+        "docs/document-models/README.md"
       ],
       "focus": "Per-user printer selection, fallback and IPP job submission."
     },
@@ -522,7 +593,12 @@
         "docs/specification/operations/stock-at-date-and-value.md",
         "docs/specification/information/category-trees-and-localized-values.md",
         "docs/specification/equipment/barcode-identities-and-label-sheets.md",
-        "docs/settings/parties-and-catalogue.md"
+        "docs/settings/parties-and-catalogue.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/warehouse-corrections/tracking-mode-conversion.md",
+        "docs/operator-reports/item-document-history.md",
+        "docs/operator-reports/catalogue-monthly-measures.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Product identity, supplier offers, selling prices and stock eligibility."
     },
@@ -530,7 +606,10 @@
       "key": "ProductBatch",
       "guides": [
         "docs/supply/stock.md",
-        "docs/specification/operations/lot-identity-and-traceability.md"
+        "docs/specification/operations/lot-identity-and-traceability.md",
+        "docs/warehouse-corrections/receipt-cost-and-reversal.md",
+        "docs/warehouse-corrections/shared-lot-and-posting-order.md",
+        "docs/warehouse-corrections/tracking-mode-conversion.md"
       ],
       "focus": "Lot identity and dates, per-warehouse quantities, movement and count adjustments."
     },
@@ -544,7 +623,10 @@
         "docs/reporting/projects-time-and-staff-costs.md",
         "docs/permissions/decisions.md",
         "docs/journeys/commissioning-time-to-cash.md",
-        "docs/settings/projects-and-workforce.md"
+        "docs/settings/projects-and-workforce.md",
+        "docs/document-models/project-and-manufacturing-sheets.md",
+        "docs/operator-reports/project-list-and-opportunity-filters.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Project visibility, task work, historical labour cost and invoicing of selected time."
     },
@@ -557,7 +639,12 @@
         "docs/specification/commercial/sales-conversion-and-partial-billing.md",
         "docs/reporting/commercial-statistics-and-turnover.md",
         "docs/settings/commercial.md",
-        "docs/specification/administration/commercial-message-delivery.md"
+        "docs/specification/administration/commercial-message-delivery.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/bulk-operations/README.md",
+        "docs/document-models/README.md",
+        "docs/public-workflows/document-decisions.md"
       ],
       "focus": "Proposal state changes, prices and conversion to a customer order."
     },
@@ -577,7 +664,12 @@
         "docs/specification/commercial/purchase-receipt-inspection.md",
         "docs/specification/operations/receipts-allocations-and-order-completion.md",
         "docs/specification/output/shipment-and-reception-notes.md",
-        "docs/policies/stock-posting-decisions.md"
+        "docs/policies/stock-posting-decisions.md",
+        "docs/warehouse-corrections/receipt-cost-and-reversal.md",
+        "docs/warehouse-corrections/shared-lot-and-posting-order.md",
+        "docs/bulk-operations/README.md",
+        "docs/list-filters/README.md",
+        "docs/document-models/README.md"
       ],
       "focus": "Order-linked receipt validation, quantities and configurable stock posting."
     },
@@ -585,7 +677,9 @@
       "key": "Recruitment",
       "guides": [
         "docs/workforce/recruitment-and-skills.md",
-        "docs/specification/organization/recruitment-intake-and-employee-handoff.md"
+        "docs/specification/organization/recruitment-intake-and-employee-handoff.md",
+        "docs/workforce-operations/evaluation-and-hiring-queues.md",
+        "docs/records/operational-evidence.md"
       ],
       "focus": "Vacancy and application decisions and separate creation of the hired employee's user account."
     },
@@ -613,7 +707,10 @@
         "docs/people-services/service-delivery.md",
         "docs/specification/people-and-services/contract-services-and-work-templates.md",
         "docs/specification/information/category-trees-and-localized-values.md",
-        "docs/journeys/commissioning-time-to-cash.md"
+        "docs/journeys/commissioning-time-to-cash.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/operator-reports/item-document-history.md",
+        "docs/operator-reports/catalogue-monthly-measures.md"
       ],
       "focus": "Catalogue service type, optional stock eligibility and contract-line activation."
     },
@@ -634,7 +731,11 @@
         "docs/specification/information/custom-attributes-and-owned-notes.md",
         "docs/reporting/sales-profitability-and-attribution.md",
         "docs/policies/identity-and-numbering.md",
-        "docs/settings/parties-and-catalogue.md"
+        "docs/settings/parties-and-catalogue.md",
+        "docs/international/language-and-business-identity.md",
+        "docs/bulk-operations/README.md",
+        "docs/operator-reports/people-and-sales-attribution.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Party roles, contacts, sales ownership and consolidation of duplicate accounts."
     },
@@ -652,7 +753,11 @@
         "docs/reporting/stock-fulfillment-and-production.md",
         "docs/policies/stock-posting-decisions.md",
         "docs/permissions/decisions.md",
-        "docs/journeys/building-against-a-shortage.md"
+        "docs/journeys/building-against-a-shortage.md",
+        "docs/warehouse-corrections/receipt-cost-and-reversal.md",
+        "docs/warehouse-corrections/shared-lot-and-posting-order.md",
+        "docs/warehouse-corrections/movement-journal-and-counts.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Warehouse balances, inventory movements, weighted average cost, replenishment and counts."
     },
@@ -660,7 +765,8 @@
       "key": "StockTransfer",
       "guides": [
         "docs/supply/stock.md",
-        "docs/specification/operations/stocktake-and-transfer.md"
+        "docs/specification/operations/stocktake-and-transfer.md",
+        "docs/warehouse-corrections/movement-journal-and-counts.md"
       ],
       "focus": "Separate dispatch and receipt of inter-warehouse transfers and movement reconciliation."
     },
@@ -687,7 +793,12 @@
         "docs/coverage/README.md",
         "docs/specification/financial/payment-terms-and-settlement-adjustments.md",
         "docs/specification/financial/recurring-invoice-generation.md",
-        "docs/specification/accounting/source-journal-postings.md"
+        "docs/specification/accounting/source-journal-postings.md",
+        "docs/international/currency-from-quotation-to-settlement.md",
+        "docs/bulk-operations/README.md",
+        "docs/list-filters/README.md",
+        "docs/services/supplier-invoice-line-inputs.md",
+        "docs/finance/supplier-account-preparation.md"
       ],
       "focus": "Split supplier invoice activation, validation, payment allocation and closure."
     },
@@ -702,7 +813,9 @@
         "docs/specification/operations/replenishment-and-supplier-drafts.md",
         "docs/policies/stock-posting-decisions.md",
         "docs/journeys/building-against-a-shortage.md",
-        "docs/settings/commercial.md"
+        "docs/settings/commercial.md",
+        "docs/bulk-operations/README.md",
+        "docs/list-filters/README.md"
       ],
       "focus": "Split supplier order activation, approval levels, dispatch and receipt."
     },
@@ -711,7 +824,8 @@
       "guides": [
         "docs/supply/purchasing.md",
         "docs/specification/commercial/supplier-sourcing-and-approval.md",
-        "docs/settings/commercial.md"
+        "docs/settings/commercial.md",
+        "docs/bulk-operations/README.md"
       ],
       "focus": "Supplier enquiry lifecycle and conversion of the response into a procurement commitment."
     },
@@ -737,7 +851,8 @@
         "docs/treasury/bank-and-obligations.md",
         "docs/additional-domains/tax-geography-and-rounding.md",
         "docs/specification/accounting/tax-recognition-and-remittance.md",
-        "docs/localization/tax-selection.md"
+        "docs/localization/tax-selection.md",
+        "docs/regional-reporting/README.md"
       ],
       "focus": "VAT and social-charge obligations and their settlement, with related geographic rate selection for invoice lines."
     },
@@ -749,7 +864,10 @@
         "docs/specification/people-and-services/ticket-routing-and-conversation.md",
         "docs/specification/channels/mail-intake-routing-and-replay.md",
         "docs/specification/organization/knowledge-publication-and-ticket-suggestions.md",
-        "docs/reporting/operational-dashboards-and-replenishment.md"
+        "docs/reporting/operational-dashboards-and-replenishment.md",
+        "docs/workforce-operations/service-teams-and-batch-resolution.md",
+        "docs/list-filters/README.md",
+        "docs/public-workflows/README.md"
       ],
       "focus": "Assignment, resolution and intervention updates, including incoming mail creating or updating ticket activity."
     },
@@ -763,7 +881,9 @@
         "docs/policies/identity-and-numbering.md",
         "docs/policies/company-and-settings.md",
         "docs/permissions/decisions.md",
-        "docs/services/credential-lifecycle.md"
+        "docs/services/credential-lifecycle.md",
+        "docs/operator-reports/people-and-sales-attribution.md",
+        "docs/dashboards/README.md"
       ],
       "focus": "Entity scope, group and direct grants, advanced rights and record-level checks."
     },
@@ -796,7 +916,8 @@
       "key": "Website",
       "guides": [
         "docs/communications/web-and-portal.md",
-        "docs/specification/channels/site-publication-and-translations.md"
+        "docs/specification/channels/site-publication-and-translations.md",
+        "docs/international/language-and-business-identity.md"
       ],
       "focus": "Site and page status, publication permissions, aliases and language variants."
     },
@@ -815,7 +936,9 @@
       "guides": [
         "docs/operations/manufacturing.md",
         "docs/specification/planning/workstation-requirements-and-cost.md",
-        "docs/journeys/building-against-a-shortage.md"
+        "docs/journeys/building-against-a-shortage.md",
+        "docs/warehouse-corrections/manufacturing-actuals.md",
+        "docs/document-models/project-and-manufacturing-sheets.md"
       ],
       "focus": "Workstation group and resource associations and operator and machine rates in BOM service costing."
     }

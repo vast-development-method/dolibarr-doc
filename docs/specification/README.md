@@ -2,6 +2,15 @@
 
 Choose a decision or transaction. For a particular data field, use the [record dictionary](../records/README.md). For an integration call, use the [service contracts](../services/README.md). For a result on a report, use the [reporting guide](../reporting/README.md).
 
+## Decisions spanning several specifications
+
+| Starting event | Detailed decision and outcome |
+| --- | --- |
+| A party requests a quote in another currency or language | [Document rate and final collection](../international/currency-from-quotation-to-settlement.md) · [Customer language, catalogue wording and printed terms](../international/language-and-business-identity.md) · [Fields delivered to the recipient](../document-models/README.md) |
+| A clerk selects several source orders, an allocation fails, or a production issue is reversed | [Bulk actions and financial effects](../bulk-operations/README.md) · [Posting, reopening and valuation](../warehouse-corrections/README.md) |
+| An approval is delegated or a visitor submits a request | [Workforce authority and service queues](../workforce-operations/README.md) · [Public entry points and persistent effects](../public-workflows/README.md) |
+| A reported result needs reconciliation | [Commercial and project reports](../operator-reports/README.md) · [Dashboard and work queues](../dashboards/README.md) · [List filters](../list-filters/README.md) · [Tax enquiries and declaration evidence](../regional-reporting/README.md) · [Ledger fields by export format](../exports/ledger-layouts.md) |
+
 ## Sales and purchasing
 
 Follow prices and approvals into allocations, liabilities and customer exposure.
@@ -52,6 +61,8 @@ Trace terms, statement reconciliation, recurring charges, fixed assets and ledge
 - [Manual ledger movements and matching](financial/manual-ledger-and-account-matching.md)
 - [Payment terms, collection requests and settlement discounts](financial/payment-terms-and-settlement-adjustments.md)
 - [Recurring customer and supplier invoices](financial/recurring-invoice-generation.md)
+- [Supplier invoice assignment and purchase-journal transfer](../finance/supplier-account-preparation.md)
+- [Scheduled and actual loan instalments](../capital/loan-schedule-and-settlement.md)
 - [Trial balances and ledger exports](financial/trial-balances-and-ledger-exports.md)
 
 ## Tax, journals and financial statements

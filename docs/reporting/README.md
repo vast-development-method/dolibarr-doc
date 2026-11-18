@@ -12,5 +12,10 @@ A report needs a defined population, date, grain and treatment of signs and curr
 | [Aging open invoices and forecasting a bank balance](receivables-aging-and-cash-forecast.md) | Open items by due date, credits, payments and the populations in the planned cash view. |
 | [Gross margin by customer and sales representative](sales-profitability-and-attribution.md) | Signed margin, its denominator, missing purchase cost and shared sales representatives. |
 | [Event registration, capacity and participant economics](event-participation.md) | Registered, eligible, checked-in, paid and revenue-producing populations. |
+| [Home work queues and widget catalogue](../dashboards/README.md) | Distinguishes overdue items, state counts, top lists and graphs, including permission and date differences. |
+| [Operator lists and search fields](../list-filters/README.md) | Identifies the eligible records, filters and joins behind each surveyed list. |
+| [Catalogue, sales force and project reports](../operator-reports/README.md) | Reconciles product history with monthly measures, customer order lines, sales attribution and the opportunity list. |
+| [Regional tax reporting and evidence](../regional-reporting/README.md) | Separates transaction month, date range, reported party, regional component, declaration and remittance. |
+| [Ledger exports](../exports/ledger-layouts.md) | Identifies record type, order, positions and treatment of money and dates for the 21 built-in layouts. |
 
 [Journal postings](../specification/accounting/source-journal-postings.md) · [Financial statement groupings](../specification/accounting/financial-statements-and-analytic-dimensions.md) · [Report storage records](../records/accounting.md)
