@@ -1,0 +1,10 @@
+{
+  "entityId": 1,
+  "bankAccountId": 9,
+  "kind": "creditTransfer",
+  "source": "salary",
+  "executionDate": "2026-11-13",
+  "requestIds": [
+    122
+  ]
+}

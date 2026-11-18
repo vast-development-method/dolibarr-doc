@@ -1,0 +1,20 @@
+# Close a fiscal period and carry balances forward
+
+Closing a period transfers a reporting boundary. Operational invoices and payments keep their original source dates. The closing routine can create opening entries in the next period and a separate step can reverse selected inventory-journal entries. [Closure screen][ui]
+
+| Command | Input or restriction | Effect |
+| --- | --- | --- |
+| Validate movements | Fiscal-year write permission, entity and date interval. | Set validation timestamp on ledger rows in the inclusive interval whose validation timestamp is empty. Other entities and existing timestamps are unaffected. |
+| Close period | Current period must exist and have an end date. Target period must exist and start **after** that end. A later start suffices for the domain check. | Set current period closed. When generating entries, load the configured closure journal, balance-sheet account groups and income-statement groups. Failure rolls back both the status update and generated rows in the operation. |
+| Generate opening balances | Scope ledger rows to company, chosen chart version, configured groups and current period dates. Group by general account and optionally auxiliary account. | For each non-zero balance-sheet group calculate credit minus debit. A negative balance becomes a debit of its absolute amount in the new period, a positive balance a credit. Source is the old fiscal period, operation date the start of the new one. |
+| Carry profit/loss | Sum credit minus debit across the income-statement groups. | Positive result credits the configured profit account. Negative result debits the configured loss account. A zero result produces no result row. |
+| Reverse selected inventory-journal entries | Explicit current period, new period, journal and date interval. | Choose eligible journal rows inside both date ranges. Copy each with sides exchanged, date it at the new period start and assign reversal provenance. This operation is separate from generating opening balances. |
+
+[Validation and profit computation][validate] · [Closing selection and postings][close] · [Reversals][reverse]
+
+**TR-CLOSE-01.** Suppose the only ledger activity in the year is a sale of 100.00 without tax, paid immediately, and a bank-paid expense of 40.00. Closing balances are debit bank 60.00, credit revenue 100.00 and debit expense 40.00. With bank in the balance-sheet groups and revenue/expense in the income groups, expect two opening lines dated the first day of the next period, bank debit 60.00 and profit credit 60.00. Sales and expense remain visible in the old year. **TR-CLOSE-02.** Attempt to close into a period starting on the final day of the old period. Reject before status or opening rows change. **TR-CLOSE-03.** Run the closure with entry generation requested and a missing closure journal. The period status change inside the transaction is rolled back. **TR-CLOSE-04.** If receivables contain debit 80.00 for customer A and credit 20.00 for customer B, separate auxiliaries preserve an 80.00 debit and a 20.00 credit. Without the auxiliary grouping the opening receivables line is debit 60.00.
+
+[ui]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/closure/index.php#L140-L196
+[validate]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L2924-L2997
+[close]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L3008-L3278
+[reverse]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L3291-L3420
