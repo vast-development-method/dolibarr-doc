@@ -1,0 +1,50 @@
+country_code,country_name,model,availability,account_rows,inactive_account_rows,predefined_income_rows,predefined_expense_rows,registry_line,account_file
+AD,Andorra,PCG15-PYME-AD,unregistered,393,0,0,0,,htdocs/install/mysql/data/llx_accounting_account_ad.sql
+AT,Austria,AT-BASE,registered,321,0,0,0,96,htdocs/install/mysql/data/llx_accounting_account_at.sql
+AT,Austria,AT-BASE-2,unregistered,205,0,0,0,,htdocs/install/mysql/data/llx_accounting_account_at.sql
+BE,Belgium,MAR-VERKORT,registered,427,0,49,112,61,htdocs/install/mysql/data/llx_accounting_account_be.sql
+BE,Belgium,PCMN-BASE,registered,915,0,91,195,59,htdocs/install/mysql/data/llx_accounting_account_be.sql
+BF,Burkina Faso,SYSCOHADA-BF,registered,1227,0,106,250,128,htdocs/install/mysql/data/llx_accounting_account_bf.sql
+BJ,Benin,SYSCOHADA-BJ,registered,1227,0,106,250,125,htdocs/install/mysql/data/llx_accounting_account_bj.sql
+CA,Canada,CA-ENG-BASE,registered,153,0,10,63,176,htdocs/install/mysql/data/llx_accounting_account_ca.sql
+CD,DR Congo (RDC),SYSCOHADA-CD,registered,1227,0,106,250,131,htdocs/install/mysql/data/llx_accounting_account_cd.sql
+CF,Central African Republic (CAR/RCA),SYSCOHADA-CF,registered,1227,0,106,250,134,htdocs/install/mysql/data/llx_accounting_account_cf.sql
+CG,Congo,SYSCOHADA-CG,registered,1227,0,106,250,137,htdocs/install/mysql/data/llx_accounting_account_cg.sql
+CH,Switzerland,PCG_SUISSE,alternate-file,254,0,0,0,,htdocs/install/mysql/data/llx_accounting_account_ch_de.sql
+CH,Switzerland,PCG_SUISSE,registered,254,0,0,0,75,htdocs/install/mysql/data/llx_accounting_account_ch.sql
+CI,Ivory Cost,SYSCOHADA-CI,registered,1227,0,106,250,140,htdocs/install/mysql/data/llx_accounting_account_ci.sql
+CL,Chile,PC-MIPYME,registered,152,0,0,0,99,htdocs/install/mysql/data/llx_accounting_account_cl.sql
+CM,Cameroun,SYSCOHADA-CM,registered,1227,0,106,250,143,htdocs/install/mysql/data/llx_accounting_account_cm.sql
+CO,Colombia,CO-PUC,registered,2502,0,0,0,108,htdocs/install/mysql/data/llx_accounting_account_co.sql
+DE,Germany,SKR03,registered,2243,0,0,0,70,htdocs/install/mysql/data/llx_accounting_account_de.sql
+DE,Germany,SKR04,registered,2421,0,0,0,72,htdocs/install/mysql/data/llx_accounting_account_de.sql
+DK,Denmark,DK-STD,registered,90,0,0,0,102,htdocs/install/mysql/data/llx_accounting_account_dk.sql
+DZ,Algeria,NSCF,registered,812,0,119,206,87,htdocs/install/mysql/data/llx_accounting_account_dz.sql
+EC,Republic of Ecuador,EC-SUPERCIAS,registered,445,0,0,0,105,htdocs/install/mysql/data/llx_accounting_account_ec.sql
+ES,Spain,PCG08-PYME,registered,781,0,129,162,64,htdocs/install/mysql/data/llx_accounting_account_es.sql
+ES,Spain,PCG08-PYME-CAT,registered,779,0,0,0,67,htdocs/install/mysql/data/llx_accounting_account_es.sql
+FR,France,PCG18-ASSOC,registered,783,0,121,227,54,htdocs/install/mysql/data/llx_accounting_account_fr.sql
+FR,France,PCG25-DEV,registered,838,2,117,237,52,htdocs/install/mysql/data/llx_accounting_account_fr.sql
+FR,France,PCGAFR14-DEV,registered,1119,0,140,300,56,htdocs/install/mysql/data/llx_accounting_account_fr.sql
+GA,Gabon,SYSCOHADA-GA,registered,1227,0,106,250,146,htdocs/install/mysql/data/llx_accounting_account_ga.sql
+GB,United Kingdom,ENG-BASE,registered,343,0,47,72,78,htdocs/install/mysql/data/llx_accounting_account_gb.sql
+GQ,Equatorial Guinea,SYSCOHADA-GQ,registered,1227,0,106,250,149,htdocs/install/mysql/data/llx_accounting_account_gq.sql
+GR,Greece,Ε.Λ.Π.,registered,460,0,0,0,117,htdocs/install/mysql/data/llx_accounting_account_gr.sql
+JP,Japan,JPN-BASE,registered,330,0,22,135,182,htdocs/install/mysql/data/llx_accounting_account_jp.sql
+KM,Comoros,SYSCOHADA-KM,registered,1227,0,106,250,152,htdocs/install/mysql/data/llx_accounting_account_km.sql
+LU,Luxembourg,PCN2020-LUXEMBURG,registered,756,0,159,263,111,htdocs/install/mysql/data/llx_accounting_account_lu.sql
+MA,Morocco,PCG,registered,843,0,152,253,84,htdocs/install/mysql/data/llx_accounting_account_ma.sql
+ML,Mali,SYSCOHADA-ML,registered,1227,0,106,250,155,htdocs/install/mysql/data/llx_accounting_account_ml.sql
+MX,Mexico,SAT/24-2019,registered,1080,0,0,0,179,htdocs/install/mysql/data/llx_accounting_account_mx.sql
+NC,New Caledonia,PCG99-ABREGE-NC,registered,109,0,20,20,185,htdocs/install/mysql/data/llx_accounting_account_nc.sql
+NC,New Caledonia,PCG99-BASE-NC,registered,343,0,47,72,187,htdocs/install/mysql/data/llx_accounting_account_nc.sql
+NE,Niger,SYSCOHADA-NE,registered,1227,0,106,250,158,htdocs/install/mysql/data/llx_accounting_account_ne.sql
+NL,Netherlands,NL-VERKORT,registered,84,0,5,48,90,htdocs/install/mysql/data/llx_accounting_account_nl.sql
+RO,Romania,RO-BASE,registered,616,0,72,94,114,htdocs/install/mysql/data/llx_accounting_account_ro.sql
+SE,Sweden,BAS-K1-MINI,registered,28,0,4,4,93,htdocs/install/mysql/data/llx_accounting_account_se.sql
+SN,Senegal,SYSCOHADA-SN,registered,1227,0,106,250,161,htdocs/install/mysql/data/llx_accounting_account_sn.sql
+TD,Chad,SYSCOHADA-TD,registered,1227,0,106,250,164,htdocs/install/mysql/data/llx_accounting_account_td.sql
+TG,Togo,SYSCOHADA-TG,registered,1227,0,106,250,167,htdocs/install/mysql/data/llx_accounting_account_tg.sql
+TN,Tunisia,PCT,registered,606,0,70,160,81,htdocs/install/mysql/data/llx_accounting_account_tn.sql
+US,United States,US-BASE,registered,137,0,11,63,170,htdocs/install/mysql/data/llx_accounting_account_us.sql
+US,United States,US-GAAP-BASIC,registered,136,0,0,0,173,htdocs/install/mysql/data/llx_accounting_account_us.sql
