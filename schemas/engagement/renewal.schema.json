@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Book a membership renewal",
+  "description": "Normalized operator command. The configured member type supplies a missing end date. Application logic validates chronological order and resolves the linked payer for an invoice.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "memberId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "startsOn": {
+      "type": "string",
+      "format": "date"
+    },
+    "endsOn": {
+      "type": "string",
+      "format": "date"
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0
+    },
+    "financialMode": {
+      "enum": [
+        "subscriptionOnly",
+        "directBank",
+        "invoiceOnly",
+        "invoiceAndBank"
+      ]
+    },
+    "paymentDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "bankAccountId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "paymentMethod": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "memberId",
+    "startsOn",
+    "amount",
+    "financialMode"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "financialMode": {
+            "enum": [
+              "directBank",
+              "invoiceAndBank"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "paymentDate",
+          "bankAccountId",
+          "paymentMethod",
+          "label"
+        ],
+        "properties": {
+          "amount": {
+            "exclusiveMinimum": 0
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "bankAccountId"
+              ]
+            },
+            {
+              "required": [
+                "paymentDate"
+              ]
+            },
+            {
+              "required": [
+                "paymentMethod"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

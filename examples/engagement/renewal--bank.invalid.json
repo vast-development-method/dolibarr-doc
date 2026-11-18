@@ -1,0 +1,9 @@
+{
+  "memberId": 42,
+  "startsOn": "2026-11-01",
+  "amount": 115,
+  "financialMode": "directBank",
+  "paymentDate": "2026-11-02",
+  "paymentMethod": "VIR",
+  "label": "Annual membership"
+}
