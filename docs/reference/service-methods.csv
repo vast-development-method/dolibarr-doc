@@ -34,7 +34,6 @@ htdocs/adherents/class/api_subscriptions.class.php,delete,id,,,290
 htdocs/api/class/api_documents.class.php,index,modulepart original_file,GET,/download,72
 htdocs/api/class/api_documents.class.php,builddoc,modulepart original_file doctemplate langcode,PUT,/builddoc,178
 htdocs/api/class/api_documents.class.php,getDocumentsListByElement,modulepart id ref sortfield sortorder limit page content_type pagination_data,GET,/,471
-htdocs/api/class/api_documents.class.php,get,id,,,725
 htdocs/api/class/api_documents.class.php,post,filename modulepart ref subdir filecontent fileencoding overwriteifexists createdirifnotexists position cover array_options generateThumbs share,POST,/upload,766
 htdocs/api/class/api_documents.class.php,delete,modulepart original_file,DELETE,/,1127
 htdocs/api/class/api_emailtemplates.class.php,deleteById,id,DELETE,{id},93
@@ -264,15 +263,10 @@ htdocs/eventorganization/class/api_eventattendees.class.php,putByRef,ref request
 htdocs/expedition/class/api_shipments.class.php,get,id,,,69
 htdocs/expedition/class/api_shipments.class.php,index,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,109
 htdocs/expedition/class/api_shipments.class.php,post,request_data,,,222
-htdocs/expedition/class/api_shipments.class.php,getLines,id,,,292
-htdocs/expedition/class/api_shipments.class.php,postLine,id request_data,,,328
-htdocs/expedition/class/api_shipments.class.php,putLine,id lineid request_data,,,396
 htdocs/expedition/class/api_shipments.class.php,deleteLine,id lineid,DELETE,{id}/lines/{lineid},465
 htdocs/expedition/class/api_shipments.class.php,put,id request_data,,,504
 htdocs/expedition/class/api_shipments.class.php,delete,id,,,553
 htdocs/expedition/class/api_shipments.class.php,validate,id notrigger,POST,{id}/validate,598
-htdocs/expedition/class/api_shipments.class.php,setinvoiced,id,,,643
-htdocs/expedition/class/api_shipments.class.php,createShipmentFromOrder,orderid,,,680
 htdocs/expedition/class/api_shipments.class.php,close,id notrigger,POST,{id}/close,720
 htdocs/expensereport/class/api_expensereports.class.php,get,id,,,109
 htdocs/expensereport/class/api_expensereports.class.php,index,sortfield sortorder limit page user_ids sqlfilters properties pagination_data,,,149
@@ -297,7 +291,6 @@ htdocs/fichinter/class/api_interventions.class.php,get,id ref ref_ext contact_li
 htdocs/fichinter/class/api_interventions.class.php,index,sortfield sortorder limit page thirdparty_ids sqlfilters properties contact_type pagination_data loadlinkedobjects,,,146
 htdocs/fichinter/class/api_interventions.class.php,post,request_data,,,272
 htdocs/fichinter/class/api_interventions.class.php,put,id request_data,,,309
-htdocs/fichinter/class/api_interventions.class.php,getLines,id,,,359
 htdocs/fichinter/class/api_interventions.class.php,postLine,id request_data,POST,{id}/lines,398
 htdocs/fichinter/class/api_interventions.class.php,delete,id,,,451
 htdocs/fichinter/class/api_interventions.class.php,validate,id notrigger,POST,{id}/validate,496
@@ -391,7 +384,7 @@ htdocs/product/class/api_products.class.php,getCategories,id sortfield sortorder
 htdocs/product/class/api_products.class.php,getCustomerPricesPerSegment,id,GET,{id}/selling_multiprices/per_segment,763
 htdocs/product/class/api_products.class.php,getCustomerPricesPerCustomer,id thirdparty_id,GET,{id}/selling_multiprices/per_customer,809
 htdocs/product/class/api_products.class.php,getCustomerPricesPerQuantity,id,GET,{id}/selling_multiprices/per_quantity,862
-htdocs/product/class/api_products.class.php,addPurchasePrice,id qty buyprice price_base_type fourn_id availability ref_fourn tva_tx charges remise_percent remise newnpr delivery_time_days supplier_reputation localtaxes_array,POST,{id}/purchase_prices,927
+htdocs/product/class/api_products.class.php,addPurchasePrice,id qty buyprice price_base_type fourn_id availability ref_fourn tva_tx charges remise_percent remise newnpr delivery_time_days supplier_reputation localtaxes_array newdefaultvatcode multicurrency_buyprice multicurrency_price_base_type multicurrency_tx multicurrency_code desc_fourn barcode fk_barcode_type,POST,{id}/purchase_prices,927
 htdocs/product/class/api_products.class.php,deletePurchasePrice,id priceid,DELETE,{id}/purchase_prices/{priceid},986
 htdocs/product/class/api_products.class.php,getSupplierProducts,sortfield sortorder limit page mode category supplier sqlfilters,GET,purchase_prices,1029
 htdocs/product/class/api_products.class.php,getPurchasePrices,id ref ref_ext barcode,GET,{id}/purchase_prices,1141
@@ -429,8 +422,6 @@ htdocs/product/stock/class/api_productlots.class.php,delete,id,,,326
 htdocs/product/stock/class/api_stockmovements.class.php,get,id,GET,{id},77
 htdocs/product/stock/class/api_stockmovements.class.php,index,sortfield sortorder limit page sqlfilters properties pagination_data,,,115
 htdocs/product/stock/class/api_stockmovements.class.php,post,product_id warehouse_id qty type batch movementcode label price datem sellBy eatBy origin_type origin_id,,,217
-htdocs/product/stock/class/api_stockmovements.class.php,put,id request_data,,,260
-htdocs/product/stock/class/api_stockmovements.class.php,delete,id,,,294
 htdocs/product/stock/class/api_warehouses.class.php,get,id,GET,{id},74
 htdocs/product/stock/class/api_warehouses.class.php,index,sortfield sortorder limit page category sqlfilters properties pagination_data,GET,,120
 htdocs/product/stock/class/api_warehouses.class.php,post,request_data,POST,,216
@@ -447,8 +438,6 @@ htdocs/projet/class/api_projects.class.php,addContact,id fk_socpeople type_conta
 htdocs/projet/class/api_projects.class.php,deleteContact,id contactid type,DELETE,{id}/contact/{contactid}/{type},459
 htdocs/projet/class/api_projects.class.php,getLines,id includetimespent,GET,{id}/tasks,501
 htdocs/projet/class/api_projects.class.php,getRoles,id userid,GET,{id}/roles,542
-htdocs/projet/class/api_projects.class.php,postLine,id request_data,,,587
-htdocs/projet/class/api_projects.class.php,putLine,id lineid request_data,,,656
 htdocs/projet/class/api_projects.class.php,put,id request_data,,,721
 htdocs/projet/class/api_projects.class.php,delete,id,,,771
 htdocs/projet/class/api_projects.class.php,validate,id notrigger,POST,{id}/validate,820
@@ -462,8 +451,6 @@ htdocs/projet/class/api_tasks.class.php,index,sortfield sortorder limit page sql
 htdocs/projet/class/api_tasks.class.php,post,request_data,,,227
 htdocs/projet/class/api_tasks.class.php,getTimespent,id,GET,{id}/timespent,312
 htdocs/projet/class/api_tasks.class.php,getRoles,id userid,GET,{id}/roles,350
-htdocs/projet/class/api_tasks.class.php,postLine,id request_data,,,395
-htdocs/projet/class/api_tasks.class.php,putLine,id lineid request_data,,,464
 htdocs/projet/class/api_tasks.class.php,put,id request_data,,,527
 htdocs/projet/class/api_tasks.class.php,delete,id,,,579
 htdocs/projet/class/api_tasks.class.php,getTimeSpentByID,id timespent_id,GET,{id}/getTimeSpent/{timespent_id},619
@@ -476,15 +463,10 @@ htdocs/projet/class/api_tasks.class.php,deleteContact,id contactid type,DELETE,{
 htdocs/reception/class/api_receptions.class.php,get,id,,,67
 htdocs/reception/class/api_receptions.class.php,index,sortfield sortorder limit page thirdparty_ids sqlfilters properties pagination_data,,,107
 htdocs/reception/class/api_receptions.class.php,post,request_data,,,211
-htdocs/reception/class/api_receptions.class.php,getLines,id,,,271
-htdocs/reception/class/api_receptions.class.php,postLine,id request_data,,,307
-htdocs/reception/class/api_receptions.class.php,putLine,id lineid request_data,,,377
 htdocs/reception/class/api_receptions.class.php,deleteLine,id lineid,DELETE,{id}/lines/{lineid},444
 htdocs/reception/class/api_receptions.class.php,put,id request_data,,,489
 htdocs/reception/class/api_receptions.class.php,delete,id,,,538
 htdocs/reception/class/api_receptions.class.php,validate,id notrigger,POST,{id}/validate,583
-htdocs/reception/class/api_receptions.class.php,setinvoiced,id,,,628
-htdocs/reception/class/api_receptions.class.php,createShipmentFromOrder,orderid,,,665
 htdocs/reception/class/api_receptions.class.php,close,id notrigger,POST,{id}/close,705
 htdocs/recruitment/class/api_recruitments.class.php,getJobPosition,id,GET,jobposition/{id},78
 htdocs/recruitment/class/api_recruitments.class.php,getCandidature,id,GET,candidature/{id},109

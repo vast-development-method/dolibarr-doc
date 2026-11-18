@@ -17,11 +17,13 @@ rights_def,family,varchar(64),nullable,,,llx_rights_def.sql,28
 rights_def,family_position,integer,required,0,,llx_rights_def.sql,29
 rights_def,perms,varchar(50),nullable,,,llx_rights_def.sql,30
 rights_def,subperms,varchar(50),nullable,,,llx_rights_def.sql,31
+rights_def,type,varchar(1),nullable,,,llx_rights_def.sql,32
 rights_def,bydefault,tinyint,nullable,0,,llx_rights_def.sql,33
 rights_def,enabled,text,nullable,,,llx_rights_def.sql,34
 user,rowid,integer,required,,primary,llx_user.sql,23
 user,entity,integer,required,1,,llx_user.sql,24
 user,ref_employee,varchar(50),nullable,,,llx_user.sql,26
+user,ref_ext,varchar(50),nullable,,,llx_user.sql,27
 user,admin,smallint,nullable,0,,llx_user.sql,29
 user,employee,tinyint,nullable,1,,llx_user.sql,31
 user,fk_establishment,integer,nullable,0,,llx_user.sql,32
@@ -162,6 +164,7 @@ extrafields,fieldcomputed,text,nullable,,,llx_extrafields.sql,29
 extrafields,fielddefault,text,nullable,,,llx_extrafields.sql,30
 extrafields,fieldunique,integer,nullable,0,,llx_extrafields.sql,31
 extrafields,fieldrequired,integer,nullable,0,,llx_extrafields.sql,32
+extrafields,perms,varchar(255),nullable,,,llx_extrafields.sql,33
 extrafields,enabled,varchar(255),nullable,,,llx_extrafields.sql,34
 extrafields,module,varchar(64),nullable,,,llx_extrafields.sql,35
 extrafields,pos,integer,nullable,0,,llx_extrafields.sql,36
@@ -306,9 +309,9 @@ oauth_token,datec,datetime,nullable,NULL,,llx_oauth_token.sql,30
 oauth_token,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_oauth_token.sql,31
 oauth_token,entity,integer,nullable,1,,llx_oauth_token.sql,32
 oauth_token,lastaccess,datetime,nullable,,,llx_oauth_token.sql,33
-oauth_token,apicount_previous_month,bigint,nullable,0,,llx_oauth_token.sql,34
-oauth_token,apicount_month,bigint,nullable,0,,llx_oauth_token.sql,35
-oauth_token,apicount_total,bigint,nullable,0,,llx_oauth_token.sql,36
+oauth_token,apicount_previous_month,bigint unsigned,nullable,0,,llx_oauth_token.sql,34
+oauth_token,apicount_month,bigint unsigned,nullable,0,,llx_oauth_token.sql,35
+oauth_token,apicount_total,bigint unsigned,nullable,0,,llx_oauth_token.sql,36
 c_action_trigger,rowid,integer,required,,primary,llx_c_action_trigger.sql,24
 c_action_trigger,elementtype,varchar(64),required,,,llx_c_action_trigger.sql,25
 c_action_trigger,code,varchar(128),required,,,llx_c_action_trigger.sql,26

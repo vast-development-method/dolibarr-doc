@@ -3,6 +3,8 @@ societe,rowid,integer,required,,primary,llx_societe.sql,27
 societe,nom,varchar(128),nullable,,,llx_societe.sql,28
 societe,name_alias,varchar(128),nullable,,,llx_societe.sql,29
 societe,entity,integer,required,1,,llx_societe.sql,30
+societe,ref_ext,varchar(255),nullable,,,llx_societe.sql,32
+societe,statut,tinyint,nullable,0,,llx_societe.sql,34
 societe,parent,integer,nullable,,,llx_societe.sql,35
 societe,status,tinyint,nullable,1,,llx_societe.sql,37
 societe,code_client,varchar(24),nullable,,,llx_societe.sql,39
@@ -38,6 +40,7 @@ societe,siret,varchar(128),nullable,,,llx_societe.sql,74
 societe,ape,varchar(128),nullable,,,llx_societe.sql,75
 societe,idprof4,varchar(128),nullable,,,llx_societe.sql,76
 societe,idprof5,varchar(128),nullable,,,llx_societe.sql,77
+societe,idprof6,varchar(128),nullable,,,llx_societe.sql,78
 societe,euid,varchar(64),nullable,,,llx_societe.sql,79
 societe,tva_intra,varchar(20),nullable,,,llx_societe.sql,80
 societe,capital,"double(24,8)",nullable,NULL,,llx_societe.sql,81
@@ -46,6 +49,7 @@ societe,note_private,text,nullable,,,llx_societe.sql,83
 societe,note_public,text,nullable,,,llx_societe.sql,84
 societe,model_pdf,varchar(255),nullable,,,llx_societe.sql,85
 societe,last_main_doc,varchar(255),nullable,,,llx_societe.sql,86
+societe,prefix_comm,varchar(5),nullable,,,llx_societe.sql,87
 societe,client,tinyint,nullable,0,,llx_societe.sql,88
 societe,fournisseur,tinyint,nullable,0,,llx_societe.sql,89
 societe,supplier_account,varchar(32),nullable,,,llx_societe.sql,90
@@ -152,6 +156,7 @@ socpeople,datec,datetime,nullable,,,llx_socpeople.sql,25
 socpeople,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_socpeople.sql,26
 socpeople,fk_soc,integer,nullable,,,llx_socpeople.sql,27
 socpeople,entity,integer,required,1,,llx_socpeople.sql,28
+socpeople,ref_ext,varchar(255),nullable,,,llx_socpeople.sql,29
 socpeople,name_alias,varchar(255),nullable,,,llx_socpeople.sql,30
 socpeople,fk_parent,integer,nullable,,,llx_socpeople.sql,31
 socpeople,civility,varchar(6),nullable,,,llx_socpeople.sql,33
@@ -241,6 +246,7 @@ societe_remise_except,multicurrency_amount_ttc,"double(24,8)",required,0,,llx_so
 propal,rowid,integer,required,,primary,llx_propal.sql,24
 propal,ref,varchar(30),required,,,llx_propal.sql,25
 propal,entity,integer,required,1,,llx_propal.sql,26
+propal,ref_ext,varchar(255),nullable,,,llx_propal.sql,28
 propal,ref_client,varchar(255),nullable,,,llx_propal.sql,29
 propal,fk_soc,integer,nullable,,,llx_propal.sql,31
 propal,fk_projet,integer,nullable,NULL,,llx_propal.sql,32
@@ -283,6 +289,7 @@ propal,fk_incoterms,integer,nullable,,,llx_propal.sql,80
 propal,location_incoterms,varchar(255),nullable,,,llx_propal.sql,81
 propal,import_key,varchar(14),nullable,,,llx_propal.sql,82
 propal,extraparams,varchar(255),nullable,,,llx_propal.sql,83
+propal,fk_delivery_address,integer,nullable,,,llx_propal.sql,84
 propal,fk_multicurrency,integer,nullable,,,llx_propal.sql,86
 propal,multicurrency_code,varchar(3),nullable,,,llx_propal.sql,87
 propal,multicurrency_tx,"double(24,8)",nullable,1,,llx_propal.sql,88
@@ -304,6 +311,8 @@ propaldet,localtax2_tx,"double(7,4)",nullable,0,,llx_propaldet.sql,36
 propaldet,localtax2_type,varchar(10),nullable,,,llx_propaldet.sql,37
 propaldet,qty,real,nullable,,,llx_propaldet.sql,38
 propaldet,remise_percent,real,nullable,0,,llx_propaldet.sql,39
+propaldet,remise,real,nullable,0,,llx_propaldet.sql,40
+propaldet,price,real,nullable,,,llx_propaldet.sql,41
 propaldet,subprice,"double(24,8)",nullable,0,,llx_propaldet.sql,42
 propaldet,subprice_ttc,"double(24,8)",nullable,0,,llx_propaldet.sql,43
 propaldet,total_ht,"double(24,8)",nullable,0,,llx_propaldet.sql,44
@@ -332,6 +341,7 @@ propaldet,extraparams,varchar(255),nullable,,,llx_propaldet.sql,70
 commande,rowid,integer,required,,primary,llx_commande.sql,24
 commande,ref,varchar(30),required,,,llx_commande.sql,25
 commande,entity,integer,required,1,,llx_commande.sql,26
+commande,ref_ext,varchar(255),nullable,,,llx_commande.sql,28
 commande,ref_client,varchar(255),nullable,,,llx_commande.sql,29
 commande,fk_soc,integer,required,,,llx_commande.sql,31
 commande,fk_projet,integer,nullable,NULL,,llx_commande.sql,32
@@ -344,8 +354,12 @@ commande,fk_user_author,integer,nullable,,,llx_commande.sql,39
 commande,fk_user_modif,integer,nullable,,,llx_commande.sql,40
 commande,fk_user_valid,integer,nullable,,,llx_commande.sql,41
 commande,fk_user_cloture,integer,nullable,,,llx_commande.sql,42
+commande,source,smallint,nullable,,,llx_commande.sql,43
 commande,fk_statut,smallint,nullable,0,,llx_commande.sql,44
 commande,amount_ht,"double(24,8)",nullable,0,,llx_commande.sql,45
+commande,remise_percent,real,nullable,0,,llx_commande.sql,47
+commande,remise_absolue,real,nullable,0,,llx_commande.sql,48
+commande,remise,real,nullable,0,,llx_commande.sql,49
 commande,total_tva,"double(24,8)",nullable,0,,llx_commande.sql,51
 commande,localtax1,"double(24,8)",nullable,0,,llx_commande.sql,52
 commande,localtax2,"double(24,8)",nullable,0,,llx_commande.sql,53
@@ -370,6 +384,7 @@ commande,fk_shipping_method,integer,nullable,,,llx_commande.sql,75
 commande,fk_warehouse,integer,nullable,NULL,,llx_commande.sql,76
 commande,fk_availability,integer,nullable,,,llx_commande.sql,77
 commande,fk_input_reason,integer,nullable,,,llx_commande.sql,78
+commande,fk_delivery_address,integer,nullable,,,llx_commande.sql,79
 commande,fk_incoterms,integer,nullable,,,llx_commande.sql,80
 commande,location_incoterms,varchar(255),nullable,,,llx_commande.sql,81
 commande,import_key,varchar(14),nullable,,,llx_commande.sql,82
@@ -396,7 +411,9 @@ commandedet,localtax2_tx,"double(7,4)",nullable,0,,llx_commandedet.sql,35
 commandedet,localtax2_type,varchar(10),nullable,,,llx_commandedet.sql,36
 commandedet,qty,real,nullable,,,llx_commandedet.sql,37
 commandedet,remise_percent,real,nullable,0,,llx_commandedet.sql,38
+commandedet,remise,real,nullable,0,,llx_commandedet.sql,39
 commandedet,fk_remise_except,integer,nullable,,,llx_commandedet.sql,40
+commandedet,price,real,nullable,,,llx_commandedet.sql,41
 commandedet,subprice,"double(24,8)",nullable,0,,llx_commandedet.sql,42
 commandedet,subprice_ttc,"double(24,8)",nullable,0,,llx_commandedet.sql,43
 commandedet,total_ht,"double(24,8)",nullable,0,,llx_commandedet.sql,44
@@ -430,6 +447,7 @@ expedition,ref,varchar(30),required,,,llx_expedition.sql,27
 expedition,entity,integer,required,1,,llx_expedition.sql,28
 expedition,fk_soc,integer,required,,,llx_expedition.sql,29
 expedition,fk_projet,integer,nullable,NULL,,llx_expedition.sql,30
+expedition,ref_ext,varchar(255),nullable,,,llx_expedition.sql,32
 expedition,ref_customer,varchar(255),nullable,,,llx_expedition.sql,33
 expedition,date_creation,datetime,nullable,,,llx_expedition.sql,34
 expedition,fk_user_author,integer,nullable,,,llx_expedition.sql,35
@@ -438,6 +456,7 @@ expedition,date_valid,datetime,nullable,,,llx_expedition.sql,37
 expedition,fk_user_valid,integer,nullable,,,llx_expedition.sql,38
 expedition,date_delivery,datetime,nullable,NULL,,llx_expedition.sql,39
 expedition,date_expedition,datetime,nullable,,,llx_expedition.sql,40
+expedition,fk_address,integer,nullable,NULL,,llx_expedition.sql,41
 expedition,fk_shipping_method,integer,nullable,,,llx_expedition.sql,42
 expedition,tracking_number,varchar(50),nullable,,,llx_expedition.sql,43
 expedition,fk_statut,smallint,nullable,0,,llx_expedition.sql,44

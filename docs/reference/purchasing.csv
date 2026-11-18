@@ -84,6 +84,7 @@ supplier_proposaldet,extraparams,varchar(255),nullable,,,llx_supplier_proposalde
 commande_fournisseur,rowid,integer,required,,primary,llx_commande_fournisseur.sql,24
 commande_fournisseur,ref,varchar(180),required,,,llx_commande_fournisseur.sql,26
 commande_fournisseur,entity,integer,required,1,,llx_commande_fournisseur.sql,27
+commande_fournisseur,ref_ext,varchar(255),nullable,,,llx_commande_fournisseur.sql,29
 commande_fournisseur,ref_supplier,varchar(255),nullable,,,llx_commande_fournisseur.sql,30
 commande_fournisseur,fk_soc,integer,required,,,llx_commande_fournisseur.sql,32
 commande_fournisseur,fk_projet,integer,nullable,0,,llx_commande_fournisseur.sql,33
@@ -98,6 +99,7 @@ commande_fournisseur,fk_user_modif,integer,nullable,,,llx_commande_fournisseur.s
 commande_fournisseur,fk_user_valid,integer,nullable,,,llx_commande_fournisseur.sql,43
 commande_fournisseur,fk_user_approve,integer,nullable,,,llx_commande_fournisseur.sql,44
 commande_fournisseur,fk_user_approve2,integer,nullable,,,llx_commande_fournisseur.sql,45
+commande_fournisseur,source,smallint,required,,,llx_commande_fournisseur.sql,46
 commande_fournisseur,fk_statut,smallint,nullable,0,,llx_commande_fournisseur.sql,47
 commande_fournisseur,billed,smallint,nullable,0,,llx_commande_fournisseur.sql,48
 commande_fournisseur,amount_ht,"double(24,8)",nullable,0,,llx_commande_fournisseur.sql,49
@@ -181,6 +183,7 @@ reception,ref,varchar(30),required,,,llx_reception.sql,27
 reception,entity,integer,required,1,,llx_reception.sql,28
 reception,fk_soc,integer,required,,,llx_reception.sql,29
 reception,fk_projet,integer,nullable,NULL,,llx_reception.sql,30
+reception,ref_ext,varchar(30),nullable,,,llx_reception.sql,32
 reception,ref_supplier,varchar(255),nullable,,,llx_reception.sql,33
 reception,date_creation,datetime,nullable,,,llx_reception.sql,35
 reception,fk_user_author,integer,nullable,,,llx_reception.sql,36
@@ -279,6 +282,7 @@ facture_fourn,rowid,integer,required,,primary,llx_facture_fourn.sql,25
 facture_fourn,ref,varchar(180),required,,,llx_facture_fourn.sql,26
 facture_fourn,ref_supplier,varchar(180),required,,,llx_facture_fourn.sql,27
 facture_fourn,entity,integer,required,1,,llx_facture_fourn.sql,28
+facture_fourn,ref_ext,varchar(255),nullable,,,llx_facture_fourn.sql,30
 facture_fourn,type,smallint,required,0,,llx_facture_fourn.sql,32
 facture_fourn,subtype,smallint,nullable,NULL,,llx_facture_fourn.sql,33
 facture_fourn,fk_soc,integer,required,,,llx_facture_fourn.sql,34
@@ -296,6 +300,7 @@ facture_fourn,close_code,varchar(16),nullable,,,llx_facture_fourn.sql,47
 facture_fourn,close_missing_amount,"double(24,8)",nullable,,,llx_facture_fourn.sql,48
 facture_fourn,close_note,varchar(128),nullable,,,llx_facture_fourn.sql,49
 facture_fourn,vat_reverse_charge,tinyint,nullable,0,,llx_facture_fourn.sql,51
+facture_fourn,tva,"double(24,8)",nullable,0,,llx_facture_fourn.sql,53
 facture_fourn,total_tva,"double(24,8)",nullable,0,,llx_facture_fourn.sql,55
 facture_fourn,localtax1,"double(24,8)",nullable,0,,llx_facture_fourn.sql,56
 facture_fourn,localtax2,"double(24,8)",nullable,0,,llx_facture_fourn.sql,57
@@ -443,7 +448,7 @@ facture_fourn_det_rec,product_type,integer,nullable,0,,llx_facture_fourn_det_rec
 facture_fourn_det_rec,date_start,integer,nullable,NULL,,llx_facture_fourn_det_rec.sql,44
 facture_fourn_det_rec,date_end,integer,nullable,NULL,,llx_facture_fourn_det_rec.sql,45
 facture_fourn_det_rec,info_bits,integer,nullable,0,,llx_facture_fourn_det_rec.sql,46
-facture_fourn_det_rec,special_code,integer,nullable,0,,llx_facture_fourn_det_rec.sql,47
+facture_fourn_det_rec,special_code,integer unsigned,nullable,0,,llx_facture_fourn_det_rec.sql,47
 facture_fourn_det_rec,rang,integer,nullable,0,,llx_facture_fourn_det_rec.sql,48
 facture_fourn_det_rec,fk_unit,integer,nullable,NULL,,llx_facture_fourn_det_rec.sql,49
 facture_fourn_det_rec,import_key,varchar(14),nullable,,,llx_facture_fourn_det_rec.sql,50

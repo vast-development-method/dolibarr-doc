@@ -64,10 +64,29 @@ def write_csv(path, headings, rows):
         writer.writerows(rows)
 
 
-def read_table(path):
+# These compatibility columns have an explicit successor or a retired purpose.
+# Other physical fields stay visible even when an old DDL comment disputes their use.
+OMIT_COLUMNS = {
+    "blockedlog": {"certified", "actionrefisunique", "signature_backward"},
+    "oauth_token": {"token"},
+    "socpeople": {"no_email"},
+    "propal": {"price", "remise_percent", "remise_absolue", "remise"},
+    "facture": {"remise_percent", "remise_absolue", "remise"},
+    "facturedet": {"remise", "price"},
+    "inventorydet": {"qty_regulated"},
+    "supplier_proposal": {"remise_percent", "remise_absolue", "remise"},
+    "facture_rec": {"remise", "remise_percent", "remise_absolue", "vat_src_code"},
+    "facturedet_rec": {"price"},
+    "expensereport": {"paid", "integration_compta"},
+    "salary": {"num_payment"},
+    "don": {"country"},
+}
+
+
+def read_table(path, table):
     rows = []
     for line_no, line in enumerate(path.read_text().splitlines(), 1):
-        code, _, note = line.partition("--")
+        code = line.partition("--")[0]
         text = code.strip().rstrip(",")
         if not text or text.startswith(("(", ")")) or re.match(
             r"^(create|primary|unique|constraint|index|key|engine)\b", text, re.I
@@ -77,8 +96,10 @@ def read_table(path):
         if not field:
             raise ValueError(f"Unrecognized declaration {path.name}:{line_no}: {text}")
         name, sql_type, tail = field.groups()
-        if re.search(r"deprecat|obsolete|no more used|not used|unused|obsolète", note, re.I):
+        if name in OMIT_COLUMNS.get(table, set()):
             continue
+        if re.search(r"\bUNSIGNED\b", tail, re.I):
+            sql_type += " unsigned"
         primary = bool(re.search("PRIMARY KEY", tail, re.I))
         default = re.search(r"\bDEFAULT\s+('[^']*'|[^\s,]+)", tail, re.I)
         rows.append((name, sql_type.lower(), "required" if primary or re.search("NOT NULL", tail, re.I)
@@ -99,11 +120,14 @@ def build_tables(upstream):
                 raise ValueError(f"Repeated table {table}")
             tables_seen.add(table)
             path = definitions[table]
-            columns = read_table(path)
-            rows.extend((table, *c[:-1], path.name, c[-1]) for c in columns)
+            declared = re.search(r"^\s*CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?llx_(\w+)", path.read_text(), re.I | re.M)
+            if not declared:
+                raise ValueError(f"Missing table declaration in {path.name}")
+            columns = read_table(path, declared[1])
+            rows.extend((declared[1], *c[:-1], path.name, c[-1]) for c in columns)
             key_file = path.with_suffix(".key.sql")
             if key_file.is_file():
-                constraints.extend(read_keys(key_file, table))
+                constraints.extend(read_keys(key_file))
         write_csv(CATALOGUE / (area + ".csv"),
                   ("table", "field", "storage_type", "nullability", "default_expression",
                    "inline_key", "source_file", "line"), rows)
@@ -111,13 +135,15 @@ def build_tables(upstream):
               "references_fields", "source_file", "line"), constraints)
 
 
-def read_keys(path, table):
+def read_keys(path):
     """Index the pinned DDL's single-line ALTER statements for FK/unique/PK."""
     keys = []
     for number, raw in enumerate(path.read_text().splitlines(), 1):
         line = raw.partition("--")[0].strip()
-        if not re.match(r"ALTER\s+TABLE", line, re.I):
+        declaration = re.match(r"ALTER\s+TABLE\s+llx_(\w+)\b", line, re.I)
+        if not declaration:
             continue
+        table = declaration[1]
         foreign = re.search(r"FOREIGN\s+KEY\s*\(([^)]+)\)\s*REFERENCES\s+llx_(\w+)\s*\(([^)]+)\)", line, re.I)
         unique = re.search(r"\b(UNIQUE(?:\s+(?:INDEX|KEY))?|PRIMARY\s+KEY)\s*(?:\w+\s*)?\((.+)\)", line, re.I)
         if foreign:
@@ -130,10 +156,27 @@ def read_keys(path, table):
     return keys
 
 
+def signature_parameters(text, offset):
+    """Read the outer parameter list, allowing nested calls/arrays and quoted defaults."""
+    depth = 1
+    parameters = []
+    token = re.compile(r"""'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|\$(\w+)|[()]""")
+    for match in token.finditer(text, offset):
+        if match[1] and depth == 1:
+            parameters.append(match[1])
+        elif match[0] == "(":
+            depth += 1
+        elif match[0] == ")":
+            depth -= 1
+            if not depth:
+                return " ".join(parameters)
+    raise ValueError("Unterminated API method parameter list")
+
+
 def build_services(upstream):
     rows = []
     base = upstream / "htdocs"
-    named_public = re.compile(r"^\s*public\s+function\s+(\w+)\s*\(([^)]*)\)", re.M)
+    named_public = re.compile(r"^\s*public\s+function\s+(\w+)\s*\(", re.M)
     for path in sorted(base.rglob("api_*.class.php")):
         descriptor_path = path.relative_to(upstream).as_posix()
         if any(p in path.relative_to(base).parts for p in ("modulebuilder", "zapier", "includes")):
@@ -141,18 +184,23 @@ def build_services(upstream):
         if path.name in {"api_access.class.php", "api_login.class.php"}:
             continue
         body = path.read_text()
-        for match in named_public.finditer(body):
-            name, args = match.groups()
+        # Preserve offsets for permalinks and PHPDoc lookup while removing code
+        # samples or retired handlers that are inside strings and comments.
+        lexical = re.compile(r"""'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|/\*.*?\*/|//[^\n]*|\#[^\n]*""", re.S)
+        mask = lexical.sub(lambda item: re.sub(r"[^\n]", " ", item[0]), body)
+        for match in named_public.finditer(mask):
+            name = match[1]
             if name.startswith("_"):
                 continue
-            comment_end = body.rfind("*/", 0, match.start())
+            start_of_method = body.rfind("\n", 0, match.start(1)) + 1
+            comment_end = body.rfind("*/", 0, start_of_method)
             doc = ""
-            if comment_end >= 0 and not body[comment_end + 2:match.start()].strip():
+            if comment_end >= 0 and not body[comment_end + 2:start_of_method].strip():
                 doc = body[body.rfind("/**", 0, comment_end):comment_end]
             if re.search(r"@deprecated\b", doc, re.I):
                 continue
             route = re.search(r"@url[^\S\n]+(GET|POST|PUT|PATCH|DELETE)\b([^\n]*)", doc, re.I)
-            rows.append((descriptor_path, name, " ".join(re.findall(r"\$(\w+)", args)),
+            rows.append((descriptor_path, name, signature_parameters(body, match.end()),
                          route[1].upper() if route else "", route[2].strip() if route else "",
                          body.count("\n", 0, match.start(1)) + 1))
     write_csv(CATALOGUE / "service-methods.csv",
@@ -167,6 +215,12 @@ def main():
     revision = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
     if revision != expected:
         parser.error(f"Expected upstream commit {expected}, found {revision}")
+    changes = subprocess.check_output(
+        ["git", "-C", str(root), "status", "--porcelain", "--untracked-files=normal", "--", "htdocs"],
+        text=True
+    )
+    if changes:
+        parser.error("The upstream htdocs tree has local edits; regenerate from a clean pinned checkout")
     CATALOGUE.mkdir(exist_ok=True)
     build_tables(root)
     build_services(root)

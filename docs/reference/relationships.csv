@@ -177,7 +177,7 @@ c_tva,foreign,fk_department_buyer,c_departements,rowid,llx_c_tva.key.sql,25
 accounting_account,unique,"account_number, entity, fk_pcg_version",,,llx_accounting_account.key.sql,24
 accounting_journal,unique,"code,entity",,,llx_accounting_journal.key.sql,20
 accounting_system,unique,pcg_version,,,llx_accounting_system.key.sql,21
-accounting_system,foreign,fk_pcg_version,accounting_system,pcg_version,llx_accounting_system.key.sql,24
+accounting_account,foreign,fk_pcg_version,accounting_system,pcg_version,llx_accounting_system.key.sql,24
 accounting_bookkeeping_piece,unique,"ref, entity",,,llx_accounting_bookkeeping_piece-accounting.key.sql,19
 accounting_balance_snapshot,unique,"entity, fk_fiscalyear, account_number, subledger_account",,,llx_accounting_balance_snapshot-accounting.key.sql,20
 accounting_analytic_axis,unique,"code, entity",,,llx_accounting_analytic_axis-accounting.key.sql,19
@@ -327,6 +327,6 @@ document_model,unique,"nom,type,entity",,,llx_document_model.key.sql,21
 import_model,unique,"label,type",,,llx_import_model.key.sql,20
 export_model,unique,"label,type",,,llx_export_model.key.sql,21
 bookmark,unique,"fk_user, entity, title",,,llx_bookmark.key.sql,20
-printing_receipt,unique,"name, entity",,,llx_printing_receipt-receiptprinter.key.sql,19
+printer_receipt,unique,"name, entity",,,llx_printing_receipt-receiptprinter.key.sql,19
 c_barcode_type,unique,"code, entity",,,llx_c_barcode_type.key.sql,19
 c_socialnetworks,unique,"entity, code",,,llx_c_socialnetworks.key.sql,19

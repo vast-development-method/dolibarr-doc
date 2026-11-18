@@ -2,6 +2,7 @@ table,field,storage_type,nullability,default_expression,inline_key,source_file,l
 facture,rowid,integer,required,,primary,llx_facture.sql,27
 facture,ref,varchar(30),required,,,llx_facture.sql,29
 facture,entity,integer,required,1,,llx_facture.sql,30
+facture,ref_ext,varchar(255),nullable,,,llx_facture.sql,32
 facture,ref_client,varchar(255),nullable,,,llx_facture.sql,33
 facture,type,smallint,required,0,,llx_facture.sql,35
 facture,subtype,smallint,nullable,NULL,,llx_facture.sql,36
@@ -12,6 +13,7 @@ facture,date_pointoftax,date,nullable,NULL,,llx_facture.sql,41
 facture,date_valid,date,nullable,,,llx_facture.sql,42
 facture,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_facture.sql,43
 facture,date_closing,datetime,nullable,,,llx_facture.sql,44
+facture,paye,smallint,required,0,,llx_facture.sql,45
 facture,close_code,varchar(16),nullable,,,llx_facture.sql,51
 facture,close_missing_amount,"double(24,8)",nullable,,,llx_facture.sql,52
 facture,close_note,varchar(128),nullable,,,llx_facture.sql,53
@@ -189,7 +191,7 @@ facturedet_rec,date_end_fill,integer,nullable,0,,llx_facturedet_rec.sql,50
 facturedet_rec,info_bits,integer,nullable,0,,llx_facturedet_rec.sql,51
 facturedet_rec,buy_price_ht,"double(24,8)",nullable,0,,llx_facturedet_rec.sql,53
 facturedet_rec,fk_product_fournisseur_price,integer,nullable,NULL,,llx_facturedet_rec.sql,54
-facturedet_rec,special_code,integer,nullable,0,,llx_facturedet_rec.sql,56
+facturedet_rec,special_code,integer unsigned,nullable,0,,llx_facturedet_rec.sql,56
 facturedet_rec,rang,integer,nullable,0,,llx_facturedet_rec.sql,57
 facturedet_rec,fk_contract_line,integer,nullable,,,llx_facturedet_rec.sql,58
 facturedet_rec,fk_unit,integer,nullable,NULL,,llx_facturedet_rec.sql,59
@@ -272,6 +274,7 @@ bank_account,cle_rib,varchar(5),nullable,,,llx_bank_account.sql,39
 bank_account,bic,varchar(11),nullable,,,llx_bank_account.sql,40
 bank_account,bic_intermediate,varchar(11),nullable,,,llx_bank_account.sql,41
 bank_account,iban_prefix,varchar(100),nullable,,,llx_bank_account.sql,42
+bank_account,country_iban,varchar(2),nullable,,,llx_bank_account.sql,43
 bank_account,cle_iban,varchar(2),nullable,,,llx_bank_account.sql,44
 bank_account,domiciliation,varchar(255),nullable,,,llx_bank_account.sql,45
 bank_account,pti_in_ctti,smallint,nullable,0,,llx_bank_account.sql,46
