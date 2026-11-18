@@ -1,8 +1,10 @@
 # Stable module coverage
 
-release 24.0.3 ships **95 descriptors** in its core module directory. The module administration screen's stable filter admits **84**. Four declare experimental status, four development status and three deprecated status. These counts measure descriptors in the release. An individual installation can expose a different set because of its supplier configuration, organisation, enabled modules and instance settings. [Core descriptor directory](../reference/locators/coverage.md#ref-36cce3fb4d1e) · [Filter implementation](../reference/locators/coverage.md#ref-d820ba073a0a)
+Release 24.0.3 ships **95 descriptors** in its core module directory. The module administration screen's stable filter admits **84**. Four declare experimental status, four development status and three deprecated status. These counts measure descriptors in the release. An individual installation can expose a different set because of its supplier configuration, organisation, enabled modules and instance settings. [Core descriptor directory](../reference/locators/coverage.md#ref-36cce3fb4d1e) · [Filter implementation](../reference/locators/coverage.md#ref-d820ba073a0a)
 
 [Machine-readable module inventory](modules.json) provides the descriptor key, numeric module ID, functional area, upstream setup family, maturity, scope decision and pinned declaration for every module. Optional fields describe activation dependencies, conflicts and conditional visibility. The key is the case-sensitive class suffix (for example, `Facture`). Its activation constant is `MAIN_MODULE_` plus the uppercase suffix. Permission namespaces and public API resource names can differ. The inventory records scope eligibility. Chapter coverage is tracked separately in the [blueprint index](../../README.md).
+
+For progress on individual records, services, lists and reports, see the [coverage checkpoint](checkpoint.md) and [operator-list inventory](operator-list-inventory.md).
 
 ## Modules by business area
 

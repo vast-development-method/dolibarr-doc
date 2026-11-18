@@ -10,11 +10,21 @@ A language-neutral blueprint for rebuilding an integrated ERP. It describes how 
 | --- | --- |
 | How the decisions in a business process fit together | [Detailed business specifications](docs/specification/README.md) |
 | Who owns an amount, quantity, status or relationship | [Record and field dictionary](docs/records/README.md) · [Installation structures and their status](docs/records/installation-boundaries.md) |
-| What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) |
+| What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Effective routes and argument binding](docs/services/route-selection.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) |
 | Which changes can trigger action in another module | [Business events and subscribers](docs/events/README.md) · [Commercial automation](docs/events/commercial-automation.md) |
 | Why two reports disagree | [Reporting and reconciliation](docs/reporting/README.md) · [Accounting layouts](docs/exports/ledger-layouts.md) · [Country charts and tax dictionaries](docs/localization/README.md) |
 | How policy changes a transaction | [47 operator settings](docs/settings/README.md) · [Company settings](docs/policies/company-and-settings.md) · [Reference numbers](docs/policies/identity-and-numbering.md) · [Stock posting](docs/policies/stock-posting-decisions.md) · [Invoice admission](docs/policies/form-defaults-and-invoice-admission.md) |
 | How to reconcile a whole transaction | [Trading and settlement](docs/trade/worked-cycle.md) · [Make to order with a shortage](docs/journeys/building-against-a-shortage.md) · [Commissioning time to cash](docs/journeys/commissioning-time-to-cash.md) |
+
+## Follow a decision across modules
+
+| When you need to reproduce this result | Follow these operations |
+| --- | --- |
+| A customer accepts a foreign-currency offer and pays in instalments | [Rate selection through final settlement](docs/international/currency-from-quotation-to-settlement.md) · [Language, addresses and negotiated wording](docs/international/language-and-business-identity.md) · [Recipient document and template fields](docs/document-models/README.md) |
+| An operator bills several deliveries or reverses a lot receipt after some units have shipped | [Selection, grouped billing and collection](docs/bulk-operations/README.md) · [Warehouse and manufacturing reversals](docs/warehouse-corrections/README.md) |
+| A visitor applies, registers, donates or signs, or an employee delegates an approval | [Public entry points and records created](docs/public-workflows/README.md) · [Approval, staffing and service teams](docs/workforce-operations/README.md) |
+| A list count disagrees with a tile, printed sheet or monthly report | [Operator filters by screen](docs/list-filters/README.md) · [Dashboard widgets and overdue queues](docs/dashboards/README.md) · [Catalogue, sales and project measures](docs/operator-reports/README.md) |
+| A tax enquiry, journal export and filed document show different amounts or dates | [Regional reporting and evidence](docs/regional-reporting/README.md) · [Ledger layouts by selector](docs/exports/ledger-layouts.md) · [Audit-file dates and currency](docs/exports/audit-file-dates-and-currency.md) |
 
 ## Find a business operation
 
@@ -24,10 +34,10 @@ A language-neutral blueprint for rebuilding an integrated ERP. It describes how 
 | How does an offer become a fulfilled sale? | [Parties and contacts](docs/sales/parties-and-contacts.md) · [Proposals and orders](docs/sales/proposals-and-orders.md) · [Dispatch and invoice origin](docs/sales/dispatch-to-invoice.md) · [Returns, cancellations and refunds](docs/returns/customer-returns.md) |
 | How is a supplier order priced, approved and received? | [Catalogue, variants and prices](docs/supply/catalogue.md) · [Purchasing and receiving](docs/supply/purchasing.md) · [Warehouse valuation and transfers](docs/supply/stock.md) · [Supplier invoices and payments](docs/supply/payables.md) |
 | How are an invoice and its outstanding balance calculated? | [Customer invoices, discounts and rounding](docs/finance/customer-invoices.md) · [Collection and reconciliation](docs/finance/collections.md) · [Progress billing and retention](docs/finance-exceptions/progress-and-retention.md) · [Credits, replacements and deposits](docs/finance-exceptions/corrections-and-deposits.md) · [Invoice rounding examples](docs/finance/rounding-examples.md) |
-| What posts to the ledger and when? | [Chart, account binding and report selection](docs/additional-domains/chart-and-reporting.md) · [Bookkeeping](docs/finance/bookkeeping.md) · [Fiscal close](docs/treasury/fiscal-close.md) · [Tax geography and rounding](docs/additional-domains/tax-geography-and-rounding.md) |
+| What posts to the ledger and when? | [Chart, account binding and report selection](docs/additional-domains/chart-and-reporting.md) · [Bookkeeping](docs/finance/bookkeeping.md) · [Supplier account assignment and journal transfer](docs/finance/supplier-account-preparation.md) · [Fiscal close](docs/treasury/fiscal-close.md) · [Tax geography and rounding](docs/additional-domains/tax-geography-and-rounding.md) |
 | How do funds move? | [Payment orders and collections](docs/treasury/payment-orders.md) · [Online settlement](docs/treasury/online-payments.md) · [Bank transfers and obligations](docs/treasury/bank-and-obligations.md) |
 | What happens at a till and how is margin calculated? | [TakePOS](docs/commerce/takepos.md) · [Commercial margins](docs/commerce/commercial-margins.md) |
-| How are equipment and debt accounted for? | [Fixed assets and depreciation](docs/capital/fixed-assets.md) · [Loans and repayments](docs/capital/loans.md) |
+| How are equipment and debt accounted for? | [Fixed assets and depreciation](docs/capital/fixed-assets.md) · [Loans and repayments](docs/capital/loans.md) · [Scheduled versus actual instalments](docs/capital/loan-schedule-and-settlement.md) |
 | How do production and project costs arise? | [BOMs, workstations and manufacturing](docs/operations/manufacturing.md) · [Project time, costs and billing](docs/operations/project-time.md) |
 | How are employees hired, approved and reimbursed? | [Recruitment and skills](docs/workforce/recruitment-and-skills.md) · [Leave](docs/people-services/leave.md) · [Expense reimbursement](docs/people-services/expenses.md) |
 | How are services and partner relationships delivered? | [Contracts, tickets and interventions](docs/people-services/service-delivery.md) · [Knowledge records](docs/knowledge-partners/knowledge-records.md) · [Partnerships](docs/knowledge-partners/partnerships.md) |
