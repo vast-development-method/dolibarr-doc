@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/projet/class/api_tasks.class
 
 ## `get` — Read a task
 
-**Arguments** `id`, `includetimespent = 0`.
+**Arguments** `id` (integer), `includetimespent = 0` (integer).
 
 **Access** The decision uses right `projet.lire`, task record scope.
 
@@ -21,7 +21,7 @@ Source lines `76–99`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `projet.lire`.
 
@@ -37,7 +37,7 @@ Source lines `121–215`.
 
 ## `post` — Create a task
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `ref`, `label`, `fk_project`.
 
@@ -57,7 +57,7 @@ Source lines `227–300` with `_validate 1021–1034`.
 
 Route `GET {id}/timespent`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `projet.lire`, tasks record scope.
 
@@ -74,7 +74,7 @@ Source lines `312–335`.
 
 Route `GET {id}/roles`.
 
-**Arguments** `id`, `userid = 0`.
+**Arguments** `id` (integer), `userid = 0` (integer).
 
 **Access** The decision uses right `projet.lire`, tasks record scope.
 
@@ -89,7 +89,7 @@ Source lines `350–379`.
 
 ## `put` — Update a task
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `projet.creer`, task record scope, right `projet.lire`.
 
@@ -105,7 +105,7 @@ Source lines `527–565` with `get 76–99`.
 
 ## `delete` — Delete a task
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `projet.supprimer`, task record scope.
 
@@ -121,7 +121,7 @@ Source lines `579–603`.
 
 Route `GET {id}/getTimeSpent/{timespent_id}`.
 
-**Arguments** `id`, `timespent_id`.
+**Arguments** `id` (integer), `timespent_id` (integer).
 
 **Access** The decision uses right `projet.lire`, task record scope, time record scope.
 
@@ -136,7 +136,7 @@ Source lines `619–644`.
 
 Route `POST {id}/addtimespent`.
 
-**Arguments** `id`, `date`, `duration`, `product_id = null`, `user_id = 0`, `note = ''`, `progress = -1`.
+**Arguments** `id` (integer), `date` (date/time), `duration` (integer), `product_id = null` (integer), `user_id = 0` (integer), `note = ''` (text), `progress = -1` (integer).
 
 **Access** The decision uses right `projet.creer`, project record scope.
 
@@ -155,7 +155,7 @@ Source lines `669–715`.
 
 Route `PUT {id}/timespent/{timespent_id}`.
 
-**Arguments** `id`, `timespent_id`, `date`, `duration`, `product_id = null`, `user_id = 0`, `note = ''`.
+**Arguments** `id` (integer), `timespent_id` (integer), `date` (date/time), `duration` (integer), `product_id = null` (integer), `user_id = 0` (integer), `note = ''` (text).
 
 **Access** The decision uses right `projet.creer`, task record scope.
 
@@ -173,7 +173,7 @@ Source lines `739–773`.
 
 Route `DELETE {id}/timespent/{timespent_id}`.
 
-**Arguments** `id`, `timespent_id`.
+**Arguments** `id` (integer), `timespent_id` (integer).
 
 **Access** The decision uses right `projet.supprimer`, task record scope.
 
@@ -190,7 +190,7 @@ Source lines `789–810`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `projet.lire`, task record scope.
 
@@ -207,7 +207,7 @@ Source lines `1051–1072`.
 
 Route `POST {id}/contacts`.
 
-**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+**Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `projet.creer`, task record scope.
 
@@ -225,7 +225,7 @@ Source lines `1094–1120`.
 
 Route `DELETE {id}/contacts/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `projet.creer`, task record scope.
 

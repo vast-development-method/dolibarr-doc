@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/partnership/class/api_partne
 
 Route `GET partnerships/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `partnership.read`, partnership record scope.
 
@@ -23,7 +23,7 @@ Source lines `70–86`.
 
 Route `GET /partnerships/`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `partnership.read`.
 
@@ -41,7 +41,7 @@ Source lines `108–182`.
 
 Route `POST partnerships/`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `partnership.write`.
 
@@ -59,7 +59,7 @@ Source lines `196–222` with `_validate 395–411`.
 
 Route `PUT partnerships/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `partnership.write`, partnership record scope, right `partnership.read`.
 
@@ -77,7 +77,7 @@ Source lines `237–279` with `get 70–86`.
 
 Route `DELETE partnerships/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `partnership.delete`, partnership record scope.
 

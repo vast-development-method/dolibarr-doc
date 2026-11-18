@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/expedition/class/api_shipmen
 
 ## `get` — Read a shipment
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expedition.lire`, expedition record scope.
 
@@ -21,7 +21,7 @@ Source lines `69–86`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `expedition.lire`.
 
@@ -37,7 +37,7 @@ Source lines `109–212`.
 
 ## `post` — Create a shipment
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`, `origin_id`, `origin_type`.
 
@@ -59,7 +59,7 @@ Source lines `222–280` with `_validate 807–820`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `expedition.creer`, expedition record scope.
 
@@ -75,7 +75,7 @@ Source lines `465–493`.
 
 ## `put` — Update a shipment
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `expedition.creer`, expedition record scope, right `expedition.lire`.
 
@@ -91,7 +91,7 @@ Source lines `504–542` with `get 69–86`.
 
 ## `delete` — Delete a shipment
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expedition.supprimer`, expedition record scope.
 
@@ -107,7 +107,7 @@ Source lines `553–577`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expedition.creer`, expedition record scope.
 
@@ -126,7 +126,7 @@ Source lines `598–625`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expedition.creer`, expedition record scope.
 

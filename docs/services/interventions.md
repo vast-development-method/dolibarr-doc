@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/fichinter/class/api_interven
 
 ## `get` — Read a field intervention
 
-**Arguments** `id`, `ref = ''`, `ref_ext = ''`, `contact_list = 1`.
+**Arguments** `id` (integer), `ref = ''` (text), `ref_ext = ''` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `ficheinter.lire`, fichinter record scope.
 
@@ -21,7 +21,7 @@ Source lines `91–121`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `contact_type = ''`, `pagination_data = false`, `loadlinkedobjects = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `contact_type = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
 
 **Access** The decision uses right `ficheinter.lire`.
 
@@ -37,7 +37,7 @@ Source lines `146–258`.
 
 ## `post` — Create a field intervention
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`, `fk_project`, `description`.
 
@@ -55,7 +55,7 @@ Source lines `272–294` with `_validate 876–886`.
 
 ## `put` — Update a field intervention
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `ficheinter.creer`, fichinter record scope, right `ficheinter.lire`.
 
@@ -73,7 +73,7 @@ Source lines `309–347` with `get 91–121`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 The request-field validator requires `description`, `date`, `duration`.
 
@@ -91,7 +91,7 @@ Source lines `398–437` with `_validateLine 918–931`.
 
 ## `delete` — Delete a field intervention
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `ficheinter.supprimer`, fichinter record scope.
 
@@ -107,7 +107,7 @@ Source lines `451–475`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `ficheinter.creer`, fichinter record scope.
 
@@ -126,7 +126,7 @@ Source lines `496–521`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `ficheinter.creer`, fichinter record scope.
 
@@ -145,7 +145,7 @@ Source lines `544–569`.
 
 Route `DELETE /{id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `ficheinter.creer`, intervention record scope.
 
@@ -163,7 +163,7 @@ Source lines `587–621`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `ficheinter.creer`, intervention record scope.
 
@@ -182,7 +182,7 @@ Source lines `639–663`.
 
 Route `POST {id}/contacts`.
 
-**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+**Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `ficheinter.creer`, intervention record scope.
 
@@ -200,7 +200,7 @@ Source lines `683–708`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`, `source = ''`.
+**Arguments** `id` (integer), `type = ''` (text), `source = ''` (text).
 
 **Access** The decision uses right `ficheinter.lire`, intervention record scope.
 
@@ -217,7 +217,7 @@ Source lines `724–753`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `ficheinter.creer`, intervention record scope.
 
@@ -235,7 +235,7 @@ Source lines `770–798`.
 
 Route `PUT /{id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data` (collection).
 
 Named body fields used by the handler include `desc`, `description`, `date`, `duration`, `rang`.
 

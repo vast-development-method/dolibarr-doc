@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/knowledgemanagement/class/ap
 
 Route `GET knowledgerecords/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.read`, knowledgerecord record scope.
 
@@ -23,7 +23,7 @@ Source lines `73–89`.
 
 Route `GET /knowledgerecords/{id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -40,7 +40,7 @@ Source lines `104–119`.
 
 Route `GET /knowledgerecords/`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.read`.
 
@@ -58,7 +58,7 @@ Source lines `142–243`.
 
 Route `POST knowledgerecords/`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
 
@@ -76,7 +76,7 @@ Source lines `257–283` with `_validate 529–545`.
 
 Route `PUT knowledgerecords/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.write`, knowledgerecord record scope, right `knowledgemanagement.knowledgerecord.read`.
 
@@ -94,7 +94,7 @@ Source lines `298–341` with `get 73–89`.
 
 Route `DELETE knowledgerecords/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.delete`, knowledgerecord record scope.
 
@@ -110,7 +110,7 @@ Source lines `355–379`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
 
@@ -129,7 +129,7 @@ Source lines `462–482`.
 
 Route `POST {id}/cancel`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
 

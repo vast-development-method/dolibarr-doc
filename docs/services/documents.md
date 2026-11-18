@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/api/class/api_documents.clas
 
 Route `GET /download`.
 
-**Arguments** `modulepart`, `original_file = ''`.
+**Arguments** `modulepart` (text), `original_file = ''` (text).
 
 **Access** The decision uses linked-party scope.
 
@@ -24,7 +24,7 @@ Source lines `72–145`.
 
 Route `PUT /builddoc`.
 
-**Arguments** `modulepart`, `original_file = ''`, `doctemplate = ''`, `langcode = ''`.
+**Arguments** `modulepart` (text), `original_file = ''` (text), `doctemplate = ''` (text), `langcode = ''` (text).
 
 **Access** The decision uses linked-party scope.
 
@@ -43,7 +43,7 @@ Source lines `178–440`.
 
 Route `GET /`.
 
-**Arguments** `modulepart`, `id = 0`, `ref = ''`, `sortfield = ''`, `sortorder = ''`, `limit = 100`, `page = 0`, `content_type = ''`, `pagination_data = false`.
+**Arguments** `modulepart` (text), `id = 0` (integer), `ref = ''` (text), `sortfield = ''` (text), `sortorder = ''` (text), `limit = 100` (integer), `page = 0` (integer), `content_type = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `societe.lire`, right `user.user.lire`, right `adherent.lire`, right `propal.lire`, right `supplier_proposal.read`, right `commande.lire`, one of `fournisseur.commande.lire` or `supplier_order.lire`, right `expedition.lire`, right `facture.lire`, one of `fournisseur.facture.lire` or `supplier_invoice.lire`, right `produit.lire`, one of `agenda.myactions.read` or `agenda.allactions.read`, right `expensereport.read`, right `holiday.read`, right `ticket.read`, right `knowledgemanagement.knowledgerecord.read`, right `categorie.lire`, right `contrat.lire`, right `ficheinter.lire`, right `projet.lire`, right `mrp.read`, right `societe.contact.lire`, right `stock.lire`.
 
@@ -63,7 +63,7 @@ Source lines `471–713`.
 
 Route `POST /upload`.
 
-**Arguments** `filename`, `modulepart`, `ref = ''`, `subdir = ''`, `filecontent = ''`, `fileencoding = ''`, `overwriteifexists = 0`, `createdirifnotexists = 1`, `position = 0`, `cover = ''`, `array_options = []`, `generateThumbs = 0`, `share = 0`.
+**Arguments** `filename` (text), `modulepart` (text), `ref = ''` (text), `subdir = ''` (text), `filecontent = ''` (text), `fileencoding = ''` (text), `overwriteifexists = 0` (integer), `createdirifnotexists = 1` (integer), `position = 0` (integer), `cover = ''` (text), `array_options = []` (collection), `generateThumbs = 0` (integer), `share = 0` (integer).
 
 **Access** The decision uses right `ecm.upload`.
 
@@ -82,7 +82,7 @@ Source lines `766–1106`.
 
 Route `DELETE /`.
 
-**Arguments** `modulepart`, `original_file`.
+**Arguments** `modulepart` (text), `original_file` (text).
 
 **Access** The decision uses linked-party scope.
 

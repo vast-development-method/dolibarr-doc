@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/reception/class/api_receptio
 
 ## `get` — Read a goods receipt
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `reception.lire`, reception record scope.
 
@@ -21,7 +21,7 @@ Source lines `67–84`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `reception.lire`.
 
@@ -37,7 +37,7 @@ Source lines `107–201`.
 
 ## `post` — Create a goods receipt
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`, `origin_id`, `origin_type`.
 
@@ -59,7 +59,7 @@ Source lines `211–259` with `_validate 785–798`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `reception.creer`, reception record scope.
 
@@ -75,7 +75,7 @@ Source lines `444–478`.
 
 ## `put` — Update a goods receipt
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `reception.creer`, reception record scope, right `reception.lire`.
 
@@ -91,7 +91,7 @@ Source lines `489–528` with `get 67–84`.
 
 ## `delete` — Delete a goods receipt
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `reception.supprimer`, reception record scope.
 
@@ -107,7 +107,7 @@ Source lines `538–562`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `reception.creer`, reception record scope.
 
@@ -126,7 +126,7 @@ Source lines `583–610`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `reception.creer`, reception record scope.
 

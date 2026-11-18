@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/multicurrency/class/api_mult
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `multicurrency.currency.read`.
 
@@ -22,7 +22,7 @@ Source lines `60–110`.
 
 ## `get` — Read a currency
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `multicurrency.currency.read`.
 
@@ -37,7 +37,7 @@ Source lines `122–134`.
 
 Route `GET /bycode/{code}`.
 
-**Arguments** `code`.
+**Arguments** `code` (text).
 
 **Access** The decision uses right `multicurrency.currency.read`.
 
@@ -52,7 +52,7 @@ Source lines `147–159`.
 
 Route `GET {id}/rates`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `multicurrency.currency.read`.
 
@@ -68,7 +68,7 @@ Source lines `172–193`.
 
 ## `post` — Create a currency
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 Named body fields used by the handler include `code`, `name`, `rate`.
 
@@ -86,7 +86,7 @@ Source lines `205–247`.
 
 ## `put` — Update a currency
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `multicurrency.currency.write`, right `multicurrency.currency.read`.
 
@@ -102,7 +102,7 @@ Source lines `260–289` with `get 122–134`.
 
 ## `delete` — Delete a currency
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `multicurrency.currency.delete`.
 
@@ -118,7 +118,7 @@ Source lines `301–322`.
 
 Route `PUT {id}/rates`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `rate`.
 

@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/adherents/class/api_memberst
 
 ## `get` — Read a membership type
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -19,7 +19,7 @@ Source lines `58–75`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `adherent.lire`.
 
@@ -34,7 +34,7 @@ Source lines `94–143`.
 
 ## `post` — Create a membership type
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `label`.
 
@@ -52,7 +52,7 @@ Source lines `153–175` with `_validate 277–287`.
 
 ## `put` — Update a membership type
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.configurer`, member record scope, right `adherent.lire`.
 
@@ -68,7 +68,7 @@ Source lines `186–229` with `get 58–75`.
 
 ## `delete` — Delete a membership type
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.configurer`, member record scope.
 

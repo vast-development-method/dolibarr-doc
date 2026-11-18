@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/user/class/api_users.class.p
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `user_ids = '0'`, `category = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = '0'` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `user.user.lire`, administrator status.
 
@@ -22,7 +22,7 @@ Source lines `86–167`.
 
 ## `get` — Read a user
 
-**Arguments** `id`, `includepermissions = 0`.
+**Arguments** `id` (integer), `includepermissions = 0` (integer).
 
 **Access** The decision uses right `user.user.lire`, administrator status, user record scope.
 
@@ -40,7 +40,7 @@ Source lines `184–212`.
 
 Route `GET login/{login}`.
 
-**Arguments** `login`, `includepermissions = 0`.
+**Arguments** `login` (text), `includepermissions = 0` (integer).
 
 **Access** The decision uses right `user.user.lire`, administrator status, user record scope.
 
@@ -56,7 +56,7 @@ Source lines `231–255`.
 
 Route `GET email/{email}`.
 
-**Arguments** `email`, `includepermissions = 0`.
+**Arguments** `email` (text), `includepermissions = 0` (integer).
 
 **Access** The decision uses right `user.user.lire`, administrator status, user record scope.
 
@@ -72,7 +72,7 @@ Source lines `274–298`.
 
 Route `GET /info`.
 
-**Arguments** `includepermissions = 0`.
+**Arguments** `includepermissions = 0` (integer).
 
 **Access** The decision uses one of `user.self.creer` or `user.user.lire`, administrator status, user record scope.
 
@@ -85,7 +85,7 @@ Source lines `315–345`.
 
 ## `post` — Create a user
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 Named body fields used by the handler include `login`.
 
@@ -103,7 +103,7 @@ Source lines `359–420`.
 
 ## `put` — Update a user
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses conditional rights `user.user.creer`, `user.user.write`, `user.self.creer`, `user.self.write`, administrator status, user record scope, right `user.user.password`, right `user.self.password`, right `user.user.lire`.
 
@@ -123,7 +123,7 @@ Source lines `438–539` with `get 184–212`.
 
 Route `GET {id}/setPassword`.
 
-**Arguments** `id`, `send_password = false`.
+**Arguments** `id` (integer), `send_password = false` (boolean).
 
 **Access** The decision uses right `user.user.password`, right `user.self.password`, user record scope.
 
@@ -141,7 +141,7 @@ Source lines `556–597`.
 
 Route `GET {id}/groups`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `user.user.lire`, administrator status, user record scope.
 
@@ -157,7 +157,7 @@ Source lines `615–641`.
 
 Route `GET {id}/setGroup/{group}`.
 
-**Arguments** `id`, `group`, `entity = 1`.
+**Arguments** `id` (integer), `group` (integer), `entity = 1` (integer).
 
 **Access** The decision uses right `user.user.creer`, administrator status, user record scope.
 
@@ -175,7 +175,7 @@ Source lines `660–691`.
 
 Route `POST /groups`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `user.group_advance.write`, administrator status.
 
@@ -193,7 +193,7 @@ Source lines `706–730`.
 
 Route `PUT /groups/{group}`.
 
-**Arguments** `group`, `request_data = null`.
+**Arguments** `group` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `user.group_advance.write`, administrator status, user record scope, conditional rights `user.user.lire`, `user.group_advance.read`, administrator status or configured login exception.
 
@@ -212,7 +212,7 @@ Source lines `749–791` with `infoGroups 940–973`.
 
 Route `POST {id}/remove-group/{group}`.
 
-**Arguments** `id`, `group`.
+**Arguments** `id` (integer), `group` (integer).
 
 **Access** The decision uses administrator status.
 
@@ -230,7 +230,7 @@ Source lines `808–838`.
 
 Route `GET /groups`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `group_ids = '0'`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `group_ids = '0'` (text), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses conditional rights `user.user.lire`, `user.group_advance.read`, administrator status or configured login exception.
 
@@ -248,7 +248,7 @@ Source lines `864–920`.
 
 Route `GET /groups/{group}`.
 
-**Arguments** `group`, `load_members = 0`, `includepermissions = 0`.
+**Arguments** `group` (integer), `load_members = 0` (integer), `includepermissions = 0` (integer).
 
 **Access** The decision uses conditional rights `user.user.lire`, `user.group_advance.read`, administrator status or configured login exception, user record scope.
 
@@ -262,7 +262,7 @@ Source lines `940–973`.
 
 ## `delete` — Delete a user
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `user.user.supprimer`, administrator status, user record scope.
 
@@ -278,7 +278,7 @@ Source lines `988–1021`.
 
 Route `DELETE /groups/{group}`.
 
-**Arguments** `group`.
+**Arguments** `group` (integer).
 
 **Access** The decision uses right `user.group_advance.delete`, administrator status, user record scope.
 
@@ -294,7 +294,7 @@ Source lines `1038–1065`.
 
 Route `GET {id}/notifications`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `user.user.lire`, administrator status, user record scope.
 
@@ -310,7 +310,7 @@ Source lines `1084–1142`.
 
 Route `POST {id}/notifications`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `user.user.creer`.
 
@@ -326,7 +326,7 @@ Source lines `1160–1201`.
 
 Route `POST {id}/notificationsbycode/{code}`.
 
-**Arguments** `id`, `code`, `request_data = null`.
+**Arguments** `id` (integer), `code` (text), `request_data = null` (collection).
 
 **Access** The decision uses right `user.user.creer`.
 
@@ -342,7 +342,7 @@ Source lines `1221–1273`.
 
 Route `DELETE {id}/notifications/{notification_id}`.
 
-**Arguments** `id`, `notification_id`.
+**Arguments** `id` (integer), `notification_id` (integer).
 
 **Access** The decision uses right `user.user.creer`.
 
@@ -356,7 +356,7 @@ Source lines `1289–1306`.
 
 Route `PUT {id}/notifications/{notification_id}`.
 
-**Arguments** `id`, `notification_id`, `request_data = null`.
+**Arguments** `id` (integer), `notification_id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `user.user.creer`.
 

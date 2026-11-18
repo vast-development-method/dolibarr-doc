@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/supplier_proposal/class/api_
 
 ## `delete` — Delete a supplier quotation
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `supplier_proposal.supprimer`, supplier quotation record scope.
 
@@ -20,7 +20,7 @@ Source lines `64–88`.
 
 ## `get` — Read a supplier quotation
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `supplier_proposal.lire`, supplier quotation record scope.
 
@@ -35,7 +35,7 @@ Source lines `100–117`.
 
 ## `post` — Create a supplier quotation
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`.
 
@@ -53,7 +53,7 @@ Source lines `127–166` with `_validate 333–346`.
 
 ## `put` — Update a supplier quotation
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `supplier_proposal.creer`, supplier quotation record scope, right `supplier_proposal.lire`.
 
@@ -69,7 +69,7 @@ Source lines `177–214` with `get 100–117`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `supplier_proposal.lire`.
 

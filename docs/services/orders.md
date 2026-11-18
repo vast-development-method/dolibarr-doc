@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/commande/class/api_orders.cl
 
 ## `get` — Read a customer order
 
-**Arguments** `id`, `contact_list = -1`.
+**Arguments** `id` (integer), `contact_list = -1` (integer).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -22,7 +22,7 @@ Source lines `71–74` with `_fetch 127–163`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`, `contact_list = -1`.
+**Arguments** `ref` (text), `contact_list = -1` (integer).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -38,7 +38,7 @@ Source lines `90–93` with `_fetch 127–163`.
 
 Route `GET ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`, `contact_list = -1`.
+**Arguments** `ref_ext` (text), `contact_list = -1` (integer).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -52,7 +52,7 @@ Source lines `109–112` with `_fetch 127–163`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `sqlfilterlines = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `sqlfilterlines = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
 
 **Access** The decision uses right `commande.lire`.
 
@@ -68,7 +68,7 @@ Source lines `189–311`.
 
 ## `post` — Create a customer order
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`, `date`.
 
@@ -89,7 +89,7 @@ Source lines `327–376` with `_validate 1382–1395`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -104,7 +104,7 @@ Source lines `390–410`.
 
 Route `GET {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `properties = ''`.
+**Arguments** `id` (integer), `lineid` (integer), `properties = ''` (text).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -121,7 +121,7 @@ Source lines `424–446`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_product`, `remise_percent`, `info_bits`, `fk_remise_except`, `price_base_type`, `date_start`, `date_end`, `product_type`, `rang`, `special_code`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `array_options`, `fk_unit`, `origin`, `origin_id`, `multicurrency_subprice`, `ref_ext`.
 
@@ -141,7 +141,7 @@ Source lines `461–516`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `remise_percent`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `price_base_type`, `info_bits`, `date_start`, `date_end`, `product_type`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `special_code`, `array_options`, `fk_unit`, `multicurrency_subprice`, `ref_ext`, `rang`.
 
@@ -160,7 +160,7 @@ Source lines `531–595`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope, right `commande.lire`.
 
@@ -179,7 +179,7 @@ Source lines `610–631` with `get 71–74`, `_fetch 127–163`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `commande.lire`, order record scope.
 
@@ -196,7 +196,7 @@ Source lines `647–668`.
 
 Route `POST {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = "external"`, `notrigger = 0`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = "external"` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -215,7 +215,7 @@ Source lines `690–792`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -231,7 +231,7 @@ Source lines `812–846`.
 
 ## `put` — Update a customer order
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `commande.creer`, order record scope, right `commande.lire`.
 
@@ -248,7 +248,7 @@ Source lines `858–905` with `get 71–74`, `_fetch 127–163`.
 
 ## `delete` — Delete a customer order
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `commande.supprimer`, order record scope.
 
@@ -265,7 +265,7 @@ Source lines `916–943`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `idwarehouse = 0`, `notrigger = 0`.
+**Arguments** `id` (integer), `idwarehouse = 0` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -284,7 +284,7 @@ Source lines `967–999`.
 
 Route `POST {id}/reopen`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -304,7 +304,7 @@ Source lines `1019–1044`.
 
 Route `POST {id}/setinvoiced`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -322,7 +322,7 @@ Source lines `1060–1085`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -341,7 +341,7 @@ Source lines `1097–1132`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`, `idwarehouse = -1`.
+**Arguments** `id` (integer), `idwarehouse = -1` (integer).
 
 **Access** The decision uses right `commande.creer`, order record scope.
 
@@ -360,7 +360,7 @@ Source lines `1144–1179`.
 
 Route `POST /createfromproposal/{proposalid}`.
 
-**Arguments** `proposalid`.
+**Arguments** `proposalid` (integer).
 
 **Access** The decision uses right `propal.lire`, right `commande.creer`, proposal record scope.
 
@@ -379,7 +379,7 @@ Source lines `1196–1227`.
 
 Route `GET {id}/shipment`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expedition.lire`, order record scope.
 
@@ -395,7 +395,7 @@ Source lines `1245–1290`.
 
 Route `POST {id}/shipment/{warehouse_id}`.
 
-**Arguments** `id`, `warehouse_id`.
+**Arguments** `id` (integer), `warehouse_id` (integer).
 
 **Access** The decision uses right `expedition.creer`, order record scope.
 

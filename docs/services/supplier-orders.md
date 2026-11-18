@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/fourn/class/api_supplier_ord
 
 ## `get` — Read a supplier order
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.commande.lire`, supplier record scope.
 
@@ -21,7 +21,7 @@ Source lines `65–82`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `product_ids = ''`, `status = ''`, `sqlfilters = ''`, `sqlfilterlines = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `product_ids = ''` (text), `status = ''` (text), `sqlfilters = ''` (text), `sqlfilterlines = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `fournisseur.commande.lire`.
 
@@ -37,7 +37,7 @@ Source lines `106–236`.
 
 ## `post` — Create a supplier order
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`.
 
@@ -55,7 +55,7 @@ Source lines `248–286` with `_validate 872–885`.
 
 ## `put` — Update a supplier order
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses one of `fournisseur.commande.creer` or `supplier_order.creer`, supplier record scope, right `fournisseur.commande.lire`.
 
@@ -73,7 +73,7 @@ Source lines `298–337` with `get 65–82`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `subprice`, `qty`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_product`, `fk_prod_fourn_price`, `ref_fourn`, `remise_percent`, `price_base_type`, `pu_ttc`, `product_type`, `info_bits`, `notrigger`, `date_start`, `date_end`, `array_options`, `fk_unit`, `multicurrency_subprice`, `origin`, `origin_id`, `rang`, `special_code`.
 
@@ -93,7 +93,7 @@ Source lines `351–404`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `source`, `type = ''`.
+**Arguments** `id` (integer), `source` (text), `type = ''` (text).
 
 **Access** The decision uses right `fournisseur.commande.lire`, supplier record scope.
 
@@ -110,7 +110,7 @@ Source lines `420–447`.
 
 Route `POST {id}/contact/{contactid}/{type}/{source}`.
 
-**Arguments** `id`, `contactid`, `type`, `source`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source` (text).
 
 **Access** The decision uses right `fournisseur.commande.creer`, supplier record scope.
 
@@ -129,7 +129,7 @@ Source lines `465–496`.
 
 Route `DELETE {id}/contact/{contactid}/{type}/{source}`.
 
-**Arguments** `id`, `contactid`, `type`, `source`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source` (text).
 
 **Access** The decision uses right `fournisseur.commande.creer`, supplier record scope.
 
@@ -145,7 +145,7 @@ Source lines `516–557`.
 
 ## `delete` — Delete a supplier order
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.commande.supprimer`, supplier record scope.
 
@@ -161,7 +161,7 @@ Source lines `567–591`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `idwarehouse = 0`, `notrigger = 0`.
+**Arguments** `id` (integer), `idwarehouse = 0` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses one of `fournisseur.commande.creer` or `supplier_order.creer`, supplier record scope.
 
@@ -180,7 +180,7 @@ Source lines `615–643`.
 
 Route `POST {id}/approve`.
 
-**Arguments** `id`, `idwarehouse = 0`, `secondlevel = 0`.
+**Arguments** `id` (integer), `idwarehouse = 0` (integer), `secondlevel = 0` (integer).
 
 **Access** The decision uses one of `fournisseur.commande.creer` or `supplier_order.creer`, supplier record scope.
 
@@ -199,7 +199,7 @@ Source lines `666–694`.
 
 Route `POST {id}/makeorder`.
 
-**Arguments** `id`, `date`, `method`, `comment = ''`.
+**Arguments** `id` (integer), `date` (integer), `method` (integer), `comment = ''` (text).
 
 **Access** The decision uses one of `fournisseur.commande.creer` or `supplier_order.creer`, supplier record scope.
 
@@ -218,7 +218,7 @@ Source lines `720–748`.
 
 Route `POST {id}/receive`.
 
-**Arguments** `id`, `closeopenorder`, `comment`, `lines`.
+**Arguments** `id` (integer), `closeopenorder` (integer), `comment` (text), `lines` (collection).
 
 **Access** The decision uses one of `fournisseur.commande.creer` or `supplier_order.creer`, supplier record scope.
 

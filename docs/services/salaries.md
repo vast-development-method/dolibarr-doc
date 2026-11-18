@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/salaries/class/api_salaries.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses one of `salaries.read` or `salaries.readchild` or `salaries.readall`.
 
@@ -22,7 +22,7 @@ Source lines `78–136`.
 
 ## `get` — Read a salary record
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses one of `salaries.read` or `salaries.readchild` or `salaries.readall`.
 
@@ -37,7 +37,7 @@ Source lines `146–174`.
 
 ## `post` — Create a salary record
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_user`, `label`, `amount`.
 
@@ -53,7 +53,7 @@ Source lines `184–201` with `_validate 510–523`.
 
 ## `put` — Update a salary record
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `salaries.write`, one of `salaries.read` or `salaries.readchild` or `salaries.readall`.
 
@@ -69,7 +69,7 @@ Source lines `212–236` with `get 146–174`.
 
 Route `GET /payments`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer).
 
 **Access** The decision uses one of `salaries.read` or `salaries.readchild` or `salaries.readall`.
 
@@ -86,7 +86,7 @@ Source lines `283–333`.
 
 Route `GET /payments/{pid}`.
 
-**Arguments** `pid`.
+**Arguments** `pid` (integer).
 
 **Access** The decision uses right `salaries.readall`.
 
@@ -101,7 +101,7 @@ Source lines `345–362`.
 
 Route `POST {id}/payments`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 The request-field validator requires `paiementtype`, `datepaye`, `chid`, `amounts`.
 
@@ -123,7 +123,7 @@ Source lines `377–429` with `_validatepayments 533–550`.
 
 Route `PUT {id}/payments`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `salaries.write`, one of `salaries.read` or `salaries.readchild` or `salaries.readall`.
 

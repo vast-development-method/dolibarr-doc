@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/compta/bank/class/api_bankac
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `category = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `banque.lire`.
 
@@ -22,7 +22,7 @@ Source lines `71–126`.
 
 ## `get` — Read a bank account
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `banque.lire`.
 
@@ -35,7 +35,7 @@ Source lines `136–149`.
 
 ## `post` — Create a bank account
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `ref`, `label`, `type`, `currency_code`, `country_id`.
 
@@ -55,7 +55,7 @@ Source lines `159–184` with `_validate 413–426`.
 
 Route `POST /transfer`.
 
-**Arguments** `bankaccount_from_id = 0`, `bankaccount_to_id = 0`, `date = null`, `description = ""`, `amount = 0.0`, `amount_to = 0.0`, `cheque_number = ""`.
+**Arguments** `bankaccount_from_id = 0` (integer), `bankaccount_to_id = 0` (integer), `date = null` (text), `description = ""` (text), `amount = 0.0` (number), `amount_to = 0.0` (number), `cheque_number = ""` (text).
 
 **Access** The decision uses right `banque.configurer`.
 
@@ -72,7 +72,7 @@ Source lines `210–325`.
 
 ## `put` — Update a bank account
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `banque.configurer`, right `banque.lire`.
 
@@ -88,7 +88,7 @@ Source lines `336–372` with `get 136–149`.
 
 ## `delete` — Delete a bank account
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `banque.configurer`.
 
@@ -104,7 +104,7 @@ Source lines `382–403`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`, `sqlfilters = ''`.
+**Arguments** `id` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `banque.lire`.
 
@@ -121,7 +121,7 @@ Source lines `461–506`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `date`, `type`, `label`, `amount`, `category = 0`, `cheque_number = ''`, `cheque_writer = ''`, `cheque_bank = ''`, `accountancycode = ''`, `datev = null`, `num_releve = ''`.
+**Arguments** `id` (integer), `date` (text), `type` (text), `label` (text), `amount` (number), `category = 0` (integer), `cheque_number = ''` (text), `cheque_writer = ''` (text), `cheque_bank = ''` (text), `accountancycode = ''` (text), `datev = null` (text), `num_releve = ''` (text).
 
 **Access** The decision uses right `banque.modifier`.
 
@@ -139,7 +139,7 @@ Source lines `527–565`.
 
 Route `POST {id}/lines/{line_id}/links`.
 
-**Arguments** `id`, `line_id`, `url_id`, `url`, `label`, `type`.
+**Arguments** `id` (integer), `line_id` (integer), `url_id` (integer), `url` (text), `label` (text), `type` (text).
 
 **Access** The decision uses right `banque.modifier`.
 
@@ -158,7 +158,7 @@ Source lines `580–611`.
 
 Route `GET {id}/lines/{line_id}/links`.
 
-**Arguments** `id`, `line_id`.
+**Arguments** `id` (integer), `line_id` (integer).
 
 **Access** The decision uses right `banque.lire`.
 
@@ -173,7 +173,7 @@ Source lines `626–644`.
 
 Route `GET /lines/{line_id}`.
 
-**Arguments** `line_id`.
+**Arguments** `line_id` (integer).
 
 **Access** The decision uses right `banque.lire`.
 
@@ -188,7 +188,7 @@ Source lines `655–668`.
 
 Route `PUT {id}/lines/{line_id}`.
 
-**Arguments** `id`, `line_id`, `label`.
+**Arguments** `id` (integer), `line_id` (integer), `label` (text).
 
 **Access** The decision uses right `banque.modifier`.
 
@@ -207,7 +207,7 @@ Source lines `680–709`.
 
 Route `DELETE {id}/lines/{line_id}`.
 
-**Arguments** `id`, `line_id`.
+**Arguments** `id` (integer), `line_id` (integer).
 
 **Access** The decision uses right `banque.modifier`.
 
@@ -224,7 +224,7 @@ Source lines `722–754`.
 
 Route `GET {id}/balance`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `banque.lire`.
 

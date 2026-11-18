@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/comm/action/class/api_agenda
 
 ## `get` — Read a calendar activity
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `agenda.myactions.read`, right `agenda.allactions.read`, agenda record scope.
 
@@ -21,7 +21,7 @@ Source lines `73–99`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.id"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `user_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.id"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `agenda.myactions.read`.
 
@@ -37,7 +37,7 @@ Source lines `123–227`.
 
 ## `post` — Create a calendar activity
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `userownerid`, `type_code`.
 
@@ -55,7 +55,7 @@ Source lines `241–275` with `_validate 406–419`.
 
 ## `put` — Update a calendar activity
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `userownerid`.
 
@@ -73,7 +73,7 @@ Source lines `291–345` with `get 73–99`.
 
 ## `delete` — Delete a calendar activity
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `agenda.myactions.delete`, right `agenda.allactions.delete`, actioncomm record scope.
 

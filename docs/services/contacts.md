@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/societe/class/api_contacts.c
 
 ## `get` — Read a contact
 
-**Arguments** `id`, `includecount = 0`, `includeroles = 0`.
+**Arguments** `id` (integer), `includecount = 0` (integer), `includeroles = 0` (integer).
 
 **Access** The decision uses right `societe.contact.lire`, contact record scope.
 
@@ -23,7 +23,7 @@ Source lines `79–112`.
 
 Route `GET email/{email}`.
 
-**Arguments** `email`, `includecount = 0`, `includeroles = 0`.
+**Arguments** `email` (text), `includecount = 0` (integer), `includeroles = 0` (integer).
 
 **Access** The decision uses right `societe.contact.lire`, contact record scope.
 
@@ -38,7 +38,7 @@ Source lines `129–162`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `category = 0`, `sqlfilters = ''`, `includecount = 0`, `includeroles = 0`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `includecount = 0` (integer), `includeroles = 0` (integer), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `societe.contact.lire`.
 
@@ -54,7 +54,7 @@ Source lines `186–327`.
 
 ## `post` — Create a contact
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `lastname`.
 
@@ -75,7 +75,7 @@ Source lines `341–394` with `_validate 718–729`.
 
 ## `put` — Update a contact
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.contact.creer`, contact record scope, party record scope, right `societe.contact.lire`.
 
@@ -91,7 +91,7 @@ Source lines `411–465` with `get 79–112`.
 
 ## `delete` — Delete a contact
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.contact.supprimer`, contact record scope.
 
@@ -107,7 +107,7 @@ Source lines `477–502`.
 
 Route `POST {id}/createUser`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `login`, `password`.
 
@@ -128,7 +128,7 @@ Source lines `518–560`.
 
 Route `GET {id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`, contact record scope.
 
@@ -145,7 +145,7 @@ Source lines `577–596`.
 
 Route `PUT {id}/categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.contact.creer`, contact record scope, category record scope.
 
@@ -162,7 +162,7 @@ Source lines `613–639`.
 
 Route `DELETE {id}/categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.contact.creer`, contact record scope, category record scope.
 

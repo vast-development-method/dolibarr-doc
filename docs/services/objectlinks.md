@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/api/class/api_objectlinks.cl
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** A record with internal service properties removed.
 
@@ -21,7 +21,7 @@ Source lines `81–84` with `_fetch 431–466`.
 
 Route `POST /`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_source`, `sourcetype`, `fk_target`, `targettype`.
 
@@ -38,7 +38,7 @@ Source lines `136–194` with `_validate 577–587`, `_setObjectLinkField 95–1
 
 Route `DELETE {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** Acknowledgement under `success` with `code`, `message`.
 
@@ -52,7 +52,7 @@ Source lines `210–255`.
 
 Route `GET /`.
 
-**Arguments** `fk_source`, `sourcetype`, `fk_target`, `targettype`, `relationtype = null`.
+**Arguments** `fk_source` (integer), `sourcetype` (text), `fk_target` (integer), `targettype` (text), `relationtype = null` (text).
 
 The request-field validator requires `fk_source`, `sourcetype`, `fk_target`, `targettype`.
 
@@ -69,7 +69,7 @@ Source lines `275–329` with `_validate 577–587`, `_setObjectLinkField 95–1
 
 Route `DELETE /`.
 
-**Arguments** `fk_source`, `sourcetype`, `fk_target`, `targettype`, `relationtype = null`, `notrigger = 0`.
+**Arguments** `fk_source` (integer), `sourcetype` (text), `fk_target` (integer), `targettype` (text), `relationtype = null` (text), `notrigger = 0` (integer).
 
 The request-field validator requires `fk_source`, `sourcetype`, `fk_target`, `targettype`.
 

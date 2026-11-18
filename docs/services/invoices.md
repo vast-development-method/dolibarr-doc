@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/compta/facture/class/api_inv
 
 ## `get` — Read a customer invoice
 
-**Arguments** `id`, `contact_list = 1`, `properties = ''`, `withLines = true`.
+**Arguments** `id` (integer), `contact_list = 1` (integer), `properties = ''` (text), `withLines = true` (boolean).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -24,7 +24,7 @@ Source lines `82–91` with `_fetch 146–191`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`, `contact_list = 1`.
+**Arguments** `ref` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -40,7 +40,7 @@ Source lines `108–111` with `_fetch 146–191`.
 
 Route `GET ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`, `contact_list = 1`.
+**Arguments** `ref_ext` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -54,7 +54,7 @@ Source lines `128–131` with `_fetch 146–191`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `status = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`, `withLines = true`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `status = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer), `withLines = true` (boolean).
 
 **Access** The decision uses right `facture.lire`.
 
@@ -70,7 +70,7 @@ Source lines `218–349`.
 
 ## `post` — Create a customer invoice
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`.
 
@@ -93,7 +93,7 @@ Source lines `361–417` with `_validate 2106–2119`.
 
 Route `POST /createfromorder/{orderid}`.
 
-**Arguments** `orderid`.
+**Arguments** `orderid` (integer).
 
 **Access** The decision uses right `commande.lire`, right `facture.creer`, order record scope.
 
@@ -112,7 +112,7 @@ Source lines `435–470`.
 
 Route `POST /createfromcontract/{contractid}`.
 
-**Arguments** `contractid`.
+**Arguments** `contractid` (integer).
 
 **Access** The decision uses right `contrat.lire`, right `facture.creer`, contract record scope.
 
@@ -131,7 +131,7 @@ Source lines `487–516`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -146,7 +146,7 @@ Source lines `530–550`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `remise_percent`, `date_start`, `date_end`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `price_base_type`, `info_bits`, `product_type`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `special_code`, `array_options`, `situation_percent`, `fk_unit`, `multicurrency_subprice`, `ref_ext`, `rang`.
 
@@ -166,7 +166,7 @@ Source lines `570–636`.
 
 Route `POST {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = 'external'`, `notrigger = 0`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = 'external'` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -186,7 +186,7 @@ Source lines `657–763`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -203,7 +203,7 @@ Source lines `780–801`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -221,7 +221,7 @@ Source lines `819–848`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope, right `facture.lire`.
 
@@ -238,7 +238,7 @@ Source lines `866–893` with `get 82–91`, `_fetch 146–191`.
 
 ## `put` — Update a customer invoice
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `facture.creer`, invoice record scope, right `facture.lire`.
 
@@ -255,7 +255,7 @@ Source lines `906–959` with `get 82–91`, `_fetch 146–191`.
 
 ## `delete` — Delete a customer invoice
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.supprimer`, invoice record scope.
 
@@ -272,7 +272,7 @@ Source lines `971–1001`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `product_type`, `fk_parent_line`, `subprice`, `remise_percent`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_fournprice`, `pa_ht`, `qty`, `fk_product`, `date_start`, `date_end`, `fk_code_ventilation`, `info_bits`, `fk_remise_except`, `price_base_type`, `rang`, `special_code`, `origin`, `origin_id`, `array_options`, `situation_percent`, `fk_prev_id`, `fk_unit`, `ref_ext`.
 
@@ -292,7 +292,7 @@ Source lines `1030–1097`.
 
 Route `POST {id}/contacts`.
 
-**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+**Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -310,7 +310,7 @@ Source lines `1119–1149`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`, `idwarehouse = -1`.
+**Arguments** `id` (integer), `idwarehouse = -1` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -329,7 +329,7 @@ Source lines `1169–1197`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `force_number = ''`, `idwarehouse = 0`, `notrigger = 0`.
+**Arguments** `id` (integer), `force_number = ''` (text), `idwarehouse = 0` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -348,7 +348,7 @@ Source lines `1219–1256`.
 
 Route `POST {id}/settopaid`.
 
-**Arguments** `id`, `close_code = ''`, `close_note = ''`.
+**Arguments** `id` (integer), `close_code = ''` (text), `close_note = ''` (text).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -367,7 +367,7 @@ Source lines `1275–1309`.
 
 Route `POST {id}/settounpaid`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -386,7 +386,7 @@ Source lines `1327–1361`.
 
 Route `GET {id}/discount`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -402,7 +402,7 @@ Source lines `1373–1401`.
 
 Route `POST {id}/markAsCreditAvailable`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -420,7 +420,7 @@ Source lines `1418–1596`.
 
 Route `POST {id}/usediscount/{discountid}`.
 
-**Arguments** `id`, `discountid`.
+**Arguments** `id` (integer), `discountid` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -439,7 +439,7 @@ Source lines `1616–1643`.
 
 Route `POST {id}/usecreditnote/{discountid}`.
 
-**Arguments** `id`, `discountid`.
+**Arguments** `id` (integer), `discountid` (integer).
 
 **Access** The decision uses right `facture.creer`, invoice record scope.
 
@@ -458,7 +458,7 @@ Source lines `1663–1692`.
 
 Route `GET {id}/payments`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, invoice record scope.
 
@@ -477,7 +477,7 @@ Source lines `1711–1735`.
 
 Route `POST {id}/payments`.
 
-**Arguments** `id`, `datepaye`, `paymentid`, `closepaidinvoices`, `accountid`, `num_payment = ''`, `comment = ''`, `chqemetteur = ''`, `chqbank = ''`.
+**Arguments** `id` (integer), `datepaye` (text), `paymentid` (integer), `closepaidinvoices` (text), `accountid` (integer), `num_payment = ''` (text), `comment = ''` (text), `chqemetteur = ''` (text), `chqbank = ''` (text).
 
 **Access** The decision uses right `facture.paiement`, invoice record scope.
 
@@ -495,7 +495,7 @@ Source lines `1761–1856`.
 
 Route `POST /paymentsdistributed`.
 
-**Arguments** `arrayofamounts`, `datepaye`, `paymentid`, `closepaidinvoices`, `accountid`, `num_payment = ''`, `comment = ''`, `chqemetteur = ''`, `chqbank = ''`, `ref_ext = ''`, `accepthigherpayment = false`.
+**Arguments** `arrayofamounts` (collection), `datepaye` (text), `paymentid` (integer), `closepaidinvoices` (text), `accountid` (integer), `num_payment = ''` (text), `comment = ''` (text), `chqemetteur = ''` (text), `chqbank = ''` (text), `ref_ext = ''` (text), `accepthigherpayment = false` (boolean).
 
 **Access** The decision uses right `facture.paiement`, invoice record scope.
 
@@ -513,7 +513,7 @@ Source lines `1888–2011`.
 
 Route `PUT payments/{id}`.
 
-**Arguments** `id`, `num_payment = ''`.
+**Arguments** `id` (integer), `num_payment = ''` (text).
 
 **Access** The decision uses right `facture.paiement`, invoice record scope.
 
@@ -532,7 +532,7 @@ Source lines `2031–2070`.
 
 Route `GET templates/{id}`.
 
-**Arguments** `id`, `contact_list = 1`.
+**Arguments** `id` (integer), `contact_list = 1` (integer).
 
 **Access** The decision uses right `facture.lire`, facturerec record scope.
 
@@ -547,7 +547,7 @@ Source lines `2137–2140` with `_fetchTemplateInvoice 2297–2322`.
 
 Route `GET templates`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `status = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`, `withLines = true`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `status = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer), `withLines = true` (boolean).
 
 **Access** The decision uses right `facture.lire`.
 

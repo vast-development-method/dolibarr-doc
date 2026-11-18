@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/adherents/class/api_members.
 
 ## `get` — Read a member
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -23,7 +23,7 @@ Source lines `74–95`.
 
 Route `GET thirdparty/{thirdparty}`.
 
-**Arguments** `thirdparty`.
+**Arguments** `thirdparty` (integer).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -38,7 +38,7 @@ Source lines `111–128`.
 
 Route `GET thirdparty/accounts/{site}/{key_account}`.
 
-**Arguments** `site`, `key_account`.
+**Arguments** `site` (text), `key_account` (text).
 
 **Access** The decision uses right `societe.lire`, member record scope.
 
@@ -55,7 +55,7 @@ Source lines `142–177`.
 
 Route `GET thirdparty/email/{email}`.
 
-**Arguments** `email`.
+**Arguments** `email` (text).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -72,7 +72,7 @@ Source lines `193–216`.
 
 Route `GET thirdparty/barcode/{barcode}`.
 
-**Arguments** `barcode`.
+**Arguments** `barcode` (text).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -85,7 +85,7 @@ Source lines `232–255`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `typeid = ''`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `typeid = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `adherent.lire`.
 
@@ -101,7 +101,7 @@ Source lines `281–360`.
 
 ## `post` — Create a member
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.creer`.
 
@@ -118,7 +118,7 @@ Source lines `373–403` with `_validate 544–562`.
 
 ## `put` — Update a member
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.creer`, member record scope, right `adherent.lire`.
 
@@ -135,7 +135,7 @@ Source lines `418–492` with `get 74–95`.
 
 ## `delete` — Delete a member
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.supprimer`, member record scope.
 
@@ -151,7 +151,7 @@ Source lines `506–533`.
 
 Route `GET {id}/subscriptions`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.cotisation.lire`, member record scope.
 
@@ -166,7 +166,7 @@ Source lines `669–690`.
 
 Route `POST {id}/subscriptions`.
 
-**Arguments** `id`, `start_date`, `end_date`, `amount`, `label = ''`.
+**Arguments** `id` (integer), `start_date` (text), `end_date` (text), `amount` (number), `label = ''` (text).
 
 **Access** The decision uses right `adherent.cotisation.creer`, member record scope.
 
@@ -185,7 +185,7 @@ Source lines `709–737`.
 
 Route `GET {id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`, member record scope.
 
@@ -203,7 +203,7 @@ Source lines `756–781`.
 
 Route `GET /types/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.lire`, member record scope.
 
@@ -218,7 +218,7 @@ Source lines `799–816`.
 
 Route `GET /types/`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `adherent.lire`.
 
@@ -235,7 +235,7 @@ Source lines `840–909`.
 
 Route `POST /types/`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.configurer`.
 
@@ -253,7 +253,7 @@ Source lines `924–946` with `_validateType 1143–1156`.
 
 Route `PUT /types/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.configurer`, member record scope, right `adherent.lire`.
 
@@ -271,7 +271,7 @@ Source lines `963–1006` with `get 74–95`.
 
 Route `DELETE /types/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.configurer`, member record scope.
 
@@ -287,7 +287,7 @@ Source lines `1022–1048`.
 
 Route `GET stats/nbbymonth`.
 
-**Arguments** `year`, `format = 0`.
+**Arguments** `year` (integer), `format = 0` (integer).
 
 **Access** The decision uses right `adherent.lire`.
 
@@ -313,7 +313,7 @@ Source lines `1083–1090`.
 
 Route `GET stats/amountbymonth`.
 
-**Arguments** `year`, `format = 0`.
+**Arguments** `year` (integer), `format = 0` (integer).
 
 **Access** The decision uses right `adherent.lire`.
 
@@ -327,7 +327,7 @@ Source lines `1104–1111`.
 
 Route `GET stats/lastmodifiedmembers`.
 
-**Arguments** `max`.
+**Arguments** `max` (integer).
 
 **Access** The decision uses right `adherent.lire`.
 

@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/workstation/class/api_workst
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `workstation.workstation.read`, workstation record scope.
 
@@ -25,7 +25,7 @@ Source lines `71–74` with `_fetch 311–333`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Access** The decision uses right `workstation.workstation.read`, workstation record scope.
 
@@ -40,7 +40,7 @@ Source lines `91–94` with `_fetch 311–333`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.ref"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `workstation.workstation.read`.
 

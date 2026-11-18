@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/categories/class/api_categor
 
 ## `get` — Read a category
 
-**Arguments** `id`, `include_childs = false`.
+**Arguments** `id` (integer), `include_childs = false` (boolean).
 
 **Access** The decision uses right `categorie.lire`, category record scope.
 
@@ -20,7 +20,7 @@ Source lines `81–108`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `type = ''`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `type = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -48,7 +48,7 @@ Source lines `197–205`.
 
 ## `post` — Create a category
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `label`, `type`.
 
@@ -66,7 +66,7 @@ Source lines `215–237` with `_validate 864–877`.
 
 ## `put` — Update a category
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `categorie.creer`, category record scope, right `categorie.lire`.
 
@@ -82,7 +82,7 @@ Source lines `250–290` with `get 81–108`.
 
 ## `delete` — Delete a category
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `categorie.supprimer`, category record scope.
 
@@ -98,7 +98,7 @@ Source lines `301–325`.
 
 Route `GET /object/{type}/{id}`.
 
-**Arguments** `id`, `type`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `type` (text), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses one of `produit.lire` or `service.lire`, right `contact.lire`, right `societe.lire`, right `fournisseur.lire`, right `adherent.lire`, right `projet.lire`, right `knowledgemanagement.knowledgerecord.read`, right `agenda.allactions.read`, right `ficheinter.lire`, right `ticket.read`, right `user.lire`, right `stock.lire`.
 
@@ -115,7 +115,7 @@ Source lines `346–397`.
 
 Route `POST {id}/objects/{type}/{object_id}`.
 
-**Arguments** `id`, `type`, `object_id`.
+**Arguments** `id` (integer), `type` (text), `object_id` (integer).
 
 **Access** The decision uses right `categorie.lire`, category record scope, one of `produit.creer` or `service.creer`, right `societe.creer`, right `societe.contact.creer`, right `adherent.creer`, right `agenda.allactions.read`, right `projet.creer`.
 
@@ -134,7 +134,7 @@ Source lines `413–501` with `_checkAccessToLinkedObject 973–994`.
 
 Route `POST {id}/objects/{type}/ref/{object_ref}`.
 
-**Arguments** `id`, `type`, `object_ref`.
+**Arguments** `id` (integer), `type` (text), `object_ref` (text).
 
 **Access** The decision uses right `categorie.lire`, category record scope, one of `produit.creer` or `service.creer`, right `societe.creer`, right `societe.contact.creer`, right `adherent.creer`, right `agenda.allactions.read`.
 
@@ -153,7 +153,7 @@ Source lines `517–600` with `_checkAccessToLinkedObject 973–994`.
 
 Route `DELETE {id}/objects/{type}/{object_id}`.
 
-**Arguments** `id`, `type`, `object_id`.
+**Arguments** `id` (integer), `type` (text), `object_id` (integer).
 
 **Access** The decision uses right `categorie.lire`, category record scope, one of `produit.creer` or `service.creer`, right `societe.creer`, right `societe.contact.creer`, right `adherent.creer`, right `agenda.allactions.read`.
 
@@ -172,7 +172,7 @@ Source lines `616–686` with `_checkAccessToLinkedObject 973–994`.
 
 Route `DELETE {id}/objects/{type}/ref/{object_ref}`.
 
-**Arguments** `id`, `type`, `object_ref`.
+**Arguments** `id` (integer), `type` (text), `object_ref` (text).
 
 **Access** The decision uses right `categorie.lire`, category record scope, one of `produit.creer` or `service.creer`, right `societe.creer`, right `societe.contact.creer`, right `adherent.creer`, right `agenda.allactions.read`.
 
@@ -191,7 +191,7 @@ Source lines `702–772` with `_checkAccessToLinkedObject 973–994`.
 
 Route `GET {id}/objects`.
 
-**Arguments** `id`, `type`, `onlyids = 0`.
+**Arguments** `id` (integer), `type` (text), `onlyids = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`, category record scope.
 

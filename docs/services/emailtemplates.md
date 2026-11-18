@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/api/class/api_emailtemplates
 
 Route `DELETE {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses administrator status.
 
@@ -24,7 +24,7 @@ Source lines `93–119` with `_checkAccessRights 674–698`.
 
 Route `DELETE label/{label}`.
 
-**Arguments** `label`.
+**Arguments** `label` (text).
 
 **Access** The decision uses administrator status.
 
@@ -40,7 +40,7 @@ Source lines `135–161` with `_checkAccessRights 674–698`.
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** A record with internal service properties removed.
 
@@ -54,7 +54,7 @@ Source lines `178–181` with `_fetch 515–543`, `_checkAccessRights 674–698`
 
 Route `GET label/{label}`.
 
-**Arguments** `label`.
+**Arguments** `label` (text).
 
 **Result** A record with internal service properties removed.
 
@@ -68,7 +68,7 @@ Source lines `198–201` with `_fetch 515–543`, `_checkAccessRights 674–698`
 
 Route `GET /`.
 
-**Arguments** `sortfield = "e.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `fk_user = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "e.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `fk_user = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 The properties selector projects the returned fields.
 
@@ -84,7 +84,7 @@ Source lines `225–304` with `_checkAccessRights 674–698`.
 
 Route `POST /`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `label`, `topic`, `type_template`.
 
@@ -104,7 +104,7 @@ Source lines `324–365` with `_checkAccessRights 674–698`, `_validate 653–6
 
 Route `PUT {id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses administrator status.
 
@@ -123,7 +123,7 @@ Source lines `387–430` with `_checkAccessRights 674–698`, `_fetch 515–543`
 
 Route `PUT label/{label}`.
 
-**Arguments** `label`, `request_data = null`.
+**Arguments** `label` (text), `request_data = null` (collection).
 
 **Access** The decision uses administrator status.
 

@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/eventorganization/class/api_
 
 Route `DELETE {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** Acknowledgement under `success` with `code`, `message`.
 
@@ -23,7 +23,7 @@ Source lines `86–111` with `_checkAccessRights 632–686`.
 
 Route `DELETE ref/{ref}`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Result** Acknowledgement under `success` with `code`, `message`.
 
@@ -37,7 +37,7 @@ Source lines `127–149` with `_checkAccessRights 632–686`.
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** A record with internal service properties removed.
 
@@ -52,7 +52,7 @@ Source lines `166–169` with `_fetch 484–516`, `_checkAccessRights 632–686`
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Result** A record with internal service properties removed.
 
@@ -67,7 +67,7 @@ Source lines `186–189` with `_fetch 484–516`, `_checkAccessRights 632–686`
 
 Route `GET /`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
 
 The properties selector projects the returned fields. The method loads related business records.
 
@@ -84,7 +84,7 @@ Source lines `213–314` with `_checkAccessRights 632–686`.
 
 Route `POST /`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_project`.
 
@@ -102,7 +102,7 @@ Source lines `334–359` with `_checkAccessRights 632–686`, `_validate 609–6
 
 Route `PUT {id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 The optional caller marker is placed in event context for synchronization.
 
@@ -119,7 +119,7 @@ Source lines `380–413` with `_checkAccessRights 632–686`, `_fetch 484–516`
 
 Route `PUT ref/{ref}`.
 
-**Arguments** `ref`, `request_data = null`.
+**Arguments** `ref` (text), `request_data = null` (collection).
 
 The optional caller marker is placed in event context for synchronization.
 

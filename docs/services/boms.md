@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/bom/class/api_boms.class.php
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `bom.read`, bill of materials record scope.
 
@@ -21,7 +21,7 @@ Source lines `72–88`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `bom.read`.
 
@@ -37,7 +37,7 @@ Source lines `110–183`.
 
 ## `post` — Create a bill of materials
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `bom.write`.
 
@@ -53,7 +53,7 @@ Source lines `196–220` with `_validate 662–678`.
 
 ## `put` — Update a bill of materials
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `bom.write`, bill of materials record scope, right `bom.read`.
 
@@ -71,7 +71,7 @@ Source lines `237–278` with `get 72–88`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `bom.write`.
 
@@ -88,7 +88,7 @@ Source lines `294–314`.
 
 ## `delete` — Delete a bill of materials
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `bom.delete`, bill of materials record scope.
 
@@ -104,7 +104,7 @@ Source lines `328–352`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `bom.read`, bom bom record scope.
 
@@ -119,7 +119,7 @@ Source lines `368–388`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `fk_product`, `qty`, `qty_frozen`, `disable_stock_change`, `efficiency`, `position`, `fk_bom_child`, `import_key`, `fk_unit`, `array_options`, `fk_default_workstation`.
 
@@ -139,7 +139,7 @@ Source lines `406–442`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `qty`, `qty_frozen`, `disable_stock_change`, `efficiency`, `position`, `import_key`, `fk_unit`, `array_options`, `fk_default_workstation`.
 
@@ -158,7 +158,7 @@ Source lines `460–506`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `bom.write`, bom bom record scope.
 

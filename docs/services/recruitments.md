@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/recruitment/class/api_recrui
 
 Route `GET jobposition/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.read`, recruitment record scope.
 
@@ -23,7 +23,7 @@ Source lines `78–94`.
 
 Route `GET candidature/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.read`, recruitment record scope.
 
@@ -38,7 +38,7 @@ Source lines `109–125`.
 
 Route `GET /jobposition/`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.read`.
 
@@ -56,7 +56,7 @@ Source lines `147–243`.
 
 Route `GET /candidature/`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.read`.
 
@@ -74,7 +74,7 @@ Source lines `265–360`.
 
 Route `POST jobposition/`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.write`.
 
@@ -92,7 +92,7 @@ Source lines `374–400` with `_validate 699–715`.
 
 Route `POST candidature/`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.write`.
 
@@ -110,7 +110,7 @@ Source lines `414–442` with `_validate 699–715`.
 
 Route `PUT jobposition/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.write`, recruitment record scope, right `recruitment.recruitmentjobposition.read`.
 
@@ -128,7 +128,7 @@ Source lines `457–493` with `getJobPosition 78–94`.
 
 Route `PUT candidature/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.write`, recruitment record scope, right `recruitment.recruitmentjobposition.read`.
 
@@ -146,7 +146,7 @@ Source lines `508–544` with `getCandidature 109–125`.
 
 Route `DELETE jobposition/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.delete`, recruitment record scope.
 
@@ -162,7 +162,7 @@ Source lines `559–583`.
 
 Route `DELETE candidature/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.delete`, recruitment record scope.
 
