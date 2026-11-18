@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/holiday/class/api_holidays.c
 
 ## `get` — Read a leave request
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `holiday.read`, leave request record scope.
 
@@ -21,7 +21,7 @@ Source lines `96–113`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `user_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses one of `holiday.read` or `holiday.readall`.
 
@@ -37,7 +37,7 @@ Source lines `134–234`.
 
 ## `post` — Create a leave request
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_user`, `date_debut`, `date_fin`.
 
@@ -55,7 +55,7 @@ Source lines `248–286` with `_validate 821–834`.
 
 ## `put` — Update a leave request
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `holiday.write`, right `holiday.writeall`, leave request record scope, right `holiday.read`.
 
@@ -72,7 +72,7 @@ Source lines `306–361` with `get 96–113`.
 
 ## `delete` — Delete a leave request
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `holiday.delete`, leave request record scope.
 
@@ -91,7 +91,7 @@ Source lines `375–405`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `holiday.write`, leave request record scope, right `holiday.writeall`.
 
@@ -111,7 +111,7 @@ Source lines `426–458`.
 
 Route `POST {id}/approve`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `holiday.approve`, leave request record scope, right `holiday.writeall`.
 
@@ -131,7 +131,7 @@ Source lines `480–540`.
 
 Route `POST {id}/cancel`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `holiday.write`, leave request record scope, one of `holiday.writeall` or `holiday.approve`.
 
@@ -151,7 +151,7 @@ Source lines `561–643`.
 
 Route `POST {id}/refuse`.
 
-**Arguments** `id`, `detail_refuse`, `notrigger = 0`.
+**Arguments** `id` (integer), `detail_refuse` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `holiday.approve`, leave request record scope, right `holiday.writeall`.
 
@@ -171,7 +171,7 @@ Source lines `665–701`.
 
 Route `POST {id}/reopen`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `holiday.write`, leave request record scope.
 

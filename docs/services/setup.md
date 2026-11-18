@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/api/class/api_setup.class.ph
 
 Route `GET actiontriggers`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `elementtype = ''`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `elementtype = ''` (text), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -21,7 +21,7 @@ Source lines `79–130`.
 
 Route `GET dictionary/ordering_methods`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `commande.lire`.
 
@@ -37,7 +37,7 @@ Source lines `152–197`.
 
 Route `GET dictionary/ordering_origins`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `commande.lire`.
 
@@ -53,7 +53,7 @@ Source lines `218–263`.
 
 Route `GET dictionary/payment_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses one of `propal.lire` or `commande.lire` or `facture.lire`.
 
@@ -71,7 +71,7 @@ Source lines `285–331`.
 
 Route `GET dictionary/regions`.
 
-**Arguments** `sortfield = "code_region"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `country = 0`, `filter = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code_region"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `country = 0` (integer), `filter = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -84,7 +84,7 @@ Source lines `354–404`.
 
 Route `GET dictionary/regions/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** A record with internal service properties removed.
 
@@ -97,7 +97,7 @@ Source lines `419–422` with `_fetchCregion 723–735`.
 
 Route `GET dictionary/regions/byCode/{code}`.
 
-**Arguments** `code`.
+**Arguments** `code` (text).
 
 **Result** A record with internal service properties removed.
 
@@ -110,7 +110,7 @@ Source lines `437–440` with `_fetchCregion 723–735`.
 
 Route `GET dictionary/states`.
 
-**Arguments** `sortfield = "code_departement"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `country = 0`, `filter = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code_departement"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `country = 0` (integer), `filter = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -123,7 +123,7 @@ Source lines `466–519`.
 
 Route `GET dictionary/states/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Result** A record with internal service properties removed.
 
@@ -136,7 +136,7 @@ Source lines `534–537` with `_fetchCstate 748–760`.
 
 Route `GET dictionary/states/byCode/{code}`.
 
-**Arguments** `code`.
+**Arguments** `code` (text).
 
 **Result** A record with internal service properties removed.
 
@@ -149,7 +149,7 @@ Source lines `552–555` with `_fetchCstate 748–760`.
 
 Route `GET dictionary/countries`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `filter = ''`, `lang = ''`, `sqlfilters = ''`, `loadregions = 0`, `loadstates = 0`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `filter = ''` (text), `lang = ''` (text), `sqlfilters = ''` (text), `loadregions = 0` (integer), `loadstates = 0` (integer).
 
 **Result** A collection of matching records.
 
@@ -162,7 +162,7 @@ Source lines `583–642`.
 
 Route `GET dictionary/countries/{id}`.
 
-**Arguments** `id`, `lang = ''`, `loadregions = 0`, `loadstates = 0`.
+**Arguments** `id` (integer), `lang = ''` (text), `loadregions = 0` (integer), `loadstates = 0` (integer).
 
 The wrapper accepts a language argument but passes an empty language to its shared country resolver. The region and state expansion switches are forwarded.
 
@@ -178,7 +178,7 @@ Source lines `661–667` with `_fetchCcountry 777–804`.
 
 Route `GET dictionary/countries/byCode/{code}`.
 
-**Arguments** `code`, `lang = ''`, `loadregions = 0`, `loadstates = 0`.
+**Arguments** `code` (text), `lang = ''` (text), `loadregions = 0` (integer), `loadstates = 0` (integer).
 
 The shared country resolver receives the requested code and subdivision flags. This wrapper passes an empty language to it.
 
@@ -193,7 +193,7 @@ Source lines `686–689` with `_fetchCcountry 777–804`.
 
 Route `GET dictionary/countries/byISO/{iso}`.
 
-**Arguments** `iso`, `lang = ''`, `loadregions = 0`, `loadstates = 0`.
+**Arguments** `iso` (text), `lang = ''` (text), `loadregions = 0` (integer), `loadstates = 0` (integer).
 
 The shared country resolver receives the requested ISO value and subdivision flags. This wrapper passes an empty language to it.
 
@@ -208,7 +208,7 @@ Source lines `707–710` with `_fetchCcountry 777–804`.
 
 Route `GET dictionary/availability`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `commande.lire`.
 
@@ -224,7 +224,7 @@ Source lines `826–871`.
 
 Route `GET dictionary/event_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `type = ''`, `module = ''`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `type = ''` (text), `module = ''` (text), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -237,7 +237,7 @@ Source lines `944–991`.
 
 Route `GET dictionary/expensereport_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `module = ''`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `module = ''` (text), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `expensereport.lire`.
 
@@ -253,7 +253,7 @@ Source lines `1013–1061`.
 
 Route `GET dictionary/holiday_types`.
 
-**Arguments** `sortfield = "sortorder"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `fk_country = ''`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "sortorder"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `fk_country = ''` (text), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `holiday.read`.
 
@@ -271,7 +271,7 @@ Source lines `1083–1141`.
 
 Route `GET dictionary/public_holiday`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `fk_country = ''`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `fk_country = ''` (text), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `holiday.lire`.
 
@@ -289,7 +289,7 @@ Source lines `1163–1221`.
 
 Route `GET dictionary/contact_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `type = ''`, `module = ''`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `type = ''` (text), `module = ''` (text), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -302,7 +302,7 @@ Source lines `1244–1297`.
 
 Route `GET dictionary/civilities`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `module = ''`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `module = ''` (text), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -315,7 +315,7 @@ Source lines `1319–1365`.
 
 Route `GET dictionary/currencies`.
 
-**Arguments** `multicurrency = 0`, `sortfield = "code_iso"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `multicurrency = 0` (integer), `sortfield = "code_iso"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `multicurrency`.
 
@@ -330,7 +330,7 @@ Source lines `1386–1440`.
 
 Route `GET extrafields`.
 
-**Arguments** `sortfield = "t.pos"`, `sortorder = 'ASC'`, `elementtype = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "t.pos"` (text), `sortorder = 'ASC'` (text), `elementtype = ''` (text), `sqlfilters = ''` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 
@@ -348,7 +348,7 @@ Source lines `1458–1531`.
 
 Route `DELETE extrafields/{elementtype}/{attrname}`.
 
-**Arguments** `attrname`, `elementtype`.
+**Arguments** `attrname` (text), `elementtype` (text).
 
 **Access** The decision uses administrator status.
 
@@ -364,7 +364,7 @@ Source lines `1544–1567`.
 
 Route `GET extrafields/{elementtype}/{attrname}`.
 
-**Arguments** `attrname`, `elementtype`.
+**Arguments** `attrname` (text), `elementtype` (text).
 
 **Access** The decision uses administrator status.
 
@@ -382,7 +382,7 @@ Source lines `1583–1646`.
 
 Route `POST extrafields/{elementtype}/{attrname}`.
 
-**Arguments** `attrname`, `elementtype`, `request_data = null`.
+**Arguments** `attrname` (text), `elementtype` (text), `request_data = null` (collection).
 
 Named body fields used by the handler include `label`, `alwayseditable`, `default`, `totalizable`, `printable`, `showintooltip`, `required`, `langfile`, `computed`, `unique`, `param`, `perms`, `size`, `type`, `list`, `help`, `pos`.
 
@@ -403,7 +403,7 @@ Source lines `1662–1736`.
 
 Route `PUT extrafields/{elementtype}/{attrname}`.
 
-**Arguments** `attrname`, `elementtype`, `request_data = null`.
+**Arguments** `attrname` (text), `elementtype` (text), `request_data = null` (collection).
 
 Named body fields used by the handler include `label`, `alwayseditable`, `default`, `totalizable`, `printable`, `showintooltip`, `required`, `langfile`, `computed`, `unique`, `param`, `perms`, `size`, `type`, `list`, `help`, `pos`.
 
@@ -424,7 +424,7 @@ Source lines `1752–1823`.
 
 Route `GET dictionary/towns`.
 
-**Arguments** `sortfield = "zip,town"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `zipcode = ''`, `town = ''`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "zip,town"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `zipcode = ''` (text), `town = ''` (text), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -437,7 +437,7 @@ Source lines `1845–1892`.
 
 Route `GET dictionary/payment_terms`.
 
-**Arguments** `sortfield = "sortorder"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "sortorder"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses one of `propal.lire` or `commande.lire` or `facture.lire`.
 
@@ -455,7 +455,7 @@ Source lines `1914–1960`.
 
 Route `GET dictionary/shipping_methods`.
 
-**Arguments** `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `c_shipment_mode`.
 
@@ -470,7 +470,7 @@ Source lines `1980–2024`.
 
 Route `GET dictionary/units`.
 
-**Arguments** `sortfield = "rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -483,7 +483,7 @@ Source lines `2044–2085`.
 
 Route `GET dictionary/legal_form`.
 
-**Arguments** `sortfield = "rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `country = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `country = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -496,7 +496,7 @@ Source lines `2106–2150`.
 
 Route `GET dictionary/staff`.
 
-**Arguments** `sortfield = "id"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "id"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -509,7 +509,7 @@ Source lines `2170–2211`.
 
 Route `GET dictionary/socialnetworks`.
 
-**Arguments** `sortfield = "rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `c_socialnetworks`.
 
@@ -524,7 +524,7 @@ Source lines `2231–2279`.
 
 Route `GET dictionary/ticket_categories`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `c_ticket_category`.
 
@@ -539,7 +539,7 @@ Source lines `2300–2344`.
 
 Route `GET dictionary/ticket_severities`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `c_ticket_severity`.
 
@@ -554,7 +554,7 @@ Source lines `2365–2409`.
 
 Route `GET dictionary/ticket_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 The lookup uses the visible entity scope for `c_ticket_type`.
 
@@ -569,7 +569,7 @@ Source lines `2430–2475`.
 
 Route `GET dictionary/thirdparty_types`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching entries.
 
@@ -582,7 +582,7 @@ Source lines `2496–2540`.
 
 Route `GET dictionary/incoterms`.
 
-**Arguments** `sortfield = "code"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `lang = ''`, `sqlfilters = ''`.
+**Arguments** `sortfield = "code"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `lang = ''` (text), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -595,7 +595,7 @@ Source lines `2560–2603`.
 
 Route `GET dictionary/vat`.
 
-**Arguments** `sortfield = "taux"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `active = 1`, `fk_country = -1`, `sqlfilters = ''`.
+**Arguments** `sortfield = "taux"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `active = 1` (integer), `fk_country = -1` (integer), `sqlfilters = ''` (text).
 
 **Result** A collection of matching records.
 
@@ -635,7 +635,7 @@ Source lines `2748–2777`.
 
 Route `GET establishments/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses administrator status.
 
@@ -653,7 +653,7 @@ Source lines `2790–2809`.
 
 Route `GET conf/{constantname}`.
 
-**Arguments** `constantname`.
+**Arguments** `constantname` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 
@@ -683,7 +683,7 @@ Source lines `2857–2886`.
 
 Route `GET checkintegrity`.
 
-**Arguments** `target`.
+**Arguments** `target` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 
@@ -713,7 +713,7 @@ Source lines `3222–3235`.
 
 Route `GET /modules/status/{origin}`.
 
-**Arguments** `status = "active"`, `origin = 'all'`.
+**Arguments** `status = "active"` (text), `origin = 'all'` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 
@@ -729,7 +729,7 @@ Source lines `3248–3306`.
 
 Route `PUT /modules/{modulename}/enable`.
 
-**Arguments** `modulename`.
+**Arguments** `modulename` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 
@@ -744,7 +744,7 @@ Source lines `3319–3322` with `_moduleOnOff 3349–3385`.
 
 Route `PUT /modules/{modulename}/disable`.
 
-**Arguments** `modulename`.
+**Arguments** `modulename` (text).
 
 **Access** The decision uses administrator status or configured login exception.
 

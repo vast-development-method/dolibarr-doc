@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/comm/mailing/class/api_maili
 
 ## `get` — Read a campaign
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.read`, mailing record scope, project record scope.
 
@@ -19,7 +19,7 @@ Source lines `85–88` with `_fetch 100–122`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `fk_projects = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `fk_projects = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
 
 **Access** The decision uses right `mailing.read`, project record scope.
 
@@ -37,7 +37,7 @@ Source lines `147–231`.
 
 Route `GET {id}/targets`.
 
-**Arguments** `id`, `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `id` (integer), `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `mailing.read`, project record scope.
 
@@ -54,7 +54,7 @@ Source lines `258–339`.
 
 ## `clone` — Clone
 
-**Arguments** `id`, `cloneContent = 1`, `cloneRecipients = 1`, `notrigger = 0`.
+**Arguments** `id` (integer), `cloneContent = 1` (integer), `cloneRecipients = 1` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `mailing.write`, project record scope, right `mailing.read`, mailing record scope.
 
@@ -70,7 +70,7 @@ Source lines `356–380` with `get 85–88`, `_fetch 100–122`.
 
 ## `post` — Create a campaign
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `title`, `sujet`, `body`.
 
@@ -88,7 +88,7 @@ Source lines `395–423` with `_validate 976–989`.
 
 ## `put` — Update a campaign
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mailing.write`, project record scope, mailing record scope, right `mailing.read`.
 
@@ -104,7 +104,7 @@ Source lines `440–482` with `get 85–88`, `_fetch 100–122`.
 
 ## `delete` — Delete a campaign
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.delete`, project record scope, mailing record scope.
 
@@ -120,7 +120,7 @@ Source lines `498–526`.
 
 Route `PUT {id}/updateTarget/{targetid}`.
 
-**Arguments** `id`, `targetid`, `request_data = null`.
+**Arguments** `id` (integer), `targetid` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mailing.write`, project record scope, mailing record scope, right `mailing.read`.
 
@@ -139,7 +139,7 @@ Source lines `546–592` with `getTarget 677–680`, `_fetchTarget 694–721`.
 
 Route `POST {id}/createTarget`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mailing.write`, project record scope.
 
@@ -158,7 +158,7 @@ Source lines `612–660` with `_validateTarget 999–1012`.
 
 Route `GET {id}/getTarget/{targetid}`.
 
-**Arguments** `id`, `targetid`.
+**Arguments** `id` (integer), `targetid` (integer).
 
 **Access** The decision uses right `mailing.read`, project record scope, mailing record scope.
 
@@ -173,7 +173,7 @@ Source lines `677–680` with `_fetchTarget 694–721`.
 
 Route `DELETE {id}/deleteTarget/{targetid}`.
 
-**Arguments** `id`, `targetid`.
+**Arguments** `id` (integer), `targetid` (integer).
 
 **Access** The decision uses right `mailing.delete`, project record scope, mailing record scope.
 
@@ -189,7 +189,7 @@ Source lines `740–774`.
 
 Route `DELETE {id}/deleteTargets`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.delete`, project record scope, mailing record scope.
 
@@ -207,7 +207,7 @@ Source lines `792–821`.
 
 Route `PUT {id}/resetTargetsStatus`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.write`, project record scope, mailing record scope.
 
@@ -225,7 +225,7 @@ Source lines `839–868`.
 
 Route `PUT {id}/settodraft`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.write`, project record scope, mailing record scope.
 
@@ -244,7 +244,7 @@ Source lines `885–914`.
 
 Route `PUT {id}/validate`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mailing.write`, project record scope, mailing record scope.
 

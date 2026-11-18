@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/webhook/class/api_webhook.cl
 
 ## `get` — Read an event target
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `webhook.webhook_target.read`.
 
@@ -19,7 +19,7 @@ Source lines `66–69` with `_fetch 414–431`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `webhook.webhook_target.read`.
 
@@ -36,7 +36,7 @@ Source lines `87–158`.
 
 ## `post` — Create an event target
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `url`, `trigger_codes`.
 
@@ -52,7 +52,7 @@ Source lines `168–194` with `_validate 308–321`.
 
 ## `put` — Update an event target
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `webhook.webhook_target.write`, right `webhook.webhook_target.read`.
 
@@ -66,7 +66,7 @@ Source lines `209–232` with `get 66–69`, `_fetch 414–431`.
 
 ## `delete` — Delete an event target
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `webhook.webhook_target.delete`.
 

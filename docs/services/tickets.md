@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/ticket/class/api_tickets.cla
 
 ## `get` — Read a ticket
 
-**Arguments** `id`, `contact_list = 1`.
+**Arguments** `id` (integer), `contact_list = 1` (integer).
 
 **Access** The decision uses right `ticket.read`, ticket record scope.
 
@@ -24,7 +24,7 @@ Source lines `78–81` with `getCommon 133–211`.
 
 Route `GET track_id/{track_id}`.
 
-**Arguments** `track_id`, `contact_list = 1`.
+**Arguments** `track_id` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `ticket.read`, ticket record scope.
 
@@ -40,7 +40,7 @@ Source lines `98–101` with `getCommon 133–211`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`, `contact_list = 1`.
+**Arguments** `ref` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `ticket.read`, ticket record scope.
 
@@ -54,7 +54,7 @@ Source lines `118–121` with `getCommon 133–211`.
 
 ## `index` — List records
 
-**Arguments** `socid = 0`, `sortfield = "t.rowid"`, `sortorder = "ASC"`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `loadcontacts = 0`, `pagination_data = false`.
+**Arguments** `socid = 0` (integer), `sortfield = "t.rowid"` (text), `sortorder = "ASC"` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `loadcontacts = 0` (integer), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `ticket.read`.
 
@@ -70,7 +70,7 @@ Source lines `232–341`.
 
 ## `post` — Create a ticket
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `subject`, `message`.
 
@@ -91,7 +91,7 @@ Source lines `351–395` with `_validate 637–650`.
 
 ## `postNewMessage` — Post new message
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `track_id`, `message`.
 
@@ -112,7 +112,7 @@ Source lines `407–529` with `_validateMessage 660–673`.
 
 ## `put` — Update a ticket
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `socid`.
 
@@ -131,7 +131,7 @@ Source lines `540–593` with `get 78–81`, `getCommon 133–211`.
 
 ## `delete` — Delete a ticket
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `ticket.delete`, ticket record scope.
 
@@ -147,7 +147,7 @@ Source lines `603–627`.
 
 Route `POST {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = "external"`, `notrigger = 0`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = "external"` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `ticket.write`, ticket record scope.
 
@@ -165,7 +165,7 @@ Source lines `788–877`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = "external"`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = "external"` (text).
 
 **Access** The decision uses right `ticket.write`, ticket record scope.
 

@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/product/stock/class/api_ware
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `stock.lire`, stock record scope.
 
@@ -24,7 +24,7 @@ Source lines `74–92`.
 
 Route `GET /`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `stock.lire`.
 
@@ -42,7 +42,7 @@ Source lines `120–196`.
 
 Route `POST /`.
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `label`.
 
@@ -62,7 +62,7 @@ Source lines `216–245` with `_validate 554–567`.
 
 Route `PUT {id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `stock.creer`, stock record scope, right `stock.lire`.
 
@@ -81,7 +81,7 @@ Source lines `266–316` with `get 74–92`.
 
 Route `DELETE {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `stock.supprimer`, stock record scope.
 
@@ -98,7 +98,7 @@ Source lines `336–363`.
 
 Route `GET /{id}/products`.
 
-**Arguments** `id = 0`, `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `includestockdata = 0`, `includesubproducts = false`, `includeparentid = false`, `includetrans = false`, `properties = ''`, `pagination_data = false`.
+**Arguments** `id = 0` (integer), `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `stock.lire`.
 

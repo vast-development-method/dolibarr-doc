@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/societe/class/api_thirdparti
 
 ## `get` — Read a business partner
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -21,7 +21,7 @@ Source lines `85–88` with `_fetch 2782–2818`.
 
 Route `GET email/{email}`.
 
-**Arguments** `email`.
+**Arguments** `email` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -36,7 +36,7 @@ Source lines `106–109` with `_fetch 2782–2818`.
 
 Route `GET barcode/{barcode}`.
 
-**Arguments** `barcode`.
+**Arguments** `barcode` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -49,7 +49,7 @@ Source lines `125–128` with `_fetch 2782–2818`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `mode = 0`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `mode = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `societe.lire`.
 
@@ -66,7 +66,7 @@ Source lines `156–295`.
 
 ## `post` — Create a business partner
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `name`.
 
@@ -87,7 +87,7 @@ Source lines `309–354` with `_validate 2744–2757`.
 
 ## `put` — Update a business partner
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope, right `societe.lire`.
 
@@ -105,7 +105,7 @@ Source lines `373–415` with `get 85–88`, `_fetch 2782–2818`.
 
 Route `PUT {id}/merge/{idtodelete}`.
 
-**Arguments** `id`, `idtodelete`.
+**Arguments** `id` (integer), `idtodelete` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope, right `societe.lire`.
 
@@ -122,7 +122,7 @@ Source lines `438–474` with `get 85–88`, `_fetch 2782–2818`.
 
 ## `delete` — Delete a business partner
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.supprimer`, party record scope.
 
@@ -139,7 +139,7 @@ Source lines `488–515`.
 
 Route `PUT {id}/setpricelevel/{priceLevel}`.
 
-**Arguments** `id`, `priceLevel`.
+**Arguments** `id` (integer), `priceLevel` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -159,7 +159,7 @@ Source lines `534–577`.
 
 Route `POST {id}/representative/{representative_id}`.
 
-**Arguments** `id`, `representative_id`.
+**Arguments** `id` (integer), `representative_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -176,7 +176,7 @@ Source lines `593–613`.
 
 Route `DELETE {id}/representative/{representative_id}`.
 
-**Arguments** `id`, `representative_id`.
+**Arguments** `id` (integer), `representative_id` (integer).
 
 **Access** The decision uses right `societe.supprimer`, party record scope.
 
@@ -193,7 +193,7 @@ Source lines `629–649`.
 
 Route `GET {id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -211,7 +211,7 @@ Source lines `669–698`.
 
 Route `PUT {id}/categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope, category record scope.
 
@@ -228,7 +228,7 @@ Source lines `716–742`.
 
 Route `DELETE {id}/categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope, category record scope.
 
@@ -245,7 +245,7 @@ Source lines `760–786`.
 
 Route `GET {id}/supplier_categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -263,7 +263,7 @@ Source lines `807–836`.
 
 Route `PUT {id}/supplier_categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope, category record scope.
 
@@ -280,7 +280,7 @@ Source lines `854–880`.
 
 Route `DELETE {id}/supplier_categories/{category_id}`.
 
-**Arguments** `id`, `category_id`.
+**Arguments** `id` (integer), `category_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope, category record scope.
 
@@ -297,7 +297,7 @@ Source lines `898–924`.
 
 Route `GET {id}/outstandingproposals`.
 
-**Arguments** `id`, `mode = 'customer'`.
+**Arguments** `id` (integer), `mode = 'customer'` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -315,7 +315,7 @@ Source lines `945–970`.
 
 Route `GET {id}/outstandingorders`.
 
-**Arguments** `id`, `mode = 'customer'`.
+**Arguments** `id` (integer), `mode = 'customer'` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -333,7 +333,7 @@ Source lines `991–1016`.
 
 Route `GET {id}/outstandinginvoices`.
 
-**Arguments** `id`, `mode = 'customer'`.
+**Arguments** `id` (integer), `mode = 'customer'` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -351,7 +351,7 @@ Source lines `1036–1061`.
 
 Route `GET {id}/representatives`.
 
-**Arguments** `id`, `mode = 0`.
+**Arguments** `id` (integer), `mode = 0` (integer).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -369,7 +369,7 @@ Source lines `1081–1103`.
 
 Route `GET {id}/fixedamountdiscounts`.
 
-**Arguments** `id`, `mode = 'customer'`, `filter = "none"`, `sortfield = "f.type"`, `sortorder = 'ASC'`.
+**Arguments** `id` (integer), `mode = 'customer'` (text), `filter = "none"` (text), `sortfield = "f.type"` (text), `sortorder = 'ASC'` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -386,7 +386,7 @@ Source lines `1129–1188`.
 
 Route `POST {id}/fixedamountdiscounts`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `amount`, `description`, `tva_tx`, `price_base_type`, `discount_type`, `vat_src_code`.
 
@@ -408,7 +408,7 @@ Source lines `1214–1296`.
 
 Route `POST {id}/splitdiscount/{discountid}`.
 
-**Arguments** `id`, `discountid`, `amount_ttc_1`, `amount_ttc_2`.
+**Arguments** `id` (integer), `discountid` (integer), `amount_ttc_1` (number), `amount_ttc_2` (number).
 
 **Access** The decision uses both `societe.creer` and `societe.lire`, party record scope.
 
@@ -430,7 +430,7 @@ Source lines `1321–1462`.
 
 Route `GET {id}/getinvoicesqualifiedforreplacement`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, party record scope.
 
@@ -446,7 +446,7 @@ Source lines `1482–1508`.
 
 Route `GET {id}/getinvoicesqualifiedforcreditnote`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, party record scope.
 
@@ -462,7 +462,7 @@ Source lines `1531–1557`.
 
 Route `GET {id}/notifications`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -478,7 +478,7 @@ Source lines `1574–1635`.
 
 Route `POST {id}/notifications`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -494,7 +494,7 @@ Source lines `1653–1701`.
 
 Route `POST {id}/notificationsbycode/{code}`.
 
-**Arguments** `id`, `code`, `request_data = null`.
+**Arguments** `id` (integer), `code` (text), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -510,7 +510,7 @@ Source lines `1721–1780`.
 
 Route `DELETE {id}/notifications/{notification_id}`.
 
-**Arguments** `id`, `notification_id`.
+**Arguments** `id` (integer), `notification_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -524,7 +524,7 @@ Source lines `1796–1817`.
 
 Route `PUT {id}/notifications/{notification_id}`.
 
-**Arguments** `id`, `notification_id`, `request_data = null`.
+**Arguments** `id` (integer), `notification_id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope, linked-party scope.
 
@@ -540,7 +540,7 @@ Source lines `1836–1867`.
 
 Route `GET {id}/bankaccounts`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -556,7 +556,7 @@ Source lines `1884–1956`.
 
 Route `POST {id}/bankaccounts`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -574,7 +574,7 @@ Source lines `1974–2017`.
 
 Route `PUT {id}/bankaccounts/{bankaccount_id}`.
 
-**Arguments** `id`, `bankaccount_id`, `request_data = null`.
+**Arguments** `id` (integer), `bankaccount_id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `societe.creer`, party record scope, linked-party scope.
 
@@ -592,7 +592,7 @@ Source lines `2036–2081`.
 
 Route `DELETE {id}/bankaccounts/{bankaccount_id}`.
 
-**Arguments** `id`, `bankaccount_id`.
+**Arguments** `id` (integer), `bankaccount_id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -606,7 +606,7 @@ Source lines `2097–2118`.
 
 Route `GET {id}/generateBankAccountDocument/{companybankid}/{model}`.
 
-**Arguments** `id`, `companybankid = null`, `model = 'sepamandate'`.
+**Arguments** `id` (integer), `companybankid = null` (integer), `model = 'sepamandate'` (text).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -624,7 +624,7 @@ Source lines `2138–2223`.
 
 Route `GET {id}/accounts/`.
 
-**Arguments** `id`, `site = null`.
+**Arguments** `id` (integer), `site = null` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -639,7 +639,7 @@ Source lines `2242–2300`.
 
 Route `GET /accounts/{site}/{key_account}`.
 
-**Arguments** `site`, `key_account`.
+**Arguments** `site` (text), `key_account` (text).
 
 **Access** The decision uses right `societe.lire`, party record scope.
 
@@ -656,7 +656,7 @@ Source lines `2319–2343` with `_fetch 2782–2818`.
 
 Route `POST {id}/accounts`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `site`, `login`.
 
@@ -677,7 +677,7 @@ Source lines `2368–2412`.
 
 Route `POST {id}/accounts/{site}`.
 
-**Arguments** `id`, `site`, `request_data = null`.
+**Arguments** `id` (integer), `site` (text), `request_data = null` (collection).
 
 Named body fields used by the handler include `key_account`, `login`, `site`.
 
@@ -698,7 +698,7 @@ Source lines `2440–2520`.
 
 Route `PUT {id}/accounts/{site}`.
 
-**Arguments** `id`, `site`, `request_data = null`.
+**Arguments** `id` (integer), `site` (text), `request_data = null` (collection).
 
 Named body fields used by the handler include `site`.
 
@@ -719,7 +719,7 @@ Source lines `2542–2590`.
 
 Route `DELETE {id}/accounts/{site}`.
 
-**Arguments** `id`, `site`.
+**Arguments** `id` (integer), `site` (text).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 
@@ -735,7 +735,7 @@ Source lines `2610–2634`.
 
 Route `DELETE {id}/accounts`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `societe.creer`, party record scope.
 

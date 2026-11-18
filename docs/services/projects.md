@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/projet/class/api_projects.cl
 
 ## `get` — Read a project
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -23,7 +23,7 @@ Source lines `78–95`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -40,7 +40,7 @@ Source lines `110–127`.
 
 Route `GET ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`.
+**Arguments** `ref_ext` (text).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -57,7 +57,7 @@ Source lines `142–159`.
 
 Route `GET email_msgid/{email_msgid}`.
 
-**Arguments** `email_msgid`.
+**Arguments** `email_msgid` (text).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -72,7 +72,7 @@ Source lines `174–191`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `projet.lire`.
 
@@ -88,7 +88,7 @@ Source lines `212–316`.
 
 ## `post` — Create a project
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `ref`, `title`.
 
@@ -108,7 +108,7 @@ Source lines `327–400` with `_validate 1065–1075`.
 
 Route `POST {id}/contacts`.
 
-**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+**Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `projet.creer`, intervention record scope.
 
@@ -126,7 +126,7 @@ Source lines `421–442`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `projet.creer`, project record scope.
 
@@ -144,7 +144,7 @@ Source lines `459–487`.
 
 Route `GET {id}/tasks`.
 
-**Arguments** `id`, `includetimespent = 0`.
+**Arguments** `id` (integer), `includetimespent = 0` (integer).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -161,7 +161,7 @@ Source lines `501–527`.
 
 Route `GET {id}/roles`.
 
-**Arguments** `id`, `userid = 0`.
+**Arguments** `id` (integer), `userid = 0` (integer).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -176,7 +176,7 @@ Source lines `542–571`.
 
 ## `put` — Update a project
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `projet.creer`, project record scope, right `projet.lire`.
 
@@ -192,7 +192,7 @@ Source lines `721–759` with `get 78–95`.
 
 ## `delete` — Delete a project
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `projet.supprimer`, project record scope.
 
@@ -208,7 +208,7 @@ Source lines `771–795`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `projet.creer`, project record scope.
 
@@ -227,7 +227,7 @@ Source lines `820–848`.
 
 Route `GET /alltimespent`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `projet.lire`.
 
@@ -245,7 +245,7 @@ Source lines `868–1001`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 
@@ -262,7 +262,7 @@ Source lines `1094–1115`.
 
 Route `POST {id}/contacts`.
 
-**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`, `affect_to_tasks = null`.
+**Arguments** `id` (integer), `fk_socpeople` (integer), `type_contact` (text), `source` (text), `notrigger = 0` (integer), `affect_to_tasks = null` (integer list).
 
 **Access** The decision uses right `projet.creer`, project record scope.
 
@@ -280,7 +280,7 @@ Source lines `1137–1181`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `projet.creer`, project record scope.
 
@@ -298,7 +298,7 @@ Source lines `1197–1227`.
 
 Route `GET {id}/timespent`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `projet.lire`, project record scope.
 

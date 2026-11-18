@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/product/class/api_products.c
 
 ## `get` — Read a product
 
-**Arguments** `id`, `includestockdata = 0`, `includesubproducts = false`, `includeparentid = false`, `includetrans = false`.
+**Arguments** `id` (integer), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -22,7 +22,7 @@ Source lines `92–98` with `_fetch 2489–2549`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`, `includestockdata = 0`, `includesubproducts = false`, `includeparentid = false`, `includetrans = false`.
+**Arguments** `ref` (text), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -38,7 +38,7 @@ Source lines `121–124` with `_fetch 2489–2549`.
 
 Route `GET ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`, `includestockdata = 0`, `includesubproducts = false`, `includeparentid = false`, `includetrans = false`.
+**Arguments** `ref_ext` (text), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -54,7 +54,7 @@ Source lines `147–150` with `_fetch 2489–2549`.
 
 Route `GET barcode/{barcode}`.
 
-**Arguments** `barcode`, `includestockdata = 0`, `includesubproducts = false`, `includeparentid = false`, `includetrans = false`.
+**Arguments** `barcode` (text), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -68,7 +68,7 @@ Source lines `173–176` with `_fetch 2489–2549`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.ref"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `mode = 0`, `category = 0`, `sqlfilters = ''`, `ids_only = false`, `variant_filter = 0`, `pagination_data = false`, `includestockdata = 0`, `properties = ''`.
+**Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `mode = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `ids_only = false` (boolean), `variant_filter = 0` (integer), `pagination_data = false` (boolean), `includestockdata = 0` (integer), `properties = ''` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -84,7 +84,7 @@ Source lines `203–321`.
 
 ## `post` — Create a product
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `ref`, `label`.
 
@@ -102,7 +102,7 @@ Source lines `335–379` with `_validate 2455–2468`.
 
 ## `put` — Update a product
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `produit.creer`, product record scope, right `produit.lire`.
 
@@ -119,7 +119,7 @@ Source lines `400–555` with `get 92–98`, `_fetch 2489–2549`.
 
 ## `delete` — Delete a product
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.supprimer`, product record scope.
 
@@ -137,7 +137,7 @@ Source lines `573–607`.
 
 Route `GET {id}/subproducts`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -153,7 +153,7 @@ Source lines `625–644`.
 
 Route `POST {id}/subproducts/add`.
 
-**Arguments** `id`, `subproduct_id`, `qty`, `incdec = 1`.
+**Arguments** `id` (integer), `subproduct_id` (integer), `qty` (number), `incdec = 1` (integer).
 
 **Access** The decision uses right `produit.creer`, product record scope.
 
@@ -170,7 +170,7 @@ Source lines `665–680`.
 
 Route `DELETE {id}/subproducts/remove/{subproduct_id}`.
 
-**Arguments** `id`, `subproduct_id`.
+**Arguments** `id` (integer), `subproduct_id` (integer).
 
 **Access** The decision uses right `produit.creer`, product record scope.
 
@@ -187,7 +187,7 @@ Source lines `698–713`.
 
 Route `GET {id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -204,7 +204,7 @@ Source lines `733–748`.
 
 Route `GET {id}/selling_multiprices/per_segment`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -223,7 +223,7 @@ Source lines `763–793`.
 
 Route `GET {id}/selling_multiprices/per_customer`.
 
-**Arguments** `id`, `thirdparty_id = ''`.
+**Arguments** `id` (integer), `thirdparty_id = ''` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -241,7 +241,7 @@ Source lines `809–847`.
 
 Route `GET {id}/selling_multiprices/per_quantity`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -260,7 +260,7 @@ Source lines `862–887`.
 
 Route `POST {id}/purchase_prices`.
 
-**Arguments** `id`, `qty`, `buyprice`, `price_base_type`, `fourn_id`, `availability`, `ref_fourn`, `tva_tx`, `charges = 0`, `remise_percent = 0`, `remise = 0`, `newnpr = 0`, `delivery_time_days = 0`, `supplier_reputation = ''`, `localtaxes_array = []`, `newdefaultvatcode = ''`, `multicurrency_buyprice = 0`, `multicurrency_price_base_type = 'HT'`, `multicurrency_tx = 1`, `multicurrency_code = ''`, `desc_fourn = ''`, `barcode = ''`, `fk_barcode_type = null`.
+**Arguments** `id` (integer), `qty` (number), `buyprice` (number), `price_base_type` (text), `fourn_id` (integer), `availability` (integer), `ref_fourn` (text), `tva_tx` (number), `charges = 0` (number), `remise_percent = 0` (number), `remise = 0` (number), `newnpr = 0` (integer), `delivery_time_days = 0` (integer), `supplier_reputation = ''` (text), `localtaxes_array = []` (collection), `newdefaultvatcode = ''` (text), `multicurrency_buyprice = 0` (number), `multicurrency_price_base_type = 'HT'` (text), `multicurrency_tx = 1` (number), `multicurrency_code = ''` (text), `desc_fourn = ''` (text), `barcode = ''` (text), `fk_barcode_type = null` (integer).
 
 **Access** The decision uses right `produit.creer`, product record scope.
 
@@ -278,7 +278,7 @@ Source lines `927–969`.
 
 Route `DELETE {id}/purchase_prices/{priceid}`.
 
-**Arguments** `id`, `priceid`.
+**Arguments** `id` (integer), `priceid` (integer).
 
 **Access** The decision uses right `produit.supprimer`, product record scope.
 
@@ -295,7 +295,7 @@ Source lines `986–1006`.
 
 Route `GET purchase_prices`.
 
-**Arguments** `sortfield = "t.ref"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `mode = 0`, `category = 0`, `supplier = 0`, `sqlfilters = ''`.
+**Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `mode = 0` (integer), `category = 0` (integer), `supplier = 0` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -313,7 +313,7 @@ Source lines `1029–1117`.
 
 Route `GET {id}/purchase_prices`.
 
-**Arguments** `id`, `ref = ''`, `ref_ext = ''`, `barcode = ''`.
+**Arguments** `id` (integer), `ref = ''` (text), `ref_ext = ''` (text), `barcode = ''` (text).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -329,7 +329,7 @@ Source lines `1141–1176`.
 
 Route `GET {id}/purchase_prices/logs`.
 
-**Arguments** `id`, `ref = ''`, `ref_ext = ''`, `barcode = ''`.
+**Arguments** `id` (integer), `ref = ''` (text), `ref_ext = ''` (text), `barcode = ''` (text).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -345,7 +345,7 @@ Source lines `1197–1219`.
 
 Route `GET attributes`.
 
-**Arguments** `sortfield = "t.ref"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -363,7 +363,7 @@ Source lines `1242–1291`.
 
 Route `GET attributes/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -380,7 +380,7 @@ Source lines `1306–1336`.
 
 Route `GET attributes/ref/{ref}`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -397,7 +397,7 @@ Source lines `1353–1390`.
 
 Route `GET attributes/ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`.
+**Arguments** `ref_ext` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -414,7 +414,7 @@ Source lines `1407–1444`.
 
 Route `POST attributes`.
 
-**Arguments** `ref`, `label`, `ref_ext = ''`.
+**Arguments** `ref` (text), `label` (text), `ref_ext = ''` (text).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -429,7 +429,7 @@ Source lines `1461–1478`.
 
 Route `PUT attributes/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -447,7 +447,7 @@ Source lines `1497–1536`.
 
 Route `DELETE attributes/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.supprimer`.
 
@@ -462,7 +462,7 @@ Source lines `1551–1566`.
 
 Route `GET attributes/values/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -479,7 +479,7 @@ Source lines `1583–1610`.
 
 Route `GET attributes/{id}/values/ref/{ref}`.
 
-**Arguments** `id`, `ref`.
+**Arguments** `id` (integer), `ref` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -496,7 +496,7 @@ Source lines `1628–1657`.
 
 Route `DELETE attributes/{id}/values/ref/{ref}`.
 
-**Arguments** `id`, `ref`.
+**Arguments** `id` (integer), `ref` (text).
 
 **Access** The decision uses right `produit.supprimer`.
 
@@ -514,7 +514,7 @@ Source lines `1672–1702`.
 
 Route `GET attributes/{id}/values`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -529,7 +529,7 @@ Source lines `1719–1738`.
 
 Route `GET attributes/ref/{ref}/values`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -543,7 +543,7 @@ Source lines `1754–1781`.
 
 Route `POST attributes/{id}/values`.
 
-**Arguments** `id`, `ref`, `value`.
+**Arguments** `id` (integer), `ref` (text), `value` (text).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -558,7 +558,7 @@ Source lines `1798–1817`.
 
 Route `PUT attributes/values/{id}`.
 
-**Arguments** `id`, `request_data`.
+**Arguments** `id` (integer), `request_data` (collection).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -576,7 +576,7 @@ Source lines `1835–1874`.
 
 Route `DELETE attributes/values/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.supprimer`.
 
@@ -591,7 +591,7 @@ Source lines `1889–1902`.
 
 Route `GET {id}/variants`.
 
-**Arguments** `id`, `includestock = 0`.
+**Arguments** `id` (integer), `includestock = 0` (integer).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -607,7 +607,7 @@ Source lines `1920–1943`.
 
 Route `GET ref/{ref}/variants`.
 
-**Arguments** `ref`.
+**Arguments** `ref` (text).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -622,7 +622,7 @@ Source lines `1960–1981`.
 
 Route `POST {id}/variants`.
 
-**Arguments** `id`, `weight_impact`, `price_impact`, `price_impact_is_percent`, `features`, `reference = ''`, `ref_ext = ''`.
+**Arguments** `id` (integer), `weight_impact` (number), `price_impact` (number), `price_impact_is_percent` (boolean), `features` (collection), `reference = ''` (text), `ref_ext = ''` (text).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -641,7 +641,7 @@ Source lines `2007–2050`.
 
 Route `POST ref/{ref}/variants`.
 
-**Arguments** `ref`, `weight_impact`, `price_impact`, `price_impact_is_percent`, `features`.
+**Arguments** `ref` (text), `weight_impact` (number), `price_impact` (number), `price_impact_is_percent` (boolean), `features` (collection).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -659,7 +659,7 @@ Source lines `2074–2116`.
 
 Route `PUT variants/{id}`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `produit.creer`.
 
@@ -677,7 +677,7 @@ Source lines `2135–2164`.
 
 Route `DELETE variants/{id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.supprimer`.
 
@@ -693,7 +693,7 @@ Source lines `2180–2195`.
 
 Route `GET {id}/stock`.
 
-**Arguments** `id`, `selected_warehouse_id = null`.
+**Arguments** `id` (integer), `selected_warehouse_id = null` (integer).
 
 **Access** The decision uses both `produit.lire` and `stock.lire`, product record scope.
 
@@ -709,7 +709,7 @@ Source lines `2214–2241`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `produit.lire`, product record scope.
 
@@ -726,7 +726,7 @@ Source lines `2256–2278`.
 
 Route `POST {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = "external"`, `notrigger = 0`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = "external"` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `produit.creer`, product record scope.
 
@@ -745,7 +745,7 @@ Source lines `2295–2326`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `produit.creer`, product record scope.
 

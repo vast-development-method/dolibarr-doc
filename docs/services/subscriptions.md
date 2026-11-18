@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/adherents/class/api_subscrip
 
 ## `get` — Read a membership subscription
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.cotisation.lire`, member record scope.
 
@@ -21,7 +21,7 @@ Source lines `67–86`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "dateadh"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "dateadh"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `adherent.cotisation.lire`.
 
@@ -36,7 +36,7 @@ Source lines `108–179`.
 
 ## `post` — Create a membership subscription
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_adherent`, `dateh`, `datef`, `amount`.
 
@@ -54,7 +54,7 @@ Source lines `192–219` with `_validate 330–340`.
 
 ## `put` — Update a membership subscription
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `adherent.creer`, member record scope, right `adherent.cotisation.lire`.
 
@@ -70,7 +70,7 @@ Source lines `234–275` with `get 67–86`.
 
 ## `delete` — Delete a membership subscription
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `adherent.cotisation.creer`, member record scope.
 

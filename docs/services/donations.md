@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/don/class/api_donations.clas
 
 ## `get` — Read a donation
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `don.lire`, donation record scope.
 
@@ -19,7 +19,7 @@ Source lines `65–84`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `don.lire`.
 
@@ -35,7 +35,7 @@ Source lines `105–191`.
 
 ## `post` — Create a donation
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `amount`.
 
@@ -53,7 +53,7 @@ Source lines `201–232` with `_validate 411–424`.
 
 ## `put` — Update a donation
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `don.creer`, donation record scope, right `don.lire`.
 
@@ -69,7 +69,7 @@ Source lines `243–282` with `get 65–84`.
 
 ## `delete` — Delete a donation
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `don.supprimer`, donation record scope.
 
@@ -85,7 +85,7 @@ Source lines `292–317`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `idwarehouse = 0`, `notrigger = 0`.
+**Arguments** `id` (integer), `idwarehouse = 0` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `don.creer`, donation record scope.
 

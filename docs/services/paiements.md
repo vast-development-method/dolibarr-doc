@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/compta/facture/class/api_pai
 
 ## `get` — Read a customer payment
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.lire`, linked-record access decision.
 
@@ -20,7 +20,7 @@ Source lines `75–90` with `_checkAccessToPaymentForExternalUser 280–300`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `facture.lire`.
 
@@ -36,7 +36,7 @@ Source lines `112–171`.
 
 ## `put` — Update a customer payment
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `facture.creer`, linked-record access decision, right `facture.lire`.
 
@@ -53,7 +53,7 @@ Source lines `190–225` with `_checkAccessToPaymentForExternalUser 280–300`, 
 
 ## `delete` — Delete a customer payment
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `facture.paiement`, linked-record access decision.
 

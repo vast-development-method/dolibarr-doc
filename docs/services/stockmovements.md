@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/product/stock/class/api_stoc
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `stock.mouvement.lire`, stockmovement record scope.
 
@@ -22,7 +22,7 @@ Source lines `77–95`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `stock.lire`.
 
@@ -38,7 +38,7 @@ Source lines `115–186`.
 
 ## `post` — Create a stock movement
 
-**Arguments** `product_id`, `warehouse_id`, `qty`, `type = 2`, `batch = ''`, `movementcode = ''`, `label = ''`, `price = ''`, `datem = ''`, `sellBy = ''`, `eatBy = ''`, `origin_type = ''`, `origin_id = 0`.
+**Arguments** `product_id` (integer), `warehouse_id` (integer), `qty` (number), `type = 2` (integer), `batch = ''` (text), `movementcode = ''` (text), `label = ''` (text), `price = ''` (text), `datem = ''` (text), `sellBy = ''` (text), `eatBy = ''` (text), `origin_type = ''` (text), `origin_id = 0` (integer).
 
 **Access** The decision uses right `stock.creer`.
 

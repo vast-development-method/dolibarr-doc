@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/product/stock/class/api_prod
 
 ## `get` — Read a product lot
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `product.lire`, product record scope.
 
@@ -23,7 +23,7 @@ Source lines `71–94`.
 
 Route `GET /`.
 
-**Arguments** `sortfield = "pl.batch"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `user_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "pl.batch"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `produit.lire`.
 
@@ -39,7 +39,7 @@ Source lines `119–206`.
 
 ## `post` — Create a product lot
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_product`, `batch`.
 
@@ -57,7 +57,7 @@ Source lines `222–253` with `_validate 365–381`.
 
 ## `put` — Update a product lot
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `produit.creer`, product record scope, right `product.lire`.
 
@@ -72,7 +72,7 @@ Source lines `269–311` with `get 71–94`.
 
 ## `delete` — Delete a product lot
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `produit.supprimer`, product record scope.
 

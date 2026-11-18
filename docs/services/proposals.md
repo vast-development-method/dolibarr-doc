@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/comm/propal/class/api_propos
 
 ## `get` — Read a proposal
 
-**Arguments** `id`, `contact_list = 1`.
+**Arguments** `id` (integer), `contact_list = 1` (integer).
 
 **Access** The decision uses right `propal.lire`, proposal record scope.
 
@@ -22,7 +22,7 @@ Source lines `76–79` with `_fetch 134–166`.
 
 Route `GET ref/{ref}`.
 
-**Arguments** `ref`, `contact_list = 1`.
+**Arguments** `ref` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `propal.lire`, proposal record scope.
 
@@ -38,7 +38,7 @@ Source lines `96–99` with `_fetch 134–166`.
 
 Route `GET ref_ext/{ref_ext}`.
 
-**Arguments** `ref_ext`, `contact_list = 1`.
+**Arguments** `ref_ext` (text), `contact_list = 1` (integer).
 
 **Access** The decision uses right `propal.lire`, proposal record scope.
 
@@ -52,7 +52,7 @@ Source lines `116–119` with `_fetch 134–166`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
 
 **Access** The decision uses right `propal.lire`.
 
@@ -68,7 +68,7 @@ Source lines `190–297`.
 
 ## `post` — Create a proposal
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`.
 
@@ -89,7 +89,7 @@ Source lines `311–359` with `_validate 1221–1234`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`, `sqlfilters = ''`.
+**Arguments** `id` (integer), `sqlfilters = ''` (text).
 
 **Access** The decision uses right `propal.lire`, proposal record scope.
 
@@ -105,7 +105,7 @@ Source lines `377–407`.
 
 Route `POST {id}/line`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_product`, `remise_percent`, `price_base_type`, `info_bits`, `product_type`, `rang`, `special_code`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `date_start`, `date_end`, `array_options`, `fk_unit`, `origin`, `origin_id`, `multicurrency_subprice`, `fk_remise_except`.
 
@@ -125,7 +125,7 @@ Source lines `425–479`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `subprice`, `qty`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_product`, `remise_percent`, `info_bits`, `product_type`, `rang`, `special_code`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `label`, `date_start`, `date_end`, `array_options`, `fk_unit`, `origin`, `origin_id`, `multicurrency_subprice`, `fk_remise_except`.
 
@@ -145,7 +145,7 @@ Source lines `495–564`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `remise_percent`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `price_base_type`, `info_bits`, `special_code`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `product_type`, `date_start`, `date_end`, `array_options`, `fk_unit`, `multicurrency_subprice`, `rang`.
 
@@ -164,7 +164,7 @@ Source lines `582–649`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `propal.creer`, proposal record scope, right `propal.lire`.
 
@@ -183,7 +183,7 @@ Source lines `665–686` with `get 76–79`, `_fetch 134–166`.
 
 Route `GET {id}/contacts`.
 
-**Arguments** `id`, `type = ''`.
+**Arguments** `id` (integer), `type = ''` (text).
 
 **Access** The decision uses right `propal.lire`, proposal record scope.
 
@@ -200,7 +200,7 @@ Source lines `700–721`.
 
 Route `POST {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`, `source = 'external'`, `notrigger = 0`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text), `source = 'external'` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 
@@ -220,7 +220,7 @@ Source lines `744–850`.
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
-**Arguments** `id`, `contactid`, `type`.
+**Arguments** `id` (integer), `contactid` (integer), `type` (text).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 
@@ -236,7 +236,7 @@ Source lines `868–896`.
 
 ## `put` — Update a proposal
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `propal.creer`, proposal record scope, right `propal.lire`.
 
@@ -253,7 +253,7 @@ Source lines `911–961` with `get 76–79`, `_fetch 134–166`.
 
 ## `delete` — Delete a proposal
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `propal.supprimer`, proposal record scope.
 
@@ -270,7 +270,7 @@ Source lines `975–1003`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 
@@ -289,7 +289,7 @@ Source lines `1017–1052`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 
@@ -308,7 +308,7 @@ Source lines `1076–1111`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `status`, `note_private = ''`, `notrigger = 0`, `note_public = ''`.
+**Arguments** `id` (integer), `status` (integer), `note_private = ''` (text), `notrigger = 0` (integer), `note_public = ''` (text).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 
@@ -327,7 +327,7 @@ Source lines `1129–1164`.
 
 Route `POST {id}/setinvoiced`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `propal.creer`, proposal record scope.
 

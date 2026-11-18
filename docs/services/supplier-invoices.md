@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/fourn/class/api_supplier_inv
 
 ## `get` — Read a supplier invoice
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.facture.lire`, supplier record scope.
 
@@ -21,7 +21,7 @@ Source lines `69–89`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `status = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `status = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `fournisseur.facture.lire`.
 
@@ -37,7 +37,7 @@ Source lines `111–213`.
 
 ## `post` — Create a supplier invoice
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`.
 
@@ -55,7 +55,7 @@ Source lines `231–261` with `_validate 972–985`.
 
 ## `put` — Update a supplier invoice
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope, right `fournisseur.facture.lire`.
 
@@ -70,7 +70,7 @@ Source lines `275–318` with `get 69–89`.
 
 ## `delete` — Delete a supplier invoice
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.facture.supprimer`, supplier record scope.
 
@@ -86,7 +86,7 @@ Source lines `333–359`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `idwarehouse = 0`, `notrigger = 0`.
+**Arguments** `id` (integer), `idwarehouse = 0` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 
@@ -105,7 +105,7 @@ Source lines `380–409`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`, `idwarehouse = -1`, `notrigger = 0`.
+**Arguments** `id` (integer), `idwarehouse = -1` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 
@@ -124,7 +124,7 @@ Source lines `426–454`.
 
 Route `GET {id}/payments`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.facture.lire`, supplier record scope.
 
@@ -143,7 +143,7 @@ Source lines `471–495`.
 
 Route `POST {id}/payments`.
 
-**Arguments** `id`, `datepaye`, `payment_mode_id`, `closepaidinvoices`, `accountid`, `num_payment = ''`, `comment = ''`, `chqemetteur = ''`, `chqbank = ''`, `amount = null`.
+**Arguments** `id` (integer), `datepaye` (integer), `payment_mode_id` (integer), `closepaidinvoices` (text), `accountid` (integer), `num_payment = ''` (text), `comment = ''` (text), `chqemetteur = ''` (text), `chqbank = ''` (text), `amount = null` (number).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 
@@ -161,7 +161,7 @@ Source lines `520–606`.
 
 Route `POST {id}/settopaid`.
 
-**Arguments** `id`, `close_code = ''`, `close_note = ''`.
+**Arguments** `id` (integer), `close_code = ''` (text), `close_note = ''` (text).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 
@@ -180,7 +180,7 @@ Source lines `623–652`.
 
 Route `POST {id}/settounpaid`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 
@@ -199,7 +199,7 @@ Source lines `667–696`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `fournisseur.facture.lire`, supplier record scope.
 
@@ -214,7 +214,7 @@ Source lines `712–732`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `description`, `ref_supplier`, `pu_ht`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `qty`, `fk_product`, `remise_percent`, `date_start`, `date_end`, `fk_code_ventilation`, `info_bits`, `price_base_type`, `product_type`, `rang`, `array_options`, `fk_unit`, `origin_id`, `multicurrency_subprice`, `special_code`.
 
@@ -234,7 +234,7 @@ Source lines `753–805`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `description`, `ref_supplier`, `pu_ht`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `qty`, `fk_product`, `price_base_type`, `info_bits`, `product_type`, `remise_percent`, `date_start`, `date_end`, `array_options`, `fk_unit`, `multicurrency_subprice`, `rang`.
 
@@ -254,7 +254,7 @@ Source lines `824–882`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `fournisseur.facture.creer`, supplier record scope.
 

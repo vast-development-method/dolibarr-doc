@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/expensereport/class/api_expe
 
 ## `get` — Read an expense report
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expensereport.lire`, expense report record scope.
 
@@ -21,7 +21,7 @@ Source lines `109–126`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `user_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `expensereport.lire`.
 
@@ -37,7 +37,7 @@ Source lines `149–232`.
 
 ## `post` — Create an expense report
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `fk_user_author`, `date_debut`, `date_fin`.
 
@@ -57,7 +57,7 @@ Source lines `246–297` with `_validate 1258–1271`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expensereport.lire`, expense report record scope.
 
@@ -72,7 +72,7 @@ Source lines `315–335`.
 
 Route `POST {id}/line`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 The request-field validator requires `date`, `fk_c_type_fees`, `qty`, `value_unit`, `vatrate`.
 
@@ -95,7 +95,7 @@ Source lines `353–396` with `_validateLine 1303–1316`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `comments`, `fk_c_type_fees`, `fk_project`, `vatrate`, `qty`, `value_unit`, `date`, `fk_c_exp_tax_cat`, `fk_ecm_files`.
 
@@ -115,7 +115,7 @@ Source lines `417–467`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `expensereport.creer`, expense report record scope, right `expensereport.lire`.
 
@@ -131,7 +131,7 @@ Source lines `485–524` with `get 109–126`.
 
 ## `put` — Update an expense report
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `expensereport.creer`, expense report record scope, right `expensereport.lire`.
 
@@ -147,7 +147,7 @@ Source lines `543–592` with `get 109–126`.
 
 ## `delete` — Delete an expense report
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expensereport.supprimer`, expense report record scope.
 
@@ -163,7 +163,7 @@ Source lines `606–631`.
 
 Route `POST {id}/settodraft`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `expensereport.creer`, expense report record scope.
 
@@ -182,7 +182,7 @@ Source lines `648–671`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expensereport.creer`, expense report record scope.
 
@@ -201,7 +201,7 @@ Source lines `692–715`.
 
 Route `POST {id}/approve`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expensereport.approve`, expense report record scope.
 
@@ -220,7 +220,7 @@ Source lines `737–760`.
 
 Route `POST {id}/deny`.
 
-**Arguments** `id`, `details`, `notrigger = 0`.
+**Arguments** `id` (integer), `details` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expensereport.approve`, expense report record scope.
 
@@ -239,7 +239,7 @@ Source lines `783–808`.
 
 Route `POST {id}/setpaid`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expensereport.to_paid`, expense report record scope.
 
@@ -258,7 +258,7 @@ Source lines `829–852`.
 
 Route `POST {id}/cancel`.
 
-**Arguments** `id`, `detail`, `notrigger = 0`.
+**Arguments** `id` (integer), `detail` (text), `notrigger = 0` (integer).
 
 **Access** The decision uses right `expensereport.creer`, expense report record scope.
 
@@ -276,7 +276,7 @@ Source lines `871–895`.
 
 Route `GET /payments`.
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `expensereport.lire`.
 
@@ -293,7 +293,7 @@ Source lines `914–960`.
 
 Route `GET /payments/{pid}`.
 
-**Arguments** `pid`.
+**Arguments** `pid` (integer).
 
 **Access** The decision uses right `expensereport.lire`, expense report record scope.
 
@@ -308,7 +308,7 @@ Source lines `974–997`.
 
 Route `POST {id}/payments`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 The request-field validator requires `fk_typepayment`, `datep`, `amounts`.
 
@@ -330,7 +330,7 @@ Source lines `1013–1085` with `_validatepayment 1280–1293`.
 
 Route `PUT {id}/payments/{idp}`.
 
-**Arguments** `id`, `idp`, `request_data = null`.
+**Arguments** `id` (integer), `idp` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `expensereport.to_paid`, expense report record scope, right `expensereport.lire`.
 

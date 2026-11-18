@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/accountancy/class/api_accoun
 
 Route `GET exportdata`.
 
-**Arguments** `period`, `date_min = ''`, `date_max = ''`, `format = ''`, `lettering = 0`, `alreadyexport = 0`, `notnotifiedasexport = 0`.
+**Arguments** `period` (text), `date_min = ''` (text), `date_max = ''` (text), `format = ''` (text), `lettering = 0` (integer), `alreadyexport = 0` (integer), `notnotifiedasexport = 0` (integer).
 
 **Access** The decision uses right `accounting.mouvements.export`.
 

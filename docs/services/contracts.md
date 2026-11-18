@@ -6,7 +6,7 @@ The implementation locations below refer to `htdocs/contrat/class/api_contracts.
 
 ## `get` — Read a contract
 
-**Arguments** `id`, `properties = ''`, `withLines = true`.
+**Arguments** `id` (integer), `properties = ''` (text), `withLines = true` (boolean).
 
 **Access** The decision uses right `contrat.lire`, contract record scope.
 
@@ -22,7 +22,7 @@ Source lines `71–95`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `withLines = true`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `withLines = true` (boolean).
 
 **Access** The decision uses right `contrat.lire`.
 
@@ -38,7 +38,7 @@ Source lines `119–215`.
 
 ## `post` — Create a contract
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 The request-field validator requires `socid`, `date_contrat`.
 
@@ -59,7 +59,7 @@ Source lines `230–286` with `_validate 1009–1022`.
 
 Route `GET {id}/lines`.
 
-**Arguments** `id`, `sortfield = "d.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+**Arguments** `id` (integer), `sortfield = "d.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
 
 **Access** The decision uses right `contrat.lire`, contract record scope.
 
@@ -78,7 +78,7 @@ Source lines `308–385`.
 
 Route `POST {id}/lines`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `price_base_type`, `subprice`, `qty`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_product`, `remise_percent`, `date_start`, `date_end`, `subprice_excl_tax`, `info_bits`, `fk_fournprice`, `pa_ht`, `array_options`, `fk_unit`, `rang`.
 
@@ -97,7 +97,7 @@ Source lines `399–444`.
 
 Route `PUT {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`, `request_data = null`.
+**Arguments** `id` (integer), `lineid` (integer), `request_data = null` (collection).
 
 Named body fields used by the handler include `desc`, `price_base_type`, `subprice`, `qty`, `remise_percent`, `date_start`, `date_end`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `date_start_real`, `date_end_real`, `info_bits`, `fk_fourn_price`, `pa_ht`, `array_options`, `fk_unit`.
 
@@ -117,7 +117,7 @@ Source lines `459–600`.
 
 Route `PUT {id}/lines/{lineid}/activate`.
 
-**Arguments** `id`, `lineid`, `datestart`, `dateend = null`, `comment = null`.
+**Arguments** `id` (integer), `lineid` (integer), `datestart` (text), `dateend = null` (text), `comment = null` (text).
 
 **Access** The decision uses right `contrat.activer`, contract record scope.
 
@@ -134,7 +134,7 @@ Source lines `618–642`.
 
 Route `PUT {id}/lines/{lineid}/unactivate`.
 
-**Arguments** `id`, `lineid`, `datestart`, `comment = null`.
+**Arguments** `id` (integer), `lineid` (integer), `datestart` (text), `comment = null` (text).
 
 **Access** The decision uses right `contrat.desactiver`, contract record scope.
 
@@ -151,7 +151,7 @@ Source lines `659–683`.
 
 Route `DELETE {id}/lines/{lineid}`.
 
-**Arguments** `id`, `lineid`.
+**Arguments** `id` (integer), `lineid` (integer).
 
 **Access** The decision uses right `contrat.creer`, contract record scope, right `contrat.lire`.
 
@@ -168,7 +168,7 @@ Source lines `699–728` with `get 71–95`.
 
 ## `put` — Update a contract
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `contrat.creer`, party record scope, contract record scope, right `contrat.lire`.
 
@@ -185,7 +185,7 @@ Source lines `744–819` with `get 71–95`.
 
 ## `delete` — Delete a contract
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `contrat.supprimer`, contract record scope.
 
@@ -202,7 +202,7 @@ Source lines `835–862`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `contrat.creer`, contract record scope.
 
@@ -222,7 +222,7 @@ Source lines `888–919`.
 
 Route `POST {id}/close`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `contrat.creer`, contract record scope.
 

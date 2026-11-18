@@ -8,7 +8,7 @@ The implementation locations below refer to `htdocs/mrp/class/api_mos.class.php`
 
 Route `GET {id}`.
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mrp.read`, mrp record scope.
 
@@ -23,7 +23,7 @@ Source lines `67–83`.
 
 Route `GET {id}/categories`.
 
-**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+**Arguments** `id` (integer), `sortfield = "s.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 0` (integer), `page = 0` (integer).
 
 **Access** The decision uses right `categorie.lire`.
 
@@ -38,7 +38,7 @@ Source lines `102–117`.
 
 ## `index` — List records
 
-**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`.
+**Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
 
 **Access** The decision uses right `mrp.read`.
 
@@ -54,7 +54,7 @@ Source lines `137–212`.
 
 ## `post` — Create a production order
 
-**Arguments** `request_data = null`.
+**Arguments** `request_data = null` (collection).
 
 **Access** The decision uses right `mrp.write`.
 
@@ -70,7 +70,7 @@ Source lines `224–251` with `_validate 1080–1093`.
 
 ## `put` — Update a production order
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mrp.write`, mrp record scope, right `mrp.read`.
 
@@ -88,7 +88,7 @@ Source lines `262–304` with `get 67–83`.
 
 Route `POST {id}/validate`.
 
-**Arguments** `id`, `notrigger = 0`.
+**Arguments** `id` (integer), `notrigger = 0` (integer).
 
 **Access** The decision uses right `mrp.write`, mrp record scope.
 
@@ -105,7 +105,7 @@ Source lines `320–345`.
 
 ## `delete` — Delete a production order
 
-**Arguments** `id`.
+**Arguments** `id` (integer).
 
 **Access** The decision uses right `mrp.delete`, mrp record scope.
 
@@ -121,7 +121,7 @@ Source lines `355–379`.
 
 Route `POST {id}/produceandconsumeall`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mrp.write`.
 
@@ -140,7 +140,7 @@ Source lines `414–765`.
 
 Route `POST {id}/produceandconsume`.
 
-**Arguments** `id`, `request_data = null`.
+**Arguments** `id` (integer), `request_data = null` (collection).
 
 **Access** The decision uses right `mrp.write`.
 
