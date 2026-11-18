@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Directed relationship between two persisted business records",
+  "description": "Portable projection of a Dolibarr document link. Existence, access and uniqueness across records require service or storage checks.",
+  "type": "object",
+  "required": ["source", "target"],
+  "additionalProperties": false,
+  "properties": {
+    "source": {"$ref": "#/$defs/endpoint"},
+    "target": {"$ref": "#/$defs/endpoint"},
+    "relationType": {"type": ["string", "null"], "maxLength": 64}
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "required": ["type", "id"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"type": "string", "minLength": 1, "maxLength": 64},
+        "id": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}
