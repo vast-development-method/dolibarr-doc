@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Explicit positive payment against a single supplier invoice",
+  "description": "Business representation of an explicit base-currency payment. The server supplies the bank-module context and validates invoice currency, access and settlement at posting.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["invoiceId", "paymentDate", "paymentMethodId", "amount", "closeIfSettled", "bankEnabled"],
+  "properties": {
+    "invoiceId": { "$ref": "#/$defs/id" },
+    "paymentDate": { "type": "string", "format": "date" },
+    "paymentMethodId": { "$ref": "#/$defs/id" },
+    "amount": { "type": "number", "exclusiveMinimum": 0 },
+    "closeIfSettled": { "type": "boolean" },
+    "bankEnabled": { "type": "boolean" },
+    "bankAccountId": { "$ref": "#/$defs/id" },
+    "paymentReference": { "type": "string" }
+  },
+  "if": { "properties": { "bankEnabled": { "const": true } } },
+  "then": { "required": ["bankAccountId"] },
+  "$defs": { "id": { "type": "integer", "minimum": 1 } }
+}
