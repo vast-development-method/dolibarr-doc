@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supplier invoice line request",
+  "description": "A route and its recognized request-body fields. The body is sent separately from the operation and path identifiers. Numbers use canonical JSON numeric representation. Only extension fields are merged on change.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["operation", "invoiceId", "body"],
+  "properties": {
+    "operation": { "enum": ["create", "change"] },
+    "invoiceId": { "type": "integer", "minimum": 1 },
+    "lineId": { "type": "integer", "minimum": 1 },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "ref_supplier": { "type": "string" },
+        "pu_ht": { "type": "number", "description": "Unit amount interpreted in price_base_type." },
+        "price_base_type": { "enum": ["HT", "TTC"], "default": "HT" },
+        "qty": { "type": "number" },
+        "remise_percent": { "type": "number" },
+        "tva_tx": {
+          "oneOf": [
+            { "type": "number" },
+            { "type": "string", "pattern": "^[+-]?[0-9]+([.,][0-9]+)?( *\\([^()]+\\))?$" }
+          ]
+        },
+        "localtax1_tx": { "type": "number" },
+        "localtax2_tx": { "type": "number" },
+        "fk_product": { "type": ["integer", "null"], "minimum": 0 },
+        "product_type": { "type": "integer", "minimum": 0 },
+        "info_bits": { "type": "integer" },
+        "fk_unit": { "type": ["integer", "null"], "minimum": 0 },
+        "date_start": { "type": ["integer", "null"], "description": "Service start as an epoch timestamp." },
+        "date_end": { "type": ["integer", "null"], "description": "Service end as an epoch timestamp." },
+        "rang": { "type": ["integer", "null"] },
+        "array_options": { "type": "object", "description": "Extension field keys and values supported by this installation." },
+        "multicurrency_subprice": { "type": "number" },
+        "fk_code_ventilation": { "type": "integer" },
+        "special_code": { "type": "integer" },
+        "origin_id": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    }
+  },
+  "if": { "properties": { "operation": { "const": "create" } } },
+  "then": { "not": { "required": ["lineId"] } },
+  "else": {
+    "required": ["lineId"],
+    "properties": {
+      "body": {
+        "properties": {
+          "fk_code_ventilation": false,
+          "special_code": false,
+          "origin_id": false
+        }
+      }
+    }
+  }
+}
