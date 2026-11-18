@@ -1,0 +1,5 @@
+{
+  "purpose": "summarise",
+  "outputFormat": "text",
+  "instructions": "Summarise the following service report in two sentences. The pump was inspected and the seal was replaced."
+}

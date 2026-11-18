@@ -1,0 +1,12 @@
+{
+  "provider": "Generic-Calendar",
+  "entityId": 1,
+  "subject": {
+    "type": "user",
+    "id": 18
+  },
+  "scopes": [
+    "calendar.read"
+  ],
+  "expiresAt": "2026-11-20T10:00:00Z"
+}
