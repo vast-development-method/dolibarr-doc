@@ -27,3 +27,5 @@ Three stock declarations (1008, 1014 and 1015) are guarded by feature level ≥ 
 - Receiving a purchase in normal and advanced permission modes can yield different outcomes with the same basic reception-create grant. Verify the route check, domain check and record scope separately.
 - A newly activated module with zero declarations creates no new rights rows of its own. Its screens can still require another module's permission or administrative access.
 - A user with a direct third-party export grant who is linked to an external third party is denied by the explicit external-user check for this operation.
+
+[Six operation-level decisions](decisions.md) trace party access, order approval, invoice issue, expense delegation, project membership and warehouse visibility from the entry point to the underlying record.
