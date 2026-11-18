@@ -1,0 +1,32 @@
+{
+  "entityId": 1,
+  "terminalId": 2,
+  "registerApplication": "retail",
+  "period": {
+    "unit": "day",
+    "year": 2026,
+    "month": 4,
+    "day": 30
+  },
+  "openingCash": "120.00",
+  "earned": {
+    "cash": "113.00",
+    "cheque": "0.00",
+    "card": "85.00"
+  },
+  "declared": {
+    "cash": "231.00",
+    "cheque": "0.00",
+    "card": "85.00"
+  },
+  "expected": {
+    "cash": "233.00",
+    "cheque": "0.00",
+    "card": "85.00"
+  },
+  "declaredLessExpected": {
+    "cash": "-2.00",
+    "cheque": "0.00",
+    "card": "0.00"
+  }
+}
