@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalized event registration submission",
+  "description": "For a public registration, the adapter supplies the project's configured fee and resolves the submitted event scope before routing to invoice creation or free registration.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projectId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scope": {
+      "enum": [
+        "event",
+        "session"
+      ]
+    },
+    "sessionId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "countryId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "feeInclusive": {
+      "type": "number",
+      "minimum": 0
+    },
+    "billingName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "projectId",
+    "scope",
+    "email",
+    "countryId",
+    "feeInclusive"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "scope": {
+            "const": "session"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "sessionId"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "sessionId"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "feeInclusive": {
+            "exclusiveMinimum": 0
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "billingName"
+        ]
+      }
+    }
+  ]
+}

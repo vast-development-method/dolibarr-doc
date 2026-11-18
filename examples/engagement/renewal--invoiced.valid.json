@@ -1,0 +1,10 @@
+{
+  "memberId": 42,
+  "startsOn": "2026-11-01",
+  "amount": 115,
+  "financialMode": "invoiceAndBank",
+  "bankAccountId": 9,
+  "paymentDate": "2026-11-02",
+  "paymentMethod": "VIR",
+  "label": "Annual membership"
+}
