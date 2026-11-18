@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Progress Certificate",
+  "description": "Normalized ordinary certified line, after applying entry bounds. Verify increment equals acceptedTarget minus priorProgress, and monetary components equal source pricing at configured precision.",
+  "type": "object",
+  "properties": {
+    "cycleId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "contractLineId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "priorProgress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "acceptedTarget": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "increment": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "periodNet": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "periodVat": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "periodGross": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "warrantyPercent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "warrantyMode": {
+      "enum": [
+        "perInvoice",
+        "finalOnly"
+      ]
+    }
+  },
+  "required": [
+    "cycleId",
+    "sequence",
+    "currency",
+    "contractLineId",
+    "priorProgress",
+    "acceptedTarget",
+    "increment",
+    "periodNet",
+    "periodVat",
+    "periodGross",
+    "warrantyPercent",
+    "warrantyMode"
+  ],
+  "additionalProperties": false
+}

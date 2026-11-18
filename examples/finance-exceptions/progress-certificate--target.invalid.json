@@ -1,0 +1,14 @@
+{
+  "cycleId": 201,
+  "sequence": 2,
+  "currency": "EUR",
+  "contractLineId": 48,
+  "priorProgress": 30,
+  "acceptedTarget": 110,
+  "increment": 40,
+  "periodNet": "400.00",
+  "periodVat": "60.00",
+  "periodGross": "460.00",
+  "warrantyPercent": 5,
+  "warrantyMode": "perInvoice"
+}
