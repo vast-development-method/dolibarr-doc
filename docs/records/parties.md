@@ -463,7 +463,7 @@ Source locations include `htdocs/install/mysql/tables/llx_societe_remise_except.
 
 ## Partnership agreement
 
-Records the partner, partnership type, agreement period, approver and lifecycle state.
+Records the partner, agreement type, effective period, administrative state and reason for refusal or termination. The row identifies its creator and latest modifier. The approval operation writes the approved state and emits an acceptance event with the acting user.
 
 **Storage** `partnership`.
 The primary key is `rowid`.
@@ -498,7 +498,7 @@ The record class defines `0` draft, `1` validated, `2` approved, `3` refused, `9
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 
-Source locations include `htdocs/install/mysql/tables/llx_partnership-partnership.sql`, `htdocs/install/mysql/tables/llx_partnership-partnership.key.sql`, `htdocs/partnership/class/partnership.class.php:52`.
+Source locations include `htdocs/install/mysql/tables/llx_partnership-partnership.sql`, `htdocs/install/mysql/tables/llx_partnership-partnership.key.sql` and `htdocs/partnership/class/partnership.class.php:773–885`.
 
 <a id="record-element_contact"></a>
 
