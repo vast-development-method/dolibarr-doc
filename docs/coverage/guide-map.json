@@ -7,21 +7,34 @@
       "guides": [
         "docs/additional-domains/chart-and-reporting.md",
         "docs/finance/bookkeeping.md",
-        "docs/treasury/fiscal-close.md"
+        "docs/treasury/fiscal-close.md",
+        "docs/specification/financial/asset-model-changes-and-posted-schedules.md",
+        "docs/specification/financial/manual-ledger-and-account-matching.md",
+        "docs/specification/financial/trial-balances-and-ledger-exports.md",
+        "docs/specification/accounting/financial-statements-and-analytic-dimensions.md",
+        "docs/specification/accounting/source-journal-postings.md",
+        "docs/specification/accounting/tax-recognition-and-remittance.md",
+        "docs/reporting/cash-and-ledger-balances.md"
       ],
       "focus": "Chart import and balance accounts, source bindings, journal transfer and fiscal close."
     },
     {
       "key": "Adherent",
       "guides": [
-        "docs/engagement/membership-and-donations.md"
+        "docs/engagement/membership-and-donations.md",
+        "docs/specification/people-and-services/member-renewals-and-collections.md",
+        "docs/specification/channels/payment-to-order-membership-and-event.md",
+        "docs/reporting/operational-dashboards-and-replenishment.md"
       ],
       "focus": "Subscription periods, renewal and optional invoice or bank evidence."
     },
     {
       "key": "Agenda",
       "guides": [
-        "docs/engagement/agenda-and-events.md"
+        "docs/engagement/agenda-and-events.md",
+        "docs/specification/operations/task-hierarchy-and-resource-booking.md",
+        "docs/specification/planning/calendar-series-and-reminders.md",
+        "docs/reporting/event-participation.md"
       ],
       "focus": "Event ownership, participants, completion and access to one's own versus all events."
     },
@@ -37,14 +50,19 @@
       "guides": [
         "docs/platform/execution-and-access.md",
         "docs/platform/document-relationships.md",
-        "docs/platform/rebuild-contract.md"
+        "docs/platform/rebuild-contract.md",
+        "docs/policies/company-and-settings.md",
+        "docs/services/credential-lifecycle.md",
+        "docs/services/README.md"
       ],
       "focus": "Resource discovery, entity and record access, link creation and retrieval."
     },
     {
       "key": "Asset",
       "guides": [
-        "docs/capital/fixed-assets.md"
+        "docs/capital/fixed-assets.md",
+        "docs/specification/financial/asset-model-changes-and-posted-schedules.md",
+        "docs/specification/equipment/fixed-asset-register-and-models.md"
       ],
       "focus": "Asset models, schedule generation, booked depreciation and disposal."
     },
@@ -53,28 +71,39 @@
       "guides": [
         "docs/treasury/bank-and-obligations.md",
         "docs/finance/collections.md",
-        "docs/finance/bookkeeping.md"
+        "docs/finance/bookkeeping.md",
+        "docs/specification/financial/bank-statements-and-cheque-deposits.md",
+        "docs/specification/people-and-services/employee-payables.md",
+        "docs/specification/people-and-services/member-renewals-and-collections.md",
+        "docs/specification/channels/register-periods-and-counts.md",
+        "docs/reporting/cash-and-ledger-balances.md",
+        "docs/reporting/receivables-aging-and-cash-forecast.md",
+        "docs/journeys/commissioning-time-to-cash.md"
       ],
       "focus": "Inter-account transfers, payment links, reconciliation and bank-journal mapping."
     },
     {
       "key": "Barcode",
       "guides": [
-        "docs/data-exchange/documents-and-classification.md"
+        "docs/data-exchange/documents-and-classification.md",
+        "docs/specification/equipment/barcode-identities-and-label-sheets.md"
       ],
       "focus": "Product barcode model, uniqueness of value and symbology, and label-sheet generation."
     },
     {
       "key": "BlockedLog",
       "guides": [
-        "docs/administration/audit-and-extensions.md"
+        "docs/administration/audit-and-extensions.md",
+        "docs/specification/channels/register-periods-and-counts.md"
       ],
       "focus": "Business-event selection, journal chain verification and period exports."
     },
     {
       "key": "Bom",
       "guides": [
-        "docs/operations/manufacturing.md"
+        "docs/operations/manufacturing.md",
+        "docs/specification/operations/nested-production-orders.md",
+        "docs/specification/planning/workstation-requirements-and-cost.md"
       ],
       "focus": "Recipe structure, efficiency, fixed components and material and service costing."
     },
@@ -88,7 +117,8 @@
     {
       "key": "Categorie",
       "guides": [
-        "docs/data-exchange/documents-and-classification.md"
+        "docs/data-exchange/documents-and-classification.md",
+        "docs/specification/information/category-trees-and-localized-values.md"
       ],
       "focus": "Category hierarchy and typed associations with business records."
     },
@@ -103,35 +133,47 @@
       "key": "Commande",
       "guides": [
         "docs/sales/proposals-and-orders.md",
-        "docs/sales/dispatch-to-invoice.md"
+        "docs/sales/dispatch-to-invoice.md",
+        "docs/specification/commercial/party-consolidation-and-exposure.md",
+        "docs/specification/commercial/sales-conversion-and-partial-billing.md",
+        "docs/specification/channels/payment-to-order-membership-and-event.md",
+        "docs/reporting/commercial-statistics-and-turnover.md",
+        "docs/events/commercial-automation.md",
+        "docs/permissions/decisions.md"
       ],
       "focus": "Customer order validation, proposal conversion, partial dispatch and billed classification."
     },
     {
       "key": "Comptabilite",
       "guides": [
-        "docs/additional-domains/chart-and-reporting.md"
+        "docs/additional-domains/chart-and-reporting.md",
+        "docs/specification/financial/payment-terms-and-settlement-adjustments.md",
+        "docs/specification/accounting/tax-recognition-and-remittance.md"
       ],
       "focus": "Simplified accounting mode, dated turnover and comparison of invoiced versus collected amounts."
     },
     {
       "key": "Contrat",
       "guides": [
-        "docs/people-services/service-delivery.md"
+        "docs/people-services/service-delivery.md",
+        "docs/specification/people-and-services/contract-services-and-work-templates.md",
+        "docs/reporting/operational-dashboards-and-replenishment.md"
       ],
       "focus": "Contract validation, activation and closure of individual service lines."
     },
     {
       "key": "Cron",
       "guides": [
-        "docs/administration/scheduling-and-retention.md"
+        "docs/administration/scheduling-and-retention.md",
+        "docs/specification/information/retention-and-personal-data.md"
       ],
       "focus": "Eligible job selection, running state, outcomes and rescheduling."
     },
     {
       "key": "DataPolicy",
       "guides": [
-        "docs/administration/scheduling-and-retention.md"
+        "docs/administration/scheduling-and-retention.md",
+        "docs/specification/information/retention-and-personal-data.md"
       ],
       "focus": "Configured eligibility windows, dependency checks, anonymization and deletion."
     },
@@ -159,21 +201,28 @@
     {
       "key": "ECM",
       "guides": [
-        "docs/data-exchange/documents-and-classification.md"
+        "docs/data-exchange/documents-and-classification.md",
+        "docs/specification/information/custom-attributes-and-owned-notes.md",
+        "docs/specification/information/document-index-and-sharing.md",
+        "docs/specification/output/document-models-and-delivery.md"
       ],
       "focus": "Document directories, business-generated file metadata and entity-scoped indexing."
     },
     {
       "key": "EmailCollector",
       "guides": [
-        "docs/communications/email.md"
+        "docs/communications/email.md",
+        "docs/specification/channels/mail-intake-routing-and-replay.md"
       ],
       "focus": "Collector configuration, ordered message actions, ticket creation and follow-up events."
     },
     {
       "key": "EventOrganization",
       "guides": [
-        "docs/engagement/agenda-and-events.md"
+        "docs/engagement/agenda-and-events.md",
+        "docs/specification/planning/event-capacity-registration-and-payments.md",
+        "docs/specification/channels/payment-to-order-membership-and-event.md",
+        "docs/reporting/event-participation.md"
       ],
       "focus": "Public registration, project capacity, invoice generation and attendee validation after payment."
     },
@@ -181,21 +230,31 @@
       "key": "Expedition",
       "guides": [
         "docs/sales/dispatch-to-invoice.md",
-        "docs/returns/customer-returns.md"
+        "docs/returns/customer-returns.md",
+        "docs/specification/commercial/sales-conversion-and-partial-billing.md",
+        "docs/specification/equipment/carriers-delivery-notes-and-signatures.md",
+        "docs/specification/output/shipment-and-reception-notes.md",
+        "docs/reporting/stock-fulfillment-and-production.md",
+        "docs/policies/stock-posting-decisions.md"
       ],
       "focus": "Source order quantities, shipment validation, warehouse effects and billing from dispatched lines."
     },
     {
       "key": "ExpenseReport",
       "guides": [
-        "docs/people-services/expenses.md"
+        "docs/people-services/expenses.md",
+        "docs/specification/accounting/source-journal-postings.md",
+        "docs/specification/people-and-services/expense-scales-and-ceilings.md",
+        "docs/permissions/decisions.md"
       ],
       "focus": "Expense calculation, submission and approval, reimbursement and journal posting."
     },
     {
       "key": "Export",
       "guides": [
-        "docs/data-exchange/import-export.md"
+        "docs/data-exchange/import-export.md",
+        "docs/specification/financial/trial-balances-and-ledger-exports.md",
+        "docs/specification/information/import-matching-and-export-projection.md"
       ],
       "focus": "Dataset fields, selection profiles, permissions and file generation."
     },
@@ -215,7 +274,21 @@
         "docs/additional-domains/tax-geography-and-rounding.md",
         "docs/finance-exceptions/progress-and-retention.md",
         "docs/finance-exceptions/corrections-and-deposits.md",
-        "docs/returns/customer-returns.md"
+        "docs/returns/customer-returns.md",
+        "docs/specification/commercial/party-consolidation-and-exposure.md",
+        "docs/specification/commercial/sales-conversion-and-partial-billing.md",
+        "docs/specification/financial/bank-statements-and-cheque-deposits.md",
+        "docs/specification/financial/payment-terms-and-settlement-adjustments.md",
+        "docs/specification/financial/recurring-invoice-generation.md",
+        "docs/specification/accounting/source-journal-postings.md",
+        "docs/specification/output/invoice-print-calculations.md",
+        "docs/reporting/commercial-statistics-and-turnover.md",
+        "docs/reporting/receivables-aging-and-cash-forecast.md",
+        "docs/events/commercial-automation.md",
+        "docs/policies/identity-and-numbering.md",
+        "docs/policies/form-defaults-and-invoice-admission.md",
+        "docs/policies/stock-posting-decisions.md",
+        "docs/journeys/commissioning-time-to-cash.md"
       ],
       "focus": "Invoice state, tax-inclusive and exclusive line pricing, cash allocation and recurring billing."
     },
@@ -229,7 +302,8 @@
     {
       "key": "Ficheinter",
       "guides": [
-        "docs/people-services/service-delivery.md"
+        "docs/people-services/service-delivery.md",
+        "docs/specification/people-and-services/contract-services-and-work-templates.md"
       ],
       "focus": "Intervention detail, completion and the optional ticket closure handoff."
     },
@@ -238,7 +312,10 @@
       "guides": [
         "docs/supply/purchasing.md",
         "docs/supply/payables.md",
-        "docs/coverage/README.md"
+        "docs/coverage/README.md",
+        "docs/specification/commercial/purchase-receipt-inspection.md",
+        "docs/specification/commercial/supplier-sourcing-and-approval.md",
+        "docs/specification/operations/receipts-allocations-and-order-completion.md"
       ],
       "focus": "Combined supplier module's quotation, order, receipt and invoice flows and configuration boundary."
     },
@@ -259,21 +336,25 @@
     {
       "key": "HRM",
       "guides": [
-        "docs/workforce/recruitment-and-skills.md"
+        "docs/workforce/recruitment-and-skills.md",
+        "docs/specification/organization/positions-pay-and-skill-decisions.md",
+        "docs/specification/organization/recruitment-intake-and-employee-handoff.md"
       ],
       "focus": "Job assignments, evaluation snapshots and updates to employee skill ranks on closure."
     },
     {
       "key": "Holiday",
       "guides": [
-        "docs/people-services/leave.md"
+        "docs/people-services/leave.md",
+        "docs/specification/people-and-services/leave-entitlement-ledger.md"
       ],
       "focus": "Request states, balances, overlap and chargeable day calculations."
     },
     {
       "key": "Import",
       "guides": [
-        "docs/data-exchange/import-export.md"
+        "docs/data-exchange/import-export.md",
+        "docs/specification/information/import-matching-and-export-projection.md"
       ],
       "focus": "Dataset matching, mapping, simulation and committing a product import."
     },
@@ -287,7 +368,8 @@
     {
       "key": "KnowledgeManagement",
       "guides": [
-        "docs/knowledge-partners/knowledge-records.md"
+        "docs/knowledge-partners/knowledge-records.md",
+        "docs/specification/organization/knowledge-publication-and-ticket-suggestions.md"
       ],
       "focus": "Article classification, editorial states, read permissions and record service operations."
     },
@@ -315,7 +397,9 @@
     {
       "key": "Margin",
       "guides": [
-        "docs/commerce/commercial-margins.md"
+        "docs/commerce/commercial-margins.md",
+        "docs/specification/planning/project-budget-and-realized-margin.md",
+        "docs/reporting/sales-profitability-and-attribution.md"
       ],
       "focus": "Line cost selection and distinction between margin on cost and margin on selling price."
     },
@@ -329,7 +413,12 @@
     {
       "key": "Mrp",
       "guides": [
-        "docs/operations/manufacturing.md"
+        "docs/operations/manufacturing.md",
+        "docs/specification/operations/nested-production-orders.md",
+        "docs/specification/operations/stock-at-date-and-value.md",
+        "docs/specification/planning/workstation-requirements-and-cost.md",
+        "docs/reporting/stock-fulfillment-and-production.md",
+        "docs/journeys/building-against-a-shortage.md"
       ],
       "focus": "Manufacturing order quantities, material consumption, production and correction."
     },
@@ -344,7 +433,8 @@
     {
       "key": "Notification",
       "guides": [
-        "docs/communications/email.md"
+        "docs/communications/email.md",
+        "docs/specification/planning/calendar-series-and-reminders.md"
       ],
       "focus": "Event subscriptions, recipient selection and outbound business notifications."
     },
@@ -365,7 +455,8 @@
     {
       "key": "Partnership",
       "guides": [
-        "docs/knowledge-partners/partnerships.md"
+        "docs/knowledge-partners/partnerships.md",
+        "docs/specification/organization/partnership-application-and-reinstatement.md"
       ],
       "focus": "Approval and reactivation, membership expiry and optional website checks."
     },
@@ -379,7 +470,8 @@
     {
       "key": "Paypal",
       "guides": [
-        "docs/treasury/online-payments.md"
+        "docs/treasury/online-payments.md",
+        "docs/specification/channels/payment-to-order-membership-and-event.md"
       ],
       "focus": "Checkout initiation, provider acknowledgement and local invoice collection."
     },
@@ -393,7 +485,8 @@
     {
       "key": "Printing",
       "guides": [
-        "docs/integrations/authoring-and-workspace.md"
+        "docs/integrations/authoring-and-workspace.md",
+        "docs/specification/output/document-models-and-delivery.md"
       ],
       "focus": "Per-user printer selection, fallback and IPP job submission."
     },
@@ -401,28 +494,45 @@
       "key": "Product",
       "guides": [
         "docs/supply/catalogue.md",
-        "docs/supply/stock.md"
+        "docs/supply/stock.md",
+        "docs/specification/commercial/customer-price-selection.md",
+        "docs/specification/operations/kit-composition-and-stock.md",
+        "docs/specification/operations/replenishment-and-supplier-drafts.md",
+        "docs/specification/operations/stock-at-date-and-value.md",
+        "docs/specification/information/category-trees-and-localized-values.md",
+        "docs/specification/equipment/barcode-identities-and-label-sheets.md"
       ],
       "focus": "Product identity, supplier offers, selling prices and stock eligibility."
     },
     {
       "key": "ProductBatch",
       "guides": [
-        "docs/supply/stock.md"
+        "docs/supply/stock.md",
+        "docs/specification/operations/lot-identity-and-traceability.md"
       ],
       "focus": "Lot identity and dates, per-warehouse quantities, movement and count adjustments."
     },
     {
       "key": "Projet",
       "guides": [
-        "docs/operations/project-time.md"
+        "docs/operations/project-time.md",
+        "docs/specification/operations/task-hierarchy-and-resource-booking.md",
+        "docs/specification/planning/event-capacity-registration-and-payments.md",
+        "docs/specification/planning/project-budget-and-realized-margin.md",
+        "docs/reporting/projects-time-and-staff-costs.md",
+        "docs/permissions/decisions.md",
+        "docs/journeys/commissioning-time-to-cash.md"
       ],
       "focus": "Project visibility, task work, historical labour cost and invoicing of selected time."
     },
     {
       "key": "Propale",
       "guides": [
-        "docs/sales/proposals-and-orders.md"
+        "docs/sales/proposals-and-orders.md",
+        "docs/specification/commercial/customer-offer-lifecycle.md",
+        "docs/specification/commercial/customer-price-selection.md",
+        "docs/specification/commercial/sales-conversion-and-partial-billing.md",
+        "docs/reporting/commercial-statistics-and-turnover.md"
       ],
       "focus": "Proposal state changes, prices and conversion to a customer order."
     },
@@ -430,35 +540,44 @@
       "key": "ReceiptPrinter",
       "guides": [
         "docs/integrations/authoring-and-workspace.md",
-        "docs/commerce/takepos.md"
+        "docs/commerce/takepos.md",
+        "docs/specification/channels/split-bills-and-tender.md"
       ],
       "focus": "Receipt templates, device selection and reprinting an existing sale."
     },
     {
       "key": "Reception",
       "guides": [
-        "docs/supply/purchasing.md"
+        "docs/supply/purchasing.md",
+        "docs/specification/commercial/purchase-receipt-inspection.md",
+        "docs/specification/operations/receipts-allocations-and-order-completion.md",
+        "docs/specification/output/shipment-and-reception-notes.md",
+        "docs/policies/stock-posting-decisions.md"
       ],
       "focus": "Order-linked receipt validation, quantities and configurable stock posting."
     },
     {
       "key": "Recruitment",
       "guides": [
-        "docs/workforce/recruitment-and-skills.md"
+        "docs/workforce/recruitment-and-skills.md",
+        "docs/specification/organization/recruitment-intake-and-employee-handoff.md"
       ],
       "focus": "Vacancy and application decisions and separate creation of the hired employee's user account."
     },
     {
       "key": "Resource",
       "guides": [
-        "docs/engagement/agenda-and-events.md"
+        "docs/engagement/agenda-and-events.md",
+        "docs/specification/operations/task-hierarchy-and-resource-booking.md"
       ],
       "focus": "Physical resource assignment, permissions and overlap rules for busy reservations."
     },
     {
       "key": "Salaries",
       "guides": [
-        "docs/treasury/bank-and-obligations.md"
+        "docs/treasury/bank-and-obligations.md",
+        "docs/specification/people-and-services/employee-payables.md",
+        "docs/specification/organization/positions-pay-and-skill-decisions.md"
       ],
       "focus": "Salary obligations, employee hierarchy access, partial payments and closure."
     },
@@ -466,7 +585,10 @@
       "key": "Service",
       "guides": [
         "docs/supply/catalogue.md",
-        "docs/people-services/service-delivery.md"
+        "docs/people-services/service-delivery.md",
+        "docs/specification/people-and-services/contract-services-and-work-templates.md",
+        "docs/specification/information/category-trees-and-localized-values.md",
+        "docs/journeys/commissioning-time-to-cash.md"
       ],
       "focus": "Catalogue service type, optional stock eligibility and contract-line activation."
     },
@@ -480,7 +602,13 @@
     {
       "key": "Societe",
       "guides": [
-        "docs/sales/parties-and-contacts.md"
+        "docs/sales/parties-and-contacts.md",
+        "docs/specification/commercial/customer-offer-lifecycle.md",
+        "docs/specification/commercial/customer-price-selection.md",
+        "docs/specification/commercial/party-consolidation-and-exposure.md",
+        "docs/specification/information/custom-attributes-and-owned-notes.md",
+        "docs/reporting/sales-profitability-and-attribution.md",
+        "docs/policies/identity-and-numbering.md"
       ],
       "focus": "Party roles, contacts, sales ownership and consolidation of duplicate accounts."
     },
@@ -488,21 +616,33 @@
       "key": "Stock",
       "guides": [
         "docs/supply/stock.md",
-        "docs/returns/customer-returns.md"
+        "docs/returns/customer-returns.md",
+        "docs/specification/operations/kit-composition-and-stock.md",
+        "docs/specification/operations/lot-identity-and-traceability.md",
+        "docs/specification/operations/replenishment-and-supplier-drafts.md",
+        "docs/specification/operations/stock-at-date-and-value.md",
+        "docs/specification/operations/stocktake-and-transfer.md",
+        "docs/reporting/operational-dashboards-and-replenishment.md",
+        "docs/reporting/stock-fulfillment-and-production.md",
+        "docs/policies/stock-posting-decisions.md",
+        "docs/permissions/decisions.md",
+        "docs/journeys/building-against-a-shortage.md"
       ],
       "focus": "Warehouse balances, inventory movements, weighted average cost, replenishment and counts."
     },
     {
       "key": "StockTransfer",
       "guides": [
-        "docs/supply/stock.md"
+        "docs/supply/stock.md",
+        "docs/specification/operations/stocktake-and-transfer.md"
       ],
       "focus": "Separate dispatch and receipt of inter-warehouse transfers and movement reconciliation."
     },
     {
       "key": "Stripe",
       "guides": [
-        "docs/treasury/online-payments.md"
+        "docs/treasury/online-payments.md",
+        "docs/specification/channels/payment-to-order-membership-and-event.md"
       ],
       "focus": "Confirmed payment processing, invoice allocation and accounting for external collection."
     },
@@ -517,7 +657,10 @@
       "key": "SupplierInvoice",
       "guides": [
         "docs/supply/payables.md",
-        "docs/coverage/README.md"
+        "docs/coverage/README.md",
+        "docs/specification/financial/payment-terms-and-settlement-adjustments.md",
+        "docs/specification/financial/recurring-invoice-generation.md",
+        "docs/specification/accounting/source-journal-postings.md"
       ],
       "focus": "Split supplier invoice activation, validation, payment allocation and closure."
     },
@@ -525,14 +668,21 @@
       "key": "SupplierOrder",
       "guides": [
         "docs/supply/purchasing.md",
-        "docs/coverage/README.md"
+        "docs/coverage/README.md",
+        "docs/specification/commercial/purchase-receipt-inspection.md",
+        "docs/specification/commercial/supplier-sourcing-and-approval.md",
+        "docs/specification/operations/receipts-allocations-and-order-completion.md",
+        "docs/specification/operations/replenishment-and-supplier-drafts.md",
+        "docs/policies/stock-posting-decisions.md",
+        "docs/journeys/building-against-a-shortage.md"
       ],
       "focus": "Split supplier order activation, approval levels, dispatch and receipt."
     },
     {
       "key": "SupplierProposal",
       "guides": [
-        "docs/supply/purchasing.md"
+        "docs/supply/purchasing.md",
+        "docs/specification/commercial/supplier-sourcing-and-approval.md"
       ],
       "focus": "Supplier enquiry lifecycle and conversion of the response into a procurement commitment."
     },
@@ -546,7 +696,9 @@
     {
       "key": "TakePos",
       "guides": [
-        "docs/commerce/takepos.md"
+        "docs/commerce/takepos.md",
+        "docs/specification/channels/register-periods-and-counts.md",
+        "docs/specification/channels/split-bills-and-tender.md"
       ],
       "focus": "Terminal sale, settlement, stock effects and register closure."
     },
@@ -554,7 +706,8 @@
       "key": "Tax",
       "guides": [
         "docs/treasury/bank-and-obligations.md",
-        "docs/additional-domains/tax-geography-and-rounding.md"
+        "docs/additional-domains/tax-geography-and-rounding.md",
+        "docs/specification/accounting/tax-recognition-and-remittance.md"
       ],
       "focus": "VAT and social-charge obligations and their settlement, with related geographic rate selection for invoice lines."
     },
@@ -562,7 +715,11 @@
       "key": "Ticket",
       "guides": [
         "docs/people-services/service-delivery.md",
-        "docs/communications/email.md"
+        "docs/communications/email.md",
+        "docs/specification/people-and-services/ticket-routing-and-conversation.md",
+        "docs/specification/channels/mail-intake-routing-and-replay.md",
+        "docs/specification/organization/knowledge-publication-and-ticket-suggestions.md",
+        "docs/reporting/operational-dashboards-and-replenishment.md"
       ],
       "focus": "Assignment, resolution and intervention updates, including incoming mail creating or updating ticket activity."
     },
@@ -570,21 +727,30 @@
       "key": "User",
       "guides": [
         "docs/platform/execution-and-access.md",
-        "docs/permissions/README.md"
+        "docs/permissions/README.md",
+        "docs/specification/channels/portal-identity-and-document-delivery.md",
+        "docs/specification/organization/recruitment-intake-and-employee-handoff.md",
+        "docs/policies/identity-and-numbering.md",
+        "docs/policies/company-and-settings.md",
+        "docs/permissions/decisions.md",
+        "docs/services/credential-lifecycle.md"
       ],
       "focus": "Entity scope, group and direct grants, advanced rights and record-level checks."
     },
     {
       "key": "Variants",
       "guides": [
-        "docs/supply/catalogue.md"
+        "docs/supply/catalogue.md",
+        "docs/specification/commercial/customer-price-selection.md"
       ],
       "focus": "Parent and child product identities, attribute choices, price and weight adjustments."
     },
     {
       "key": "WebPortal",
       "guides": [
-        "docs/communications/web-and-portal.md"
+        "docs/communications/web-and-portal.md",
+        "docs/specification/information/document-index-and-sharing.md",
+        "docs/specification/channels/portal-identity-and-document-delivery.md"
       ],
       "focus": "Portal account enablement, party-bound invoice listing and module-level access."
     },
@@ -598,7 +764,8 @@
     {
       "key": "Website",
       "guides": [
-        "docs/communications/web-and-portal.md"
+        "docs/communications/web-and-portal.md",
+        "docs/specification/channels/site-publication-and-translations.md"
       ],
       "focus": "Site and page status, publication permissions, aliases and language variants."
     },
@@ -607,14 +774,17 @@
       "guides": [
         "docs/sales/dispatch-to-invoice.md",
         "docs/supply/payables.md",
-        "docs/people-services/service-delivery.md"
+        "docs/people-services/service-delivery.md",
+        "docs/events/commercial-automation.md"
       ],
       "focus": "Configured billing classification of sales and purchase documents and ticket-to-intervention closure."
     },
     {
       "key": "Workstation",
       "guides": [
-        "docs/operations/manufacturing.md"
+        "docs/operations/manufacturing.md",
+        "docs/specification/planning/workstation-requirements-and-cost.md",
+        "docs/journeys/building-against-a-shortage.md"
       ],
       "focus": "Workstation group and resource associations and operator and machine rates in BOM service costing."
     }
