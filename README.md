@@ -12,8 +12,8 @@ A language-neutral blueprint for rebuilding an integrated ERP. It describes how 
 | Who owns an amount, quantity, status or relationship | [Record and field dictionary](docs/records/README.md) · [Installation structures and their status](docs/records/installation-boundaries.md) |
 | What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) |
 | Which changes can trigger action in another module | [Business events and subscribers](docs/events/README.md) · [Commercial automation](docs/events/commercial-automation.md) |
-| Why two reports disagree | [Reporting and reconciliation](docs/reporting/README.md) |
-| How policy changes a transaction | [Company settings](docs/policies/company-and-settings.md) · [Reference numbers](docs/policies/identity-and-numbering.md) · [Stock posting](docs/policies/stock-posting-decisions.md) · [Invoice admission](docs/policies/form-defaults-and-invoice-admission.md) |
+| Why two reports disagree | [Reporting and reconciliation](docs/reporting/README.md) · [Accounting layouts](docs/exports/ledger-layouts.md) · [Country charts and tax dictionaries](docs/localization/README.md) |
+| How policy changes a transaction | [47 operator settings](docs/settings/README.md) · [Company settings](docs/policies/company-and-settings.md) · [Reference numbers](docs/policies/identity-and-numbering.md) · [Stock posting](docs/policies/stock-posting-decisions.md) · [Invoice admission](docs/policies/form-defaults-and-invoice-admission.md) |
 | How to reconcile a whole transaction | [Trading and settlement](docs/trade/worked-cycle.md) · [Make to order with a shortage](docs/journeys/building-against-a-shortage.md) · [Commissioning time to cash](docs/journeys/commissioning-time-to-cash.md) |
 
 ## Find a business operation

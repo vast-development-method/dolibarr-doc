@@ -29,7 +29,7 @@ There are 21 named built-in formats. The registry gives each a numeric selector.
 | 135 | Gestimum V5 | Carries document reference and piece separately, formats the document date without slashes, and ends with a literal EUR indicator. | 2722 |
 | 200 | iSuite Expert | Semicolon-separated. Exports document date and year/month/day components. Text conversion uses Windows-1252. Generic customer/supplier accounts can be replaced by a trimmed auxiliary number. | 2773 |
 | 205 | ISTEA | Twelve quoted fields. Resolves a party label per piece, computes separate account representations and converts output to ISO-8859-1. | 1412 |
-| 1000 | FEC | Tab-separated, 21 named fields, with separate piece/entry dates, actual export date policy, lettering, optional document file and source invoice reference. | 1474 |
+| 1000 | FEC | Tab-separated, 21 named fields, with separate piece/entry dates, validation date, lettering, optional document file and source invoice reference. | 1474 |
 | 1010 | FEC variant | Same header as 1000. Uses a different mapping of document and creation dates. | 1720 |
 
 ## Positional mappings for separated records
