@@ -1,0 +1,31 @@
+# Invoice print calculations and settlement evidence
+
+The standard invoice PDF renders an issued or draft commercial record. It reads invoice lines and totals, posted payment allocations and linked credits when the file is generated. A later generation after a partial payment can therefore show a different remaining balance while the invoice's issued gross amount stays the same.
+
+## Gross amount, settlement and credits
+
+The renderer reads payments, credits and deposits in the invoice currency when multiple currencies are enabled and its exchange rate differs from one. In the standard total block the printed remainder is gross including tax less payments, applied credits including excess cash applied, and applied deposits, rounded at total precision. When a second operating-currency display is enabled, the renderer obtains the corresponding components in operating currency and computes that remainder separately. When the invoice is marked paid it sets the displayed remainder to zero in both currencies, even if a short settlement left an arithmetic residual.
+
+Suppose an invoice has gross 1,200, payments of 500, an applied credit note of 120 and an applied deposit of 200. The arithmetic remainder is 380. With no further entries it shows 380 while open. Changing the state to paid by an authorized closure can make the printed remainder zero. To establish what was actually received in cash, consult the payment rows and closure reason. Subtracting the printed remainder from gross would count the credit, deposit and any balance released on closing as new cash receipts.
+
+The detailed settlement block runs when there are payments, used credits or deposits and the option suppressing payment details is off. It reads directly applied credit records and distinguishes the source invoice type. A credit note is labelled credit note, a deposit invoice is labelled deposit and a standard invoice used as a credit source is labelled excess received. Each entry shows source date, applied gross amount and source invoice reference. A second section reads the payment allocation to this exact invoice, payment date, method and payment number. Two invoices settled by the same transfer therefore show their respective shares. Suppressing the detailed block does not remove settlement data from the accounting records.
+
+Credit-note presentation has its own positive-amount option. The renderer reverses the presentation sign for credit-note totals and affected line tax values when it is enabled. For a stored net credit of −100 and tax of −20, the applicable totals can consequently print as 100 and 20 under the credit-note heading. This visual sign choice has no cash consequence. Standard invoices also derive their operation classification from goods and service lines while ignoring deposit application lines in this classification. It is possible for a service invoice with a deposit reduction still to be labelled service only.
+
+Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:303–319,412–450,952–974,1126–1145,1253–1308,1754–1766,2074–2097`.
+
+## Progress invoices
+
+In incremental progress mode the line totals already represent the current billing increment. The standard invoice writer explicitly avoids applying the prior-progress adjustment a second time to those tax values. An increase from 40% to 65% on a 1,000 net line is a 25-point increment worth 250 net and, at a 20% rate, 50 tax. If the stored tax is already 50, multiplying it again by the incremental proportion would understate tax on this installment.
+
+The specialized progress layout retrieves earlier and later invoices in the progress cycle, including applicable credit notes. It reverses the previous-invoice list to identify the immediately preceding invoice and its date. It accumulates previous net and tax totals, groups nonzero line net amounts by normalized tax rate and calculates the corresponding tax for those groups. A later-cycle line with no previous-line link contributes to additional work. An unlinked line on the first progress invoice belongs to the initial work. Rebuilding these distinctions requires stable line-to-line links as well as invoice-to-cycle membership. Two identical descriptions alone do not establish whether work is original, continued or additional.
+
+The layout separately represents previous cumulative figures, current-period amounts, additional work and retention. It can make previously billed work visible without billing it a second time. Its retained-warranty display delegates to the invoice's own eligibility decision when available. The specialized form and the standard invoice form have different line and summary layouts, so the exact fields visible on one cannot be inferred solely from the invoice type.
+
+Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:450–470,952–977` and `htdocs/core/modules/facture/doc/pdf_octopus.modules.php:3028–3126,3130–3157,3189–3197,3233–3272`.
+
+## What a generated copy identifies
+
+The standard model writes a specimen in the entity's invoice output directory. A real invoice receives a filename under the directory for its sanitized reference in the source entity. A configured terms-of-sale attachment can be appended from the appropriate entity's invoice output. Line display can expose quantity, unit, progress, tax, discount and available totals selectively. Heading and subtotal rows use their own presentation conditions and do not receive ordinary unit-price and quantity treatment. These formatting decisions do not change the stored invoice lines, the ledger source document or the amount of an applied credit.
+
+Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:303–330,723–774,867–927,1126–1167`.
