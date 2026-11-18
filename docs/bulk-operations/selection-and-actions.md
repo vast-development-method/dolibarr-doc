@@ -1,0 +1,41 @@
+# Selection, authority and action map
+
+The operator filters and sorts a list, selects records, and chooses an action. The submitted record IDs define the selection. The confirmation page for actions such as deletion and credit creation carries those IDs forward. Searching again, changing an email template or choosing an action name alone has different effects from confirming a write. The ordinary list tables expose a checkbox for each selected row, including separate rows for different records belonging to one party.
+
+The shared dispatcher accepts a list-specific record class and permissions. Its default maximum is 1,000 selected entries, configurable by the company. An empty selection on an active mass action produces a warning. A selection above the configured maximum produces an error. For a selected mass action in a recognized record family the shared code asks the record-access service about each positive identifier. Any refused record records an error for that selection. All nine families in this chapter are recognized. These decisions precede branches that expressly honor the shared result. Each local confirmation, class-level operation, and entity or party relationship can impose its own conditions. The fact that an action appears beside a list is insufficient to establish authority over every row.
+
+Evidence is in `htdocs/core/actions_massactions.inc.php:121–163`, `htdocs/core/lib/security.lib.php:1330–1376` and `htdocs/core/tpl/massactions_pre.tpl.php:78–98,430–481`. For the separate effect of record ownership, see [authority and business decisions](../permissions/decisions.md).
+
+## Actions exposed in normal list mode
+
+“Render” means regenerate a document from its model. “Combine” means create one PDF from existing files. “Email” opens the mailing workflow. Category choices also require the category module. The table names the extra permission or configuration that controls the action where it differs from ordinary list access.
+
+| List | Published choices | Access and selection details |
+| --- | --- | --- |
+| Customer offers | Render, combine, email, tag, validate, sign, record rejection, classify billed, delete | In ordinary mode creation grants validation and closure, and read grants the email choice. Advanced mode selects separate validation, closure and send grants. Signed, rejected and billed decisions use the closure choice. Tag appears with offer read. Deletion requires the delete grant. |
+| Customer orders | Render, combine, tag, validate, classify shipped, create invoices, classify billed, cancel, delete, email | Ordinary mode derives validation, closure, cancellation and sending from order creation. Advanced mode selects the corresponding order grants. The create-invoices choice requires invoicing enabled and invoice creation. Tag appears with order read. The confirmed validate and shipped paths also read the order-write permission. |
+| Shipments | Render, combine, email, close, create invoices | Shipment creation exposes Close. Customer invoice creation exposes billing from the selected shipments. |
+| Customer invoices | Validate, render, combine, email, tag, record payments and close, request direct debit, delete drafts, cancel by credit note | Invoice write enables tags. Recording a payment uses the customer-payment grant. Direct debit requires its module and order-creation grant. Draft deletion requires invoice deletion and an enabled draft-deletion feature. The credit choice requires invoice creation and stock posting on invoice disabled. The common validate dispatcher requires write permission and the issuing operation also checks its issue grant. |
+| Supplier price requests | Render, combine, tag, delete | Tag appears with supplier-quote read and deletion with supplier-quote deletion. The ordinary menu contains no bulk acceptance or conversion to a purchase order. |
+| Supplier orders | Render, combine, email, tag, validate or validate and approve, create supplier invoices, delete | Order creation determines list validation. The approve grant and direct-approval setting change the label. The handler also considers whether stock posting would require a warehouse. Payables creation enables billing. Tag display tests the combined supplier-order read grant. |
+| Receipts | Combine, create supplier invoices | Creation of supplier invoices is eligible under the combined supplier rights or the separate supplier-invoice grant. The normal receipt list presents neither document regeneration nor bulk close. |
+| Supplier invoices | Validate, render, combine, tag, request a bank transfer, delete | Invoicing accepts combined or separate supplier-invoice read, write and delete grants. Tag availability specifically tests the combined supplier-invoice read grant. Transfer requests require the bank-transfer module and its creation grant. |
+| Parties | Email, tag, enable, disable, allocate sales representatives, remove representatives, delete | Party creation controls the status and representative actions and tags. Party delete is separate. Consolidating a duplicate is an operation on an individual surviving party's card. The party list's combine-invoices choice is inactive. |
+
+The map describes choices offered by each list. On several pages tag is visible with read permission while the common tag writer requires the list's write permission. Offer and order confirmations use specialized dispatchers. The common invoice validator uses its own transaction-mode decision. Alternate modes such as a selector embedded in another screen can suppress the menu.
+
+| List | Source for the menu and effective rights |
+| --- | --- |
+| Offers and sales orders | `htdocs/comm/propal/list.php:323–334,1191–1216` and `htdocs/commande/list.php:299–324,1606–1637` |
+| Shipments and customer billing | `htdocs/expedition/list.php:233–244,1046–1060` and `htdocs/compta/facture/list.php:503–515,1497–1527` |
+| Supplier price requests and orders | `htdocs/supplier_proposal/list.php:234–238,714–728` and `htdocs/fourn/commande/list.php:261–265,1289–1315` |
+| Receipts and supplier invoices | `htdocs/reception/list.php:229–240,916–927` and `htdocs/fourn/facture/list.php:272–274,1131–1150` |
+| Parties and duplicate consolidation | `htdocs/societe/list.php:496–508,1194–1219` and `htdocs/societe/card.php:220–252,3574–3584` |
+
+## Identities that remain distinct
+
+A sales representative assigned to the same customer twice still acts on one party. The allocation action passes the chosen representative set to the party with its normal replacement behavior. Existing representatives outside that set are removed and missing members are added. Assigning Bea to a customer currently handled by Anna and Ben can leave Bea as the sole representative. The removal action instead accepts the representatives to detach and leaves other representatives assigned. The handlers count processed party records rather than individual associations. Row-load or recorded association errors can roll back the selected operation. Party enable and disable set the business status to 1 or 0 through the party's status operation and commit the set on success. Existing orders, invoices and payments retain their own identities.
+
+The tag action first matches requested category types to registered types. It passes the chosen category IDs and an add-without-removal flag to the common category operation for each record and type. Counted successes are record/type operations, so one party may contribute more than once. A failed record load sets the transaction error. A non-positive category write in this loop displays its error without incrementing that outer error counter. A message alone therefore does not establish rollback of every eligible tag.
+
+Evidence is in `htdocs/core/actions_massactions.inc.php:1380–1431,1584–1655,1702–1779`, `htdocs/societe/class/societe.class.php:5685–5720` and `htdocs/core/class/commonobject.class.php:11881–11932`. For how consolidation changes a surviving party's associations, read [party consolidation and exposure](../specification/commercial/party-consolidation-and-exposure.md).
