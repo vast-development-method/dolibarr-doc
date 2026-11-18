@@ -13,7 +13,7 @@ A receiver can put the same production lot in several warehouses. The expiry dat
 | Stock movement | Movement ID | Signed quantity, movement type, product, lot, warehouse, author, date, price, origin and operation reference. |
 | Shipment or receipt allocation | Source line, warehouse, quantity and batch on its allocation row | Establishes which commercial document supplied or received a specific quantity. The lot master contains neither the sales order nor its customer. |
 
-Sources include `htdocs/install/mysql/tables/llx_product_lot.key.sql`, `llx_product_batch.key.sql`, `llx_product_stock.key.sql`, `llx_stock_mouvement.sql` in the same directory. Movement creation is in `htdocs/product/stock/class/mouvementstock.class.php`, lines 305–375 and 505–550.
+Sources include `htdocs/install/mysql/tables/llx_product_lot.key.sql`, `htdocs/install/mysql/tables/llx_product_batch.key.sql`, `htdocs/install/mysql/tables/llx_product_stock.key.sql` and `htdocs/install/mysql/tables/llx_stock_mouvement.sql`. Movement creation is in `htdocs/product/stock/class/mouvementstock.class.php`, lines 305–375 and 505–550.
 
 ## Admission of new stock
 

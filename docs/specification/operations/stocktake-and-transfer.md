@@ -17,7 +17,7 @@ For a warehouse row with a batch split, prefill the quantity from that split. Fo
 
 Returning to draft via the domain operation deletes the existing count detail as it resets the status. A count-line key combines inventory ID, warehouse, product and batch. The line holds the comparison quantity, the observed quantity, optional valuation inputs and the resulting movement ID. The normal grant for saving observations and recording changes is stock-movement creation. Under advanced permissions the inventory-write grant supplies the count actions.
 
-Sources include `htdocs/product/inventory/class/inventory.class.php`, lines 55–59, 247–445 and 764–795. `htdocs/product/inventory/inventory.php`, lines 130–138 and 410–476. `htdocs/install/mysql/tables/llx_inventorydet-stock.sql` and `llx_inventorydet-stock.key.sql`.
+Sources include `htdocs/product/inventory/class/inventory.class.php`, lines 55–59, 247–445 and 764–795. `htdocs/product/inventory/inventory.php`, lines 130–138 and 410–476. `htdocs/install/mysql/tables/llx_inventorydet-stock.sql` and `htdocs/install/mysql/tables/llx_inventorydet-stock.key.sql`.
 
 ## From observation to correction
 
