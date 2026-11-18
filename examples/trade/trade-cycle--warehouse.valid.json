@@ -1,0 +1,110 @@
+{
+  "events": [
+    {
+      "operation": "supplier-order",
+      "quantity": 10,
+      "netUnitPrice": "8.00",
+      "expect": {
+        "units": 0,
+        "receivable": "0.00",
+        "payable": "0.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "receive",
+      "quantity": 10,
+      "expect": {
+        "units": 10,
+        "receivable": "0.00",
+        "payable": "0.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "supplier-invoice",
+      "quantity": 10,
+      "netUnitPrice": "8.00",
+      "taxPercent": 20,
+      "expect": {
+        "units": 10,
+        "receivable": "0.00",
+        "payable": "96.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "customer-order",
+      "quantity": 6,
+      "netUnitPrice": "15.00",
+      "expect": {
+        "units": 10,
+        "receivable": "0.00",
+        "payable": "96.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "ship",
+      "quantity": 4,
+      "expect": {
+        "units": 6,
+        "receivable": "0.00",
+        "payable": "96.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "ship",
+      "quantity": 2,
+      "expect": {
+        "units": 4,
+        "receivable": "0.00",
+        "payable": "96.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "customer-invoice",
+      "quantity": 6,
+      "netUnitPrice": "15.00",
+      "taxPercent": 20,
+      "expect": {
+        "units": 4,
+        "receivable": "108.00",
+        "payable": "96.00",
+        "bankChange": "0.00"
+      }
+    },
+    {
+      "operation": "collect",
+      "amount": "60.00",
+      "expect": {
+        "units": 4,
+        "receivable": "48.00",
+        "payable": "96.00",
+        "bankChange": "60.00"
+      }
+    },
+    {
+      "operation": "collect",
+      "amount": "48.00",
+      "expect": {
+        "units": 4,
+        "receivable": "0.00",
+        "payable": "96.00",
+        "bankChange": "108.00"
+      }
+    },
+    {
+      "operation": "pay",
+      "amount": "96.00",
+      "expect": {
+        "units": 4,
+        "receivable": "0.00",
+        "payable": "0.00",
+        "bankChange": "12.00"
+      }
+    }
+  ]
+}

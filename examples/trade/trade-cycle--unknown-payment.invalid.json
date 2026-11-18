@@ -1,0 +1,13 @@
+{
+  "events": [
+    {
+      "operation": "collect",
+      "expect": {
+        "units": 4,
+        "receivable": "0.00",
+        "payable": "0.00",
+        "bankChange": "12.00"
+      }
+    }
+  ]
+}
