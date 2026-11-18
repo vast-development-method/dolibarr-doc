@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mailing recipient delivery observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["campaignId", "targetId", "email", "status"],
+  "properties": {
+    "campaignId": {"type": "integer", "minimum": 1},
+    "targetId": {"type": "integer", "minimum": 1},
+    "email": {"type": "string", "format": "email"},
+    "status": {"enum": ["pending", "sent", "read", "unsubscribed", "error"]},
+    "lastAttemptAt": {"type": "string", "format": "date-time"},
+    "errorText": {"type": "string"}
+  },
+  "if": {"properties": {"status": {"const": "error"}}},
+  "then": {"required": ["lastAttemptAt", "errorText"]}
+}
