@@ -1,0 +1,11 @@
+{
+  "entityId": 1,
+  "bankAccountId": 9,
+  "kind": "directDebit",
+  "source": "customerInvoice",
+  "executionDate": "2026-11-13",
+  "requestIds": [
+    120,
+    121
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prepare a SEPA bank order from selected requests",
+  "description": "Normalized command. Resolve all request identities and bank details for the selected direction and entity before generating the file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "entityId",
+    "bankAccountId",
+    "kind",
+    "source",
+    "executionDate",
+    "requestIds"
+  ],
+  "properties": {
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "bankAccountId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "directDebit",
+        "creditTransfer"
+      ]
+    },
+    "source": {
+      "enum": [
+        "customerInvoice",
+        "supplierInvoice",
+        "salary"
+      ]
+    },
+    "sequence": {
+      "enum": [
+        "FRST",
+        "RCUR",
+        "OOFF",
+        "FNAL"
+      ]
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "requestIds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "if": {
+    "properties": {
+      "kind": {
+        "const": "directDebit"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "source": {
+        "const": "customerInvoice"
+      }
+    },
+    "required": [
+      "sequence"
+    ]
+  },
+  "else": {
+    "properties": {
+      "source": {
+        "enum": [
+          "supplierInvoice",
+          "salary"
+        ]
+      }
+    },
+    "not": {
+      "required": [
+        "sequence"
+      ]
+    }
+  }
+}
