@@ -104,3 +104,5 @@ The file contains one concatenated record per selected line. CRLF follows its no
 A seven-digit piece shifts all subsequent positions by two bytes. A credit of 125.50 carries the same absolute amount as its matching debit. Its direction identifies the credit. A different decimal separator or number of decimals in the accounting-file settings affects this file even though its field ordering stays the same.
 
 Release sources are `htdocs/accountancy/class/accountancyexport.class.php:857–897,2833–2840`, `htdocs/core/lib/functions2.lib.php:2783–2804` and `htdocs/accountancy/tpl/export_journal.tpl.php`. See the [ledger format register](ledger-layouts.md) for selection, reconciliation and all other writers.
+
+The [worked receivable](fixed-position-example.json) preserves the spaces, field separators and CRLF in JSON strings. Printed bytes for the same ASCII input are 144 for the Ciel row, 451 plus 233 for the two Quadratus rows, and 147 for the Winfic row. All four lengths include their line terminators.

@@ -1,0 +1,66 @@
+{
+  "title": "One customer receivable in three ledger formats",
+  "release": "24.0.3",
+  "input": {
+    "movementId": 316,
+    "piece": 72,
+    "documentReference": "INV-72",
+    "documentType": "customer_invoice",
+    "documentDate": "2026-04-30",
+    "dueDate": null,
+    "journal": "SALES",
+    "generalAccount": "411000",
+    "subsidiaryAccount": "C004",
+    "subsidiaryLabel": "ABC",
+    "operationLabel": "Installation",
+    "debit": "125.50",
+    "credit": "0.00",
+    "direction": "D",
+    "matchingCode": "AB",
+    "companyCurrency": "NAD"
+  },
+  "settings": {
+    "customerControlAccount": "411000",
+    "partialPartyUpdate": true,
+    "attachments": false,
+    "amountDecimalSeparator": ",",
+    "amountFractionDigits": 2
+  },
+  "encoding": "UTF-8, all record contents in this example are ASCII",
+  "records": [
+    {
+      "formatId": 40,
+      "format": "Ciel",
+      "rows": [
+        {
+          "byteLengthIncludingTerminator": 144,
+          "record": "72   SA20260430        INV-72      C004       INV-72Installation              125,50D                  Installation                      O2003\r\n"
+        }
+      ]
+    },
+    {
+      "formatId": 60,
+      "format": "Quadratus",
+      "rows": [
+        {
+          "byteLengthIncludingTerminator": 451,
+          "record": "CC004    ABC                           ABC                                                    411000                                                                                                                2C                                                                                                                                                                                                                                           \r\n"
+        },
+        {
+          "byteLengthIncludingTerminator": 233,
+          "record": "MC004    SA000300426 INV-72 Installation D+000000012550        000000     72                       72      NADSAL   Installation                    INV-72                                                                             \r\n"
+        }
+      ]
+    },
+    {
+      "formatId": 70,
+      "format": "Winfic",
+      "rows": [
+        {
+          "byteLengthIncludingTerminator": 147,
+          "record": "SA|30042026|     1|     1|300426|C00400|       125,50|         0,00|INV-72 Installation           |ABAB|   72|    |30042026|1| | |0,000000000|  |\r\n"
+        }
+      ]
+    }
+  ]
+}
