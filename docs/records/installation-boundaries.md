@@ -27,7 +27,7 @@ The installation directory includes tables for disabled features, optional exter
 
 ## Operational use unresolved or separately gated
 
-These rows have installation declarations but no confirmed stable operational writer or reader for the named table in this inventory. A generic class, a migration, a commented reference or a similarly named screen does not establish its use. A later investigation can add an entry after tracing the actual storage path under a supported configuration.
+The [operational evidence register](operational-evidence.md) traces all 23 definitions to their setup paths and the corresponding business operations. One has confirmed request logging behind separately enabled features, one is explicitly deprecated, and the other 21 have no confirmed core operational reader or writer for the named table.
 
 | Record | Declared purpose or open question | Installation file |
 | --- | --- | --- |
@@ -36,18 +36,18 @@ These rows have installation declarations but no confirmed stable operational wr
 | `accounting_analytic_distribution` | Allocation of a source line to an analytic account. | `llx_accounting_analytic_distribution-accounting.sql` |
 | `accounting_balance_snapshot` | Dated account-balance snapshot. | `llx_accounting_balance_snapshot-accounting.sql` |
 | `accounting_bookkeeping_piece` | Standalone journal-piece header. | `llx_accounting_bookkeeping_piece-accounting.sql` |
-| `accounting_groups_account` | Account grouping with code and label. | `llx_accounting_groups_account.sql` |
-| `ai_request_log` | Logging table for assistant requests. The presence of this schema does not establish a stable end-user workflow for the assistant feature. | `llx_ai_request_log-ai.sql` |
-| `bank_import` | Bank import batch. | `llx_bank_import-bank.sql` |
+| `accounting_groups_account` | Bridge joining a ledger account ID to a reporting category ID. | `llx_accounting_groups_account.sql` |
+| `ai_request_log` | Request log with confirmed gated writers, an administrative viewer and a retention purge. | `llx_ai_request_log-ai.sql` |
+| `bank_import` | One imported bank transaction with source data and a potential duplicate reference. | `llx_bank_import-bank.sql` |
 | `bank_record` | Bank statement header. | `llx_bank_record-bank.sql` |
-| `bank_record_link` | Statement-to-movement association. | `llx_bank_record_link-bank.sql` |
+| `bank_record_link` | Association between a statement header and an imported source transaction. | `llx_bank_record_link-bank.sql` |
 | `c_product_thirdparty_relation_type` | Dictionary for product/party relationship kinds. | `llx_c_product_thirdparty_relation_type.sql` |
 | `c_recruitment_origin` | Dictionary for application origins. The application field is present, while its form declaration is commented out. | `llx_c_recruitment_origin-recruitment.sql` |
 | `commande_fournisseur_log` | Dedicated supplier-order action log. | `llx_commande_fournisseur_log.sql` |
 | `element_categorie` | Generic element/category association. Current classification also uses object-specific association tables. | `llx_element_categorie.sql` |
 | `expedition_package` | Dedicated shipment package header. Package types have a separate dictionary. | `llx_expedition_package.sql` |
 | `notify_def_object` | Object-specific notification declaration. | `llx_notify_def_object.sql` |
-| `oauth_state` | Standalone provider state table. The observed database adapter reads and writes its state on the token row. | `llx_oauth_state.sql` |
+| `oauth_state` | Deprecated standalone provider state table. The current database adapter reads and writes state on the token row. | `llx_oauth_state.sql` |
 | `onlinesignature` | Standalone signature submission store. Signature processing also sets fields on commercial documents. | `llx_onlinesignature.sql` |
 | `opensurvey_formquestions` | Survey questionnaire field definitions. | `llx_opensurvey_formquestions-opensurvey.sql` |
 | `opensurvey_user_formanswers` | Answers for structured questionnaire fields. | `llx_opensurvey_user_formanswers-opensurvey.sql` |
