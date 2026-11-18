@@ -1,0 +1,25 @@
+# Component kits and stock movements
+
+A sales kit can represent a collection of existing goods. Shipping one kit can reduce the stock of its components without first receiving a manufactured kit into inventory. An association between a parent product and a child product specifies the quantity and whether a movement of the parent also moves the child. A manufacturing recipe with measured production yields and purchase of a preassembled finished product remain separate workflows.
+
+## Composition and availability
+
+Each parent and child pair is unique. An association holds the direct quantity per parent, stock propagation flag and position. The same component may belong to several parents. The composition editor presents positive quantities as components and can remove an existing association by saving a nonpositive quantity. Product or service creation permission grants access to the add-components action. Adding an already-associated pair replaces the existing association in the domain operation. A changed component quantity is therefore an instruction for subsequent parent operations and does not recompute stock movements already recorded.
+
+A stock propagation flag of zero allows an informational component, such as an instruction service, to remain part of the kit without automatically moving its inventory. A positive flag means the child should follow the sign and magnitude of a parent movement scaled by the relationship quantity. A nested child may itself contain multiple components.
+
+For a requested number of kits, component availability traverses the composition tree. It considers stock-linked leaves, loading physical stock without projecting open orders or splitting by batch. It compares the required component quantity to the leaf's overall physical stock. For a qualifying component, it records the requested kit quantity for the warehouses represented in that component's balances. The returned warehouse collection can include locations that hold only part of the kit. The traversal also caches a component after first seeing it. Repeated appearances of the same leaf on different branches do not each add to its requirement inside this calculation.
+
+Suppose a kit needs two brackets and one lamp. Warehouse A has brackets and no lamps. Warehouse B has lamps and no brackets. The whole-product availability comparison can find all required parts across the two locations. It does not establish that a single warehouse can ship a complete kit. A picking document that promises a kit from A must account for A's physical lamps or an incoming transfer. When two sub-kits both use the same bolt, the actual recursive movement can consume that bolt through both branches even when the availability lookup counted the first branch only.
+
+The association table and unique key are in `htdocs/install/mysql/tables/llx_product_association.sql` and `htdocs/install/mysql/tables/llx_product_association.key.sql`. Association editing is in `htdocs/product/composition/card.php` and `htdocs/product/class/product.class.php`. The availability operation is `loadStockForVirtualProduct` in the product class.
+
+## Posting a kit movement
+
+With component handling enabled, the normal parent-kit path leaves the parent stock journal unchanged and processes its participating children. A separate option permits stock entries on the parent as well. Global suppression of child stock changes or suppression by the calling operation prevents the recursive part. For each enabled association, the child receives the same warehouse, movement type, timestamp, label and operation code. Its signed quantity is the parent's signed quantity multiplied by the direct quantity per parent. The child movement receives zero as the supplied unit price.
+
+For a dispatch of three kits containing two lamps and four brackets each, the child journal records −6 lamps and −12 brackets in the shipping warehouse. If each lamp kit also contains two batteries on stock-linked associations, it also records −12 batteries. A parent receipt changes all those signs. An informational instruction service attached to the parent generates no movement through its disabled association. The actual journal lines and balances are the quantities that changed.
+
+The child handling uses ordinary movement creation recursively. It propagates child errors to the parent transaction. With negative stock prohibited, insufficient stock in the chosen warehouse can fail the parent even when the kit availability view indicated enough company-wide stock. The recursive call carries no lot or serial selection for the child. Where a child requires an individual lot allocation, this movement path cannot supply it automatically and can fail its ordinary batch requirement. The operator needs an actual allocation-capable workflow to record independently tracked pieces.
+
+The parent-stock decision, recursive posting and error propagation are in `htdocs/product/stock/class/mouvementstock.class.php` under `_create` and `_createSubProduct`. The assembly of nested quantities is in `htdocs/product/class/product.class.php`.
