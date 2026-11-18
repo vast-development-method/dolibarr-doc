@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unit margin result",
+  "description": "Signed unit amounts in document currency, excluding tax. Sales-side and cost-side rate fields are percentages. Null represents an undefined rate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "currency",
+    "sellingUnitAfterDiscount",
+    "costUnit",
+    "marginUnit",
+    "marginOnCostPercent",
+    "marginOnSalesPercent"
+  ],
+  "properties": {
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "sellingUnitAfterDiscount": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "costUnit": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "marginUnit": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "marginOnCostPercent": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "marginOnSalesPercent": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "costUnit": {
+            "pattern": "^-?0(\\.0+)?$"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "marginOnCostPercent": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "marginOnCostPercent": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sellingUnitAfterDiscount": {
+            "pattern": "^-?0(\\.0+)?$"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "marginOnSalesPercent": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "marginOnSalesPercent": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+          }
+        }
+      }
+    }
+  ]
+}
