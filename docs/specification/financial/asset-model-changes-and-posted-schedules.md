@@ -1,0 +1,43 @@
+# Fixed asset model changes and posted schedules
+
+An individual asset owns its depreciation options, accounting codes and forecast lines. A reusable model supplies initial settings for a group of similar acquisitions. An opening cumulative amount lets the register continue a schedule begun before the asset entered this system. Three records serve different accounting purposes: the acquisition invoice evidences cost, the register schedules an asset charge, and the ledger records the charge that actually posted.
+
+## Apply and replace a model
+
+The asset defaults its in-service date to its acquisition date when no in-service date is supplied. Creation writes the asset, applies its model when one is selected and can separately link a supplier acquisition invoice. Changing the model on a later update loads the selected model's option values and posting codes, loads the asset's current values, overlays the corresponding fields and saves them on the asset. A change to the model master alone does not run this per-asset copy operation. The operation requires an existing asset and model identifier.
+
+Saving an option set replaces the existing mode rows for that asset or model. Economic depreciation is primary. The accelerated mode is retained only when enabled in the economic options. An asset option save recalculates its schedule and emits the option-change event after successful persistence. Saving a reusable model's options skips the per-asset calculation. A failure saving a replacement mode or recalculating an individual asset rolls back the option update. Changing in-service date, acquisition value, opening date, opening cumulative amount or the assigned model on the asset also requests recalculation.
+
+The option display exposes depreciation base, duration, duration unit and a calculated rate for each mode. The displayed rate for a monthly duration is 1,200 divided by duration; a 24-month schedule displays 50%. For other units it uses 100 divided by duration. The calculation of scheduled charges uses the period base, duration, applicable days and the last-period remainder. A displayed percentage or stored declining coefficient alone does not establish a second depreciation algorithm.
+
+Release references include `htdocs/asset/class/asset.class.php:329–354,555–585,621–727,1037–1063,1097–1169` and `htdocs/asset/class/assetdepreciationoptions.class.php:76–106,456–484,520–595,602–610`.
+
+## Carry in an opening and rebuild the remaining forecast
+
+Within an active mode the service determines the latest posted schedule line by joining ledger entries of source type asset to the schedule detail identifier. For an asset without a posted row it starts with the asset's opening cumulative depreciation. When the opening path applies, the supplied opening date must be on or after the start of the relevant fiscal period and the opening amount must be nonzero. It records the opening as a schedule line with an empty period reference, period amount equal to opening amount and cumulative amount equal to opening amount. The depreciation journal excludes empty-reference rows. Carrying in past depreciation does not create that historical expense again.
+
+For each active mode recalculation preserves ledger-linked schedule lines. When a posted row exists it also retains the empty-reference opening. It discards unposted forecast rows eligible for replacement, remembers the latest posted period date and cumulative amount, then generates future periods beyond that boundary. Removal of a mode is a distinct path. The initial cleanup deletes schedule rows for modes absent from the current option set; it does not apply the later per-mode posted-row exclusion. A copy of a previous plan cannot safely be treated as a permanent audit record merely because it is an asset schedule.
+
+Fetching an asset with any posted schedule line marks six register inputs read-only on its edit form: acquisition date, in-service date, acquisition value, recovered tax, opening date and opening cumulative amount. The card can return a validated asset to draft, but the posted-line lookup uses the ledger link and still finds the historical charge on the next read. These form restrictions attach to posting provenance, independently of the asset's status label.
+
+Release references include `htdocs/asset/class/asset.class.php:458–478,783–834,939–952,976–1034,1058–1105`, `htdocs/asset/card.php:406–444` and `htdocs/accountancy/class/accountingjournal.class.php:449–475`.
+
+## Period boundaries and disposal math
+
+Calendar days, months and fiscal years have different boundaries. A daily schedule assigns one full periodic amount per eligible day. A monthly schedule divides by the configured month length, default 30. The elapsed days are capped at that length, and a February segment starting in February with at least 28 eligible days receives 30 calculation days. Annual schedules use the configured year length, default 360. A complete normal year is capped at that length. An actual span over 366 days or a fiscal period shorter than the configured year length uses actual days for that charge. Successive annual periods follow the defined fiscal calendar when available. The final duration period takes the difference between the depreciation base and previous cumulative depreciation.
+
+Consider a 12,000 asset over 24 months, with no opening amount and a 30-day month basis. A normal whole month is 500. An eligible full February of 28 days also gives 500. If sold on 15 June with that period's depreciation enabled, an otherwise ordinary 15-day June interval gives 250. The row is dated at period end even when the charge is prorated through the sale. Disabling depreciation in the disposal period stops the forecast before entering that period. When the disposal falls in the final duration period the final-remainder branch can override the prorated calculation.
+
+For journalization, a disposal is collected while traversing independently eligible depreciation rows of an active or disposed asset. The selected date window and accounting start date also apply to the disposal date. If every depreciation line for that asset is filtered out, this journal builder has no asset group on which to add disposal blocks. For modes with disposal posting codes it reads the schedule in date order, taking the cumulative amount as it walks; it stops after encountering the first nonempty-reference line that is neither posted nor in the current selection. The traversal assigns that line's cumulative amount before the stop. Selection of a partial date range can therefore affect the cumulative amount used for removal.
+
+The cost-removal block debits accumulated depreciation and unamortized carrying value, and credits asset cost. The proceeds block debits disposal receivable and credits proceeds, plus collected tax when enabled. A configured positive whole-number tax rate takes precedence over the fallback of 20. A missing account can appear as undefined in preview and is omitted from the bookkeeping row builder. Posting requires balanced source-document sides. Disposal movements retain the asset identifier and use zero for detail identity. Regular depreciation movements retain the individual schedule row identifier.
+
+Release references include `htdocs/asset/class/asset.class.php:1037–1218` and `htdocs/accountancy/class/accountingjournal.class.php:449–511,537–603,609–714,1494–1518`.
+
+## Reopen after a disposal
+
+The register card requires asset-read access. An operator with asset-write access can validate a draft, dispose of a validated asset or reopen a disposed asset. Write access also suffices for deletion of a draft, while deletion of a non-draft asset uses delete permission. Disposal requires the date and disposal type. It can link a customer invoice, store the proceeds and tax and depreciation choices, change the asset to disposed, then regenerate the remaining schedule. A repeated disposal is a no-change result.
+
+Reopening clears the disposal date, proceeds and disposal type, resets both disposal flags, removes the asset's customer-invoice links, restores validated status and regenerates the schedule. This is a register operation. It does not create a correcting sales invoice, reverse the removal of cost from the ledger or cancel customer receipts. The accounting and customer sides remain separately identifiable for correction if they were already posted.
+
+Release references include `htdocs/asset/card.php:82–101,133–152,414–445` and `htdocs/asset/class/asset.class.php:1291–1408,1853–1863`.
