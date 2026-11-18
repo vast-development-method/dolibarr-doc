@@ -4,8 +4,6 @@ Supplier billing and payment use the purchase-side authorization scope. The serv
 
 For nested line request bodies, pricing and transaction outcomes, see [supplier invoice line inputs and pricing](supplier-invoice-line-inputs.md).
 
-The implementation locations below refer to `htdocs/fourn/class/api_supplier_invoices.class.php`.
-
 ## `get` — Read a supplier invoice
 
 **Arguments** `id` (integer).
@@ -18,8 +16,6 @@ The method loads related credit notes and loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier invoice missing.
-
-Source lines `69–89`.
 
 ## `index` — List records
 
@@ -34,8 +30,6 @@ The lookup uses the visible entity scope for `supplier_invoice`. A caller linked
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `111–213`.
 
 ## `post` — Create a supplier invoice
 
@@ -53,8 +47,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `231–261` with `_validate 972–985`.
-
 ## `put` — Update a supplier invoice
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -68,8 +60,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier invoice missing.
 
-Source lines `275–318` with `get 69–89`.
-
 ## `delete` — Delete a supplier invoice
 
 **Arguments** `id` (integer).
@@ -81,8 +71,6 @@ Source lines `275–318` with `get 69–89`.
 - `403` — missing operation rights, record outside the caller’s scope, access or input restriction.
 - `404` — supplier invoice missing.
 - `500` — removal failed.
-
-Source lines `333–359`.
 
 ## `validate` — Validate a supplier invoice
 
@@ -101,8 +89,6 @@ The method validates the record.
 - `404` — invoice missing.
 - `500` — business operation failed.
 
-Source lines `380–409`.
-
 ## `settodraft` — Return to draft
 
 Route `POST {id}/settodraft`.
@@ -119,8 +105,6 @@ The method restores draft state.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 - `500` — business operation failed.
-
-Source lines `426–454`.
 
 ## `getPayments` — Read payments
 
@@ -139,8 +123,6 @@ The method reads linked payment allocations.
 - `404` — invoice missing.
 - `405` — operation unavailable.
 
-Source lines `471–495`.
-
 ## `addPayment` — Add payment
 
 Route `POST {id}/payments`.
@@ -156,8 +138,6 @@ The method reads allocated payments, reads applied deposits, and posts and links
 - `400` — invoice id required, bank account id required, payment mode id required, invalid request data.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
-
-Source lines `520–606`.
 
 ## `settopaid` — Mark paid
 
@@ -176,8 +156,6 @@ The method records paid status.
 - `404` — supplier invoice missing.
 - `500` — business operation failed.
 
-Source lines `623–652`.
-
 ## `settounpaid` — Return to unpaid
 
 Route `POST {id}/settounpaid`.
@@ -195,8 +173,6 @@ The method restores unpaid status.
 - `404` — supplier invoice missing.
 - `500` — business operation failed.
 
-Source lines `667–696`.
-
 ## `getLines` — Read document lines
 
 Route `GET {id}/lines`.
@@ -209,8 +185,6 @@ Route `GET {id}/lines`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier invoice missing.
-
-Source lines `712–732`.
 
 ## `postLine` — Add a line
 
@@ -230,8 +204,6 @@ The method adds a line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier invoice missing.
 
-Source lines `753–805`.
-
 ## `putLine` — Amend a line
 
 Route `PUT {id}/lines/{lineid}`.
@@ -250,8 +222,6 @@ The method amends a line.
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this supplier invoice.
 - `404` — supplier invoice missing, supplier invoice line missing.
 
-Source lines `824–882`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{lineid}`.
@@ -268,5 +238,3 @@ The method removes a line.
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this supplier invoice.
 - `404` — supplier invoice missing, supplier invoice line missing.
 - `405` — operation unavailable.
-
-Source lines `901–938`.

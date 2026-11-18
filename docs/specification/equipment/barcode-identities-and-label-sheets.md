@@ -10,13 +10,11 @@ The standard numbering rules use separate configurable masks for products and fo
 
 The ordinary product edit verifies the configured barcode system's rules and can distinguish an invalid format, a required but empty barcode and a duplicate. The standard product availability query looks for the same barcode value across the accessible product entities, excluding the record currently edited. It compares the value without using the encoding as a separate match condition. The standard third-party availability query also excludes the current record but searches the third-party table by value across entities. Consequently, normal allocation can reject a duplicate even when the underlying composite storage key would permit it. Product variants that need to be independently scanned need independently identifiable product codes.
 
-The record keys are in `htdocs/install/mysql/tables/llx_product.key.sql` and `htdocs/install/mysql/tables/llx_societe.key.sql`. The pricing-independent numbering, availability and check-digit paths are in `htdocs/core/modules/barcode/mod_barcode_product_standard.php`, `htdocs/core/modules/barcode/mod_barcode_thirdparty_standard.php` and `htdocs/core/lib/barcode.lib.php`. Product record verification is in `htdocs/product/class/product.class.php`.
+Related records include [Product or service](../../records/catalogue.md#record-product), [Third party](../../records/parties.md#record-societe).
 
 ## Initializing an existing catalog
 
 Catalog initialization is an administrative operation. It can initialize missing product/service codes or missing third-party codes using the configured numbering rule for that family. The operations require the respective product or third-party read permission in addition to administrator access. Each pass limits the number of rows taken from the queue, with 1,000 as the default configured batch size. The write for an individual record obtains the generated value and stores it on that record. A subsequent run can process records still lacking codes. A separate erase action explicitly clears current codes. Filling an empty catalog and replacing existing printed identities have different effects on goods already labeled.
-
-The independent operation paths are in `htdocs/barcode/codeinit.php`. Numbering and print settings are managed in `htdocs/admin/barcode.php`.
 
 ## Build a sheet
 
@@ -26,4 +24,4 @@ The build action requires a nonempty value and encoding. The chosen encoding res
 
 The physical format record carries paper size and orientation, measurement unit, margins, columns, rows, horizontal and vertical spacing, label width and height, font size and optional custom page dimensions. These belong to the sheet. Encoding type, data and rendering engine belong to the symbol. A three-column sheet with ten rows provides thirty positions per page, so 75 identical labels occupy two full pages and fifteen positions on the third when starting with a fresh sheet. The PDF output is a printable artifact, independently of inventory or customer transactions.
 
-Selection and validation are in `htdocs/barcode/printsheet.php`. The layouts and formats are in `htdocs/core/modules/printsheet/modules_labels.php` and `htdocs/install/mysql/tables/llx_c_format_cards.sql`. Encodings are defined in `htdocs/install/mysql/tables/llx_c_barcode_type.sql`.
+Related records include [Label sheet format](../../records/dictionaries.md#record-c_format_cards), [Barcode symbology](../../records/dictionaries.md#record-c_barcode_type).

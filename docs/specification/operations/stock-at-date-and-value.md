@@ -12,8 +12,6 @@ The date is required for the report calculation. Past mode rejects a future date
 
 The backward calculation depends on the **current balance** and subsequent journal records. A separate movement-history operation computes a strict sum of the product's journal rows before a timestamp. It has no warehouse argument. Those methods can disagree in the presence of opening balances absent from the journal, different warehouse filters, or a boundary movement at the exact cutoff. The date report's quantity has the warehouse filters and temporal boundary described above.
 
-The report and export are in `htdocs/product/stock/stockatdate.php`. The journal-only operation is `calculateBalanceForProductBefore` in `htdocs/product/stock/class/mouvementstock.class.php`.
-
 ## Valuing the quantity
 
 The buying-value column multiplies the reconstructed quantity by the **current product weighted average cost**. When a single product selling price applies, the selling-value column uses today's product selling price. Customer-specific or multiple selling-price modes show a variable price in this view. The report does not replay historic prices, foreign exchange or cost layers to value the past quantity.
@@ -24,8 +22,6 @@ For an incoming stock movement at a qualifying price, the product average uses p
 
 For 20 units at 8 followed by 10 at 14, the new average is 10. A subsequent issue of 12 leaves 18 units at that average. Because the receipt uses the existing **product** balance, splitting the original 20 between two warehouses does not change this calculation. Independent cost adjustments made during a count can also affect the product price subsequently used by the date report.
 
-The price basis and supplier-price grant are in `htdocs/product/stock/stockatdate.php`. The average-cost branching and warehouse write are in `htdocs/product/stock/class/mouvementstock.class.php`.
-
 ## Projecting supply and demand
 
 Future mode displays current stock, projected stock at the requested date and the projection with no date limit. The projection begins with physical stock and open manufacturing's planned outstanding output minus planned outstanding consumption. Then it applies the commercial commitments appropriate to the installation's stock-posting points. In shipment-based stock mode, for example, a confirmed customer order reduces the projection by what remains after eligible shipments. In receipt-based stock mode, an eligible supplier order adds its order quantity less goods already received.
@@ -33,5 +29,3 @@ Future mode displays current stock, projected stock at the requested date and th
 The requested horizon does not apply identically to all sources. Supplier-order statistics compare promised delivery against the cutoff. Receipt statistics can filter on allocation creation time. Open production uses its validation date for this horizon. The product-wide customer-order and shipping statistics called by the product projection do not receive a cutoff argument on this path. The values are therefore planning indicators with source-specific time semantics. The report requests the whole product projection for open and internal warehouses even when the current-balance column is limited to a selected warehouse set.
 
 Suppose physical stock is 40, there are six outstanding manufacturing outputs, three outstanding production inputs, twelve customer units still unshipped and twenty eligible purchase units still unreceived. With stock moving on shipment and receipt, projected stock is `40 + 6 − 3 − 12 + 20 = 51`. A later customer order or supplier promise can change the result before any warehouse balance changes. Calculating buying demand from that already projected 51 must avoid deducting those commitments a second time.
-
-Projection assembly and source quantities are in `htdocs/product/class/product.class.php` under `load_virtual_stock`, `load_stats_commande_fournisseur`, `load_stats_reception` and `load_stats_inproduction`. The dated and unrestricted calls are in `htdocs/product/stock/stockatdate.php`.

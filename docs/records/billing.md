@@ -29,7 +29,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_invoice](categories.md#record-categorie_invoice) (fk_invoice), [facture](billing.md#record-facture) (fk_facture_source), [facturedet](billing.md#record-facturedet) (fk_facture), [paiement_facture](cash.md#record-paiement_facture) (fk_facture), [societe_remise_except](parties.md#record-societe_remise_except) (fk_facture), [societe_remise_except](parties.md#record-societe_remise_except) (fk_facture_source).
 
-The record class defines `0` draft, `1` validated, `2` closed, `3` abandoned. See `htdocs/compta/facture/class/facture.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed, `3` abandoned.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -49,8 +49,8 @@ The record class defines `0` draft, `1` validated, `2` closed, `3` abandoned. Se
 | `date_closing` | datetime | Yes | — | When the record was closed. |
 | `paye` | smallint | No | `0` | Stored settlement marker also read by collection logic. State and closing reason distinguish how an invoice was closed. |
 | `remise_percent` | real | Yes | `0` | Compatibility header percentage. Line values and applied adjustments carry the current invoice discount calculation. |
-| `remise_absolue` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `remise_absolue` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
 | `close_code` | varchar(16) | Yes | — | Reason for closing an invoice, including a settlement that leaves an unpaid difference. |
 | `close_missing_amount` | double(24,8) | Yes | — | Field for the amount left outstanding at closure. Reconcile actual allocations to calculate the outstanding balance. |
 | `close_note` | varchar(128) | Yes | — | Explanation retained with the closure. |
@@ -108,8 +108,6 @@ The record class defines `0` draft, `1` validated, `2` closed, `3` abandoned. Se
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facture.sql`, `htdocs/install/mysql/tables/llx_facture.key.sql`, `htdocs/compta/facture/class/facture.class.php:84`.
-
 <a id="record-facturedet"></a>
 
 ## Customer invoice line
@@ -138,11 +136,11 @@ An additional unique key comprises `fk_remise_except`, `fk_facture`.
 | `localtax2_type` | varchar(10) | Yes | — | Calculation category for the corresponding additional tax component. |
 | `qty` | real | Yes | — | Number of units in this position. Interpret with the record's unit and quantity direction. |
 | `remise_percent` | real | Yes | `0` | Percentage discount applied to the pricing base. |
-| `remise` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `remise` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
 | `fk_remise_except` | integer | Yes | — | Fixed credit or discount from which this row originated. |
 | `subprice` | double(24,8) | Yes | — | Unit price used in the net-price representation of a transaction line. |
 | `subprice_ttc` | double(24,8) | Yes | `0` | Tax-inclusive unit price for the line. |
-| `price` | double(24,8) | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `price` | double(24,8) | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `total_ht` | double(24,8) | Yes | — | Total before tax in base currency after applicable line adjustments. |
 | `total_tva` | double(24,8) | Yes | — | VAT component of the base-currency total. |
 | `total_localtax1` | double(24,8) | Yes | `0` | Aggregated amount of the corresponding additional tax component. |
@@ -176,8 +174,6 @@ An additional unique key comprises `fk_remise_except`, `fk_facture`.
 | `ref_ext` | varchar(255) | Yes | `NULL` | Identifier supplied by an external application or interface. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facturedet.sql`, `htdocs/install/mysql/tables/llx_facturedet.key.sql`, `htdocs/compta/facture/class/facture.class.php:89`.
-
 <a id="record-facture_rec"></a>
 
 ## Recurring customer billing template
@@ -199,10 +195,10 @@ An additional unique key comprises `titre`, `entity`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `suspended` | integer | Yes | `0` | Whether scheduled generation is suspended. |
 | `amount` | double(24,8) | No | `0` | Monetary amount. Its operational meaning follows the record purpose. |
-| `remise` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise_percent` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise_absolue` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `vat_src_code` | varchar(10) | Yes | empty string | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `remise` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise_percent` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise_absolue` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `vat_src_code` | varchar(10) | Yes | empty string | Legacy storage. Use the current business representation described for the owning record. |
 | `total_tva` | double(24,8) | Yes | `0` | VAT component of the base-currency total. |
 | `localtax1` | double(24,8) | Yes | `0` | Value of the corresponding local tax component on the record. |
 | `localtax2` | double(24,8) | Yes | `0` | Value of the corresponding local tax component on the record. |
@@ -239,8 +235,6 @@ An additional unique key comprises `titre`, `entity`.
 | `fk_email_template` | integer | Yes | `NULL` | Selected message template. |
 | `generate_pdf` | integer | Yes | `1` | Requests generation of the document output. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facture_rec.sql`, `htdocs/install/mysql/tables/llx_facture_rec.key.sql`, `htdocs/compta/facture/class/facture-rec.class.php:64`.
-
 <a id="record-facturedet_rec"></a>
 
 ## Recurring customer billing line
@@ -270,7 +264,7 @@ The primary key is `rowid`.
 | `remise` | real | Yes | `0` | Discount amount or pricing reduction in the owning record. |
 | `subprice` | double(24,8) | No | `0` | Unit price used in the net-price representation of a transaction line. |
 | `subprice_ttc` | double(24,8) | Yes | `0` | Tax-inclusive unit price for the line. |
-| `price` | double(24,8) | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `price` | double(24,8) | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `total_ht` | double(24,8) | Yes | — | Total before tax in base currency after applicable line adjustments. |
 | `total_tva` | double(24,8) | Yes | — | VAT component of the base-currency total. |
 | `total_localtax1` | double(24,8) | Yes | `0` | Aggregated amount of the corresponding additional tax component. |
@@ -297,8 +291,6 @@ The primary key is `rowid`.
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facturedet_rec.sql`, `htdocs/install/mysql/tables/llx_facturedet_rec.key.sql`, `htdocs/compta/facture/class/facture-rec.class.php:69`.
-
 <a id="record-facture_fourn"></a>
 
 ## Supplier invoice
@@ -311,7 +303,7 @@ Additional unique keys comprise `ref`, `entity` / `ref_supplier`, `fk_soc`, `ent
 
 **Referenced by** [categorie_supplier_invoice](categories.md#record-categorie_supplier_invoice) (fk_supplier_invoice), [facture_fourn_det](billing.md#record-facture_fourn_det) (fk_facture_fourn), [societe_remise_except](parties.md#record-societe_remise_except) (fk_invoice_supplier).
 
-The record class defines `0` draft, `1` validated, `2` closed, `3` abandoned. See `htdocs/fourn/class/fournisseur.facture.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed, `3` abandoned.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -375,8 +367,6 @@ The record class defines `0` draft, `1` validated, `2` closed, `3` abandoned. Se
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facture_fourn.sql`, `htdocs/install/mysql/tables/llx_facture_fourn.key.sql`, `htdocs/fourn/class/paiementfourn.class.php:609`.
-
 <a id="record-facture_fourn_det"></a>
 
 ## Supplier invoice line
@@ -431,8 +421,6 @@ An additional unique key comprises `fk_remise_except`, `fk_facture_fourn`.
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_facture_fourn_det.sql`, `htdocs/install/mysql/tables/llx_facture_fourn_det.key.sql`, `htdocs/fourn/class/fournisseur.facture.class.php:72`.
 
 <a id="record-facture_fourn_rec"></a>
 
@@ -491,8 +479,6 @@ An additional unique key comprises `titre`, `entity`.
 | `auto_validate` | integer | Yes | `0` | Requests automatic validation of generated documents. |
 | `generate_pdf` | integer | Yes | `1` | Requests generation of the document output. |
 
-Source locations include `htdocs/install/mysql/tables/llx_facture_fourn_rec.sql`, `htdocs/install/mysql/tables/llx_facture_fourn_rec.key.sql`, `htdocs/fourn/class/fournisseur.facture-rec.class.php:59`.
-
 <a id="record-facture_fourn_det_rec"></a>
 
 ## Recurring supplier billing line
@@ -545,5 +531,3 @@ The primary key is `rowid`.
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_facture_fourn_det_rec.sql`, `htdocs/install/mysql/tables/llx_facture_fourn_det_rec.key.sql`, `htdocs/fourn/class/fournisseur.facture-rec.class.php:64`.

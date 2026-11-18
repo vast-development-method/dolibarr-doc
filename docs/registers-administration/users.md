@@ -1,0 +1,14 @@
+# User and employee directory
+
+The directory selects distinct user accounts in the visible user entities. Optional joins supply the party from `fk_soc`, supervisor from `fk_user`, country from `fk_country` and configurable fields from the companion row. The same person can be an active user and an employee. Account status and the employee flag have independent filters.
+
+| Decision | Register rule |
+| --- | --- |
+| Entry and scope | Ordinary directory access requires user-read permission or administrator status. With salaries enabled, an employee-list request selecting employees uses the salary-read grant. Without salary read-all, the employee context is limited to the current user and all reporting descendants. A viewer attached to a third party has the additional matching `fk_soc` restriction. |
+| Default population | When neither an explicit status nor a global search is supplied, default to active status (1). The employee context defaults the employee selector to 1 unless explicitly supplied. Default order is login ascending. |
+| Identity and contact | Numeric comparisons apply to user row ID. Login, surname, first name, accounting code, office phone, mobile, email and job have individual text searches. Gender compares its exact code. Country and supervisor use selected IDs. A positive warehouse selection ultimately requires the exact warehouse ID. Party search uses its name. |
+| Flags and categories | Employee uses an exact integer value of zero or one in the ordinary selector. Status filters the selected stored status codes. A positive category requires a matching `categorie_user` assignment. The unclassified choice requires that the user have no category assignment at all. |
+| Global search | Searches across account, contact and note fields including login, names, accounting code, phones, email, country label and notes. A separate combined-user input is read but its base query condition is inactive. Configurable fields may add their own predicates. |
+| Dates and sensitive columns | Creation belongs to the account. Displayed modification uses the later of the account and its configurable-field record. Last and previous login dates can be displayed. Reading corresponding date controls does not add a matching base date predicate. HR and salary columns have additional permissions, separate from directory access. |
+
+Suppose a supervisor has one active employee and one disabled employee beneath them, and a third employee reports elsewhere. The default employee register includes the active subordinate, subject to company and party scope, and includes the supervisor if they also meet the employee predicate. Selecting disabled status can retrieve the disabled subordinate. With hierarchy-limited salary access the unrelated employee remains outside both selections. Selecting unclassified users additionally removes anyone with even one category membership.

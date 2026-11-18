@@ -10,8 +10,6 @@ A customer's public conversation displays the ticket's eligible messages after t
 
 For example, a technician writes “Replacement installed” for the customer, then an internal note about the replacement cost. Both can enter the activity history of the same ticket. The public conversation shows the first. A private message that was emailed to a staff recipient retains its private thread classification. The fact of an email does not make it customer-visible.
 
-Sources are `htdocs/ticket/list.php:174–184,392–397,476–483`, `htdocs/ticket/card.php:811–823`, `htdocs/ticket/messaging.php:100–123`, `htdocs/ticket/document.php:95–109`, `htdocs/ticket/class/ticket.class.php:1947–1978,2070–2107`, `htdocs/ticket/class/actions_ticket.class.php:281–331` and `htdocs/public/ticket/view.php:129–176,447–456`.
-
 ## Close and reopen a selection of tickets
 
 | Question | Bulk close | Bulk reopen |
@@ -25,8 +23,6 @@ Sources are `htdocs/ticket/list.php:174–184,392–397,476–483`, `htdocs/tick
 When a new closure emits the close event, its standard email subscriber can send an administrative notification to the configured mailbox. On the customer side, it collects the ticket's party and internal contacts. With no contacts, the configured close-notification option and associated party can supply a fallback address. A selected, linked and active contact with an email takes priority; bulk close with affirmative mail confirmation can otherwise use all linked addresses. Disabling ticket email in the object context inhibits the subscriber's direct notices. The affirmative mail choice and the administrative mailbox are independent inputs. A notification already delivered during one case's closure survives a later rollback of the database batch.
 
 Consider three selected cases. One is already abandoned, one is assigned and has an open field intervention, and one is already solved. Successful bulk close can report three modified records while only the assigned case is newly solved. It generates the close event for that case. Bulk reopen of these three transitions each to assigned. The intervention that was completed by the close remains completed. If the same reopen selection includes a fourth ticket that is still waiting, the invalid starting state causes rollback of the whole reopen batch rather than committing only the first three.
-
-Sources are `htdocs/ticket/list.php:250–329,749–764,814–822`, `htdocs/ticket/class/ticket.class.php:2119–2189`, `htdocs/core/class/commonobject.class.php:5089–5144` and `htdocs/core/triggers/interface_50_modTicket_TicketEmail.class.php:261–356`.
 
 ## Contract, service-line and intervention lists
 
@@ -42,5 +38,3 @@ The per-contract collective operation has a different grain from a selection of 
 The contract-card move-line action requires contract editing and access to the target contract. The selected line must belong to the current contract. The target must be a different agreement for the same party. It changes the existing line's parent and calls its update with event suppression. In a service renewal this can preserve line identity while changing which agreement owns it. A move to a contract for a different customer fails the relationship decision.
 
 Completion of a linked intervention also has a distinct event contract. Direct completion on the intervention card uses the close operation, which writes closure state, intervention date and modifying actor and publishes the intervention-close event. The ticket workflow validates a draft visit and sets state 3 through the generic classifier. For an intervention this generic transition emits the *classify done* event. It changes the state field and has no corresponding write of the date and modifying actor from the dedicated close operation. Both paths can produce a closed visit while yielding different evidence for downstream reporting or notifications. Reopening the visit from its own card sets it back to validated. Classification as billed changes the intervention's state. It creates no customer payment or invoice by itself.
-
-Sources are `htdocs/contrat/list.php:819–830`, `htdocs/contrat/services_list.php:541–547`, `htdocs/contrat/card.php:130–136,190–239,930–977`, `htdocs/contrat/class/contrat.class.php:414–521`, `htdocs/contrat/class/api_contracts.class.php:618–638,659–679`, `htdocs/fichinter/list.php:590–605`, `htdocs/fichinter/card.php:306–328,728–754`, `htdocs/fichinter/class/fichinter.class.php:639–676,760–802`, `htdocs/ticket/class/ticket.class.php:2133–2164` and `htdocs/core/class/commonobject.class.php:5089–5138`.

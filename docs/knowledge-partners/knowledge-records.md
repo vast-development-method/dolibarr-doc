@@ -1,6 +1,6 @@
 # Knowledge records for support teams
 
-The business record is a referenceable question and answer. Authors can attach a language and associate the record with a ticket category. General article categories are a separate classification used to organize and filter records. The ticket-category field is enabled when the ticket module is active. Keep these two category identifiers distinct when mapping the record into a search index. [Guide](../reference/locators/knowledge-partners.md#ref-65dad0038567) · [Fields](../reference/locators/knowledge-partners.md#ref-b5a03294f0e5) · [General categories](../reference/locators/knowledge-partners.md#ref-16fb3a232910)
+The business record is a referenceable question and answer. Authors can attach a language and associate the record with a ticket category. General article categories are a separate classification used to organize and filter records. The ticket-category field is enabled when the ticket module is active. Keep these two category identifiers distinct when mapping the record into a search index.
 
 | Concern | Behavior |
 |---|---|
@@ -10,9 +10,7 @@ The business record is a referenceable question and answer. Authors can attach a
 | Search | The record listing can filter by general category and supplied search criteria. Clients building a published list should explicitly filter status 1 as the main collection has no unconditional validated-state filter |
 | Permissions | Read, write and delete are separate record grants. Reading the category collection for a record also calls for category-read authority |
 
-[Storage](../reference/locators/knowledge-partners.md#ref-bb84441ec235) · [Validation](../reference/locators/knowledge-partners.md#ref-f7e74f99fe21) · [Transitions](../reference/locators/knowledge-partners.md#ref-e8470ac63b69) · [REST reads](../reference/locators/knowledge-partners.md#ref-c1f139b1f948)
-
-The REST adapter exposes record retrieval by ID, listing with filtering, and create/update/delete. The category endpoint is relative `GET knowledgerecords/{id}/categories`; validation and cancellation are separately annotated `POST {id}/validate` and `POST {id}/cancel` on the adapter. Validation returns the refreshed business object. An already-validated record returns a no-change response (304), an unknown record yields 404 and a missing write grant yields 403. A supported answer may contain formatted content. Preserve its intended presentation and the entity and language accompanying it when generating a knowledge view. [Service methods](../reference/locators/knowledge-partners.md#ref-58aa2b7f0ea4)
+The REST adapter exposes record retrieval by ID, listing with filtering, and create/update/delete. The category endpoint is relative `GET knowledgerecords/{id}/categories`; validation and cancellation are separately annotated `POST {id}/validate` and `POST {id}/cancel` on the adapter. Validation returns the refreshed business object. An already-validated record returns a no-change response (304), an unknown record yields 404 and a missing write grant yields 403. A supported answer may contain formatted content. Preserve its intended presentation and the entity and language accompanying it when generating a knowledge view.
 
 | Acceptance case | Expected observation |
 |---|---|

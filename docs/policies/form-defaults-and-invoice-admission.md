@@ -14,7 +14,7 @@ The configuration record carries a page, optional query conditions, mode, field 
 | Focus | Positions the cursor at a named field on an eligible rendered form. |
 | Mandatory field on the page | The page's form submission handler evaluates the configured input. It treats a cancellation separately and accounts for a rich-text field's editor contents. |
 
-A customer-reference rule applied only at the form belongs in a specification of the operator interaction. A requirement on issuing an invoice is a separate contract that another client can encounter when it calls the business operation. Source locations are `htdocs/admin/defaultvalues.php:120–196`, `htdocs/user/class/user.class.php:835–880` and `htdocs/core/lib/functions.lib.php:1170–1310,13199–13283`.
+A customer-reference rule applied only at the form belongs in a specification of the operator interaction. A requirement on issuing an invoice is a separate contract that another client can encounter when it calls the business operation.
 
 ## Issuing a customer invoice
 
@@ -34,4 +34,4 @@ The chronology exception tests the position of the provisional marker using a tr
 
 Consider a customer who gives their own purchase order reference as `PO-174`. With the reference requirement enabled on invoice validation, the stored customer-reference field needs that value before issue. A reference typed only into a free-text invoice note leaves the field empty. With forced issue date enabled, an invoice prepared on the last day of April and first issued in May can receive a May invoice date and a newly calculated payment deadline. The customer reference and document number continue to identify different records in a reconciliation.
 
-Sources are `htdocs/compta/facture/class/facture.class.php:3612–3666,3668–3745,3749–3824,6583–6622`. The [payment-terms chapter](../specification/financial/payment-terms-and-settlement-adjustments.md) describes the due-date calculation. The [numbering chapter](identity-and-numbering.md) describes how a series supplies the public reference.
+The [payment-terms chapter](../specification/financial/payment-terms-and-settlement-adjustments.md) describes the due-date calculation. The [numbering chapter](identity-and-numbering.md) describes how a series supplies the public reference.

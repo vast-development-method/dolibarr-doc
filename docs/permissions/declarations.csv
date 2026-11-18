@@ -1,324 +1,324 @@
-descriptor,id,namespace,first_level,second_level,default_grant,english_label,descriptor_label,declaration_guard,id_expression,source
-Accounting,50440,accounting,chartofaccount,,0,"Manage chart of accounts, setup of accountancy","Manage chart of accounts, setup of accountancy",,50440,htdocs/core/modules/modAccounting.class.php:170
-Accounting,50401,accounting,bind,write,0,Bind products and invoices with accounting accounts,Bind products and invoices with accounting accounts,,50401,htdocs/core/modules/modAccounting.class.php:178
-Accounting,50411,accounting,mouvements,lire,0,Read operations in ledger,Read operations in Ledger,,50411,htdocs/core/modules/modAccounting.class.php:186
-Accounting,50412,accounting,mouvements,creer,0,Write/Edit operations in ledger,Write/Edit operations in Ledger,,50412,htdocs/core/modules/modAccounting.class.php:194
-Accounting,50414,accounting,mouvements,supprimer,0,Delete operations in ledger,Delete operations in Ledger,,50414,htdocs/core/modules/modAccounting.class.php:202
-Accounting,50415,accounting,mouvements,supprimer_tous,0,Delete all operations by year and journal in ledger,Delete all operations by year and journal in Ledger,,50415,htdocs/core/modules/modAccounting.class.php:210
-Accounting,50418,accounting,mouvements,export,0,Export operations of the ledger,Export operations of the Ledger,,50418,htdocs/core/modules/modAccounting.class.php:218
-Accounting,50420,accounting,comptarapport,lire,0,"Report and export reports (turnover, balance, journals, ledger)","Report and export reports (turnover, balance, journals, ledger)",,50420,htdocs/core/modules/modAccounting.class.php:226
-Accounting,50430,accounting,fiscalyear,write,0,Define fiscal periods. Validate transactions and close fiscal periods.,"Manage fiscal periods, validate movements and close periods",,50430,htdocs/core/modules/modAccounting.class.php:234
-Adherent,71,adherent,lire,,0,Read members,Read members' card,,71,htdocs/core/modules/modAdherent.class.php:218
-Adherent,72,adherent,creer,,0,Create/modify members,Create/modify members (need also user module permissions if member linked to a user),,72,htdocs/core/modules/modAdherent.class.php:225
-Adherent,74,adherent,supprimer,,0,Delete members,Remove members,,74,htdocs/core/modules/modAdherent.class.php:232
-Adherent,76,adherent,export,,0,Export data,Export members,,76,htdocs/core/modules/modAdherent.class.php:239
-Adherent,75,adherent,configurer,,0,Setup types of membership,Setup types of membership,,75,htdocs/core/modules/modAdherent.class.php:246
-Adherent,78,adherent,cotisation,lire,0,Read subscriptions,Read membership fees,,78,htdocs/core/modules/modAdherent.class.php:253
-Adherent,79,adherent,cotisation,creer,0,Create/modify subscriptions,Create/modify/remove membership fees,,79,htdocs/core/modules/modAdherent.class.php:261
-Agenda,2401,agenda,myactions,read,0,Read actions (events or tasks) linked to his user account (if owner of event or just assigned to),Read actions/tasks linked to his account,,2401,htdocs/core/modules/modAgenda.class.php:143
-Agenda,2402,agenda,myactions,create,0,Create/modify actions (events or tasks) linked to his user account (if owner of event),Create/modify actions/tasks linked to his account,,2402,htdocs/core/modules/modAgenda.class.php:151
-Agenda,2403,agenda,myactions,delete,0,Delete actions (events or tasks) linked to his user account (if owner of event),Delete actions/tasks linked to his account,,2403,htdocs/core/modules/modAgenda.class.php:159
-Agenda,2411,agenda,allactions,read,0,Read actions (events or tasks) of others,Read actions/tasks of others,,2411,htdocs/core/modules/modAgenda.class.php:167
-Agenda,2412,agenda,allactions,create,0,Create/modify actions (events or tasks) of others,Create/modify actions/tasks of others,,2412,htdocs/core/modules/modAgenda.class.php:175
-Agenda,2413,agenda,allactions,delete,0,Delete actions (events or tasks) of others,Delete actions/tasks of others,,2413,htdocs/core/modules/modAgenda.class.php:183
-Agenda,2414,agenda,export,,0,Export actions/tasks of others,Export actions/tasks of others,,2414,htdocs/core/modules/modAgenda.class.php:191
-Ai,4561,ai,assistant,use,0,Use the AI Assistant,Use the AI Assistant,,$this->numero + 1,htdocs/core/modules/modAi.class.php:277
-Asset,51001,asset,read,,0,Read assets,Read assets,,51001,htdocs/core/modules/modAsset.class.php:190
-Asset,51002,asset,write,,0,Create/Update assets,Create/Update assets,,51002,htdocs/core/modules/modAsset.class.php:198
-Asset,51003,asset,delete,,0,Delete assets,Delete assets,,51003,htdocs/core/modules/modAsset.class.php:206
-Asset,51004,asset,model_advance,read,0,Read asset models,Read asset models,,51004,htdocs/core/modules/modAsset.class.php:214
-Asset,51005,asset,model_advance,write,0,Setup types of asset,Create/Update asset models,,51005,htdocs/core/modules/modAsset.class.php:222
-Asset,51006,asset,model_advance,delete,0,Delete asset models,Delete asset models,,51006,htdocs/core/modules/modAsset.class.php:230
-Banque,111,banque,lire,,0,Read financial accounts,Read bank account and transactions,,111,htdocs/core/modules/modBanque.class.php:88
-Banque,112,banque,modifier,,0,Create/modify/delete and compare transactions,Creer/modifier montant/supprimer ecriture bancaire,,112,htdocs/core/modules/modBanque.class.php:95
-Banque,113,banque,configurer,,0,"Setup financial accounts (create, manage categories of bank transactions)","Configurer les comptes bancaires (creer, gerer categories)",,113,htdocs/core/modules/modBanque.class.php:102
-Banque,114,banque,consolidate,,0,Reconcile transactions,Rapprocher les ecritures bancaires,,114,htdocs/core/modules/modBanque.class.php:109
-Banque,115,banque,export,,0,Export transactions and account statements,Exporter transactions et releves,,115,htdocs/core/modules/modBanque.class.php:116
-Banque,116,banque,transfer,,0,Transfers between accounts,Virements entre comptes,,116,htdocs/core/modules/modBanque.class.php:123
-Banque,117,banque,cheque,,0,Manage checks dispatching,Gerer les envois de cheques,,117,htdocs/core/modules/modBanque.class.php:130
-Barcode,301,barcode,read,,0,Generate PDF sheets of barcodes,Generate PDF sheets of barcodes,,301,htdocs/core/modules/modBarcode.class.php:81
-Barcode,304,barcode,lire_advance,,0,Create/modify barcodes,Read barcodes,,304,htdocs/core/modules/modBarcode.class.php:88
-Barcode,305,barcode,creer_advance,,0,Delete barcodes,Create/modify barcodes,,305,htdocs/core/modules/modBarcode.class.php:95
-BlockedLog,3201,blockedlog,read,,0,"Read, Export and Control Immutable Logs and signature",Read archived events and fingerprints,,$this->numero + $r,htdocs/core/modules/modBlockedLog.class.php:123
-Bom,651,bom,read,,0,Read Bills of Materials,Read bom of Bom,,$this->numero + $r,htdocs/core/modules/modBom.class.php:199
-Bom,652,bom,write,,0,Create/Update Bills of Materials,Create/Update bom of Bom,,$this->numero + $r,htdocs/core/modules/modBom.class.php:206
-Bom,653,bom,delete,,0,Delete Bills of Materials,Delete bom of Bom,,$this->numero + $r,htdocs/core/modules/modBom.class.php:213
-Bookmark,331,bookmark,lire,,0,Read bookmarks,Lire les bookmarks,,331,htdocs/core/modules/modBookmark.class.php:81
-Bookmark,332,bookmark,creer,,0,Create/modify bookmarks,Creer/modifier les bookmarks,,332,htdocs/core/modules/modBookmark.class.php:88
-Bookmark,333,bookmark,supprimer,,0,Delete bookmarks,Supprimer les bookmarks,,333,htdocs/core/modules/modBookmark.class.php:95
-Categorie,241,categorie,lire,,0,Read categories,Lire les categories,,241,htdocs/core/modules/modCategorie.class.php:96
-Categorie,242,categorie,creer,,0,Create/modify categories,Creer/modifier les categories,,242,htdocs/core/modules/modCategorie.class.php:103
-Categorie,243,categorie,supprimer,,0,Delete categories,Supprimer les categories,,243,htdocs/core/modules/modCategorie.class.php:110
-Commande,81,commande,lire,,0,Read customers orders,Read sales orders,,81,htdocs/core/modules/modCommande.class.php:118
-Commande,82,commande,creer,,0,Create/modify customers orders,Creeat/modify sales orders,,82,htdocs/core/modules/modCommande.class.php:125
-Commande,84,commande,order_advance,validate,0,Validate customers orders,Validate sales orders,,84,htdocs/core/modules/modCommande.class.php:132
-Commande,85,commande,order_advance,generetedoc,0,Generate the documents sales orders,Generate the documents sales orders,,85,htdocs/core/modules/modCommande.class.php:140
-Commande,86,commande,order_advance,send,0,Send customers orders,Send sales orders by email,,86,htdocs/core/modules/modCommande.class.php:148
-Commande,87,commande,order_advance,close,0,Close customers orders,Close sale orders,,87,htdocs/core/modules/modCommande.class.php:156
-Commande,88,commande,order_advance,annuler,0,Cancel customers orders,Cancel sale orders,,88,htdocs/core/modules/modCommande.class.php:164
-Commande,89,commande,supprimer,,0,Delete customers orders,Delete sales orders,,89,htdocs/core/modules/modCommande.class.php:172
-Commande,1421,commande,commande,export,0,Export sales orders and attributes,Export sales orders and attributes,,1421,htdocs/core/modules/modCommande.class.php:179
-Comptabilite,95,compta,resultat,lire,0,Read reports,"Lire CA, bilans, resultats",,95,htdocs/core/modules/modComptabilite.class.php:89
-Contrat,161,contrat,lire,,0,Read contracts/subscriptions,Lire les contrats,,161,htdocs/core/modules/modContrat.class.php:108
-Contrat,162,contrat,creer,,0,Create/modify contracts/subscriptions,Creer / modifier les contrats,,162,htdocs/core/modules/modContrat.class.php:115
-Contrat,163,contrat,activer,,0,Activate a service/subscription of a contract,Activer un service d'un contrat,,163,htdocs/core/modules/modContrat.class.php:122
-Contrat,164,contrat,desactiver,,0,Disable a service/subscription of a contract,Desactiver un service d'un contrat,,164,htdocs/core/modules/modContrat.class.php:129
-Contrat,165,contrat,supprimer,,0,Delete contracts/subscriptions,Supprimer un contrat,,165,htdocs/core/modules/modContrat.class.php:136
-Contrat,167,contrat,export,,0,Export contracts,Export contracts,,167,htdocs/core/modules/modContrat.class.php:143
-Cron,23001,cron,read,,0,Read Scheduled job,Read cron jobs,,23001,htdocs/core/modules/modCron.class.php:110
-Cron,23002,cron,create,,0,Create/update and execute Scheduled job,Create/Update and execute cron Jobs,,23002,htdocs/core/modules/modCron.class.php:116
-Cron,23003,cron,delete,,0,Delete Scheduled job,Delete cron Jobs,,23003,htdocs/core/modules/modCron.class.php:122
-DebugBar,431,debugbar,read,,0,Use Debug Bar,Use Debug Bar,,431,htdocs/core/modules/modDebugBar.class.php:81
-Don,701,don,lire,,0,Read donations,Lire les dons,,701,htdocs/core/modules/modDon.class.php:122
-Don,702,don,creer,,0,Create/modify donations,Creer/modifier les dons,,702,htdocs/core/modules/modDon.class.php:128
-Don,703,don,supprimer,,0,Delete donations,Supprimer les dons,,703,htdocs/core/modules/modDon.class.php:134
-ECM,2501,ecm,read,,0,Read/Download documents,Read or download documents,,2501,htdocs/core/modules/modECM.class.php:96
-ECM,2503,ecm,upload,,0,Submit or delete documents,Upload a document,,2503,htdocs/core/modules/modECM.class.php:103
-ECM,2515,ecm,setup,,0,Setup documents directories,Administer directories of documents,,2515,htdocs/core/modules/modECM.class.php:110
-Expedition,101,expedition,lire,,0,Read shipments,Read shipments,,101,htdocs/core/modules/modExpedition.class.php:149
-Expedition,102,expedition,creer,,0,Create/modify shipments,Create/modify shipments,,102,htdocs/core/modules/modExpedition.class.php:156
-Expedition,104,expedition,shipping_advance,validate,0,Validate shipments,Validate shipments,,104,htdocs/core/modules/modExpedition.class.php:163
-Expedition,105,expedition,shipping_advance,send,0,Send shipments by email,Send shipments by email to customers,,105,htdocs/core/modules/modExpedition.class.php:171
-Expedition,106,expedition,shipment,export,0,Export shipments,Export shipments,,106,htdocs/core/modules/modExpedition.class.php:179
-Expedition,109,expedition,supprimer,,0,Delete shipments,Delete shipments,,109,htdocs/core/modules/modExpedition.class.php:187
-Expedition,1101,expedition,delivery,lire,0,Read delivery receipts,Read delivery receipts,,1101,htdocs/core/modules/modExpedition.class.php:194
-Expedition,1102,expedition,delivery,creer,0,Create/modify delivery receipts,Create/modify delivery receipts,,1102,htdocs/core/modules/modExpedition.class.php:202
-Expedition,1104,expedition,delivery_advance,validate,0,Validate delivery receipts,Validate delivery receipts,,1104,htdocs/core/modules/modExpedition.class.php:210
-Expedition,1109,expedition,delivery,supprimer,0,Delete delivery receipts,Delete delivery receipts,,1109,htdocs/core/modules/modExpedition.class.php:218
-ExpenseReport,771,expensereport,lire,,0,Read expense reports (yours and your subordinates),Read expense reports (yours and your subordinates),,771,htdocs/core/modules/modExpenseReport.class.php:114
-ExpenseReport,772,expensereport,creer,,0,Create/modify expense reports (for you and your subordinates),Create/modify expense reports,,772,htdocs/core/modules/modExpenseReport.class.php:121
-ExpenseReport,773,expensereport,supprimer,,0,Delete expense reports,Delete expense reports,,773,htdocs/core/modules/modExpenseReport.class.php:128
-ExpenseReport,775,expensereport,approve,,0,Approve expense reports,Approve expense reports,,775,htdocs/core/modules/modExpenseReport.class.php:135
-ExpenseReport,776,expensereport,to_paid,,0,Pay expense reports,Pay expense reports,,776,htdocs/core/modules/modExpenseReport.class.php:142
-ExpenseReport,777,expensereport,readall,,0,Read all expense reports (even those of user not subordinates),Read expense reports of everybody,,777,htdocs/core/modules/modExpenseReport.class.php:149
-ExpenseReport,778,expensereport,writeall_advance,,0,Create/modify expense reports of everybody,Create expense reports for everybody,,778,htdocs/core/modules/modExpenseReport.class.php:156
-ExpenseReport,779,expensereport,export,,0,Export expense reports,Export expense reports,,779,htdocs/core/modules/modExpenseReport.class.php:163
-Export,1201,export,lire,,0,Get result of an export,Read exports,,1201,htdocs/core/modules/modExport.class.php:81
-Export,1202,export,creer,,0,Create/Modify an export,Creeate/modify export,,1202,htdocs/core/modules/modExport.class.php:88
-Facture,11,facture,lire,,0,Read customer invoices (and payments),Read invoices,,11,htdocs/core/modules/modFacture.class.php:155
-Facture,12,facture,creer,,0,Create/modify customer invoices,Create and update invoices,,12,htdocs/core/modules/modFacture.class.php:162
-Facture,13,facture,invoice_advance,unvalidate,0,Invalidate customer invoices,Devalidate invoices,,13,htdocs/core/modules/modFacture.class.php:170
-Facture,14,facture,invoice_advance,validate,0,Validate customer invoices,Validate invoices,,14,htdocs/core/modules/modFacture.class.php:178
-Facture,15,facture,invoice_advance,send,0,Send customer invoices by email,Send invoices by email,,15,htdocs/core/modules/modFacture.class.php:186
-Facture,16,facture,paiement,,0,Create payments for customer invoices,Issue payments on invoices,,16,htdocs/core/modules/modFacture.class.php:194
-Facture,19,facture,supprimer,,0,Delete customer invoices,Delete invoices,,19,htdocs/core/modules/modFacture.class.php:201
-Facture,1321,facture,facture,export,0,"Export customer invoices, attributes and payments","Export customer invoices, attributes and payments",,1321,htdocs/core/modules/modFacture.class.php:208
-Facture,1322,facture,invoice_advance,reopen,0,Reopen a paid bill,Re-open a fully paid invoice,,1322,htdocs/core/modules/modFacture.class.php:216
-Ficheinter,61,ficheinter,lire,,0,Read interventions,Lire les fiches d'intervention,,61,htdocs/core/modules/modFicheinter.class.php:116
-Ficheinter,62,ficheinter,creer,,0,Create/modify interventions,Creer/modifier les fiches d'intervention,,62,htdocs/core/modules/modFicheinter.class.php:123
-Ficheinter,64,ficheinter,supprimer,,0,Delete interventions,Supprimer les fiches d'intervention,,64,htdocs/core/modules/modFicheinter.class.php:130
-Ficheinter,67,ficheinter,export,,0,Export interventions,Exporter les fiches interventions,,67,htdocs/core/modules/modFicheinter.class.php:137
-Ficheinter,68,ficheinter,ficheinter_advance,send,0,Send interventions by email,Envoyer les fiches d'intervention par courriel,,68,htdocs/core/modules/modFicheinter.class.php:144
-Ficheinter,69,ficheinter,ficheinter_advance,validate,0,Validate interventions,Valider les fiches d'intervention ,,69,htdocs/core/modules/modFicheinter.class.php:152
-Ficheinter,70,ficheinter,ficheinter_advance,unvalidate,0,Invalidate interventions,Dévalider les fiches d'intervention,,70,htdocs/core/modules/modFicheinter.class.php:160
-Fournisseur,1181,fournisseur,lire,,0,Read suppliers,Consulter les fournisseurs,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1181,htdocs/core/modules/modFournisseur.class.php:193
-Fournisseur,1182,fournisseur,commande,lire,0,Read purchase orders,Consulter les commandes fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1182,htdocs/core/modules/modFournisseur.class.php:200
-Fournisseur,1183,fournisseur,commande,creer,0,Create/modify purchase orders,Creer une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1183,htdocs/core/modules/modFournisseur.class.php:208
-Fournisseur,1184,fournisseur,supplier_order_advance,validate,0,Validate purchase orders,Valider une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1184,htdocs/core/modules/modFournisseur.class.php:216
-Fournisseur,1185,fournisseur,commande,approuver,0,Approve purchase orders,Approuver une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1185,htdocs/core/modules/modFournisseur.class.php:224
-Fournisseur,1186,fournisseur,commande,commander,0,Order purchase orders,Commander une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1186,htdocs/core/modules/modFournisseur.class.php:232
-Fournisseur,1187,fournisseur,commande,receptionner,0,Acknowledge receipt of purchase orders,Receptionner une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1187,htdocs/core/modules/modFournisseur.class.php:240
-Fournisseur,1189,fournisseur,commande_advance,check,0,Check/Uncheck a purchase order reception,Check/Uncheck a supplier order reception,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1189,htdocs/core/modules/modFournisseur.class.php:248
-Fournisseur,1188,fournisseur,commande,supprimer,0,Delete purchase orders,Supprimer une commande fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1188,htdocs/core/modules/modFournisseur.class.php:256
-Fournisseur,1190,fournisseur,commande,approve2,0,Approve (second approval) purchase orders,Approve supplier order (second level),!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD') && getDolGlobalString('SUPPLIER_ORDER_3_STEPS_TO_BE_APPROVED'),1190,htdocs/core/modules/modFournisseur.class.php:265
-Fournisseur,1191,fournisseur,commande,export,0,Export supplier orders and their attributes,"Exporter les commande fournisseurs, attributs",!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1191,htdocs/core/modules/modFournisseur.class.php:274
-Fournisseur,1231,fournisseur,facture,lire,0,Read vendor invoices (and payments),Consulter les factures fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1231,htdocs/core/modules/modFournisseur.class.php:282
-Fournisseur,1232,fournisseur,facture,creer,0,Create/modify vendor invoices,Creer une facture fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1232,htdocs/core/modules/modFournisseur.class.php:290
-Fournisseur,1233,fournisseur,supplier_invoice_advance,validate,0,Validate vendor invoices,Valider une facture fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1233,htdocs/core/modules/modFournisseur.class.php:298
-Fournisseur,1234,fournisseur,facture,supprimer,0,Delete vendor invoices,Supprimer une facture fournisseur,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1234,htdocs/core/modules/modFournisseur.class.php:306
-Fournisseur,1235,fournisseur,supplier_invoice_advance,send,0,Send vendor invoices by email,Envoyer les factures par mail,!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1235,htdocs/core/modules/modFournisseur.class.php:314
-Fournisseur,1236,fournisseur,facture,export,0,"Export vendor invoices, attributes and payments","Exporter les factures fournisseurs, attributes et reglements",!getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD'),1236,htdocs/core/modules/modFournisseur.class.php:322
-HRM,4001,hrm,all,read,0,Read skill/job/position,Read skill/job/position,,4001,htdocs/core/modules/modHRM.class.php:197
-HRM,4002,hrm,all,write,0,Create/modify skill/job/position,Create/modify skill/job/position,,4002,htdocs/core/modules/modHRM.class.php:204
-HRM,4003,hrm,all,delete,0,Delete skill/job/position,Delete skill/job/position,,4003,htdocs/core/modules/modHRM.class.php:211
-HRM,4021,hrm,evaluation,read,0,Read evaluations (yours and your subordinates),Read evaluations,,4021,htdocs/core/modules/modHRM.class.php:219
-HRM,4022,hrm,evaluation,write,0,Create/modify evaluations,Create/modify your evaluation,,4022,htdocs/core/modules/modHRM.class.php:226
-HRM,4023,hrm,evaluation_advance,validate,0,Validate evaluation,Validate evaluation,,4023,htdocs/core/modules/modHRM.class.php:233
-HRM,4025,hrm,evaluation,delete,0,Delete evaluation,Delete evaluations,,4025,htdocs/core/modules/modHRM.class.php:240
-HRM,4028,hrm,compare_advance,read,0,See comparison menu,See comparison menu,,4028,htdocs/core/modules/modHRM.class.php:248
-HRM,4029,hrm,evaluation,readall,0,Read all evaluations,Read all evaluations,,4029,htdocs/core/modules/modHRM.class.php:256
-HRM,4031,hrm,read_personal_information,read,0,Read personal information,Read personal/HR information,,4031,htdocs/core/modules/modHRM.class.php:264
-HRM,4032,hrm,write_personal_information,write,0,Write personal information,Write personal/HR information,,4032,htdocs/core/modules/modHRM.class.php:272
-Holiday,20001,holiday,read,,0,Read leave requests (your leave and those of your subordinates),Read leave requests (yours and your subordinates),,20001,htdocs/core/modules/modHoliday.class.php:174
-Holiday,20002,holiday,write,,0,Create/modify your leave requests (your leave and those of your subordinates),Create/modify leave requests,,20002,htdocs/core/modules/modHoliday.class.php:181
-Holiday,20003,holiday,delete,,0,Delete leave requests (your leave and those of your subordinates),Delete leave requests,,20003,htdocs/core/modules/modHoliday.class.php:188
-Holiday,20007,holiday,approve,,0,Approve leave requests,Approve leave requests,,20007,htdocs/core/modules/modHoliday.class.php:195
-Holiday,20004,holiday,readall,,0,Read all leave requests (even those of user not subordinates),Read leave requests for everybody,,20004,htdocs/core/modules/modHoliday.class.php:202
-Holiday,20005,holiday,writeall,,0,Create/modify leave requests for everybody (even those of user not subordinates),Create/modify leave requests for everybody,,20005,htdocs/core/modules/modHoliday.class.php:209
-Holiday,20006,holiday,define_holiday,,0,Administer leave requests (setup and update balance),Setup leave requests of users (setup and update balance),,20006,htdocs/core/modules/modHoliday.class.php:216
-Import,1251,import,run,,0,Run mass imports of external data into database (data load),Run mass imports of external data (data load),,1251,htdocs/core/modules/modImport.class.php:83
-KnowledgeManagement,57001,knowledgemanagement,knowledgerecord,read,0,Read articles,Read articles,,$this->numero + $r + 1,htdocs/core/modules/modKnowledgeManagement.class.php:242
-KnowledgeManagement,57002,knowledgemanagement,knowledgerecord,write,0,Create/modify articles,Create/Update articles,,$this->numero + $r + 1,htdocs/core/modules/modKnowledgeManagement.class.php:247
-KnowledgeManagement,57003,knowledgemanagement,knowledgerecord_advance,validate,0,Validate articles,Validate articles,,$this->numero + $r + 1,htdocs/core/modules/modKnowledgeManagement.class.php:252
-KnowledgeManagement,57004,knowledgemanagement,knowledgerecord,delete,0,Delete articles,Delete articles,,$this->numero + $r + 1,htdocs/core/modules/modKnowledgeManagement.class.php:257
-Loan,521,loan,read,,0,Read Loans,Read loans,,521,htdocs/core/modules/modLoan.class.php:104
-Loan,522,loan,write,,0,Create/modify loans,Create/modify loans,,522,htdocs/core/modules/modLoan.class.php:112
-Loan,524,loan,delete,,0,Delete loans,Delete loans,,524,htdocs/core/modules/modLoan.class.php:120
-Loan,525,loan,calc,,0,Access loan calculator,Access loan calculator,,525,htdocs/core/modules/modLoan.class.php:128
-Loan,527,loan,export,,0,Export loans,Export loans,,527,htdocs/core/modules/modLoan.class.php:136
-Mailing,221,mailing,lire,,0,Read mass emails,Consulter les mailings,,221,htdocs/core/modules/modMailing.class.php:94
-Mailing,222,mailing,creer,,0,"Create/modify mass emails (topic, recipients...)","Creer/modifier les mailings (sujet, destinataires...)",,222,htdocs/core/modules/modMailing.class.php:101
-Mailing,223,mailing,valider,,0,Validate mass emails (allows sending),Valider les mailings (permet leur envoi),,223,htdocs/core/modules/modMailing.class.php:108
-Mailing,229,mailing,supprimer,,0,Delete mass emails,Supprimer les mailings,,229,htdocs/core/modules/modMailing.class.php:115
-Mailing,237,mailing,mailing_advance,recipient,0,View recipients and info,View recipients and info,,237,htdocs/core/modules/modMailing.class.php:122
-Mailing,238,mailing,mailing_advance,send,0,Manually send mailings,Manually send mailings,,238,htdocs/core/modules/modMailing.class.php:130
-Mailing,239,mailing,mailing_advance,delete,0,Delete mailings after validation or sent,Delete mailings after validation and/or sent,,239,htdocs/core/modules/modMailing.class.php:138
-Margin,59001,margins,liretous,,0,Read commercial margins,Visualiser les marges,,59001,htdocs/core/modules/modMargin.class.php:129
-Margin,59002,margins,creer,,0,Define commercial margins,Définir les marges,,59002,htdocs/core/modules/modMargin.class.php:136
-Margin,59003,margins,read,all,0,Read every user margin,Read every user margin,,59003,htdocs/core/modules/modMargin.class.php:143
-ModuleBuilder,3301,modulebuilder,run,,0,Generate new modules,Generate new modules,,3301,htdocs/core/modules/modModuleBuilder.class.php:95
-Mrp,661,mrp,read,,0,Read Manufacturing Order (MO),Read Manufacturing Order,,$this->numero + $r,htdocs/core/modules/modMrp.class.php:220
-Mrp,662,mrp,write,,0,Create/Update Manufacturing Order (MO),Create/Update Manufacturing Order,,$this->numero + $r,htdocs/core/modules/modMrp.class.php:225
-Mrp,663,mrp,delete,,0,Delete Manufacturing Order (MO),Delete Manufacturing Order,,$this->numero + $r,htdocs/core/modules/modMrp.class.php:230
-MultiCurrency,40001,multicurrency,currency,read,1,Read currencies and their rates,Read currencies and their rates,,40001,htdocs/core/modules/modMultiCurrency.class.php:177
-MultiCurrency,40002,multicurrency,currency,write,0,Create/Update currencies and their rates,Create/Update currencies and their rates,,40002,htdocs/core/modules/modMultiCurrency.class.php:185
-MultiCurrency,40003,multicurrency,currency,delete,0,Delete currencies and their rates,Delete currencies and their rates,,40003,htdocs/core/modules/modMultiCurrency.class.php:193
-OpenSurvey,55001,opensurvey,read,,0,Read polls,Read surveys,,55001,htdocs/core/modules/modOpenSurvey.class.php:103
-OpenSurvey,55002,opensurvey,write,,0,Create/modify polls,Create/modify surveys,,55002,htdocs/core/modules/modOpenSurvey.class.php:112
-Partnership,58000,partnership,read,,0,Read objects of Partnership,Read objects of Partnership,,$this->numero + $r,htdocs/core/modules/modPartnership.class.php:293
-Partnership,58001,partnership,write,,0,Create/Update objects of Partnership,Create/Update objects of Partnership,,$this->numero + $r,htdocs/core/modules/modPartnership.class.php:297
-Partnership,58002,partnership,delete,,0,Delete objects of Partnership,Delete objects of Partnership,,$this->numero + $r,htdocs/core/modules/modPartnership.class.php:301
-PaymentByBankTransfer,561,paymentbybanktransfer,read,,0,Read payment orders by credit transfer,Read bank transfer payment orders,,561,htdocs/core/modules/modPaymentByBankTransfer.class.php:92
-PaymentByBankTransfer,562,paymentbybanktransfer,create,,0,Create/modify payment order by credit transfer,Create/modify a bank transfer payment order,,562,htdocs/core/modules/modPaymentByBankTransfer.class.php:99
-PaymentByBankTransfer,563,paymentbybanktransfer,send,,0,Send/Transmit payment order by credit transfer,Send/Transmit bank transfer payment order,,563,htdocs/core/modules/modPaymentByBankTransfer.class.php:106
-PaymentByBankTransfer,564,paymentbybanktransfer,debit,,0,Record Debits/Rejections of credit transfer,Record Debits/Rejects of bank transfer payment order,,564,htdocs/core/modules/modPaymentByBankTransfer.class.php:113
-Prelevement,151,prelevement,bons,lire,0,Read direct debit payment orders,Read direct debit payment orders,,151,htdocs/core/modules/modPrelevement.class.php:95
-Prelevement,152,prelevement,bons,creer,0,Create/modify a direct debit payment orders,Create/modify a direct debit payment order,,152,htdocs/core/modules/modPrelevement.class.php:103
-Prelevement,153,prelevement,bons,send,0,Send/Transmit direct debit payment orders,Send/Transmit direct debit payment orders,,153,htdocs/core/modules/modPrelevement.class.php:111
-Prelevement,154,prelevement,bons,credit,0,Record Credits/Rejections of direct debit payment orders,Record Credits/Rejects of direct debit payment orders,,154,htdocs/core/modules/modPrelevement.class.php:119
-Printing,64001,printing,read,,0,Allow direct printing,DirectPrint,,64001,htdocs/core/modules/modPrinting.class.php:97
-Product,31,produit,lire,,0,Read products,Read products,,31,htdocs/core/modules/modProduct.class.php:120
-Product,32,produit,creer,,0,Create/modify products,Create/modify products,,32,htdocs/core/modules/modProduct.class.php:127
-Product,33,produit,product_advance,read_prices,0,Read prices products,Read prices products,,33,htdocs/core/modules/modProduct.class.php:134
-Product,35,produit,product_advance,read_supplier_prices,0,Read supplier prices,Read supplier prices,,35,htdocs/core/modules/modProduct.class.php:142
-Product,36,produit,product_advance,write_supplier_prices,0,Create/modify supplier prices,Write supplier prices,,36,htdocs/core/modules/modProduct.class.php:151
-Product,34,produit,supprimer,,0,Delete products,Delete products,,34,htdocs/core/modules/modProduct.class.php:159
-Product,38,produit,export,,0,Export products,Export products,,38,htdocs/core/modules/modProduct.class.php:166
-Product,39,produit,ignore_price_min_advance,,0,Can set a price lower than the minimum price of products,Ignore minimum price,,39,htdocs/core/modules/modProduct.class.php:173
-Projet,41,projet,lire,,0,Read projects and tasks (shared projects and projects of which I am a contact).,Read projects and tasks (shared projects or projects I am contact for),,41,htdocs/core/modules/modProjet.class.php:158
-Projet,42,projet,creer,,0,Create/modify projects (shared projects and projects of which I am a contact). Can also assign users to projects and tasks,Create/modify projects and tasks (shared projects or projects I am contact for),,42,htdocs/core/modules/modProjet.class.php:165
-Projet,44,projet,supprimer,,0,Delete projects (shared projects and projects of which I am a contact),Delete project and tasks (shared projects or projects I am contact for),,44,htdocs/core/modules/modProjet.class.php:172
-Projet,45,projet,export,,0,Export projects,Export projects,,45,htdocs/core/modules/modProjet.class.php:179
-Projet,141,projet,all,lire,0,Read all projects and tasks (as well as the private projects for which I am not a contact),Read all projects and tasks (also private projects I am not contact for),,141,htdocs/core/modules/modProjet.class.php:186
-Projet,142,projet,all,creer,0,Create/modify all projects and tasks (as well as the private projects for which I am not a contact),Create/modify all projects and tasks (also private projects I am not contact for),,142,htdocs/core/modules/modProjet.class.php:194
-Projet,144,projet,all,supprimer,0,Delete all projects and tasks (as well as the private projects I am not a contact),Delete all projects and tasks (also private projects I am not contact for),,144,htdocs/core/modules/modProjet.class.php:202
-Projet,145,projet,time,,0,"Can enter time consumed, for me or my hierarchy, on assigned tasks (Timesheet)",Can enter time consumed on assigned tasks (timesheet),,145,htdocs/core/modules/modProjet.class.php:210
-Propale,21,propale,lire,,0,Read commercial proposals,Read commercial proposals,,21,htdocs/core/modules/modPropale.class.php:143
-Propale,22,propale,creer,,0,Create/modify commercial proposals,Create and update commercial proposals,,22,htdocs/core/modules/modPropale.class.php:150
-Propale,24,propale,propal_advance,validate,0,Validate commercial proposals,Validate commercial proposals,,24,htdocs/core/modules/modPropale.class.php:157
-Propale,25,propale,propal_advance,send,0,Send commercial proposals,Send commercial proposals to customers,,25,htdocs/core/modules/modPropale.class.php:165
-Propale,26,propale,propal_advance,close,0,Close commercial proposals,Close commercial proposals,,26,htdocs/core/modules/modPropale.class.php:173
-Propale,27,propale,supprimer,,0,Delete commercial proposals,Delete commercial proposals,,27,htdocs/core/modules/modPropale.class.php:181
-Propale,28,propale,export,,0,Export commercial proposals,Exporting commercial proposals and attributes,,28,htdocs/core/modules/modPropale.class.php:188
-Propale,29,propale,propal_advance,reopen,0,Reopen commercial proposals,Reopen commercial proposals,,29,htdocs/core/modules/modPropale.class.php:195
-ReceiptPrinter,67001,receiptprinter,read,,0,Allow the use of ticket printers,ReceiptPrinter,,67001,htdocs/core/modules/modReceiptPrinter.class.php:98
-Reception,941601,reception,lire,,0,Read receptions,Read receptions,,$this->numero.$r,htdocs/core/modules/modReception.class.php:117
-Reception,941602,reception,creer,,0,Create and modify receptions,Create receptions,,$this->numero.$r,htdocs/core/modules/modReception.class.php:124
-Reception,941603,reception,reception_advance,validate,0,Validate receptions,Validate receptions,,$this->numero.$r,htdocs/core/modules/modReception.class.php:131
-Reception,941604,reception,reception_advance,send,0,Send receptions by email,Send receptions to customers,,$this->numero.$r,htdocs/core/modules/modReception.class.php:139
-Reception,941605,reception,reception,export,0,Export receptions,Export receptions,,$this->numero.$r,htdocs/core/modules/modReception.class.php:147
-Reception,941606,reception,supprimer,,0,Delete receptions,Delete receptions,,$this->numero.$r,htdocs/core/modules/modReception.class.php:155
-Recruitment,750,recruitment,recruitmentjobposition,read,0,Read job positions to fill and candidatures,Read job positions to fill and candidatures,,$this->numero + $r,htdocs/core/modules/modRecruitment.class.php:233
-Recruitment,751,recruitment,recruitmentjobposition,write,0,Create/Update job positions to fill and candidatures,Create/Update job positions to fill and candidatures,,$this->numero + $r,htdocs/core/modules/modRecruitment.class.php:238
-Recruitment,752,recruitment,recruitmentjobposition,delete,0,Delete Job positions to fill and candidatures,Delete Job positions to fill and candidatures,,$this->numero + $r,htdocs/core/modules/modRecruitment.class.php:243
-Resource,63001,resource,read,,0,Read resources,Read resources,,63001,htdocs/core/modules/modResource.class.php:154
-Resource,63002,resource,write,,0,Create/modify resources,Create/Modify resources,,63002,htdocs/core/modules/modResource.class.php:160
-Resource,63003,resource,delete,,0,Delete resources,Delete resources,,63003,htdocs/core/modules/modResource.class.php:166
-Resource,63004,resource,link,,0,Link resources to agenda events,Link resources to agenda events,,63004,htdocs/core/modules/modResource.class.php:172
-Salaries,511,salaries,read,,0,Read salaries and payments (yours only),Read employee salaries and payments (yours only),,511,htdocs/core/modules/modSalaries.class.php:115
-Salaries,512,salaries,readchild,,0,Read salaries and payments (yours and subordinates),Read employee salaries and payments (yours and of your subordinates),,512,htdocs/core/modules/modSalaries.class.php:123
-Salaries,513,salaries,write,,0,Create/modify payments of empoyee salaries,Create/modify payments of empoyee salaries,,513,htdocs/core/modules/modSalaries.class.php:131
-Salaries,514,salaries,delete,,0,Delete salaries and payments,Delete payments of employee salary,,514,htdocs/core/modules/modSalaries.class.php:139
-Salaries,517,salaries,readall,,0,Read salaries and payments (everybody),Read salaries and payments (of all employees),,517,htdocs/core/modules/modSalaries.class.php:147
-Salaries,519,salaries,export,,0,Export salaries,Export payments of employee salaries,,519,htdocs/core/modules/modSalaries.class.php:154
-Service,531,service,lire,,0,Read services,Read services,,531,htdocs/core/modules/modService.class.php:91
-Service,532,service,creer,,0,Create/modify services,Create/modify services,,532,htdocs/core/modules/modService.class.php:98
-Service,533,service,service_advance,read_prices,0,Read prices services,Read prices services,,533,htdocs/core/modules/modService.class.php:105
-Service,535,service,service_advance,read_supplier_prices,0,Read supplier prices,Read supplier prices,,535,htdocs/core/modules/modService.class.php:113
-Service,534,service,supprimer,,0,Delete services,Delete les services,,534,htdocs/core/modules/modService.class.php:121
-Service,538,service,export,,0,Export services,Export services,,538,htdocs/core/modules/modService.class.php:128
-Societe,121,societe,lire,,0,Read third parties linked to user,Read third parties,,121,htdocs/core/modules/modSociete.class.php:140
-Societe,122,societe,creer,,0,Create/modify third parties linked to user,Create and update third parties,,122,htdocs/core/modules/modSociete.class.php:164
-Societe,125,societe,supprimer,,0,Delete third parties linked to user,Delete third parties,,125,htdocs/core/modules/modSociete.class.php:188
-Societe,126,societe,export,,0,Export third parties,Export third parties,,126,htdocs/core/modules/modSociete.class.php:195
-Societe,130,societe,thirdparty_paymentinformation,write,0,Create/modify third parties payment information,Modify thirdparty information payment,,130,htdocs/core/modules/modSociete.class.php:202
-Societe,262,societe,client,voir,0,Extend access to all third parties AND their objects (not only third parties for which the user is linked as a sale representative).,Read all third parties (and their objects) by internal users (otherwise only if commercial contact). Not effective for external users (limited to themselves).,,262,htdocs/core/modules/modSociete.class.php:210
-Societe,281,societe,contact,lire,0,Read contacts,Read contacts,,281,htdocs/core/modules/modSociete.class.php:228
-Societe,282,societe,contact,creer,0,Create/modify contacts,Create and update contact,,282,htdocs/core/modules/modSociete.class.php:236
-Societe,283,societe,contact,supprimer,0,Delete contacts,Delete contacts,,283,htdocs/core/modules/modSociete.class.php:244
-Societe,286,societe,contact,export,0,Export contacts,Export contacts,,286,htdocs/core/modules/modSociete.class.php:252
-Stock,1001,stock,lire,,0,Read warehouses and stocks,Read stocks,,1001,htdocs/core/modules/modStock.class.php:124
-Stock,1002,stock,creer,,0,Create/modify warehouses,Create/Modify stocks,,1002,htdocs/core/modules/modStock.class.php:132
-Stock,1003,stock,supprimer,,0,Delete warehouses,Delete stock,,1003,htdocs/core/modules/modStock.class.php:140
-Stock,1004,stock,mouvement,lire,0,Read stock movements,Read stock movements,,1004,htdocs/core/modules/modStock.class.php:148
-Stock,1005,stock,mouvement,creer,0,Create/modify stock movements,Create/modify stock movements,,1005,htdocs/core/modules/modStock.class.php:156
-Stock,1008,stock,value_advance,read,0,Read stock value,Read stock value,getDolGlobalInt('MAIN_FEATURES_LEVEL') >= 2,1008,htdocs/core/modules/modStock.class.php:166
-Stock,1011,stock,inventory_advance,read,0,View inventories,inventoryReadPermission,,1011,htdocs/core/modules/modStock.class.php:175
-Stock,1012,stock,inventory_advance,write,0,Create new inventory,inventoryCreatePermission,,1012,htdocs/core/modules/modStock.class.php:182
-Stock,1013,stock,inventory_advance,delete,0,Delete inventory,inventoryDeletePermission,,1013,htdocs/core/modules/modStock.class.php:189
-Stock,1014,stock,inventory_advance,validate,0,Validate inventory,inventoryValidatePermission,getDolGlobalInt('MAIN_FEATURES_LEVEL') >= 2,1014,htdocs/core/modules/modStock.class.php:197
-Stock,1015,stock,inventory_advance,changePMP,0,Allow to change PMP value for a product,inventoryChangePMPPermission,getDolGlobalInt('MAIN_FEATURES_LEVEL') >= 2,1015,htdocs/core/modules/modStock.class.php:204
-StockTransfer,711,stocktransfer,stocktransfer,read,0,Read stocks transfers,StockTransferRightRead,,$this->numero + $r,htdocs/core/modules/modStockTransfer.class.php:238
-StockTransfer,712,stocktransfer,stocktransfer,write,0,Create/Update stocks transfers,StockTransferRightCreateUpdate,,$this->numero + $r,htdocs/core/modules/modStockTransfer.class.php:243
-StockTransfer,713,stocktransfer,stocktransfer,delete,0,Delete stocks transfers,StockTransferRightDelete,,$this->numero + $r,htdocs/core/modules/modStockTransfer.class.php:248
-SupplierInvoice,1171,supplier_invoice,lire,,0,Read vendor invoices (and payments),Consulter les factures fournisseur,,1171,htdocs/core/modules/modSupplierInvoice.class.php:161
-SupplierInvoice,1172,supplier_invoice,creer,,0,Create/modify vendor invoices,Creer une facture fournisseur,,1172,htdocs/core/modules/modSupplierInvoice.class.php:168
-SupplierInvoice,1173,supplier_invoice,supplier_invoice_advance,validate,0,Validate vendor invoices,Valider une facture fournisseur,,1173,htdocs/core/modules/modSupplierInvoice.class.php:175
-SupplierInvoice,1174,supplier_invoice,supprimer,,0,Delete vendor invoices,Supprimer une facture fournisseur,,1174,htdocs/core/modules/modSupplierInvoice.class.php:183
-SupplierInvoice,1175,supplier_invoice,supplier_invoice_advance,send,0,Send vendor invoices by email,Envoyer les factures par mail,,1175,htdocs/core/modules/modSupplierInvoice.class.php:190
-SupplierInvoice,1176,supplier_invoice,export,,0,"Export vendor invoices, attributes and payments","Exporter les factures fournisseurs, attributes et reglements",,1176,htdocs/core/modules/modSupplierInvoice.class.php:198
-SupplierOrder,1152,supplier_order,lire,,0,Read purchase orders,Read purchase orders,,1152,htdocs/core/modules/modSupplierOrder.class.php:123
-SupplierOrder,1153,supplier_order,creer,,0,Create/modify purchase orders,Create a purchase order,,1153,htdocs/core/modules/modSupplierOrder.class.php:130
-SupplierOrder,1154,supplier_order,supplier_order_advance,validate,0,Validate purchase orders,Validate purchase orders,,1154,htdocs/core/modules/modSupplierOrder.class.php:137
-SupplierOrder,1155,supplier_order,approuver,,0,Approve purchase orders,Approve purchase orders,,1155,htdocs/core/modules/modSupplierOrder.class.php:145
-SupplierOrder,1156,supplier_order,commander,,0,Order purchase orders,Order a purchase order,,1156,htdocs/core/modules/modSupplierOrder.class.php:152
-SupplierOrder,1157,supplier_order,receptionner,,0,Acknowledge receipt of purchase orders,Receive a purchase order,,1157,htdocs/core/modules/modSupplierOrder.class.php:159
-SupplierOrder,1159,supplier_order,supplier_order_advance,check,0,Check/Uncheck a purchase order reception,Check/Uncheck a supplier order reception,,1159,htdocs/core/modules/modSupplierOrder.class.php:166
-SupplierOrder,1158,supplier_order,supprimer,,0,Delete purchase orders,Delete a purchase order,,1158,htdocs/core/modules/modSupplierOrder.class.php:174
-SupplierOrder,1160,supplier_order,approve2,,0,Approve (second approval) purchase orders,Approve supplier order (second level),getDolGlobalString('SUPPLIER_ORDER_3_STEPS_TO_BE_APPROVED'),1160,htdocs/core/modules/modSupplierOrder.class.php:182
-SupplierOrder,1161,supplier_order,export,,0,Export supplier orders and their attributes,Export purchase orders,,1161,htdocs/core/modules/modSupplierOrder.class.php:190
-SupplierProposal,1121,supplier_proposal,lire,,0,Read supplier proposals,Read supplier proposals,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:113
-SupplierProposal,1122,supplier_proposal,creer,,0,Create/modify supplier proposals,Create/modify supplier proposals,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:119
-SupplierProposal,1123,supplier_proposal,validate_advance,,0,Validate supplier proposals,Validate supplier proposals,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:125
-SupplierProposal,1124,supplier_proposal,send_advance,,0,Send supplier proposals,Send supplier proposals,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:131
-SupplierProposal,1125,supplier_proposal,supprimer,,0,Delete supplier proposals,Delete supplier proposals,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:137
-SupplierProposal,1126,supplier_proposal,cloturer,,0,Close supplier price requests,Close supplier price requests,,$this->numero + $r,htdocs/core/modules/modSupplierProposal.class.php:143
-TakePos,50151,takepos,run,,0,Use Point of Sale (TakePOS) - This include permissions to read/create and edit invoices,"Use Point Of Sale (record a sale, add products, record payment)",,50151,htdocs/core/modules/modTakePos.class.php:188
-TakePos,50152,takepos,editlines,,0,Edit sales lines,"Can modify added sales lines (prices, discount)",,50152,htdocs/core/modules/modTakePos.class.php:195
-TakePos,50153,takepos,editorderedlines,,0,Edit ordered sales lines,"Edit ordered sales lines (useful only when option ""Order printers"" has been enabled). Allow to edit sales lines even after the order has been printed",,50153,htdocs/core/modules/modTakePos.class.php:202
-Tax,91,tax,charges,lire,0,Read social or fiscal taxes and vat,Read social contibutions,,91,htdocs/core/modules/modTax.class.php:88
-Tax,92,tax,charges,creer,0,Create/modify social or fiscal taxes and vat,Create/modify social contributions,,92,htdocs/core/modules/modTax.class.php:96
-Tax,93,tax,charges,supprimer,0,Delete social or fiscal taxes and vat,Delete social contributions,,93,htdocs/core/modules/modTax.class.php:104
-Tax,94,tax,charges,export,0,Export social or fiscal taxes,Export social contributions,,94,htdocs/core/modules/modTax.class.php:112
-Ticket,56001,ticket,read,,0,See tickets,Read ticket,,56001,htdocs/core/modules/modTicket.class.php:229
-Ticket,56002,ticket,write,,0,Modify tickets,Create les tickets,,56002,htdocs/core/modules/modTicket.class.php:236
-Ticket,56003,ticket,delete,,0,Delete tickets,Delete les tickets,,56003,htdocs/core/modules/modTicket.class.php:243
-Ticket,56004,ticket,manage_advance,,0,"Actions related to the ticket status (close/resolve/abandon), and the assignee selection menu",Manage tickets,,56004,htdocs/core/modules/modTicket.class.php:250
-Ticket,56006,ticket,export,,0,Export tickets,Export ticket,,56006,htdocs/core/modules/modTicket.class.php:257
-User,251,user,user,lire,0,Read other users and groups,"Read information of other users, groups and permissions",,251,htdocs/core/modules/modUser.class.php:94
-User,252,user,user_advance,readperms,0,Read permissions of other users,Read permissions of other users,,252,htdocs/core/modules/modUser.class.php:101
-User,253,user,user,creer,0,"Create/modify other users, groups and permissions","Create/modify internal and external users, groups and permissions",,253,htdocs/core/modules/modUser.class.php:108
-User,254,user,user_advance,write,0,Create/modify external users only,Create/modify external users only,,254,htdocs/core/modules/modUser.class.php:115
-User,255,user,user,password,0,Modify other users password,Modify the password of other users,,255,htdocs/core/modules/modUser.class.php:122
-User,256,user,user,supprimer,0,Delete or disable other users,Delete or disable other users,,256,htdocs/core/modules/modUser.class.php:129
-User,341,user,self_advance,readperms,0,Read its own permissions,Read its own permissions,,341,htdocs/core/modules/modUser.class.php:136
-User,342,user,self,creer,0,Create/modify his own user information,Create/modify of its own user,,342,htdocs/core/modules/modUser.class.php:143
-User,343,user,self,password,0,Modify his own password,Modify its own password,,343,htdocs/core/modules/modUser.class.php:150
-User,344,user,self_advance,writeperms,0,Modify its own permissions,Modify its own permissions,,344,htdocs/core/modules/modUser.class.php:157
-User,351,user,group_advance,read,0,Read groups,Read groups,,351,htdocs/core/modules/modUser.class.php:164
-User,352,user,group_advance,readperms,0,Read groups permissions,Read permissions of groups,,352,htdocs/core/modules/modUser.class.php:171
-User,353,user,group_advance,write,0,Create/modify groups,Create/modify groups and permissions,,353,htdocs/core/modules/modUser.class.php:178
-User,354,user,group_advance,delete,0,Delete or disable groups,Delete groups,,354,htdocs/core/modules/modUser.class.php:185
-User,358,user,user,export,0,Export users,Export all users,,358,htdocs/core/modules/modUser.class.php:192
-Variants,611,variants,read,,0,Read attributes of variants,Read attributes of variants,,$this->numero + 1,htdocs/core/modules/modVariants.class.php:114
-Variants,612,variants,write,,0,Create/Update attributes of variants,Create/Update attributes of variants,,$this->numero + 2,htdocs/core/modules/modVariants.class.php:118
-Variants,613,variants,delete,,0,Delete attributes of variants,Delete attributes of variants,,$this->numero + 3,htdocs/core/modules/modVariants.class.php:122
-WebPortal,1100001,webportal,write,,0,Administer users of the customer/partner webportal module,Administer users of the customer/partner webportal module,,"$this->numero . sprintf(""%02d"", $r + 1)",htdocs/core/modules/modWebPortal.class.php:268
-Website,10001,website,read,,0,Read website content,Read website content,,10001,htdocs/core/modules/modWebsite.class.php:86
-Website,10002,website,write,,0,Create/modify website content (html and JavaScript content),Create/modify website content (html and javascript content),,10002,htdocs/core/modules/modWebsite.class.php:92
-Website,10003,website,writephp,,0,"Create/modify website content (dynamic php code). Dangerous, must be reserved to restricted developers.","Create/modify website content (dynamic php code). Dangerous, must be reserved to restricted developers.",,10003,htdocs/core/modules/modWebsite.class.php:98
-Website,10005,website,delete,,0,Delete website content,Delete website content,,10005,htdocs/core/modules/modWebsite.class.php:104
-Website,10008,website,export,,0,Export website content,Export website content,,10008,htdocs/core/modules/modWebsite.class.php:110
-Workstation,691,workstation,workstation,read,0,Read objects of Workstation,Read objects of Workstation,,$this->numero + $r,htdocs/core/modules/modWorkstation.class.php:223
-Workstation,692,workstation,workstation,write,0,Create/Update objects of Workstation,Create/Update objects of Workstation,,$this->numero + $r,htdocs/core/modules/modWorkstation.class.php:228
-Workstation,693,workstation,workstation,delete,0,Delete objects of Workstation,Delete objects of Workstation,,$this->numero + $r,htdocs/core/modules/modWorkstation.class.php:233
+descriptor,id,namespace,first_level,second_level,default_grant,english_label,descriptor_label,declaration_guard,id_expression
+Accounting,50440,accounting,chartofaccount,,0,"Manage chart of accounts, setup of accountancy","Manage chart of accounts, setup of accountancy",,50440
+Accounting,50401,accounting,bind,write,0,Bind products and invoices with accounting accounts,Bind products and invoices with accounting accounts,,50401
+Accounting,50411,accounting,mouvements,lire,0,Read operations in ledger,Read operations in Ledger,,50411
+Accounting,50412,accounting,mouvements,creer,0,Write/Edit operations in ledger,Write/Edit operations in Ledger,,50412
+Accounting,50414,accounting,mouvements,supprimer,0,Delete operations in ledger,Delete operations in Ledger,,50414
+Accounting,50415,accounting,mouvements,supprimer_tous,0,Delete all operations by year and journal in ledger,Delete all operations by year and journal in Ledger,,50415
+Accounting,50418,accounting,mouvements,export,0,Export operations of the ledger,Export operations of the Ledger,,50418
+Accounting,50420,accounting,comptarapport,lire,0,"Report and export reports (turnover, balance, journals, ledger)","Report and export reports (turnover, balance, journals, ledger)",,50420
+Accounting,50430,accounting,fiscalyear,write,0,Define fiscal periods. Validate transactions and close fiscal periods.,"Manage fiscal periods, validate movements and close periods",,50430
+Adherent,71,adherent,lire,,0,Read members,Read members' card,,71
+Adherent,72,adherent,creer,,0,Create/modify members,Create/modify members (need also user module permissions if member linked to a user),,72
+Adherent,74,adherent,supprimer,,0,Delete members,Remove members,,74
+Adherent,76,adherent,export,,0,Export data,Export members,,76
+Adherent,75,adherent,configurer,,0,Setup types of membership,Setup types of membership,,75
+Adherent,78,adherent,cotisation,lire,0,Read subscriptions,Read membership fees,,78
+Adherent,79,adherent,cotisation,creer,0,Create/modify subscriptions,Create/modify/remove membership fees,,79
+Agenda,2401,agenda,myactions,read,0,Read actions (events or tasks) linked to his user account (if owner of event or just assigned to),Read actions/tasks linked to his account,,2401
+Agenda,2402,agenda,myactions,create,0,Create/modify actions (events or tasks) linked to his user account (if owner of event),Create/modify actions/tasks linked to his account,,2402
+Agenda,2403,agenda,myactions,delete,0,Delete actions (events or tasks) linked to his user account (if owner of event),Delete actions/tasks linked to his account,,2403
+Agenda,2411,agenda,allactions,read,0,Read actions (events or tasks) of others,Read actions/tasks of others,,2411
+Agenda,2412,agenda,allactions,create,0,Create/modify actions (events or tasks) of others,Create/modify actions/tasks of others,,2412
+Agenda,2413,agenda,allactions,delete,0,Delete actions (events or tasks) of others,Delete actions/tasks of others,,2413
+Agenda,2414,agenda,export,,0,Export actions/tasks of others,Export actions/tasks of others,,2414
+Ai,4561,ai,assistant,use,0,Use the AI Assistant,Use the AI Assistant,,module_number + 1
+Asset,51001,asset,read,,0,Read assets,Read assets,,51001
+Asset,51002,asset,write,,0,Create/Update assets,Create/Update assets,,51002
+Asset,51003,asset,delete,,0,Delete assets,Delete assets,,51003
+Asset,51004,asset,model_advance,read,0,Read asset models,Read asset models,,51004
+Asset,51005,asset,model_advance,write,0,Setup types of asset,Create/Update asset models,,51005
+Asset,51006,asset,model_advance,delete,0,Delete asset models,Delete asset models,,51006
+Banque,111,banque,lire,,0,Read financial accounts,Read bank account and transactions,,111
+Banque,112,banque,modifier,,0,Create/modify/delete and compare transactions,Creer/modifier montant/supprimer ecriture bancaire,,112
+Banque,113,banque,configurer,,0,"Setup financial accounts (create, manage categories of bank transactions)","Configurer les comptes bancaires (creer, gerer categories)",,113
+Banque,114,banque,consolidate,,0,Reconcile transactions,Rapprocher les ecritures bancaires,,114
+Banque,115,banque,export,,0,Export transactions and account statements,Exporter transactions et releves,,115
+Banque,116,banque,transfer,,0,Transfers between accounts,Virements entre comptes,,116
+Banque,117,banque,cheque,,0,Manage checks dispatching,Gerer les envois de cheques,,117
+Barcode,301,barcode,read,,0,Generate PDF sheets of barcodes,Generate PDF sheets of barcodes,,301
+Barcode,304,barcode,lire_advance,,0,Create/modify barcodes,Read barcodes,,304
+Barcode,305,barcode,creer_advance,,0,Delete barcodes,Create/modify barcodes,,305
+BlockedLog,3201,blockedlog,read,,0,"Read, Export and Control Immutable Logs and signature",Read archived events and fingerprints,,module_number + ordinal
+Bom,651,bom,read,,0,Read Bills of Materials,Read bom of Bom,,module_number + ordinal
+Bom,652,bom,write,,0,Create/Update Bills of Materials,Create/Update bom of Bom,,module_number + ordinal
+Bom,653,bom,delete,,0,Delete Bills of Materials,Delete bom of Bom,,module_number + ordinal
+Bookmark,331,bookmark,lire,,0,Read bookmarks,Lire les bookmarks,,331
+Bookmark,332,bookmark,creer,,0,Create/modify bookmarks,Creer/modifier les bookmarks,,332
+Bookmark,333,bookmark,supprimer,,0,Delete bookmarks,Supprimer les bookmarks,,333
+Categorie,241,categorie,lire,,0,Read categories,Lire les categories,,241
+Categorie,242,categorie,creer,,0,Create/modify categories,Creer/modifier les categories,,242
+Categorie,243,categorie,supprimer,,0,Delete categories,Supprimer les categories,,243
+Commande,81,commande,lire,,0,Read customers orders,Read sales orders,,81
+Commande,82,commande,creer,,0,Create/modify customers orders,Creeat/modify sales orders,,82
+Commande,84,commande,order_advance,validate,0,Validate customers orders,Validate sales orders,,84
+Commande,85,commande,order_advance,generetedoc,0,Generate the documents sales orders,Generate the documents sales orders,,85
+Commande,86,commande,order_advance,send,0,Send customers orders,Send sales orders by email,,86
+Commande,87,commande,order_advance,close,0,Close customers orders,Close sale orders,,87
+Commande,88,commande,order_advance,annuler,0,Cancel customers orders,Cancel sale orders,,88
+Commande,89,commande,supprimer,,0,Delete customers orders,Delete sales orders,,89
+Commande,1421,commande,commande,export,0,Export sales orders and attributes,Export sales orders and attributes,,1421
+Comptabilite,95,compta,resultat,lire,0,Read reports,"Lire CA, bilans, resultats",,95
+Contrat,161,contrat,lire,,0,Read contracts/subscriptions,Lire les contrats,,161
+Contrat,162,contrat,creer,,0,Create/modify contracts/subscriptions,Creer / modifier les contrats,,162
+Contrat,163,contrat,activer,,0,Activate a service/subscription of a contract,Activer un service d'un contrat,,163
+Contrat,164,contrat,desactiver,,0,Disable a service/subscription of a contract,Desactiver un service d'un contrat,,164
+Contrat,165,contrat,supprimer,,0,Delete contracts/subscriptions,Supprimer un contrat,,165
+Contrat,167,contrat,export,,0,Export contracts,Export contracts,,167
+Cron,23001,cron,read,,0,Read Scheduled job,Read cron jobs,,23001
+Cron,23002,cron,create,,0,Create/update and execute Scheduled job,Create/Update and execute cron Jobs,,23002
+Cron,23003,cron,delete,,0,Delete Scheduled job,Delete cron Jobs,,23003
+DebugBar,431,debugbar,read,,0,Use Debug Bar,Use Debug Bar,,431
+Don,701,don,lire,,0,Read donations,Lire les dons,,701
+Don,702,don,creer,,0,Create/modify donations,Creer/modifier les dons,,702
+Don,703,don,supprimer,,0,Delete donations,Supprimer les dons,,703
+ECM,2501,ecm,read,,0,Read/Download documents,Read or download documents,,2501
+ECM,2503,ecm,upload,,0,Submit or delete documents,Upload a document,,2503
+ECM,2515,ecm,setup,,0,Setup documents directories,Administer directories of documents,,2515
+Expedition,101,expedition,lire,,0,Read shipments,Read shipments,,101
+Expedition,102,expedition,creer,,0,Create/modify shipments,Create/modify shipments,,102
+Expedition,104,expedition,shipping_advance,validate,0,Validate shipments,Validate shipments,,104
+Expedition,105,expedition,shipping_advance,send,0,Send shipments by email,Send shipments by email to customers,,105
+Expedition,106,expedition,shipment,export,0,Export shipments,Export shipments,,106
+Expedition,109,expedition,supprimer,,0,Delete shipments,Delete shipments,,109
+Expedition,1101,expedition,delivery,lire,0,Read delivery receipts,Read delivery receipts,,1101
+Expedition,1102,expedition,delivery,creer,0,Create/modify delivery receipts,Create/modify delivery receipts,,1102
+Expedition,1104,expedition,delivery_advance,validate,0,Validate delivery receipts,Validate delivery receipts,,1104
+Expedition,1109,expedition,delivery,supprimer,0,Delete delivery receipts,Delete delivery receipts,,1109
+ExpenseReport,771,expensereport,lire,,0,Read expense reports (yours and your subordinates),Read expense reports (yours and your subordinates),,771
+ExpenseReport,772,expensereport,creer,,0,Create/modify expense reports (for you and your subordinates),Create/modify expense reports,,772
+ExpenseReport,773,expensereport,supprimer,,0,Delete expense reports,Delete expense reports,,773
+ExpenseReport,775,expensereport,approve,,0,Approve expense reports,Approve expense reports,,775
+ExpenseReport,776,expensereport,to_paid,,0,Pay expense reports,Pay expense reports,,776
+ExpenseReport,777,expensereport,readall,,0,Read all expense reports (even those of user not subordinates),Read expense reports of everybody,,777
+ExpenseReport,778,expensereport,writeall_advance,,0,Create/modify expense reports of everybody,Create expense reports for everybody,,778
+ExpenseReport,779,expensereport,export,,0,Export expense reports,Export expense reports,,779
+Export,1201,export,lire,,0,Get result of an export,Read exports,,1201
+Export,1202,export,creer,,0,Create/Modify an export,Creeate/modify export,,1202
+Facture,11,facture,lire,,0,Read customer invoices (and payments),Read invoices,,11
+Facture,12,facture,creer,,0,Create/modify customer invoices,Create and update invoices,,12
+Facture,13,facture,invoice_advance,unvalidate,0,Invalidate customer invoices,Devalidate invoices,,13
+Facture,14,facture,invoice_advance,validate,0,Validate customer invoices,Validate invoices,,14
+Facture,15,facture,invoice_advance,send,0,Send customer invoices by email,Send invoices by email,,15
+Facture,16,facture,paiement,,0,Create payments for customer invoices,Issue payments on invoices,,16
+Facture,19,facture,supprimer,,0,Delete customer invoices,Delete invoices,,19
+Facture,1321,facture,facture,export,0,"Export customer invoices, attributes and payments","Export customer invoices, attributes and payments",,1321
+Facture,1322,facture,invoice_advance,reopen,0,Reopen a paid bill,Re-open a fully paid invoice,,1322
+Ficheinter,61,ficheinter,lire,,0,Read interventions,Lire les fiches d'intervention,,61
+Ficheinter,62,ficheinter,creer,,0,Create/modify interventions,Creer/modifier les fiches d'intervention,,62
+Ficheinter,64,ficheinter,supprimer,,0,Delete interventions,Supprimer les fiches d'intervention,,64
+Ficheinter,67,ficheinter,export,,0,Export interventions,Exporter les fiches interventions,,67
+Ficheinter,68,ficheinter,ficheinter_advance,send,0,Send interventions by email,Envoyer les fiches d'intervention par courriel,,68
+Ficheinter,69,ficheinter,ficheinter_advance,validate,0,Validate interventions,Valider les fiches d'intervention ,,69
+Ficheinter,70,ficheinter,ficheinter_advance,unvalidate,0,Invalidate interventions,Dévalider les fiches d'intervention,,70
+Fournisseur,1181,fournisseur,lire,,0,Read suppliers,Consulter les fournisseurs,not MAIN_USE_NEW_SUPPLIERMOD,1181
+Fournisseur,1182,fournisseur,commande,lire,0,Read purchase orders,Consulter les commandes fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1182
+Fournisseur,1183,fournisseur,commande,creer,0,Create/modify purchase orders,Creer une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1183
+Fournisseur,1184,fournisseur,supplier_order_advance,validate,0,Validate purchase orders,Valider une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1184
+Fournisseur,1185,fournisseur,commande,approuver,0,Approve purchase orders,Approuver une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1185
+Fournisseur,1186,fournisseur,commande,commander,0,Order purchase orders,Commander une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1186
+Fournisseur,1187,fournisseur,commande,receptionner,0,Acknowledge receipt of purchase orders,Receptionner une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1187
+Fournisseur,1189,fournisseur,commande_advance,check,0,Check/Uncheck a purchase order reception,Check/Uncheck a supplier order reception,not MAIN_USE_NEW_SUPPLIERMOD,1189
+Fournisseur,1188,fournisseur,commande,supprimer,0,Delete purchase orders,Supprimer une commande fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1188
+Fournisseur,1190,fournisseur,commande,approve2,0,Approve (second approval) purchase orders,Approve supplier order (second level),not MAIN_USE_NEW_SUPPLIERMOD and SUPPLIER_ORDER_3_STEPS_TO_BE_APPROVED,1190
+Fournisseur,1191,fournisseur,commande,export,0,Export supplier orders and their attributes,"Exporter les commande fournisseurs, attributs",not MAIN_USE_NEW_SUPPLIERMOD,1191
+Fournisseur,1231,fournisseur,facture,lire,0,Read vendor invoices (and payments),Consulter les factures fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1231
+Fournisseur,1232,fournisseur,facture,creer,0,Create/modify vendor invoices,Creer une facture fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1232
+Fournisseur,1233,fournisseur,supplier_invoice_advance,validate,0,Validate vendor invoices,Valider une facture fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1233
+Fournisseur,1234,fournisseur,facture,supprimer,0,Delete vendor invoices,Supprimer une facture fournisseur,not MAIN_USE_NEW_SUPPLIERMOD,1234
+Fournisseur,1235,fournisseur,supplier_invoice_advance,send,0,Send vendor invoices by email,Envoyer les factures par mail,not MAIN_USE_NEW_SUPPLIERMOD,1235
+Fournisseur,1236,fournisseur,facture,export,0,"Export vendor invoices, attributes and payments","Exporter les factures fournisseurs, attributes et reglements",not MAIN_USE_NEW_SUPPLIERMOD,1236
+HRM,4001,hrm,all,read,0,Read skill/job/position,Read skill/job/position,,4001
+HRM,4002,hrm,all,write,0,Create/modify skill/job/position,Create/modify skill/job/position,,4002
+HRM,4003,hrm,all,delete,0,Delete skill/job/position,Delete skill/job/position,,4003
+HRM,4021,hrm,evaluation,read,0,Read evaluations (yours and your subordinates),Read evaluations,,4021
+HRM,4022,hrm,evaluation,write,0,Create/modify evaluations,Create/modify your evaluation,,4022
+HRM,4023,hrm,evaluation_advance,validate,0,Validate evaluation,Validate evaluation,,4023
+HRM,4025,hrm,evaluation,delete,0,Delete evaluation,Delete evaluations,,4025
+HRM,4028,hrm,compare_advance,read,0,See comparison menu,See comparison menu,,4028
+HRM,4029,hrm,evaluation,readall,0,Read all evaluations,Read all evaluations,,4029
+HRM,4031,hrm,read_personal_information,read,0,Read personal information,Read personal/HR information,,4031
+HRM,4032,hrm,write_personal_information,write,0,Write personal information,Write personal/HR information,,4032
+Holiday,20001,holiday,read,,0,Read leave requests (your leave and those of your subordinates),Read leave requests (yours and your subordinates),,20001
+Holiday,20002,holiday,write,,0,Create/modify your leave requests (your leave and those of your subordinates),Create/modify leave requests,,20002
+Holiday,20003,holiday,delete,,0,Delete leave requests (your leave and those of your subordinates),Delete leave requests,,20003
+Holiday,20007,holiday,approve,,0,Approve leave requests,Approve leave requests,,20007
+Holiday,20004,holiday,readall,,0,Read all leave requests (even those of user not subordinates),Read leave requests for everybody,,20004
+Holiday,20005,holiday,writeall,,0,Create/modify leave requests for everybody (even those of user not subordinates),Create/modify leave requests for everybody,,20005
+Holiday,20006,holiday,define_holiday,,0,Administer leave requests (setup and update balance),Setup leave requests of users (setup and update balance),,20006
+Import,1251,import,run,,0,Run mass imports of external data into database (data load),Run mass imports of external data (data load),,1251
+KnowledgeManagement,57001,knowledgemanagement,knowledgerecord,read,0,Read articles,Read articles,,module_number + ordinal + 1
+KnowledgeManagement,57002,knowledgemanagement,knowledgerecord,write,0,Create/modify articles,Create/Update articles,,module_number + ordinal + 1
+KnowledgeManagement,57003,knowledgemanagement,knowledgerecord_advance,validate,0,Validate articles,Validate articles,,module_number + ordinal + 1
+KnowledgeManagement,57004,knowledgemanagement,knowledgerecord,delete,0,Delete articles,Delete articles,,module_number + ordinal + 1
+Loan,521,loan,read,,0,Read Loans,Read loans,,521
+Loan,522,loan,write,,0,Create/modify loans,Create/modify loans,,522
+Loan,524,loan,delete,,0,Delete loans,Delete loans,,524
+Loan,525,loan,calc,,0,Access loan calculator,Access loan calculator,,525
+Loan,527,loan,export,,0,Export loans,Export loans,,527
+Mailing,221,mailing,lire,,0,Read mass emails,Consulter les mailings,,221
+Mailing,222,mailing,creer,,0,"Create/modify mass emails (topic, recipients...)","Creer/modifier les mailings (sujet, destinataires...)",,222
+Mailing,223,mailing,valider,,0,Validate mass emails (allows sending),Valider les mailings (permet leur envoi),,223
+Mailing,229,mailing,supprimer,,0,Delete mass emails,Supprimer les mailings,,229
+Mailing,237,mailing,mailing_advance,recipient,0,View recipients and info,View recipients and info,,237
+Mailing,238,mailing,mailing_advance,send,0,Manually send mailings,Manually send mailings,,238
+Mailing,239,mailing,mailing_advance,delete,0,Delete mailings after validation or sent,Delete mailings after validation and/or sent,,239
+Margin,59001,margins,liretous,,0,Read commercial margins,Visualiser les marges,,59001
+Margin,59002,margins,creer,,0,Define commercial margins,Définir les marges,,59002
+Margin,59003,margins,read,all,0,Read every user margin,Read every user margin,,59003
+ModuleBuilder,3301,modulebuilder,run,,0,Generate new modules,Generate new modules,,3301
+Mrp,661,mrp,read,,0,Read Manufacturing Order (MO),Read Manufacturing Order,,module_number + ordinal
+Mrp,662,mrp,write,,0,Create/Update Manufacturing Order (MO),Create/Update Manufacturing Order,,module_number + ordinal
+Mrp,663,mrp,delete,,0,Delete Manufacturing Order (MO),Delete Manufacturing Order,,module_number + ordinal
+MultiCurrency,40001,multicurrency,currency,read,1,Read currencies and their rates,Read currencies and their rates,,40001
+MultiCurrency,40002,multicurrency,currency,write,0,Create/Update currencies and their rates,Create/Update currencies and their rates,,40002
+MultiCurrency,40003,multicurrency,currency,delete,0,Delete currencies and their rates,Delete currencies and their rates,,40003
+OpenSurvey,55001,opensurvey,read,,0,Read polls,Read surveys,,55001
+OpenSurvey,55002,opensurvey,write,,0,Create/modify polls,Create/modify surveys,,55002
+Partnership,58000,partnership,read,,0,Read objects of Partnership,Read objects of Partnership,,module_number + ordinal
+Partnership,58001,partnership,write,,0,Create/Update objects of Partnership,Create/Update objects of Partnership,,module_number + ordinal
+Partnership,58002,partnership,delete,,0,Delete objects of Partnership,Delete objects of Partnership,,module_number + ordinal
+PaymentByBankTransfer,561,paymentbybanktransfer,read,,0,Read payment orders by credit transfer,Read bank transfer payment orders,,561
+PaymentByBankTransfer,562,paymentbybanktransfer,create,,0,Create/modify payment order by credit transfer,Create/modify a bank transfer payment order,,562
+PaymentByBankTransfer,563,paymentbybanktransfer,send,,0,Send/Transmit payment order by credit transfer,Send/Transmit bank transfer payment order,,563
+PaymentByBankTransfer,564,paymentbybanktransfer,debit,,0,Record Debits/Rejections of credit transfer,Record Debits/Rejects of bank transfer payment order,,564
+Prelevement,151,prelevement,bons,lire,0,Read direct debit payment orders,Read direct debit payment orders,,151
+Prelevement,152,prelevement,bons,creer,0,Create/modify a direct debit payment orders,Create/modify a direct debit payment order,,152
+Prelevement,153,prelevement,bons,send,0,Send/Transmit direct debit payment orders,Send/Transmit direct debit payment orders,,153
+Prelevement,154,prelevement,bons,credit,0,Record Credits/Rejections of direct debit payment orders,Record Credits/Rejects of direct debit payment orders,,154
+Printing,64001,printing,read,,0,Allow direct printing,DirectPrint,,64001
+Product,31,produit,lire,,0,Read products,Read products,,31
+Product,32,produit,creer,,0,Create/modify products,Create/modify products,,32
+Product,33,produit,product_advance,read_prices,0,Read prices products,Read prices products,,33
+Product,35,produit,product_advance,read_supplier_prices,0,Read supplier prices,Read supplier prices,,35
+Product,36,produit,product_advance,write_supplier_prices,0,Create/modify supplier prices,Write supplier prices,,36
+Product,34,produit,supprimer,,0,Delete products,Delete products,,34
+Product,38,produit,export,,0,Export products,Export products,,38
+Product,39,produit,ignore_price_min_advance,,0,Can set a price lower than the minimum price of products,Ignore minimum price,,39
+Projet,41,projet,lire,,0,Read projects and tasks (shared projects and projects of which I am a contact).,Read projects and tasks (shared projects or projects I am contact for),,41
+Projet,42,projet,creer,,0,Create/modify projects (shared projects and projects of which I am a contact). Can also assign users to projects and tasks,Create/modify projects and tasks (shared projects or projects I am contact for),,42
+Projet,44,projet,supprimer,,0,Delete projects (shared projects and projects of which I am a contact),Delete project and tasks (shared projects or projects I am contact for),,44
+Projet,45,projet,export,,0,Export projects,Export projects,,45
+Projet,141,projet,all,lire,0,Read all projects and tasks (as well as the private projects for which I am not a contact),Read all projects and tasks (also private projects I am not contact for),,141
+Projet,142,projet,all,creer,0,Create/modify all projects and tasks (as well as the private projects for which I am not a contact),Create/modify all projects and tasks (also private projects I am not contact for),,142
+Projet,144,projet,all,supprimer,0,Delete all projects and tasks (as well as the private projects I am not a contact),Delete all projects and tasks (also private projects I am not contact for),,144
+Projet,145,projet,time,,0,"Can enter time consumed, for me or my hierarchy, on assigned tasks (Timesheet)",Can enter time consumed on assigned tasks (timesheet),,145
+Propale,21,propale,lire,,0,Read commercial proposals,Read commercial proposals,,21
+Propale,22,propale,creer,,0,Create/modify commercial proposals,Create and update commercial proposals,,22
+Propale,24,propale,propal_advance,validate,0,Validate commercial proposals,Validate commercial proposals,,24
+Propale,25,propale,propal_advance,send,0,Send commercial proposals,Send commercial proposals to customers,,25
+Propale,26,propale,propal_advance,close,0,Close commercial proposals,Close commercial proposals,,26
+Propale,27,propale,supprimer,,0,Delete commercial proposals,Delete commercial proposals,,27
+Propale,28,propale,export,,0,Export commercial proposals,Exporting commercial proposals and attributes,,28
+Propale,29,propale,propal_advance,reopen,0,Reopen commercial proposals,Reopen commercial proposals,,29
+ReceiptPrinter,67001,receiptprinter,read,,0,Allow the use of ticket printers,ReceiptPrinter,,67001
+Reception,941601,reception,lire,,0,Read receptions,Read receptions,,"concat(module_number, ordinal)"
+Reception,941602,reception,creer,,0,Create and modify receptions,Create receptions,,"concat(module_number, ordinal)"
+Reception,941603,reception,reception_advance,validate,0,Validate receptions,Validate receptions,,"concat(module_number, ordinal)"
+Reception,941604,reception,reception_advance,send,0,Send receptions by email,Send receptions to customers,,"concat(module_number, ordinal)"
+Reception,941605,reception,reception,export,0,Export receptions,Export receptions,,"concat(module_number, ordinal)"
+Reception,941606,reception,supprimer,,0,Delete receptions,Delete receptions,,"concat(module_number, ordinal)"
+Recruitment,750,recruitment,recruitmentjobposition,read,0,Read job positions to fill and candidatures,Read job positions to fill and candidatures,,module_number + ordinal
+Recruitment,751,recruitment,recruitmentjobposition,write,0,Create/Update job positions to fill and candidatures,Create/Update job positions to fill and candidatures,,module_number + ordinal
+Recruitment,752,recruitment,recruitmentjobposition,delete,0,Delete Job positions to fill and candidatures,Delete Job positions to fill and candidatures,,module_number + ordinal
+Resource,63001,resource,read,,0,Read resources,Read resources,,63001
+Resource,63002,resource,write,,0,Create/modify resources,Create/Modify resources,,63002
+Resource,63003,resource,delete,,0,Delete resources,Delete resources,,63003
+Resource,63004,resource,link,,0,Link resources to agenda events,Link resources to agenda events,,63004
+Salaries,511,salaries,read,,0,Read salaries and payments (yours only),Read employee salaries and payments (yours only),,511
+Salaries,512,salaries,readchild,,0,Read salaries and payments (yours and subordinates),Read employee salaries and payments (yours and of your subordinates),,512
+Salaries,513,salaries,write,,0,Create/modify payments of empoyee salaries,Create/modify payments of empoyee salaries,,513
+Salaries,514,salaries,delete,,0,Delete salaries and payments,Delete payments of employee salary,,514
+Salaries,517,salaries,readall,,0,Read salaries and payments (everybody),Read salaries and payments (of all employees),,517
+Salaries,519,salaries,export,,0,Export salaries,Export payments of employee salaries,,519
+Service,531,service,lire,,0,Read services,Read services,,531
+Service,532,service,creer,,0,Create/modify services,Create/modify services,,532
+Service,533,service,service_advance,read_prices,0,Read prices services,Read prices services,,533
+Service,535,service,service_advance,read_supplier_prices,0,Read supplier prices,Read supplier prices,,535
+Service,534,service,supprimer,,0,Delete services,Delete les services,,534
+Service,538,service,export,,0,Export services,Export services,,538
+Societe,121,societe,lire,,0,Read third parties linked to user,Read third parties,,121
+Societe,122,societe,creer,,0,Create/modify third parties linked to user,Create and update third parties,,122
+Societe,125,societe,supprimer,,0,Delete third parties linked to user,Delete third parties,,125
+Societe,126,societe,export,,0,Export third parties,Export third parties,,126
+Societe,130,societe,thirdparty_paymentinformation,write,0,Create/modify third parties payment information,Modify thirdparty information payment,,130
+Societe,262,societe,client,voir,0,Extend access to all third parties AND their objects (not only third parties for which the user is linked as a sale representative).,Read all third parties (and their objects) by internal users (otherwise only if commercial contact). Not effective for external users (limited to themselves).,,262
+Societe,281,societe,contact,lire,0,Read contacts,Read contacts,,281
+Societe,282,societe,contact,creer,0,Create/modify contacts,Create and update contact,,282
+Societe,283,societe,contact,supprimer,0,Delete contacts,Delete contacts,,283
+Societe,286,societe,contact,export,0,Export contacts,Export contacts,,286
+Stock,1001,stock,lire,,0,Read warehouses and stocks,Read stocks,,1001
+Stock,1002,stock,creer,,0,Create/modify warehouses,Create/Modify stocks,,1002
+Stock,1003,stock,supprimer,,0,Delete warehouses,Delete stock,,1003
+Stock,1004,stock,mouvement,lire,0,Read stock movements,Read stock movements,,1004
+Stock,1005,stock,mouvement,creer,0,Create/modify stock movements,Create/modify stock movements,,1005
+Stock,1008,stock,value_advance,read,0,Read stock value,Read stock value,MAIN_FEATURES_LEVEL >= 2,1008
+Stock,1011,stock,inventory_advance,read,0,View inventories,inventoryReadPermission,,1011
+Stock,1012,stock,inventory_advance,write,0,Create new inventory,inventoryCreatePermission,,1012
+Stock,1013,stock,inventory_advance,delete,0,Delete inventory,inventoryDeletePermission,,1013
+Stock,1014,stock,inventory_advance,validate,0,Validate inventory,inventoryValidatePermission,MAIN_FEATURES_LEVEL >= 2,1014
+Stock,1015,stock,inventory_advance,changePMP,0,Allow to change PMP value for a product,inventoryChangePMPPermission,MAIN_FEATURES_LEVEL >= 2,1015
+StockTransfer,711,stocktransfer,stocktransfer,read,0,Read stocks transfers,StockTransferRightRead,,module_number + ordinal
+StockTransfer,712,stocktransfer,stocktransfer,write,0,Create/Update stocks transfers,StockTransferRightCreateUpdate,,module_number + ordinal
+StockTransfer,713,stocktransfer,stocktransfer,delete,0,Delete stocks transfers,StockTransferRightDelete,,module_number + ordinal
+SupplierInvoice,1171,supplier_invoice,lire,,0,Read vendor invoices (and payments),Consulter les factures fournisseur,,1171
+SupplierInvoice,1172,supplier_invoice,creer,,0,Create/modify vendor invoices,Creer une facture fournisseur,,1172
+SupplierInvoice,1173,supplier_invoice,supplier_invoice_advance,validate,0,Validate vendor invoices,Valider une facture fournisseur,,1173
+SupplierInvoice,1174,supplier_invoice,supprimer,,0,Delete vendor invoices,Supprimer une facture fournisseur,,1174
+SupplierInvoice,1175,supplier_invoice,supplier_invoice_advance,send,0,Send vendor invoices by email,Envoyer les factures par mail,,1175
+SupplierInvoice,1176,supplier_invoice,export,,0,"Export vendor invoices, attributes and payments","Exporter les factures fournisseurs, attributes et reglements",,1176
+SupplierOrder,1152,supplier_order,lire,,0,Read purchase orders,Read purchase orders,,1152
+SupplierOrder,1153,supplier_order,creer,,0,Create/modify purchase orders,Create a purchase order,,1153
+SupplierOrder,1154,supplier_order,supplier_order_advance,validate,0,Validate purchase orders,Validate purchase orders,,1154
+SupplierOrder,1155,supplier_order,approuver,,0,Approve purchase orders,Approve purchase orders,,1155
+SupplierOrder,1156,supplier_order,commander,,0,Order purchase orders,Order a purchase order,,1156
+SupplierOrder,1157,supplier_order,receptionner,,0,Acknowledge receipt of purchase orders,Receive a purchase order,,1157
+SupplierOrder,1159,supplier_order,supplier_order_advance,check,0,Check/Uncheck a purchase order reception,Check/Uncheck a supplier order reception,,1159
+SupplierOrder,1158,supplier_order,supprimer,,0,Delete purchase orders,Delete a purchase order,,1158
+SupplierOrder,1160,supplier_order,approve2,,0,Approve (second approval) purchase orders,Approve supplier order (second level),SUPPLIER_ORDER_3_STEPS_TO_BE_APPROVED,1160
+SupplierOrder,1161,supplier_order,export,,0,Export supplier orders and their attributes,Export purchase orders,,1161
+SupplierProposal,1121,supplier_proposal,lire,,0,Read supplier proposals,Read supplier proposals,,module_number + ordinal
+SupplierProposal,1122,supplier_proposal,creer,,0,Create/modify supplier proposals,Create/modify supplier proposals,,module_number + ordinal
+SupplierProposal,1123,supplier_proposal,validate_advance,,0,Validate supplier proposals,Validate supplier proposals,,module_number + ordinal
+SupplierProposal,1124,supplier_proposal,send_advance,,0,Send supplier proposals,Send supplier proposals,,module_number + ordinal
+SupplierProposal,1125,supplier_proposal,supprimer,,0,Delete supplier proposals,Delete supplier proposals,,module_number + ordinal
+SupplierProposal,1126,supplier_proposal,cloturer,,0,Close supplier price requests,Close supplier price requests,,module_number + ordinal
+TakePos,50151,takepos,run,,0,Use Point of Sale (TakePOS) - This include permissions to read/create and edit invoices,"Use Point Of Sale (record a sale, add products, record payment)",,50151
+TakePos,50152,takepos,editlines,,0,Edit sales lines,"Can modify added sales lines (prices, discount)",,50152
+TakePos,50153,takepos,editorderedlines,,0,Edit ordered sales lines,"Edit ordered sales lines (useful only when option ""Order printers"" has been enabled). Allow to edit sales lines even after the order has been printed",,50153
+Tax,91,tax,charges,lire,0,Read social or fiscal taxes and vat,Read social contibutions,,91
+Tax,92,tax,charges,creer,0,Create/modify social or fiscal taxes and vat,Create/modify social contributions,,92
+Tax,93,tax,charges,supprimer,0,Delete social or fiscal taxes and vat,Delete social contributions,,93
+Tax,94,tax,charges,export,0,Export social or fiscal taxes,Export social contributions,,94
+Ticket,56001,ticket,read,,0,See tickets,Read ticket,,56001
+Ticket,56002,ticket,write,,0,Modify tickets,Create les tickets,,56002
+Ticket,56003,ticket,delete,,0,Delete tickets,Delete les tickets,,56003
+Ticket,56004,ticket,manage_advance,,0,"Actions related to the ticket status (close/resolve/abandon), and the assignee selection menu",Manage tickets,,56004
+Ticket,56006,ticket,export,,0,Export tickets,Export ticket,,56006
+User,251,user,user,lire,0,Read other users and groups,"Read information of other users, groups and permissions",,251
+User,252,user,user_advance,readperms,0,Read permissions of other users,Read permissions of other users,,252
+User,253,user,user,creer,0,"Create/modify other users, groups and permissions","Create/modify internal and external users, groups and permissions",,253
+User,254,user,user_advance,write,0,Create/modify external users only,Create/modify external users only,,254
+User,255,user,user,password,0,Modify other users password,Modify the password of other users,,255
+User,256,user,user,supprimer,0,Delete or disable other users,Delete or disable other users,,256
+User,341,user,self_advance,readperms,0,Read its own permissions,Read its own permissions,,341
+User,342,user,self,creer,0,Create/modify his own user information,Create/modify of its own user,,342
+User,343,user,self,password,0,Modify his own password,Modify its own password,,343
+User,344,user,self_advance,writeperms,0,Modify its own permissions,Modify its own permissions,,344
+User,351,user,group_advance,read,0,Read groups,Read groups,,351
+User,352,user,group_advance,readperms,0,Read groups permissions,Read permissions of groups,,352
+User,353,user,group_advance,write,0,Create/modify groups,Create/modify groups and permissions,,353
+User,354,user,group_advance,delete,0,Delete or disable groups,Delete groups,,354
+User,358,user,user,export,0,Export users,Export all users,,358
+Variants,611,variants,read,,0,Read attributes of variants,Read attributes of variants,,module_number + 1
+Variants,612,variants,write,,0,Create/Update attributes of variants,Create/Update attributes of variants,,module_number + 2
+Variants,613,variants,delete,,0,Delete attributes of variants,Delete attributes of variants,,module_number + 3
+WebPortal,1100001,webportal,write,,0,Administer users of the customer/partner webportal module,Administer users of the customer/partner webportal module,,"concat(module_number, two_digit(ordinal + 1))"
+Website,10001,website,read,,0,Read website content,Read website content,,10001
+Website,10002,website,write,,0,Create/modify website content (html and JavaScript content),Create/modify website content (html and javascript content),,10002
+Website,10003,website,writephp,,0,"Create/modify website content (dynamic php code). Dangerous, must be reserved to restricted developers.","Create/modify website content (dynamic php code). Dangerous, must be reserved to restricted developers.",,10003
+Website,10005,website,delete,,0,Delete website content,Delete website content,,10005
+Website,10008,website,export,,0,Export website content,Export website content,,10008
+Workstation,691,workstation,workstation,read,0,Read objects of Workstation,Read objects of Workstation,,module_number + ordinal
+Workstation,692,workstation,workstation,write,0,Create/Update objects of Workstation,Create/Update objects of Workstation,,module_number + ordinal
+Workstation,693,workstation,workstation,delete,0,Delete objects of Workstation,Delete objects of Workstation,,module_number + ordinal

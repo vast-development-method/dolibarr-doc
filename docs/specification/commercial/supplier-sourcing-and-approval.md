@@ -10,8 +10,6 @@ Closure records its date, actor and outcome and **replaces** the private note wi
 
 When configured, acceptance also proposes updates to the supplier's maintained prices. Each line with positive quoted unit price passes its product, supplier, quantity, whole-line discounted net amount, supplier reference, VAT and foreign-currency net amount to price maintenance. The request's supplier item reference has a fallback to the alternate line reference. The exchange rate is retrieved for the quoted currency when enabled, with one as the initial rate. The amount for a ten-unit line quoted at 20 with 10% off is 180 for ten units. There is no second 10% reduction in the new maintenance request. Lines at zero or below are skipped. The loop does not examine each price-maintenance return value before reporting success. Acceptance establishes the quotation decision even when an individual price record still needs reconciliation.
 
-Source locations include `htdocs/supplier_proposal/class/supplier_proposal.class.php:valid`, `htdocs/supplier_proposal/class/supplier_proposal.class.php:cloture` and `htdocs/supplier_proposal/class/supplier_proposal.class.php:updateOrCreatePriceFournisseur`.
-
 ## Comparing available terms
 
 The minimum-price enquiry selects a catalogue product and can be restricted to one supplier. It searches active parties and prices within their allowed entity scopes. With a positive desired quantity, an offer qualifies only when its minimum quantity is at most that quantity. A zero or unspecified desired quantity leaves the minimum-quantity filter unapplied. Each enquiry clears its prior selection.
@@ -26,8 +24,6 @@ For fixed prices the comparison amount is the supplier's net unit price multipli
 
 A different ranking is appropriate if the buyer must meet a delivery date, but the minimum-price operation itself compares price. Restricting the enquiry to supplier A would choose A in both examples.
 
-Source location `htdocs/fourn/class/fournisseur.product.class.php:find_min_price_product_fournisseur`.
-
 ## Creating purchase lines from another document
 
 The purchasing form accepts selected source line identities. Negative quantities and subtotal marker lines are skipped. For a supplier enquiry, a zero unit price omits the line. For a customer order, a zero sale price still permits procurement. A free promotional item sold to the customer can therefore cause a purchase. The supplier, origin and origin-line reference identify what the purchase fulfills.
@@ -35,8 +31,6 @@ The purchasing form accepts selected source line identities. Negative quantities
 For a supplier enquiry, the conversion uses the quoted line price, unit, quantity, discount, taxes and supplier item reference. For a customer order, the buyer selects a supplier. The form seeks the minimum effective eligible offer for that supplier and uses its identity and supplier reference. It obtains the purchase VAT in the supplier-to-company direction. It separately retrieves supplier price rows in ascending **raw** unit-price order without the minimum-quantity condition and takes the first unit price and discount. As a result, the stored purchase price can disagree with the selected price-record identity. For example, an order for eight with supplier A offering 20 from one and 16 from fifty may carry the first offer's reference and the second offer's unit price. In the absence of a qualifying offer the customer-order path initially resets the sale unit amount to zero.
 
 The destination adds its own lines, including line description, product, unit, custom attributes and originating line identity. It stops adding lines when a destination line write fails. The supplier's minimum order value is surfaced on the purchase form as a warning. The value alone does not demonstrate that a submitted purchase has passed a supplier-side minimum.
-
-Source locations include `htdocs/fourn/commande/card.php:1608–1732` and `htdocs/fourn/commande/card.php:2747`.
 
 ## Approval and submission
 
@@ -50,5 +44,3 @@ Source locations include `htdocs/fourn/commande/card.php:1608–1732` and `htdoc
 The form can directly approve an order on validation when the actor has the approval right and settings allow it. Warehouse selection for approval-time stock and the option disabling direct approval alter that route. The approval operation requires purchase-order approval permission, records the stamp against a validated order, and may register the actor as an internal sales-follow-up contact. Only the transition completing approval can post an approval-time inventory receipt. With stock configured for that milestone, catalogue lines receive quantity in the selected warehouse. Valuation uses the line's net unit price after percentage discount unless weighted-average-cost settings exclude discounts. A failed stock movement or rejected approval event causes rollback.
 
 Submission records how the buyer placed the order and emits the supplier-order-submitted event. The optional comment appends to existing private notes. Submission and physical receipt are separate milestones even in installations configured to recognize inventory at approval. Neither a first approval stamp nor submission alone proves that a supplier delivered.
-
-Source locations include `htdocs/fourn/commande/card.php:1217–1238`, `htdocs/fourn/class/fournisseur.commande.class.php:approve` and `htdocs/fourn/class/fournisseur.commande.class.php:commande`.

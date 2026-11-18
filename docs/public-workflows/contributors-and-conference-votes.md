@@ -14,7 +14,7 @@ An event project can collect ideas before its program is confirmed. The speaker 
 
 The landing page displays event dates and routes each choice to the corresponding project-scoped form. If none of its three actions is available, it displays an explanation. These are presentation options for contributor activity. Attendance uses a separate whole-event or session invitation, with its own registration conditions.
 
-Project routing and choice visibility appear in `htdocs/public/project/index.php:190–207,260–282,301–325`. For attendee admission, fees, capacity and ticket use see [Event capacity, registration and attendance](../specification/planning/event-capacity-registration-and-payments.md).
+For attendee admission, fees, capacity and ticket use see [Event capacity, registration and attendance](../specification/planning/event-capacity-registration-and-payments.md).
 
 ## From proposal to program item
 
@@ -28,8 +28,6 @@ Both submissions require a family name, a valid email, organization name, progra
 
 The contributor record is distinct from an attendee and from a project-wide contact assignment. For example, a speaker proposing two sessions can have one party and one contact, two program records and two speaker assignments. An attendee count before and after those submissions is unchanged.
 
-The conference form and party population appear in `htdocs/public/project/suggestconference.php:79–90,113–125,221–330,336–399,429–445,653–662`. The booth equivalents appear in `htdocs/public/project/suggestbooth.php:111–122,218–329,335–395,425–441,708–717`.
-
 ## Billing an exhibitor
 
 | Contribution | State and document effects on the successful public path |
@@ -42,8 +40,6 @@ The fee-bearing booth form sends the visitor to the same acknowledgment page as 
 
 For example, a booth price of 120 and an applicable 20% rate produce a draft with net 120, tax 24 and gross 144. The ordinary whole-event **attendee** registration path interprets a registration price of 120 as tax-inclusive. At the same rate its fee line has net 100 and tax 20. Reusing the same amount parser across these two public forms would change one of the invoices.
 
-Booth billing and confirmation appear in `htdocs/public/project/suggestbooth.php:437–506,518–559`, the conference notification in `htdocs/public/project/suggestconference.php:441–505`, and the acknowledgment in `htdocs/public/eventorganization/subscriptionok.php:181–197`. The program status dictionary appears in `htdocs/eventorganization/class/conferenceorbooth.class.php:55–63,110–122`, with the persisted initial default in `htdocs/install/mysql/tables/llx_actioncomm.sql:74–80`.
-
 ## Voting and program confirmation
 
 The voting list selects calendar records for the current project and allowed agenda entities, with conference-family formats and program state below confirmed. In the defined status set, this includes drafts (0) and suggestions (1). Confirmed, unqualified, done and cancelled items drop out. The list resolves the party name where a party is associated and presents a vote action per candidate. The standard voting table has no corresponding booth ballot.
@@ -51,5 +47,3 @@ The voting list selects calendar records for the current project and allowed age
 A successful vote increases that program record's counter by one and records the candidate in the visitor's session. A repeated vote for the same candidate in that session returns an already-voted message. The visitor can support another listed conference independently. This is a per-candidate session tally. The operation creates no attendee, customer, invoice, named electorate entry or allocation of seats. Failed updates return a voting error. The form returns to the project voting page after processing.
 
 Consider two suggested sessions with counts of 4 and 7. The visitor votes for each, then repeats the first. The resulting counts are 5 and 8. If an organizer confirms the first session, it leaves this candidate list with its previously recorded count. Crossing a vote threshold does not confirm a session. Confirmation is an organizer operation on the program record.
-
-Candidate selection, voting and repeat behavior appear in `htdocs/public/project/viewandvote.php:103–138,141–162,186–225`. Program confirmation is in `htdocs/eventorganization/class/conferenceorbooth.class.php:433–486`.

@@ -2,8 +2,6 @@
 
 A receipt identifies incoming supplier-order lines. The service exposes receipt creation, individual line removal, validation and closure. The upstream purchase order remains separately addressable.
 
-The implementation locations below refer to `htdocs/reception/class/api_receptions.class.php`.
-
 ## `get` — Read a goods receipt
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — reception missing.
-
-Source lines `67–84`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `reception`. A caller linked to a p
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `107–201`.
 
 ## `post` — Create a goods receipt
 
@@ -53,8 +47,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `211–259` with `_validate 785–798`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{lineid}`.
@@ -71,8 +63,6 @@ The method removes a line.
 - `404` — reception missing, reception line missing.
 - `405` — operation unavailable.
 
-Source lines `444–478`.
-
 ## `put` — Update a goods receipt
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — reception missing.
 - `500` — business operation failed.
 
-Source lines `489–528` with `get 67–84`.
-
 ## `delete` — Delete a goods receipt
 
 **Arguments** `id` (integer).
@@ -100,8 +88,6 @@ Source lines `489–528` with `get 67–84`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — reception missing.
 - `500` — removal failed.
-
-Source lines `538–562`.
 
 ## `validate` — Validate a goods receipt
 
@@ -120,8 +106,6 @@ The method validates the record and loads related business records.
 - `404` — reception missing.
 - `500` — business operation failed.
 
-Source lines `583–610`.
-
 ## `close` — Close the record
 
 Route `POST {id}/close`.
@@ -138,5 +122,3 @@ The method closes the record and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — reception missing.
 - `500` — business operation failed.
-
-Source lines `705–734`.

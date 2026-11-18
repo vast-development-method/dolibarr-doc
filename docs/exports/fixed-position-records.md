@@ -56,8 +56,6 @@ With the archive option enabled, the writer identifies a source PDF by the trimm
 
 An attached PDF is named from the first eight characters of the piece number padded on the left with zeroes and followed by `.pdf`. For a nine-digit piece this selects the first eight digits. Two different pieces with the same first eight digits therefore request the same archive member name. The archive always starts with the exported ledger file. Archive support, creating or opening the output, and adding individual files are separate failure points from a missing source PDF. The interactive export offers source attachments for IDs 60, 1000 and 1010.
 
-Release sources are `htdocs/accountancy/class/accountancyexport.class.php:383–493,583–650,912–1145`, `htdocs/accountancy/bookkeeping/export.php:850–877` and `htdocs/core/lib/functions.lib.php:5470–5576`.
-
 ## Winfic movement, format 70
 
 Each ledger row emits 18 data fields. An ASCII vertical bar separates the fields and a final vertical bar immediately precedes CRLF. Debit and credit are two amount fields. All fields can be located by their ordinal below for plain data without a vertical bar. The source joins the field strings directly without escaping embedded bars. The byte ranges give a common case with a two-character matching code and a piece of at most five ASCII characters.
@@ -85,8 +83,6 @@ The left-truncation helper used by fields 10 and 11 has a distinct overflow beha
 
 For an unmatched debit dated 30 April 2026 with no due date, fields 2 and 13 both read 30042026 and field 5 reads 300426. A debit of 100 and a credit of equal value on the next row produce `100,00` in fields 7 and 8 respectively, including the specified left padding. Field 4 increments for each selected row, independent of the piece number.
 
-Release sources are `htdocs/accountancy/class/accountancyexport.class.php:1159–1236` and `htdocs/core/lib/functions.lib.php:5532–5582`.
-
 ## Ciel XIMPORT, format 40
 
 The file contains one concatenated record per selected line. CRLF follows its nominal 142-byte payload. The general account is used unless a subsidiary is present. The configured filename option can force the name `XIMPORT.TXT`.
@@ -103,6 +99,6 @@ The file contains one concatenated record per selected line. CRLF follows its no
 
 A seven-digit piece shifts all subsequent positions by two bytes. A credit of 125.50 carries the same absolute amount as its matching debit. Its direction identifies the credit. A different decimal separator or number of decimals in the accounting-file settings affects this file even though its field ordering stays the same.
 
-Release sources are `htdocs/accountancy/class/accountancyexport.class.php:857–897,2833–2840`, `htdocs/core/lib/functions2.lib.php:2783–2804` and `htdocs/accountancy/tpl/export_journal.tpl.php`. See the [ledger format register](ledger-layouts.md) for selection, reconciliation and all other writers.
+See the [ledger format register](ledger-layouts.md) for selection, reconciliation and all other writers.
 
 The [worked receivable](fixed-position-example.json) preserves the spaces, field separators and CRLF in JSON strings. Printed bytes for the same ASCII input are 144 for the Ciel row, 451 plus 233 for the two Quadratus rows, and 147 for the Winfic row. All four lengths include their line terminators.

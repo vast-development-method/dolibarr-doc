@@ -12,7 +12,7 @@ A term has a dictionary identifier and code, a calculation type, a day count and
 
 The dictionary's display text can express a commercial agreement the calculation does not execute. The delivered “50% on order, 50% on delivery” entry uses the same one-day term formula as “due upon receipt”, “due on order” and “due on delivery”. The due-date calculation produces one date. It does not generate two collection instructions or listen for the delivery event. Installations can change their terms, so the values attached to the selected code govern the result.
 
-Release references include `htdocs/core/class/commoninvoice.class.php:1350–1442` and `htdocs/install/mysql/data/llx_c_payment_term.sql`.
+Related records include [Payment terms](../../records/dictionaries.md#record-c_payment_term).
 
 ## Reserve an amount for bank collection or transfer
 
@@ -28,8 +28,6 @@ Two active configurations define a duplicate request differently.
 An invoice for 1,200 has payments of 200, applied credit of 50 and an applied deposit of 150. Its outstanding amount is 800. A pending request of 100 and a further 250 already in an uncredited receipt leave 450 available under partial-request mode. A new request for 450 uses the full remainder. Passing zero also requests 450 in this case. A request for 451 returns the over-amount outcome without writing a request. The calculation reads receipt-line amounts through their invoice links. A receipt line covering several invoices needs attention when comparing this calculation with per-invoice payment allocation.
 
 A caller can distinguish a successful insert, a duplicate or unavailable-amount outcome, an invalid document state and a data access or amount error. A successful return confirms the request insert. The return from the separate change of payment method does not determine this result.
-
-Release references include `htdocs/core/class/commoninvoice.class.php:1453–1641`.
 
 ## Post the balance forgone on a discount closure
 
@@ -47,5 +45,3 @@ For a positive tax rate, net discount equals rounded gross share divided by one 
 For a 230 invoice, let gross lines be 120 at 20% tax and 110 at 10%. If the recorded settlement totals 207, the gross discount is 23. The 20% group takes 12, comprising 10 net and 2 tax. The 10% group takes 11, comprising 10 net and 1 tax. The customer journal therefore debits expense by 20 and tax by 3 and credits receivables by 23. On an equivalent supplier invoice the journal debits payables by 23 and credits income by 20 and tax by 3. Both transactions are balanced without creating a cash movement.
 
 A party's own general account overrides the configured customer or supplier control account. Each proposed row carries a source family, document identifier, reference, transaction date, party code, ledger and journal. A proposed account must be found for its row to be emitted into bookkeeping. The journal writer compares total debits and credits of each source document at monetary precision before commit. A document with an unbalanced result rolls back independently of successful documents in the same transfer.
-
-Release references include `htdocs/accountancy/class/accountingjournal.class.php:748–1054,1057–1354,1399–1518`.

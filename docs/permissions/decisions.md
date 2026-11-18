@@ -1,14 +1,12 @@
 # How an operation is authorised
 
-A permission declaration identifies a capability. The decision to use it also depends on the acting account, the requested record, its business relationships, the current entity, the operation and sometimes the document's state. These six worked examples trace the interactive and service paths in release 24.0.3. The [permission catalogue](README.md) lists the module declarations. The [record dictionary](../records/README.md) describes the identities on which the decisions depend.
+A permission declaration identifies a capability. The decision to use it also depends on the acting account, the requested record, its business relationships, the current entity, the operation and sometimes the document's state. These six worked examples trace the interactive and service paths. The [permission catalogue](README.md) lists the module declarations. The [record dictionary](../records/README.md) describes the identities on which the decisions depend.
 
 ## From declaration to decision
 
 The installation assigns a numeric ID to a permission definition. For example, customer orders declare 81 for reading, 82 for creating and 84 for advanced validation. The account loader reads grants assigned directly to the user, then grants assigned through the user's groups. It joins the assignments to the permission definitions in their applicable entity context. Business operations ask for named capabilities such as `commande.order_advance.validate`. A grant on an unrelated account, permission family or entity does not take part in that decision.
 
 The interactive resource guard takes the requested feature, the loaded object or ID, and where necessary the table or relationship that establishes the owner. The service resource guard delegates to the shared object-access decision for the authenticated account. The data set used to list records can have its own selection conditions. A workflow may then check the actor again when changing a document. Three different outcomes follow from this arrangement. A user can have a general capability and lack access to a particular record. A user can have access to read that record and lack the right to change it. An authorised operation can fail a business precondition even with every necessary grant.
-
-See `htdocs/core/modules/modCommande.class.php:118`, `htdocs/user/class/user.class.php:913`, `htdocs/user/class/user.class.php:1385`, `htdocs/core/lib/security.lib.php:180`, `htdocs/core/lib/security.lib.php:922`, `htdocs/api/class/api.class.php:499` and `htdocs/core/lib/functions.lib.php:638`.
 
 ## Third parties — find and open a customer
 
@@ -18,8 +16,6 @@ See `htdocs/core/modules/modCommande.class.php:118`, `htdocs/user/class/user.cla
 
 **Acceptance example.** Two active customers belong to the selected entity. An internal salesperson has directory read permission, lacks the all-customers permission and is assigned only to the first customer. The unfiltered directory contains the first customer only. An external customer account using the directory is scoped by its linked party.
 
-See `htdocs/societe/list.php:362`, `htdocs/societe/list.php:637`, `htdocs/societe/card.php:125`, `htdocs/societe/card.php:178`, `htdocs/societe/class/societe.class.php:1935`, `htdocs/societe/class/api_thirdparties.class.php:156` and `htdocs/societe/class/api_thirdparties.class.php:2782`.
-
 ## Customer orders — validate an order
 
 **Screen.** The order card resolves its identifier, including lookup by reference, and applies the order resource guard to that ID. In ordinary permission mode, creation grants the validation action. With advanced permissions enabled, the screen evaluates the distinct order-validation grant. The confirmation passes the acting user and selected warehouse to the order operation. Where configuration moves stock at order validation and the lines qualify, the screen requires a warehouse. Generating a deposit invoice during confirmation also requires an eligible payment term and invoice-creation authority.
@@ -27,8 +23,6 @@ See `htdocs/societe/list.php:362`, `htdocs/societe/list.php:637`, `htdocs/societ
 **Service and workflow.** Service validation first requires order creation, fetches the order and checks access to that particular order. The order operation applies the validation rule for the configured permission mode. Under advanced mode both the service entrance and the workflow condition must succeed. The operation recognises a previously validated order, requires a customer and, subject to configuration, verifies the sale status of referenced products. It begins the validation transaction and raises the order-validation event in the normal trigger-enabled path.
 
 **Acceptance example.** In advanced mode a clerk can create a draft for an accessible customer while still lacking order-validation authority. Granting advanced validation makes a valid order eligible. A repeated validation of an already validated order yields no new validation. The optional deposit invoice has its own accounting-domain permission.
-
-See `htdocs/commande/card.php:151`, `htdocs/commande/card.php:1821`, `htdocs/commande/card.php:1850`, `htdocs/commande/class/api_orders.class.php:967`, `htdocs/commande/class/commande.class.php:519` and `htdocs/commande/class/commande.class.php:612`.
 
 ## Customer invoices — issue a draft
 
@@ -38,8 +32,6 @@ See `htdocs/commande/card.php:151`, `htdocs/commande/card.php:1821`, `htdocs/com
 
 **Acceptance example.** An authorised issuer submits a draft without lines. Issuance fails and the draft remains available for editing. After adding a valid line and satisfying the applicable customer and numbering rules, the same issuer can validate it. Submitting an already issued invoice returns a no-change outcome. Payment and settlement remain separate operations.
 
-See `htdocs/compta/facture/card.php:164`, `htdocs/compta/facture/card.php:200`, `htdocs/compta/facture/card.php:789`, `htdocs/compta/facture/class/api_invoices.class.php:1219`, `htdocs/compta/facture/class/facture.class.php:3612` and `htdocs/compta/facture/class/facture.class.php:3966`.
-
 ## Employee expenses — create a claim for another person
 
 **Screen.** The acting account and the employee whose expenses are claimed are separate identities. The form uses the account's reporting hierarchy, including the actor, to determine whose claims it can ordinarily edit. The create permission is required. With advanced permissions enabled, the write-everyone grant can expand the set of employees. Existing-report visibility also has a path for the designated validator holding approval permission. That assignment serves a different purpose from the manager-to-employee relationship.
@@ -47,8 +39,6 @@ See `htdocs/compta/facture/card.php:164`, `htdocs/compta/facture/card.php:200`, 
 **Service and record.** Service creation applies the creation grant and checks the requested employee against the actor, reporting hierarchy and advanced write-everyone exception. It reserves workflow-controlled fields for their dedicated transitions. The business operation requires the beginning and end of the claim period. When an employee is omitted, the acting user becomes the claimant. On storage, the creator is the acting user, the claimant is the employee, and the designated validator has a separate field. Approval records the actual approving user and its date.
 
 **Acceptance example.** A manager with the create grant files a claim for a subordinate. The record preserves the manager as creator and the subordinate as claimant. Another employee outside the manager's hierarchy is outside ordinary creation scope. In advanced mode an account granted both creation and write-everyone can create that claim. A designated validator with approval authority can review the assigned claim without becoming its claimant.
-
-See `htdocs/user/class/user.class.php:4149`, `htdocs/expensereport/card.php:84`, `htdocs/expensereport/card.php:130`, `htdocs/expensereport/card.php:149`, `htdocs/expensereport/card.php:313`, `htdocs/expensereport/class/api_expensereports.class.php:246`, `htdocs/expensereport/class/expensereport.class.php:377` and `htdocs/expensereport/class/expensereport.class.php:1523`.
 
 ## Projects — open a public or assigned project
 
@@ -58,8 +48,6 @@ See `htdocs/user/class/user.class.php:4149`, `htdocs/expensereport/card.php:84`,
 
 **Acceptance example.** For an internal user with ordinary project read permission and no all-projects grant, compare one public project and two private projects in the allowed entity. Link the user to one private project as an internal contact. The public and assigned private projects enter the public-or-assigned selection. A user with only the read capability does not gain project editing through the assignment.
 
-See `htdocs/projet/card.php:107`, `htdocs/projet/card.php:1028`, `htdocs/projet/list.php:592`, `htdocs/projet/class/project.class.php:1597`, `htdocs/projet/class/project.class.php:1659`, `htdocs/projet/class/api_projects.class.php:78`, `htdocs/projet/class/api_projects.class.php:214` and `htdocs/core/lib/security.lib.php:1122`.
-
 ## Warehouses — inspect a historical movement
 
 **Ownership.** A movement has a product, warehouse, signed quantity, movement type, date, author and optional origin. Its stock entity is determined through its warehouse. The warehouse on the movement establishes the ownership boundary even when the same product has stock in several entities.
@@ -67,8 +55,6 @@ See `htdocs/projet/card.php:107`, `htdocs/projet/card.php:1028`, `htdocs/projet/
 **Screen and service.** The movement list enters the stock area and queries movements through warehouses in the stock sharing scope. The screen also calculates visibility of supplier-price information according to product or service configuration and advanced price permissions. The service collection requires stock read permission and joins the warehouse to select the eligible entities. An individual service read requires movement-read permission. It fetches the selected movement and passes the warehouse relationship to the shared resource decision before returning the result.
 
 **Acceptance example.** Two warehouses stock the same product. Only the first warehouse's entity is in the actor's stock scope. A movement at the first warehouse is eligible for the historical list, while a movement at the second warehouse is outside that selection. A permitted detail request identifies the warehouse and signed quantity from the chosen movement. Visibility of supplier-price columns in the interactive list has its own decision.
-
-See `htdocs/product/stock/movement_list.php:169`, `htdocs/product/stock/movement_list.php:196`, `htdocs/product/stock/movement_list.php:732`, `htdocs/product/stock/class/mouvementstock.class.php:727`, `htdocs/product/stock/class/api_stockmovements.class.php:77` and `htdocs/product/stock/class/api_stockmovements.class.php:119`.
 
 ## Inputs to preserve in an independent implementation
 

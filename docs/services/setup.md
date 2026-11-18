@@ -2,8 +2,6 @@
 
 Country, state and region lookups share identifier and code variants. Dictionary reads, entity configuration and changes to active modules serve different callers. Additional-field changes identify both the business element and the field name.
 
-The implementation locations below refer to `htdocs/api/class/api_setup.class.php`.
-
 ## `getListOfActionTriggers` — Read list of action triggers
 
 Route `GET actiontriggers`.
@@ -14,8 +12,6 @@ Route `GET actiontriggers`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `79–130`.
 
 ## `getOrderingMethods` — Read ordering methods
 
@@ -31,8 +27,6 @@ Route `GET dictionary/ordering_methods`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `152–197`.
-
 ## `getOrderingOrigins` — Read ordering origins
 
 Route `GET dictionary/ordering_origins`.
@@ -46,8 +40,6 @@ Route `GET dictionary/ordering_origins`.
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `218–263`.
 
 ## `getPaymentTypes` — Read payment types
 
@@ -65,8 +57,6 @@ The lookup uses the visible entity scope for `c_paiement`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `285–331`.
-
 ## `getListOfRegions` — Read list of regions
 
 Route `GET dictionary/regions`.
@@ -77,8 +67,6 @@ Route `GET dictionary/regions`.
 
 - `400` — invalid filter expression.
 - `503` — record lookup or write failed.
-
-Source lines `354–404`.
 
 ## `getRegionByID` — Read region by id
 
@@ -91,8 +79,6 @@ Route `GET dictionary/regions/{id}`.
 - `404` — region missing.
 - `503` — record lookup or write failed.
 
-Source lines `419–422` with `_fetchCregion 723–735`.
-
 ## `getRegionByCode` — Read region by code
 
 Route `GET dictionary/regions/byCode/{code}`.
@@ -103,8 +89,6 @@ Route `GET dictionary/regions/byCode/{code}`.
 
 - `404` — region missing.
 - `503` — record lookup or write failed.
-
-Source lines `437–440` with `_fetchCregion 723–735`.
 
 ## `getListOfStates` — Read list of states
 
@@ -117,8 +101,6 @@ Route `GET dictionary/states`.
 - `400` — invalid filter expression.
 - `503` — record lookup or write failed.
 
-Source lines `466–519`.
-
 ## `getStateByID` — Read state by id
 
 Route `GET dictionary/states/{id}`.
@@ -129,8 +111,6 @@ Route `GET dictionary/states/{id}`.
 
 - `404` — state missing.
 - `503` — record lookup or write failed.
-
-Source lines `534–537` with `_fetchCstate 748–760`.
 
 ## `getStateByCode` — Read state by code
 
@@ -143,8 +123,6 @@ Route `GET dictionary/states/byCode/{code}`.
 - `404` — state missing.
 - `503` — record lookup or write failed.
 
-Source lines `552–555` with `_fetchCstate 748–760`.
-
 ## `getListOfCountries` — Read list of countries
 
 Route `GET dictionary/countries`.
@@ -155,8 +133,6 @@ Route `GET dictionary/countries`.
 
 - `400` — invalid filter expression.
 - `503` — record lookup or write failed.
-
-Source lines `583–642`.
 
 ## `getCountryByID` — Read country by id
 
@@ -172,8 +148,6 @@ The wrapper accepts a language argument but passes an empty language to its shar
 - `404` — country missing.
 - `503` — record lookup or write failed.
 
-Source lines `661–667` with `_fetchCcountry 777–804`.
-
 ## `getCountryByCode` — Read country by code
 
 Route `GET dictionary/countries/byCode/{code}`.
@@ -187,8 +161,6 @@ The shared country resolver receives the requested code and subdivision flags. T
 - `404` — country missing.
 - `503` — record lookup or write failed.
 
-Source lines `686–689` with `_fetchCcountry 777–804`.
-
 ## `getCountryByISO` — Read country by iso
 
 Route `GET dictionary/countries/byISO/{iso}`.
@@ -201,8 +173,6 @@ The shared country resolver receives the requested ISO value and subdivision fla
 
 - `404` — country missing.
 - `503` — record lookup or write failed.
-
-Source lines `707–710` with `_fetchCcountry 777–804`.
 
 ## `getAvailability` — Read availability
 
@@ -218,8 +188,6 @@ Route `GET dictionary/availability`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `826–871`.
-
 ## `getListOfEventTypes` — Read list of event types
 
 Route `GET dictionary/event_types`.
@@ -230,8 +198,6 @@ Route `GET dictionary/event_types`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `944–991`.
 
 ## `getListOfExpenseReportsTypes` — Read list of expense reports types
 
@@ -246,8 +212,6 @@ Route `GET dictionary/expensereport_types`.
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `1013–1061`.
 
 ## `getListOfHolidayTypes` — Read list of holiday types
 
@@ -265,8 +229,6 @@ The lookup uses the visible entity scope for `c_holiday_types`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `1083–1141`.
-
 ## `getListOfPublicHolidays` — Read list of public holidays
 
 Route `GET dictionary/public_holiday`.
@@ -283,8 +245,6 @@ The lookup uses the visible entity scope for `c_hrm_public_holiday`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `1163–1221`.
-
 ## `getListOfContactTypes` — Read list of contact types
 
 Route `GET dictionary/contact_types`.
@@ -296,8 +256,6 @@ Route `GET dictionary/contact_types`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `1244–1297`.
-
 ## `getListOfCivilities` — Read list of civilities
 
 Route `GET dictionary/civilities`.
@@ -308,8 +266,6 @@ Route `GET dictionary/civilities`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `1319–1365`.
 
 ## `getListOfCurrencies` — Read list of currencies
 
@@ -323,8 +279,6 @@ The lookup uses the visible entity scope for `multicurrency`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `1386–1440`.
 
 ## `getListOfExtrafields` — Read list of extrafields
 
@@ -342,8 +296,6 @@ The lookup uses the visible entity scope for `extrafields`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `1458–1531`.
-
 ## `deleteExtrafieldsFromNames` — Delete extrafields from names
 
 Route `DELETE extrafields/{elementtype}/{attrname}`.
@@ -357,8 +309,6 @@ Route `DELETE extrafields/{elementtype}/{attrname}`.
 - `403` — access refused.
 - `404` — extrafield missing.
 - `500` — removal failed.
-
-Source lines `1544–1567`.
 
 ## `getExtrafields` — Read extrafields
 
@@ -375,8 +325,6 @@ The lookup uses the visible entity scope for `extrafields`.
 - `403` — access refused.
 - `404` — extrafield missing.
 - `503` — query or persistence failure.
-
-Source lines `1583–1646`.
 
 ## `postExtrafields` — Post extrafields
 
@@ -397,8 +345,6 @@ The method adds an additional-field definition.
 - `409` — duplicate record or association.
 - `500` — business operation failed.
 
-Source lines `1662–1736`.
-
 ## `updateExtrafields` — Update extrafields
 
 Route `PUT extrafields/{elementtype}/{attrname}`.
@@ -418,8 +364,6 @@ The method amends an additional-field definition.
 - `404` — extrafield missing.
 - `500` — business operation failed.
 
-Source lines `1752–1823`.
-
 ## `getListOfTowns` — Read list of towns
 
 Route `GET dictionary/towns`.
@@ -430,8 +374,6 @@ Route `GET dictionary/towns`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `1845–1892`.
 
 ## `getPaymentTerms` — Read payment terms
 
@@ -449,8 +391,6 @@ The lookup uses the visible entity scope for `c_payment_term`.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `1914–1960`.
-
 ## `getShippingModes` — Read shipping modes
 
 Route `GET dictionary/shipping_methods`.
@@ -464,8 +404,6 @@ The lookup uses the visible entity scope for `c_shipment_mode`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `1980–2024`.
-
 ## `getListOfMeasuringUnits` — Read list of measuring units
 
 Route `GET dictionary/units`.
@@ -476,8 +414,6 @@ Route `GET dictionary/units`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `2044–2085`.
 
 ## `getListOfLegalForm` — Read list of legal form
 
@@ -490,8 +426,6 @@ Route `GET dictionary/legal_form`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2106–2150`.
-
 ## `getListOfStaff` — Read list of staff
 
 Route `GET dictionary/staff`.
@@ -502,8 +436,6 @@ Route `GET dictionary/staff`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `2170–2211`.
 
 ## `getListOfsocialNetworks` — Read list ofsocial networks
 
@@ -518,8 +450,6 @@ The lookup uses the visible entity scope for `c_socialnetworks`.
 - `400` — invalid request data, invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2231–2279`.
-
 ## `getTicketsCategories` — Read tickets categories
 
 Route `GET dictionary/ticket_categories`.
@@ -532,8 +462,6 @@ The lookup uses the visible entity scope for `c_ticket_category`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `2300–2344`.
 
 ## `getTicketsSeverities` — Read tickets severities
 
@@ -548,8 +476,6 @@ The lookup uses the visible entity scope for `c_ticket_severity`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2365–2409`.
-
 ## `getTicketsTypes` — Read tickets types
 
 Route `GET dictionary/ticket_types`.
@@ -563,8 +489,6 @@ The lookup uses the visible entity scope for `c_ticket_type`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2430–2475`.
-
 ## `getThirdpartiesTypes` — Read parties types
 
 Route `GET dictionary/thirdparty_types`.
@@ -575,8 +499,6 @@ Route `GET dictionary/thirdparty_types`.
 
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
-
-Source lines `2496–2540`.
 
 ## `getListOfIncoterms` — Read list of incoterms
 
@@ -589,8 +511,6 @@ Route `GET dictionary/incoterms`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2560–2603`.
-
 ## `getListOfVAT` — Read list of vat
 
 Route `GET dictionary/vat`.
@@ -602,8 +522,6 @@ Route `GET dictionary/vat`.
 - `400` — invalid filter expression.
 - `503` — query or persistence failure.
 
-Source lines `2623–2675`.
-
 ## `getCompany` — Read company
 
 Route `GET /company`.
@@ -613,8 +531,6 @@ Route `GET /company`.
 **Result** A record with internal service properties removed.
 
 - `403` — access refused.
-
-Source lines `2688–2735`.
 
 ## `getEstablishments` — Read establishments
 
@@ -628,8 +544,6 @@ The lookup uses the visible entity scope for `establishment`.
 
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `2748–2777`.
 
 ## `getEtablishmentByID` — Read etablishment by id
 
@@ -647,8 +561,6 @@ The lookup uses the visible entity scope for `establishment`.
 - `404` — establishment missing.
 - `503` — record lookup or write failed.
 
-Source lines `2790–2809`.
-
 ## `getConf` — Read conf
 
 Route `GET conf/{constantname}`.
@@ -662,8 +574,6 @@ Route `GET conf/{constantname}`.
 - `400` — error Bad or unknown value for constantname.
 - `403` — access refused, access or input restriction.
 
-Source lines `2824–2841`.
-
 ## `getConfs` — Read confs
 
 Route `GET conf/`.
@@ -676,8 +586,6 @@ The lookup uses the visible entity scope for `const`.
 
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `2857–2886`.
 
 ## `getCheckIntegrity` — Read check integrity
 
@@ -695,8 +603,6 @@ The result carries a comparison code and comment, expected and current checksums
 - `404` — no signature file known.
 - `500` — business operation failed, document-root entry missing from the manifest.
 
-Source lines `2902–3209`.
-
 ## `getModules` — Read modules
 
 Route `GET /modules`.
@@ -706,8 +612,6 @@ Route `GET /modules`.
 **Result** The enabled-module collection.
 
 - `403` — access refused.
-
-Source lines `3222–3235`.
 
 ## `getModulesList` — Read modules list
 
@@ -723,8 +627,6 @@ The status selector accepts active, disabled or all. The origin selector can dis
 
 - `403` — access refused.
 
-Source lines `3248–3306`.
-
 ## `enableModules` — Enable modules
 
 Route `PUT /modules/{modulename}/enable`.
@@ -738,8 +640,6 @@ Route `PUT /modules/{modulename}/enable`.
 - `403` — access refused.
 - `404` — module missing.
 
-Source lines `3319–3322` with `_moduleOnOff 3349–3385`.
-
 ## `disableModules` — Disable modules
 
 Route `PUT /modules/{modulename}/disable`.
@@ -752,5 +652,3 @@ Route `PUT /modules/{modulename}/disable`.
 
 - `403` — access refused.
 - `404` — module missing.
-
-Source lines `3334–3337` with `_moduleOnOff 3349–3385`.

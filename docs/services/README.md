@@ -2,7 +2,7 @@
 
 Each chapter describes one service resource. The chapter headings retain the method names used by the implementation. Arguments appear in declaration order. An omitted default in the argument list means the parameter has no declaration default. A default of null can still lead to a missing-field response when required values are absent from the request body. An empty list is written as `[]`.
 
-A route shown beside an operation is the relative route explicitly annotated in its declaration. The [effective route register](routes.csv) gives the resolved verb, resource path and argument locations, including convention-based routes and index aliases. [Route selection](route-selection.md) explains the two colliding declarations. Response codes refer to failure branches in the operation and its cited local delegates. Domain validators, the authentication layer and document delivery can also return errors.
+A route shown beside an operation is the relative route explicitly annotated in its declaration. The [effective route register](routes.csv) gives the resolved verb, resource path and argument locations, including convention-based routes and index aliases. [Route selection](route-selection.md) explains the two colliding declarations. Response codes refer to failure branches in the operation and related operations. Domain validators, the authentication layer and document delivery can also return errors.
 
 | Resource | Operations |
 | --- | ---: |
@@ -58,13 +58,13 @@ The table counts public method declarations. Of 586 declarations, 584 own an eff
 
 ## Shared entry points and scope
 
-[Credential lifecycle and acting identity](credential-lifecycle.md) describes the shared login exchange and the access layer used to resolve each protected request. They precede business dispatch and are documented separately from the 47 service resources and their 586 method declarations. The module-builder starter is scaffolding for new development. The optional Zapier connector is marked experimental in the release and falls outside the stable resource inventory.
+[Credential lifecycle and acting identity](credential-lifecycle.md) describes the shared login exchange and the access layer used to resolve each protected request. They precede business dispatch and are documented separately from the 47 service resources and their 586 method declarations. The register excludes development templates and experimental connectors.
 
 [Method and route index](../reference/service-methods.csv) · [Stable module inventory](../coverage/README.md)
 
 ## Wire arguments and payload shapes
 
-[Operation contracts in JSON Lines](operation-contracts.jsonl) contains one record per method, including all 1,711 declared arguments. Each record identifies the public resource, operation and release-relative source location. The named parameters preserve declaration order.
+[Operation contracts in JSON Lines](operation-contracts.jsonl) contains one record per method, including all 1,711 declared arguments. The resource and operation form the lookup key for a contract. The named parameters preserve declaration order.
 
 | Member | How to interpret it |
 | --- | --- |
@@ -72,7 +72,7 @@ The table counts public method declarations. Of 586 declarations, 584 own an eff
 | `declaredInputType`, `annotatedShape` | The former records the ordinary input annotation. The latter adds a more specific property map, list or union where the resource supplies one. “Collection” in the reader chapters can mean a keyed object or a list. A numeric-keyed collection can serialize differently depending on its keys. |
 | `routeBinding`, `annotatedBinding` | A path binding appears only when the annotated relative route contains that named parameter. A separate binding describes an explicit source annotation such as body. Other bindings depend on the dispatcher. |
 | `wireRequiredAnnotation` | Present only when the wire contract explicitly marks the value required or optional. A handler can require a positional argument while its route documents that value as optional. |
-| `bodyValidation` | Identifies a request-data validator and its source. Fixed `nonNullMembers` must be present and non-null when that validator runs. Some resources derive their required fields from active model metadata. A configuration-dependent field has a separate condition. The list describes evidenced validator branches and can be supplemented by business-state checks in the chapter. |
-| `response` | Describes the returned shape or an absent body. The source label distinguishes a return branch, delegated result and source annotation. Property maps give concrete names where declared. An empty property schema leaves that value unconstrained. A model title identifies a record family. |
+| `bodyValidation` | Identifies the request-body validation routine. Fixed `nonNullMembers` must be present and non-null when that validator runs. Some resources derive their required fields from active model metadata. A configuration-dependent field has a separate condition. The list describes evidenced validator branches and can be supplemented by business-state checks in the chapter. |
+| `response` | Describes the returned shape or an absent body. The source label distinguishes a directly returned shape, a delegated result and a declared return type. Property maps give concrete names where declared. An empty property schema leaves that value unconstrained. A model title identifies a record family. |
 
 As an example, the bank-transfer handler defaults the destination-currency amount to zero. A cross-currency transfer still requires a destination amount. The operation chapter gives that conditional rule. Likewise, a default-null request-data argument may lead immediately to a missing-member error when a named field is required. Explicit null, omission in transport and a missing body member have distinct meanings.

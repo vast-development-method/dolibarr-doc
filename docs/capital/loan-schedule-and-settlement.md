@@ -20,8 +20,6 @@ Creating the plan stores one row per term with loan ID, expected date, principal
 
 The creation response has a display discrepancy. After a term is inserted with separate components, the in-memory object holds their combined total in its principal field. The same request renders that object as though it held plain principal. Reloading the schedule reads the separately stored principal and restores the persisted amount and running balance. On the first example row below the immediate response can show 353.36 as the monthly amount, from 343.36 plus 10.00. A fresh read shows 340.02.
 
-Source locations include `htdocs/loan/schedule.php:68–153,284–354`, `htdocs/loan/class/loanschedule.class.php:197–237,446–458,468–516`, `htdocs/core/lib/date.lib.php:129–132,159–195` and `htdocs/install/mysql/tables/llx_loan_schedule-loan.key.sql`.
-
 ## Changing a term or settling it on another date
 
 | Event | Changed values | Values carried forward |
@@ -35,8 +33,6 @@ Source locations include `htdocs/loan/schedule.php:68–153,284–354`, `htdocs/
 The edit and payment recalculator rounds interest and remaining principal to **two decimal places, half up**. It also rounds freshly calculated later monthly amounts to two places. The initial schedule instead follows the installation's total-amount precision. A three-decimal configuration can consequently give different principal and interest splits after an edit. Both forms operate in monthly periods irrespective of the number of days by which a payment was early or late.
 
 The payment form offers the open term's expected date as the initial actual-payment date. Without a term, its date can default to today when date autofill is active. On submission it constructs the payment timestamp at noon on the chosen day. Its summary cell labelled “Date due” displays the loan start date even for a later instalment. Use the schedule row for the individual due date, and use the payment record for the actual date.
-
-Source locations include `htdocs/loan/calcmens.php:45–59`, `htdocs/core/lib/loan.lib.php:103–154`, `htdocs/loan/payment/payment.php:48–101,131–157,165–225,255–276,300–312,351–391` and `htdocs/loan/schedule.php:209–251,299–355`.
 
 ## Worked three-term settlement
 
@@ -76,4 +72,4 @@ The calculated terms, month-end dates, repricing after the first payment and rel
 
 **Removing a repayment.** On a successful deletion the card clears the schedule's bank marker by matching the old bank movement, removes the bank line and repayment, then recalculates the principal paid. It resets the agreement to unpaid if the remaining principal payments sum to zero. It does not reverse the earlier schedule recalculation or clear the schedule's old repayment ID in the marker update. The paid link is hidden once the bank marker is zero. Deleting a reconciled movement is refused. The ordinary bank rule also refuses deletion of a bank movement already posted to the ledger. A bank-line refusal causes the payment deletion transaction to roll back. The repayment card makes deletion unavailable for an agreement already classified paid.
 
-Source locations include `htdocs/loan/card.php:666–739,776–785`, `htdocs/loan/class/loan.class.php:443–458,482–519,698–717`, `htdocs/loan/class/paymentloan.class.php:211–247,260–313,422–475,517–601,614–625`, `htdocs/loan/payment/card.php:62–93,175–225,242–250`, `htdocs/compta/bank/class/account.class.php:2432–2469` and `htdocs/accountancy/journal/bankjournal.php:656–674`. [Loan agreement and repayment contract](loans.md) · [Bank accounts and obligations](../treasury/bank-and-obligations.md)
+[Loan agreement and repayment contract](loans.md) · [Bank accounts and obligations](../treasury/bank-and-obligations.md)

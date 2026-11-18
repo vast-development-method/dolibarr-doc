@@ -26,9 +26,3 @@ Read permission, ownership by the chosen company and the actor's access to a par
 Consider a supplier invoice created before the accountant changes the company's default account. The document and its existing lines have IDs and may already carry captured amounts or bindings. A new operation that consults the current setup can resolve a different account. To reconstruct which outcome should occur, identify at which step a value becomes a stored fact. A company default, a document header value, an invoice-line amount and a ledger entry have distinct lifetimes.
 
 For a stock example, the same sales document can lead to a warehouse issue at different stages depending on the selected stock policy. The warehouse movement is the durable quantity event. A programme rebuilding stock from commercial document totals alone cannot tell whether a shipment, order or invoice caused that issue. For accounting, the bank line and the related customer payment answer different questions. The relevant entity and policy must accompany the chosen originating record.
-
-## Evidence
-
-- Configuration loading and overrides: `htdocs/core/class/conf.class.php`, `setValues`, especially lines 555–680.
-- Configuration replacement: `htdocs/core/lib/admin.lib.php`, lines 668–760. Definition and unique key: `htdocs/install/mysql/tables/llx_const.sql` and `llx_const.key.sql`.
-- Element and extension sharing: `htdocs/core/lib/functions.lib.php`, `getEntity`. Access to the concrete record: `htdocs/core/lib/security.lib.php`, `checkUserAccessToObject`.

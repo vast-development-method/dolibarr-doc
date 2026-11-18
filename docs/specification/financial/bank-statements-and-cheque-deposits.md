@@ -16,15 +16,11 @@ A balance inquiry sums signed amounts for the account. In dated mode the calcula
 
 A May statement opens at 5,000, contains two receipts of 450 and 150 and a payment of 80. Its closing balance is 5,520. A fourth receipt of 200 already entered on the account with no statement assignment takes the overall balance to 5,720, assuming no other transactions. The 200 appears in the named closing balance once assigned to that statement, even if the operator has only saved the statement reference.
 
-Release references include `htdocs/compta/bank/class/account.class.php:1376–1401` and `htdocs/compta/bank/releve.php:177–194,393–418,485–513,700–731`.
-
 ## Assign, confirm and rename a statement
 
 The bank reconciliation permission authorizes the operator to save a reference on selected lines or to confirm them reconciled. Both operations require a nonempty statement reference and selected transaction identifiers. A configured statement naming expression applies to each update. For each line the service writes the submitted reference and flag, then optionally associates a transaction category. A duplicate category link does not undo a successful reconciliation. The list processes one line at a time and stops on a failed update. Previous successful lines retain their changes. Reopening the list reveals which lines still need attention.
 
 A statement rename requires the reconciliation permission, a current reference and a new reference. The form checks whether the proposed new reference is already in use on a bank account in the current entity. If available, it changes every matching old reference on the selected account. The scope of collision detection is consequently broader than the scope of the rename. Reassigning or renaming a statement changes the statement totals for which those transactions are counted.
-
-Release references include `htdocs/compta/bank/bankentries_list.php:252–297`, `htdocs/compta/bank/class/account.class.php:2610–2667` and `htdocs/compta/bank/releve.php:200–231`.
 
 ## Assemble a deposit slip
 
@@ -36,12 +32,8 @@ Release references include `htdocs/compta/bank/bankentries_list.php:252–297`, 
 
 For cheques of 65 and 135, the submitted form need not supply a total. The stored amounts yield two items and a deposit of 200. Removing the 65 line clears its deposit identifier only when it belongs to this deposit. Recalculation yields one item and 135. Deleting a deposit removes the entity's header and releases its transactions for selection again. Neither action reverses the underlying bank receipt. The remove operation reports success unconditionally to its caller, so reloading the membership and total is the observable confirmation when a write fails.
 
-Release references include `htdocs/compta/paiement/cheque/card.php:94–100,153–252` and `htdocs/compta/paiement/cheque/class/remisecheque.class.php:179–315,326–421,687–754`.
-
 ## Return a cheque allocated to several invoices
 
 The operator identifies the original bank transaction and enters the rejection date. The service finds the customer payment linked to the original bank line, reads its invoice allocations and attempts to reopen each linked invoice. It creates a new cheque payment with the rejection date, the original payment number and the negative of each original allocation. It posts the new negative payment to the original bank account and marks the original payment rejected. Failure to create the negative payment, register the bank movement or mark the original rejected rolls back the transaction. The individual invoice reopen return values are not checked inside this routine.
 
 Suppose a single receipt for 300 had settled invoice A for 100 and invoice B for 200. Its return creates allocations of −100 to A and −200 to B and a bank movement of −300. With no other settlement, A and B again have outstanding amounts of 100 and 200. The new payment carries a separate identifier even though the payment number matches. A previously reconciled original bank entry remains on its original statement. The compensating movement can be reconciled against the bank's later return. The deposit slip's original positive receipt still records what was submitted to the bank.
-
-Release references include `htdocs/compta/paiement/cheque/card.php:235–250` and `htdocs/compta/paiement/cheque/class/remisecheque.class.php:766–842`.

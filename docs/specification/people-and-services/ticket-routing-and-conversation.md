@@ -21,8 +21,6 @@ The staff create action can immediately acknowledge the case when configured and
 
 The explicit mark-read action writes the read state and the current timestamp. The general state-change action preserves an existing first-read timestamp when setting a nonzero state and supplies one if absent. Changing to unread through that action clears the timestamp. Assigning someone changes the routing state directly and does not itself write the read timestamp. Reports on acknowledgment time should use the dated field.
 
-Implementation evidence appears in `htdocs/ticket/class/ticket.class.php:253–260`, `htdocs/ticket/class/ticket.class.php:1736–1911` and `htdocs/ticket/card.php:154–158,327–340,372–446,575–663`.
-
 ## Internal notes and customer-visible replies
 
 A conversation entry belongs to the ticket through an activity record. The classification distinguishes an ordinary message, a private message and whether dispatch by email was requested. It retains a label, the message body, time, actor, assigned internal participant, applicable external participants, attachments and parent ticket. Public submissions may also carry a sender email to identify an author without an application user. A supplied summary can replace the subject suffix while retaining a bracketed reference.
@@ -38,8 +36,6 @@ Visibility follows the activity classification. While both public and private te
 
 A stored entry and an email delivery are distinguishable outcomes. The record is created before distribution resolves all recipients. A message shown in the staff history with no external recipient is insufficient evidence that the customer received an email. For example, staff can record a private incident diagnosis, email it internally and then publish a separate repair appointment to the customer. Only the appointment appears in the public conversation.
 
-Implementation evidence appears in `htdocs/ticket/class/ticket.class.php` (`createTicketMessage`, `loadCacheMsgsTicket`, `newMessage`, `sendTicketMessageByEmail`) and `htdocs/ticket/class/actions_ticket.class.php:281–355`.
-
 ## Public access and resolution
 
 The public ticket view requires a tracking identifier and a valid email address, supplied or recovered for the current session. Once the ticket is found, accepted participants include the originator, an associated external contact, the ticket party’s main address, the creating user and the assigned user. Matching the public participant allows the public conversation flow. It does not grant staff management authority. The public screen offers replies and closure while the request is open. It calls the same resolved-close operation for a public closure, and calls the message service with customer-visible scope for a public reply.
@@ -47,5 +43,3 @@ The public ticket view requires a tracking identifier and a valid email address,
 For staff resolution, solved and abandoned use a common close operation with different outcome values. A repeated close on an already solved or abandoned case returns a no-change result. With the intervention module and the linked-intervention closure policy active, closure loads the linked field interventions, validates drafts and attempts to close interventions below closed status, then publishes the ticket-close event. The workflow acts on linked interventions for either resolution outcome. It does not create a customer invoice or a new work order.
 
 Reopening through the management card is available for either terminal state. It restores assigned when an assignee exists and unread when none exists. The reopen handler requests this status change without recalculating a percentage or explicitly clearing the historical closure timestamp. Interpreting a ticket as currently closed must therefore use its current state. For example, an abandoned case with an owner returns to the assigned queue when reopened, even if a prior closure recorded 100% progress.
-
-Implementation evidence appears in `htdocs/public/ticket/view.php:109–200,426–455`, `htdocs/ticket/card.php:459–496,581–601` and `htdocs/ticket/class/ticket.class.php:2119–2188`.

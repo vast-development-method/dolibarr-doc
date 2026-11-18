@@ -10,8 +10,6 @@ A reusable profile stores its name, dataset and ordered position-to-field pairs.
 
 The simulation runs the row operations in a database transaction, records row/column errors and rolls back the transaction deliberately. Execution reads the input again and has its own transaction and generated batch identifier. Simulation does not reserve a business key, freeze the source tables or guarantee the result of later execution. Failure in a selected row during execution rolls back the database changes for the selection. Where a bulk event is requested, it must succeed before commit.
 
-Implementation evidence appears in `htdocs/imports/class/import.class.php` (`load_arrays`, `create`, `fetch`), `htdocs/imports/import.php:173–182,216–241,289–331,1898–1999,2347–2469` and `htdocs/core/modules/import/import_csv.modules.php`, `htdocs/core/modules/import/import_xlsx.modules.php`.
-
 ## Conversion and record identity
 
 | Input and dataset rule | Result |
@@ -35,13 +33,9 @@ Parent and child operations run in descriptor order. For a custom-field side rec
 
 For example, a contact import can distinguish two people sharing a surname by a dataset-supported composite key. If two records still satisfy every selected key, adding an extension-field cell to the input will not disambiguate them unless it participates in an allowed key. An invoice reference consisting only of digits must retain its business-reference interpretation when a receiving relation otherwise treats numbers as internal IDs.
 
-Implementation evidence appears in `htdocs/core/modules/import/modules_import.class.php` (`commonImportInsert`, especially lines 1002–1403 and 1436–1811).
-
 ## Events produced by an import
 
 The ordinary strict-row mode resolves object and operation-specific events, including different names for parent creation and line insertion. Integrations can therefore observe specific business writes. The fast bulk mode counts operations by table and insert/update action and publishes one import event with the batch identifier and totals. Unknown event-mode settings fall back to strict-row mode. Integrations depending on individual line events must distinguish these two contracts when reconciling an import.
-
-Implementation evidence appears in `htdocs/core/modules/import/modules_import.class.php` (`getImportTriggerMode`, `registerImportBulkEvent`, `runImportBulkTrigger`, `getImportTriggerActions`, `triggerImportSqlOperation`).
 
 ## Export fields, filters and resulting values
 
@@ -58,5 +52,3 @@ An export uses its own dataset definition with authorized joins, selected column
 Ordinary filters apply before aggregation. Filters over concatenated aggregate values apply after grouping. Exporting a header joined to multiple details can produce multiple rows per business document, according to the dataset’s declared joins and grouping. Counting a flat export as if every row were one invoice can overstate the number of invoices.
 
 Selected fields can request a descriptor-defined transformation. Examples include turning a negative sentinel into blank or zero, calculating leave days from the worker’s country and half-day code, and querying the current outstanding amount on an invoice. A projected amount can differ from a stored invoice face value. The generic writer reports an unsupported-field error for arbitrary computed extensions. A saved field order is a projection of the records at the time of generation.
-
-Implementation evidence appears in `htdocs/exports/export.php:181–353` and `htdocs/exports/class/export.class.php` (`load_arrays`, `build_sql`, `buildFilterQuery`, `conditionDate`, `build_file`).

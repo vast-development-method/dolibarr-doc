@@ -2,8 +2,6 @@
 
 Project lookup supports local, internal, external and message references. Time summaries, roles and assignment links refer to the project or its tasks. Linking a participant and updating a project header are different writes.
 
-The implementation locations below refer to `htdocs/projet/class/api_projects.class.php`.
-
 ## `get` — Read a project
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project with supplied id missing.
-
-Source lines `78–95`.
 
 ## `getByRef` — Read by business reference
 
@@ -34,8 +30,6 @@ The method loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project with supplied ref missing.
 
-Source lines `110–127`.
-
 ## `getByRefExt` — Read by external reference
 
 Route `GET ref_ext/{ref_ext}`.
@@ -50,8 +44,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project with supplied ref_ext missing.
-
-Source lines `142–159`.
 
 ## `getByMsgId` — Read by msg id
 
@@ -68,8 +60,6 @@ The method loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project with supplied email_msgid missing.
 
-Source lines `174–191`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
@@ -83,8 +73,6 @@ The lookup uses the visible entity scope for `project`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `212–316`.
 
 ## `post` — Create a project
 
@@ -102,11 +90,9 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `327–400` with `_validate 1065–1075`.
-
 ## `addContact` — Add contact
 
-This source declaration shares its route with `addToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
+This operation shares its route with `addToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
 
 Route `POST {id}/contacts`.
 
@@ -122,11 +108,9 @@ The method attaches a participant role.
 - `404` — project missing.
 - `500` — business operation failed.
 
-Source lines `421–442`.
-
 ## `deleteContact` — Remove a contact role
 
-This source declaration shares its route with `deleteToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
+This operation shares its route with `deleteToContact`. The final route table dispatches requests to the latter handler. [Route selection](route-selection.md)
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
 
@@ -141,8 +125,6 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
 - `500` — removal failed.
-
-Source lines `459–487`.
 
 ## `getLines` — Read document lines
 
@@ -159,8 +141,6 @@ The method totals recorded time and reads task time entries.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
 
-Source lines `501–527`.
-
 ## `getRoles` — Read roles
 
 Route `GET {id}/roles`.
@@ -176,8 +156,6 @@ The method loads role assignments.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
 
-Source lines `542–571`.
-
 ## `put` — Update a project
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -192,8 +170,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — project missing, project with supplied id missing.
 - `500` — business operation failed.
 
-Source lines `721–759` with `get 78–95`.
-
 ## `delete` — Delete a project
 
 **Arguments** `id` (integer).
@@ -205,8 +181,6 @@ Source lines `721–759` with `get 78–95`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
 - `500` — removal failed.
-
-Source lines `771–795`.
 
 ## `validate` — Validate a project
 
@@ -225,8 +199,6 @@ The method validates the record.
 - `404` — project missing.
 - `500` — business operation failed.
 
-Source lines `820–848`.
-
 ## `listTimespent` — List timespent
 
 Route `GET /alltimespent`.
@@ -243,8 +215,6 @@ The lookup uses the visible entity scope for `project`. A caller linked to a par
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `868–1001`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -259,8 +229,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
-
-Source lines `1094–1115`.
 
 ## `addToContact` — Add to contact
 
@@ -278,8 +246,6 @@ The method attaches a participant role.
 - `404` — project missing.
 - `500` — business operation failed.
 
-Source lines `1137–1181`.
-
 ## `deleteToContact` — Delete to contact
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
@@ -296,8 +262,6 @@ The method loads contacts by role and removes a participant role.
 - `404` — project missing.
 - `500` — removal failed.
 
-Source lines `1197–1227`.
-
 ## `getTimespent` — Read timespent
 
 Route `GET {id}/timespent`.
@@ -312,5 +276,3 @@ The method totals recorded time.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — project missing.
-
-Source lines `1240–1268`.

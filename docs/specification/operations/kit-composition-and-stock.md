@@ -12,7 +12,7 @@ For a requested number of kits, component availability traverses the composition
 
 Suppose a kit needs two brackets and one lamp. Warehouse A has brackets and no lamps. Warehouse B has lamps and no brackets. The whole-product availability comparison can find all required parts across the two locations. It does not establish that a single warehouse can ship a complete kit. A picking document that promises a kit from A must account for A's physical lamps or an incoming transfer. When two sub-kits both use the same bolt, the actual recursive movement can consume that bolt through both branches even when the availability lookup counted the first branch only.
 
-The association table and unique key are in `htdocs/install/mysql/tables/llx_product_association.sql` and `htdocs/install/mysql/tables/llx_product_association.key.sql`. Association editing is in `htdocs/product/composition/card.php` and `htdocs/product/class/product.class.php`. The availability operation is `loadStockForVirtualProduct` in the product class.
+Related records include [Kit component](../../records/catalogue.md#record-product_association).
 
 ## Posting a kit movement
 
@@ -21,5 +21,3 @@ With component handling enabled, the normal parent-kit path leaves the parent st
 For a dispatch of three kits containing two lamps and four brackets each, the child journal records −6 lamps and −12 brackets in the shipping warehouse. If each lamp kit also contains two batteries on stock-linked associations, it also records −12 batteries. A parent receipt changes all those signs. An informational instruction service attached to the parent generates no movement through its disabled association. The actual journal lines and balances are the quantities that changed.
 
 The child handling uses ordinary movement creation recursively. It propagates child errors to the parent transaction. With negative stock prohibited, insufficient stock in the chosen warehouse can fail the parent even when the kit availability view indicated enough company-wide stock. The recursive call carries no lot or serial selection for the child. Where a child requires an individual lot allocation, this movement path cannot supply it automatically and can fail its ordinary batch requirement. The operator needs an actual allocation-capable workflow to record independently tracked pieces.
-
-The parent-stock decision, recursive posting and error propagation are in `htdocs/product/stock/class/mouvementstock.class.php` under `_create` and `_createSubProduct`. The assembly of nested quantities is in `htdocs/product/class/product.class.php`.

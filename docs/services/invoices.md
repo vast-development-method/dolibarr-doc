@@ -2,8 +2,6 @@
 
 Invoice retrieval calculates the remaining balance after payments, credit notes and deposits. The service separately exposes conversion from orders or contracts, fixed discounts, credit-note application, single-invoice receipts, distributed receipts and recurring templates.
 
-The implementation locations below refer to `htdocs/compta/facture/class/api_invoices.class.php`.
-
 ## `get` — Read a customer invoice
 
 **Arguments** `id` (integer), `contact_list = 1` (integer), `properties = ''` (text), `withLines = true` (boolean).
@@ -17,8 +15,6 @@ The properties selector projects the returned fields. The returned balance deduc
 - `400` — no invoice can be found with no criteria.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
-
-Source lines `82–91` with `_fetch 146–191`.
 
 ## `getByRef` — Read by business reference
 
@@ -34,8 +30,6 @@ Route `GET ref/{ref}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 
-Source lines `108–111` with `_fetch 146–191`.
-
 ## `getByRefExt` — Read by external reference
 
 Route `GET ref_ext/{ref_ext}`.
@@ -50,8 +44,6 @@ Route `GET ref_ext/{ref_ext}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 
-Source lines `128–131` with `_fetch 146–191`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `status = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer), `withLines = true` (boolean).
@@ -65,8 +57,6 @@ The lookup uses the visible entity scope for `invoice`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `218–349`.
 
 ## `post` — Create a customer invoice
 
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — party missing.
 - `500` — business operation failed.
 
-Source lines `361–417` with `_validate 2106–2119`.
-
 ## `createInvoiceFromOrder` — Create invoice from order
 
 Route `POST /createfromorder/{orderid}`.
@@ -105,8 +93,6 @@ The method creates the document from the order and loads related business record
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `405` — order is not eligible for invoicing: its status does not allow creating an invoice, operation unavailable.
-
-Source lines `435–470`.
 
 ## `createInvoiceFromContract` — Create invoice from contract
 
@@ -125,8 +111,6 @@ The method creates an invoice from contract lines and loads related business rec
 - `404` — contract missing.
 - `405` — operation unavailable.
 
-Source lines `487–516`.
-
 ## `getLines` — Read document lines
 
 Route `GET {id}/lines`.
@@ -139,8 +123,6 @@ Route `GET {id}/lines`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
-
-Source lines `530–550`.
 
 ## `putLine` — Amend a line
 
@@ -160,8 +142,6 @@ The method amends a line.
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this invoice.
 - `404` — invoice missing, invoice line missing.
 
-Source lines `570–636`.
-
 ## `postContact` — Attach a contact role
 
 Route `POST {id}/contact/{contactid}/{type}`.
@@ -180,8 +160,6 @@ The method attaches a participant role.
 - `500` — business operation failed.
 - `503` — query or persistence failure.
 
-Source lines `657–763`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -196,8 +174,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
-
-Source lines `780–801`.
 
 ## `deleteContact` — Remove a contact role
 
@@ -214,8 +190,6 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 - `500` — removal failed.
-
-Source lines `819–848`.
 
 ## `deleteLine` — Remove a line
 
@@ -234,8 +208,6 @@ The method removes a line. Only an invoice in draft state accepts line deletion 
 - `404` — invoice missing.
 - `405` — operation unavailable.
 
-Source lines `866–893` with `get 82–91`, `_fetch 146–191`.
-
 ## `put` — Update a customer invoice
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -251,8 +223,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — invoice missing.
 - `500` — business operation failed.
 
-Source lines `906–959` with `get 82–91`, `_fetch 146–191`.
-
 ## `delete` — Delete a customer invoice
 
 **Arguments** `id` (integer).
@@ -265,8 +235,6 @@ Source lines `906–959` with `get 82–91`, `_fetch 146–191`.
 - `403` — missing operation rights, record outside the caller’s scope, access or input restriction.
 - `404` — invoice missing.
 - `500` — removal failed.
-
-Source lines `971–1001`.
 
 ## `postLine` — Add a line
 
@@ -286,8 +254,6 @@ The method adds a line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 
-Source lines `1030–1097`.
-
 ## `addContact` — Add contact
 
 Route `POST {id}/contacts`.
@@ -303,8 +269,6 @@ The method attaches a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 - `500` — business operation failed.
-
-Source lines `1119–1149`.
 
 ## `settodraft` — Return to draft
 
@@ -323,8 +287,6 @@ The method restores draft state.
 - `404` — invoice missing.
 - `500` — business operation failed.
 
-Source lines `1169–1197`.
-
 ## `validate` — Validate a customer invoice
 
 Route `POST {id}/validate`.
@@ -341,8 +303,6 @@ The method validates the record.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 - `500` — business operation failed.
-
-Source lines `1219–1256`.
 
 ## `settopaid` — Mark paid
 
@@ -361,8 +321,6 @@ The method records paid status.
 - `404` — invoice missing.
 - `500` — business operation failed.
 
-Source lines `1275–1309`.
-
 ## `settounpaid` — Return to unpaid
 
 Route `POST {id}/settounpaid`.
@@ -380,8 +338,6 @@ The method restores unpaid status.
 - `404` — invoice missing.
 - `500` — business operation failed.
 
-Source lines `1327–1361`.
-
 ## `getDiscount` — Read discount
 
 Route `GET {id}/discount`.
@@ -395,8 +351,6 @@ Route `GET {id}/discount`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing, discount missing.
 - `500` — business operation failed.
-
-Source lines `1373–1401`.
 
 ## `markAsCreditAvailable` — Mark as credit available
 
@@ -413,8 +367,6 @@ The lookup uses the visible entity scope for `invoice`. The method records paid 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 - `500` — business operation failed, could not set paid.
-
-Source lines `1418–1596`.
 
 ## `useDiscount` — Use discount
 
@@ -433,8 +385,6 @@ The method records a discount.
 - `404` — invoice missing.
 - `405` — operation unavailable.
 
-Source lines `1616–1643`.
-
 ## `useCreditNote` — Use credit note
 
 Route `POST {id}/usecreditnote/{discountid}`.
@@ -451,8 +401,6 @@ The method links the credit to the invoice.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — credit missing.
 - `405` — operation unavailable.
-
-Source lines `1663–1692`.
 
 ## `getPayments` — Read payments
 
@@ -471,8 +419,6 @@ The method reads linked payment allocations.
 - `404` — invoice missing.
 - `405` — operation unavailable.
 
-Source lines `1711–1735`.
-
 ## `addPayment` — Add payment
 
 Route `POST {id}/payments`.
@@ -489,8 +435,6 @@ The method reads allocated payments, reads applied credits, reads applied deposi
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice missing.
 
-Source lines `1761–1856`.
-
 ## `addPaymentDistributed` — Add payment distributed
 
 Route `POST /paymentsdistributed`.
@@ -506,8 +450,6 @@ The method reads allocated payments, reads applied credits, reads applied deposi
 - `400` — invoice id required, account id required, payment id or payment code required, invalid request data, amount exceeds the open balance, emetteur required.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — invoice id missing.
-
-Source lines `1888–2011`.
 
 ## `putPayment` — Put payment
 
@@ -526,8 +468,6 @@ The method changes the payment number.
 - `404` — payment missing.
 - `500` — business operation failed.
 
-Source lines `2031–2070`.
-
 ## `getTemplateInvoice` — Read template invoice
 
 Route `GET templates/{id}`.
@@ -540,8 +480,6 @@ Route `GET templates/{id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — template invoice missing.
-
-Source lines `2137–2140` with `_fetchTemplateInvoice 2297–2322`.
 
 ## `indexTemplateInvoices` — Index template invoices
 
@@ -558,5 +496,3 @@ The lookup uses the visible entity scope for `invoice`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `2170–2282`.

@@ -74,4 +74,4 @@ Before an entry whose source reference differs from the preceding reference, the
 
 A multiline address is split at line feeds. The writer removes tabs and carriage returns from each segment, keeps up to 40 characters per segment and exports the first three segment positions. An absent segment yields no address content in its slot. For a single-line address, tabs and carriage returns become spaces. The byte substrings start at offsets 0, 41 and 82, taking 40 bytes apiece. Input bytes at offsets 40 and 81 are therefore skipped rather than becoming the first byte of the next field. This branch can split a multibyte character.
 
-Source paths are `htdocs/accountancy/class/accountancyexport.class.php:2116–2241,2256–2524`, `htdocs/accountancy/class/bookkeeping.class.php:1291–1336`, `htdocs/core/lib/functions.lib.php:7701–7785` and `htdocs/core/lib/accounting.lib.php:152–218`. [Ledger export register](ledger-layouts.md)
+[Ledger export register](ledger-layouts.md)

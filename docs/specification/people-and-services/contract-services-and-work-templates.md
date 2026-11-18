@@ -19,15 +19,11 @@ Bulk activation fetches the lines, skips any already open, uses a common actual 
 
 An agreement has an open telephone-assistance line ending 30 September and an open on-site line ending 31 December. After 30 September, the first line counts as expired until staff close it. At that point the remaining dated open service has the December deadline. A third open service with no planned end counts as current and supplies no candidate date for the minimum.
 
-Implementation evidence appears in `htdocs/contrat/card.php:127–138`, `htdocs/contrat/class/contrat.class.php` (`activateAll`, `closeAll`, `reopen`, `fetch_lines`) and `htdocs/contrat/class/contratligne.class.php:909–1032`.
-
 ## Time and value on the work record
 
 An intervention starts in draft and accepts detail lines in that state. A detail has a description, actual activity date, duration in seconds, a line type and position. The line operation accepts extension values if supplied. Updating the work total sums durations of lines whose type is other than 9 and writes the earliest and latest activity dates on the header. With no qualifying entries, the total is zero and both dates are empty. The latest activity date is the maximum dated line. Adding its duration to determine a finish timestamp would change the meaning of this field.
 
 The line reader exposes hours as duration divided by 3,600, rounded to two decimal places. The monetary estimate operation independently fetches the header creator’s hourly rate, multiplies the hours of each loaded line by that rate and normalizes the monetary total after summing. It has no per-technician rate lookup at this stage. Two 45-minute entries and one 30-minute entry at 60 currency units per hour produce 120. The rate-based estimate does not generate or settle an invoice.
-
-Implementation evidence appears in `htdocs/fichinter/class/fichinter.class.php` (`getAmount`, `addline`, `fetch_lines`) and `htdocs/fichinter/class/fichinterligne.class.php:330–367`.
 
 ## Saving a visit as a reusable template
 
@@ -37,8 +33,6 @@ The create operation reads the original intervention and copies its duration, no
 
 Template details are copied in order with descriptions, dates, seconds, positions and applicable commercial inputs. At template-line insertion, quantity defaults to one when empty and participates in the line price calculation. The stored row includes catalog reference, line type, discount, unit price, net amount, tax, gross amount and unit. Creating the template rolls back if a source line cannot be inserted. A template can therefore retain more commercial information than the subsequent manual work ticket uses.
 
-Implementation evidence appears in `htdocs/fichinter/card-rec.php:122–201` and `htdocs/fichinter/class/fichinterrec.class.php` (`create`, `addLineRec`).
-
 ## Generating a visit from the template
 
 1. Resolve the template and fetch its detail. When it owns a customer, reuse that customer and the template’s project and contract. A template without a customer uses the customer chosen for the new visit.
@@ -47,5 +41,3 @@ Implementation evidence appears in `htdocs/fichinter/card-rec.php:122–201` and
 4. Increment the template’s completed generation count and set its last-generation timestamp. If the maximum is at or below the resulting count the template status is set to 1. Manually changing the next scheduled date is a separate operation. The manual generation handler neither advances that date nor calls intervention validation, irrespective of an auto-validation field in the model.
 
 The manual action checks header creation but does not inspect each line insertion result or the counter update before redirecting to the new visit. A saved header or incremented count alone is insufficient evidence that every suggested line was reproduced. Deleting the template removes the template’s own details and header, while generated visits have their own identities.
-
-Implementation evidence appears in `htdocs/fichinter/card-rec.php:202–268` and `htdocs/fichinter/class/fichinterrec.class.php` (`delete`, `setFrequencyAndUnit`, `setNextDate`, `setMaxPeriod`, `updateNbGenDone`).

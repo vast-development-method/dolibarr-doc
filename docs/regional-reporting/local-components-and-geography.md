@@ -16,8 +16,6 @@ The local-component party view requires a component selector and access to the t
 
 The report uses the displayed counterparty's domestic or intra-community identification data as a label. The amount grouping is by party identity. Parties with the same tax identification value can still have separate rows. Each visible row must have a nonzero signed total for the chosen component. A positive turnover minimum compares strictly against the original net amount across included lines. A zero-net result after sales and credits fails a positive minimum even if tax remains after rounding or differently taxed lines.
 
-Source locations are `htdocs/core/menus/standard/eldy.lib.php:1703–1735`, `htdocs/societe/class/societe.class.php:5129–5173` and `htdocs/compta/localtax/clients.php:70–99,125–182,191–251,262–329`.
-
 ## Partial payment and withholding
 
 Take a sale of services with net 100, ordinary VAT 20 and a signed local withholding of −15. The payable gross is 105. The customer pays 52.50 in March and 52.50 in April. Assume payment-based sales services, ordinary proportional presentation, and a local mode that shows sales. The party summary uses the tax reader's original line totals. Because a relevant allocation exists in each month, selecting March shows net 100 and local −15 on the party's row. Selecting April separately produces the same original amounts. A selection covering both payments normally contributes the original line once in this aggregation. Adding two separately run party reports would double-count the withholding.
@@ -25,8 +23,6 @@ Take a sale of services with net 100, ordinary VAT 20 and a signed local withhol
 The monthly sales calculation instead uses the payment-to-gross fraction against the stored local component. Each monthly payment yields 52.50 / 105 × (−15) = −7.50. Main VAT and the regional withholding retain independent signs. The local report can display a negative sales-side amount even though the receipt of 52.50 is positive. On the monthly purchase side the source query selects by the purchase timings while the display's apportionment branch reads sales timings. When the two differ, the purchase figure needs reconciliation to the dated supplier allocations, as described for the [monthly VAT comparison](period-and-authority-reconciliation.md).
 
 With a turnover minimum of 100 this party's original net of exactly 100 is excluded. Set the minimum to 99 and it is admitted. Withholding is still excluded from this party report for a party whose selected component sums to precisely zero, even if its net turnover is large. The detail-by-rate view can be used to inspect individual lines on opposite sides of zero.
-
-Sources are `htdocs/core/lib/tax.lib.php:195–219,327–365,528–565`, `htdocs/compta/localtax/clients.php:194–246,261–306`, `htdocs/compta/localtax/index.php:459–546` and `htdocs/compta/localtax/quadri_detail.php:342–375,510–540,575–606`.
 
 ## What country and rate mean in a turnover report
 
@@ -38,4 +34,4 @@ Suppose a party has two issued sales lines, each net 100 at 20%, one carrying so
 
 The chart's axes measure different things. A zero-rate sale contributes its net base to the geographic report. A “hide zero VAT” option in the shared tax readers can remove its row from VAT enquiries. Local withholding does not create a second turnover row. Freight destination, document currency conversion and regulatory filing codes are absent from the country grouping.
 
-Sources are `htdocs/compta/stats/byratecountry.php:52–143,251–305,310–343,351–389,408–435,480–487` and `htdocs/core/lib/tax.lib.php:825–846,905–916,1102–1111`. See [regional rate selection](../localization/tax-selection.md) for how the invoice received its rates.
+See [regional rate selection](../localization/tax-selection.md) for how the invoice received its rates.

@@ -17,8 +17,6 @@ The new claim form calculates a suggested approver from the signed-in user's ind
 
 The service list applies its own filters. In particular, its restricted selection uses eligible employee IDs. The interactive list adds the designated reviewer's pending work through a separate condition. A claim queue built by an integration should specify which view it represents.
 
-Sources are `htdocs/expensereport/list.php:193–198,350–365,496–505`, `htdocs/expensereport/card.php:129–180,1566–1585`, `htdocs/expensereport/note.php:59–72`, `htdocs/expensereport/document.php:91–115`, `htdocs/expensereport/class/expensereport.class.php:2472–2505` and `htdocs/expensereport/class/api_expensereports.class.php:149–181`.
-
 ## State changes and evidence
 
 | Interactive operation | Required starting state | Durable changes and role |
@@ -35,12 +33,12 @@ Use the claim list to regenerate or merge documents, send documents and, with de
 
 Submission mail goes to the expected reviewer. For approval, the card reads the claimant's email, copies the configured expense copy addresses and uses those addresses as the primary destination if the claimant has no email. For refusal, the card reads the claimant's address and composes the refusal message. The displayed sender identity and the company's outbound mail address are separately selected. A mail error can appear alongside a durably changed claim. Regeneration of a document and delivery of an email are observable outputs of the interactive workflow. The explicit approval service calls the business approval and returns a cleaned claim, without invoking the card's mail composition. Event subscribers can still act.
 
-Sources are `htdocs/expensereport/card.php:232–256,434–552,556–670,670–899,900–912,1021–1058`, `htdocs/expensereport/class/expensereport.class.php:823–862,1359–1468,1482–1516,1523–1627` and `htdocs/expensereport/class/api_expensereports.class.php:737–811,829–850`.
-
 ## A partial reimbursement and an unavailable claimant mailbox
 
 An employee submits a claim for 345.00. The manager listed on the claim is unavailable. An internal supervisor with approval rights and record visibility approves the claim. The expected reviewer remains the original manager. The approving user and timestamp identify the supervisor who acted. If the claimant has no email and an expense copy mailbox exists, the approval notice can go to that mailbox. No cash moves on approval.
 
 The cashier posts 200.00 against the approved claim. The payment operation totals proposed amounts at monetary precision, computes `345.00 − prior payments` and rejects a total above that remainder. With banking enabled it requires the destination account identifier in the request and writes the claim payment and corresponding bank movement in one outer transaction. A failed bank write rolls the payment back. After success the claim still has 145.00 outstanding. A further payment of 150.00 exceeds the allowed balance. A payment of 145.00 brings the recalculated remainder to zero and closes the report as paid in the same transaction. A direct status-only classification has a different record trail, so reconciliation should use the claim payment and bank evidence for the two disbursements.
 
-Source for payment admission, transaction and closure is `htdocs/expensereport/class/api_expensereports.class.php:1013–1086`. The [expense rules](../specification/people-and-services/expense-scales-and-ceilings.md) explain how the claim got its original gross total.
+The [expense rules](../specification/people-and-services/expense-scales-and-ceilings.md) explain how the claim got its original gross total.
+
+For the accounting effect of approval, follow a [two-line expense claim from assignment to journal transfer](../expense-accounting/worked-reconciliation.md). The [employee payment registers](../expense-accounting/employee-payment-registers.md) show which reimbursements and salary payments an operator can retrieve.

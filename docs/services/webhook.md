@@ -2,8 +2,6 @@
 
 The target definition describes an outbound integration. Its operations edit the target or list available triggers. Delivering an event to a configured target occurs in the event dispatch path.
 
-The implementation locations below refer to `htdocs/webhook/class/api_webhook.class.php`.
-
 ## `get` — Read an event target
 
 **Arguments** `id` (integer).
@@ -14,8 +12,6 @@ The implementation locations below refer to `htdocs/webhook/class/api_webhook.cl
 
 - `403` — access refused.
 - `404` — target missing.
-
-Source lines `66–69` with `_fetch 414–431`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The properties selector projects the returned fields.
 - `404` — no matching rows.
 - `503` — query or persistence failure.
 
-Source lines `87–158`.
-
 ## `post` — Create an event target
 
 **Arguments** `request_data = null` (collection).
@@ -48,8 +42,6 @@ The request-field validator requires `url`, `trigger_codes`.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `168–194` with `_validate 308–321`.
-
 ## `put` — Update an event target
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -61,8 +53,6 @@ Source lines `168–194` with `_validate 308–321`.
 - `403` — access refused.
 - `404` — target missing.
 - `500` — business operation failed.
-
-Source lines `209–232` with `get 66–69`, `_fetch 414–431`.
 
 ## `delete` — Delete an event target
 
@@ -76,8 +66,6 @@ Source lines `209–232` with `get 66–69`, `_fetch 414–431`.
 - `404` — target missing.
 - `500` — removal failed.
 
-Source lines `242–264`.
-
 ## `listOfTriggers` — List of triggers
 
 Route `GET triggers`.
@@ -88,5 +76,3 @@ Route `GET triggers`.
 
 - `403` — access refused.
 - `500` — event list unavailable.
-
-Source lines `275–298`.

@@ -8,8 +8,6 @@ A control carries the issuing entity, register application, terminal number, yea
 
 The card rejects external users. An internal operator needs a register execution right to view it, and the active register's execution right to start or close through this card. Starting requires the register application, terminal and a year. The opening amount must be supplied before the control can be created. Zero is a meaningful opening amount. The card uses the terminal's configured cash account to suggest it from the sum of bank operations dated before the period start. The operator can enter the actual float instead. Cheque and card have no opening float in this calculation.
 
-Source locations: `htdocs/compta/cashcontrol/cashcontrol_card.php:103–200,218–277,529–571`, `htdocs/compta/cashcontrol/report.php:116–130`, `htdocs/compta/cashcontrol/class/cashcontrol.class.php:68–99,259–339`.
-
 ## Calculated and declared amounts
 
 | Quantity | Calculation and meaning |
@@ -23,15 +21,11 @@ Source locations: `htdocs/compta/cashcontrol/cashcontrol_card.php:103–200,218�
 
 The ordinary query selects by payment date and sums the allocation attached to each invoice. The audit-log calculation used in the designated French configuration takes the event creation date and event amount from the immutable customer-payment log. An accountant comparing the two bases needs both the date of payment and the date its posting event was recorded. A sale invoice dated Monday can contribute to Wednesday's control when its payment falls on Wednesday.
 
-Source locations: `htdocs/compta/cashcontrol/cashcontrol_card.php:304–420,566–624,970–1011`, `htdocs/compta/cashcontrol/report.php:127–158,263–316`, `htdocs/takepos/invoice.php:422–449`.
-
 ## Closing, reopening and trading
 
 Closing saves three calculated earnings, three declarations and the lifetime amounts, then sets the control to closed, records the validator and validation date, and emits the register-close event. The card wraps the update and closure in the same database transaction and rolls back when either operation reports failure. The control uses status 0 for draft and 1 for closed. The close routine treats an already closed record as already processed. The ordinary card offers reopening to a register operator where the audit configuration permits the button. Reopening returns the control to draft. A discrepancy displayed at close does not create a correcting bank entry.
 
 Before the normal checkout handler accepts another transaction, it searches for a closed control for the current entity and terminal. It matches the current year and either the full year, the current month, or the specific current day. Finding a covering control blocks the action. Closing a month can therefore have a wider effect than closing a shift. Two terminals can trade in the same entity while one is closed. The persisted closing time on an individual count does not turn this checkout guard into an hourly guard.
-
-Source locations: `htdocs/compta/cashcontrol/cashcontrol_card.php:218–226,299–430,1017–1048`, `htdocs/compta/cashcontrol/class/cashcontrol.class.php:233–235,419–476`, `htdocs/takepos/invoice.php:279–309`.
 
 ## Worked drawer close
 

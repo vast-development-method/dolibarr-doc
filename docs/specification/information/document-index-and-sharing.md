@@ -17,7 +17,7 @@ Creating an index row requires a filename and directory, normalizes the path and
 
 The folder’s cached file count can be incremented, decremented or refreshed. It is a summary for browsing. An index lookup can work from location, content, share value or business owner depending on the operation. A current attachment list for a specific invoice should identify that invoice as source, instead of treating all files with its printable reference in their names as belonging to it.
 
-Implementation evidence appears in `htdocs/install/mysql/tables/llx_ecm_files.sql`, `htdocs/install/mysql/tables/llx_ecm_files.key.sql`, `htdocs/ecm/class/ecmfiles.class.php` (`create`, `fetch`) and `htdocs/ecm/class/ecmdirectory.class.php` (`create`, `getRelativePath`, `changeNbOfFiles`, `refreshcachenboffile`).
+Related records include [Indexed document](../../records/content.md#record-ecm_files).
 
 ## Rename, publish and revoke
 
@@ -29,8 +29,6 @@ A public link resolves the share value to the file and its stored location. It c
 
 A service manager can therefore share a generated intervention PDF with a customer and later revoke access while retaining the work record. An online acknowledgment is a different action. The intervention signing operation records the receiver’s signature state on that intervention and emits its modification event. Looking up a shared PDF or toggling the share value does not execute that approval transition.
 
-Implementation evidence appears in `htdocs/ecm/file_card.php:119–121,144–245,380–404`, `htdocs/document.php:193–255,301–351` and `htdocs/core/ajax/onlineSign.php` (intervention receiver-signature action).
-
 ## Removing material
 
 Deleting a file index object invokes its deletion event, removes extension values and deletes the index row. The index object’s operation contains no physical unlink. Physical removal is the responsibility of the file or directory operation which owns that action. An index-only removal and destruction of the underlying bytes are therefore distinguishable events.
@@ -38,5 +36,3 @@ Deleting a file index object invokes its deletion event, removes extension value
 Folder deletion has separate database-only and physical modes. A physical non-recursive delete attempts to remove the directory itself and can fail when it contains files. Recursive removal first processes child folder records, then attempts recursive physical removal of the root folder and its contents. A database-only action skips physical removal. Reported directory or event errors can roll the database changes back. The filesystem and the relational store are distinct resources, and physical deletion has no general database rollback mechanism.
 
 The administrator’s purge tool can target temporary material, old temporary material, logs or document files. Age-based choices compare the stored file modification time with the configured age in seconds. The full-document option requires explicit confirmation. A purge of old files is a physical storage operation. Customer inactivity, membership expiry and the business rules for removing personal attributes are evaluated by the separate [retention policy](retention-and-personal-data.md).
-
-Implementation evidence appears in `htdocs/ecm/class/ecmfiles.class.php:846–901`, `htdocs/ecm/class/ecmdirectory.class.php:415–496`, `htdocs/admin/tools/purge.php:58–82,126–152` and `htdocs/core/class/utils.class.php` (`purgeFiles`).

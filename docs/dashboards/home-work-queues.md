@@ -19,8 +19,6 @@ A queue reports one count per qualifying business object or line. Its domain pro
 
 Commercial providers commonly restrict an external viewer to their party and restrict internal sales staff to assigned parties. The exact entity set and date source are provider-specific. For example, the supplier-order workboard queries the current entity, while the supplier-order shortlist uses the supplier-order sharing selector.
 
-Sources include `htdocs/index.php:246–316`, `htdocs/comm/propal/class/propal.class.php:3560–3657`, `htdocs/supplier_proposal/class/supplier_proposal.class.php:2340–2409`, `htdocs/commande/class/commande.class.php:3686–3780, 4329–4340`, `htdocs/fourn/class/fournisseur.commande.class.php:3504–3570, 3724–3746`, `htdocs/compta/facture/class/facture.class.php:5501–5556`, `htdocs/fourn/class/fournisseur.facture.class.php:2805–2858`, `htdocs/contrat/class/contrat.class.php:2310–2402` and `htdocs/ticket/class/ticket.class.php:3393–3452`.
-
 ## Internal operations, staff and treasury
 
 | Queue | Admission and measurement |
@@ -36,8 +34,6 @@ Sources include `htdocs/index.php:246–316`, `htdocs/comm/propal/class/propal.c
 | Leave approval | Approval permission, internal viewer. Pending validated requests use status 2. Restricted readers receive their applicable hierarchy or approver scope. Lateness compares leave start with the approval warning boundary. |
 | Production orders | The homepage dispatches when production and its section are enabled. The provider excludes external viewers. Validated or in-progress orders count. A planned end earlier than the production warning boundary makes an order late. |
 
-Sources include `htdocs/index.php:224–244, 319–380`, `htdocs/comm/action/class/actioncomm.class.php:1505–1586`, `htdocs/projet/class/project.class.php:2285–2354`, `htdocs/projet/class/task.class.php:2659–2727`, `htdocs/compta/bank/class/account.class.php:1410–1456`, `htdocs/compta/paiement/cheque/class/remisecheque.class.php:516–560`, `htdocs/compta/prelevement/class/bonprelevement.class.php:3062–3128`, `htdocs/adherents/class/adherent.class.php:2852–2924`, `htdocs/expensereport/class/expensereport.class.php:2608–2671`, `htdocs/holiday/class/holiday.class.php:2595–2641` and `htdocs/mrp/class/mo.class.php:2171–2215`.
-
 ## Calculating the headline
 
 The workboard groups rows into agenda, projects, sales offers, orders, invoices, supplier quotes, purchase orders, supplier bills, contracts, tickets, bank, members, expense reports, leave and manufacturing. A work queue can have a full-list destination and a separate list filtered to late items. Hiding the global workboard or disabling an individual domain block changes which rows are evaluated. Widget shortlist limits have no bearing on this calculation.
@@ -46,4 +42,4 @@ For the headline, include a row only when its total and late counts are numeric 
 
 **Acceptance example.** Sales orders report 10 to ship, 3 late. Invoices report 4 unpaid, 1 late. Tickets report 100 open, 0 late. The headline reports 4 late and a percentage of 28.57%, calculated as 4 ÷ 14. The 100 tickets still appear in their own queue. If the same order qualifies for shipping and billing, reading either queue still returns the qualifying order. Summing across queues cannot produce a distinct-document count.
 
-The normalized [workboard row schema](../../schemas/reporting/workboard-row.schema.json) and [invoice example](../../examples/reporting/workboard-row.json) describe an individual response. Use the per-domain count unit and monetary basis when interpreting it. No currency or exchange rate is supplied by the native response. Sources include `htdocs/core/class/workboardresponse.class.php:26–92` and `htdocs/index.php:395–539, 925–965`.
+The normalized [workboard row schema](../../schemas/reporting/workboard-row.schema.json) and [invoice example](../../examples/reporting/workboard-row.json) describe an individual response. Use the per-domain count unit and monetary basis when interpreting it. No currency or exchange rate is supplied by the native response.

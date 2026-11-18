@@ -2,8 +2,6 @@
 
 Time entries belong to tasks and have their own identifiers. Editing a task, assigning contacts and amending a single recorded labor interval are separate operations.
 
-The implementation locations below refer to `htdocs/projet/class/api_tasks.class.php`.
-
 ## `get` — Read a task
 
 **Arguments** `id` (integer), `includetimespent = 0` (integer).
@@ -16,8 +14,6 @@ The method totals recorded time and reads task time entries.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
-
-Source lines `76–99`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `project`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `121–215`.
 
 ## `post` — Create a task
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `227–300` with `_validate 1021–1034`.
-
 ## `getTimespent` — Read timespent
 
 Route `GET {id}/timespent`.
@@ -67,8 +59,6 @@ The method reads task time entries.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
-
-Source lines `312–335`.
 
 ## `getRoles` — Read roles
 
@@ -85,8 +75,6 @@ The method loads role assignments.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
 
-Source lines `350–379`.
-
 ## `put` — Update a task
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -101,8 +89,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — task missing.
 - `500` — business operation failed.
 
-Source lines `527–565` with `get 76–99`.
-
 ## `delete` — Delete a task
 
 **Arguments** `id` (integer).
@@ -114,8 +100,6 @@ Source lines `527–565` with `get 76–99`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
 - `500` — removal failed.
-
-Source lines `579–603`.
 
 ## `getTimeSpentByID` — Read time spent by id
 
@@ -129,8 +113,6 @@ Route `GET {id}/getTimeSpent/{timespent_id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing, timespent missing.
-
-Source lines `619–644`.
 
 ## `addTimeSpent` — Add time spent
 
@@ -149,8 +131,6 @@ The method records time.
 - `404` — task missing.
 - `500` — business operation failed.
 
-Source lines `669–715`.
-
 ## `putTimeSpent` — Put time spent
 
 Route `PUT {id}/timespent/{timespent_id}`.
@@ -167,8 +147,6 @@ The method amends recorded time.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `500` — business operation failed.
 
-Source lines `739–773`.
-
 ## `deleteTimeSpent` — Delete time spent
 
 Route `DELETE {id}/timespent/{timespent_id}`.
@@ -184,8 +162,6 @@ The method removes recorded time.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `500` — removal failed.
 
-Source lines `789–810`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -200,8 +176,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
-
-Source lines `1051–1072`.
 
 ## `addContact` — Add contact
 
@@ -219,8 +193,6 @@ The method attaches a participant role.
 - `404` — task missing.
 - `500` — business operation failed.
 
-Source lines `1094–1120`.
-
 ## `deleteContact` — Remove a contact role
 
 Route `DELETE {id}/contacts/{contactid}/{type}`.
@@ -236,5 +208,3 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — task missing.
 - `500` — removal failed.
-
-Source lines `1139–1169`.

@@ -19,8 +19,6 @@ A calendar date uses the date components. Local date-time uses the acting user�
 
 For example, an inspector recording a measured quantity of zero has supplied a value. A selector still showing “choose a warehouse” supplies no warehouse reference. Replaying an entire form submission as a single generic merge would erase distinctions between a missing value, an explicit zero and an unchecked box.
 
-Implementation evidence appears in `htdocs/core/class/extrafields.class.php` (`addExtraField`, `updateExtraField`, `setOptionalsFromPost`, `isEmptyValue`) and `htdocs/core/class/commonobject.class.php` (`fetch_optionals`, `insertExtraFields`, `updateExtraField`).
-
 ## Formula evaluation, stored values and clones
 
 An ordinary extension row points back to the business object. Fetching it populates optional values alongside the object. When a formula is defined and calculation is enabled, the read path can evaluate the formula using the current object even when no extension row existed. Two invoices may therefore expose the same computed indicator without a manually entered value on either one.
@@ -28,8 +26,6 @@ An ordinary extension row points back to the business object. Fetching it popula
 Writing extensions treats a formula separately from posted inputs. When stored computed fields are enabled, the write path evaluates the formula with the owning object and materializes its result. It otherwise skips writing the computed field in the normal value assignment. Re-reading, querying a stored column and running a generic export are different channels. In particular the standard export writer has an explicit unsupported result for arbitrary computed extension formulas. A user inspecting a rendered form can see a value that is unavailable in a generic export.
 
 An object clone can clear a field marked unique or clear-on-clone. Product-combination creation also clears unique extensions to avoid conflicting with the source combination. Clone behavior depends on entering the operation with the appropriate context. It differs from an ordinary update, which keeps the record’s own identity and can change a single selected extension. The mandatory-value check in the common write path also accounts for the stored field constraint, even if the field is conditionally disabled on a form.
-
-Implementation evidence appears in `htdocs/core/class/commonobject.class.php:6837–6958,7005–7101,7515–7594` and `htdocs/exports/class/export.class.php` (`build_file`).
 
 ## Ownership and publication of notes
 
@@ -42,5 +38,3 @@ A public or private note belongs to the object, e.g., a customer, order or invoi
 | Public document regeneration | When automatic generation is active it uses the selected document model, output language, and visibility options for references, descriptions and line details. A generation failure produces a warning after the successful note update. |
 
 For example, a customer order might carry “deliver at the north gate” in its public note and internal picking instructions in its private note. Updating delivery instructions can change the regenerated order copy. A regeneration warning means that the current public note and the existing document file may disagree. Updating the private instructions alone does not create a fresh outbound order copy.
-
-Implementation evidence appears in `htdocs/core/actions_setnotes.inc.php` and `htdocs/core/class/commonobject.class.php:3976–4058`.

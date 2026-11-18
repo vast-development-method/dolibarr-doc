@@ -1,30 +1,30 @@
 # Other shared records events
 
-Each entry identifies an operator-selectable event or a named signal emitted by a business operation. A numbered agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. See the [event contract](README.md) for shared dispatch rules and source keys.
+Each entry identifies an operator-selectable event or a named signal emitted by a business operation. An agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. See the [event contract](README.md) for shared dispatch and subscription rules.
 
-| Event | Setup meaning or origin | Direct emission site | Specific subscriber branches |
+| Event | Setup meaning or origin | Emitting operation | Specific subscriber branches |
 | --- | --- | --- | --- |
-| `CATEGORY_CREATE` | Named operation signal | `categories/class/categorie.class.php:638 (create)` | No dedicated branch listed |
-| `CATEGORY_DELETE` | Named operation signal | `categories/class/categorie.class.php:792 (delete)` | No dedicated branch listed |
-| `CATEGORY_DEL_MULTILANGS` | Named operation signal | `categories/class/categorie.class.php:2306 (delMultiLangs)` | No dedicated branch listed |
-| `CATEGORY_MODIFY` | Named operation signal | `categories/class/categorie.class.php:751 (update)` · `categories/class/categorie.class.php:946 (add_type)` · `categories/class/categorie.class.php:1006 (del_type)` | No dedicated branch listed |
-| `CATEGORY_SET_MULTILANGS` | Named operation signal | `categories/class/categorie.class.php:2276 (setMultiLangs)` | No dedicated branch listed |
-| `LINK_CREATE` | Named operation signal | `core/class/link.class.php:141 (create)` | No dedicated branch listed |
-| `LINK_DELETE` | Named operation signal | `core/class/link.class.php:404 (delete)` | No dedicated branch listed |
-| `LINK_MODIFY` | Named operation signal | `core/class/link.class.php:221 (update)` | No dedicated branch listed |
-| `MAILING_CREATE` | Named operation signal | `comm/mailing/class/mailing.class.php:279 (create)` | No dedicated branch listed |
-| `MAILING_DELETE` | Named operation signal | `comm/mailing/class/mailing.class.php:755 (delete)` | No dedicated branch listed |
-| `MAILING_MODIFY` | Named operation signal | `comm/mailing/class/mailing.class.php:346 (update)` | No dedicated branch listed |
-| `MYECMDIR_CREATE` | Named operation signal | `ecm/class/ecmdirectory.class.php:217 (create)` | No dedicated branch listed |
-| `MYECMDIR_DELETE` | Named operation signal | `ecm/class/ecmdirectory.class.php:458 (delete)` | No dedicated branch listed |
-| `MYECMDIR_MODIFY` | Named operation signal | `ecm/class/ecmdirectory.class.php:276 (update)` | No dedicated branch listed |
-| `OBJECT_LINK_DELETE` | Named operation signal | `core/class/commonobject.class.php:4902 (deleteObjectLinked)` | No dedicated branch listed |
-| `OBJECT_LINK_INSERT` | Named operation signal | `core/class/commonobject.class.php:4551 (add_object_linked)` | No dedicated branch listed |
-| `OBJECT_LINK_MODIFY` | Named operation signal | `core/class/commonobject.class.php:4840 (updateObjectLinked)` | No dedicated branch listed |
-| `OPENSURVEY_CREATE` | Named operation signal | `opensurvey/class/opensurveysondage.class.php:303 (create)` | No dedicated branch listed |
-| `OPENSURVEY_DELETE` | Named operation signal | `opensurvey/class/opensurveysondage.class.php:478 (delete)` | No dedicated branch listed |
-| `OPENSURVEY_MODIFY` | Named operation signal | `opensurvey/class/opensurveysondage.class.php:436 (update)` | No dedicated branch listed |
-| `TARGET_VALIDATE` | Named operation signal | `webhook/class/target.class.php:626 (validate)` | No dedicated branch listed |
-| `TVA_CREATE` | Named operation signal | `compta/tva/class/tva.class.php:213 (create)` | No dedicated branch listed |
-| `TVA_DELETE` | Named operation signal | `compta/tva/class/tva.class.php:430 (delete)` | No dedicated branch listed |
-| `TVA_MODIFY` | Named operation signal | `compta/tva/class/tva.class.php:279 (update)` | No dedicated branch listed |
+| `CATEGORY_CREATE` | Operation signal | `categorie.create` | No dedicated branch listed |
+| `CATEGORY_DELETE` | Operation signal | `categorie.delete` | No dedicated branch listed |
+| `CATEGORY_DEL_MULTILANGS` | Operation signal | `categorie.delMultiLangs` | No dedicated branch listed |
+| `CATEGORY_MODIFY` | Operation signal | `categorie.update` · `categorie.add_type` · `categorie.del_type` | No dedicated branch listed |
+| `CATEGORY_SET_MULTILANGS` | Operation signal | `categorie.setMultiLangs` | No dedicated branch listed |
+| `LINK_CREATE` | Operation signal | `link.create` | No dedicated branch listed |
+| `LINK_DELETE` | Operation signal | `link.delete` | No dedicated branch listed |
+| `LINK_MODIFY` | Operation signal | `link.update` | No dedicated branch listed |
+| `MAILING_CREATE` | Operation signal | `mailing.create` | No dedicated branch listed |
+| `MAILING_DELETE` | Operation signal | `mailing.delete` | No dedicated branch listed |
+| `MAILING_MODIFY` | Operation signal | `mailing.update` | No dedicated branch listed |
+| `MYECMDIR_CREATE` | Operation signal | `ecmdirectory.create` | No dedicated branch listed |
+| `MYECMDIR_DELETE` | Operation signal | `ecmdirectory.delete` | No dedicated branch listed |
+| `MYECMDIR_MODIFY` | Operation signal | `ecmdirectory.update` | No dedicated branch listed |
+| `OBJECT_LINK_DELETE` | Operation signal | `commonobject.deleteObjectLinked` | No dedicated branch listed |
+| `OBJECT_LINK_INSERT` | Operation signal | `commonobject.add_object_linked` | No dedicated branch listed |
+| `OBJECT_LINK_MODIFY` | Operation signal | `commonobject.updateObjectLinked` | No dedicated branch listed |
+| `OPENSURVEY_CREATE` | Operation signal | `opensurveysondage.create` | No dedicated branch listed |
+| `OPENSURVEY_DELETE` | Operation signal | `opensurveysondage.delete` | No dedicated branch listed |
+| `OPENSURVEY_MODIFY` | Operation signal | `opensurveysondage.update` | No dedicated branch listed |
+| `TARGET_VALIDATE` | Operation signal | `target.validate` | No dedicated branch listed |
+| `TVA_CREATE` | Operation signal | `tva.create` | No dedicated branch listed |
+| `TVA_DELETE` | Operation signal | `tva.delete` | No dedicated branch listed |
+| `TVA_MODIFY` | Operation signal | `tva.update` | No dedicated branch listed |

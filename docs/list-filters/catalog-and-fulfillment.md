@@ -1,10 +1,10 @@
 # Catalog, warehouse, count, shipment and receipt filters
 
-A product, a warehouse, an inventory session, an outbound shipment and an inbound receipt each have a different result grain. A reference field can identify the displayed record, a trading partner's reference or a linked delivery document. The source locations below refer to release 24.0.3. In request templates, braces denote alternatives. For example, `search_dateshipping_{start,end}{day,month,year}` expands to six parameter names, including `search_dateshipping_startday`. The ordinary date controls below use inclusive lower and upper bounds, assembled separately at 00:00:00 and 23:59:59.
+A product, a warehouse, an inventory session, an outbound shipment and an inbound receipt each have a different result grain. A reference field can identify the displayed record, a trading partner's reference or a linked delivery document. In request templates, braces denote alternatives. For example, `search_dateshipping_{start,end}{day,month,year}` expands to six parameter names, including `search_dateshipping_startday`. The ordinary date controls below use inclusive lower and upper bounds, assembled separately at 00:00:00 and 23:59:59.
 
 ## Products and services
 
-The base row is a catalog item in the shared product entities. Opening the product, service or combined view selects the corresponding module-access check. Conditional joins supply the default workstation, the current entity's account mapping, the default-language translation, variant-parent membership, the unit and user-defined attributes. Supplier price quick search uses a correlated existence test, so three matching prices for one item still provide one match. Sources are `htdocs/product/list.php:180-206,264-265,371-378,561-619`.
+The base row is a catalog item in the shared product entities. Opening the product, service or combined view selects the corresponding module-access check. Conditional joins supply the default workstation, the current entity's account mapping, the default-language translation, variant-parent membership, the unit and user-defined attributes. Supplier price quick search uses a correlated existence test, so three matching prices for one item still provide one match.
 
 | Request key | Effect on the result |
 | --- | --- |
@@ -27,11 +27,11 @@ The base row is a catalog item in the shared product entities. Opening the produ
 | `search_category_product_list[]`, `search_category_product_operator`, `catid` | Positive IDs test direct product memberships. Operator 0 requires every selection and 1 accepts any. Value −2 requires no product-category relation. An initial category ID seeds an empty selection. A submitted filter form uses its supplied operator, while the initial view can use the configured default. |
 | `canvas` | A supplied canvas key selects the exact stored canvas and can select a specialized view. |
 
-The standalone `search_ref_supplier` input has no matching predicate in this query. The separate `fourn_id` condition addresses a supplier-price alias outside the correlated subquery, while the outer join for that alias is commented out. A positive supplier ID can therefore produce a query error in the base view. Quick search remains the traced supplier-reference path. Measurements, physical and virtual stock totals and displayed prices do not acquire ordinary numeric filters from column selection. Sources are `htdocs/product/list.php:86-157,212-218,232-253,568-605,620-743,1143-1152,1191-1226,1282-1365`.
+The standalone `search_ref_supplier` input has no matching predicate in this query. The separate `fourn_id` condition addresses a supplier-price alias outside the correlated subquery, while the outer join for that alias is commented out. A positive supplier ID can therefore produce a query error in the base view. Quick search remains the traced supplier-reference path. Measurements, physical and virtual stock totals and displayed prices do not acquire ordinary numeric filters from column selection.
 
 ## Warehouse directory
 
-The stock-area check applies first. Each warehouse in the permitted stock entities can appear even with no stock rows. The directory left-joins the item/warehouse balance and the item, sums physical quantity, cost value and sale value, then groups by the warehouse fields. In per-entity costing mode, the cost calculation uses the entity item's average cost with fallback to the item cost. Those three aggregates have empty filter cells. Sources are `htdocs/product/stock/list.php:158-163,230-251,262-273,348-357,608-618`.
+The stock-area check applies first. Each warehouse in the permitted stock entities can appear even with no stock rows. The directory left-joins the item/warehouse balance and the item, sums physical quantity, cost value and sale value, then groups by the warehouse fields. In per-entity costing mode, the cost calculation uses the entity item's average cost with fallback to the item cost. Those three aggregates have empty filter cells.
 
 | Request key | Warehouse predicate |
 | --- | --- |
@@ -43,11 +43,11 @@ The stock-area check applies first. Each warehouse in the permitted stock entiti
 | `search_warehouse_usage`, `search_status` | Selected warehouse use (1 internal, 2 external) or status. Status uses stored `statut`. Values are 0 closed, 1 open, and optionally 2 open for internal movements. The status predicate skips −1. |
 | `search_category_warehouse_list[]` | With category support, every positive ID requires direct warehouse membership. Value −2 requires no such relation. The operator is fixed to AND, so combining −2 and a positive ID cannot match. |
 
-The metadata loop accepts `search_datec` and `search_tms` as direct field criteria. The form instead emits `search_{datec,tms}_{dtstart,dtend}{day,month,year}` for visible date columns. The input loop never assembles those components, so those range controls do not narrow the base query. `sref`, `snom` and `search_label` feed standalone variables only. The predicate loop reads `search_ref` and `search_lieu` from the request. It explicitly skips `search_entity`. Sources are `htdocs/product/stock/class/entrepot.class.php:173-195,202-213,237-245`, `htdocs/product/stock/list.php:60-68,96-120,274-340,584-605,628-632`, `htdocs/categories/class/categorie.class.php:60-64`.
+The metadata loop accepts `search_datec` and `search_tms` as direct field criteria. The form instead emits `search_{datec,tms}_{dtstart,dtend}{day,month,year}` for visible date columns. The input loop never assembles those components, so those range controls do not narrow the base query. `sref`, `snom` and `search_label` feed standalone variables only. The predicate loop reads `search_ref` and `search_lieu` from the request. It explicitly skips `search_entity`.
 
 ## Physical inventory sessions
 
-External users are denied. Internal access uses stock permission, or the inventory-specific check when advanced permissions are enabled. One result is one inventory header in the permitted inventory entities. A session covering every item can contain an item in its count lines while its header has no selected product. The header's product filter will not retrieve that session by line membership. Sources are `htdocs/product/inventory/list.php:143-157,225-255`, `htdocs/product/inventory/class/inventory.class.php:91-107,209-222,833-845`.
+External users are denied. Internal access uses stock permission, or the inventory-specific check when advanced permissions are enabled. One result is one inventory header in the permitted inventory entities. A session covering every item can contain an item in its count lines while its header has no selected product. The header's product filter will not retrieve that session by line membership.
 
 | Request key | Inventory header predicate |
 | --- | --- |
@@ -60,11 +60,11 @@ External users are denied. Internal access uses stock permission, or the invento
 | `search_{date_inventory,date_creation,tms,date_validation}_{dtstart,dtend}{day,month,year}` | Inclusive bounds on inventory value date, creation, last modification and validation respectively. The value-date column is configurable. The input loop also accepts direct `search_<field>` values for these fields. |
 | `search_category_product_list[]`, `search_category_product_operator` | Separate category box builds product membership conditions for positive IDs and no-membership for −2. All/any handling resembles the catalog. The base inventory query supplies no product alias for the generated condition (`p.rowid`). A meaningful category selection can therefore fail the base query. |
 
-Typed ID selectors skip −1 and zero when zero is absent from their metadata choices. Numeric and text fields use their corresponding natural-search modes. Quantity found, quantity before adjustment, adjusted quantity, batch and cost are detail-level fields outside the header query. Sources are `htdocs/product/inventory/list.php:91-137,255-321,486-495,543-565`, `htdocs/product/inventory/class/inventory.class.php:91-107,833-845`.
+Typed ID selectors skip −1 and zero when zero is absent from their metadata choices. Numeric and text fields use their corresponding natural-search modes. Quantity found, quantity before adjustment, adjusted quantity, batch and cost are detail-level fields outside the header query.
 
 ## Outbound shipments
 
-The list checks shipment access, applies the shipment entity set and honors `socid` as the customer ID. An external user's linked party replaces the request value. The base row is one dispatch header with its business partner and geography. Global or order-contact searches request distinct result rows because they add detail or contact joins. The normal delivery-link branch assumes at most one linked delivery per dispatch. Sources are `htdocs/expedition/list.php:59-90,110-135,173-178,673-739`.
+The list checks shipment access, applies the shipment entity set and honors `socid` as the customer ID. An external user's linked party replaces the request value. The base row is one dispatch header with its business partner and geography. Global or order-contact searches request distinct result rows because they add detail or contact joins. The normal delivery-link branch assumes at most one linked delivery per dispatch.
 
 | Request key | Shipment predicate |
 | --- | --- |
@@ -81,11 +81,11 @@ The list checks shipment access, applies the shipment entity set and honors `soc
 | `search_product_category`, `search_category_product_operator` | Follow dispatch line → source order line → product → category. A positive category needs at least one matching product. −2 requires no categorized product in the joined lines, including when those joins yield no rows. |
 | `search_all` | Direct text search across dispatch reference, partner name, public note and tracking number. Internal users also search the private note. The detail join does not add item labels or line descriptions to this field set. |
 
-Both category handlers wrap a single request value in an array, then cast that value to an integer. Their all/any branches do not implement a multi-ID request list. The note, weight, creation and modification columns have empty filter cells. Sources are `htdocs/expedition/list.php:68-91,126-135,738-814,815-876,1265-1271,1322-1350`.
+Both category handlers wrap a single request value in an array, then cast that value to an integer. Their all/any branches do not implement a multi-ID request list. The note, weight, creation and modification columns have empty filter cells.
 
 ## Inbound receipts
 
-The receipt list applies the corresponding module check and entity scope. `socid` restricts the receipt's supplier, with a linked external party overriding the requested ID. It reads receipt headers and left-joins their business partner, geography and linked delivery documents. It selects ordinary rows, so multiple matching delivery links can produce multiple rows for a receipt. Sources are `htdocs/reception/list.php:55-94,166-172,646-684`.
+The receipt list applies the corresponding module check and entity scope. `socid` restricts the receipt's supplier, with a linked external party overriding the requested ID. It reads receipt headers and left-joins their business partner, geography and linked delivery documents. It selects ordinary rows, so multiple matching delivery links can produce multiple rows for a receipt.
 
 | Request key | Receipt predicate |
 | --- | --- |
@@ -97,10 +97,10 @@ The receipt list applies the corresponding module check and entity scope. `socid
 | `search_note_public`, `search_note_private` | Each builds an escaped substring match on its respective receipt note. These predicates are independent of the global-search field set. |
 | `search_all` | Match receipt reference, supplier's reference, supplier name or public note. Internal users also match the private note. |
 
-The sales representative condition is commented out. The base receipt query has no filter for supplier-order contact, carrier, tracking, product category or receipt lines. Sources are `htdocs/reception/list.php:65-94,125-134,679-753,1080-1102,1110-1146`.
+The sales representative condition is commented out. The base receipt query has no filter for supplier-order contact, carrier, tracking, product category or receipt lines.
 
 ## Configured fields and list controls
 
-Where optional attributes are defined for the listed object, the shared list mechanism accepts `search_options_<code>`. The normal join is by the record ID to the extra attribute row. Date ranges use `search_options_<code>_{start,end}{day,month,year}`. Datetime fields can additionally carry hour and minute components. The predicate depends on the attribute definition. Date bounds support one or two endpoints, a false boolean selection also matches a null value, and multiselect attributes use their collection-specific matching. Inventory invokes the shared list templates but its constructor declares optional-field management disabled. Sources are `htdocs/core/class/extrafields.class.php:3114-3182`, `htdocs/core/tpl/extrafields_list_search_input.tpl.php:46-87`, `htdocs/core/tpl/extrafields_list_search_sql.tpl.php:48-115`, `htdocs/product/inventory/class/inventory.class.php:209-215`.
+Where optional attributes are defined for the listed object, the shared list mechanism accepts `search_options_<code>`. The normal join is by the record ID to the extra attribute row. Date ranges use `search_options_<code>_{start,end}{day,month,year}`. Datetime fields can additionally carry hour and minute components. The predicate depends on the attribute definition. Date bounds support one or two endpoints, a false boolean selection also matches a null value, and multiselect attributes use their collection-specific matching. Inventory invokes the shared list templates but its constructor declares optional-field management disabled.
 
 Page number, limit, sort column and direction arrange or slice results. Selected columns determine which form controls render. Mass-action selection identifies rows for subsequent operations. None adds a business predicate by itself. Filter-submit and filter-clear controls also reset the page offset.

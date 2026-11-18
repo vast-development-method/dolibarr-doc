@@ -16,12 +16,8 @@ For five registrations consisting of one draft, two registered, one showed-up an
 
 Registration date orders business activity differently from the date of the event or its session. The list's registration filter uses the registration field, while a project or activity restriction chooses which event the record belongs to. Operators can open an attendee record by registration reference and, when supplied, follow its invoice and party links. Access to the internal participant list uses the project area and its permissions.
 
-Source locations include `htdocs/eventorganization/class/conferenceorboothattendee.class.php:55–58, 92–114`, `htdocs/eventorganization/conferenceorboothattendee_list.php:167–181, 305–345, 372`, `htdocs/eventorganization/lib/eventorganization_conferenceorbooth.lib.php:63–82, 160–180` and `htdocs/public/eventorganization/attendee_new.php:119–142, 823–846`.
-
 ## Profit per validated attendee
 
 For a project organizing an event the linked-elements financial view calculates profit per attendee only when at least two registrations currently have **validated/registered** status for that project. It divides the project's signed net balance by that count and does the same with the gross balance. The numerator comes from the project income and cost families configured for the balance. It is independent of the participant list's recorded paid-amount column. The denominator excludes drafts, cancellations and registrations already changed to showed-up status.
 
 With a project net balance of 900 and three registered tickets, the view reports 300 net profit per validated attendee. If one ticket changes to showed-up and the balance stays 900, the remaining two registered tickets yield 450. With only one registered ticket remaining the row is suppressed. This measure cannot be interpreted as cost per person who attended. For attendance by project or session, the showed-up status itself supplies the relevant population. For a distinct visitor count across sessions, the record-by-record tab totals do not establish that registrations represent different people.
-
-Source location `htdocs/projet/element.php:1096–1121, 1167–1186`.

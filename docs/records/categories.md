@@ -67,8 +67,6 @@ An additional unique key comprises `entity`, `fk_parent`, `label`, `type`.
 | `position` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie.sql`, `htdocs/install/mysql/tables/llx_categorie.key.sql`, `htdocs/categories/class/categorie.class.php:256`.
-
 <a id="record-categorie_lang"></a>
 
 ## Translated category
@@ -87,8 +85,6 @@ An additional unique key comprises `fk_category`, `lang`.
 | `label` | varchar(255) | No | — | Display label for the record. |
 | `description` | text | Yes | — | Descriptive text associated with this entry. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_lang.sql`, `htdocs/install/mysql/tables/llx_categorie_lang.key.sql`, `htdocs/categories/class/categorie.class.php:1395`.
-
 <a id="record-category_bankline"></a>
 
 ## Bank movement classification
@@ -104,8 +100,6 @@ An additional unique key comprises `lineid`, `fk_categ`.
 | `lineid` | integer | No | — | Bank movement assigned to this financial classification. |
 | `fk_categ` | integer | No | — | Bank classification assigned to the indicated movement. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_category_bankline.sql`, `htdocs/install/mysql/tables/llx_category_bankline.key.sql`, `htdocs/categories/class/categorie.class.php:1788`.
 
 <a id="record-extrafields"></a>
 
@@ -153,8 +147,6 @@ An additional unique key comprises `name`, `entity`, `elementtype`.
 | `datec` | datetime | Yes | — | When the row was created. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_extrafields.sql`, `htdocs/install/mysql/tables/llx_extrafields.key.sql`, `htdocs/core/class/extrafields.class.php:509`.
-
 <a id="record-categorie_account"></a>
 
 ## Bank account category assignment
@@ -169,8 +161,6 @@ The primary key is `fk_categorie`, `fk_account`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_account` | integer | No | — | Financial account identifier as used by the owning record. References [bank_account](cash.md#record-bank_account) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_account.sql`, `htdocs/install/mysql/tables/llx_categorie_account.key.sql`, `htdocs/compta/bank/class/account.class.php:1250`.
 
 <a id="record-categorie_actioncomm"></a>
 
@@ -187,8 +177,6 @@ The primary key is `fk_categorie`, `fk_actioncomm`.
 | `fk_actioncomm` | integer | No | — | Associated calendar activity or event. References [actioncomm](production.md#record-actioncomm) (id). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_actioncomm.sql`, `htdocs/install/mysql/tables/llx_categorie_actioncomm.key.sql`, `htdocs/comm/action/class/actioncomm.class.php:1127`.
-
 <a id="record-categorie_contact"></a>
 
 ## Contact category assignment
@@ -203,8 +191,6 @@ The primary key is `fk_categorie`, `fk_socpeople`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_socpeople` | integer | No | — | Contact identity. Some generic role assignments resolve differently for internal and external contacts. References [socpeople](parties.md#record-socpeople) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_contact.sql`, `htdocs/install/mysql/tables/llx_categorie_contact.key.sql`, `htdocs/contact/class/contact.class.php:1390`.
 
 <a id="record-categorie_fichinter"></a>
 
@@ -221,8 +207,6 @@ The primary key is `fk_categorie`, `fk_fichinter`.
 | `fk_fichinter` | integer | No | — | Intervention report identity. References [fichinter](people.md#record-fichinter) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_fichinter-fichinter.sql`, `htdocs/install/mysql/tables/llx_categorie_fichinter-fichinter.key.sql`, `htdocs/fichinter/list.php:376`.
-
 <a id="record-categorie_fournisseur"></a>
 
 ## Supplier category assignment
@@ -237,8 +221,6 @@ The primary key is `fk_categorie`, `fk_soc`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_soc` | integer | No | — | Third party associated with this record. References [societe](parties.md#record-societe) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_fournisseur.sql`, `htdocs/install/mysql/tables/llx_categorie_fournisseur.key.sql`, `htdocs/societe/class/societe.class.php:4684`.
 
 <a id="record-categorie_invoice"></a>
 
@@ -255,8 +237,6 @@ The primary key is `fk_categorie`, `fk_invoice`.
 | `fk_invoice` | integer | No | — | Customer invoice identifier. References [facture](billing.md#record-facture) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_invoice-facture.sql`, `htdocs/install/mysql/tables/llx_categorie_invoice-facture.key.sql`, `htdocs/compta/facture/class/facture.class.php:3210`.
-
 <a id="record-categorie_knowledgemanagement"></a>
 
 ## Knowledge article category assignment
@@ -271,8 +251,6 @@ The primary key is `fk_categorie`, `fk_knowledgemanagement`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_knowledgemanagement` | integer | No | — | References [knowledgemanagement_knowledgerecord](people.md#record-knowledgemanagement_knowledgerecord) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_knowledgemanagement-knowledgemanagement.sql`, `htdocs/install/mysql/tables/llx_categorie_knowledgemanagement-knowledgemanagement.key.sql`, `htdocs/knowledgemanagement/class/knowledgerecord.class.php:508`.
 
 <a id="record-categorie_member"></a>
 
@@ -289,8 +267,6 @@ The primary key is `fk_categorie`, `fk_member`.
 | `fk_member` | integer | No | — | Association member identity. References [adherent](people.md#record-adherent) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_member.sql`, `htdocs/install/mysql/tables/llx_categorie_member.key.sql`, `htdocs/adherents/class/adherent.class.php:1163`.
-
 <a id="record-categorie_mo"></a>
 
 ## Manufacturing order category assignment
@@ -305,8 +281,6 @@ The primary key is `fk_categorie`, `fk_mo`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_mo` | integer | No | — | Manufacturing order identity. References [mrp_mo](production.md#record-mrp_mo) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_mo-mrp.sql`, `htdocs/install/mysql/tables/llx_categorie_mo-mrp.key.sql`, `htdocs/mrp/class/mo.class.php:977`.
 
 <a id="record-categorie_order"></a>
 
@@ -323,8 +297,6 @@ The primary key is `fk_categorie`, `fk_order`.
 | `fk_order` | integer | No | — | References [commande](commercial.md#record-commande) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_order-commande.sql`, `htdocs/install/mysql/tables/llx_categorie_order-commande.key.sql`, `htdocs/commande/class/commande.class.php:3570`.
-
 <a id="record-categorie_product"></a>
 
 ## Product category assignment
@@ -339,8 +311,6 @@ The primary key is `fk_categorie`, `fk_product`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_product` | integer | No | — | Catalogue item associated with this entry. References [product](catalogue.md#record-product) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_product.sql`, `htdocs/install/mysql/tables/llx_categorie_product.key.sql`, `htdocs/core/class/html.form.class.php:3670`.
 
 <a id="record-categorie_project"></a>
 
@@ -357,8 +327,6 @@ The primary key is `fk_categorie`, `fk_project`.
 | `fk_project` | integer | No | — | Associated project identity. References [projet](production.md#record-projet) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_project.sql`, `htdocs/install/mysql/tables/llx_categorie_project.key.sql`, `htdocs/projet/class/project.class.php:1040`.
-
 <a id="record-categorie_project_task"></a>
 
 ## Project task category assignment
@@ -373,8 +341,6 @@ The primary key is `fk_categorie`, `fk_project_task`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_project_task` | integer | No | — | References [projet_task](production.md#record-projet_task) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_project_task-project.sql`, `htdocs/install/mysql/tables/llx_categorie_project_task-project.key.sql`, `htdocs/categories/class/categorie.class.php:822`.
 
 <a id="record-categorie_propal"></a>
 
@@ -391,8 +357,6 @@ The primary key is `fk_categorie`, `fk_propal`.
 | `fk_propal` | integer | No | — | Customer proposal identity. References [propal](commercial.md#record-propal) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_propal-propal.sql`, `htdocs/install/mysql/tables/llx_categorie_propal-propal.key.sql`, `htdocs/comm/propal/class/propal.class.php:3204`.
-
 <a id="record-categorie_societe"></a>
 
 ## Third party category assignment
@@ -407,8 +371,6 @@ The primary key is `fk_categorie`, `fk_soc`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_soc` | integer | No | — | Third party associated with this record. References [societe](parties.md#record-societe) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_societe.sql`, `htdocs/install/mysql/tables/llx_categorie_societe.key.sql`, `htdocs/contrat/class/contratstats.class.php:119`.
 
 <a id="record-categorie_supplier_invoice"></a>
 
@@ -425,8 +387,6 @@ The primary key is `fk_categorie`, `fk_supplier_invoice`.
 | `fk_supplier_invoice` | integer | No | — | References [facture_fourn](billing.md#record-facture_fourn) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_supplier_invoice.sql`, `htdocs/install/mysql/tables/llx_categorie_supplier_invoice.key.sql`, `htdocs/fourn/class/fournisseur.facture.class.php:1522`.
-
 <a id="record-categorie_supplier_order"></a>
 
 ## Purchase order category assignment
@@ -441,8 +401,6 @@ The primary key is `fk_categorie`, `fk_supplier_order`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_supplier_order` | integer | No | — | References [commande_fournisseur](commercial.md#record-commande_fournisseur) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_supplier_order.sql`, `htdocs/install/mysql/tables/llx_categorie_supplier_order.key.sql`, `htdocs/fourn/class/fournisseur.commande.class.php:2533`.
 
 <a id="record-categorie_supplier_proposal"></a>
 
@@ -459,8 +417,6 @@ The primary key is `fk_categorie`, `fk_supplier_proposal`.
 | `fk_supplier_proposal` | integer | No | — | Supplier price request identity. References [supplier_proposal](commercial.md#record-supplier_proposal) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_supplier_proposal-supplier_proposal.sql`, `htdocs/install/mysql/tables/llx_categorie_supplier_proposal-supplier_proposal.key.sql`, `htdocs/supplier_proposal/class/supplier_proposal.class.php:2144`.
-
 <a id="record-categorie_ticket"></a>
 
 ## Support ticket category assignment
@@ -475,8 +431,6 @@ The primary key is `fk_categorie`, `fk_ticket`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_ticket` | integer | No | — | Support ticket identity. References [ticket](people.md#record-ticket) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_ticket-ticket.sql`, `htdocs/install/mysql/tables/llx_categorie_ticket-ticket.key.sql`, `htdocs/ticket/class/ticket.class.php:1213`.
 
 <a id="record-categorie_user"></a>
 
@@ -493,8 +447,6 @@ The primary key is `fk_categorie`, `fk_user`.
 | `fk_user` | integer | No | — | User account associated with this record. References [user](foundation.md#record-user) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_user.sql`, `htdocs/install/mysql/tables/llx_categorie_user.key.sql`, `htdocs/core/modules/modCategorie.class.php:474`.
-
 <a id="record-categorie_warehouse"></a>
 
 ## Warehouse category assignment
@@ -510,8 +462,6 @@ The primary key is `fk_categorie`, `fk_warehouse`.
 | `fk_warehouse` | integer | No | — | Warehouse or stock location. References [entrepot](warehouse.md#record-entrepot) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_categorie_warehouse-stock.sql`, `htdocs/install/mysql/tables/llx_categorie_warehouse-stock.key.sql`, `htdocs/product/stock/class/api_warehouses.class.php:131`.
-
 <a id="record-categorie_website_page"></a>
 
 ## Website page category assignment
@@ -526,5 +476,3 @@ The primary key is `fk_categorie`, `fk_website_page`.
 | `fk_categorie` | integer | No | — | Category assigned through this association. References [categorie](categories.md#record-categorie) (rowid). |
 | `fk_website_page` | integer | No | — | References [website_page](content.md#record-website_page) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_categorie_website_page-website.sql`, `htdocs/install/mysql/tables/llx_categorie_website_page-website.key.sql`, `htdocs/core/lib/website.lib.php:1274`.

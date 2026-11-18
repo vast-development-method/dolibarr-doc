@@ -1,0 +1,412 @@
+table,field,role
+accounting_analytic_account,rowid,Internal row identifier.
+accounting_analytic_account,label,Display name or transaction narrative.
+accounting_analytic_account,code,Identifier used to select the named item or configuration.
+accounting_analytic_account,description,Description of the record.
+accounting_analytic_account,fk_axis,Analytic axis that the account belongs to.
+accounting_analytic_account,active,Indicator of whether the entry is active.
+accounting_analytic_account,entity,Organisation or data-sharing scope associated with the record.
+accounting_analytic_account,date_start,Beginning of the period represented by the row.
+accounting_analytic_account,date_end,End of the period represented by the row.
+accounting_analytic_account,datec,When the record was created.
+accounting_analytic_account,tms,Modification time carried by the row.
+accounting_analytic_account,fk_user_author,Author of the record.
+accounting_analytic_account,fk_user_modif,User who last modified the record.
+accounting_analytic_account,import_key,Groups rows from an import operation.
+accounting_analytic_axis,rowid,Internal row identifier.
+accounting_analytic_axis,label,Display name or transaction narrative.
+accounting_analytic_axis,code,Identifier used to select the named item or configuration.
+accounting_analytic_axis,active,Indicator of whether the entry is active.
+accounting_analytic_axis,entity,Organisation or data-sharing scope associated with the record.
+accounting_analytic_axis,datec,When the record was created.
+accounting_analytic_axis,tms,Modification time carried by the row.
+accounting_analytic_axis,fk_user_author,Author of the record.
+accounting_analytic_axis,fk_user_modif,User who last modified the record.
+accounting_analytic_axis,import_key,Groups rows from an import operation.
+accounting_analytic_distribution,rowid,Internal row identifier.
+accounting_analytic_distribution,fk_source_line,Line to which the allocation applies. Interpret it using sourcetype.
+accounting_analytic_distribution,sourcetype,Identifies the family of source lines to which fk_source_line belongs.
+accounting_analytic_distribution,fk_analytic_account,Analytic account receiving this allocation.
+accounting_analytic_distribution,percentage,"Share allocated as a percentage, with 100 representing the full base."
+accounting_analytic_distribution,amount,Optional direct amount assigned to the analytic account.
+accounting_analytic_distribution,entity,Organisation or data-sharing scope associated with the record.
+accounting_analytic_distribution,datec,When the record was created.
+accounting_analytic_distribution,tms,Modification time carried by the row.
+accounting_analytic_distribution,fk_user_author,Author of the record.
+accounting_analytic_distribution,fk_user_modif,User who last modified the record.
+accounting_analytic_distribution,import_key,Groups rows from an import operation.
+accounting_balance_snapshot,rowid,Internal row identifier.
+accounting_balance_snapshot,entity,Organisation or data-sharing scope associated with the record.
+accounting_balance_snapshot,fk_fiscalyear,Fiscal year for the snapshot.
+accounting_balance_snapshot,account_number,General ledger account number captured in the snapshot.
+accounting_balance_snapshot,account_label,General ledger account description captured in the snapshot.
+accounting_balance_snapshot,subledger_account,"Auxiliary account number for this balance, when applicable."
+accounting_balance_snapshot,subledger_label,Auxiliary account description captured in the snapshot.
+accounting_balance_snapshot,debit,Debit amount held for the account and snapshot dimensions.
+accounting_balance_snapshot,credit,Credit amount held for the account and snapshot dimensions.
+accounting_balance_snapshot,date_snapshot,Point in time represented by the recorded balance.
+accounting_balance_snapshot,tms,Modification time carried by the row.
+accounting_bookkeeping_piece,rowid,Internal row identifier.
+accounting_bookkeeping_piece,entity,Organisation or data-sharing scope associated with the record.
+accounting_bookkeeping_piece,ref,Business reference assigned to the record.
+accounting_bookkeeping_piece,tms,Modification time carried by the row.
+accounting_bookkeeping_piece,datec,When the record was created.
+accounting_bookkeeping_piece,datep,Accounting date assigned to the journal piece.
+accounting_bookkeeping_piece,statut,Lifecycle state of the journal piece.
+accounting_bookkeeping_piece,note_private,Internal note.
+accounting_bookkeeping_piece,note_public,Note available for outward-facing uses of the record.
+accounting_bookkeeping_piece,fk_user_author,Author of the record.
+accounting_bookkeeping_piece,fk_user_modif,User who last modified the record.
+accounting_bookkeeping_piece,fk_user_valid,User who validated the record.
+accounting_bookkeeping_piece,fk_user_closing,User who closed the record.
+accounting_bookkeeping_piece,import_key,Groups rows from an import operation.
+accounting_bookkeeping_piece,extraparams,Additional parameters attached to the record.
+accounting_groups_account,rowid,Internal row identifier.
+accounting_groups_account,fk_accounting_account,General ledger account in the grouping.
+accounting_groups_account,fk_c_accounting_category,Accounting reporting category assigned in the grouping.
+ai_request_log,rowid,Internal row identifier.
+ai_request_log,entity,Organisation or data-sharing scope associated with the record.
+ai_request_log,date_request,When the assisted operation was requested.
+ai_request_log,fk_user,User on whose behalf the request was recorded.
+ai_request_log,fk_actioncomm,Optional associated agenda event.
+ai_request_log,query_text,Requesting user's prompt.
+ai_request_log,tool_name,Tool identified for the request.
+ai_request_log,provider,Service selected to process the request.
+ai_request_log,execution_time,Elapsed time recorded by the caller.
+ai_request_log,confidence,Estimated confidence supplied for the operation.
+ai_request_log,status,Outcome reported for the assisted request.
+ai_request_log,error_msg,"Text describing the failure, when present."
+ai_request_log,input_hash,Digest reserved for the input payload or source content.
+ai_request_log,output_hash,Digest reserved for the response payload.
+ai_request_log,security_hash,"Digest reserved for linking the entity, event and payload metadata."
+ai_request_log,raw_request_payload,Text captured from the request.
+ai_request_log,raw_response_payload,Text captured from the response.
+bank_import,rowid,Internal row identifier.
+bank_import,id_account,Bank account receiving the statement import.
+bank_import,fitid,Institution-supplied transaction ID carried by the statement format.
+bank_import,record_type,"Normalized operation kind, such as transfer or direct debit."
+bank_import,label,Display name or transaction narrative.
+bank_import,record_type_origin,Type or operation code as provided in the original statement.
+bank_import,label_origin,Narrative as provided in the original statement.
+bank_import,comment,Comment or reason accompanying the transaction.
+bank_import,note,Operator note.
+bank_import,bdate,Bank operation date.
+bank_import,vdate,Bank value date.
+bank_import,date_scraped,Additional import time described as a discard time in the declaration. Its writer is unverified.
+bank_import,original_amount,Signed source amount when the statement supplies a single amount.
+bank_import,original_currency,Currency of the original imported amount.
+bank_import,amount_debit,Outflow for a statement with separate debit and credit columns.
+bank_import,amount_credit,Inflow for a statement with separate debit and credit columns.
+bank_import,deleted_date,Time marking the imported row as deleted.
+bank_import,fk_duplicate_of,Imported record identified as the original of a possible duplicate.
+bank_import,status,Processing state of the imported transaction. Zero denotes just imported.
+bank_import,datec,When the record was created.
+bank_import,tms,Modification time carried by the row.
+bank_import,fk_user_author,Author of the record.
+bank_import,fk_user_modif,User who last modified the record.
+bank_import,import_key,Groups rows from an import operation.
+bank_import,datas,Complete source record or line retained for comparison.
+bank_record,rowid,Internal row identifier.
+bank_record,ref,Business reference assigned to the record.
+bank_record,fk_bank,Bank account covered by the statement header.
+bank_record,dt_from,Beginning of the statement period.
+bank_record,dt_to,End of the statement period.
+bank_record,date_creation,When the record was created.
+bank_record,date_valid,When the statement header was validated.
+bank_record,tms,Modification time carried by the row.
+bank_record_link,rowid,Internal row identifier.
+bank_record_link,fk_bank_record,Statement header identified by this association.
+bank_record_link,fk_bank_import,Imported transaction identified by this association.
+bookcal_availabilities,rowid,Internal row identifier.
+bookcal_availabilities,label,Display name or transaction narrative.
+bookcal_availabilities,description,Description of the record.
+bookcal_availabilities,note_public,Note available for outward-facing uses of the record.
+bookcal_availabilities,note_private,Internal note.
+bookcal_availabilities,date_creation,When the record was created.
+bookcal_availabilities,tms,Modification time carried by the row.
+bookcal_availabilities,fk_user_creat,User who created the record.
+bookcal_availabilities,fk_user_modif,User who last modified the record.
+bookcal_availabilities,last_main_doc,Location of the last principal document generated for the record.
+bookcal_availabilities,import_key,Groups rows from an import operation.
+bookcal_availabilities,model_pdf,Identifier of the document layout.
+bookcal_availabilities,status,Lifecycle state of the availability record.
+bookcal_availabilities,start,First date of the availability range.
+bookcal_availabilities,end,Last date of the availability range.
+bookcal_availabilities,duration,Slot duration in minutes.
+bookcal_availabilities,startHour,Opening hour used to generate daily slots.
+bookcal_availabilities,endHour,Closing hour used to generate daily slots.
+bookcal_availabilities,fk_bookcal_calendar,Calendar to which the availability belongs.
+bookcal_availabilities_extrafields,rowid,Internal row identifier.
+bookcal_availabilities_extrafields,tms,Modification time carried by the row.
+bookcal_availabilities_extrafields,fk_object,Identifier of the owning business object whose configurable fields are stored on this row.
+bookcal_availabilities_extrafields,import_key,Groups rows from an import operation.
+bookcal_calendar,rowid,Internal row identifier.
+bookcal_calendar,entity,Organisation or data-sharing scope associated with the record.
+bookcal_calendar,ref,Business reference assigned to the record.
+bookcal_calendar,label,Display name or transaction narrative.
+bookcal_calendar,fk_soc,"Associated customer, supplier or other party."
+bookcal_calendar,fk_project,Associated project identifier.
+bookcal_calendar,description,Description of the record.
+bookcal_calendar,note_public,Note available for outward-facing uses of the record.
+bookcal_calendar,note_private,Internal note.
+bookcal_calendar,date_creation,When the record was created.
+bookcal_calendar,tms,Modification time carried by the row.
+bookcal_calendar,fk_user_creat,User who created the record.
+bookcal_calendar,fk_user_modif,User who last modified the record.
+bookcal_calendar,import_key,Groups rows from an import operation.
+bookcal_calendar,status,"Calendar state. The form defines 0 draft, 1 validated and 9 closed."
+bookcal_calendar,type,"Party category for the calendar. The form offers 0 customer, 1 supplier and 3 other."
+bookcal_calendar,visibility,User ID selected as the calendar owner. The creation form defaults to the current user.
+bookcal_calendar_extrafields,rowid,Internal row identifier.
+bookcal_calendar_extrafields,tms,Modification time carried by the row.
+bookcal_calendar_extrafields,fk_object,Identifier of the owning business object whose configurable fields are stored on this row.
+bookcal_calendar_extrafields,import_key,Groups rows from an import operation.
+budget,rowid,Internal row identifier.
+budget,entity,Organisation or data-sharing scope associated with the record.
+budget,label,Display name or transaction narrative.
+budget,status,State code interpreted by the owning operation.
+budget,note,Operator note.
+budget,date_start,Beginning of the period represented by the row.
+budget,date_end,End of the period represented by the row.
+budget,datec,When the record was created.
+budget,tms,Modification time carried by the row.
+budget,fk_user_creat,User who created the record.
+budget,fk_user_modif,User who last modified the record.
+budget,import_key,Groups rows from an import operation.
+budget_lines,rowid,Internal row identifier.
+budget_lines,fk_budget,Budget heading to which this line belongs.
+budget_lines,fk_project_ids,"Project selection expression, such as IDS:x,y for a list or FILTER:ref=*ABC for a reference match."
+budget_lines,amount,Amount budgeted for the projects selected on this line.
+budget_lines,datec,When the record was created.
+budget_lines,tms,Modification time carried by the row.
+budget_lines,fk_user_creat,User who created the record.
+budget_lines,fk_user_modif,User who last modified the record.
+budget_lines,import_key,Groups rows from an import operation.
+c_price_expression,rowid,Internal row identifier.
+c_price_expression,title,Display name used to select a price expression.
+c_price_expression,expression,Pricing formula text evaluated with its variables.
+c_price_global_variable,rowid,Internal row identifier.
+c_price_global_variable,code,Identifier used to select the named item or configuration.
+c_price_global_variable,description,Description of the record.
+c_price_global_variable,value,Numeric value available under the variable code.
+c_price_global_variable_updater,rowid,Internal row identifier.
+c_price_global_variable_updater,type,Update method selected for this variable.
+c_price_global_variable_updater,description,Description of the record.
+c_price_global_variable_updater,parameters,Configuration for the selected update method.
+c_price_global_variable_updater,fk_variable,Price variable whose value this updater supplies.
+c_price_global_variable_updater,update_interval,Minutes between refreshes.
+c_price_global_variable_updater,next_update,"Scheduled time for the next update, counted in seconds from the epoch."
+c_price_global_variable_updater,last_status,Last outcome reported by the updater.
+c_product_thirdparty_relation_type,rowid,Internal row identifier.
+c_product_thirdparty_relation_type,code,Identifier used to select the named item or configuration.
+c_product_thirdparty_relation_type,label,Display name or transaction narrative.
+c_product_thirdparty_relation_type,active,Indicator of whether the entry is active.
+c_recruitment_origin,rowid,Internal row identifier.
+c_recruitment_origin,code,Identifier used to select the named item or configuration.
+c_recruitment_origin,label,Display name or transaction narrative.
+c_recruitment_origin,active,Indicator of whether the entry is active.
+commande_fournisseur_log,rowid,Internal row identifier.
+commande_fournisseur_log,tms,Modification time carried by the row.
+commande_fournisseur_log,datelog,Time of the supplier-order log event.
+commande_fournisseur_log,fk_commande,Supplier order to which the log entry belongs.
+commande_fournisseur_log,fk_statut,Status code of the recorded object.
+commande_fournisseur_log,fk_user,User associated with the supplier-order event.
+commande_fournisseur_log,comment,Comment describing the supplier-order event.
+deplacement,rowid,Internal row identifier.
+deplacement,ref,Business reference assigned to the record.
+deplacement,entity,Organisation or data-sharing scope associated with the record.
+deplacement,datec,When the record was created.
+deplacement,tms,Modification time carried by the row.
+deplacement,dated,Date of the travel record.
+deplacement,fk_user,User whose travel is recorded.
+deplacement,fk_user_author,Author of the record.
+deplacement,fk_user_modif,User who last modified the record.
+deplacement,type,Travel-expense category code.
+deplacement,fk_statut,Status code of the recorded object.
+deplacement,km,Distance recorded in kilometres.
+deplacement,fk_soc,"Associated customer, supplier or other party."
+deplacement,fk_projet,Associated project identifier.
+deplacement,note_private,Internal note.
+deplacement,note_public,Note available for outward-facing uses of the record.
+deplacement,extraparams,Additional parameters attached to the record.
+element_categorie,rowid,Internal row identifier.
+element_categorie,fk_categorie,Category assigned to the element.
+element_categorie,fk_element,Identifier of the associated business object.
+element_categorie,import_key,Groups rows from an import operation.
+expedition_package,rowid,Internal row identifier.
+expedition_package,fk_expedition,Shipment to which the parcel belongs.
+expedition_package,description,Description of the goods in the parcel.
+expedition_package,value,Declared value of the parcel contents for insurance or customs.
+expedition_package,fk_package_type,Parcel type identifier.
+expedition_package,height,Parcel height in the unit selected by size_units.
+expedition_package,width,Parcel width in the unit selected by size_units.
+expedition_package,size,Parcel depth in the unit selected by size_units.
+expedition_package,size_units,Unit for all three parcel dimensions.
+expedition_package,weight,Parcel mass expressed in the selected weight unit.
+expedition_package,weight_units,Unit for parcel mass.
+expedition_package,dangerous_goods,Classification of the contents. The declaration permits several class codes as text and uses 0 for none.
+expedition_package,tail_lift,Whether loading or unloading requires a lifting platform.
+expedition_package,rang,Display sequence of the parcel.
+intracommreport,rowid,Internal row identifier.
+intracommreport,ref,Business reference assigned to the record.
+intracommreport,entity,Organisation or data-sharing scope associated with the record.
+intracommreport,type_declaration,"Declaration category, such as DEB for goods or DES for services."
+intracommreport,periods,Reporting period selection.
+intracommreport,mode,Declaration processing mode.
+intracommreport,content_xml,Stored XML declaration content.
+intracommreport,type_export,Direction of the declaration exchange. The field definition offers in and out.
+intracommreport,datec,When the record was created.
+intracommreport,tms,Modification time carried by the row.
+notify_def_object,id,Internal row identifier.
+notify_def_object,entity,Organisation or data-sharing scope associated with the record.
+notify_def_object,objet_type,Business type of the object to which the notification belongs.
+notify_def_object,objet_id,Identifier within the object type.
+notify_def_object,type_notif,"Delivery channel, for example browser or email."
+notify_def_object,date_notif,Notification date and time.
+notify_def_object,user_id,Intended recipient.
+notify_def_object,moreparam,Additional notification parameters.
+oauth_state,rowid,Internal row identifier.
+oauth_state,service,Identifier of the authorisation provider.
+oauth_state,state,State value for correlating a provider authorisation response.
+oauth_state,fk_user,User associated with the record.
+oauth_state,fk_adherent,Associated member identifier.
+oauth_state,entity,Organisation or data-sharing scope associated with the record.
+onlinesignature,rowid,Internal row identifier.
+onlinesignature,entity,Organisation or data-sharing scope associated with the record.
+onlinesignature,object_type,Document or object type being signed.
+onlinesignature,object_id,Identifier within the type being signed.
+onlinesignature,datec,When the record was created.
+onlinesignature,tms,Modification time carried by the row.
+onlinesignature,name,Name given by the signer.
+onlinesignature,ip,Network address associated with the submission.
+onlinesignature,pathoffile,Location reserved for the signed file.
+opensurvey_formquestions,rowid,Internal row identifier.
+opensurvey_formquestions,id_sondage,Survey identifier for the question.
+opensurvey_formquestions,question,Text of the question.
+opensurvey_formquestions,available_answers,Available answer choices represented as text.
+opensurvey_user_formanswers,fk_user_survey,Survey participant record associated with the answer.
+opensurvey_user_formanswers,fk_question,Question being answered.
+opensurvey_user_formanswers,reponses,Answer text for the participant and question.
+paymentexpensereport_expensereport,rowid,Internal row identifier.
+paymentexpensereport_expensereport,fk_payment,Expense payment allocated by the association.
+paymentexpensereport_expensereport,fk_expensereport,Claim receiving the allocation.
+paymentexpensereport_expensereport,amount,Share of the expense payment allocated to this claim in accounting currency.
+paymentexpensereport_expensereport,multicurrency_code,Transaction currency code of the allocation.
+paymentexpensereport_expensereport,multicurrency_tx,Exchange rate recorded with the allocation.
+paymentexpensereport_expensereport,multicurrency_amount,Amount allocated in transaction currency.
+product_perentity,rowid,Internal row identifier.
+product_perentity,fk_product,Associated product or service.
+product_perentity,entity,Organisation or data-sharing scope associated with the record.
+product_perentity,accountancy_code_sell,Sales account code within the entity.
+product_perentity,accountancy_code_sell_intra,Sales account code for intra-community transactions.
+product_perentity,accountancy_code_sell_export,Export sales account code.
+product_perentity,accountancy_code_buy,Purchase account code within the entity.
+product_perentity,accountancy_code_buy_intra,Purchase account code for intra-community transactions.
+product_perentity,accountancy_code_buy_export,Import purchase account code.
+product_perentity,pmp,Weighted average price maintained for a product in this entity.
+product_thirdparty,rowid,Internal row identifier.
+product_thirdparty,fk_product,Associated product or service.
+product_thirdparty,fk_soc,"Associated customer, supplier or other party."
+product_thirdparty,fk_product_thirdparty_relation_type,Kind of product-to-party relationship.
+product_thirdparty,date_start,Beginning of the period represented by the row.
+product_thirdparty,date_end,End of the period represented by the row.
+product_thirdparty,fk_project,Associated project identifier.
+product_thirdparty,description,Description of the record.
+product_thirdparty,note_public,Note available for outward-facing uses of the record.
+product_thirdparty,note_private,Internal note.
+product_thirdparty,date_creation,When the record was created.
+product_thirdparty,tms,Modification time carried by the row.
+product_thirdparty,fk_user_creat,User who created the record.
+product_thirdparty,fk_user_modif,User who last modified the record.
+product_thirdparty,last_main_doc,Location of the last principal document generated for the record.
+product_thirdparty,import_key,Groups rows from an import operation.
+product_thirdparty,model_pdf,Identifier of the document layout.
+product_thirdparty,status,State code interpreted by the owning operation.
+quickmemo_memo,rowid,Internal row identifier.
+quickmemo_memo,entity,Organisation or data-sharing scope associated with the record.
+quickmemo_memo,fk_element,Identifier of the associated business object.
+quickmemo_memo,element_type,Type qualifying the object identifier fk_element.
+quickmemo_memo,quick_note,Text of the memo.
+quickmemo_memo,date_creation,When the record was created.
+quickmemo_memo,tms,Modification time carried by the row.
+quickmemo_memo,fk_user_creat,User who created the record.
+quickmemo_memo,fk_user_modif,User who last modified the record.
+quickmemo_memo,fk_user_archived,User who archived the memo.
+quickmemo_memo,date_archived,When the memo was archived.
+quickmemo_memo,import_key,Groups rows from an import operation.
+quickmemo_memo,pos_z,Front-to-back ordering of the memo.
+quickmemo_memo,pos_y,Vertical position of the memo.
+quickmemo_memo,pos_x,Horizontal position of the memo.
+quickmemo_memo,pos_w,Display width of the memo.
+quickmemo_memo,pos_h,Display height of the memo.
+quickmemo_memo,color,Memo colour.
+quickmemo_memo,context_tab,Tab or page context in which the memo appears.
+quickmemo_memo,private,Memo visibility flag.
+quickmemo_memo,private_tpl,Restricts the template to its creator when enabled.
+quickmemo_memo,rank_tpl,"Priority for template ordering. Higher values sort first, then lower row IDs."
+quickmemo_memo,name_tpl,Display name of the memo template.
+quickmemo_memo,shared_on_element,Allows a memo to match additional records in the same element context.
+quickmemo_memo,status,State code interpreted by the owning operation.
+quickmemo_memo_extrafields,rowid,Internal row identifier.
+quickmemo_memo_extrafields,tms,Modification time carried by the row.
+quickmemo_memo_extrafields,fk_object,Identifier of the owning business object whose configurable fields are stored on this row.
+quickmemo_memo_extrafields,import_key,Groups rows from an import operation.
+quickmemo_memo_user,rowid,Internal row identifier.
+quickmemo_memo_user,fk_memo,Memo to which this user's layout applies.
+quickmemo_memo_user,date_creation,When the record was created.
+quickmemo_memo_user,tms,Modification time carried by the row.
+quickmemo_memo_user,fk_user,User whose layout is saved for this memo.
+quickmemo_memo_user,pos_z,Front-to-back ordering of the memo.
+quickmemo_memo_user,pos_y,Vertical position of the memo.
+quickmemo_memo_user,pos_x,Horizontal position of the memo.
+quickmemo_memo_user,pos_w,Display width of the memo.
+quickmemo_memo_user,pos_h,Display height of the memo.
+session,session_id,Key identifying the session.
+session,session_variable,Stored session state.
+session,date_creation,When the record was created.
+session,last_accessed,Most recent recorded use of the session.
+session,fk_user,User associated with the record.
+session,remote_ip,Remote network address associated with this session.
+session,user_agent,Client identification string.
+societe_perentity,rowid,Internal row identifier.
+societe_perentity,fk_soc,"Associated customer, supplier or other party."
+societe_perentity,entity,Organisation or data-sharing scope associated with the record.
+societe_perentity,accountancy_code_customer_general,Customer general ledger account code for this entity.
+societe_perentity,accountancy_code_customer,Customer auxiliary account code for this entity.
+societe_perentity,accountancy_code_supplier_general,Supplier general ledger account code for this entity.
+societe_perentity,accountancy_code_supplier,Supplier auxiliary account code for this entity.
+societe_perentity,accountancy_code_sell,Sales account code within the entity.
+societe_perentity,accountancy_code_buy,Purchase account code within the entity.
+societe_perentity,vat_reverse_charge,Reverse-charge VAT setting on the party in this entity.
+societe_perentity,fk_account,Default bank account.
+societe_perentity,mode_reglement,Default customer payment method.
+societe_perentity,cond_reglement,Default customer payment terms.
+societe_perentity,mode_reglement_supplier,Default supplier payment method.
+societe_perentity,cond_reglement_supplier,Default supplier payment terms.
+user_employment,rowid,Internal row identifier.
+user_employment,entity,Organisation or data-sharing scope associated with the record.
+user_employment,ref,Business reference assigned to the record.
+user_employment,ref_ext,Reference assigned in another system.
+user_employment,fk_user,Employee to whom the dated terms apply.
+user_employment,datec,When the record was created.
+user_employment,tms,Modification time carried by the row.
+user_employment,fk_user_creat,User who created the record.
+user_employment,fk_user_modif,User who last modified the record.
+user_employment,job,Position held during the employment period.
+user_employment,status,State code interpreted by the owning operation.
+user_employment,salary,Salary amount assigned for the employment period.
+user_employment,salaryextra,Supplementary salary amount assigned for the employment period.
+user_employment,weeklyhours,Weekly working hours for this employment period.
+user_employment,dateemployment,Employment start date.
+user_employment,dateemploymentend,Employment end date.
+zapier_hook,rowid,Internal row identifier.
+zapier_hook,entity,Organisation or data-sharing scope associated with the record.
+zapier_hook,url,Callback destination registered for the event.
+zapier_hook,event,Subscribed business event.
+zapier_hook,module,Module selected by the connector registration.
+zapier_hook,action,Action selected by the connector registration.
+zapier_hook,status,State code interpreted by the owning operation.
+zapier_hook,date_creation,When the record was created.
+zapier_hook,fk_user,User associated with the record.
+zapier_hook,tms,Modification time carried by the row.
+zapier_hook,import_key,Groups rows from an import operation.

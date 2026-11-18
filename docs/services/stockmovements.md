@@ -2,8 +2,6 @@
 
 Each movement changes or records quantity for a product and warehouse. The request can identify a batch. The movement record is separate from the current stock balance and from the product master.
 
-The implementation locations below refer to `htdocs/product/stock/class/api_stockmovements.class.php`.
-
 ## `get` — Read a stock movement
 
 Route `GET {id}`.
@@ -17,8 +15,6 @@ Route `GET {id}`.
 - `400` — no stock movement missing.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — stock movement missing.
-
-Source lines `77–95`.
 
 ## `index` — List records
 
@@ -34,8 +30,6 @@ The lookup uses the visible entity scope for `stock`. The properties selector pr
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `115–186`.
-
 ## `post` — Create a stock movement
 
 **Arguments** `product_id` (integer), `warehouse_id` (integer), `qty` (number), `type = 2` (integer), `batch = ''` (text), `movementcode = ''` (text), `label = ''` (text), `price = ''` (text), `datem = ''` (text), `sellBy = ''` (text), `eatBy = ''` (text), `origin_type = ''` (text), `origin_id = 0` (integer).
@@ -48,5 +42,3 @@ The method attaches a source record and posts the stock movement. Quantity zero 
 
 - `403` — access refused.
 - `503` — zero movement quantity, record lookup or write failed.
-
-Source lines `217–250`.

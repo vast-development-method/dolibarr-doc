@@ -37,5 +37,3 @@ Consider one customer assigned to Ana and Jules. Lin creates a validated invoice
 | April invoiced turnover by author | Lin receives 100 net and 115 gross. |
 | May collected turnover by author | Lin receives 46 gross. The operator who recorded the receipt receives no share from that action. |
 | Margin by representative under the ordinary party rule | With an eligible cost of 60, each representative receives 50 of net sales, 30 of cost and 20 of margin. |
-
-Source locations include `htdocs/societe/list.php:108–116,637–666,1352–1361`, `htdocs/comm/propal/list.php:796–820`, `htdocs/commande/list.php:1203–1221`, `htdocs/compta/facture/list.php:860–878,1058–1077`, `htdocs/compta/stats/cabyuser.php:45–138,192–197,267–355,467–525` and `htdocs/compta/facture/class/facture.class.php:400–453`.

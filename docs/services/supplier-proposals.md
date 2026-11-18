@@ -2,8 +2,6 @@
 
 Purchase-side quotes have their own record lifecycle. Their read and write rights and resource scope are evaluated on the supplier quotation.
 
-The implementation locations below refer to `htdocs/supplier_proposal/class/api_supplier_proposals.class.php`.
-
 ## `delete` — Delete a supplier quotation
 
 **Arguments** `id` (integer).
@@ -15,8 +13,6 @@ The implementation locations below refer to `htdocs/supplier_proposal/class/api_
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier proposal missing.
 - `500` — removal failed.
-
-Source lines `64–88`.
 
 ## `get` — Read a supplier quotation
 
@@ -30,8 +26,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier proposal missing.
-
-Source lines `100–117`.
 
 ## `post` — Create a supplier quotation
 
@@ -49,8 +43,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `127–166` with `_validate 333–346`.
-
 ## `put` — Update a supplier quotation
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -65,8 +57,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — supplier proposal missing.
 - `500` — business operation failed.
 
-Source lines `177–214` with `get 100–117`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean).
@@ -80,5 +70,3 @@ The lookup uses the visible entity scope for `propal`. A caller linked to a part
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `233–323`.

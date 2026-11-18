@@ -41,7 +41,7 @@ Additional unique keys comprise `login`, `entity` / `fk_socpeople` / `fk_member`
 
 **Referenced by** [asset](accounting.md#record-asset) (fk_user_creat), [asset](accounting.md#record-asset) (fk_user_modif), [asset_accountancy_codes_economic](accounting.md#record-asset_accountancy_codes_economic) (fk_user_modif), [asset_accountancy_codes_fiscal](accounting.md#record-asset_accountancy_codes_fiscal) (fk_user_modif), [asset_depreciation](accounting.md#record-asset_depreciation) (fk_user_modif), [asset_depreciation_options_economic](accounting.md#record-asset_depreciation_options_economic) (fk_user_modif), [asset_depreciation_options_fiscal](accounting.md#record-asset_depreciation_options_fiscal) (fk_user_modif), [bom_bom](production.md#record-bom_bom) (fk_user_creat), [categorie_user](categories.md#record-categorie_user) (fk_user), [commande](commercial.md#record-commande) (fk_user_author), [commande](commercial.md#record-commande) (fk_user_valid), [commande](commercial.md#record-commande) (fk_user_cloture), [contrat](people.md#record-contrat) (fk_user_author), [delivery](commercial.md#record-delivery) (fk_user_author), [delivery](commercial.md#record-delivery) (fk_user_valid), [ecm_directories](content.md#record-ecm_directories) (fk_user_c), [ecm_directories](content.md#record-ecm_directories) (fk_user_m), [expedition](commercial.md#record-expedition) (fk_user_author), [expedition](commercial.md#record-expedition) (fk_user_valid), [facture](billing.md#record-facture) (fk_user_author), [facture](billing.md#record-facture) (fk_user_valid), [facture_fourn](billing.md#record-facture_fourn) (fk_user_author), [facture_fourn](billing.md#record-facture_fourn) (fk_user_valid), [facture_fourn_rec](billing.md#record-facture_fourn_rec) (fk_user_author), [facture_rec](billing.md#record-facture_rec) (fk_user_author), [fichinter_rec](people.md#record-fichinter_rec) (fk_user_author), [hrm_evaluation](people.md#record-hrm_evaluation) (fk_user_creat), [hrm_evaluationdet](people.md#record-hrm_evaluationdet) (fk_user_creat), [hrm_skill](people.md#record-hrm_skill) (fk_user_creat), [hrm_skilldet](people.md#record-hrm_skilldet) (fk_user_creat), [hrm_skillrank](people.md#record-hrm_skillrank) (fk_user_creat), [knowledgemanagement_knowledgerecord](people.md#record-knowledgemanagement_knowledgerecord) (fk_user_creat), [mrp_mo](production.md#record-mrp_mo) (fk_user_creat), [payment_salary](people.md#record-payment_salary) (fk_user), [product_customer_price](catalogue.md#record-product_customer_price) (fk_user), [product_fournisseur_price](catalogue.md#record-product_fournisseur_price) (fk_user), [projet_task](production.md#record-projet_task) (fk_user_creat), [projet_task](production.md#record-projet_task) (fk_user_valid), [propal](commercial.md#record-propal) (fk_user_author), [propal](commercial.md#record-propal) (fk_user_valid), [propal](commercial.md#record-propal) (fk_user_signature), [propal](commercial.md#record-propal) (fk_user_cloture), [reception](commercial.md#record-reception) (fk_user_author), [reception](commercial.md#record-reception) (fk_user_valid), [recruitment_recruitmentcandidature](people.md#record-recruitment_recruitmentcandidature) (fk_user_creat), [recruitment_recruitmentjobposition](people.md#record-recruitment_recruitmentjobposition) (fk_user_recruiter), [recruitment_recruitmentjobposition](people.md#record-recruitment_recruitmentjobposition) (fk_user_supervisor), [recruitment_recruitmentjobposition](people.md#record-recruitment_recruitmentjobposition) (fk_user_creat), [societe_commerciaux](parties.md#record-societe_commerciaux) (fk_user), [societe_remise_except](parties.md#record-societe_remise_except) (fk_user), [socpeople](parties.md#record-socpeople) (fk_user_creat), [stocktransfer_stocktransfer](warehouse.md#record-stocktransfer_stocktransfer) (fk_user_creat), [user_rights](foundation.md#record-user_rights) (fk_user), [usergroup_user](foundation.md#record-usergroup_user) (fk_user), [workstation_workstation](production.md#record-workstation_workstation) (fk_user_creat).
 
-The record class defines `0` disabled, `1` enabled. See `htdocs/user/class/user.class.php`.
+The stored state codes are `0` disabled, `1` enabled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -130,8 +130,6 @@ The record class defines `0` disabled, `1` enabled. See `htdocs/user/class/user.
 | `default_c_exp_tax_cat` | integer | Yes | — | Default expense-category selection for this user. |
 | `fk_warehouse` | integer | Yes | — | Warehouse or stock location. |
 
-Source locations include `htdocs/install/mysql/tables/llx_user.sql`, `htdocs/install/mysql/tables/llx_user.key.sql`, `htdocs/user/class/user.class.php:61`.
-
 <a id="record-usergroup"></a>
 
 ## Access group
@@ -156,8 +154,6 @@ An additional unique key comprises `nom`, `entity`.
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `model_pdf` | varchar(255) | Yes | `NULL` | Selected document output model. |
 
-Source locations include `htdocs/install/mysql/tables/llx_usergroup.sql`, `htdocs/install/mysql/tables/llx_usergroup.key.sql`, `htdocs/user/class/usergroup.class.php:52`.
-
 <a id="record-usergroup_user"></a>
 
 ## Group membership
@@ -174,8 +170,6 @@ An additional unique key comprises `entity`, `fk_user`, `fk_usergroup`.
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `fk_user` | integer | No | — | User account associated with this record. References [user](foundation.md#record-user) (rowid). |
 | `fk_usergroup` | integer | No | — | Access or personnel group. References [usergroup](foundation.md#record-usergroup) (rowid). |
-
-Source locations include `htdocs/install/mysql/tables/llx_usergroup_user.sql`, `htdocs/install/mysql/tables/llx_usergroup_user.key.sql`, `htdocs/user/class/user.class.php:1481`.
 
 <a id="record-rights_def"></a>
 
@@ -202,8 +196,6 @@ The primary key is `id`, `entity`.
 | `bydefault` | tinyint | Yes | `0` | Flag for granting the right by default. |
 | `enabled` | text | Yes | — | Condition or flag determining whether the entry is available. |
 
-Source locations include `htdocs/install/mysql/tables/llx_rights_def.sql`, `htdocs/install/mysql/tables/llx_rights_def.key.sql`, `htdocs/user/class/user.class.php:1129`.
-
 <a id="record-user_rights"></a>
 
 ## Individual grant
@@ -220,8 +212,6 @@ An additional unique key comprises `entity`, `fk_user`, `fk_id`.
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `fk_user` | integer | No | — | User account associated with this record. References [user](foundation.md#record-user) (rowid). |
 | `fk_id` | integer | No | — | Definition of the permission assigned to this principal. |
-
-Source locations include `htdocs/install/mysql/tables/llx_user_rights.sql`, `htdocs/install/mysql/tables/llx_user_rights.key.sql`, `htdocs/user/class/user.class.php:1182`.
 
 <a id="record-usergroup_rights"></a>
 
@@ -240,8 +230,6 @@ An additional unique key comprises `entity`, `fk_usergroup`, `fk_id`.
 | `fk_usergroup` | integer | No | — | Access or personnel group. References [usergroup](foundation.md#record-usergroup) (rowid). |
 | `fk_id` | integer | No | — | Definition of the permission assigned to this principal. |
 
-Source locations include `htdocs/install/mysql/tables/llx_usergroup_rights.sql`, `htdocs/install/mysql/tables/llx_usergroup_rights.key.sql`, `htdocs/user/class/user.class.php:1480`.
-
 <a id="record-user_param"></a>
 
 ## User preference
@@ -259,8 +247,6 @@ An additional unique key comprises `fk_user`, `param`, `entity`.
 | `param` | varchar(180) | No | — | Name of this user preference. |
 | `value` | text | No | — | Preference value resolved for this user. |
 
-Source locations include `htdocs/install/mysql/tables/llx_user_param.sql`, `htdocs/install/mysql/tables/llx_user_param.key.sql`, `htdocs/user/class/user.class.php:803`.
-
 <a id="record-user_alert"></a>
 
 ## Contact alert subscription
@@ -276,8 +262,6 @@ The primary key is `rowid`.
 | `type` | integer | Yes | — | Type. |
 | `fk_contact` | integer | Yes | — | Contact or address identity. |
 | `fk_user` | integer | Yes | — | User account associated with this record. |
-
-Source locations include `htdocs/install/mysql/tables/llx_user_alert.sql`, `htdocs/contact/class/contact.class.php:962`.
 
 <a id="record-user_clicktodial"></a>
 
@@ -295,8 +279,6 @@ The primary key is `fk_user`.
 | `login` | varchar(32) | Yes | — | Login name of the account. |
 | `pass` | varchar(64) | Yes | — | Credential field in the account layout. Handle through the owning account service. |
 | `poste` | varchar(20) | Yes | — | Telephone extension used for outgoing click-to-dial requests. |
-
-Source locations include `htdocs/install/mysql/tables/llx_user_clicktodial.sql`, `htdocs/user/class/user.class.php:2957`.
 
 <a id="record-user_rib"></a>
 
@@ -331,8 +313,6 @@ The primary key is `rowid`.
 | `currency_code` | varchar(3) | Yes | — | Currency identifier for this record. |
 | `default_rib` | smallint | No | `0` | Selects the default set of bank details. |
 
-Source locations include `htdocs/install/mysql/tables/llx_user_rib.sql`, `htdocs/user/class/userbankaccount.class.php:47`.
-
 <a id="record-const"></a>
 
 ## Configuration setting
@@ -354,8 +334,6 @@ An additional unique key comprises `name`, `entity`.
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_const.sql`, `htdocs/install/mysql/tables/llx_const.key.sql`, `htdocs/core/class/conf.class.php:561`.
-
 <a id="record-establishment"></a>
 
 ## Operating establishment
@@ -367,7 +345,7 @@ The primary key is `rowid`.
 
 **Referenced by** [recruitment_recruitmentjobposition](people.md#record-recruitment_recruitmentjobposition) (fk_establishment).
 
-The record class defines `1` open, `0` closed. See `htdocs/hrm/class/establishment.class.php`.
+The stored state codes are `1` open, `0` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -391,8 +369,6 @@ The record class defines `1` open, `0` closed. See `htdocs/hrm/class/establishme
 | `tms` | timestamp | No | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `status` | tinyint | Yes | `1` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_establishment.sql`, `htdocs/user/class/user.class.php:588`.
-
 <a id="record-default_values"></a>
 
 ## Form default
@@ -412,8 +388,6 @@ An additional unique key comprises `type`, `entity`, `user_id`, `page`, `param`.
 | `page` | varchar(255) | Yes | — | Relative URL. |
 | `param` | varchar(255) | Yes | — | Field. |
 | `value` | varchar(128) | Yes | — | Value. |
-
-Source locations include `htdocs/install/mysql/tables/llx_default_values.sql`, `htdocs/install/mysql/tables/llx_default_values.key.sql`, `htdocs/core/class/defaultvalues.class.php:44`.
 
 <a id="record-menu"></a>
 
@@ -449,8 +423,6 @@ The primary key is `rowid`.
 | `usertype` | integer | No | `0` | Determines the menu audience. Values 0, 1 and 2 select all, external and internal users respectively. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_menu.sql`, `htdocs/core/class/menubase.class.php:222`.
-
 <a id="record-boxes_def"></a>
 
 ## Dashboard widget definition
@@ -471,8 +443,6 @@ An additional unique key comprises `file`, `entity`, `note`.
 | `fk_user` | integer | No | `0` | User account associated with this record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `note` | varchar(130) | Yes | — | Free-text annotation retained with the record. |
-
-Source locations include `htdocs/install/mysql/tables/llx_boxes_def.sql`, `htdocs/install/mysql/tables/llx_boxes_def.key.sql`, `htdocs/core/class/infobox.class.php:106`.
 
 <a id="record-boxes"></a>
 
@@ -495,8 +465,6 @@ An additional unique key comprises `entity`, `box_id`, `position`, `fk_user`.
 | `maxline` | integer | Yes | — | Limit on the number of rows displayed by the component. |
 | `params` | varchar(255) | Yes | — | Additional configuration values for the dashboard component. |
 
-Source locations include `htdocs/install/mysql/tables/llx_boxes.sql`, `htdocs/install/mysql/tables/llx_boxes.key.sql`, `htdocs/core/class/infobox.class.php:106`.
-
 <a id="record-bookmark"></a>
 
 ## Saved link
@@ -518,8 +486,6 @@ An additional unique key comprises `fk_user`, `entity`, `title`.
 | `favicon` | varchar(24) | Yes | — | Icon reference for the bookmarked destination. |
 | `position` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
-
-Source locations include `htdocs/install/mysql/tables/llx_bookmark.sql`, `htdocs/install/mysql/tables/llx_bookmark.key.sql`, `htdocs/user/class/user.class.php:1833`.
 
 <a id="record-events"></a>
 
@@ -545,8 +511,6 @@ The primary key is `rowid`.
 | `fk_object` | integer | Yes | — | Identifier of the business record holding these values. |
 | `authentication_method` | varchar(64) | Yes | — | Authentication mechanism recorded for a sign-in event. |
 | `fk_oauth_token` | integer | Yes | — | Associated delegated authorisation token identifier. |
-
-Source locations include `htdocs/install/mysql/tables/llx_events.sql`, `htdocs/core/class/events.class.php:42`.
 
 <a id="record-blockedlog"></a>
 
@@ -575,19 +539,17 @@ The primary key is `rowid`.
 | `linktype` | varchar(16) | Yes | — | Kind of relationship to the other reference. |
 | `object_data` | mediumtext | Yes | — | Snapshot of the recorded object included in the signed event. |
 | `signature` | varchar(100) | No | — | Chained event signature incorporating the preceding signature. |
-| `signature_backward` | varchar(100) | Yes | empty string | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `signature_backward` | varchar(100) | Yes | empty string | Legacy storage. Use the current business representation described for the owning record. |
 | `element` | varchar(50) | Yes | — | Family of the object whose event is recorded. |
 | `fk_user` | integer | Yes | — | User account associated with this record. |
 | `fk_object` | integer | Yes | — | Identifier of the business record holding these values. |
 | `object_version` | varchar(32) | Yes | empty string | Release that originally recorded the event. |
 | `object_format` | varchar(16) | Yes | `'V1'` | Representation used to interpret the recorded object snapshot. |
-| `certified` | integer | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `actionrefisunique` | varchar(16) | Yes | `NULL` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `certified` | integer | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
+| `actionrefisunique` | varchar(16) | Yes | `NULL` | Legacy storage. Use the current business representation described for the owning record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `debuginfo` | mediumtext | Yes | — | Diagnostic information associated with this audit entry. |
 | `note` | varchar(128) | Yes | — | Free-text annotation retained with the record. |
-
-Source locations include `htdocs/install/mysql/tables/llx_blockedlog.sql`, `htdocs/blockedlog/class/blockedlog.class.php:1153`.
 
 <a id="record-cronjob"></a>
 
@@ -599,7 +561,7 @@ Defines a periodic job, its permitted execution window and its most recent run r
 The primary key is `rowid`.
 An additional unique key comprises `label`, `entity`.
 
-The record class defines `0` disabled, `1` enabled, `2` archived. See `htdocs/cron/class/cronjob.class.php`.
+The stored state codes are `0` disabled, `1` enabled, `2` archived.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -639,5 +601,3 @@ The record class defines `0` disabled, `1` enabled, `2` archived. See `htdocs/cr
 | `libname` | varchar(255) | Yes | — | Libname. |
 | `email_alert` | varchar(128) | Yes | — | Emailalert. |
 | `entity` | integer | Yes | `0` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
-
-Source locations include `htdocs/install/mysql/tables/llx_cronjob.sql`, `htdocs/install/mysql/tables/llx_cronjob.key.sql`, `htdocs/cron/class/cronjob.class.php:45`.

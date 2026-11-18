@@ -10,7 +10,7 @@ The reference is unique within the entity. Separate unique keys combine type, pa
 
 A party can also appear in the customer register. Changing the partnership’s decision preserves that master identity. A member renewal likewise remains a separate dated membership obligation. No partnership approval operation in this workflow automatically issues a dues invoice or grants a user account.
 
-Implementation evidence appears in `htdocs/install/mysql/tables/llx_partnership-partnership.key.sql` and `htdocs/partnership/class/partnership.class.php` (`create`, `fetch`, `approve`).
+Related records include [Partnership agreement](../../records/parties.md#record-partnership).
 
 ## Public request and party matching
 
@@ -19,8 +19,6 @@ When the public application interface is active, the form requires a type, compa
 The organization-matching path looks for the supplied company name. If it fails to find a company under that name but finds the submitted email on an existing company, it asks the applicant to correct the name. It does not attach that request to a company solely because the email matches. If neither lookup succeeds, it creates a party from the submitted name, address, region, country, email and URL, using the applicant’s name as an alias. An ambiguous company-name result is an error.
 
 For an existing unambiguously identified party, the flow links that party and fills previously empty address and contact details. Existing populated details survive the public form. For example, a public applicant entering a different address for the known organization does not replace the address already on file through this fill-missing branch. The public form reaches ordinary partnership creation after its entry checks. Staff validation and acceptance remain later decisions.
-
-Implementation evidence appears in `htdocs/public/partnership/new.php:87–90,168–337` and `htdocs/partnership/class/partnership.class.php:269–280`.
 
 ## State changes and authority
 
@@ -38,5 +36,3 @@ Validation and approval on the staff card use partnership write authority. An op
 Staff readers, writers and deleters have distinct grants. A writer can delete a draft through the staff card. The programmatic delete operation requires the delete grant. Resource reads and list access use the caller’s available partnership scope. Separate document, contact and agenda records can remain associated with an agreement across changes in status.
 
 For example, a partnership starting 1 April can be refused for missing evidence, then reinstated when evidence arrives. Reinstatement changes the original agreement to approved under its existing ID. Creating a second agreement of the same type for the same party with the same 1 April start is a different operation and would encounter the uniqueness rule.
-
-Implementation evidence appears in `htdocs/partnership/partnership_card.php:85–92,144–236,609–655`, `htdocs/partnership/class/partnership.class.php` (`validate`, `approve`, `setDraft`, `refused`, `cancel`, `reopen`) and `htdocs/partnership/class/api_partnerships.class.php` (`get`, `index`, `delete`).

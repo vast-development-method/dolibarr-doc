@@ -1,8 +1,6 @@
 # Production orders
 
-Creating or validating the order establishes its production record. Posting production pairs outputs with component consumption and can create stock movements. The all-remaining and specified-quantity paths are separate operations.
-
-The implementation locations below refer to `htdocs/mrp/class/api_mos.class.php`.
+Creating or validating the order establishes its production record. Posting production pairs outputs with component consumption and can create stock movements. The service offers [bulk and per-plan-line posting](../production-control/posting-modes.md). With saved plan lines, bulk posting uses the full planned quantities even after an earlier partial fulfilment.
 
 ## `get` — Read a production order
 
@@ -16,8 +14,6 @@ Route `GET {id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mo missing.
-
-Source lines `67–83`.
 
 ## `getCategories` — Read categories
 
@@ -34,8 +30,6 @@ The method reads classification links.
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `102–117`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
@@ -49,8 +43,6 @@ The selection includes a representative-assignment restriction in its customer-v
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `137–212`.
 
 ## `post` — Create a production order
 
@@ -66,8 +58,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `224–251` with `_validate 1080–1093`.
-
 ## `put` — Update a production order
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -81,8 +71,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mo missing.
 - `500` — business operation failed.
-
-Source lines `262–304` with `get 67–83`.
 
 ## `validate` — Validate a production order
 
@@ -101,8 +89,6 @@ The method validates the record.
 - `404` — mo missing.
 - `500` — business operation failed.
 
-Source lines `320–345`.
-
 ## `delete` — Delete a production order
 
 **Arguments** `id` (integer).
@@ -114,8 +100,6 @@ Source lines `320–345`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mo missing.
 - `500` — removal failed.
-
-Source lines `355–379`.
 
 ## `produceAndConsumeAll` — Produce and consume all
 
@@ -134,8 +118,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `405` — operation unavailable.
 - `500` — business operation failed, field objectid required in required, field qty required in required, field fk_warehouse must be > 0 in, product must be in batch, errorfieldrequiredforproduct warehouse required, errorfieldrequiredforproduct batch required.
 
-Source lines `414–765`.
-
 ## `produceAndConsume` — Produce and consume
 
 Route `POST {id}/produceandconsume`.
@@ -152,5 +134,3 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — mo missing.
 - `405` — operation unavailable.
 - `500` — business operation failed, field objectid required in required, unsupported state or operation, field qty with lower or higher then 0 required in required, field fk_warehouse required in required.
-
-Source lines `801–1004`.

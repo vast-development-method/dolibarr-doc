@@ -18,12 +18,10 @@ Calendar arithmetic takes place in the user's named time zone when available. A 
 
 For example, a Wednesday appointment from 09:00 to 09:45 repeated weekly in a zone whose clocks change on Sunday appears at 09:00 on both Wednesdays. The elapsed time between the two start instants can differ from 168 hours. An appointment in a skipped local clock hour requires the end-date adjustment if the normalized start would otherwise overtake its end. A consumer reconstructing a calendar from the stored occurrences can use their recorded starts and ends directly.
 
-The recurrence choices, bound and civil-time arithmetic are in `htdocs/comm/action/card.php`. The series fields on stored events are defined and read in `htdocs/comm/action/class/actioncomm.class.php`.
-
 ## Recipients, equipment and failure behavior
 
 A reminder stores the event ID, recipient user, delivery type, offset amount and unit, reminder timestamp and processing status. The event form computes its timestamp by subtracting the offset from the start. Email reminders can carry a template ID. On a recurring visit, enabling reminders creates a separate pending reminder for each assigned internal user on each generated event. Three visits with two assigned staff produce six pending reminder records. A pending record establishes the reminder schedule. Delivery status progresses separately.
 
 The creation of the series is wrapped in a database transaction. A failed occurrence or failed reminder insertion causes rollback. The resource-link section explicitly assigns the selected busy resources to the initially created event, using the configured overlap rule. The later-occurrence loop creates the event records, categories and reminders without replaying that resource-link section. A recurrence identifier on a calendar event therefore cannot establish that its room or equipment was reserved for every occurrence. Resource associations are checked per event. On subsequent date edits the event card can compare its linked busy resources against other reservations.
 
-The appointment and reminder creation paths are in `htdocs/comm/action/card.php`. Reminder states are in `htdocs/comm/action/class/actioncommreminder.class.php`. The individual resource allocation's start/end comparison is documented in [Project task schedules, assignments and shared resources](../operations/task-hierarchy-and-resource-booking.md).
+The individual resource allocation's start/end comparison is documented in [Project task schedules, assignments and shared resources](../operations/task-hierarchy-and-resource-booking.md).

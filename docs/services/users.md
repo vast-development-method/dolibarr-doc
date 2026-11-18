@@ -2,8 +2,6 @@
 
 A login identity, group membership and notification subscription have separate lifecycles. User lookups can resolve login, email or record identifier. Group membership and notification operations require their own identifiers.
 
-The implementation locations below refer to `htdocs/user/class/api_users.class.php`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `user_ids = '0'` (text), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
@@ -17,8 +15,6 @@ The lookup uses the visible entity scope for `user`. The properties selector pro
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `86–167`.
 
 ## `get` — Read a user
 
@@ -34,8 +30,6 @@ Identifier zero selects a specimen.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing.
 
-Source lines `184–212`.
-
 ## `getByLogin` — Read by login
 
 Route `GET login/{login}`.
@@ -49,8 +43,6 @@ Route `GET login/{login}`.
 - `400` — invalid request data.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing.
-
-Source lines `231–255`.
 
 ## `getByEmail` — Read by email address
 
@@ -66,8 +58,6 @@ Route `GET email/{email}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing.
 
-Source lines `274–298`.
-
 ## `getInfo` — Read info
 
 Route `GET /info`.
@@ -80,8 +70,6 @@ Route `GET /info`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing, user group missing.
-
-Source lines `315–345`.
 
 ## `post` — Create a user
 
@@ -99,8 +87,6 @@ The optional caller marker is placed in event context for synchronization.
 - `405` — field unavailable for this write.
 - `500` — required request field absent, business operation failed.
 
-Source lines `359–420`.
-
 ## `put` — Update a user
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -116,8 +102,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — account missing, user missing.
 - `405` — field unavailable for this write.
 - `500` — business operation failed.
-
-Source lines `438–539` with `get 184–212`.
 
 ## `setPassword` — Set password
 
@@ -135,8 +119,6 @@ The method sets credentials.
 - `404` — no matching rows.
 - `500` — business operation failed.
 
-Source lines `556–597`.
-
 ## `getGroups` — Read groups
 
 Route `GET {id}/groups`.
@@ -150,8 +132,6 @@ Route `GET {id}/groups`.
 - `400` — no user missing.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing.
-
-Source lines `615–641`.
 
 ## `setGroup` — Set group
 
@@ -169,8 +149,6 @@ The method adds the user to a group.
 - `404` — user missing.
 - `500` — business operation failed.
 
-Source lines `660–691`.
-
 ## `postGroups` — Post groups
 
 Route `POST /groups`.
@@ -186,8 +164,6 @@ The optional caller marker is placed in event context for synchronization.
 - `400` — body includes a forbidden identifier.
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `706–730`.
 
 ## `putGroups` — Put groups
 
@@ -206,8 +182,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — usergroup missing.
 - `500` — business operation failed.
 
-Source lines `749–791` with `infoGroups 940–973`.
-
 ## `removeUserFromGroup` — Remove user from group
 
 Route `POST {id}/remove-group/{group}`.
@@ -223,8 +197,6 @@ The method removes the user from a group.
 - `403` — access refused.
 - `404` — user missing.
 - `500` — business operation failed.
-
-Source lines `808–838`.
 
 ## `listGroups` — List groups
 
@@ -242,8 +214,6 @@ The lookup uses the visible entity scope for `user`. The properties selector pro
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `864–920`.
-
 ## `infoGroups` — Info groups
 
 Route `GET /groups/{group}`.
@@ -258,8 +228,6 @@ Route `GET /groups/{group}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — usergroup missing.
 
-Source lines `940–973`.
-
 ## `delete` — Delete a user
 
 **Arguments** `id` (integer).
@@ -271,8 +239,6 @@ Source lines `940–973`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — user missing.
 - `500` — business operation failed.
-
-Source lines `988–1021`.
 
 ## `deleteGroups` — Delete groups
 
@@ -288,8 +254,6 @@ Route `DELETE /groups/{group}`.
 - `404` — usergroup missing.
 - `500` — business operation failed.
 
-Source lines `1038–1065`.
-
 ## `getUserNotification` — Read user notification
 
 Route `GET {id}/notifications`.
@@ -303,8 +267,6 @@ Route `GET {id}/notifications`.
 - `400` — no user missing.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — notification missing, no matching rows.
-
-Source lines `1084–1142`.
 
 ## `createUserNotification` — Create user notification
 
@@ -320,8 +282,6 @@ Route `POST {id}/notifications`.
 - `404` — requested data unavailable.
 - `500` — error creating User Notification, request_data missing event, business operation failed.
 
-Source lines `1160–1201`.
-
 ## `createUserNotificationByCode` — Create user notification by code
 
 Route `POST {id}/notificationsbycode/{code}`.
@@ -336,8 +296,6 @@ Route `POST {id}/notificationsbycode/{code}`.
 - `404` — requested data unavailable, action trigger code missing.
 - `500` — business operation failed.
 
-Source lines `1221–1273`.
-
 ## `deleteUserNotification` — Delete user notification
 
 Route `DELETE {id}/notifications/{notification_id}`.
@@ -349,8 +307,6 @@ Route `DELETE {id}/notifications/{notification_id}`.
 **Result** The notification-removal result.
 
 - `403` — access refused.
-
-Source lines `1289–1306`.
 
 ## `updateUserNotification` — Update user notification
 
@@ -365,5 +321,3 @@ Route `PUT {id}/notifications/{notification_id}`.
 - `403` — access refused.
 - `404` — requested data unavailable.
 - `500` — business operation failed.
-
-Source lines `1325–1351`.

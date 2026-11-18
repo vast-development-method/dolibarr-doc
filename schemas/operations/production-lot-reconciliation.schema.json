@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Production plan and warehouse movement reconciliation",
+  "type": "object",
+  "description": "Read-only projection for one order. Quantities are expressed per product and plan unit. Amounts in this report are quantities, not money.",
+  "additionalProperties": false,
+  "properties": {
+    "orderId": {
+      "$ref": "#/$defs/id"
+    },
+    "plans": {
+      "type": "array",
+      "description": "Saved input and output plans within the report scope, including unfulfilled rows.",
+      "items": {
+        "$ref": "#/$defs/plan"
+      }
+    },
+    "actuals": {
+      "type": "array",
+      "description": "Surviving actual rows in scope. Keep an actual with a missing plan or movement link visible.",
+      "items": {
+        "$ref": "#/$defs/actual"
+      }
+    },
+    "movements": {
+      "type": "array",
+      "description": "Distinct in-scope warehouse journal rows whose origin identifies the order, including compensations.",
+      "items": {
+        "$ref": "#/$defs/movement"
+      }
+    },
+    "movementTotals": {
+      "type": "array",
+      "description": "One group for each product, warehouse and batch appearing in movements. Retain zero-net groups.",
+      "items": {
+        "$ref": "#/$defs/movementTotal"
+      }
+    }
+  },
+  "required": [
+    "orderId",
+    "plans",
+    "actuals",
+    "movements",
+    "movementTotals"
+  ],
+  "$defs": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nullableId": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "batch": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Exact lot or serial text. Null denotes an absent value. Preserve strings with leading zeroes."
+    },
+    "plan": {
+      "type": "object",
+      "description": "One row per saved planned line. Confirm order, product, parent ID and corresponding role when matching actuals.",
+      "additionalProperties": false,
+      "properties": {
+        "planLineId": {
+          "$ref": "#/$defs/id"
+        },
+        "productId": {
+          "$ref": "#/$defs/id"
+        },
+        "unitId": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "role": {
+          "enum": [
+            "toconsume",
+            "toproduce"
+          ]
+        },
+        "plannedQuantity": {
+          "type": "number",
+          "description": "Saved planned line quantity."
+        },
+        "postedQuantity": {
+          "type": "number",
+          "description": "Sum of signed matching surviving actual quantities, zero when none qualify."
+        },
+        "remainingQuantity": {
+          "type": "number",
+          "description": "Planned quantity less posted quantity. An overfulfilled plan has a negative remainder."
+        }
+      },
+      "required": [
+        "planLineId",
+        "productId",
+        "unitId",
+        "role",
+        "plannedQuantity",
+        "postedQuantity",
+        "remainingQuantity"
+      ]
+    },
+    "actual": {
+      "type": "object",
+      "description": "One surviving actual. Map empty relationships or a zero sentinel to null. Movement direction is read independently from the journal.",
+      "additionalProperties": false,
+      "properties": {
+        "actualId": {
+          "$ref": "#/$defs/id"
+        },
+        "planLineId": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "productId": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "enum": [
+            "consumed",
+            "produced"
+          ]
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Signed quantity in the production register."
+        },
+        "warehouseId": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "batch": {
+          "$ref": "#/$defs/batch"
+        },
+        "movementId": {
+          "$ref": "#/$defs/nullableId"
+        }
+      },
+      "required": [
+        "actualId",
+        "planLineId",
+        "productId",
+        "role",
+        "quantity",
+        "warehouseId",
+        "batch",
+        "movementId"
+      ]
+    },
+    "movement": {
+      "type": "object",
+      "description": "One journal row by identity. Movement type codes are 0 manual increase, 1 manual decrease, 2 automatic issue and 3 automatic receipt.",
+      "additionalProperties": false,
+      "properties": {
+        "movementId": {
+          "$ref": "#/$defs/id"
+        },
+        "productId": {
+          "$ref": "#/$defs/id"
+        },
+        "warehouseId": {
+          "$ref": "#/$defs/id"
+        },
+        "batch": {
+          "$ref": "#/$defs/batch"
+        },
+        "signedQuantity": {
+          "type": "number",
+          "description": "Positive increases warehouse stock. Negative decreases it."
+        },
+        "movementType": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "required": [
+        "movementId",
+        "productId",
+        "warehouseId",
+        "batch",
+        "signedQuantity",
+        "movementType"
+      ]
+    },
+    "movementTotal": {
+      "type": "object",
+      "description": "Change attributable to this order. Other warehouse transactions and beginning balances determine the on-hand quantity.",
+      "additionalProperties": false,
+      "properties": {
+        "productId": {
+          "$ref": "#/$defs/id"
+        },
+        "warehouseId": {
+          "$ref": "#/$defs/id"
+        },
+        "batch": {
+          "$ref": "#/$defs/batch"
+        },
+        "movementCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "netQuantity": {
+          "type": "number",
+          "description": "Sum of signed quantities over distinct movement rows in the group."
+        }
+      },
+      "required": [
+        "productId",
+        "warehouseId",
+        "batch",
+        "movementCount",
+        "netQuantity"
+      ]
+    }
+  }
+}

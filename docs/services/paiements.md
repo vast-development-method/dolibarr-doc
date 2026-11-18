@@ -2,8 +2,6 @@
 
 A payment is an allocation-bearing financial record. Looking up or amending the payment itself is distinct from settling a specific invoice or creating a receipt across several invoices.
 
-The implementation locations below refer to `htdocs/compta/facture/class/api_paiements.class.php`.
-
 ## `get` — Read a customer payment
 
 **Arguments** `id` (integer).
@@ -15,8 +13,6 @@ The implementation locations below refer to `htdocs/compta/facture/class/api_pai
 - `403` — access refused.
 - `404` — paiement missing.
 - `503` — query or persistence failure.
-
-Source lines `75–90` with `_checkAccessToPaymentForExternalUser 280–300`.
 
 ## `index` — List records
 
@@ -31,8 +27,6 @@ The properties selector projects the returned fields.
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `112–171`.
 
 ## `put` — Update a customer payment
 
@@ -49,8 +43,6 @@ The optional caller marker is placed in event context for synchronization.
 - `500` — business operation failed.
 - `503` — query or persistence failure.
 
-Source lines `190–225` with `_checkAccessToPaymentForExternalUser 280–300`, `get 75–90`.
-
 ## `delete` — Delete a customer payment
 
 **Arguments** `id` (integer).
@@ -64,5 +56,3 @@ Source lines `190–225` with `_checkAccessToPaymentForExternalUser 280–300`, 
 - `409` — removal failed.
 - `500` — removal failed.
 - `503` — query or persistence failure.
-
-Source lines `241–267` with `_checkAccessToPaymentForExternalUser 280–300`.

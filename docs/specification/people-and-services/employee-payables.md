@@ -8,8 +8,6 @@ The web card checks the salary module and record scope. Reading all salaries all
 
 On ordinary entry the card requires the employee, a nonzero amount and both pay-period dates. The record writer also requires a label. With immediate payment selected, the form requires a payment method and, when bank accounting is active, an account to debit. It opens an outer transaction, creates the obligation and its extra attributes, then attempts the requested payment and banking steps. A reported failure of those steps rolls the combined operation back. Creating only the obligation leaves later cash disbursement to a separate operation.
 
-Implementation evidence appears in `htdocs/salaries/card.php:91–125,218–329`, `htdocs/salaries/class/salary.class.php:485–598`.
-
 ## Settlement document and posting
 
 | Fact | Storage and meaning |
@@ -24,8 +22,6 @@ The ordinary salary-payment page requires the write grant, payment date, payment
 
 With automatic closure requested, each salary's payment total is reread and the paid flag is set when the rounded remaining amount equals zero. The lower-level writer does not propagate a failed paid-flag update into its payment error count. An integration reporting payment and classification together should read back both results. A payment-create event can reject the operation. Banking then uses the payment date, method, signed amount, reference and optional value date to create the cash movement. The card treats a failed bank operation as an error in the outer transaction.
 
-Implementation evidence appears in `htdocs/salaries/payment_salary.php:65–170`, `htdocs/salaries/class/paymentsalary.class.php:199–317,610–711`, `htdocs/salaries/class/salary.class.php:737–775,830–871`.
-
 ## Period and statement examples
 
 An employee is owed 3,500.00 for a completed month. The first transfer is 1,000.00. The outstanding amount becomes 2,500.00 and the bank movement is −1,000.00. A second transfer for 2,500.00 gives a second cash movement and zero outstanding. If automatic closure is selected and classification succeeds, the salary becomes paid. Reopening this record changes the flag. It leaves the two payment rows and their movements intact, so the outstanding calculation remains zero until a transaction changes it.
@@ -33,5 +29,3 @@ An employee is owed 3,500.00 for a completed month. The first transfer is 1,000.
 Deleting a salary payment with a linked bank row first delegates deletion to the bank-line operation. On an error it preserves the payment. After a successful bank deletion it deletes the payment row within the same transaction. The payment delete method does not itself recompute the parent paid flag. If the second payment in the example is removed through an allowed correction, the surviving payment total is 1,000.00 and outstanding is again 2,500.00. Review the salary classification as its own fact.
 
 A bank-order request is an instruction to pay. For the salary route it records the salary ID, requested amount, bank coordinates, request date, actor and entity. Duplicate detection normally checks unprocessed bank requests for that salary. A stricter caller can check processed requests too. Zero-amount requests are refused. A successful request attempts to assign the corresponding transfer method to the obligation. Creating the request alone produces no salary-payment row and does not reduce outstanding.
-
-Implementation evidence appears in `htdocs/salaries/card.php:178–209`, `htdocs/salaries/class/paymentsalary.class.php:479–525`, `htdocs/salaries/class/salary.class.php:989–1102`, `htdocs/salaries/virement_request.php`.

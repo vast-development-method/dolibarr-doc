@@ -10,8 +10,6 @@ The default split status is approved. When inspection is enabled, the split star
 
 The physical posting can run while a split is pending inspection. The inspection decision and the inventory entry therefore need separate timestamps in a receiving history. Repeating the same dispatch request can append a second split and another stock movement, including against an order already classified as completely received. In the event of an ambiguous response, the originating order line, warehouse, lot, receipt identity and quantity allow the receiving operator to distinguish an existing arrival from a new delivery.
 
-Source location `htdocs/fourn/class/fournisseur.commande.class.php:dispatchProduct`.
-
 ## Inspection and warehouse corrections
 
 Under ordinary permissions the right to receive purchase orders also allows inspection in direct-dispatch mode. Advanced permissions can reserve inspection for the purchase-order controller. With the dedicated reception module enabled the form uses its creation and advanced validation permissions. When acting on an existing split the form first verifies that the split belongs to the purchase order being displayed.
@@ -26,8 +24,6 @@ Under ordinary permissions the right to receive purchase orders also allows insp
 
 An edit from four in warehouse A to three in warehouse B can therefore produce movements of minus four at A and plus three at B. In the correction path failure of the second movement rolls back the change and the first movement. Changing an inspection decision follows a different procedure and does not execute that pair of stock corrections.
 
-Source locations include `htdocs/fourn/commande/dispatch.php:99–104`, `htdocs/fourn/commande/dispatch.php:144–254` and `htdocs/fourn/commande/dispatch.php:444–550`.
-
 ## Deriving the purchase-order status
 
 The recomputation builds two maps keyed by product. The received map sums dispatch quantities, limited to approved splits when inspection is enabled. The requested map sums quantities across the order lines for each catalogue product. It skips free-text lines. It includes a service only when service stock is supported and the service line is stockable. This comparison discards lot, warehouse and individual order-line identity. Two lines for the same item, ordered at different prices, can jointly be satisfied by the correct number of units of that item.
@@ -37,5 +33,3 @@ With exact matching, the key sets must agree both ways, and all corresponding qu
 The optional overdelivery rule works differently. If exact matching fails, it compares entries in the **received** map that differ from the requested values. It permits completion when all those received differences meet or exceed the matching request and closure was requested. Missing requested keys are not carried into that second comparison. Consider an order for five A and three B. A single approved split of five A fails the exact-match rule because B is missing. With overdelivery enabled the received-side differences can be empty, and the implementation can classify this order as complete. A header showing complete in that configuration cannot establish receipt of every product.
 
 For reconciliation by individual purchase-order line, the order also exposes a different receipt query that sums split quantities against originating line identifiers, with an optional receipt-status filter. That projection preserves the distinction between two ordered lines for the same product that the product-level completion decision combines.
-
-Source locations include `htdocs/fourn/class/fournisseur.commande.class.php:calcAndSetStatusDispatch` and `htdocs/fourn/class/fournisseur.commande.class.php:loadReceptions`.

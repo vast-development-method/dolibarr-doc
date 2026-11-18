@@ -10,8 +10,6 @@ The edit operation normalizes the parent, rejects self-parenting, and on a paren
 
 Creation/update flows can also save optional attributes, maintain language overrides and emit the relevant category event. The staff card requires read access, and creating or editing the category requires category creation authority. Visibility on the node is separate metadata. A visible category does not grant editing permission on its member records.
 
-Implementation evidence appears in `htdocs/categories/class/categorie.class.php` (`create`, `update`, `already_exists`, `get_full_arbo`), `htdocs/categories/card.php:51–53,131–198` and `htdocs/categories/edit.php:71–113`.
-
 ## Classifying and removing objects
 
 | Operation | Result |
@@ -24,8 +22,6 @@ Implementation evidence appears in `htdocs/categories/class/categorie.class.php`
 Consider a root “Field”, child “Pump” and grandchild “Seal”. Adding an item to Seal under recursive classification can give it three direct associations. Removing the Seal association leaves Pump and Field unless separately removed. Deleting Pump promotes Seal to be a direct child of Field. Objects previously linked exclusively to Pump do not thereby acquire membership in Seal. A tree browser displaying descendants and a report counting direct members can legitimately return different results.
 
 An object-membership lookup traverses the type-specific association, while a tree lookup traverses parentage. Both views can be scoped to one subtree or object without treating a repeated label as an identifier. The category tree reader can load a language override for label and description as it composes a full path. A missing translated label falls back to the category’s base label when building the tree.
-
-Implementation evidence appears in `htdocs/categories/class/categorie.class.php` (`delete`, `add_type`, `del_type`, `containsObject`, `getListForItem`, `get_full_arbo`, `containing`).
 
 ## Stored translations
 
@@ -40,5 +36,3 @@ An object translation is keyed by object and language. Numeric identifiers, refe
 Loading category translations provides a map of all stored language values. When a row matches the current language it also supplies the active label and description. Clearing a translation and deleting its row differ. For example, a supplied empty alternate-language category can leave an existing language row with blank values. The delete-translation action removes the row explicitly. The translation card applies the category’s object access and distinguishes authority to add and delete.
 
 “Pump” and “Pompe” can thus be the published labels of product ID 81 without generating separate inventory balances. A French label on a product and a French description on a category are independently owned by their respective records. Renaming the category changes the navigational labels in that language without renaming its products.
-
-Implementation evidence appears in `htdocs/categories/class/categorie.class.php` (`setMultiLangs`, `delMultiLangs`, `getMultiLangs`), `htdocs/categories/traduction.php:78–82`, `htdocs/product/class/product.class.php` (`setMultiLangs`, `delMultiLangs`, `getMultiLangs`) and `htdocs/core/actions_setnotes.inc.php:52–81`.

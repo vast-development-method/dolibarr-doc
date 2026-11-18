@@ -12,8 +12,6 @@ The detailed settlement block runs when there are payments, used credits or depo
 
 Credit-note presentation has its own positive-amount option. The renderer reverses the presentation sign for credit-note totals and affected line tax values when it is enabled. For a stored net credit of −100 and tax of −20, the applicable totals can consequently print as 100 and 20 under the credit-note heading. This visual sign choice has no cash consequence. Standard invoices also derive their operation classification from goods and service lines while ignoring deposit application lines in this classification. It is possible for a service invoice with a deposit reduction still to be labelled service only.
 
-Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:303–319,412–450,952–974,1126–1145,1253–1308,1754–1766,2074–2097`.
-
 ## Progress invoices
 
 In incremental progress mode the line totals already represent the current billing increment. The standard invoice writer explicitly avoids applying the prior-progress adjustment a second time to those tax values. An increase from 40% to 65% on a 1,000 net line is a 25-point increment worth 250 net and, at a 20% rate, 50 tax. If the stored tax is already 50, multiplying it again by the incremental proportion would understate tax on this installment.
@@ -22,10 +20,6 @@ The specialized progress layout retrieves earlier and later invoices in the prog
 
 The layout separately represents previous cumulative figures, current-period amounts, additional work and retention. It can make previously billed work visible without billing it a second time. Its retained-warranty display delegates to the invoice's own eligibility decision when available. The specialized form and the standard invoice form have different line and summary layouts, so the exact fields visible on one cannot be inferred solely from the invoice type.
 
-Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:450–470,952–977` and `htdocs/core/modules/facture/doc/pdf_octopus.modules.php:3028–3126,3130–3157,3189–3197,3233–3272`.
-
 ## What a generated copy identifies
 
 The standard model writes a specimen in the entity's invoice output directory. A real invoice receives a filename under the directory for its sanitized reference in the source entity. A configured terms-of-sale attachment can be appended from the appropriate entity's invoice output. Line display can expose quantity, unit, progress, tax, discount and available totals selectively. Heading and subtotal rows use their own presentation conditions and do not receive ordinary unit-price and quantity treatment. These formatting decisions do not change the stored invoice lines, the ledger source document or the amount of an applied credit.
-
-Release references include `htdocs/core/modules/facture/doc/pdf_sponge.modules.php:303–330,723–774,867–927,1126–1167`.

@@ -32,15 +32,4 @@ An order for 12 units is confirmed on 29 April. Five are dispatched and validate
 
 For the purchase side, suppose the supplier order has ten units at 20 each with a 10% line discount. If final approval owns the stock increase, the receipt call gets ten units at 18 each under discount-inclusive valuation, or at 20 when the discount is excluded from moving-average cost. If receipt closure owns the increase, approval alone leaves physical stock unchanged. Reconcile cost and quantity through the actual movements before attributing a supplier invoice difference to the warehouse.
 
-## Source locations
-
-| Decision | Release-relative evidence |
-| --- | --- |
-| Mutually exclusive groups, warehouse default, lot/composition restrictions and sufficiency options | `htdocs/admin/stock.php:67–148,230–256,508–606` |
-| Order posting, rollback and sufficiency | `htdocs/commande/class/commande.class.php:585–638,719–761,1716–1756` |
-| Shipment sufficiency, posting, closing and reopening | `htdocs/expedition/class/expedition.class.php:1060–1140,1284–1346,3014–3112,3233–3323` |
-| Sales invoicing, credit and lot selection | `htdocs/compta/facture/class/facture.class.php:3828–3943,4397–4446` |
-| Supplier approval price, manual allocation and billing | `htdocs/fourn/class/fournisseur.commande.class.php:1348–1395,2411–2475` and `htdocs/fourn/class/fournisseur.facture.class.php:1944–1994,2081–2125` |
-| Receipt validation, closing and reopening | `htdocs/reception/class/reception.class.php:695–764,2141–2214,2316–2377` |
-
 [Stock allocation and completion](../specification/operations/receipts-allocations-and-order-completion.md) · [Stock at a date](../specification/operations/stock-at-date-and-value.md) · [Kits and components](../specification/operations/kit-composition-and-stock.md)

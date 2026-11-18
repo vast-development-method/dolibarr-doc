@@ -2,8 +2,6 @@
 
 The currency record can be resolved by identifier or code. Exchange rates have their own date-sensitive history. A rate update and an edit of the currency definition have distinct effects.
 
-The implementation locations below refer to `htdocs/multicurrency/class/api_multicurrencies.class.php`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
@@ -18,8 +16,6 @@ The lookup uses the visible entity scope for `multicurrency`. The properties sel
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `60–110`.
-
 ## `get` — Read a currency
 
 **Arguments** `id` (integer).
@@ -30,8 +26,6 @@ Source lines `60–110`.
 
 - `403` — access refused.
 - `404` — currency missing.
-
-Source lines `122–134`.
 
 ## `getByCode` — Read by code
 
@@ -45,8 +39,6 @@ Route `GET /bycode/{code}`.
 
 - `403` — access refused.
 - `404` — currency missing.
-
-Source lines `147–159`.
 
 ## `getRates` — Read rates
 
@@ -64,8 +56,6 @@ The method loads rate history.
 - `404` — currency missing.
 - `500` — business operation failed.
 
-Source lines `172–193`.
-
 ## `post` — Create a currency
 
 **Arguments** `request_data = null` (collection).
@@ -82,8 +72,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `205–247`.
-
 ## `put` — Update a currency
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -98,8 +86,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — currency missing.
 - `500` — business operation failed.
 
-Source lines `260–289` with `get 122–134`.
-
 ## `delete` — Delete a currency
 
 **Arguments** `id` (integer).
@@ -111,8 +97,6 @@ Source lines `260–289` with `get 122–134`.
 - `403` — access refused.
 - `404` — currency missing.
 - `500` — removal failed.
-
-Source lines `301–322`.
 
 ## `updateRate` — Update rate
 
@@ -132,5 +116,3 @@ The method adds an exchange-rate row.
 - `403` — access refused.
 - `404` — currency missing.
 - `500` — business operation failed.
-
-Source lines `337–359`.

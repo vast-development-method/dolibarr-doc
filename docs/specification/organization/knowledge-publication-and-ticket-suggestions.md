@@ -17,7 +17,7 @@ When a provisional reference changes, the validator updates document-index paths
 
 A writer can revise a factual answer on the existing article. If the answer must disappear while it is being reconsidered, returning it to draft removes it from suggestions immediately. Creating another language’s article by cloning leaves the original available and produces another independent draft. Cloning alone provides no shared revision numbering, automatic translation synchronization or supersession date.
 
-Implementation evidence appears in `htdocs/install/mysql/tables/llx_knowledgemanagement_knowledgerecord-knowledgemanagement.sql`, `htdocs/knowledgemanagement/class/knowledgerecord.class.php` (`createFromClone`, `update`, `delete`, `validate`, `setDraft`, `cancel`, `reopen`) and `htdocs/knowledgemanagement/knowledgerecord_card.php:488–531`.
+Related records include [Knowledge article](../../records/people.md#record-knowledgemanagement_knowledgerecord).
 
 ## Suggesting a solution to a requester
 
@@ -30,5 +30,3 @@ For example, a Spanish-language answer assigned to an active public group become
 ## Permissions by entry point
 
 Staff read, write and delete grants are separate. A writer can delete a draft through the staff card, while a later-state record calls for delete authority. With advanced rights active, the card distinguishes the advanced validation right from ordinary write. The programmatic validation operation checks knowledge write and returns distinguishable outcomes for missing object, already validated and unsuccessful mutation. Retrieving one knowledge record through the business service checks read authority and access to that record. The separate general-category lookup checks category read. An anonymous request for ticket suggestions follows the publication predicates above.
-
-Implementation evidence appears in `htdocs/core/ajax/fetchKnowledgeRecord.php:60–110`, `htdocs/knowledgemanagement/knowledgerecord_card.php:88–93` and `htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php` (`get`, `getCategories`, `validate`, `cancel`).

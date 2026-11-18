@@ -21,8 +21,6 @@ The writer decides whether an individual row belongs to a collective posting usi
 
 The label formatter strips markup, decodes entities using the requested Windows-1251 target and normalises whitespace. It attempts to restrict each incoming account label and reference to 29 characters. It clears the first text if it is LIQ, LIQ Beleg ok, or no longer than three bytes. An empty first text takes the reference, clearing the second field. With both texts present and their combined byte lengths below 27, it joins them using space, slash, space into the first field and clears the second. An account label `Bank` and reference `PAY-72` therefore give Tx1 `Bank / PAY-72` and an empty Tx2. The header and row do not run through a single export-wide charset conversion.
 
-Release sources are `htdocs/accountancy/class/accountancyexport.class.php:127–138,1962–2104,2833–2853`, `htdocs/core/lib/functions.lib.php:9057–9113` and `htdocs/accountancy/class/bookkeeping.class.php:1293–1336`.
-
 ## Charlemagne, format 50
 
 The producer emits a localised tab-separated header, then a row per selected movement with LF line endings. Only column 8 has an invariant header label, S. The other labels use the output language and several are truncated. Header translation is independent of the currency of the underlying entry.
@@ -38,7 +36,7 @@ The producer emits a localised tab-separated header, then a row per selected mov
 | 7–8 | Amount, S | Display-formatted absolute debit less credit and the stored direction. |
 | 9–14 | Three analytical code/label pairs | All six data values are empty. The labels still appear on the header. |
 
-For piece 72 with subsidiary C004, general label Receivables and document reference INV-72, the account/label pair is C004 and Receivables. The piece column receives INV-72 even though the internal piece number is 72. No analytical distribution or cost centre is conveyed in columns 9–14. The source is `htdocs/accountancy/class/accountancyexport.class.php:2536–2601`.
+For piece 72 with subsidiary C004, general label Receivables and document reference INV-72, the account/label pair is C004 and Receivables. The piece column receives INV-72 even though the internal piece number is 72. No analytical distribution or cost centre is conveyed in columns 9–14.
 
 ## Gestimum versions 3 and 5, formats 130 and 135
 
@@ -62,4 +60,4 @@ Consider a 125.50 receivable posted in a company with NAD base currency. With jo
 316,30042026,SALE,C004,,"Installation","INV-72","72",125.5,D,30042026,,,EUR
 ```
 
-The EUR indicator is hard-coded in both layouts. Neither writer uses that indicator to perform a currency conversion. A receiver interpreting the amount as euros would misstate the original NAD amount. The source ledger amount, company currency and exchange rate must remain independent inputs to any multi-currency design. The release writers are at `htdocs/accountancy/class/accountancyexport.class.php:2614–2710,2722–2767`. [Ledger format register](ledger-layouts.md)
+The EUR indicator is hard-coded in both layouts. Neither writer uses that indicator to perform a currency conversion. A receiver interpreting the amount as euros would misstate the original NAD amount. The source ledger amount, company currency and exchange rate must remain independent inputs to any multi-currency design. [Ledger format register](ledger-layouts.md)

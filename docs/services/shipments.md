@@ -2,8 +2,6 @@
 
 Creation and validation operate on the shipment header with source-document lines. Removing one line, deleting the shipment and closing it are separate operations.
 
-The implementation locations below refer to `htdocs/expedition/class/api_shipments.class.php`.
-
 ## `get` — Read a shipment
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — shipment missing.
-
-Source lines `69–86`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `expedition`. A caller linked to a 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `109–212`.
 
 ## `post` — Create a shipment
 
@@ -53,8 +47,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `222–280` with `_validate 807–820`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{lineid}`.
@@ -71,8 +63,6 @@ The method removes a line.
 - `404` — shipment missing.
 - `405` — operation unavailable.
 
-Source lines `465–493`.
-
 ## `put` — Update a shipment
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — shipment missing.
 - `500` — business operation failed.
 
-Source lines `504–542` with `get 69–86`.
-
 ## `delete` — Delete a shipment
 
 **Arguments** `id` (integer).
@@ -100,8 +88,6 @@ Source lines `504–542` with `get 69–86`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — shipment missing.
 - `500` — removal failed.
-
-Source lines `553–577`.
 
 ## `validate` — Validate a shipment
 
@@ -120,8 +106,6 @@ The method validates the record and loads related business records.
 - `404` — shipment missing.
 - `500` — business operation failed.
 
-Source lines `598–625`.
-
 ## `close` — Close the record
 
 Route `POST {id}/close`.
@@ -138,5 +122,3 @@ The method closes the record and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — shipment missing.
 - `500` — business operation failed.
-
-Source lines `720–749`.

@@ -2,8 +2,6 @@
 
 Membership types are reference records. Changing the type definition and recording a particular member’s subscription are separate operations.
 
-The implementation locations below refer to `htdocs/adherents/class/api_memberstypes.class.php`.
-
 ## `get` — Read a membership type
 
 **Arguments** `id` (integer).
@@ -14,8 +12,6 @@ The implementation locations below refer to `htdocs/adherents/class/api_memberst
 
 - `401` — missing operation rights, record outside the caller’s scope.
 - `404` — member type missing.
-
-Source lines `58–75`.
 
 ## `index` — List records
 
@@ -29,8 +25,6 @@ The lookup uses the visible entity scope for `member_type`. The properties selec
 
 - `401` — access refused.
 - `503` — invalid filter expression, query or persistence failure.
-
-Source lines `94–143`.
 
 ## `post` — Create a membership type
 
@@ -48,8 +42,6 @@ The optional caller marker is placed in event context for synchronization.
 - `401` — access refused.
 - `500` — business operation failed.
 
-Source lines `153–175` with `_validate 277–287`.
-
 ## `put` — Update a membership type
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -64,8 +56,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — member type missing.
 - `500` — business operation failed.
 
-Source lines `186–229` with `get 58–75`.
-
 ## `delete` — Delete a membership type
 
 **Arguments** `id` (integer).
@@ -78,5 +68,3 @@ Source lines `186–229` with `get 58–75`.
 - `404` — member type missing.
 - `409` — removal failed.
 - `500` — removal failed.
-
-Source lines `239–267`.

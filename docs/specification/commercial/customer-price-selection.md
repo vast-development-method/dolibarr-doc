@@ -18,8 +18,6 @@ For both quantity arrangements the lookup compares the argument with a break's i
 
 For example, a catalogue item sells for 100 and the customer's wholesale level is 90. In combined individual and level mode a dated agreement at 75 through June 30 supplies the price on June 30. On July 1 the price is 90 if no successor agreement has started. In the separate quantity-with-level arrangement, a wholesale break of 82 changes the net unit price only when the caller supplies its identifier. The sale-price query itself returns no agreement-discount percentage. The offer clone's optional repricing procedure reads the selected agreement's discount separately.
 
-Source locations include `htdocs/product/class/product.class.php:getSellPrice`, `htdocs/product/class/productcustomerprice.class.php:fetchAll` and `htdocs/comm/propal/class/propal.class.php:createFromClone`.
-
 ## Entering an individual agreement
 
 An agreement identifies a product and buyer, and can carry that buyer's own product reference. The record includes a start, optional end, basis, net and gross selling and minimum prices, tax treatment, discount, label and author. On creation an absent start defaults to the current timestamp. A missing or non-numeric discount becomes zero. Gross entry derives net by dividing by one plus the VAT fraction. Net entry derives gross by multiplying by that factor. The unit-price rounding convention applies to the derived values. Period matching in the resolver compares against a day boundary. Supplying an explicit start day avoids ambiguity when a record was created with an intraday start.
@@ -28,12 +26,8 @@ Period validation for a product and customer excludes the row being edited. Equa
 
 Where customer-company price propagation is enabled and a forced update is requested, the operation visits each immediate child in the permitted entity scope. If a child already has records for the product it selects the first by descending start date and updates its prices, basis, tax rate, recoverability, label, discount and dates. It does not match that child row by the parent's effective period. For a missing child price it creates a row with the child as buyer and copies the customer product reference. Child creation and updates receive the propagation choice. A failed child write propagates an error to its caller.
 
-Source locations include `htdocs/product/class/productcustomerprice.class.php:verifyDates`, `htdocs/product/class/productcustomerprice.class.php:create` and `htdocs/product/class/productcustomerprice.class.php:setPriceOnAffiliateThirdparty`.
-
 ## Setting levels and deriving minimums
 
 The price-maintenance entry point distinguishes product and service edit rights from deletion rights. A product price update rejects a nonzero minimum greater than the selling price on the supplied basis. It derives the counterpart basis using VAT and unit-price precision. Updating an individual higher level does not replace the product's ordinary selling amount. Shared tax attributes can still change. The persisted level and history let a later enquiry use the latest applicable price, while issued document lines retain their own amounts.
 
 Automatic generation runs in level order. Level one starts at the entered base. For a later level with a nonzero variation rule, multiply the referenced level price by one plus the percentage variation. A nonzero minimum variation derives the floor by multiplying that level price by one minus the minimum percentage. Without a minimum variation, the initialized floor is the original base price. For a base of 100, a level priced 20% above level one and a 10% floor reduction yields a level price of 120 and minimum of 108. Without the minimum variation its generated floor starts at 100. Rules depending on other levels need those referenced values to have been generated already.
-
-Source locations include `htdocs/product/price.php:737–917`, `htdocs/product/class/product.class.php:updatePrice` and `htdocs/product/class/product.class.php:generateMultiprices`.

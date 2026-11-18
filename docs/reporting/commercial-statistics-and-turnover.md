@@ -17,8 +17,6 @@ The commercial statistics screens require the selected domain's read entitlement
 
 Product frequency on the customer document statistics groups referenced catalogue lines by product reference. Its measure is occurrence count, ordered from highest count downward, with the remainder accumulated into “Other” beyond the chosen limit. An order with two lines of one item adds two occurrences. One line for 500 units adds one. Free-text lines lack the required product join and disappear from this view while still contributing to header totals. Use the product turnover detail for billed quantities and values.
 
-Source locations include `htdocs/comm/propal/class/propalestats.class.php:86–159, getAllByProduct`, `htdocs/comm/propal/stats/index.php:154–176`, `htdocs/commande/class/commandestats.class.php:100–171`, `htdocs/compta/facture/class/facturestats.class.php:80–161` and `htdocs/core/class/stats.class.php:_getAllByProduct`.
-
 ## Customer turnover, supplier turnover and collections
 
 | Question | Grain, period basis and measure | Detail |
@@ -30,8 +28,6 @@ Source locations include `htdocs/comm/propal/class/propalestats.class.php:86–1
 
 For example, a customer invoice dated June 28 at net 200 and gross 240 receives 100 on July 3 and 140 on August 2. June accrual turnover is 200 net and 240 gross. Customer collection is 100 in July and 140 in August. Changing the period without switching to payment-date mode yields a different answer. Drill-downs that carry a party or product identifier may need the report's period and status filters reapplied on the destination list.
 
-Source locations include `htdocs/compta/stats/casoc.php:288–367, 405–422, 650–697` and `htdocs/compta/stats/supplier_turnover_by_thirdparty.php:315–383, 643–662`.
-
 ## Billed products, tax rates and geography
 
 The customer product/service turnover view starts with invoice lines whose type is goods or services, and headers in validated or closed state. It applies the invoice date range and the configured deposit treatment. Each product group reports signed net and gross line totals. It counts units by adding the line quantity for ordinary invoices and subtracting it for credit notes. These are extended amounts after the line's pricing calculations. An item sold twice on one invoice can contribute two different prices. The selected product or service type and category filters narrow the line population. A left join to the catalogue allows lines without a product record to form an unassigned group when the filters permit them. The amount for a named catalogue item opens invoices containing that item.
@@ -39,5 +35,3 @@ The customer product/service turnover view starts with invoice lines whose type 
 The country-and-tax-rate report groups invoice lines by the party's country, line product type and line VAT rate. Each month column sums the **net tax base** for invoices dated in that month. The annual amount sums the same net lines. A net 100 line at 20% adds 100 to the rate bucket, even though its VAT component is 20. A change to the customer's current master country can change the report's geographic grouping, since the report joins the party at reporting time. A missing country has no country lookup value.
 
 The customer query applies issued/closed state and invoice-type exclusions. In the supplier branch the corresponding state and type text is appended to a different query variable from the one executed. The executed supplier breakdown keeps the date and entity restrictions, and can include supplier drafts or other types excluded on the customer side. This affects reconciliation between that supplier breakdown and supplier-by-party accrual turnover.
-
-Source locations include `htdocs/compta/stats/cabyprodserv.php:315–350, 430, 602–614` and `htdocs/compta/stats/byratecountry.php:322–344, 409–431`.

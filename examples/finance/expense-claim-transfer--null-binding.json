@@ -1,0 +1,65 @@
+{
+  "entityId": 1,
+  "claimId": 41,
+  "reference": "E-41",
+  "employeeSubsidiary": "EMP-17",
+  "employeeControl": "2200",
+  "inputTaxAccount": "1400",
+  "currency": "NAD",
+  "declaredGross": "161.00",
+  "details": [
+    {
+      "id": 101,
+      "description": "Lodging",
+      "net": "100.00",
+      "vat": "15.00",
+      "gross": "115.00"
+    },
+    {
+      "id": 102,
+      "description": "Transport",
+      "net": "40.00",
+      "vat": "6.00",
+      "gross": "46.00"
+    }
+  ],
+  "attempts": [
+    {
+      "bindings": [
+        {
+          "detailId": 101,
+          "accountId": 29,
+          "accountNumber": "6100"
+        },
+        {
+          "detailId": 102,
+          "accountId": null,
+          "accountNumber": null
+        }
+      ],
+      "outcome": "posted",
+      "committedEntries": [
+        {
+          "role": "employeeControl",
+          "account": "2200",
+          "subsidiary": "EMP-17",
+          "side": "credit",
+          "amount": "115.00"
+        },
+        {
+          "role": "expense",
+          "account": "6100",
+          "side": "debit",
+          "amount": "100.00"
+        },
+        {
+          "role": "inputVat",
+          "account": "1400",
+          "side": "debit",
+          "amount": "15.00"
+        }
+      ],
+      "claimLessBookedLiability": "46.00"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Contract service and ticket closure commands",
-  "description": "Normalized operation inputs. An adapter maps instants to upstream timestamps. Contract membership, rights and current state are service checks.",
+  "description": "Normalized operation inputs. Each instant records the time of the requested action. Contract membership, rights and current state are service checks.",
   "oneOf": [
     {
       "type": "object",

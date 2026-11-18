@@ -1,8 +1,4 @@
 {
-  "release": "24.0.3",
-  "commit": "5c6c7ff6a5112413b1c27221c8d11750afad56f8",
-  "descriptor_directory": "htdocs/core/modules",
-  "selection": "Top-level mod*.class.php files in the core descriptor directory",
   "maturity_counts": {
     "deprecated": 3,
     "development": 4,
@@ -32,9 +28,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modAccounting.class.php:53",
       "dependencies": {
         "always": [
           "Facture",
@@ -53,9 +47,7 @@
       "area": "people-membership",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modAdherent.class.php:59",
       "conflicts": [
         "MailmanSpip"
       ]
@@ -67,9 +59,7 @@
       "area": "projects-events",
       "setup_family": "projects",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modAgenda.class.php:60"
+      "eligible": true
     },
     {
       "key": "Ai",
@@ -78,9 +68,7 @@
       "area": "integrations",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modAi.class.php:73"
+      "eligible": true
     },
     {
       "key": "Api",
@@ -89,9 +77,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modApi.class.php:63"
+      "eligible": true
     },
     {
       "key": "Asset",
@@ -100,9 +86,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modAsset.class.php:66"
+      "eligible": true
     },
     {
       "key": "Banque",
@@ -111,9 +95,7 @@
       "area": "invoicing-cash",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modBanque.class.php:58"
+      "eligible": true
     },
     {
       "key": "Barcode",
@@ -122,9 +104,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modBarcode.class.php:51"
+      "eligible": true
     },
     {
       "key": "BlockedLog",
@@ -133,9 +113,7 @@
       "area": "platform",
       "setup_family": "base",
       "maturity": "stable",
-      "descriptor_version": "3.0.0",
       "eligible": true,
-      "source": "htdocs/core/modules/modBlockedLog.class.php:61",
       "dependencies": {
         "always": [
           "Facture"
@@ -150,9 +128,7 @@
       "area": "production",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modBom.class.php:73",
       "dependencies": {
         "always": [
           "Product"
@@ -166,9 +142,7 @@
       "area": "projects-events",
       "setup_family": "portal",
       "maturity": "experimental",
-      "descriptor_version": "experimental",
-      "eligible": false,
-      "source": "htdocs/core/modules/modBookCal.class.php:72"
+      "eligible": false
     },
     {
       "key": "Bookmark",
@@ -177,9 +151,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modBookmark.class.php:51"
+      "eligible": true
     },
     {
       "key": "Categorie",
@@ -188,9 +160,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modCategorie.class.php:61"
+      "eligible": true
     },
     {
       "key": "ClickToDial",
@@ -199,9 +169,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modClickToDial.class.php:51"
+      "eligible": true
     },
     {
       "key": "Collab",
@@ -210,9 +178,7 @@
       "area": "documents-data",
       "setup_family": "ecm",
       "maturity": "development",
-      "descriptor_version": "development",
       "eligible": false,
-      "source": "htdocs/core/modules/modCollab.class.php:52",
       "visibility": "hidden when MODULE_COLLAB_DISABLED is set to a nonzero integer"
     },
     {
@@ -222,9 +188,7 @@
       "area": "parties-sales",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modCommande.class.php:62",
       "dependencies": {
         "always": [
           "Societe"
@@ -238,9 +202,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modComptabilite.class.php:55",
       "dependencies": {
         "always": [
           "Facture",
@@ -258,9 +220,7 @@
       "area": "service-support",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modContrat.class.php:56",
       "dependencies": {
         "always": [
           "Societe"
@@ -274,9 +234,7 @@
       "area": "platform",
       "setup_family": "base",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modCron.class.php:52",
       "visibility": "hidden when MODULE_CRON_DISABLED is set to a nonzero integer"
     },
     {
@@ -286,9 +244,7 @@
       "area": "platform",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modDataPolicy.class.php:69",
       "dependencies": {
         "always": [
           "Cron"
@@ -302,9 +258,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modDav.class.php:68"
+      "eligible": true
     },
     {
       "key": "DebugBar",
@@ -313,9 +267,7 @@
       "area": "platform",
       "setup_family": "base",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modDebugBar.class.php:54"
+      "eligible": true
     },
     {
       "key": "DocumentGeneration",
@@ -324,9 +276,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "development",
-      "descriptor_version": "development",
-      "eligible": false,
-      "source": "htdocs/core/modules/modDocumentGeneration.class.php:52"
+      "eligible": false
     },
     {
       "key": "Don",
@@ -335,9 +285,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modDon.class.php:53"
+      "eligible": true
     },
     {
       "key": "DynamicPrices",
@@ -346,9 +294,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "experimental",
-      "descriptor_version": "experimental",
-      "eligible": false,
-      "source": "htdocs/core/modules/modDynamicPrices.class.php:50"
+      "eligible": false
     },
     {
       "key": "ECM",
@@ -357,9 +303,7 @@
       "area": "documents-data",
       "setup_family": "ecm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modECM.class.php:60"
+      "eligible": true
     },
     {
       "key": "EmailCollector",
@@ -368,9 +312,7 @@
       "area": "communications-portals",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modEmailCollector.class.php:68",
       "dependencies": {
         "always": [
           "Cron"
@@ -384,9 +326,7 @@
       "area": "projects-events",
       "setup_family": "projects",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modEventOrganization.class.php:62",
       "dependencies": {
         "always": [
           "Projet",
@@ -402,9 +342,7 @@
       "area": "parties-sales",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modExpedition.class.php:60",
       "dependencies": {
         "always": [
           "Commande"
@@ -418,9 +356,7 @@
       "area": "people-membership",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modExpenseReport.class.php:55"
+      "eligible": true
     },
     {
       "key": "Export",
@@ -429,9 +365,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modExport.class.php:52"
+      "eligible": true
     },
     {
       "key": "ExternalRss",
@@ -440,9 +374,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modExternalRss.class.php:53"
+      "eligible": true
     },
     {
       "key": "FTP",
@@ -451,9 +383,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "deprecated",
-      "descriptor_version": "deprecated",
-      "eligible": false,
-      "source": "htdocs/core/modules/modFTP.class.php:57"
+      "eligible": false
     },
     {
       "key": "Facture",
@@ -462,9 +392,7 @@
       "area": "invoicing-cash",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modFacture.class.php:60",
       "dependencies": {
         "always": [
           "Societe"
@@ -478,9 +406,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modFckeditor.class.php:53"
+      "eligible": true
     },
     {
       "key": "Ficheinter",
@@ -489,9 +415,7 @@
       "area": "service-support",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modFicheinter.class.php:60",
       "dependencies": {
         "always": [
           "Societe"
@@ -505,9 +429,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modFournisseur.class.php:62",
       "dependencies": {
         "always": [
           "Societe"
@@ -522,9 +444,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modGeoIPMaxmind.class.php:52"
+      "eligible": true
     },
     {
       "key": "Gravatar",
@@ -533,9 +453,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modGravatar.class.php:60"
+      "eligible": true
     },
     {
       "key": "HRM",
@@ -544,9 +462,7 @@
       "area": "people-membership",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modHRM.class.php:62"
+      "eligible": true
     },
     {
       "key": "Holiday",
@@ -555,9 +471,7 @@
       "area": "people-membership",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modHoliday.class.php:68"
+      "eligible": true
     },
     {
       "key": "Import",
@@ -566,9 +480,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modImport.class.php:51"
+      "eligible": true
     },
     {
       "key": "Incoterm",
@@ -577,9 +489,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modIncoterm.class.php:57"
+      "eligible": true
     },
     {
       "key": "Intracommreport",
@@ -588,9 +498,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "development",
-      "descriptor_version": "development",
       "eligible": false,
-      "source": "htdocs/core/modules/modIntracommreport.class.php:53",
       "dependencies": {
         "always": [
           "Facture",
@@ -606,9 +514,7 @@
       "area": "service-support",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modKnowledgeManagement.class.php:72"
+      "eligible": true
     },
     {
       "key": "Label",
@@ -617,9 +523,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "development",
-      "descriptor_version": "development",
-      "eligible": false,
-      "source": "htdocs/core/modules/modLabel.class.php:51"
+      "eligible": false
     },
     {
       "key": "Ldap",
@@ -628,9 +532,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modLdap.class.php:53"
+      "eligible": true
     },
     {
       "key": "Loan",
@@ -639,9 +541,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modLoan.class.php:52"
+      "eligible": true
     },
     {
       "key": "Mailing",
@@ -650,9 +550,7 @@
       "area": "communications-portals",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modMailing.class.php:57"
+      "eligible": true
     },
     {
       "key": "MailmanSpip",
@@ -661,9 +559,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "deprecated",
-      "descriptor_version": "deprecated",
       "eligible": false,
-      "source": "htdocs/core/modules/modMailmanSpip.class.php:55",
       "dependencies": {
         "always": [
           "Adherent"
@@ -677,9 +573,7 @@
       "area": "parties-sales",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modMargin.class.php:59",
       "dependencies": {
         "always": [
           "Propale",
@@ -694,9 +588,7 @@
       "area": "platform",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modModuleBuilder.class.php:54"
+      "eligible": true
     },
     {
       "key": "Mrp",
@@ -705,9 +597,7 @@
       "area": "production",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modMrp.class.php:67",
       "dependencies": {
         "always": [
           "Bom"
@@ -721,9 +611,7 @@
       "area": "invoicing-cash",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modMultiCurrency.class.php:66"
+      "eligible": true
     },
     {
       "key": "Notification",
@@ -732,9 +620,7 @@
       "area": "communications-portals",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modNotification.class.php:54"
+      "eligible": true
     },
     {
       "key": "Oauth",
@@ -743,9 +629,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modOauth.class.php:56"
+      "eligible": true
     },
     {
       "key": "OpenSurvey",
@@ -754,9 +638,7 @@
       "area": "communications-portals",
       "setup_family": "portal",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modOpenSurvey.class.php:59"
+      "eligible": true
     },
     {
       "key": "Partnership",
@@ -765,9 +647,7 @@
       "area": "parties-sales",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modPartnership.class.php:79"
+      "eligible": true
     },
     {
       "key": "PaymentByBankTransfer",
@@ -776,9 +656,7 @@
       "area": "invoicing-cash",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modPaymentByBankTransfer.class.php:57",
       "dependencies": {
         "supplier_split_on": [
           "SupplierInvoice",
@@ -797,9 +675,7 @@
       "area": "invoicing-cash",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modPaypal.class.php:59"
+      "eligible": true
     },
     {
       "key": "Prelevement",
@@ -808,9 +684,7 @@
       "area": "invoicing-cash",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modPrelevement.class.php:57",
       "dependencies": {
         "always": [
           "Facture",
@@ -825,9 +699,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modPrinting.class.php:55"
+      "eligible": true
     },
     {
       "key": "Product",
@@ -836,9 +708,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modProduct.class.php:63"
+      "eligible": true
     },
     {
       "key": "ProductBatch",
@@ -847,9 +717,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modProductBatch.class.php:58",
       "dependencies": {
         "supplier_split_on": [
           "Product",
@@ -872,9 +740,7 @@
       "area": "projects-events",
       "setup_family": "projects",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modProjet.class.php:60"
+      "eligible": true
     },
     {
       "key": "Propale",
@@ -883,9 +749,7 @@
       "area": "parties-sales",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modPropale.class.php:61",
       "dependencies": {
         "always": [
           "Societe"
@@ -899,9 +763,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "experimental",
-      "descriptor_version": "experimental",
       "eligible": false,
-      "source": "htdocs/core/modules/modQuickMemo.class.php:81",
       "visibility": "hidden when MODULE_QUICKMEMO_DISABLED is set to a nonzero integer"
     },
     {
@@ -911,9 +773,7 @@
       "area": "invoicing-cash",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modReceiptPrinter.class.php:56"
+      "eligible": true
     },
     {
       "key": "Reception",
@@ -922,9 +782,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modReception.class.php:56",
       "dependencies": {
         "always": [
           "Fournisseur"
@@ -938,9 +796,7 @@
       "area": "people-membership",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modRecruitment.class.php:66"
+      "eligible": true
     },
     {
       "key": "Resource",
@@ -949,9 +805,7 @@
       "area": "projects-events",
       "setup_family": "projects",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modResource.class.php:70"
+      "eligible": true
     },
     {
       "key": "Salaries",
@@ -960,9 +814,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modSalaries.class.php:62"
+      "eligible": true
     },
     {
       "key": "Service",
@@ -971,9 +823,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modService.class.php:58"
+      "eligible": true
     },
     {
       "key": "SocialNetworks",
@@ -982,9 +832,7 @@
       "area": "communications-portals",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modSocialNetworks.class.php:52",
       "visibility": "hidden when MODULE_SOCIALNETWORKS_DISABLED is set to a nonzero integer"
     },
     {
@@ -994,9 +842,7 @@
       "area": "parties-sales",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modSociete.class.php:61"
+      "eligible": true
     },
     {
       "key": "Stock",
@@ -1005,9 +851,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modStock.class.php:59",
       "dependencies": {
         "always": [
           "Product"
@@ -1021,9 +865,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modStockTransfer.class.php:67",
       "dependencies": {
         "always": [
           "Stock",
@@ -1038,9 +880,7 @@
       "area": "invoicing-cash",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modStripe.class.php:58"
+      "eligible": true
     },
     {
       "key": "Subtotals",
@@ -1049,9 +889,7 @@
       "area": "documents-data",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modSubtotals.class.php:69"
+      "eligible": true
     },
     {
       "key": "SupplierInvoice",
@@ -1060,9 +898,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modSupplierInvoice.class.php:63",
       "dependencies": {
         "always": [
           "Societe"
@@ -1077,9 +913,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modSupplierOrder.class.php:62",
       "dependencies": {
         "always": [
           "Societe"
@@ -1094,9 +928,7 @@
       "area": "purchasing",
       "setup_family": "srm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modSupplierProposal.class.php:57",
       "dependencies": {
         "supplier_split_on": [
           "SupplierOrder"
@@ -1113,9 +945,7 @@
       "area": "platform",
       "setup_family": "base",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modSyslog.class.php:57"
+      "eligible": true
     },
     {
       "key": "TakePos",
@@ -1124,9 +954,7 @@
       "area": "invoicing-cash",
       "setup_family": "portal",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modTakePos.class.php:70",
       "dependencies": {
         "always": [
           "Banque",
@@ -1146,9 +974,7 @@
       "area": "accounting",
       "setup_family": "financial",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modTax.class.php:58"
+      "eligible": true
     },
     {
       "key": "Ticket",
@@ -1157,9 +983,7 @@
       "area": "service-support",
       "setup_family": "crm",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modTicket.class.php:70",
       "dependencies": {
         "always": [
           "Agenda"
@@ -1173,9 +997,7 @@
       "area": "platform",
       "setup_family": "hr",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modUser.class.php:57",
       "disable_rule": "Always enabled in the setup UI"
     },
     {
@@ -1185,9 +1007,7 @@
       "area": "catalog-stock",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modVariants.class.php:64",
       "dependencies": {
         "always": [
           "Product"
@@ -1201,9 +1021,7 @@
       "area": "communications-portals",
       "setup_family": "portal",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modWebPortal.class.php:74"
+      "eligible": true
     },
     {
       "key": "WebServices",
@@ -1212,9 +1030,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "deprecated",
-      "descriptor_version": "deprecated",
-      "eligible": false,
-      "source": "htdocs/core/modules/modWebServices.class.php:48"
+      "eligible": false
     },
     {
       "key": "Webhook",
@@ -1223,9 +1039,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modWebhook.class.php:72"
+      "eligible": true
     },
     {
       "key": "Website",
@@ -1234,9 +1048,7 @@
       "area": "communications-portals",
       "setup_family": "portal",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modWebsite.class.php:52",
       "dependencies": {
         "always": [
           "Fckeditor"
@@ -1251,9 +1063,7 @@
       "area": "integrations",
       "setup_family": "technic",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
-      "eligible": true,
-      "source": "htdocs/core/modules/modWorkflow.class.php:56"
+      "eligible": true
     },
     {
       "key": "Workstation",
@@ -1262,9 +1072,7 @@
       "area": "production",
       "setup_family": "products",
       "maturity": "stable",
-      "descriptor_version": "follows application release",
       "eligible": true,
-      "source": "htdocs/core/modules/modWorkstation.class.php:67",
       "dependencies": {
         "always": [
           "Mrp"
@@ -1278,9 +1086,7 @@
       "area": "integrations",
       "setup_family": "interface",
       "maturity": "experimental",
-      "descriptor_version": "experimental",
       "eligible": false,
-      "source": "htdocs/core/modules/modZapier.class.php:64",
       "dependencies": {
         "always": [
           "Api"

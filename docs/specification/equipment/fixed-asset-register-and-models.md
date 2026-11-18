@@ -15,7 +15,7 @@ Asset classification covers intangible, tangible, in progress and financial asse
 
 A single asset record of quantity two can describe the two lathes acquired together and treated alike. If one is sold and the other kept, the disposal operation acts on the register record as a whole. A business that needs independent retirement histories can represent the lathes as separate asset records and reuse the same model on both. That preserves individual identities without interpreting a stock movement or a project task as retirement.
 
-The asset and model fields are in `htdocs/asset/class/asset.class.php` and `htdocs/asset/class/assetmodel.class.php`. Storage and keys are in `htdocs/install/mysql/tables/llx_asset-asset.sql` and `htdocs/install/mysql/tables/llx_asset_model-asset.key.sql`.
+Related records include [Fixed asset](../../records/accounting.md#record-asset), [Asset model](../../records/accounting.md#record-asset_model).
 
 ## Model application and entry into service
 
@@ -25,8 +25,6 @@ On creation, the operation writes the asset and, when a model was selected, copi
 
 Validation assigns the next asset reference when the current reference is provisional or empty. Otherwise the existing reference is kept. It sets the validator, validation time and in-progress status, invokes the validation event and arranges the document directory and indexed attachments under the definitive reference. A second validation of an already validated asset returns without issuing a new reference. The asset remains identifiable independently of any later change to its supplier's invoice reference.
 
-Creation, copy-on-model-change and validation are in `htdocs/asset/class/asset.class.php` under `create`, `setDataFromAssetModel`, `update` and `validate`. Model state operations are in `htdocs/asset/class/assetmodel.class.php`.
-
 ## Disposal and reopening
 
 The asset card restricts access to internal users with asset read permission. Draft editing, validation, disposal and reopening use asset write permission. Deletion uses the dedicated grant, with an exception allowing a writer to delete a draft. The card offers return to draft from an in-progress asset. A disposed asset has a separate reopen action.
@@ -34,5 +32,3 @@ The asset card restricts access to internal users with asset read permission. Dr
 Disposal records a date and disposal type and can link a customer invoice. It updates the asset, marks it disposed and recalculates the dependent schedule in a transaction. A failed update or recalculation can roll back the retirement. An already disposed asset does no further work through the ordinary disposal operation. An enabled automatic document refresh runs after a successful status transaction. Warehouse stock issuance and automatic creation of a customer sales invoice are outside this operation.
 
 Reopening a disposed asset clears disposal date, amount and type, resets the associated flags, removes customer-invoice associations through the reopen path, returns the asset to in progress and recalculates its schedule. It does not recreate physical stock or assign the equipment to an operator. For instance, correcting an accidental disposal entry can restore the register state while the actual lathe remains physically at the customer's premises. That separate physical fact must come from the shipment, stock or asset custody evidence available to the business.
-
-The status and permissions are in `htdocs/asset/card.php`. Disposal and reopening are in `htdocs/asset/class/asset.class.php` under `dispose` and `reopen`. The document tab is in `htdocs/asset/document.php`.

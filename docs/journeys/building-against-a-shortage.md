@@ -20,7 +20,7 @@ The planner creates a job linked to the customer project and validates it. Its r
 
 No one changes the supplier receipt to three or reports a twelfth fitting as consumed. A valid purchase receipt and a subsequently discovered loss are different events. The inventory correction makes that distinction observable. Purchasing and receiving can trace the 16 of supplies, while the storekeeper can explain the loss of one unit valued at 3.
 
-The supplier draft flow is described in [Replenishment and supplier drafts](../specification/operations/replenishment-and-supplier-drafts.md). Receipt allocation and comparison rules are in [Partial supplier receipts](../specification/operations/receipts-allocations-and-order-completion.md). The count's live comparison rule is in [Counting and transferring stock](../specification/operations/stocktake-and-transfer.md). Source operations are in `htdocs/product/stock/replenish.php`, `htdocs/reception/class/reception.class.php` and `htdocs/product/inventory/inventory.php`.
+The supplier draft flow is described in [Replenishment and supplier drafts](../specification/operations/replenishment-and-supplier-drafts.md). Receipt allocation and comparison rules are in [Partial supplier receipts](../specification/operations/receipts-allocations-and-order-completion.md). The count's live comparison rule is in [Counting and transferring stock](../specification/operations/stocktake-and-transfer.md).
 
 ## Finishing the job in two postings
 
@@ -29,7 +29,7 @@ The supplier draft flow is described in [Replenishment and supplier drafts](../s
 3. Receiving validates four at 4.50. The two carried fittings were worth 6. The receipt adds 18. Six fittings now have a product average of `24 ÷ 6 = 4`. The order and receipt provide an explanation for the higher replacement cost of the last production batch.
 4. Production issues the remaining three planned fittings and records its last finished unit at a supplied output price of 12. Raw stock ends at three fittings valued at 12. Finished stock ends at four units with value `27 + 12 = 39` and average `39 ÷ 4 = 9.75`. Each plan line's linked actuals have reached its quantity. With automatic completion selected the job becomes produced.
 
-The output prices here deliberately match the input value used in each run. The production posting receives its output unit price as an input. A different supplied price would change finished inventory value without altering the twelve fittings issued. The product cost calculation is in [Stock at a date and value](../specification/operations/stock-at-date-and-value.md). Planned and actual lines and their links are in [Nested production orders](../specification/operations/nested-production-orders.md). Source operations are in `htdocs/mrp/class/mo.class.php`, `htdocs/mrp/mo_production.php` and `htdocs/product/stock/class/mouvementstock.class.php`.
+The output prices here deliberately match the input value used in each run. The production posting receives its output unit price as an input. A different supplied price would change finished inventory value without altering the twelve fittings issued. The product cost calculation is in [Stock at a date and value](../specification/operations/stock-at-date-and-value.md). Planned and actual lines and their links are in [Nested production orders](../specification/operations/nested-production-orders.md).
 
 ## Closing evidence
 

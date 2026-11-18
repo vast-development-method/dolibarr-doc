@@ -12,15 +12,11 @@ Historical estimated value multiplies the reconstructed quantity by the product'
 
 Future stock uses a different calculation. It requests the product's theoretical quantity for open internal warehouses at the cutoff, and separately displays an unrestricted-horizon theoretical quantity. The future view operates across warehouses. A purchaser investigating a predicted shortage therefore needs the open supply and demand documents, while a discrepancy in a past physical balance leads to movement history.
 
-Source locations include `htdocs/product/stock/list.php:242–251`, `htdocs/product/stock/valo.php:74–90` and `htdocs/product/stock/stockatdate.php:113–127, 160–177, 219–237, 651–690, 737–786`.
-
 ## Shipment and receipt volumes
 
 The shipment and receipt monthly series count **validated document headers** by validation date. The positive-status filter includes subsequent positive states. A shipment of thirty units in three lots counts once. Two receipts against one purchase order count twice. The filters include party and creation user when specified. The shipment measure uses the active entity, whereas the receipt measure uses the receipt entity scope. Sales representative visibility can further restrict parties.
 
 The amount field in these statistics definitions is document weight. The calculation uses the raw header weight and does not normalize the weight-unit field. Summing headers stored using different units will therefore give a physically ambiguous number. The monthly volume count remains meaningful across such documents. For an item quantity use the individual shipment or receipt lines with their units. For inspection-adjusted receipt completion use the approved split quantities for the purchase order.
-
-Source locations include `htdocs/expedition/class/expeditionstats.class.php:83–128, getAmountByMonth` and `htdocs/reception/class/receptionstats.class.php:74–124, getAmountByMonth`.
 
 ## Planned and actual manufacturing quantities
 
@@ -36,5 +32,3 @@ The product manufacturing history selects production rows for **one catalogue pr
 A component planned at twelve and consumed in postings of five and four shows twelve planned and nine consumed. A further production record for seven finished units belongs to the finished product's own view. Combining the component and finished goods as a single measure would mix different units and purposes. The product history restricts orders by allowed manufacturing entities. Year and month filters apply to **order validation date**, so later production postings can appear under an earlier month's order. The query carries the order status without imposing a completed-order-only condition. The row links to the order's production record for the underlying postings.
 
 The lot manufacturing view sums only actual consumed and produced quantities by order. It selects by the batch text in the production row and uses the same order validation date for month and year. The query has no product-identity predicate beside the batch text. Reuse of a lot designation across different products can thus bring multiple products into the same lot-history result. Inspect the order's production lines for the actual product and warehouse before attributing that result to one item.
-
-Source locations include `htdocs/product/stats/mo.php:150–176, 250–279` and `htdocs/product/stock/stats/mo.php:181–203, 289–301`.

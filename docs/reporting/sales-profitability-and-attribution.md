@@ -10,15 +10,11 @@ For ordinary fully billable lines, multiply quantity by acquisition unit cost. F
 
 For example, an eligible sale of two units at net 100 each with a 10% discount and acquisition cost of 60 each yields 180 revenue, 120 cost and 60 gross margin. An additional invoiced service for 50 with absent cost contributes neither its revenue nor its cost to this report. Recorded invoiced net turnover can therefore exceed the total selling amount displayed on the margin page. With a full cumulative amount of 1,000, progress moving from 30% to 50% gives a cumulative net of 500, but the new contribution to recognized revenue is only 200.
 
-Source locations include `htdocs/margin/customerMargins.php:224–290` and `htdocs/margin/agentMargins.php:159–216`.
-
 ## Customer totals and invoice detail
 
 Without a selected customer the report groups by customer identity. With a selected customer that carries the customer role, it groups by invoice within the customer. Each invoice row links to the document and carries the invoice date. The general list links to the customer's margin view. Product and product-category filters act on invoice lines. A product in two selected categories can be matched by both category assignments in the category join, so an unfiltered total cannot always be recovered by adding selected category subtotals. Viewers restricted to assigned customers use the sales-representative relationship for commercial visibility.
 
 Two rate denominators are available when enabled. The margin-on-cost percentage uses signed margin over cost and the margin-on-sales percentage uses signed margin over selling amount, both multiplied by 100. A zero denominator produces an unavailable rate. For a positive margin of 60 on the sale above the percentages are 50% and 33.33% respectively. The customer **detail row** display negates both percentage expressions when the margin is negative. For a loss-making positive sale at 90 with cost 100 it consequently displays positive magnitudes of 10% on cost and 11.11% on sales although the monetary margin is minus 10. The aggregate footer computes rates from total amounts and uses the signed result. Neither accounting treatment nor reader interpretation should depend solely on the direction of a row's displayed percentage.
-
-Source location `htdocs/margin/customerMargins.php:116–144, 246–293, 369–405, 420–435`.
 
 ## Attribution and representative drill-down
 
@@ -29,5 +25,3 @@ For each customer/agent subtotal, the report counts all sales-representative ass
 With the ordinary party assignment rule, a customer assigned to two representatives has eligible net revenue of 180, cost 120 and margin 60 in the customer report. Each representative receives 90 of attributed sales, 60 of attributed cost and 30 of margin. The combined representative totals recover the full sale in this example. Filtering to one representative still divides by both assignments. Selecting a representative groups their result by customer. In the all-agent view customer shares are rolled up by representative instead. Without the read-all margin permission the report forces the representative selection to the current user. Read-all permits selecting another representative or viewing all.
 
 A monetary margin measures commercial performance at invoice time. No payment allocation, collected-cash date, commission rate, payroll item or settlement state is used in the split. Payment-based commissions require a separate source of events and rules.
-
-Source locations include `htdocs/margin/agentMargins.php:62–74, 178–220, 295–358, 378–389`.

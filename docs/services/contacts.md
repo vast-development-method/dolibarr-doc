@@ -2,8 +2,6 @@
 
 A person can be resolved by identifier or email, linked to categories and used as the origin for a user account. The contact and the resulting user have separate identifiers.
 
-The implementation locations below refer to `htdocs/societe/class/api_contacts.class.php`.
-
 ## `get` — Read a contact
 
 **Arguments** `id` (integer), `includecount = 0` (integer), `includeroles = 0` (integer).
@@ -16,8 +14,6 @@ The method reads the email opt-out flag.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contact missing.
-
-Source lines `79–112`.
 
 ## `getByEmail` — Read by email address
 
@@ -34,8 +30,6 @@ The method reads the email opt-out flag.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contact missing.
 
-Source lines `129–162`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `category = 0` (integer), `sqlfilters = ''` (text), `includecount = 0` (integer), `includeroles = 0` (integer), `properties = ''` (text), `pagination_data = false` (boolean).
@@ -49,8 +43,6 @@ The lookup uses the visible entity scope for `contact`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `186–327`.
 
 ## `post` — Create a contact
 
@@ -71,8 +63,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — country code missing, party missing.
 - `500` — business operation failed.
 
-Source lines `341–394` with `_validate 718–729`.
-
 ## `put` — Update a contact
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — contact missing, party missing.
 - `500` — business operation failed.
 
-Source lines `411–465` with `get 79–112`.
-
 ## `delete` — Delete a contact
 
 **Arguments** `id` (integer).
@@ -100,8 +88,6 @@ Source lines `411–465` with `get 79–112`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contact missing.
 - `500` — removal failed.
-
-Source lines `477–502`.
 
 ## `createUser` — Create user
 
@@ -122,8 +108,6 @@ The method creates a user from the contact and sets credentials.
 - `404` — contact missing.
 - `500` — business operation failed.
 
-Source lines `518–560`.
-
 ## `getCategories` — Read categories
 
 Route `GET {id}/categories`.
@@ -138,8 +122,6 @@ The method reads classification links.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `503` — query or persistence failure.
-
-Source lines `577–596`.
 
 ## `addCategory` — Add category
 
@@ -156,8 +138,6 @@ The method adds a category link.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contact missing, category missing.
 
-Source lines `613–639`.
-
 ## `deleteCategory` — Delete category
 
 Route `DELETE {id}/categories/{category_id}`.
@@ -172,5 +152,3 @@ The method removes a category link.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contact missing, category missing.
-
-Source lines `655–681`.

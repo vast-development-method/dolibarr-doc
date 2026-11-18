@@ -14,8 +14,6 @@ Reopening a closed shipment in closure-posting mode issues an opposite movement 
 
 The reopen's persisted update sets the header state to validated only if it is still closed. An object already observed as validated yields no work. A stale closed object that loses the conditional update returns a state error before moving any stock. The reopen code resets the in-memory billed flag. Its header update writes the state field alone. A fresh read can therefore retain the previous persisted billed value. The reopen method does not invoke a corresponding source sales-order reclassification. An order previously classified delivered warrants a separate state reconciliation.
 
-Sources are `htdocs/expedition/class/expedition.class.php:995–1088,2950–3040,3060–3131,3200–3318` and `htdocs/product/stock/class/mouvementstock.class.php:588–615,638–650,877–882,960–1005`.
-
 ## Cancellation, deletion and draft
 
 | Normal entry | Allocation and state effect |
@@ -29,8 +27,6 @@ Cancellation and deletion inspect each line's warehouse and current component-mo
 
 A cancellation commits removal/restoration before cleaning generated documents. A document-file failure can consequently return an unsuccessful result after stock and line changes have committed. The card's separate status change then need not have occurred. Re-read the header, lines and reversal movements before interpreting such a result. [Event and transaction boundaries](../events/README.md)
 
-Sources are `htdocs/expedition/card.php:240–259,674–690,3816–3831`, `htdocs/expedition/class/expedition.class.php:1768–1816,1830–1892,1900–1950,1961–2068,3185–3193` and `htdocs/expedition/class/api_shipments.class.php:549–578`.
-
 ## Worked split dispatch
 
 One warehouse holds six red-lot units and four blue-lot units at an average of 12. Close a shipment for five units, split into three red and two blue. Closing writes two negative movements. Warehouse on-hand is now red three and blue two, or five units valued at 60. Reopening under closure posting writes two positive movements, red three and blue two, while average cost stays 12. A later successful close creates two fresh negative movements. The journal now has six rows whose signed quantity totals −5. The customer's net cumulative dispatch under this sequence is five units, even though the sum of all positive journal rows is also five.
@@ -42,5 +38,3 @@ If the original dispatch posted at **validation**, the same closed shipment had 
 With sales stock posting on order validation, the customer order issues its product lines at the warehouse supplied to validation. Returning it to draft or canceling it receives eligible product quantities at the warehouse supplied to that operation, at zero price. The order routine does not look up the validation movement to choose that warehouse. For four untracked units, an original issue at East and a later draft return at West can restore whole-product quantity while leaving East down four and West up four. In a shipment-posting regime those order transitions do not execute the order-stock branch.
 
 The supplier order follows different rules. In supplier-order approval posting mode the approval that reaches accepted posts the increase. Its cancellation routine accepts a warehouse argument for interface compatibility but has no compensating stock call. Its reopen operation steps the order to a previous administrative state. For example, accepted returns to draft with both approval users/dates cleared, ordered returns to accepted, and fully received returns to partially received. These status changes issue no warehouse movement in the traced methods. Interpreting reopening as a physical supplier return would create a mismatch between the purchase register and actual stock. [Purchasing approvals](../specification/commercial/supplier-sourcing-and-approval.md)
-
-Sources are `htdocs/commande/card.php:1818–1844,1914–1936,1964–1986`, `htdocs/commande/class/commande.class.php:585–612,688–748,910–952` and `htdocs/fourn/class/fournisseur.commande.class.php:1348–1395,1482–1527,2896–2944`.

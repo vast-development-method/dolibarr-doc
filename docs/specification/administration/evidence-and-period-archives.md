@@ -12,8 +12,6 @@ A new event obtains its predecessor and computes its signature from the precedin
 
 A row identifier, signature and predecessor together give evidence about **sequence**. Identity and business date alone do not determine sequence when several documents share a date or a prior-period instrument is entered later. Cash collection for a March invoice in April produces another event with its own business meaning and predecessor. It does not overwrite the validation record.
 
-Source locations include `htdocs/core/triggers/interface_99_modBlockedlog_ActionsBlockedLog.class.php:runTrigger` and `htdocs/blockedlog/class/blockedlog.class.php:loadTrackedEvents, setObjectData, create, getPreviousHash`.
-
 ## Selecting a period and preserving boundaries
 
 An archive selection is for one entity and a calendar month or year. It requires the read/export entitlement on the export action. The period selection uses event **creation time**, with inclusive UTC database bounds. Sort by creation time, then row identity. The first selected row obtains its predecessor from outside the selected range where necessary. If the month is empty the archive path explicitly identifies that there was no data from which to load a predecessor.
@@ -21,8 +19,6 @@ An archive selection is for one entity and a calendar month or year. It requires
 The exporter checks rows in order, advancing the predecessor signature as it goes. To assess the far boundary it can inspect the next record following the archived range, or the chain's end marker when the exported period reaches the current tail. Period validation therefore involves the boundaries as well as rows printed inside the file. A single isolated row cannot establish the completeness of a month. The archive carries event identifiers, references, actor, amounts, links, payload, format version and signature, along with period and export metadata.
 
 The export writes a file-level content digest and a keyed digest to the final trailer. These apply to the archive bytes written before that trailer. Event signatures describe continuity of records. The file digest describes a specific exported representation. Two exports covering the same completed month can have different export metadata and file digests while referring to the same underlying financial events.
-
-Source locations include `htdocs/blockedlog/admin/blockedlog_archives.php:175–244, 272–312, 430–493, 675–683` and `htdocs/blockedlog/class/blockedlog.class.php:checkSignature`.
 
 ## Complete, incomplete and failed exports
 
@@ -35,5 +31,3 @@ Source locations include `htdocs/blockedlog/admin/blockedlog_archives.php:175–
 For an April 2 validation, an April export taken on April 15 is incomplete even if the invoice was already fully paid. An export taken after April closes includes events that arrived later in the month. The completed export leaves its own audit event at the later export time. Export is a copy operation. It does not impose a new deletion date on the source record, attachment or financial journal.
 
 Scheduled privacy cleanup targets configured objects and fields using the object's own delete or update operation. For anonymization it can retain the business object's identifier, replace designated master fields and transform custom fields marked personal. That process changes the records selected by the configured policy. The financial archive logic is a separate operation and reads previously captured event data. A redacted current contact therefore does not establish that an earlier signed invoice snapshot, delivered message, indexed document or exported file was also redacted. Conversely, retaining a financial archive does not prove the current contact record still contains those details.
-
-Source locations include `htdocs/blockedlog/admin/blockedlog_archives.php:210–219, 675–738` and `htdocs/datapolicy/class/datapolicycron.class.php:_processPolicyAction, _handleDelete, _handleAnonymize`.

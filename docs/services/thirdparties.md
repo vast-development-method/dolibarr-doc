@@ -2,8 +2,6 @@
 
 The service manages customer and supplier identity, representatives, categories, price levels, account notifications, banking instructions, payment mandates and external site accounts. Several child operations require both the party identifier and the child identifier.
 
-The implementation locations below refer to `htdocs/societe/class/api_thirdparties.class.php`.
-
 ## `get` — Read a business partner
 
 **Arguments** `id` (integer).
@@ -14,8 +12,6 @@ The implementation locations below refer to `htdocs/societe/class/api_thirdparti
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
-
-Source lines `85–88` with `_fetch 2782–2818`.
 
 ## `getByEmail` — Read by email address
 
@@ -30,8 +26,6 @@ Route `GET email/{email}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 
-Source lines `106–109` with `_fetch 2782–2818`.
-
 ## `getByBarcode` — Read by barcode
 
 Route `GET barcode/{barcode}`.
@@ -44,8 +38,6 @@ Route `GET barcode/{barcode}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
-
-Source lines `125–128` with `_fetch 2782–2818`.
 
 ## `index` — List records
 
@@ -61,8 +53,6 @@ The lookup uses the visible entity scope for `societe`. A caller linked to a par
 - `403` — access refused.
 - `404` — no matching rows.
 - `503` — query or persistence failure.
-
-Source lines `156–295`.
 
 ## `post` — Create a business partner
 
@@ -83,8 +73,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — country code missing.
 - `500` — business operation failed.
 
-Source lines `309–354` with `_validate 2744–2757`.
-
 ## `put` — Update a business partner
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -98,8 +86,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 - `500` — business operation failed.
-
-Source lines `373–415` with `get 85–88`, `_fetch 2782–2818`.
 
 ## `merge` — Merge
 
@@ -118,8 +104,6 @@ The method merges party records.
 - `404` — party missing.
 - `500` — party merge failed.
 
-Source lines `438–474` with `get 85–88`, `_fetch 2782–2818`.
-
 ## `delete` — Delete a business partner
 
 **Arguments** `id` (integer).
@@ -132,8 +116,6 @@ Source lines `438–474` with `get 85–88`, `_fetch 2782–2818`.
 - `404` — party missing.
 - `409` — removal failed.
 - `500` — removal failed.
-
-Source lines `488–515`.
 
 ## `setThirdpartyPriceLevel` — Set party price level
 
@@ -153,8 +135,6 @@ The method sets the customer price level.
 - `500` — business operation failed.
 - `501` — operation unavailable.
 
-Source lines `534–577`.
-
 ## `addRepresentative` — Add representative
 
 Route `POST {id}/representative/{representative_id}`.
@@ -170,8 +150,6 @@ The method assigns a sales representative.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, user missing.
 
-Source lines `593–613`.
-
 ## `deleteRepresentative` — Delete representative
 
 Route `DELETE {id}/representative/{representative_id}`.
@@ -186,8 +164,6 @@ The method removes a sales representative.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, user missing.
-
-Source lines `629–649`.
 
 ## `getCategories` — Read categories
 
@@ -205,8 +181,6 @@ The method reads classification links.
 - `404` — party missing, access refused.
 - `503` — query or persistence failure.
 
-Source lines `669–698`.
-
 ## `addCategory` — Add category
 
 Route `PUT {id}/categories/{category_id}`.
@@ -222,8 +196,6 @@ The method adds a category link.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, category missing.
 
-Source lines `716–742`.
-
 ## `deleteCategory` — Delete category
 
 Route `DELETE {id}/categories/{category_id}`.
@@ -238,8 +210,6 @@ The method removes a category link.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, category missing.
-
-Source lines `760–786`.
 
 ## `getSupplierCategories` — Read supplier categories
 
@@ -257,8 +227,6 @@ The method reads classification links.
 - `404` — party missing, access refused.
 - `503` — query or persistence failure.
 
-Source lines `807–836`.
-
 ## `addSupplierCategory` — Add supplier category
 
 Route `PUT {id}/supplier_categories/{category_id}`.
@@ -274,8 +242,6 @@ The method adds a category link.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, category missing.
 
-Source lines `854–880`.
-
 ## `deleteSupplierCategory` — Delete supplier category
 
 Route `DELETE {id}/supplier_categories/{category_id}`.
@@ -290,8 +256,6 @@ The method removes a category link.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, category missing.
-
-Source lines `898–924`.
 
 ## `getOutStandingProposals` — Read out standing proposals
 
@@ -309,8 +273,6 @@ The method totals open proposals.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 
-Source lines `945–970`.
-
 ## `getOutStandingOrder` — Read out standing order
 
 Route `GET {id}/outstandingorders`.
@@ -326,8 +288,6 @@ The method totals open orders.
 - `400` — thirdparty id required.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
-
-Source lines `991–1016`.
 
 ## `getOutStandingInvoices` — Read out standing invoices
 
@@ -345,8 +305,6 @@ The method totals open invoices.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 
-Source lines `1036–1061`.
-
 ## `getSalesRepresentatives` — Read sales representatives
 
 Route `GET {id}/representatives`.
@@ -363,8 +321,6 @@ The method loads assigned representatives.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 
-Source lines `1081–1103`.
-
 ## `getFixedAmountDiscounts` — Read fixed amount discounts
 
 Route `GET {id}/fixedamountdiscounts`.
@@ -379,8 +335,6 @@ Route `GET {id}/fixedamountdiscounts`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing.
 - `503` — query or persistence failure.
-
-Source lines `1129–1188`.
 
 ## `createFixedAmountDiscount` — Create fixed amount discount
 
@@ -402,8 +356,6 @@ The method applies a fixed discount. The method opens a database transaction and
 - `404` — requested record or reference missing.
 - `500` — business operation failed.
 
-Source lines `1214–1296`.
-
 ## `splitdiscount` — Splitdiscount
 
 Route `POST {id}/splitdiscount/{discountid}`.
@@ -424,8 +376,6 @@ The method opens a database transaction and provides commit and rollback paths. 
 - `500` — business operation failed.
 - `503` — query or persistence failure.
 
-Source lines `1321–1462`.
-
 ## `getInvoicesQualifiedForReplacement` — Read invoices qualified for replacement
 
 Route `GET {id}/getinvoicesqualifiedforreplacement`.
@@ -439,8 +389,6 @@ Route `GET {id}/getinvoicesqualifiedforreplacement`.
 - `400` — thirdparty id required.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `405` — operation unavailable.
-
-Source lines `1482–1508`.
 
 ## `getInvoicesQualifiedForCreditNote` — Read invoices qualified for credit note
 
@@ -456,8 +404,6 @@ Route `GET {id}/getinvoicesqualifiedforcreditnote`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `405` — operation unavailable.
 
-Source lines `1531–1557`.
-
 ## `getCompanyNotification` — Read company notification
 
 Route `GET {id}/notifications`.
@@ -471,8 +417,6 @@ Route `GET {id}/notifications`.
 - `400` — thirdparty id required.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — notification missing, no matching rows.
-
-Source lines `1574–1635`.
 
 ## `createCompanyNotification` — Create company notification
 
@@ -488,8 +432,6 @@ Route `POST {id}/notifications`.
 - `404` — requested data unavailable.
 - `500` — error creating party Notification, request_data missing event, business operation failed.
 
-Source lines `1653–1701`.
-
 ## `createCompanyNotificationByCode` — Create company notification by code
 
 Route `POST {id}/notificationsbycode/{code}`.
@@ -504,8 +446,6 @@ Route `POST {id}/notificationsbycode/{code}`.
 - `404` — requested data unavailable, action trigger code missing.
 - `500` — business operation failed.
 
-Source lines `1721–1780`.
-
 ## `deleteCompanyNotification` — Delete company notification
 
 Route `DELETE {id}/notifications/{notification_id}`.
@@ -517,8 +457,6 @@ Route `DELETE {id}/notifications/{notification_id}`.
 **Result** The notification-removal result.
 
 - `403` — missing operation rights, record outside the caller’s scope.
-
-Source lines `1796–1817`.
 
 ## `updateCompanyNotification` — Update company notification
 
@@ -534,8 +472,6 @@ Route `PUT {id}/notifications/{notification_id}`.
 - `404` — requested data unavailable.
 - `500` — business operation failed.
 
-Source lines `1836–1867`.
-
 ## `getCompanyBankAccount` — Read company bank account
 
 Route `GET {id}/bankaccounts`.
@@ -549,8 +485,6 @@ Route `GET {id}/bankaccounts`.
 - `400` — thirdparty id required.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — account missing.
-
-Source lines `1884–1956`.
 
 ## `createCompanyBankAccount` — Create company bank account
 
@@ -568,8 +502,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — requested data unavailable.
 - `500` — business operation failed.
 
-Source lines `1974–2017`.
-
 ## `updateCompanyBankAccount` — Update company bank account
 
 Route `PUT {id}/bankaccounts/{bankaccount_id}`.
@@ -586,8 +518,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — requested data unavailable.
 - `500` — business operation failed.
 
-Source lines `2036–2081`.
-
 ## `deleteCompanyBankAccount` — Delete company bank account
 
 Route `DELETE {id}/bankaccounts/{bankaccount_id}`.
@@ -599,8 +529,6 @@ Route `DELETE {id}/bankaccounts/{bankaccount_id}`.
 **Result** The bank-account-removal result.
 
 - `403` — missing operation rights, record outside the caller’s scope.
-
-Source lines `2097–2118`.
 
 ## `generateBankAccountDocument` — Generate bank account document
 
@@ -618,8 +546,6 @@ The method sets the document model and generates the business document.
 - `404` — party missing, bank account missing.
 - `500` — query or persistence failure, document generation failed.
 
-Source lines `2138–2223`.
-
 ## `getSocieteAccounts` — Read party accounts
 
 Route `GET {id}/accounts/`.
@@ -632,8 +558,6 @@ Route `GET {id}/accounts/`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — external account missing for this site or party.
-
-Source lines `2242–2300`.
 
 ## `getSocieteByAccounts` — Read party by accounts
 
@@ -649,8 +573,6 @@ The lookup uses the visible entity scope for `societe`. The lookup begins at the
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — account key absent or ambiguous, party missing.
-
-Source lines `2319–2343` with `_fetch 2782–2818`.
 
 ## `createSocieteAccount` — Create party account
 
@@ -671,8 +593,6 @@ The optional caller marker is placed in event context for synchronization. A sit
 - `422` — business rule or input rejected.
 - `500` — business operation failed.
 
-Source lines `2368–2412`.
-
 ## `postSocieteAccount` — Post party account
 
 Route `POST {id}/accounts/{site}`.
@@ -691,8 +611,6 @@ The optional caller marker is placed in event context for synchronization.
 - `409` — duplicate record or association.
 - `422` — business rule or input rejected.
 - `500` — business operation failed.
-
-Source lines `2440–2520`.
 
 ## `putSocieteAccount` — Put party account
 
@@ -713,8 +631,6 @@ The optional caller marker is placed in event context for synchronization.
 - `409` — duplicate record or association.
 - `500` — business operation failed.
 
-Source lines `2542–2590`.
-
 ## `deleteSocieteAccount` — Delete party account
 
 Route `DELETE {id}/accounts/{site}`.
@@ -729,8 +645,6 @@ Route `DELETE {id}/accounts/{site}`.
 - `404` — requested data unavailable.
 - `500` — external account missing for this site or party.
 
-Source lines `2610–2634`.
-
 ## `deleteSocieteAccounts` — Delete party accounts
 
 Route `DELETE {id}/accounts`.
@@ -744,5 +658,3 @@ Route `DELETE {id}/accounts`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — external account missing for this site or party.
 - `500` — external account missing for this site or party.
-
-Source lines `2651–2690`.

@@ -14,7 +14,7 @@ The public signing invitation identifies the document family, reference and, whe
 
 The shared signature state dictionary uses 0 for unsigned, 1 for sender-signed, 2 for receiver-signed, 3 for receiver-signed online and 9 for all signatures. The contract, intervention and shipment paths set the field to 3. It is a single classification field. It does not accumulate the individual parties' signatures as independent approvals or automatically progress from 1 to 9. An implementation that needs to answer who acknowledged a particular version must retain the corresponding document evidence.
 
-Supported families and offer amounts appear in `htdocs/public/onlinesign/newonlinesign.php:163–185,340–384`. The effects are in `htdocs/core/ajax/onlineSign.php:303–360,479–497,619–636,812–850,968–987`. Common signature-state values and persistence are in `htdocs/core/class/commonsignedobject.class.php:46–55,129–166`. See [Contract services](../specification/people-and-services/contract-services-and-work-templates.md) and [Shipment signatures](../specification/equipment/carriers-delivery-notes-and-signatures.md) for operational status changes.
+See [Contract services](../specification/people-and-services/contract-services-and-work-templates.md) and [Shipment signatures](../specification/equipment/carriers-delivery-notes-and-signatures.md) for operational status changes.
 
 ## Offer acceptance, refusal and repeated decisions
 
@@ -26,16 +26,12 @@ Refusal is a separate choice. The page asks the recipient to confirm, records th
 
 For example, three issued offers are opened on Tuesday. One is downloaded, one is explicitly refused and one is signed. The first is still issued with no new decision. The second and third can both have Tuesday decision dates, but only the third qualifies as customer acceptance. None of these public operations creates an invoice. [Offer revisions, conversion and commercial state](../specification/commercial/customer-offer-lifecycle.md)
 
-The public offer presentation and refusal are in `htdocs/public/onlinesign/newonlinesign.php:198–225,250–256,384–433,711–724,736–787,790–814`. The eligibility check, evidence and conditional write are in `htdocs/core/ajax/onlineSign.php:125–161,285–361`.
-
 ## The signed artifact
 
-The captured signature image and the signed copy have separate identities. For a supported PDF source, the standard process imports the source document, places a signature onto the appropriate page or pages, writes a dated derivative and indexes it as the new main document. It retains the original. In the offer path, the configured specific page, all-pages option and the document's signature-page metadata participate in placement. With no page supplied by configuration or metadata the final page receives the signature. The image is accompanied by a date and the submitted name. The release has no corresponding image-insertion operation for an OpenDocument text file.
+The captured signature image and the signed copy have separate identities. For a supported PDF source, the standard process imports the source document, places a signature onto the appropriate page or pages, writes a dated derivative and indexes it as the new main document. It retains the original. In the offer path, the configured specific page, all-pages option and the document's signature-page metadata participate in placement. With no page supplied by configuration or metadata the final page receives the signature. The image is accompanied by a date and the submitted name. OpenDocument text files have no corresponding image-insertion operation.
 
 After an offer has been accepted or billed, the public display checks that the indexed main file is identifiable as a signed copy and compares its modification time with the unsigned source. A newer available signed copy can be offered for download. If someone regenerates the original later, file dates and the offer's signed status can describe different versions. Reproducing the signed terms requires preserving the copy that actually received the signature.
 
 Bank mandates have additional source selection. The standard mandate model identifies the source by the bank reference and unique mandate reference. For other bank PDF models the signing operation uses the last generated main PDF and derives a dated signed filename from it. It indexes the new file against the account-related document. This distinction matters where a party has multiple bank accounts or a deployment uses a different bank document model. A signed mandate relates to one account record.
 
 For an intervention, contract or shipment, use the signed document and signature field to establish receipt. The public return screen uses a successful-return message for contracts and interventions. An ordinary later visit can again present the signing control. Its appearance alone does not establish whether an earlier signed copy exists. The shipment screen also consults the sender-signed classification when it decides what to display. These public page rules differ from the issued-offer state gate.
-
-File selection, placement and indexing appear in `htdocs/core/ajax/onlineSign.php:164–179,204–292,393–404,479–496,533–539,618–635,681–703,791–806,887–905,968–986,1009–1024`. The public copy and return-state rules appear in `htdocs/public/onlinesign/newonlinesign.php:404–429,553–588,792–836`.
