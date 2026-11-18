@@ -2,6 +2,7 @@ table,field,storage_type,nullability,default_expression,inline_key,source_file,l
 adherent,rowid,integer,required,,primary,llx_adherent.sql,31
 adherent,ref,varchar(30),required,,,llx_adherent.sql,32
 adherent,entity,integer,required,1,,llx_adherent.sql,33
+adherent,ref_ext,varchar(128),nullable,,,llx_adherent.sql,34
 adherent,gender,varchar(10),nullable,,,llx_adherent.sql,36
 adherent,civility,varchar(6),nullable,,,llx_adherent.sql,37
 adherent,lastname,varchar(50),nullable,,,llx_adherent.sql,38
@@ -11,6 +12,7 @@ adherent,pass,varchar(50),nullable,,,llx_adherent.sql,41
 adherent,pass_crypted,varchar(128),nullable,,,llx_adherent.sql,42
 adherent,fk_adherent_type,integer,required,,,llx_adherent.sql,43
 adherent,morphy,varchar(3),required,,,llx_adherent.sql,44
+adherent,societe,varchar(128),nullable,,,llx_adherent.sql,45
 adherent,fk_soc,integer,nullable,,,llx_adherent.sql,46
 adherent,address,text,nullable,,,llx_adherent.sql,47
 adherent,zip,varchar(30),nullable,,,llx_adherent.sql,48
@@ -68,6 +70,7 @@ subscription,subscription,"double(24,8)",nullable,,,llx_subscription.sql,28
 subscription,fk_bank,integer,nullable,NULL,,llx_subscription.sql,29
 subscription,fk_user_creat,integer,nullable,NULL,,llx_subscription.sql,30
 subscription,fk_user_valid,integer,nullable,NULL,,llx_subscription.sql,31
+subscription,ref_ext,varchar(128),nullable,,,llx_subscription.sql,32
 subscription,note,text,nullable,,,llx_subscription.sql,33
 subscription,note_private,text,nullable,,,llx_subscription.sql,34
 subscription,import_key,varchar(14),nullable,,,llx_subscription.sql,35
@@ -138,9 +141,9 @@ website,position,integer,nullable,0,,llx_website-website.sql,38
 website,paymentframemode,integer,nullable,0,,llx_website-website.sql,39
 website,lastaccess,datetime,nullable,,,llx_website-website.sql,40
 website,lastpageid,integer,nullable,0,,llx_website-website.sql,41
-website,pageviews_previous_month,bigint,nullable,0,,llx_website-website.sql,42
-website,pageviews_month,bigint,nullable,0,,llx_website-website.sql,43
-website,pageviews_total,bigint,nullable,0,,llx_website-website.sql,44
+website,pageviews_previous_month,bigint unsigned,nullable,0,,llx_website-website.sql,42
+website,pageviews_month,bigint unsigned,nullable,0,,llx_website-website.sql,43
+website,pageviews_total,bigint unsigned,nullable,0,,llx_website-website.sql,44
 website,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_website-website.sql,45
 website,import_key,varchar(14),nullable,,,llx_website-website.sql,46
 website,name_template,varchar(255),nullable,,,llx_website-website.sql,47
@@ -195,10 +198,11 @@ opensurvey_user_formanswers,reponses,text,nullable,,,llx_opensurvey_user_formans
 opensurvey_user_studs,id_users,integer,required,,primary,llx_opensurvey_user_studs-opensurvey.sql,19
 opensurvey_user_studs,nom,varchar(64),required,,,llx_opensurvey_user_studs-opensurvey.sql,20
 opensurvey_user_studs,id_sondage,varchar(16),required,,,llx_opensurvey_user_studs-opensurvey.sql,21
+opensurvey_user_studs,reponses,varchar(200),required,,,llx_opensurvey_user_studs-opensurvey.sql,22
 opensurvey_user_studs,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_opensurvey_user_studs-opensurvey.sql,23
 opensurvey_user_studs,date_creation,datetime,required,,,llx_opensurvey_user_studs-opensurvey.sql,24
 opensurvey_user_studs,ip,varchar(250),nullable,,,llx_opensurvey_user_studs-opensurvey.sql,25
-opensurvey_comments,id_comment,integer,required,,primary,llx_opensurvey_comments-opensurvey.sql,19
+opensurvey_comments,id_comment,integer unsigned,required,,primary,llx_opensurvey_comments-opensurvey.sql,19
 opensurvey_comments,id_sondage,char(16),required,,,llx_opensurvey_comments-opensurvey.sql,20
 opensurvey_comments,comment,text,required,,,llx_opensurvey_comments-opensurvey.sql,21
 opensurvey_comments,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_opensurvey_comments-opensurvey.sql,22
@@ -229,6 +233,7 @@ mailing,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_mailing-mailing.sql,43
 mailing,fk_user_creat,integer,nullable,,,llx_mailing-mailing.sql,44
 mailing,fk_user_modif,integer,nullable,,,llx_mailing-mailing.sql,45
 mailing,fk_user_valid,integer,nullable,,,llx_mailing-mailing.sql,46
+mailing,fk_user_appro,integer,nullable,,,llx_mailing-mailing.sql,47
 mailing,extraparams,varchar(255),nullable,,,llx_mailing-mailing.sql,48
 mailing,joined_file1,varchar(255),nullable,,,llx_mailing-mailing.sql,49
 mailing,joined_file2,varchar(255),nullable,,,llx_mailing-mailing.sql,50

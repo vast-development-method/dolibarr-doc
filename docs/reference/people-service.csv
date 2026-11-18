@@ -94,6 +94,7 @@ expensereport,fk_user_approve,integer,nullable,NULL,,llx_expensereport.sql,43
 expensereport,fk_user_refuse,integer,nullable,NULL,,llx_expensereport.sql,44
 expensereport,fk_user_cancel,integer,nullable,NULL,,llx_expensereport.sql,45
 expensereport,fk_statut,integer,required,,,llx_expensereport.sql,46
+expensereport,fk_c_paiement,integer,nullable,NULL,,llx_expensereport.sql,47
 expensereport,note_public,text,nullable,,,llx_expensereport.sql,49
 expensereport,note_private,text,nullable,,,llx_expensereport.sql,50
 expensereport,detail_refuse,varchar(255),nullable,NULL,,llx_expensereport.sql,51
@@ -192,6 +193,7 @@ paymentexpensereport_expensereport,multicurrency_tx,"double(24,8)",nullable,1,,l
 paymentexpensereport_expensereport,multicurrency_amount,"double(24,8)",nullable,0,,llx_paymentexpensereport_expensereport.sql,31
 salary,rowid,integer,required,,primary,llx_salary.sql,22
 salary,ref,varchar(30),nullable,,,llx_salary.sql,23
+salary,ref_ext,varchar(255),nullable,,,llx_salary.sql,24
 salary,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_salary.sql,25
 salary,datec,datetime,nullable,,,llx_salary.sql,26
 salary,fk_user,integer,required,,,llx_salary.sql,27
@@ -237,6 +239,7 @@ payment_salary,fk_salary,integer,nullable,,,llx_payment_salary.sql,41
 user_employment,rowid,integer,required,,primary,llx_user_employment.sql,22
 user_employment,entity,integer,required,1,,llx_user_employment.sql,23
 user_employment,ref,varchar(50),nullable,,,llx_user_employment.sql,24
+user_employment,ref_ext,varchar(50),nullable,,,llx_user_employment.sql,25
 user_employment,fk_user,integer,nullable,,,llx_user_employment.sql,26
 user_employment,datec,datetime,nullable,,,llx_user_employment.sql,27
 user_employment,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_user_employment.sql,28
@@ -389,8 +392,13 @@ contrat,entity,integer,required,1,,llx_contrat.sql,28
 contrat,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_contrat.sql,29
 contrat,datec,datetime,nullable,,,llx_contrat.sql,30
 contrat,date_contrat,datetime,nullable,,,llx_contrat.sql,31
+contrat,statut,smallint,nullable,0,,llx_contrat.sql,32
+contrat,fin_validite,datetime,nullable,,,llx_contrat.sql,34
+contrat,date_cloture,datetime,nullable,,,llx_contrat.sql,35
 contrat,fk_soc,integer,required,,,llx_contrat.sql,37
 contrat,fk_projet,integer,nullable,,,llx_contrat.sql,38
+contrat,fk_commercial_signature,integer,nullable,,,llx_contrat.sql,39
+contrat,fk_commercial_suivi,integer,nullable,,,llx_contrat.sql,40
 contrat,fk_user_author,integer,required,0,,llx_contrat.sql,41
 contrat,fk_user_modif,integer,nullable,,,llx_contrat.sql,42
 contrat,fk_user_cloture,integer,nullable,,,llx_contrat.sql,43
@@ -549,7 +557,7 @@ fichinterdet_rec,info_bits,integer,nullable,0,,llx_fichinterdet_rec.sql,54
 fichinterdet_rec,buy_price_ht,"double(24, 8)",nullable,0,,llx_fichinterdet_rec.sql,55
 fichinterdet_rec,fk_product_fournisseur_price,integer,nullable,NULL,,llx_fichinterdet_rec.sql,56
 fichinterdet_rec,fk_code_ventilation,integer,required,0,,llx_fichinterdet_rec.sql,57
-fichinterdet_rec,special_code,integer,nullable,0,,llx_fichinterdet_rec.sql,58
+fichinterdet_rec,special_code,integer unsigned,nullable,0,,llx_fichinterdet_rec.sql,58
 fichinterdet_rec,fk_unit,integer,nullable,NULL,,llx_fichinterdet_rec.sql,59
 fichinterdet_rec,import_key,varchar(14),nullable,NULL,,llx_fichinterdet_rec.sql,60
 fichinterdet_rec,extraparams,varchar(255),nullable,,,llx_fichinterdet_rec.sql,61

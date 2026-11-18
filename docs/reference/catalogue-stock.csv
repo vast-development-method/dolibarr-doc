@@ -2,8 +2,10 @@ table,field,storage_type,nullability,default_expression,inline_key,source_file,l
 product,rowid,integer,required,,primary,llx_product.sql,27
 product,ref,varchar(128),required,,,llx_product.sql,28
 product,entity,integer,required,1,,llx_product.sql,29
+product,ref_ext,varchar(128),nullable,,,llx_product.sql,31
 product,datec,datetime,nullable,,,llx_product.sql,33
 product,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_product.sql,34
+product,fk_parent,integer,nullable,0,,llx_product.sql,35
 product,label,varchar(255),required,,,llx_product.sql,37
 product,description,text,nullable,,,llx_product.sql,38
 product,note_public,mediumtext,nullable,,,llx_product.sql,39
@@ -62,6 +64,8 @@ product,volume_units,tinyint,nullable,NULL,,llx_product.sql,91
 product,stockable_product,integer,required,1,,llx_product.sql,92
 product,stock,real,nullable,,,llx_product.sql,93
 product,pmp,"double(24,8)",required,0,,llx_product.sql,94
+product,fifo,"double(24,8)",nullable,,,llx_product.sql,95
+product,lifo,"double(24,8)",nullable,,,llx_product.sql,96
 product,fk_default_warehouse,integer,nullable,NULL,,llx_product.sql,97
 product,fk_default_bom,integer,nullable,NULL,,llx_product.sql,98
 product,fk_default_workstation,integer,nullable,NULL,,llx_product.sql,99
@@ -69,6 +73,7 @@ product,canvas,varchar(32),nullable,NULL,,llx_product.sql,100
 product,finished,tinyint,nullable,NULL,,llx_product.sql,101
 product,lifetime,integer,nullable,NULL,,llx_product.sql,102
 product,qc_frequency,integer,nullable,NULL,,llx_product.sql,103
+product,hidden,tinyint,nullable,0,,llx_product.sql,104
 product,import_key,varchar(14),nullable,,,llx_product.sql,105
 product,model_pdf,varchar(255),nullable,,,llx_product.sql,106
 product,fk_price_expression,integer,nullable,,,llx_product.sql,107
@@ -118,6 +123,8 @@ product_attribute_combination_price_level,variation_price_percentage,integer,nul
 product_batch,rowid,integer,required,,primary,llx_product_batch.sql,22
 product_batch,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_product_batch.sql,23
 product_batch,fk_product_stock,integer,required,,,llx_product_batch.sql,24
+product_batch,eatby,datetime,nullable,NULL,,llx_product_batch.sql,25
+product_batch,sellby,datetime,nullable,NULL,,llx_product_batch.sql,26
 product_batch,batch,varchar(128),required,,,llx_product_batch.sql,27
 product_batch,qty,double,required,0,,llx_product_batch.sql,28
 product_batch,import_key,varchar(14),nullable,NULL,,llx_product_batch.sql,29
@@ -154,6 +161,8 @@ stock_mouvement,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_stock_mouvement.sq
 stock_mouvement,datem,datetime,nullable,,,llx_stock_mouvement.sql,24
 stock_mouvement,fk_product,integer,required,,,llx_stock_mouvement.sql,25
 stock_mouvement,batch,varchar(128),nullable,NULL,,llx_stock_mouvement.sql,26
+stock_mouvement,eatby,date,nullable,NULL,,llx_stock_mouvement.sql,27
+stock_mouvement,sellby,date,nullable,NULL,,llx_stock_mouvement.sql,28
 stock_mouvement,fk_entrepot,integer,required,,,llx_stock_mouvement.sql,29
 stock_mouvement,value,real,nullable,,,llx_stock_mouvement.sql,30
 stock_mouvement,price,"double(24,8)",nullable,0,,llx_stock_mouvement.sql,31

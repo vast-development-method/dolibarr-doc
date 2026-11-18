@@ -116,6 +116,7 @@ projet,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_projet.sql,26
 projet,dateo,date,nullable,,,llx_projet.sql,27
 projet,datee,date,nullable,,,llx_projet.sql,28
 projet,ref,varchar(50),nullable,,,llx_projet.sql,29
+projet,ref_ext,varchar(50),nullable,,,llx_projet.sql,30
 projet,entity,integer,required,1,,llx_projet.sql,31
 projet,title,varchar(255),required,,,llx_projet.sql,32
 projet,description,text,nullable,,,llx_projet.sql,33
@@ -179,6 +180,7 @@ projet_task,model_pdf,varchar(255),nullable,,,llx_projet_task.sql,46
 projet_task,import_key,varchar(14),nullable,,,llx_projet_task.sql,47
 projet_task,billable,smallint,nullable,1,,llx_projet_task.sql,48
 element_time,rowid,integer,required,,primary,llx_element_time.sql,19
+element_time,ref_ext,varchar(32),nullable,,,llx_element_time.sql,20
 element_time,fk_element,integer,required,,,llx_element_time.sql,21
 element_time,elementtype,varchar(32),required,,,llx_element_time.sql,22
 element_time,element_date,date,nullable,,,llx_element_time.sql,23
@@ -198,6 +200,7 @@ element_time,tms,timestamp,nullable,CURRENT_TIMESTAMP,,llx_element_time.sql,36
 element_time,note,text,nullable,,,llx_element_time.sql,37
 actioncomm,id,integer,required,,primary,llx_actioncomm.sql,26
 actioncomm,ref,varchar(30),required,,,llx_actioncomm.sql,27
+actioncomm,ref_ext,varchar(255),nullable,,,llx_actioncomm.sql,28
 actioncomm,entity,integer,required,1,,llx_actioncomm.sql,29
 actioncomm,datep,datetime,nullable,,,llx_actioncomm.sql,30
 actioncomm,datep2,datetime,nullable,,,llx_actioncomm.sql,31
@@ -213,6 +216,7 @@ actioncomm,fk_soc,integer,nullable,,,llx_actioncomm.sql,43
 actioncomm,fk_contact,integer,nullable,,,llx_actioncomm.sql,44
 actioncomm,fk_parent,integer,required,0,,llx_actioncomm.sql,45
 actioncomm,fk_user_action,integer,nullable,,,llx_actioncomm.sql,46
+actioncomm,transparency,integer,nullable,,,llx_actioncomm.sql,48
 actioncomm,priority,smallint,nullable,,,llx_actioncomm.sql,50
 actioncomm,visibility,varchar(12),nullable,'default',,llx_actioncomm.sql,51
 actioncomm,fulldayevent,smallint,required,0,,llx_actioncomm.sql,52

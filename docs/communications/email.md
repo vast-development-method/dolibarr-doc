@@ -4,7 +4,7 @@ A campaign selects a population and records progress for each address. An event 
 
 ## Campaign delivery
 
-A campaign stores its entity, author and validator, subject, body, sending identity, reply and error addresses, and status. Each target has its own address, campaign, optional source record and source type, tracking tag, send date, status and error text. The database enforces one address per campaign. The same address can participate in two campaigns. [Target table](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_mailing_cibles-mailing.sql) · [Target key](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_mailing_cibles-mailing.key.sql#L20-L25) · [Operator guide](https://wiki.dolibarr.org/index.php/Module_Mailing)
+A campaign stores its entity, author and validator, subject, body, sending identity, reply and error addresses, and status. Each target has its own address, campaign, optional source record and source type, tracking tag, send date, status and error text. The database enforces one address per campaign. The same address can participate in two campaigns. [Target table](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_mailing_cibles-mailing.sql) · [Target key](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_mailing_cibles-mailing.key.sql#L20-L24) · [Operator guide](https://wiki.dolibarr.org/index.php/Module_Mailing)
 
 | State or decision | Behaviour |
 | --- | --- |
