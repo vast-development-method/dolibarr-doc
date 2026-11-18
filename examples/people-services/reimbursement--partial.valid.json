@@ -1,0 +1,8 @@
+{
+  "reportId": 302,
+  "paymentDate": "2026-11-18",
+  "paymentMethodId": 3,
+  "amount": "40.00",
+  "bankEnabled": true,
+  "bankAccountId": 5
+}

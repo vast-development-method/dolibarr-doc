@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contract service and ticket closure commands",
+  "description": "Normalized operation inputs. An adapter maps instants to upstream timestamps. Contract membership, rights and current state are service checks.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "activateService"
+        },
+        "contractId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lineId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actualStart": {
+          "type": "string",
+          "format": "date-time",
+          "minLength": 20
+        },
+        "plannedEnd": {
+          "type": "string",
+          "format": "date-time",
+          "minLength": 20
+        },
+        "comment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "contractId",
+        "lineId",
+        "actualStart"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "closeService"
+        },
+        "contractId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lineId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actualEnd": {
+          "type": "string",
+          "format": "date-time",
+          "minLength": 20
+        },
+        "comment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "contractId",
+        "lineId",
+        "actualEnd"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "closeTicket"
+        },
+        "ticketId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "resolution": {
+          "enum": [
+            "solved",
+            "abandoned"
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "ticketId",
+        "resolution"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
