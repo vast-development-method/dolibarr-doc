@@ -44,7 +44,7 @@ Route `GET /knowledgerecords/`.
 
 **Access** The decision uses right `knowledgemanagement.knowledgerecord.read`.
 
-The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+The article list applies its entity scope, optional category and supplied search criteria. The properties selector projects the returned fields.
 
 **Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
 
