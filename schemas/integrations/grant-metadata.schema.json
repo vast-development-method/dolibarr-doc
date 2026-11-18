@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "Provider grant metadata without credentials",
+  "description": "Portable projection of a locally stored grant. Owner fields are optional for instance-level integrations. Scopes are provider-defined.",
+  "required": [
+    "provider",
+    "entityId",
+    "scopes"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entityId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "user",
+            "party",
+            "member"
+          ]
+        },
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

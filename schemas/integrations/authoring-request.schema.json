@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "Stable text authoring request",
+  "required": [
+    "purpose",
+    "outputFormat",
+    "instructions"
+  ],
+  "properties": {
+    "purpose": {
+      "enum": [
+        "draft-email",
+        "draft-webpage",
+        "fill-extra-field",
+        "translate",
+        "summarise",
+        "check-spelling",
+        "rephrase"
+      ]
+    },
+    "outputFormat": {
+      "enum": [
+        "text",
+        "html"
+      ]
+    },
+    "instructions": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
