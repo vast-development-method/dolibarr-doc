@@ -1,0 +1,92 @@
+# Outbound event targets
+
+The target definition describes an outbound integration. Its operations edit the target or list available triggers. Delivering an event to a configured target occurs in the event dispatch path.
+
+The implementation locations below refer to `htdocs/webhook/class/api_webhook.class.php`.
+
+## `get` — Read an event target
+
+**Arguments** `id`.
+
+**Access** The decision uses right `webhook.webhook_target.read`.
+
+**Result** A record with internal service properties removed.
+
+- `403` — access refused.
+- `404` — target missing.
+
+Source lines `66–69` with `_fetch 414–431`.
+
+## `index` — List records
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+
+**Access** The decision uses right `webhook.webhook_target.read`.
+
+The properties selector projects the returned fields.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `404` — no matching rows.
+- `503` — query or persistence failure.
+
+Source lines `87–158`.
+
+## `post` — Create an event target
+
+**Arguments** `request_data = null`.
+
+The request-field validator requires `url`, `trigger_codes`.
+
+**Access** The decision uses right `webhook.webhook_target.write`.
+
+**Result** The record identifier.
+
+- `400` — required request field absent.
+- `403` — access refused.
+- `500` — business operation failed.
+
+Source lines `168–194` with `_validate 308–321`.
+
+## `put` — Update an event target
+
+**Arguments** `id`, `request_data = null`.
+
+**Access** The decision uses right `webhook.webhook_target.write`, right `webhook.webhook_target.read`.
+
+**Result** A record with internal service properties removed.
+
+- `403` — access refused.
+- `404` — target missing.
+- `500` — business operation failed.
+
+Source lines `209–232` with `get 66–69`, `_fetch 414–431`.
+
+## `delete` — Delete an event target
+
+**Arguments** `id`.
+
+**Access** The decision uses right `webhook.webhook_target.delete`.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `403` — access refused.
+- `404` — target missing.
+- `500` — removal failed.
+
+Source lines `242–264`.
+
+## `listOfTriggers` — List of triggers
+
+Route `GET triggers`.
+
+**Access** The decision uses right `webhook.webhook_target.read`.
+
+**Result** A collection of matching records.
+
+- `403` — access refused.
+- `500` — event list unavailable.
+
+Source lines `275–298`.
