@@ -1,0 +1,496 @@
+{
+  "release": "24.0.3",
+  "sourceCommit": "5c6c7ff6a5112413b1c27221c8d11750afad56f8",
+  "cases": [
+    {
+      "id": "ALLOC-EXACT",
+      "rule": "allocation",
+      "description": "Draft four counts. Cancelled and unrelated rows do not consume this line.",
+      "input": {
+        "ceilingEnabled": true,
+        "orderLine": 101,
+        "orderedQty": "10",
+        "requestedQty": "6",
+        "allocations": [
+          {"rowId": 1, "orderLine": 101, "shipmentStatus": 0, "qty": "4"},
+          {"rowId": 2, "orderLine": 101, "shipmentStatus": -1, "qty": "3"},
+          {"rowId": 3, "orderLine": 102, "shipmentStatus": 2, "qty": "8"}
+        ]
+      },
+      "expected": {
+        "remainingBeforeRequest": "6",
+        "permittedByCeiling": true
+      }
+    },
+    {
+      "id": "ALLOC-EXCESS",
+      "rule": "allocation",
+      "description": "A request exceeding the remaining six is refused.",
+      "input": {
+        "ceilingEnabled": true,
+        "orderLine": 101,
+        "orderedQty": "10",
+        "requestedQty": "7",
+        "allocations": [
+          {"rowId": 1, "orderLine": 101, "shipmentStatus": 0, "qty": "4"},
+          {"rowId": 2, "orderLine": 101, "shipmentStatus": -1, "qty": "3"},
+          {"rowId": 3, "orderLine": 102, "shipmentStatus": 2, "qty": "8"}
+        ]
+      },
+      "expected": {
+        "remainingBeforeRequest": "6",
+        "permittedByCeiling": false
+      }
+    },
+    {
+      "id": "ALLOC-EDIT",
+      "rule": "allocation",
+      "description": "Replacing the existing draft row excludes its old four from the sum.",
+      "input": {
+        "ceilingEnabled": true,
+        "orderLine": 101,
+        "orderedQty": "10",
+        "requestedQty": "10",
+        "allocations": [
+          {"rowId": 1, "orderLine": 101, "shipmentStatus": 0, "qty": "4"},
+          {"rowId": 2, "orderLine": 101, "shipmentStatus": -1, "qty": "3"},
+          {"rowId": 3, "orderLine": 102, "shipmentStatus": 2, "qty": "8"}
+        ],
+        "editingRow": 1
+      },
+      "expected": {
+        "remainingBeforeRequest": "10",
+        "permittedByCeiling": true
+      }
+    },
+    {
+      "id": "ALLOC-DISABLED",
+      "rule": "allocation",
+      "description": "The optional ceiling is disabled even though the request exceeds the remaining quantity.",
+      "input": {
+        "ceilingEnabled": false,
+        "orderLine": 101,
+        "orderedQty": "10",
+        "requestedQty": "7",
+        "allocations": [
+          {"rowId": 1, "orderLine": 101, "shipmentStatus": 0, "qty": "4"},
+          {"rowId": 2, "orderLine": 101, "shipmentStatus": -1, "qty": "3"},
+          {"rowId": 3, "orderLine": 102, "shipmentStatus": 2, "qty": "8"}
+        ]
+      },
+      "expected": {
+        "remainingBeforeRequest": "6",
+        "permittedByCeiling": true
+      }
+    },
+    {
+      "id": "CLOSE-MATCH",
+      "rule": "completion",
+      "description": "Separate line allocations agree with both lines and their shared product total.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": true,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "CLOSE-DISTRIBUTION",
+      "rule": "completion",
+      "description": "Same SKU, two order lines. Five on each meets the SKU total but leaves one source line short and the other long. The ceiling was disabled when the data was entered.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "5"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "5"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "CLOSE-SHORT",
+      "rule": "completion",
+      "description": "Nine units across both lines cannot complete ten.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "5"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": false
+      }
+    },
+    {
+      "id": "CLOSE-EXCESS",
+      "rule": "completion",
+      "description": "Eleven units also fail equality at both levels.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "7"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": false
+      }
+    },
+    {
+      "id": "CLOSE-STATUS",
+      "rule": "completion",
+      "description": "One closed shipment and one prepared shipment both count for the enabled workflow. Only four count in the core closed-status aggregation.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 1, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "CLOSE-NUMERIC-THRESHOLD",
+      "rule": "completion",
+      "description": "Status 3 (in progress) is included by the core numeric threshold >= 2.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 3, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": true,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "VALIDATE-WITHOUT-WORKFLOW",
+      "rule": "completion",
+      "description": "Validation alone has no built-in close path. The workflow here is enabled only on close.",
+      "input": {
+        "event": "validate",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 1, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 1, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": false
+      }
+    },
+    {
+      "id": "VALIDATE-WITH-WORKFLOW",
+      "rule": "completion",
+      "description": "When configured on validation, linked positive-status shipments can trigger order closure.",
+      "input": {
+        "event": "validate",
+        "workflowEvents": [
+          "validate"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 1, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 1, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "CLOSE-SERVICE-OFF",
+      "rule": "completion",
+      "description": "Undispatched service does not block a goods-only completion.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": false,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"},
+          {"id": 103, "product": "INSTALL", "type": "service", "qty": "1"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": true,
+        "workflowRequestsClosure": true
+      }
+    },
+    {
+      "id": "CLOSE-SERVICE-ON",
+      "rule": "completion",
+      "description": "The same service must be fulfilled when stock supports services.",
+      "input": {
+        "event": "close",
+        "workflowEvents": [
+          "close"
+        ],
+        "stockSupportsServices": true,
+        "orderLines": [
+          {"id": 101, "product": "BOLT", "type": "goods", "qty": "4"},
+          {"id": 102, "product": "BOLT", "type": "goods", "qty": "6"},
+          {"id": 103, "product": "INSTALL", "type": "service", "qty": "1"}
+        ],
+        "shipments": [
+          {"orderLine": 101, "product": "BOLT", "status": 2, "qty": "4"},
+          {"orderLine": 102, "product": "BOLT", "status": 2, "qty": "6"}
+        ]
+      },
+      "expected": {
+        "coreRequestsClosure": false,
+        "workflowRequestsClosure": false
+      }
+    },
+    {
+      "id": "BILL-FIRST",
+      "rule": "cumulativeBilling",
+      "description": "First partial invoice of 180 is insufficient.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 31,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 31, "state": "validated", "net": "180.00"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "BILL-SECOND",
+      "rule": "cumulativeBilling",
+      "description": "The currently validating invoice is counted even if its fetched state still says draft.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 32,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 31, "state": "closed", "net": "180.00"},
+          {"id": 32, "state": "draft", "net": "270.00"}
+        ]
+      },
+      "expected": true
+    },
+    {
+      "id": "BILL-OTHER-DRAFT",
+      "rule": "cumulativeBilling",
+      "description": "Another draft invoice blocks classification even when its net is zero.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 32,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 31, "state": "closed", "net": "180.00"},
+          {"id": 32, "state": "draft", "net": "270.00"},
+          {"id": 33, "state": "draft", "net": "0.00"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "BILL-ROUND-ON-SUM",
+      "rule": "cumulativeBilling",
+      "description": "Round the sum once. At precision two, 180.004 + 270.004 = 450.008 rounds to 450.01.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 32,
+        "orderNet": "450.01",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 31, "state": "closed", "net": "180.004"},
+          {"id": 32, "state": "draft", "net": "270.004"}
+        ]
+      },
+      "expected": true
+    },
+    {
+      "id": "BILL-HALF",
+      "rule": "cumulativeBilling",
+      "description": "An amount halfway between cents rounds away from zero.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 32,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 32, "state": "validated", "net": "450.005"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "BILL-MULTIPLE-SOURCES",
+      "rule": "cumulativeBilling",
+      "description": "The cumulative workflow only classifies an order if the triggering invoice has exactly one source order.",
+      "input": {
+        "enabled": true,
+        "sourceOrderCount": 2,
+        "validatingInvoice": 32,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 32, "state": "validated", "net": "450.00"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "BILL-DISABLED",
+      "rule": "cumulativeBilling",
+      "description": "Matching invoices do not trigger classification if the workflow option is off.",
+      "input": {
+        "enabled": false,
+        "sourceOrderCount": 1,
+        "validatingInvoice": 32,
+        "orderNet": "450.00",
+        "totalPrecision": 2,
+        "linkedInvoices": [
+          {"id": 32, "state": "validated", "net": "450.00"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "DIRECT-MULTIPLE",
+      "rule": "directBilling",
+      "description": "One invoice can match more than one eligible order. Cancelled orders are omitted from the amount sum.",
+      "input": {
+        "enabled": true,
+        "allowDifferentAmounts": false,
+        "totalPrecision": 2,
+        "invoiceNet": "450.00",
+        "linkedOrders": [
+          {"state": "validated", "net": "180.00"},
+          {"state": "delivered", "net": "270.00"},
+          {"state": "cancelled", "net": "10.00"}
+        ]
+      },
+      "expected": true
+    },
+    {
+      "id": "DIRECT-MISMATCH",
+      "rule": "directBilling",
+      "description": "Without the override, an invoice of 400 cannot satisfy the aggregate order-net gate of 450.",
+      "input": {
+        "enabled": true,
+        "allowDifferentAmounts": false,
+        "totalPrecision": 2,
+        "invoiceNet": "400.00",
+        "linkedOrders": [
+          {"state": "validated", "net": "180.00"},
+          {"state": "delivered", "net": "270.00"},
+          {"state": "cancelled", "net": "10.00"}
+        ]
+      },
+      "expected": false
+    },
+    {
+      "id": "DIRECT-OVERRIDE",
+      "rule": "directBilling",
+      "description": "The unequal-amount override bypasses the direct total comparison.",
+      "input": {
+        "enabled": true,
+        "allowDifferentAmounts": true,
+        "totalPrecision": 2,
+        "invoiceNet": "400.00",
+        "linkedOrders": [
+          {"state": "validated", "net": "180.00"},
+          {"state": "delivered", "net": "270.00"},
+          {"state": "cancelled", "net": "10.00"}
+        ]
+      },
+      "expected": true
+    }
+  ]
+}
