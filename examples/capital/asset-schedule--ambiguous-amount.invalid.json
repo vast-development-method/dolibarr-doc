@@ -1,0 +1,9 @@
+{
+  "assetId": 41,
+  "mode": "economic",
+  "currency": "EUR",
+  "openingDepreciation": "0.00",
+  "lines": [
+    {"periodEnd": "2026-01-31", "amount": "333,33", "cumulative": "333.33", "posted": false}
+  ]
+}

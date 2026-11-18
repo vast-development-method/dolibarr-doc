@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fixed asset economic depreciation schedule projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["assetId", "mode", "currency", "openingDepreciation", "lines"],
+  "properties": {
+    "assetId": {"type": "integer", "minimum": 1},
+    "mode": {"const": "economic"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "openingDepreciation": {"$ref": "#/$defs/decimal"},
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["periodEnd", "amount", "cumulative", "posted"],
+        "properties": {
+          "periodEnd": {"type": "string", "format": "date"},
+          "amount": {"$ref": "#/$defs/decimal"},
+          "cumulative": {"$ref": "#/$defs/decimal"},
+          "posted": {"type": "boolean"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "decimal": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)([.][0-9]+)?$"}
+  }
+}

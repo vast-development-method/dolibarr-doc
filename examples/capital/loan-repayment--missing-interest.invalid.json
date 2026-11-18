@@ -1,0 +1,11 @@
+{
+  "loanId": 17,
+  "paymentId": 200,
+  "termId": 51,
+  "bankLineId": 89,
+  "date": "2026-11-18",
+  "currency": "EUR",
+  "principal": "597.01",
+  "insurance": "5.00",
+  "bankDelta": "-614.01"
+}
