@@ -1,0 +1,45 @@
+# Relational model
+
+Use the table name to move from a business record to its ordered fields, keys and dependants. For example, an invoice and its receipt have separate identities. The allocation between them needs its own amount and a rule for whether a pair can recur. Both the pair and its component fields appear in the catalogues below.
+
+| Catalogue | Contents | How to use it |
+| --- | --- | --- |
+| [Tables](tables.csv) | 410 tables and the setup group that declares each | Find the table, its field count, the number of distinct keys of each kind and its outgoing foreign keys. |
+| [Fields](fields.csv) | All 5,362 declared column positions | Filter by table and sort numerically by position. Read the field name, stored type, null clause, primary-key membership, default, identity generation and update expression. |
+| [Keys and indexes](keys.csv) | 406 primary keys, 257 other unique keys and 491 lookup indexes | Read the ordered column list as one key. Each row gives the declaration stage and how many times the same definition occurs. |
+| [Foreign keys](foreign-keys.csv) | 235 declared child-to-parent constraints | Filter on the child to find its required or optional references. Filter on the parent to find its direct dependants. The fields catalogue gives nullability. |
+| [Application associations](application-associations.csv) | 84 configurable-field stores and their owners, plus 32 resolvable relationships explicitly named in reviewed field metadata | Follow relationships maintained by object operations. The final column says whether the same endpoints also have a declared database constraint. |
+| [Supplemental field meanings](supplemental-field-roles.csv) | All 411 fields of the 41 tables outside the main business-family dictionary | Match table and field for the meaning of a value in an optional feature, an older structure or a record with limited operational evidence. The other 4,951 field positions are described in the [business record dictionary](../records/README.md). |
+
+## Reading a field
+
+Names preserve the spelling of table and column identifiers. Remove the installation's shared table prefix before looking up a table. A constraint name containing `{prefix}` gains the installation's chosen prefix at that position. The table identifier and the constraint name occupy different namespaces.
+
+A blank default expression means no default is declared. `NULL`, `0`, `'0'` and `''` remain distinct declarations. The explicit null clauses are `required` and `allowed`. An omitted null clause is marked `unspecified`. Primary-key membership forbids a null key component, even when the individual field declaration omits a null clause. Database handling of an otherwise unspecified timestamp can depend on engine settings. `auto_increment` and `on_update_expression` distinguish a generated identifier and a database-maintained field from a value the caller supplies. The decimal arguments on a floating storage type describe its declaration. Use the business calculation to determine posting precision and when to round.
+
+## Which definitions apply
+
+Base setup selects 275 tables. The other 135 have a named selection group. A module can request its group when enabled. Disabled, experimental, external-extension and retired families can therefore have complete field definitions here. Their use in a particular installation depends on the owning feature. The [installation boundaries](../records/installation-boundaries.md) and [operational evidence](../records/operational-evidence.md) identify the known distinctions. Local user-defined columns, external providers' schemas and temporary query results depend on their own configuration.
+
+Table creation precedes the separate key pass. Of the 406 primary keys, 383 are attached during creation and 23 are added in the key pass. The three definitions with a create-if-absent guard are `c_exp_tax_cat`, `c_exp_tax_range` and `expensereport_ik`. Such a guard accepts a pre-existing table without comparing its fields. A database upgraded in place can carry a different set of constraints. For example, the analytic account's `fk_axis` is required and an upgrade can add a constraint to `accounting_analytic_axis.rowid`. The fresh accounting group's active constraint declarations omit that link. A separate database-specific upgrade can create a prefix lookup index on the first 255 characters of `blockedlog.linktoref`. It is outside the 491 unconditionally declared lookup indexes.
+
+There are 258 declarations of additional unique keys and 257 distinct keys. The region code's unique key is requested before regions are referenced by departments and again during region key setup. Its catalogue row records two declarations. A key is attributed to the table it actually changes. For example the chart-code reference belongs on `accounting_account` although it is added after creating the unique code on `accounting_system`. A completed repeat of setup may encounter a pre-existing key. The catalogue does not count that result as another index.
+
+Four tables omit a primary key. Three declare other unique keys, `category_bankline(lineid,fk_categ)`, `holiday_users(fk_user,fk_type)`, and `user_param(fk_user,param,entity)`. The survey text-answer table `opensurvey_user_formanswers` declares neither kind. Whether an application accepts several answers for the same participant and question therefore needs a separate workflow rule.
+
+## Reconstructing relationships
+
+The 235 active foreign-key definitions specify their endpoints. None specifies an explicit delete or update action. The word `unspecified` in the catalogue preserves that distinction. Deletion logic in a business workflow must be established separately. A plain lookup index accelerates matching values without establishing a parent relationship. The application-association file also reports whether a configurable-field store has a database constraint to its owner. To check if multiple such rows can exist for one owner, look for a unique key on `fk_object`.
+
+Three foreign keys target an alternate key. `accounting_account.fk_pcg_version` references `accounting_system.pcg_version`, `c_departements.fk_region` references `c_regions.code_region`, and `product.finished` references `c_product_nature.code`. Joining these fields to the parent's numeric row ID can produce wrong results even when the values appear compatible.
+
+| Business question | Records to follow | Interpretation |
+| --- | --- | --- |
+| How much of a receipt was allocated to a specific invoice? | Resolve `paiement_facture.fk_paiement` to `paiement.rowid` and `fk_facture` to `facture.rowid`. | The payment/invoice pair is unique. A receipt of 150 may have allocation rows of 100 and 50 for two invoices. Count the receipt once or sum its two allocations. Summing the joined header amount would report 300. |
+| Where did a manufacturing order consume a part? | Resolve `mrp_production.fk_mo`, `fk_product` and `fk_stock_movement`. Use `role` and `fk_mrp_production` to match actual work to the planned line. | An order with a planned quantity of 6 and two actual consumption lines of 4 and 2 has consumed 6. The planned row is an expectation. Each linked movement identifies its warehouse and quantity. |
+| How much stock is held for a product in one warehouse? | Select the unique pair `product_stock(fk_product,fk_entrepot)` and read `reel`. | Both dimensions have declared foreign keys. The movement register has separate indexes on product and warehouse. A join from the balance to five historical movements repeats the balance five times. |
+| Which object owns a configurable value? | Select the companion's `fk_object` and resolve it in the [owner map](application-associations.csv). | Some owners use a different key name. An agenda event resolves to `actioncomm.id`. Looking for a column named `rowid` on every owner fails for this event. |
+| Can the same tax code exist twice? | Check `c_tva(entity,fk_pays,code,taux,recuperableonly)` as a single unique key and inspect individual column nullability. | Rates, recoverability, country and entity distinguish records. Selection for a particular sale also needs the tax workflow and transaction context. See [regional tax selection](../localization/tax-selection.md). |
+| Where does a document-to-document relationship lead? | Use both `element_element.sourcetype` and `fk_source`, and both `targettype` and `fk_target`. | Each type determines the owner of the accompanying numeric ID. Header 7 of one document kind can coexist with header 7 of another kind. |
+
+The application-association catalogue includes resolvable literal field bindings, with the configurable-store owner set listed separately by basis. Other relationships can be specified by a typed selector, derived from the document kind or maintained by the business operation. The [workflow and record chapters](../specification/README.md) supply those rules. Installation declarations alone do not establish actual row populations, permissions, or database behaviour after a migration.

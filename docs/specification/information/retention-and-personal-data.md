@@ -19,8 +19,6 @@ Let the cutoff be the run time minus the configured number of calendar months. A
 
 An eligible supplier last edited 30 months ago may still be retained indefinitely by this particular rule if a supplier invoice exists. A lapsed member recently renewed or corrected in the subscription register is excluded by the recent-subscription check, even if the member header still shows an old end date. Neither case can be decided from the displayed age of the master record alone.
 
-Implementation evidence appears in `htdocs/datapolicy/admin/setup.php:90–130`, `htdocs/core/modules/modDataPolicy.class.php:163–173,191–216` and `htdocs/datapolicy/class/datapolicycron.class.php` (`getDataPolicies`, `_processPolicyAction`).
-
 ## What changes on an eligible record
 
 Deletion calls the object’s ordinary deletion operation. Where a child-reference check is available and reports use, the worker skips deletion without treating that skip as an error. Anonymization can still be considered for a skipped object under its own active rule. For example, an outstanding commercial relationship can prevent hard deletion, while a configured anonymization rule with its own eligibility conditions can retain references under the same record ID.
@@ -29,8 +27,6 @@ Anonymization replaces configured name components with field-specific anonymous 
 
 The custom-attribute pass considers personal attributes defined for this object’s storage type in the shared or current entity. Only loaded, nonempty values are replaced. Multi-select and checkbox fields are cleared to an empty collection, boolean and radio fields to zero, date/time fields to 1 January 1900, and recognized numeric fields to zero. Remaining types receive a fixed redacted text marker. The worker performs the ordinary object update and then requests an extension-value write after a positive update result.
 
-Implementation evidence appears in `htdocs/datapolicy/class/datapolicycron.class.php:347–513`.
-
 ## Execution and limits
 
 The worker processes deletion before anonymization for each policy, maintains separate updated and deleted totals and wraps the run in a database transaction. Reported errors cause rollback. A referenced object skipped for deletion differs from an object whose delete operation returned an error. A successful run can legitimately process zero records. The administrator’s configured delay and the scheduled actor authorize the job to process eligible records without individual human approval.
@@ -38,5 +34,3 @@ The worker processes deletion before anonymization for each policy, maintains se
 The stable worker keeps a single set of **numeric row IDs** already attempted during the run. This set spans object types and is populated after calling the action handler. Consequently, if a candidate party and an unrelated candidate contact both have row ID 42, processing the party can make the contact skip this run. The reported totals count operations completed during that run. This is a property of the implementation that matters when interpreting a retention report.
 
 Retention applies to the operational records and fields named by the policy. Old temporary files and log cleanup use distinct administrators’ actions, thresholds and physical storage operations. Revoking a shared document key can prevent future access through that key but does not rewrite copies already downloaded or update the source customer.
-
-Implementation evidence appears in `htdocs/datapolicy/class/datapolicycron.class.php` (`cleanDataForDataPolicy`, `_processPolicyAction`, `_recordActionResult`) and `htdocs/core/class/utils.class.php` (`purgeFiles`).

@@ -1,0 +1,152 @@
+{
+  "orderId": 70,
+  "plans": [
+    {
+      "planLineId": 700,
+      "productId": 11,
+      "unitId": null,
+      "role": "toconsume",
+      "plannedQuantity": 6,
+      "postedQuantity": 6,
+      "remainingQuantity": 0
+    },
+    {
+      "planLineId": 701,
+      "productId": 22,
+      "unitId": null,
+      "role": "toproduce",
+      "plannedQuantity": 3,
+      "postedQuantity": 2,
+      "remainingQuantity": 1
+    }
+  ],
+  "actuals": [
+    {
+      "actualId": 710,
+      "planLineId": 700,
+      "productId": 11,
+      "role": "consumed",
+      "quantity": 4,
+      "warehouseId": 1,
+      "batch": "X",
+      "movementId": 910
+    },
+    {
+      "actualId": 711,
+      "planLineId": 700,
+      "productId": 11,
+      "role": "consumed",
+      "quantity": 2,
+      "warehouseId": 1,
+      "batch": "Y",
+      "movementId": 911
+    },
+    {
+      "actualId": 712,
+      "planLineId": 701,
+      "productId": 22,
+      "role": "produced",
+      "quantity": 1,
+      "warehouseId": 2,
+      "batch": "S1",
+      "movementId": 912
+    },
+    {
+      "actualId": 713,
+      "planLineId": 701,
+      "productId": 22,
+      "role": "produced",
+      "quantity": 1,
+      "warehouseId": 2,
+      "batch": "S2",
+      "movementId": 913
+    }
+  ],
+  "movements": [
+    {
+      "movementId": 910,
+      "productId": 11,
+      "warehouseId": 1,
+      "batch": "X",
+      "signedQuantity": -4,
+      "movementType": 2
+    },
+    {
+      "movementId": 911,
+      "productId": 11,
+      "warehouseId": 1,
+      "batch": "Y",
+      "signedQuantity": -2,
+      "movementType": 2
+    },
+    {
+      "movementId": 912,
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S1",
+      "signedQuantity": 1,
+      "movementType": 3
+    },
+    {
+      "movementId": 913,
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S2",
+      "signedQuantity": 1,
+      "movementType": 3
+    },
+    {
+      "movementId": 914,
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S3",
+      "signedQuantity": 1,
+      "movementType": 3
+    },
+    {
+      "movementId": 915,
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S3",
+      "signedQuantity": -1,
+      "movementType": 2
+    }
+  ],
+  "movementTotals": [
+    {
+      "productId": 11,
+      "warehouseId": 1,
+      "batch": "X",
+      "movementCount": 1,
+      "netQuantity": -4
+    },
+    {
+      "productId": 11,
+      "warehouseId": 1,
+      "batch": "Y",
+      "movementCount": 1,
+      "netQuantity": -2
+    },
+    {
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S1",
+      "movementCount": 1,
+      "netQuantity": 1
+    },
+    {
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S2",
+      "movementCount": 1,
+      "netQuantity": 1
+    },
+    {
+      "productId": 22,
+      "warehouseId": 2,
+      "batch": "S3",
+      "movementCount": 2,
+      "netQuantity": 0
+    }
+  ]
+}

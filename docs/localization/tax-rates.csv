@@ -1,235 +1,235 @@
-country_code,country_name,code,main_rate_percent,local_1_values,local_1_type,local_2_values,local_2_type,recoverable_only,active,source_line
-DZ,Algeria,,0,0,0,0,0,0,1,48
-DZ,Algeria,,9,0,0,0,0,0,1,49
-DZ,Algeria,,19,0,0,0,0,0,1,50
-AO,Angola,,0,0,0,0,0,0,1,53
-AO,Angola,,7,0,0,0,0,0,1,54
-AO,Angola,,14,0,0,0,0,0,1,55
-AR,Argentina,,0,0,0,0,0,0,1,58
-AR,Argentina,,10.5,0,0,0,0,0,1,59
-AR,Argentina,,21,0,0,0,0,0,1,60
-AU,Australia,,0,0,0,0,0,0,1,63
-AU,Australia,,10,0,0,0,0,0,1,64
-AT,Austria,,0,0,0,0,0,0,1,67
-AT,Austria,,10,0,0,0,0,0,1,68
-AT,Austria,,20,0,0,0,0,0,1,69
-BR,Brazil,,0,0,0,0,0,0,1,72
-BG,Bulgaria,,0,0,0,0,0,0,1,75
-BG,Bulgaria,,9,0,0,0,0,0,1,76
-BG,Bulgaria,,20,0,0,0,0,0,1,77
-BE,Belgium,,0,0,0,0,0,0,1,80
-BE,Belgium,,6,0,0,0,0,0,1,81
-BE,Belgium,,21,0,0,0,0,0,1,82
-BE,Belgium,,12,0,0,0,0,0,1,83
-CA,Canada,,0,0,0,0,0,0,1,86
-CA,Canada,,7,0,0,0,0,0,1,87
-CA,Canada,,5,9.975,1,0,0,0,1,88
-CM,Cameroun,,0,0,0,0,0,0,1,95
-CM,Cameroun,,19.25,0,0,0,0,0,1,96
-CL,Chile,,0,0,0,0,0,0,1,99
-CL,Chile,,19,0,0,0,0,0,1,100
-CN,China,,0,0,0,0,0,0,1,103
-CN,China,,13,0,0,0,0,0,1,104
-CN,China,,3,0,0,0,0,0,1,105
-CN,China,,17,0,0,0,0,0,1,106
-CG,Congo,,0,0,0,0,0,0,1,109
-CG,Congo,,18,0.9,1,0,0,0,1,110
-HR,Croatia,,25,0,0,0,0,,1,113
-HR,Croatia,,13,0,0,0,0,,1,114
-HR,Croatia,,5,0,0,0,0,,1,115
-HR,Croatia,,0,0,0,0,0,,1,116
-CY,Cyprus,,0,0,0,0,0,0,1,119
-CY,Cyprus,,9,0,0,0,0,0,1,120
-CY,Cyprus,,5,0,0,0,0,0,1,121
-CY,Cyprus,,19,0,0,0,0,0,1,122
-DK,Denmark,,0,0,0,0,0,0,1,125
-DK,Denmark,,25,0,0,0,0,0,1,126
-FR,France,,0,0,0,0,0,0,1,129
-FR,France,,20,0,0,0,0,0,1,130
-FR,France,,10,0,0,0,0,0,1,131
-FR,France,,5.5,0,0,0,0,0,1,132
-FR,France,,2.1,0,0,0,0,0,1,133
-FR,France,85,8.5,0,0,0,0,0,0,134
-FR,France,85NPR,8.5,0,0,0,0,1,0,135
-FR,France,85NPROM,8.5,2,3,0,0,1,0,136
-FR,France,85NPROMOMR,8.5,2,3,2.5,3,1,0,137
-GA,Gabon,,0,0,0,0,0,0,1,140
-GA,Gabon,TPS95,10,0,0,0,0,0,1,141
-GA,Gabon,TPS95C,10,1,1,0,0,0,1,142
-GA,Gabon,TPS10,10,0,0,0,0,0,1,143
-GA,Gabon,TPS10C,10,1,1,0,0,0,1,144
-GA,Gabon,TPS18,18,0,0,0,0,0,1,145
-GA,Gabon,TPS18C,18,1,1,0,0,0,1,146
-DE,Germany,,0,0,0,0,0,0,1,150
-DE,Germany,,7.0,0,0,0,0,0,1,151
-DE,Germany,,5.5,0,0,0,0,0,0,152
-DE,Germany,,10.7,0,0,0,0,0,0,153
-DE,Germany,,19.0,0,0,0,0,0,1,154
-GR,Greece,,0,0,0,0,0,0,1,157
-GR,Greece,,24,0,0,0,0,0,1,158
-GR,Greece,,13,0,0,0,0,0,1,159
-GR,Greece,,6,0,0,0,0,0,1,160
-GR,Greece,,3,0,0,0,0,0,1,161
-GR,Greece,,9,0,0,0,0,0,1,162
-GR,Greece,,4,0,0,0,0,0,1,163
-GR,Greece,,17,0,0,0,0,0,1,164
-HU,Hungary,,0,0,0,0,0,0,1,167
-HU,Hungary,,5,0,0,0,0,0,1,168
-HU,Hungary,,18,0,0,0,0,0,1,169
-HU,Hungary,,27,0,0,0,0,0,1,170
-IS,Iceland,,0,0,0,0,0,0,1,173
-IS,Iceland,,25.5,0,0,0,0,0,1,174
-IS,Iceland,,7,0,0,0,0,0,1,175
-IN,India,,0,0,0,0,0,0,0,178
-IN,India,C+S-5,0,2.5,1,2.5,1,0,1,180
-IN,India,I-5,5,0,0,0,0,0,1,181
-IN,India,C+S-12,0,6,1,6,1,0,1,182
-IN,India,I-12,12,0,0,0,0,0,1,183
-IN,India,C+S-18,0,9,1,9,1,0,1,184
-IN,India,I-18,18,0,0,0,0,0,1,185
-IN,India,C+S-28,0,14,1,14,1,0,1,186
-IN,India,I-28,28,0,0,0,0,0,1,187
-IE,Ireland,,0,0,0,0,0,0,1,190
-IE,Ireland,,23,0,0,0,0,0,1,191
-IE,Ireland,,13.5,0,0,0,0,0,1,192
-IE,Ireland,,9,0,0,0,0,0,1,193
-IE,Ireland,,4.8,0,0,0,0,0,1,194
-IT,Italy,,0,0,0,0,0,0,1,197
-IT,Italy,,10,0,0,0,0,0,1,198
-IT,Italy,,5,0,0,0,0,0,1,199
-IT,Italy,,4,0,0,0,0,0,1,200
-IT,Italy,,22,0,0,0,0,0,1,201
-CI,Ivory Cost,,0,0,0,0,0,0,1,204
-CI,Ivory Cost,,18,7.5,2,0,0,0,1,205
-JP,Japan,,0,0,0,0,0,0,1,208
-JP,Japan,,5,0,0,0,0,0,1,209
-LU,Luxembourg,,0,0,0,0,0,0,1,212
-LU,Luxembourg,,14,0,0,0,0,0,1,213
-LU,Luxembourg,,8,0,0,0,0,0,1,214
-LU,Luxembourg,,3,0,0,0,0,0,1,215
-LU,Luxembourg,,17,0,0,0,0,0,1,216
-ML,Mali,,0,0,0,0,0,0,1,219
-ML,Mali,,18,0,0,0,0,0,1,220
-MC,Monaco,,0,0,0,0,0,0,1,223
-MC,Monaco,,8.5,0,0,0,0,0,0,224
-MC,Monaco,,8.5,0,0,0,0,1,0,225
-MC,Monaco,,5.5,0,0,0,0,0,0,226
-MC,Monaco,,19.6,0,0,0,0,0,1,227
-MC,Monaco,,2.1,0,0,0,0,0,1,228
-MC,Monaco,,7,0,0,0,0,0,1,229
-MA,Morocco,,0,0,0,0,0,0,1,232
-MA,Morocco,,14,0,0,0,0,0,1,233
-MA,Morocco,,10,0,0,0,0,0,1,234
-MA,Morocco,,7,0,0,0,0,0,1,235
-MA,Morocco,,20,0,0,0,0,0,1,236
-MT,Malta,,0,0,0,0,0,0,1,239
-MT,Malta,,7,0,0,0,0,0,1,240
-MT,Malta,,5,0,0,0,0,0,1,241
-MT,Malta,,18,0,0,0,0,0,1,242
-NL,Netherlands,,0,0,0,0,0,0,1,245
-NL,Netherlands,,9,0,0,0,0,0,1,246
-NL,Netherlands,,21,0,0,0,0,0,0,247
-NC,New Caledonia,,0,0,0,0,0,0,1,250
-NC,New Caledonia,,3,0,0,0,0,0,1,251
-NC,New Caledonia,,6,0,0,0,0,0,1,252
-NC,New Caledonia,,11,0,0,0,0,0,1,253
-NC,New Caledonia,,22,0,0,0,0,0,1,254
-NZ,New Zealand,,0,0,0,0,0,0,1,257
-NZ,New Zealand,,15,0,0,0,0,0,1,258
-NG,Nigeria,,0,0,0,0,0,0,1,261
-NG,Nigeria,,5,0,0,0,0,0,1,262
-NO,Norway,,0,0,0,0,0,0,1,265
-NO,Norway,,14,0,0,0,0,0,1,266
-NO,Norway,,8,0,0,0,0,0,1,267
-NO,Norway,,25,0,0,0,0,0,1,268
-PA,Panama,,0,0,0,0,0,0,1,271
-PA,Panama,,7,0,0,0,0,0,1,272
-PE,Peru,,0,0,0,0,0,0,1,275
-PE,Peru,,18,0,0,0,0,0,1,276
-PL,Poland,,0,0,0,0,0,0,1,279
-PL,Poland,,8,0,0,0,0,0,1,280
-PL,Poland,,5,0,0,0,0,0,1,281
-PL,Poland,,23,0,0,0,0,0,1,282
-PT,Portugal,,0,0,0,0,0,0,1,285
-PT,Portugal,,13,0,0,0,0,0,1,286
-PT,Portugal,,23,0,0,0,0,0,1,287
-PT,Portugal,,6,0,0,0,0,0,1,288
-RO,Romania,,0,0,0,0,0,0,1,291
-RO,Romania,,11,0,0,0,0,0,1,292
-RO,Romania,,21,0,0,0,0,0,1,293
-SA,Saudi Arabia,,0,0,0,0,0,0,1,296
-SA,Saudi Arabia,,5,0,0,0,0,0,1,297
-SV,El Salvador,,0,0,0,0,0,0,1,300
-SV,El Salvador,,13,0,0,0,0,0,1,301
-SN,Senegal,,0,0,0,0,0,0,1,304
-SN,Senegal,,10,0,0,0,0,0,1,305
-SN,Senegal,,18,0,0,0,0,0,1,306
-SK,Slovakia,,0,0,0,0,0,0,1,309
-SK,Slovakia,,10,0,0,0,0,0,1,310
-SK,Slovakia,,20,0,0,0,0,0,1,311
-SI,Slovenia,,0,0,0,0,0,0,1,314
-SI,Slovenia,,9.5,0,0,0,0,0,1,315
-SI,Slovenia,,22,0,0,0,0,0,1,316
-ZA,South Africa,,0,0,0,0,0,0,1,319
-ZA,South Africa,,15,0,0,0,0,0,1,320
-ES,Spain,,0,0,3,-19:-15:-9,5,0,1,323
-ES,Spain,,10,1.4,3,-19:-15:-9,5,0,1,324
-ES,Spain,,4,0.5,3,-19:-15:-9,5,0,1,325
-ES,Spain,,21,5.2,3,-19:-15:-9,5,0,1,326
-SE,Sweden,,0,0,0,0,0,0,1,329
-SE,Sweden,,12,0,0,0,0,0,1,330
-SE,Sweden,,6,0,0,0,0,0,1,331
-SE,Sweden,,25,0,0,0,0,0,1,332
-CH,Switzerland,,0,0,0,0,0,0,1,335
-CH,Switzerland,,3.8,0,0,0,0,0,1,336
-CH,Switzerland,,2.6,0,0,0,0,0,1,337
-CH,Switzerland,,8.1,0,0,0,0,0,1,338
-LK,Sri Lanka,,0,0,0,0,0,0,1,341
-LK,Sri Lanka,,15,0,0,0,0,0,1,342
-TW,Taiwan,,0,0,0,0,0,0,1,345
-TW,Taiwan,,5,0,0,0,0,0,1,346
-TN,Tunisia,,0,0,0,0,0,0,1,349
-TN,Tunisia,,12,0,0,0,0,0,1,350
-TN,Tunisia,,18,0,0,0,0,0,1,351
-TN,Tunisia,,7.5,0,0,0,0,0,1,352
-TN,Tunisia,,15,0,0,0,0,0,1,353
-TN,Tunisia,,22.5,0,0,0,0,0,1,354
-TN,Tunisia,,6,0,0,0,0,0,1,355
-TN,Tunisia,,18.18,1,4,0,0,0,1,356
-UA,Ukraine,,0,0,0,0,0,0,1,359
-UA,Ukraine,,20,0,0,0,0,0,1,360
-GB,United Kingdom,,0,0,0,0,0,0,1,363
-GB,United Kingdom,,17.5,0,0,0,0,0,1,364
-GB,United Kingdom,,5,0,0,0,0,0,1,365
-GB,United Kingdom,,20,0,0,0,0,0,1,366
-US,United States,,0,0,0,0,0,0,1,369
-US,United States,,4,0,0,0,0,0,1,370
-US,United States,,6,0,0,0,0,0,1,371
-PM,Saint Pierre and Miquelon,,0,0,0,0,0,0,1,377
-MF,Saint-Martin,,0,0,0,0,0,0,1,380
-MR,Mauritania,,0,0,0,0,0,0,1,384
-MR,Mauritania,,14,0,0,0,0,0,1,385
-MU,Mauritius,,0,0,0,0,0,0,1,388
-MU,Mauritius,,15,0,0,0,0,0,1,389
-HN,Honduras,,0,0,0,0,0,0,1,392
-HN,Honduras,,12,0,0,0,0,0,1,393
-MX,Mexico,,0,0,0,0,0,0,1,396
-MX,Mexico,,16,0,0,0,0,0,1,397
-MX,Mexico,,10,0,0,0,0,0,1,398
-BB,Barbados,,0,0,0,0,0,0,1,401
-BB,Barbados,,15,0,0,0,0,0,1,402
-BB,Barbados,,7.5,0,0,0,0,0,1,403
-VE,Venezuela,,0,0,0,0,0,0,1,406
-VE,Venezuela,,12,0,0,0,0,0,1,407
-VE,Venezuela,,8,0,0,0,0,0,1,408
-VN,Vietnam,,0,0,0,0,0,0,1,411
-VN,Vietnam,,5,0,0,0,0,0,1,412
-VN,Vietnam,,8,0,0,0,0,0,1,413
-VN,Vietnam,,10,0,0,0,0,0,1,414
-BI,Burundi,,0,0,0,0,0,0,1,417
-BI,Burundi,,10,0,0,0,0,0,1,418
-BI,Burundi,,18,0,0,0,0,0,1,419
-TR,Turkey,,0,0,0,0,0,0,1,422
-TR,Turkey,,1,0,0,0,0,0,1,423
-TR,Turkey,,8,0,0,0,0,0,1,424
-TR,Turkey,,18,0,0,0,0,0,1,425
+country_code,country_name,code,main_rate_percent,local_1_values,local_1_type,local_2_values,local_2_type,recoverable_only,active
+DZ,Algeria,,0,0,0,0,0,0,1
+DZ,Algeria,,9,0,0,0,0,0,1
+DZ,Algeria,,19,0,0,0,0,0,1
+AO,Angola,,0,0,0,0,0,0,1
+AO,Angola,,7,0,0,0,0,0,1
+AO,Angola,,14,0,0,0,0,0,1
+AR,Argentina,,0,0,0,0,0,0,1
+AR,Argentina,,10.5,0,0,0,0,0,1
+AR,Argentina,,21,0,0,0,0,0,1
+AU,Australia,,0,0,0,0,0,0,1
+AU,Australia,,10,0,0,0,0,0,1
+AT,Austria,,0,0,0,0,0,0,1
+AT,Austria,,10,0,0,0,0,0,1
+AT,Austria,,20,0,0,0,0,0,1
+BR,Brazil,,0,0,0,0,0,0,1
+BG,Bulgaria,,0,0,0,0,0,0,1
+BG,Bulgaria,,9,0,0,0,0,0,1
+BG,Bulgaria,,20,0,0,0,0,0,1
+BE,Belgium,,0,0,0,0,0,0,1
+BE,Belgium,,6,0,0,0,0,0,1
+BE,Belgium,,21,0,0,0,0,0,1
+BE,Belgium,,12,0,0,0,0,0,1
+CA,Canada,,0,0,0,0,0,0,1
+CA,Canada,,7,0,0,0,0,0,1
+CA,Canada,,5,9.975,1,0,0,0,1
+CM,Cameroun,,0,0,0,0,0,0,1
+CM,Cameroun,,19.25,0,0,0,0,0,1
+CL,Chile,,0,0,0,0,0,0,1
+CL,Chile,,19,0,0,0,0,0,1
+CN,China,,0,0,0,0,0,0,1
+CN,China,,13,0,0,0,0,0,1
+CN,China,,3,0,0,0,0,0,1
+CN,China,,17,0,0,0,0,0,1
+CG,Congo,,0,0,0,0,0,0,1
+CG,Congo,,18,0.9,1,0,0,0,1
+HR,Croatia,,25,0,0,0,0,,1
+HR,Croatia,,13,0,0,0,0,,1
+HR,Croatia,,5,0,0,0,0,,1
+HR,Croatia,,0,0,0,0,0,,1
+CY,Cyprus,,0,0,0,0,0,0,1
+CY,Cyprus,,9,0,0,0,0,0,1
+CY,Cyprus,,5,0,0,0,0,0,1
+CY,Cyprus,,19,0,0,0,0,0,1
+DK,Denmark,,0,0,0,0,0,0,1
+DK,Denmark,,25,0,0,0,0,0,1
+FR,France,,0,0,0,0,0,0,1
+FR,France,,20,0,0,0,0,0,1
+FR,France,,10,0,0,0,0,0,1
+FR,France,,5.5,0,0,0,0,0,1
+FR,France,,2.1,0,0,0,0,0,1
+FR,France,85,8.5,0,0,0,0,0,0
+FR,France,85NPR,8.5,0,0,0,0,1,0
+FR,France,85NPROM,8.5,2,3,0,0,1,0
+FR,France,85NPROMOMR,8.5,2,3,2.5,3,1,0
+GA,Gabon,,0,0,0,0,0,0,1
+GA,Gabon,TPS95,10,0,0,0,0,0,1
+GA,Gabon,TPS95C,10,1,1,0,0,0,1
+GA,Gabon,TPS10,10,0,0,0,0,0,1
+GA,Gabon,TPS10C,10,1,1,0,0,0,1
+GA,Gabon,TPS18,18,0,0,0,0,0,1
+GA,Gabon,TPS18C,18,1,1,0,0,0,1
+DE,Germany,,0,0,0,0,0,0,1
+DE,Germany,,7.0,0,0,0,0,0,1
+DE,Germany,,5.5,0,0,0,0,0,0
+DE,Germany,,10.7,0,0,0,0,0,0
+DE,Germany,,19.0,0,0,0,0,0,1
+GR,Greece,,0,0,0,0,0,0,1
+GR,Greece,,24,0,0,0,0,0,1
+GR,Greece,,13,0,0,0,0,0,1
+GR,Greece,,6,0,0,0,0,0,1
+GR,Greece,,3,0,0,0,0,0,1
+GR,Greece,,9,0,0,0,0,0,1
+GR,Greece,,4,0,0,0,0,0,1
+GR,Greece,,17,0,0,0,0,0,1
+HU,Hungary,,0,0,0,0,0,0,1
+HU,Hungary,,5,0,0,0,0,0,1
+HU,Hungary,,18,0,0,0,0,0,1
+HU,Hungary,,27,0,0,0,0,0,1
+IS,Iceland,,0,0,0,0,0,0,1
+IS,Iceland,,25.5,0,0,0,0,0,1
+IS,Iceland,,7,0,0,0,0,0,1
+IN,India,,0,0,0,0,0,0,0
+IN,India,C+S-5,0,2.5,1,2.5,1,0,1
+IN,India,I-5,5,0,0,0,0,0,1
+IN,India,C+S-12,0,6,1,6,1,0,1
+IN,India,I-12,12,0,0,0,0,0,1
+IN,India,C+S-18,0,9,1,9,1,0,1
+IN,India,I-18,18,0,0,0,0,0,1
+IN,India,C+S-28,0,14,1,14,1,0,1
+IN,India,I-28,28,0,0,0,0,0,1
+IE,Ireland,,0,0,0,0,0,0,1
+IE,Ireland,,23,0,0,0,0,0,1
+IE,Ireland,,13.5,0,0,0,0,0,1
+IE,Ireland,,9,0,0,0,0,0,1
+IE,Ireland,,4.8,0,0,0,0,0,1
+IT,Italy,,0,0,0,0,0,0,1
+IT,Italy,,10,0,0,0,0,0,1
+IT,Italy,,5,0,0,0,0,0,1
+IT,Italy,,4,0,0,0,0,0,1
+IT,Italy,,22,0,0,0,0,0,1
+CI,Ivory Cost,,0,0,0,0,0,0,1
+CI,Ivory Cost,,18,7.5,2,0,0,0,1
+JP,Japan,,0,0,0,0,0,0,1
+JP,Japan,,5,0,0,0,0,0,1
+LU,Luxembourg,,0,0,0,0,0,0,1
+LU,Luxembourg,,14,0,0,0,0,0,1
+LU,Luxembourg,,8,0,0,0,0,0,1
+LU,Luxembourg,,3,0,0,0,0,0,1
+LU,Luxembourg,,17,0,0,0,0,0,1
+ML,Mali,,0,0,0,0,0,0,1
+ML,Mali,,18,0,0,0,0,0,1
+MC,Monaco,,0,0,0,0,0,0,1
+MC,Monaco,,8.5,0,0,0,0,0,0
+MC,Monaco,,8.5,0,0,0,0,1,0
+MC,Monaco,,5.5,0,0,0,0,0,0
+MC,Monaco,,19.6,0,0,0,0,0,1
+MC,Monaco,,2.1,0,0,0,0,0,1
+MC,Monaco,,7,0,0,0,0,0,1
+MA,Morocco,,0,0,0,0,0,0,1
+MA,Morocco,,14,0,0,0,0,0,1
+MA,Morocco,,10,0,0,0,0,0,1
+MA,Morocco,,7,0,0,0,0,0,1
+MA,Morocco,,20,0,0,0,0,0,1
+MT,Malta,,0,0,0,0,0,0,1
+MT,Malta,,7,0,0,0,0,0,1
+MT,Malta,,5,0,0,0,0,0,1
+MT,Malta,,18,0,0,0,0,0,1
+NL,Netherlands,,0,0,0,0,0,0,1
+NL,Netherlands,,9,0,0,0,0,0,1
+NL,Netherlands,,21,0,0,0,0,0,0
+NC,New Caledonia,,0,0,0,0,0,0,1
+NC,New Caledonia,,3,0,0,0,0,0,1
+NC,New Caledonia,,6,0,0,0,0,0,1
+NC,New Caledonia,,11,0,0,0,0,0,1
+NC,New Caledonia,,22,0,0,0,0,0,1
+NZ,New Zealand,,0,0,0,0,0,0,1
+NZ,New Zealand,,15,0,0,0,0,0,1
+NG,Nigeria,,0,0,0,0,0,0,1
+NG,Nigeria,,5,0,0,0,0,0,1
+NO,Norway,,0,0,0,0,0,0,1
+NO,Norway,,14,0,0,0,0,0,1
+NO,Norway,,8,0,0,0,0,0,1
+NO,Norway,,25,0,0,0,0,0,1
+PA,Panama,,0,0,0,0,0,0,1
+PA,Panama,,7,0,0,0,0,0,1
+PE,Peru,,0,0,0,0,0,0,1
+PE,Peru,,18,0,0,0,0,0,1
+PL,Poland,,0,0,0,0,0,0,1
+PL,Poland,,8,0,0,0,0,0,1
+PL,Poland,,5,0,0,0,0,0,1
+PL,Poland,,23,0,0,0,0,0,1
+PT,Portugal,,0,0,0,0,0,0,1
+PT,Portugal,,13,0,0,0,0,0,1
+PT,Portugal,,23,0,0,0,0,0,1
+PT,Portugal,,6,0,0,0,0,0,1
+RO,Romania,,0,0,0,0,0,0,1
+RO,Romania,,11,0,0,0,0,0,1
+RO,Romania,,21,0,0,0,0,0,1
+SA,Saudi Arabia,,0,0,0,0,0,0,1
+SA,Saudi Arabia,,5,0,0,0,0,0,1
+SV,El Salvador,,0,0,0,0,0,0,1
+SV,El Salvador,,13,0,0,0,0,0,1
+SN,Senegal,,0,0,0,0,0,0,1
+SN,Senegal,,10,0,0,0,0,0,1
+SN,Senegal,,18,0,0,0,0,0,1
+SK,Slovakia,,0,0,0,0,0,0,1
+SK,Slovakia,,10,0,0,0,0,0,1
+SK,Slovakia,,20,0,0,0,0,0,1
+SI,Slovenia,,0,0,0,0,0,0,1
+SI,Slovenia,,9.5,0,0,0,0,0,1
+SI,Slovenia,,22,0,0,0,0,0,1
+ZA,South Africa,,0,0,0,0,0,0,1
+ZA,South Africa,,15,0,0,0,0,0,1
+ES,Spain,,0,0,3,-19:-15:-9,5,0,1
+ES,Spain,,10,1.4,3,-19:-15:-9,5,0,1
+ES,Spain,,4,0.5,3,-19:-15:-9,5,0,1
+ES,Spain,,21,5.2,3,-19:-15:-9,5,0,1
+SE,Sweden,,0,0,0,0,0,0,1
+SE,Sweden,,12,0,0,0,0,0,1
+SE,Sweden,,6,0,0,0,0,0,1
+SE,Sweden,,25,0,0,0,0,0,1
+CH,Switzerland,,0,0,0,0,0,0,1
+CH,Switzerland,,3.8,0,0,0,0,0,1
+CH,Switzerland,,2.6,0,0,0,0,0,1
+CH,Switzerland,,8.1,0,0,0,0,0,1
+LK,Sri Lanka,,0,0,0,0,0,0,1
+LK,Sri Lanka,,15,0,0,0,0,0,1
+TW,Taiwan,,0,0,0,0,0,0,1
+TW,Taiwan,,5,0,0,0,0,0,1
+TN,Tunisia,,0,0,0,0,0,0,1
+TN,Tunisia,,12,0,0,0,0,0,1
+TN,Tunisia,,18,0,0,0,0,0,1
+TN,Tunisia,,7.5,0,0,0,0,0,1
+TN,Tunisia,,15,0,0,0,0,0,1
+TN,Tunisia,,22.5,0,0,0,0,0,1
+TN,Tunisia,,6,0,0,0,0,0,1
+TN,Tunisia,,18.18,1,4,0,0,0,1
+UA,Ukraine,,0,0,0,0,0,0,1
+UA,Ukraine,,20,0,0,0,0,0,1
+GB,United Kingdom,,0,0,0,0,0,0,1
+GB,United Kingdom,,17.5,0,0,0,0,0,1
+GB,United Kingdom,,5,0,0,0,0,0,1
+GB,United Kingdom,,20,0,0,0,0,0,1
+US,United States,,0,0,0,0,0,0,1
+US,United States,,4,0,0,0,0,0,1
+US,United States,,6,0,0,0,0,0,1
+PM,Saint Pierre and Miquelon,,0,0,0,0,0,0,1
+MF,Saint-Martin,,0,0,0,0,0,0,1
+MR,Mauritania,,0,0,0,0,0,0,1
+MR,Mauritania,,14,0,0,0,0,0,1
+MU,Mauritius,,0,0,0,0,0,0,1
+MU,Mauritius,,15,0,0,0,0,0,1
+HN,Honduras,,0,0,0,0,0,0,1
+HN,Honduras,,12,0,0,0,0,0,1
+MX,Mexico,,0,0,0,0,0,0,1
+MX,Mexico,,16,0,0,0,0,0,1
+MX,Mexico,,10,0,0,0,0,0,1
+BB,Barbados,,0,0,0,0,0,0,1
+BB,Barbados,,15,0,0,0,0,0,1
+BB,Barbados,,7.5,0,0,0,0,0,1
+VE,Venezuela,,0,0,0,0,0,0,1
+VE,Venezuela,,12,0,0,0,0,0,1
+VE,Venezuela,,8,0,0,0,0,0,1
+VN,Vietnam,,0,0,0,0,0,0,1
+VN,Vietnam,,5,0,0,0,0,0,1
+VN,Vietnam,,8,0,0,0,0,0,1
+VN,Vietnam,,10,0,0,0,0,0,1
+BI,Burundi,,0,0,0,0,0,0,1
+BI,Burundi,,10,0,0,0,0,0,1
+BI,Burundi,,18,0,0,0,0,0,1
+TR,Turkey,,0,0,0,0,0,0,1
+TR,Turkey,,1,0,0,0,0,0,1
+TR,Turkey,,8,0,0,0,0,0,1
+TR,Turkey,,18,0,0,0,0,0,1

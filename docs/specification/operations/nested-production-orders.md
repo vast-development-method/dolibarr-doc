@@ -19,15 +19,11 @@ The embedded recipe is the one identified on the line. The existence of another 
 
 Consider a finished unit requiring two motor modules. The motor recipe yields four modules from twelve bearings. A job for eight finished units needs sixteen modules. Inline expansion yields a parent plan with 48 bearings. Selecting a child order instead yields a parent plan consuming sixteen modules, and a child order for sixteen modules consuming 48 bearings. Posting both parent plans for the same job would count the bearings twice. With a bearing-line efficiency of 0.8, the ordinary planned requirement becomes 60. With a frozen bearing line of twelve, the requirement stays twelve for this expanded recipe occurrence.
 
-Derivation, plan insertion and draft quantity changes are implemented in `htdocs/mrp/class/mo.class.php` under `createProduction`, `processBOM` and `updateProduction`. The child-order selection and linkage are in `htdocs/mrp/mo_card.php`.
-
 ## Reading the materials requirement alongside the shop order
 
 The recipe needs view starts with a multiplier of one for the displayed recipe. Its flat view combines leaf quantities under each product. For a linked child recipe, it multiplies by the parent line quantity and divides by the child's base quantity before descending. Its tree view retains the intermediate recipe, parent ID, level and position as well as the product totals at each level. Physical and projected stock appear beside the displayed requirements. Reading this view creates neither an allocation nor a procurement order.
 
 The report and manufacturing order answer different quantity questions. The report applies the ordinary recipe multipliers. Its accumulator does not apply line efficiency or frozen-quantity logic. It adds numbers as entered and retains a leaf unit identifier, with no conversion step in the summation. For example, if the same ingredient occurs twice as 500 grams and once as 1 kilogram across two branches, summing the literals is insufficient to express the material requirement in kilograms. The executable plan is an additional calculation for the selected order size. This matters when comparing a single-recipe report against actual consumption or promising inventory to a customer.
-
-The flat and tree accumulators are in `htdocs/bom/class/bom.class.php` under `getNetNeeds` and `getNetNeedsTree`. Stock columns and the initial multiplier are in `htdocs/bom/bom_net_needs.php`.
 
 ## Plan changes, partial postings and cancellation
 
@@ -39,4 +35,4 @@ For a plan requiring 48 bearings, posting 20 from lot X and 16 from lot Y leaves
 
 The cancellation command can include reversal of actual inputs and outputs. It uses the actual product, warehouse, lot and quantity of each split. A positive consumption becomes a receipt, a positive output becomes an issue, and negative recorded quantities reverse the opposite way. The resulting movements reference the manufacturing order, are dated at cancellation time and carry zero as the supplied movement price. The order can reverse consumed lines, produced lines or both through the underlying operation. A movement error rolls back that reversal operation, including any associated actual-line deletions requested by its caller. If stock is disabled, the reversal routine returns without creating movements. Simply opening a completed order for further work changes its status to in progress and leaves the earlier actuals available.
 
-Production entry and completion comparisons are in `htdocs/mrp/mo_production.php`. Reversal, deletion and the optional stock compensation are in `htdocs/mrp/class/mo.class.php` under `cancelConsumedAndProducedLines`, `cancel` and `delete`. The line fields are in `htdocs/install/mysql/tables/llx_mrp_production-mrp.sql`.
+Related records include [Planned or actual production position](../../records/production.md#record-mrp_production).

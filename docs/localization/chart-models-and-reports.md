@@ -1,16 +1,14 @@
 # Chart models and report assignments
 
-The release registers **46 active chart models for 39 countries**, describing **39,311 account definitions** in the corresponding country files. These totals count account-number entries, including grouping accounts with children. Two entries start inactive. Repeated numbers under different model codes represent different chart entries. A selection of one model can load more account definitions than the selected model contains.
+The chart registry contains **46 active chart models for 39 countries**, describing **39,311 account definitions** in the corresponding country files. These totals count account-number entries, including grouping accounts with children. Two entries start inactive. Repeated numbers under different model codes represent different chart entries. A selection of one model can load more account definitions than the selected model contains.
 
-The [complete chart inventory](chart-models.csv) gives one row per model and account-file combination. Filter `availability` to `registered` for the 46 models offered by the standard selector. The country name and code come from the country dictionary. The account, inactive, predefined income and predefined expense columns count source rows for the exact model string in the specified file. `registry_line` locates that choice in `htdocs/install/mysql/data/llx_accounting_system.sql`. Empty registry locations identify the additional file cases described below.
+The [complete chart inventory](chart-models.csv) gives one row per model and dataset. Filter `availability` to `registered` for the 46 models offered by the standard selector. The country code and name identify the country dictionary entry. The counts distinguish all accounts, inactive accounts, and predefined income and expense classifications. The dataset column distinguishes the German-language Swiss alternative from the standard country chart.
 
 ## Keys and account hierarchies
 
 A model has an internal identifier, country, version code, label and active flag. The entity stores its selected model identifier. Each account within it has an entity, model version, account number, internal identifier, parent identifier, predefined group and label. The unique account key combines number, entity and model version. The account number is a string. Its length and leading zeros can carry meaning. The parent field references the parent's internal identifier. Constructing parents by truncating the printed number can produce a different hierarchy.
 
 For example, product sales account `4010` in `US-BASE` has source row ID 1070 and parent ID 4000. Under the same model, product cost `5010` has row ID 1077 and parent ID 5000. The latter's predefined type is `COGS`. Report membership follows the account's type or its assigned report category. A parent number beginning with 5 establishes neither rule by itself.
-
-Release references include `htdocs/install/mysql/tables/llx_accounting_account.sql:21–42`, `htdocs/install/mysql/tables/llx_accounting_account.key.sql:21–27` and `htdocs/install/mysql/data/llx_accounting_account_us.sql:53–60,122–131`.
 
 ## Loading and changing the chart
 
@@ -21,8 +19,6 @@ Release references include `htdocs/install/mysql/tables/llx_accounting_account.s
 
 For Germany, choosing either `SKR03` (2,243 entries) or `SKR04` (2,421) opens the same German file. Choosing one selects its version for account lookup. For France, `PCG25-DEV` has 838 definitions, of which suspense accounts `472` and `473` start inactive. The farm chart `PCGAFR14-DEV` defines those same numbers as active in its own hierarchy. The date-like parts of the identifiers distinguish models and do not activate an annual transition.
 
-Release references include `htdocs/accountancy/admin/account.php:71–81,172–243,499–530`, `htdocs/core/lib/admin.lib.php:312–323`, `htdocs/install/mysql/data/llx_accounting_system.sql:52–72` and `htdocs/install/mysql/data/llx_accounting_account_fr.sql:454–455,2287–2288`.
-
 ## Country-file exceptions
 
 | Record set | Effect on the selectable inventory |
@@ -31,10 +27,8 @@ Release references include `htdocs/accountancy/admin/account.php:71–81,172–2
 | `AT-BASE-2` | Austria's country file also contains 205 entries under this alternate version. The registry lists only `AT-BASE` for Austria. Loading the file can introduce the alternate rows without creating another selector choice. |
 | `PCG15-PYME-AD` | The Andorran file describes 393 accounts. The default registry contains no Andorran model. The presence of that file alone supplies no normal selection. |
 | Swiss German-language account file | The default Swiss country file and the alternate German-language file both contain 254 accounts under `PCG_SUISSE`. They share the model identifier. The country loader selects the unsuffixed Swiss file. For account `4000`, one file supplies a French label and the other a German label. |
-| `CO-PUC` | The 2,502 Colombian definitions all include a subtype column. The released account table does not declare this column and the standard chart-loading rewrite does not strip it. The inventory records these definitions but cannot treat them as 2,502 successfully loaded accounts on the supplied clean schema. |
+| `CO-PUC` | The 2,502 Colombian definitions all include a subtype column. The account table does not declare this column and the standard chart-loading rewrite does not strip it. The inventory records these definitions but cannot treat them as 2,502 successfully loaded accounts on the supplied clean schema. |
 | `NSCF` | The 812 Algerian definitions use insert-if-absent statements starting with an explicit row identifier. They omit the entity column. The table defaults entity to 1 and the offset rewrite matches a different, entity-first row layout. Direct loading of this file merits particular care when interpreting the active entity's available accounts. |
-
-Release references include `htdocs/install/mysql/data/llx_accounting_system.sql:75–108,125–167`, `htdocs/install/mysql/data/llx_accounting_account_at.sql`, `htdocs/install/mysql/data/llx_accounting_account_ad.sql`, `htdocs/install/mysql/data/llx_accounting_account_ch.sql:161`, `htdocs/install/mysql/data/llx_accounting_account_ch_de.sql:160`, `htdocs/install/mysql/data/llx_accounting_account_co.sql:20`, `htdocs/install/mysql/data/llx_accounting_account_dz.sql:723` and `htdocs/core/lib/admin.lib.php:312–323`.
 
 ## How a chart contributes to income and expense
 
@@ -43,8 +37,6 @@ In bookkeeping mode, the monthly result report joins each ledger account number 
 Exactly **34 of the 46 registered models** contain accounts carrying those literal predefined types. The other twelve are `AT-BASE`, `PCG_SUISSE`, `PC-MIPYME`, `CO-PUC`, `SKR03`, `SKR04`, `DK-STD`, `EC-SUPERCIAS`, `PCG08-PYME-CAT`, `Ε.Λ.Π.`, `SAT/24-2019` and `US-GAAP-BASIC`. The CSV records zero recognized rows for each. These models can contain perfectly identifiable revenue and cost accounts. For instance, the US GAAP model calls its classes `REVENUE`, `EXPENSES` and `OTHER_INCOME_EXPENSES`. Those strings fall outside the predefined query. The Catalan and Spanish models also differ in this respect despite sharing a country and similar account numbers.
 
 Suppose May bookkeeping in `US-BASE` credits 1,000 to product sales `4010`, credits 20 to interest income `7010` and debits 400 to product cost `5010`. The report recognizes 1,020 income and 400 expense. A further debit of 50 to `4010` in May reduces the reported income to 970. The same balances held on accounts carrying the US GAAP model's native types would be absent from this particular query. For Japan, 22 income rows and 135 expense rows match. The pack also contains distinct extraordinary income and expense types outside the query, so nonzero matches do not imply coverage of every result account.
-
-Release references include `htdocs/compta/resultat/index.php:926–978`, `htdocs/compta/resultat/clientfourn.php:300–329,374–380`, `htdocs/install/mysql/data/llx_accounting_account_us.sql:122,129,168,273–296` and `htdocs/install/mysql/data/llx_accounting_account_jp.sql`.
 
 ## What comes preassigned to a personalized report
 
@@ -56,6 +48,4 @@ The accounting module supplies one country-neutral report, code `REP`. The initi
 | 20 | `EXPENSES` | Simple category, also credit less debit. The suggested 6-series range is comment text. Debit expenses appear as negative signed balances. |
 | 30 | `PROFIT` | Formula `INCOMES+EXPENSES`, evaluated after the two earlier positions. |
 
-For the May example, assigning `4010` and `7010` directly to `INCOMES` and `5010` to `EXPENSES` yields 970, −400 and 570 after the reversal. Assigning only `4010` to income gives 950, −400 and 550. The unmatched interest remains in the ledger. The category membership is operational data. The display's example number ranges do not automatically enroll newly created accounts. Category selection includes the company country and country-neutral code zero, scoped to the entity, selected report and active status. The release also stores many-to-many account links for category maintenance. The personalized result renderer resolves ordinary rows by the direct category field. A many-to-many link on its own does not reproduce this example.
-
-Release references include `htdocs/install/mysql/data/llx_accounting_category-accounting.sql:20–25`, `htdocs/accountancy/admin/categories.php:140–178,245–258`, `htdocs/accountancy/class/accountancycategory.class.php:635–696,718–745,786–805,912–936` and `htdocs/compta/resultat/result.php`.
+For the May example, assigning `4010` and `7010` directly to `INCOMES` and `5010` to `EXPENSES` yields 970, −400 and 570 after the reversal. Assigning only `4010` to income gives 950, −400 and 550. The unmatched interest remains in the ledger. The category membership is operational data. The display's example number ranges do not automatically enroll newly created accounts. Category selection includes the company country and country-neutral code zero, scoped to the entity, selected report and active status. The model also stores many-to-many account links for category maintenance. The personalized result renderer resolves ordinary rows by the direct category field. A many-to-many link on its own does not reproduce this example.

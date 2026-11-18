@@ -2,8 +2,6 @@
 
 An order can be created from a proposal. Its lines, role-based contacts, billing classification and shipments remain independently addressable. Creating a shipment starts from the order and a selected warehouse.
 
-The implementation locations below refer to `htdocs/commande/class/api_orders.class.php`.
-
 ## `get` — Read a customer order
 
 **Arguments** `id` (integer), `contact_list = -1` (integer).
@@ -15,8 +13,6 @@ The implementation locations below refer to `htdocs/commande/class/api_orders.cl
 - `400` — no ID or Ref provided.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
-
-Source lines `71–74` with `_fetch 127–163`.
 
 ## `getByRef` — Read by business reference
 
@@ -32,8 +28,6 @@ Route `GET ref/{ref}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 
-Source lines `90–93` with `_fetch 127–163`.
-
 ## `getByRefExt` — Read by external reference
 
 Route `GET ref_ext/{ref_ext}`.
@@ -48,8 +42,6 @@ Route `GET ref_ext/{ref_ext}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 
-Source lines `109–112` with `_fetch 127–163`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `sqlfilterlines = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `loadlinkedobjects = 0` (integer).
@@ -63,8 +55,6 @@ The lookup uses the visible entity scope for `commande`. A caller linked to a pa
 - `400` — invalid filter expression, invalid request data.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `189–311`.
 
 ## `post` — Create a customer order
 
@@ -83,8 +73,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — party missing.
 - `500` — business operation failed.
 
-Source lines `327–376` with `_validate 1382–1395`.
-
 ## `getLines` — Read document lines
 
 Route `GET {id}/lines`.
@@ -97,8 +85,6 @@ Route `GET {id}/lines`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
-
-Source lines `390–410`.
 
 ## `getLine` — Read line
 
@@ -114,8 +100,6 @@ The properties selector projects the returned fields.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing, line missing.
-
-Source lines `424–446`.
 
 ## `postLine` — Add a line
 
@@ -135,8 +119,6 @@ The method adds a line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 
-Source lines `461–516`.
-
 ## `putLine` — Amend a line
 
 Route `PUT {id}/lines/{lineid}`.
@@ -153,8 +135,6 @@ The method amends a line.
 
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this order.
 - `404` — order missing, order line missing.
-
-Source lines `531–595`.
 
 ## `deleteLine` — Remove a line
 
@@ -173,8 +153,6 @@ The method removes a line.
 - `404` — order missing.
 - `405` — operation unavailable.
 
-Source lines `610–631` with `get 71–74`, `_fetch 127–163`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -189,8 +167,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
-
-Source lines `647–668`.
 
 ## `postContact` — Attach a contact role
 
@@ -209,8 +185,6 @@ The method attaches a participant role.
 - `404` — order missing.
 - `503` — query or persistence failure.
 
-Source lines `690–792`.
-
 ## `deleteContact` — Remove a contact role
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
@@ -227,8 +201,6 @@ The method loads contacts by role and removes a participant role.
 - `404` — order missing.
 - `500` — removal failed.
 
-Source lines `812–846`.
-
 ## `put` — Update a customer order
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -244,8 +216,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — order missing.
 - `500` — business operation failed.
 
-Source lines `858–905` with `get 71–74`, `_fetch 127–163`.
-
 ## `delete` — Delete a customer order
 
 **Arguments** `id` (integer).
@@ -258,8 +228,6 @@ Source lines `858–905` with `get 71–74`, `_fetch 127–163`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `500` — removal failed.
-
-Source lines `916–943`.
 
 ## `validate` — Validate a customer order
 
@@ -277,8 +245,6 @@ The method validates the record and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `500` — business operation failed.
-
-Source lines `967–999`.
 
 ## `reopen` — Reopen the record
 
@@ -298,8 +264,6 @@ The method reopens the record.
 - `404` — order missing.
 - `405` — operation unavailable.
 
-Source lines `1019–1044`.
-
 ## `setinvoiced` — Classify as invoiced
 
 Route `POST {id}/setinvoiced`.
@@ -315,8 +279,6 @@ The method classifies the source as billed and loads related business records.
 - `400` — order id required, invalid request data.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
-
-Source lines `1060–1085`.
 
 ## `close` — Close the record
 
@@ -335,8 +297,6 @@ The method closes the record and loads related business records.
 - `404` — order missing.
 - `500` — business operation failed.
 
-Source lines `1097–1132`.
-
 ## `settodraft` — Return to draft
 
 Route `POST {id}/settodraft`.
@@ -353,8 +313,6 @@ The method restores draft state and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `500` — business operation failed.
-
-Source lines `1144–1179`.
 
 ## `createOrderFromProposal` — Create order from proposal
 
@@ -373,8 +331,6 @@ The method creates the order from the proposal and loads related business record
 - `404` — proposal missing.
 - `405` — operation unavailable.
 
-Source lines `1196–1227`.
-
 ## `getOrderShipments` — Read order shipments
 
 Route `GET {id}/shipment`.
@@ -388,8 +344,6 @@ Route `GET {id}/shipment`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — shipments missing.
 - `500` — query or persistence failure.
-
-Source lines `1245–1290`.
 
 ## `createOrderShipment` — Create order shipment
 
@@ -406,5 +360,3 @@ The new shipment retains the order as origin and uses its party. Each order row 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — warehouse missing, order missing.
 - `500` — business operation failed.
-
-Source lines `1307–1348`.

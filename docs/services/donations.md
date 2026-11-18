@@ -2,8 +2,6 @@
 
 Creation, editing and validation of a gift are distinct operations. A donor's gift record has its own identifier independently of bank transactions created when money is received.
 
-The implementation locations below refer to `htdocs/don/class/api_donations.class.php`.
-
 ## `get` — Read a donation
 
 **Arguments** `id` (integer).
@@ -14,8 +12,6 @@ The implementation locations below refer to `htdocs/don/class/api_donations.clas
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — donation missing.
-
-Source lines `65–84`.
 
 ## `index` — List records
 
@@ -30,8 +26,6 @@ The lookup uses the visible entity scope for `don`. A caller linked to a party r
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `105–191`.
 
 ## `post` — Create a donation
 
@@ -49,8 +43,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `201–232` with `_validate 411–424`.
-
 ## `put` — Update a donation
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -65,8 +57,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — donation missing.
 - `500` — business operation failed.
 
-Source lines `243–282` with `get 65–84`.
-
 ## `delete` — Delete a donation
 
 **Arguments** `id` (integer).
@@ -78,8 +68,6 @@ Source lines `243–282` with `get 65–84`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — donation missing.
 - `500` — removal failed.
-
-Source lines `292–317`.
 
 ## `validate` — Validate a donation
 
@@ -97,5 +85,3 @@ The method validates the donation and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — donation missing, order missing.
 - `500` — business operation failed.
-
-Source lines `341–377`.

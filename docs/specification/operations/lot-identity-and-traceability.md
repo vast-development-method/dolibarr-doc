@@ -13,7 +13,7 @@ A receiver can put the same production lot in several warehouses. The expiry dat
 | Stock movement | Movement ID | Signed quantity, movement type, product, lot, warehouse, author, date, price, origin and operation reference. |
 | Shipment or receipt allocation | Source line, warehouse, quantity and batch on its allocation row | Establishes which commercial document supplied or received a specific quantity. The lot master contains neither the sales order nor its customer. |
 
-Sources include `htdocs/install/mysql/tables/llx_product_lot.key.sql`, `htdocs/install/mysql/tables/llx_product_batch.key.sql`, `htdocs/install/mysql/tables/llx_product_stock.key.sql` and `htdocs/install/mysql/tables/llx_stock_mouvement.sql`. Movement creation is in `htdocs/product/stock/class/mouvementstock.class.php`, lines 305–375 and 505–550.
+Related records include [Product lot master](../../records/warehouse.md#record-product_lot), [Warehouse lot balance](../../records/warehouse.md#record-product_batch), [Warehouse balance](../../records/warehouse.md#record-product_stock), [Stock movement](../../records/warehouse.md#record-stock_mouvement).
 
 ## Admission of new stock
 
@@ -29,8 +29,6 @@ An incoming movement for a tracked product supplies the product, destination war
 
 For a negative movement, the stock writer discards the dates supplied by the calling document before resolving the master. A shipment entered before a correction to the lot's eat-by date can therefore go out against the corrected master. The outgoing operation cannot reintroduce its stale date. The common movement writer enforces the lot identity and date-consistency rules. Its date comparison does not itself constitute a general prohibition on moving expired stock.
 
-Sources include `htdocs/product/stock/class/productlot.class.php`, lines 255–365 and 375–455. `htdocs/product/stock/class/mouvementstock.class.php`, lines 349–461.
-
 ## Quantity and serial identity
 
 The movement changes the warehouse aggregate and the matching lot balance. A lot balance that reaches exactly zero is removed. A zero aggregate may be removed when it has no lot-balance children. This matters when one lot is positive and another negative: a warehouse aggregate of zero can still describe a meaningful split. The master remains available for traceability.
@@ -41,8 +39,6 @@ On an incoming movement for an individually numbered product, the writer sums qu
 
 **Example.** Warehouse A has four units of product P under lot R7 and warehouse B has six. Receiving another four in B changes B/R7 to ten and the combined quantity to fourteen. Shipping all four from A removes that warehouse's R7 balance. The remaining master still identifies the same lot, and B/R7 stays at ten. For a serial-tracked product already held as one unit in B, a second receipt of that serial into A fails the total-of-one guard.
 
-Sources include `htdocs/product/stock/class/mouvementstock.class.php`, lines 467–508, 639–715, 948–1011 and 1321–1345. `htdocs/product/inventory/inventory.php`, lines 209–228. `htdocs/product/stock/stocktransfer/stocktransfer_card.php`, lines 170–230.
-
 ## Editing, retention and tracing
 
 The lot card requires an internal user, enabled lot tracking and product read access. Product creation/modification permission governs changes to dates and metadata. Product deletion permission governs the delete action. An edit to an individual expiry field evaluates that field's mandatory setting and emits a lot-modification event on success. The card can expose manufacturing and scrapping dates, end-of-life date, inspection frequency and lifetime under the relevant options. A stored inspection interval is descriptive data. The stock movement described above uses the product, serial, warehouse and quantity rules.
@@ -50,5 +46,3 @@ The lot card requires an internal user, enabled lot tracking and product read ac
 Deletion examines both current warehouse lot rows and historic stock movements using product and batch. A lot that has left the warehouse can still be protected by its movement history. A permitted deletion invokes the delete event, removes its additional fields and deletes the master in a database transaction.
 
 The lot statistics expose distinct counterparties and documents, allocation row counts or quantities depending on the report. Shipment, supplier-order and receipt summaries have different joins. Manufacturing separates planned consumption, actual consumption, planned output and actual output. In the receipt and manufacturing summaries the batch-text predicate is accompanied by document entity and access restrictions, but those two queries do not also require a matching product ID. If two products both use `JUL-1`, their numbers can combine on these views. For a product-specific trace, retain each allocation's product ID and document state alongside its lot text. A commercial allocation total and a posted movement total can diverge, especially when draft documents exist.
-
-Sources include `htdocs/product/stock/productlot_card.php`, lines 115–142, 160–272 and 405–447. `htdocs/product/stock/class/productlot.class.php`, lines 706–790 and 864–1142.

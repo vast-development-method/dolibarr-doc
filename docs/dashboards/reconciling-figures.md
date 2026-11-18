@@ -13,7 +13,7 @@ Consider an open customer invoice for 100 before tax and 120 including tax. The 
 
 The customer and supplier oldest-unpaid shortlists fetch one more row than the visible limit to detect overflow. Their total queries reuse the customer/supplier payment allocation join and sum header value before tax without first collapsing allocations per invoice. With one 100 net invoice and two allocation rows, the shortlist row remains 100 and the footer can show 200. This is independent of how much remains due. The credit-limit widget scans its candidates and compares the separately calculated open amount. Its output can contain more customers than the ordinary shortlist limit.
 
-Sources include `htdocs/core/boxes/box_factures_imp.php:95–133, 201–236`, `htdocs/core/boxes/box_factures_fourn_imp.php:93–115, 185–220`, `htdocs/core/boxes/box_customers_outstanding_bill_reached.php:89–149`, `htdocs/societe/class/societe.class.php:5436–5510` and `htdocs/core/boxes/box_comptes.php:89–157`. For the aging basis see [receivables aging and cash forecast](../reporting/receivables-aging-and-cash-forecast.md).
+For the aging basis see [receivables aging and cash forecast](../reporting/receivables-aging-and-cash-forecast.md).
 
 ## Month, year and item frequency
 
@@ -30,8 +30,6 @@ If one order contains 100 units of item A on a single line and two occurrences o
 
 Two display settings explain other common differences. The latest-record widgets can use their document date instead of modification time. An invoice edited today with a document date last year can lead the first view and be absent from the other. The optional rolling commercial activity widget uses tax-inclusive amounts and a three-month interval by default. Its invoice components split by the paid flag. The unpaid component filters on invoice entities and date, while the paid component also applies the viewer’s party or salesperson restriction. Comparing these two populations as a settlement rate can give a misleading result.
 
-Sources include `htdocs/core/boxes/box_graph_invoices_permonth.php:73–142, 182`, `htdocs/core/boxes/box_graph_invoices_supplier_permonth.php:71–139`, `htdocs/commande/class/commandestats.class.php:111–145, 161–178`, `htdocs/comm/propal/class/propalestats.class.php:94–125, 145–162`, `htdocs/compta/facture/class/facturestats.class.php:87–129, 151–163, 201–214, 273–290`, `htdocs/core/class/stats.class.php:338–390, 664–691` and `htdocs/core/boxes/box_activity.php:78–125, 280–296, 361–370`.
-
 ## Stage, status and scope
 
 | Case | Expected result |
@@ -45,4 +43,4 @@ Sources include `htdocs/core/boxes/box_graph_invoices_permonth.php:73–142, 182
 | A member in two top-level tags has current coverage. | Each corresponding tag row counts that member. Aging of coverage depends on the member's subscription requirement and expiry, while annual subscription income groups transactions by their subscription start year. |
 | A sent purchase order lacks an expected delivery date. | The home workload includes it in orders awaiting receipt and leaves it out of the late subset. The configurable awaiting-receipt shortlist requires a date and omits it. Adding a date in the past beyond the warning interval can put it in both the shortlist and the late subset. |
 
-Sources include `htdocs/ticket/class/ticket.class.php:259–260, 3393–3452`, `htdocs/core/boxes/box_graph_nb_ticket_last_x_days.php:87–139`, `htdocs/core/boxes/box_graph_ticket_by_severity.php:97–102, 135–156`, `htdocs/knowledgemanagement/class/knowledgerecord.class.php:57–59`, `htdocs/core/boxes/box_funnel_of_prospection.php:145–154, 165–189, 210–229`, `htdocs/core/boxes/box_project_opportunities.php:91–114`, `htdocs/core/boxes/box_produits_alerte_stock.php:81–107`, `htdocs/adherents/class/adherentstats.class.php:194–223, 267–300` and `htdocs/core/boxes/box_supplier_orders_awaiting_reception.php:88–103`. See also [operational dashboards and replenishment](../reporting/operational-dashboards-and-replenishment.md).
+See also [operational dashboards and replenishment](../reporting/operational-dashboards-and-replenishment.md).

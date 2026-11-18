@@ -2,8 +2,6 @@
 
 An activity belongs to the agenda and can carry assigned users, dates and a related business record. An external identifier carried by an activity is distinct from its local record identifier.
 
-The implementation locations below refer to `htdocs/comm/action/class/api_agendaevents.class.php`.
-
 ## `get` — Read a calendar activity
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads additional fields and loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — agenda events missing.
-
-Source lines `73–99`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `agenda`. The selection includes a 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `123–227`.
 
 ## `post` — Create a calendar activity
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `241–275` with `_validate 406–419`.
-
 ## `put` — Update a calendar activity
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -69,8 +61,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — actioncomm missing, agenda events missing.
 - `500` — business operation failed.
 
-Source lines `291–345` with `get 73–99`.
-
 ## `delete` — Delete a calendar activity
 
 **Arguments** `id` (integer).
@@ -84,5 +74,3 @@ The method loads additional fields and reads assigned users.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — agenda event missing.
 - `500` — removal failed.
-
-Source lines `360–397`.

@@ -18,8 +18,6 @@ An employee tab with positive `id` fixes the employee filter. Without leave read
 
 For example, against a July 31–August 2 claim, a lower bound of August 1 on the **start** excludes the claim. The same bound on the **end** includes it. To find claims that overlap August, use start on or before August 31 and end on or after August 1.
 
-Sources are `htdocs/holiday/list.php:95–109,121–130,152–181,260–270,326–374,681–733`, `htdocs/holiday/class/holiday.class.php:191–207` and `htdocs/expensereport/list.php:65–81,105–141,159–172,283–295,313–366,673–688`.
-
 ## Contracts
 
 The result starts with the contract header and joins its party, country, state and party type. Service-line expiry is an aggregate over its services. A selected internal contact adds a contact-role join, so one agreement can match more than one role held by the same person. `socid` fixes the counterparty, with the external user's own company taking precedence. The header must be in the contract entity scope.
@@ -39,8 +37,6 @@ The result starts with the contract header and joins its party, country, state a
 
 An agreement with open services expiring in June and September matches a June earliest-expiry search. The September service alone cannot make the agreement pass a September earliest-expiry search. A closed June service drops out of the calculation.
 
-Sources are `htdocs/contrat/list.php:69–132,146–190,336–345,360–448,449–538,545–565,1015–1031,1074–1083` and `htdocs/contrat/class/contrat.class.php:263–280`.
-
 ## Field interventions
 
 An intervention always matches its party and entity. `socid` selects a party. Restricted internal readers match parties assigned to themselves or, when subordinate visibility is active, their subordinates. Project and contract modules supply optional joins. Selecting a detail column joins the intervention's work lines when details are enabled. This can produce more than one row for the same intervention and changes what its dates mean.
@@ -56,8 +52,6 @@ An intervention always matches its party and entity. `socid` selects a party. Re
 
 With one header and two work lines dated Monday and Friday, a detail view bounded to Friday returns the Friday line. Hiding all work-line columns yields the header view, where the work-line date predicate is inactive.
 
-Sources are `htdocs/fichinter/list.php:82–121,148–163,288–310,326–370,371–425`.
-
 ## Internal ticket queue
 
 The result is one ticket with an optional party. Ticket read is required. `socid` selects the party and defaults to the external user's company for an external reader. In internal `mode=mine`, the ticket must be assigned to the operator or, when assigned-only viewing is off, created by them. Assigned-only viewing applies to nonadministrators even on the ordinary list.
@@ -72,5 +66,3 @@ The result is one ticket with an optional party. Ticket read is required. `socid
 | `search_date_{start,end}`, `search_dateread_{start,end}`, `search_dateclose_{start,end}` | Append `day`, `month` or `year`. These are inclusive bounds on creation, first-read and close time. On navigation, the page serializes the upper close date under creation-end parameter names. A subsequent page can therefore apply a different end-date restriction. |
 
 The [field-derived selector table](metadata-keys.csv) names each ticket field consumed by the generic reader and identifies its field definition. Some fields are hidden in the standard list and some depend on configuration. The date controls above are the ones wired to explicit date comparisons. Although the input loop constructs generic date suffixes, the ticket predicate loop does not translate those suffixed names back to the underlying date column. A service implementing the screen can use the three named date ranges as its standard date contract.
-
-Sources are `htdocs/ticket/list.php:65–80,123–151,176–195,384–485,712–746,873–968` and `htdocs/ticket/class/ticket.class.php:253–260,290–325,342–367`.

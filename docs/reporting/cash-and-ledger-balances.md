@@ -10,8 +10,6 @@ The inflow and outflow charts split bank lines by amount sign before grouping th
 
 Suppose the closing balance on April 30 is 800. Two value-dated lines on May 3, plus 150 and minus 40, produce a daily net change of 110 and a closing balance of 910. May 4 also shows 910 if there is no movement. A supplier invoice booked on May 4 does not reduce this balance until the corresponding bank line's value date. For reconciliation, inspect the bank account's transactions on the date used by the chart. Using invoice issue date or payment creation date can assign the same cash event to a different month.
 
-Source location `htdocs/compta/bank/graph.php:60, 159–231, 308–346, 577–626, 688–727`.
-
 ## General and subsidiary trial balances
 
 The trial balance starts from recorded bookkeeping entries in the active accounting entity. It groups by general ledger account and sums the debit and credit columns separately. The subsidiary-account version excludes lines with a missing or empty auxiliary account and groups by general account, auxiliary account code and auxiliary label. The same subsidiary code occurring under two control accounts therefore produces two groups. The same code under one account but with two stored labels can also create two groups.
@@ -29,5 +27,3 @@ The period applies to bookkeeping **document date**, inclusive of the selected e
 For a general account with prior debits 600 and credits 250, an opening of 350, period debit 120 and credit 80 give a closing figure of 390. A journal filter can narrow those period columns without narrowing the opening query. That query also makes no distinction between ordinary postings and opening-journal entries. In subsidiary mode the opening lookup remains keyed by general account. It therefore cannot supply a distinct pre-period balance for each subsidiary and may repeat the same opening across rows. An account without a movement matching the period selection need not have a row even if a pre-period balance exists.
 
 The ledger balance and the cash graph can legitimately diverge. A bank transaction is grouped by value date in one projection. The corresponding bookkeeping line belongs to its ledger account, posting document date and accounting entity in the other. Reconciliation requires the actual journal entries and bank lines for the same account and cutoff.
-
-Source locations include `htdocs/accountancy/bookkeeping/balance.php:103–131, 183–211, 515–532, 550–597, 645–662` and `htdocs/accountancy/class/bookkeeping.class.php:fetchAllBalance`.

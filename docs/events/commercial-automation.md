@@ -15,7 +15,7 @@ The automatic offer-to-order branch checks for an existing linked order before c
 
 ## When does an order count as billed?
 
-Suppose one validated order totals 1,000.00 before tax. It has two linked invoices at 600.00 and 400.00. The release supports more than one policy, with different meanings.
+Suppose one validated order totals 1,000.00 before tax. It has two linked invoices at 600.00 and 400.00. The order classification supports more than one policy, with different meanings.
 
 **Single-invoice comparison.** On validation of an invoice, the policy selects linked orders and adds the pre-tax amounts of orders in qualifying states. It compares the resulting total with the current invoice at total-amount precision. A 600.00 invoice differs from the 1,000.00 order. The setting allowing classification despite amount differences can override this comparison. The implementation uses one loop to sum eligible orders and a second loop to request billed classification on linked orders. A linked object's own transition still governs its result.
 
@@ -31,4 +31,4 @@ Ticket creation can attempt to locate a contract when the ticketing, contract an
 
 A separate policy can create a field intervention from a ticket. The resulting intervention has its own owner, business reference and lifecycle. Opening an intervention provides evidence of a service task; it supplies neither proof that the technician performed the work nor authority to bill the customer.
 
-Implementation locators: `htdocs/core/triggers/interface_20_modWorkflow_WorkflowManager.class.php`, lines 76–174 (acceptance and order close), 175–307 (sales billing), 308–447 (purchase and settlement classification), 448–618 (fulfilment), 624–681 (ticket handoffs) and the concluding `shouldClassify` routine. For the document-level comparison see [partial dispatch and billing](../sales/dispatch-to-invoice.md).
+For the document-level comparison see [partial dispatch and billing](../sales/dispatch-to-invoice.md).

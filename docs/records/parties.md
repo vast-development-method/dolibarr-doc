@@ -35,7 +35,7 @@ Additional unique keys comprise `prefix_comm`, `entity` / `code_client`, `entity
 
 **Referenced by** [adherent](people.md#record-adherent) (fk_soc), [categorie_fournisseur](categories.md#record-categorie_fournisseur) (fk_soc), [categorie_societe](categories.md#record-categorie_societe) (fk_soc), [commande](commercial.md#record-commande) (fk_soc), [commande_fournisseur](commercial.md#record-commande_fournisseur) (fk_soc), [contrat](people.md#record-contrat) (fk_soc), [delivery](commercial.md#record-delivery) (fk_soc), [expedition](commercial.md#record-expedition) (fk_soc), [facture](billing.md#record-facture) (fk_soc), [facture_fourn](billing.md#record-facture_fourn) (fk_soc), [facture_fourn_rec](billing.md#record-facture_fourn_rec) (fk_soc), [facture_rec](billing.md#record-facture_rec) (fk_soc), [fichinter](people.md#record-fichinter) (fk_soc), [product_customer_price](catalogue.md#record-product_customer_price) (fk_soc), [projet](production.md#record-projet) (fk_soc), [propal](commercial.md#record-propal) (fk_soc), [reception](commercial.md#record-reception) (fk_soc), [societe_account](parties.md#record-societe_account) (fk_soc), [societe_commerciaux](parties.md#record-societe_commerciaux) (fk_soc), [societe_contacts](parties.md#record-societe_contacts) (fk_soc), [societe_remise_except](parties.md#record-societe_remise_except) (fk_soc), [societe_rib](parties.md#record-societe_rib) (fk_soc), [socpeople](parties.md#record-socpeople) (fk_soc).
 
-The record class defines `0` ceased, `1` inactivity. See `htdocs/societe/class/societe.class.php`.
+The stored state codes are `0` ceased, `1` inactivity.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -140,8 +140,6 @@ The record class defines `0` ceased, `1` inactivity. See `htdocs/societe/class/s
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe.sql`, `htdocs/install/mysql/tables/llx_societe.key.sql`, `htdocs/societe/class/societe.class.php:81`.
-
 <a id="record-socpeople"></a>
 
 ## Contact or address
@@ -199,8 +197,6 @@ The primary key is `rowid`.
 | `statut` | tinyint | No | `1` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 
-Source locations include `htdocs/install/mysql/tables/llx_socpeople.sql`, `htdocs/install/mysql/tables/llx_socpeople.key.sql`, `htdocs/core/class/notify.class.php:492`.
-
 <a id="record-societe_commerciaux"></a>
 
 ## Sales assignment
@@ -218,8 +214,6 @@ An additional unique key comprises `fk_soc`, `fk_user`, `fk_c_type_contact_code`
 | `fk_user` | integer | Yes | — | User account associated with this record. References [user](foundation.md#record-user) (rowid). |
 | `fk_c_type_contact_code` | varchar(32) | No | `'SALESREPTHIRD'` | Contact-role code for the commercial assignment. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_societe_commerciaux.sql`, `htdocs/install/mysql/tables/llx_societe_commerciaux.key.sql`, `htdocs/core/class/html.form.class.php:2070`.
 
 <a id="record-societe_contacts"></a>
 
@@ -242,8 +236,6 @@ An additional unique key comprises `entity`, `fk_soc`, `fk_c_type_contact`, `fk_
 | `tms` | timestamp | Yes | — | Timestamp maintained when the stored row changes. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_contacts.sql`, `htdocs/install/mysql/tables/llx_societe_contacts.key.sql`, `htdocs/contact/class/contact.class.php:1366`.
-
 <a id="record-societe_account"></a>
 
 ## External account mapping
@@ -254,7 +246,7 @@ Records a party's account on a named external or hosted site, with identity, log
 The primary key is `rowid`.
 Additional unique keys comprise `entity`, `login`, `site`, `fk_website` / `entity`, `fk_soc`, `key_account`, `site`, `fk_website`.
 
-The record class defines `1` enabled, `0` disabled. See `htdocs/societe/class/societeaccount.class.php`.
+The stored state codes are `1` enabled, `0` disabled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -281,8 +273,6 @@ The record class defines `1` enabled, `0` disabled. See `htdocs/societe/class/so
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | Yes | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_account.sql`, `htdocs/install/mysql/tables/llx_societe_account.key.sql`, `htdocs/societe/class/societeaccount.class.php:48`.
-
 <a id="record-societe_prices"></a>
 
 ## Party price-level history
@@ -301,8 +291,6 @@ The primary key is `rowid`.
 | `fk_user_author` | integer | Yes | — | Account recorded as creator or author. |
 | `price_level` | tinyint | Yes | `1` | Sales price level or tier. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_prices.sql`, `htdocs/societe/class/societe.class.php:3121`.
-
 <a id="record-societe_rib"></a>
 
 ## Party bank and mandate details
@@ -313,7 +301,7 @@ Identifies one set of bank coordinates held for a customer or supplier. Mandate 
 The primary key is `rowid`.
 An additional unique key comprises `entity`, `label`, `fk_soc`.
 
-The record class defines `0` open, `1` closed. See `htdocs/societe/class/companybankaccount.class.php`.
+The stored state codes are `0` open, `1` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -370,8 +358,6 @@ The record class defines `0` open, `1` closed. See `htdocs/societe/class/company
 | `status` | integer | No | `1` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_rib.sql`, `htdocs/install/mysql/tables/llx_societe_rib.key.sql`, `htdocs/core/class/html.form.class.php:6181`.
-
 <a id="record-societe_remise"></a>
 
 ## Customer percentage discount history
@@ -392,8 +378,6 @@ The primary key is `rowid`.
 | `remise_client` | double(7,4) | No | `0` | Customer discount percentage. |
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_remise.sql`, `htdocs/societe/class/societe.class.php:2011`.
-
 <a id="record-societe_remise_supplier"></a>
 
 ## Supplier percentage discount history
@@ -413,8 +397,6 @@ The primary key is `rowid`.
 | `fk_user_author` | integer | Yes | — | Account recorded as creator or author. |
 | `remise_supplier` | double(7,4) | No | `0` | Supplier discount percentage. |
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
-
-Source locations include `htdocs/install/mysql/tables/llx_societe_remise_supplier.sql`, `htdocs/societe/class/societe.class.php:2012`.
 
 <a id="record-societe_remise_except"></a>
 
@@ -457,8 +439,6 @@ The primary key is `rowid`.
 | `multicurrency_amount_tva` | double(24,8) | No | `0` | VAT on the adjustment in the document currency. |
 | `multicurrency_amount_ttc` | double(24,8) | No | `0` | Tax-inclusive adjustment in the document currency. |
 
-Source locations include `htdocs/install/mysql/tables/llx_societe_remise_except.sql`, `htdocs/install/mysql/tables/llx_societe_remise_except.key.sql`, `htdocs/core/class/discount.class.php:242`.
-
 <a id="record-partnership"></a>
 
 ## Partnership agreement
@@ -469,7 +449,7 @@ Records the partner, agreement type, effective period, administrative state and 
 The primary key is `rowid`.
 Additional unique keys comprise `ref`, `entity` / `fk_type`, `fk_soc`, `date_partnership_start` / `fk_type`, `fk_member`, `date_partnership_start`.
 
-The record class defines `0` draft, `1` validated, `2` approved, `3` refused, `9` canceled. See `htdocs/partnership/class/partnership.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` approved, `3` refused, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -498,8 +478,6 @@ The record class defines `0` draft, `1` validated, `2` approved, `3` refused, `9
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 
-Source locations include `htdocs/install/mysql/tables/llx_partnership-partnership.sql`, `htdocs/install/mysql/tables/llx_partnership-partnership.key.sql` and `htdocs/partnership/class/partnership.class.php:773–885`.
-
 <a id="record-element_contact"></a>
 
 ## Document contact assignment
@@ -520,8 +498,6 @@ An additional unique key comprises `element_id`, `fk_c_type_contact`, `fk_socpeo
 | `fk_c_type_contact` | int | No | — | Role that establishes what the contact represents on a particular object type. References [c_type_contact](dictionaries.md#record-c_type_contact) (rowid). |
 | `fk_socpeople` | integer | No | — | Person referenced by this assignment. The contact type selects the internal-user or external-contact namespace. |
 
-Source locations include `htdocs/install/mysql/tables/llx_element_contact.sql`, `htdocs/install/mysql/tables/llx_element_contact.key.sql`, `htdocs/contact/class/contact.class.php:1275`.
-
 <a id="record-element_element"></a>
 
 ## Typed document relationship
@@ -540,8 +516,6 @@ An additional unique key comprises `fk_source`, `sourcetype`, `fk_target`, `targ
 | `fk_target` | integer | No | — | Target identity interpreted with targettype. |
 | `targettype` | varchar(64) | No | — | Object kind for the corresponding endpoint of the relationship. |
 | `relationtype` | varchar(64) | Yes | `NULL` | Kind of relationship between the two linked objects. |
-
-Source locations include `htdocs/install/mysql/tables/llx_element_element.sql`, `htdocs/install/mysql/tables/llx_element_element.key.sql`, `htdocs/core/class/discount.class.php:605`.
 
 <a id="record-element_resources"></a>
 
@@ -565,5 +539,3 @@ An additional unique key comprises `resource_id`, `resource_type`, `element_id`,
 | `duree` | real | Yes | — | Duration of the activity or period in the unit used by the owning feature. |
 | `fk_user_create` | integer | Yes | — | Account recorded as creator or author. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
-
-Source locations include `htdocs/install/mysql/tables/llx_element_resources.sql`, `htdocs/install/mysql/tables/llx_element_resources.key.sql`, `htdocs/core/class/commonobject.class.php:6079`.

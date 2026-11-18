@@ -93,8 +93,6 @@ An additional unique key comprises `code`, `entity`, `fk_report`.
 | `fk_country` | integer | Yes | `NULL` | Country associated with the record. |
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_accounting_category-accounting.sql`, `htdocs/install/mysql/tables/llx_c_accounting_category-accounting.key.sql`, `htdocs/core/class/html.formaccounting.class.php:255`.
-
 <a id="record-c_accounting_report"></a>
 
 ## Report definition
@@ -113,8 +111,6 @@ An additional unique key comprises `code`, `entity`.
 | `label` | varchar(255) | No | — | Display label for the record. |
 | `fk_country` | integer | Yes | `NULL` | Country associated with the record. |
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_accounting_report-accounting.sql`, `htdocs/install/mysql/tables/llx_c_accounting_report-accounting.key.sql`, `htdocs/core/menus/standard/eldy.lib.php:2008`.
 
 <a id="record-c_action_trigger"></a>
 
@@ -135,8 +131,6 @@ An additional unique key comprises `code`.
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `description` | varchar(255) | Yes | — | Descriptive text associated with this entry. |
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_action_trigger.sql`, `htdocs/install/mysql/tables/llx_c_action_trigger.key.sql`, `htdocs/core/class/notify.class.php:494`.
 
 <a id="record-c_actioncomm"></a>
 
@@ -161,8 +155,6 @@ An additional unique key comprises `code`.
 | `picto` | varchar(48) | Yes | — | Icon identifier used for presentation. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_actioncomm.sql`, `htdocs/install/mysql/tables/llx_c_actioncomm.key.sql`, `htdocs/api/class/api_setup.class.php:949`.
-
 <a id="record-c_asset_disposal_type"></a>
 
 ## Asset disposal reason
@@ -183,8 +175,6 @@ An additional unique key comprises `code`, `entity`.
 | `label` | varchar(50) | No | — | Display label for the record. |
 | `active` | integer | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_asset_disposal_type-asset.sql`, `htdocs/install/mysql/tables/llx_c_asset_disposal_type-asset.key.sql`, `htdocs/admin/dict.php:312`.
-
 <a id="record-c_availability"></a>
 
 ## Availability term
@@ -204,8 +194,6 @@ An additional unique key comprises `code`.
 | `qty` | real | Yes | — | Number of units in this position. Interpret with the record's unit and quantity direction. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_availability.sql`, `htdocs/install/mysql/tables/llx_c_availability.key.sql`, `htdocs/core/class/html.form.class.php:5177`.
 
 <a id="record-c_barcode_type"></a>
 
@@ -228,8 +216,6 @@ An additional unique key comprises `code`, `entity`.
 | `coder` | varchar(16) | No | — | Barcode encoder selected for this symbology. |
 | `example` | varchar(16) | No | — | Example value for the barcode symbology. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_barcode_type.sql`, `htdocs/install/mysql/tables/llx_c_barcode_type.key.sql`, `htdocs/core/class/commonobject.class.php:2128`.
-
 <a id="record-c_chargesociales"></a>
 
 ## Contribution category
@@ -250,8 +236,6 @@ The primary key is `id`.
 | `fk_pays` | integer | No | `1` | Country associated with the record. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_chargesociales.sql`, `htdocs/core/class/html.formsocialcontrib.class.php:78`.
-
 <a id="record-c_civility"></a>
 
 ## Form of address
@@ -269,8 +253,6 @@ An additional unique key comprises `code`.
 | `label` | varchar(128) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_civility.sql`, `htdocs/install/mysql/tables/llx_c_civility.key.sql`, `htdocs/core/class/html.formcompany.class.php:494`.
 
 <a id="record-c_country"></a>
 
@@ -298,8 +280,6 @@ Additional unique keys comprise `code` / `code_iso` / `label`.
 | `phone_code` | integer | Yes | — | International telephone calling code. |
 | `trunk_prefix` | varchar(5) | Yes | — | Domestic trunk prefix used in telephone numbering. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_country.sql`, `htdocs/install/mysql/tables/llx_c_country.key.sql`, `htdocs/core/class/ccountry.class.php:45`.
-
 <a id="record-c_currencies"></a>
 
 ## Currency
@@ -318,8 +298,6 @@ An additional unique key comprises `code_iso`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `max_decimal_unit` | tinyint | Yes | — | Number of decimal places configured for unit prices in the currency. |
 | `max_decimal_tot` | tinyint | Yes | — | Number of decimal places configured for totals in the currency. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_currencies.sql`, `htdocs/install/mysql/tables/llx_c_currencies.key.sql`, `htdocs/core/class/translate.class.php:1180`.
 
 <a id="record-c_departements"></a>
 
@@ -344,8 +322,6 @@ An additional unique key comprises `code_departement`, `fk_region`.
 | `nom` | varchar(50) | Yes | — | Name under which this record is presented or identified. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_departements.sql`, `htdocs/install/mysql/tables/llx_c_departements.key.sql`, `htdocs/core/class/cstate.class.php:92`.
-
 <a id="record-c_ecotaxe"></a>
 
 ## Environmental levy rate
@@ -366,8 +342,6 @@ An additional unique key comprises `code`.
 | `fk_pays` | integer | No | — | Country associated with the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_ecotaxe.sql`, `htdocs/install/mysql/tables/llx_c_ecotaxe.key.sql`, `htdocs/core/class/html.formother.class.php:290`.
-
 <a id="record-c_effectif"></a>
 
 ## Organisation size band
@@ -385,8 +359,6 @@ An additional unique key comprises `code`.
 | `libelle` | varchar(128) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_effectif.sql`, `htdocs/install/mysql/tables/llx_c_effectif.key.sql`, `htdocs/core/class/html.formcompany.class.php:116`.
 
 <a id="record-c_email_senderprofile"></a>
 
@@ -410,8 +382,6 @@ An additional unique key comprises `entity`, `label`, `email`.
 | `signature` | text | Yes | — | Signature. |
 | `position` | smallint | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_email_senderprofile.sql`, `htdocs/install/mysql/tables/llx_c_email_senderprofile.key.sql`, `htdocs/core/class/html.formmail.class.php:770`.
 
 <a id="record-c_email_templates"></a>
 
@@ -448,8 +418,6 @@ An additional unique key comprises `entity`, `label`, `lang`.
 | `content` | mediumtext | Yes | — | Content. |
 | `content_lines` | text | Yes | — | Contentlines. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_email_templates.sql`, `htdocs/install/mysql/tables/llx_c_email_templates.key.sql`, `htdocs/core/class/html.formmail.class.php:1815`.
-
 <a id="record-c_exp_tax_cat"></a>
 
 ## Mileage tax category
@@ -465,8 +433,6 @@ The primary key is `rowid`.
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `active` | integer | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_exp_tax_cat-expensereport.sql`, `htdocs/core/class/html.form.class.php:12238`.
 
 <a id="record-c_exp_tax_range"></a>
 
@@ -484,8 +450,6 @@ The primary key is `rowid`.
 | `range_ik` | double | No | `0` | Distance boundary for selection of a mileage allowance band. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `active` | integer | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_exp_tax_range-expensereport.sql`, `htdocs/core/class/html.form.class.php:12328`.
 
 <a id="record-c_field_list"></a>
 
@@ -511,8 +475,6 @@ The primary key is `rowid`.
 | `visible` | tinyint | No | `1` | Visibility policy for the field in forms and lists. |
 | `enabled` | varchar(255) | Yes | `1` | Condition or flag determining whether the entry is available. |
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_field_list.sql`, `htdocs/product/canvas/product/actions_card_product.class.php:314`.
 
 <a id="record-c_format_cards"></a>
 
@@ -544,8 +506,6 @@ The primary key is `rowid`.
 | `custom_y` | double(24,8) | No | — | Dimension of a custom sheet along the indicated axis. |
 | `active` | integer | No | — | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_format_cards.sql`, `htdocs/admin/dict.php:298`.
-
 <a id="record-c_forme_juridique"></a>
 
 ## Legal form
@@ -566,8 +526,6 @@ An additional unique key comprises `code`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_forme_juridique.sql`, `htdocs/install/mysql/tables/llx_c_forme_juridique.key.sql`, `htdocs/core/class/html.formcompany.class.php:575`.
 
 <a id="record-c_holiday_types"></a>
 
@@ -593,8 +551,6 @@ An additional unique key comprises `entity`, `code`.
 | `sortorder` | smallint | Yes | — | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_holiday_types.sql`, `htdocs/install/mysql/tables/llx_c_holiday_types.key.sql`, `htdocs/api/class/api_setup.class.php:1095`.
-
 <a id="record-c_hrm_department"></a>
 
 ## Department
@@ -611,8 +567,6 @@ The primary key is `rowid`.
 | `code` | varchar(16) | No | — | Machine-readable code identifying a dictionary entry or feature value. |
 | `label` | varchar(128) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_hrm_department.sql`, `htdocs/admin/dict.php:301`.
 
 <a id="record-c_hrm_function"></a>
 
@@ -631,8 +585,6 @@ The primary key is `rowid`.
 | `label` | varchar(128) | Yes | — | Display label for the record. |
 | `c_level` | tinyint | No | `0` | Level associated with this job function. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_hrm_function.sql`, `htdocs/admin/dict.php:302`.
 
 <a id="record-c_hrm_public_holiday"></a>
 
@@ -658,8 +610,6 @@ Additional unique keys comprise `entity`, `code` / `entity`, `fk_country`, `dayr
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_hrm_public_holiday.sql`, `htdocs/install/mysql/tables/llx_c_hrm_public_holiday.key.sql`, `htdocs/api/class/api_setup.class.php:1175`.
-
 <a id="record-c_incoterms"></a>
 
 ## Trade delivery term
@@ -678,8 +628,6 @@ An additional unique key comprises `code`.
 | `libelle` | varchar(255) | No | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_incoterms.sql`, `htdocs/install/mysql/tables/llx_c_incoterms.key.sql`, `htdocs/core/class/cincoterm.class.php:81`.
-
 <a id="record-c_input_method"></a>
 
 ## Order method
@@ -697,8 +645,6 @@ An additional unique key comprises `code`.
 | `libelle` | varchar(128) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_input_method.sql`, `htdocs/install/mysql/tables/llx_c_input_method.key.sql`, `htdocs/core/class/html.formorder.class.php:140`.
 
 <a id="record-c_input_reason"></a>
 
@@ -720,8 +666,6 @@ An additional unique key comprises `code`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_input_reason.sql`, `htdocs/install/mysql/tables/llx_c_input_reason.key.sql`, `htdocs/core/class/html.form.class.php:5266`.
-
 <a id="record-c_invoice_subtype"></a>
 
 ## Invoice subtype
@@ -741,8 +685,6 @@ An additional unique key comprises `entity`, `code`, `fk_country`.
 | `label` | varchar(200) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_invoice_subtype.sql`, `htdocs/install/mysql/tables/llx_c_invoice_subtype.key.sql`, `htdocs/core/class/html.form.class.php:13156`.
-
 <a id="record-c_lead_status"></a>
 
 ## Opportunity stage
@@ -761,8 +703,6 @@ An additional unique key comprises `code`.
 | `position` | integer | Yes | — | Ordering value used within the relevant list, hierarchy or document. |
 | `percent` | double(5,2) | Yes | — | Percentage recorded for the activity or calculation. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_lead_status.sql`, `htdocs/install/mysql/tables/llx_c_lead_status.key.sql`, `htdocs/core/class/cleadstatus.class.php:49`.
 
 <a id="record-c_paiement"></a>
 
@@ -786,8 +726,6 @@ An additional unique key comprises `entity`, `code`.
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_paiement.sql`, `htdocs/install/mysql/tables/llx_c_paiement.key.sql`, `htdocs/core/class/html.form.class.php:5371`.
-
 <a id="record-c_paper_format"></a>
 
 ## Paper format
@@ -808,8 +746,6 @@ The primary key is `rowid`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_paper_format.sql`, `htdocs/core/class/html.formadmin.class.php:457`.
-
 <a id="record-c_partnership_type"></a>
 
 ## Partnership type
@@ -828,8 +764,6 @@ An additional unique key comprises `entity`, `code`.
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `keyword` | varchar(128) | Yes | — | Term used to check for the configured reference on a partner website. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_partnership_type-partnership.sql`, `htdocs/install/mysql/tables/llx_c_partnership_type-partnership.key.sql`, `htdocs/partnership/class/partnership.class.php:403`.
 
 <a id="record-c_payment_term"></a>
 
@@ -857,8 +791,6 @@ An additional unique key comprises `entity`, `code`.
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_payment_term.sql`, `htdocs/install/mysql/tables/llx_c_payment_term.key.sql`, `htdocs/core/class/html.form.class.php:5090`.
-
 <a id="record-c_product_nature"></a>
 
 ## Product nature
@@ -878,8 +810,6 @@ An additional unique key comprises `code`.
 | `label` | varchar(128) | Yes | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_product_nature.sql`, `htdocs/install/mysql/tables/llx_c_product_nature.key.sql`, `htdocs/core/class/cproductnature.class.php:49`.
-
 <a id="record-c_productbatch_qcstatus"></a>
 
 ## Batch quality state
@@ -897,8 +827,6 @@ An additional unique key comprises `code`, `entity`.
 | `code` | varchar(16) | No | — | Machine-readable code identifying a dictionary entry or feature value. |
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `active` | integer | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_productbatch_qcstatus-productbatch.sql`, `htdocs/install/mysql/tables/llx_c_productbatch_qcstatus-productbatch.key.sql`, `htdocs/admin/dict.php:311`.
 
 <a id="record-c_propalst"></a>
 
@@ -918,8 +846,6 @@ An additional unique key comprises `code`.
 | `sortorder` | smallint | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_propalst.sql`, `htdocs/install/mysql/tables/llx_c_propalst.key.sql`, `htdocs/core/class/html.formpropal.class.php:85`.
-
 <a id="record-c_prospectcontactlevel"></a>
 
 ## Prospect contact level
@@ -937,8 +863,6 @@ The primary key is `code`.
 | `active` | smallint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_prospectcontactlevel.sql`, `htdocs/core/class/html.formcompany.class.php:226`.
-
 <a id="record-c_prospectlevel"></a>
 
 ## Prospect potential
@@ -955,8 +879,6 @@ The primary key is `code`.
 | `sortorder` | smallint | Yes | — | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | smallint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_prospectlevel.sql`, `htdocs/core/class/html.formcompany.class.php:175`.
 
 <a id="record-c_regions"></a>
 
@@ -980,8 +902,6 @@ Additional unique keys comprise `code_region` / `code_region`.
 | `nom` | varchar(100) | Yes | — | Name under which this record is presented or identified. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_regions.sql`, `htdocs/install/mysql/tables/llx_c_departements.key.sql`, `htdocs/install/mysql/tables/llx_c_regions.key.sql`, `htdocs/core/class/cregion.class.php:106`.
-
 <a id="record-c_revenuestamp"></a>
 
 ## Revenue stamp
@@ -1001,8 +921,6 @@ The primary key is `rowid`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `accountancy_code_sell` | varchar(32) | Yes | `NULL` | Account code used for the respective sales or purchase accounting mapping. |
 | `accountancy_code_buy` | varchar(32) | Yes | `NULL` | Account code used for the respective sales or purchase accounting mapping. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_revenuestamp.sql`, `htdocs/core/class/html.formother.class.php:342`.
 
 <a id="record-c_shipment_mode"></a>
 
@@ -1028,8 +946,6 @@ An additional unique key comprises `code`, `entity`.
 | `active` | tinyint | Yes | `0` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_shipment_mode.sql`, `htdocs/install/mysql/tables/llx_c_shipment_mode.key.sql`, `htdocs/core/class/html.form.class.php:5866`.
-
 <a id="record-c_shipment_package_type"></a>
 
 ## Package type
@@ -1046,8 +962,6 @@ The primary key is `rowid`.
 | `description` | varchar(255) | Yes | — | Descriptive text associated with this entry. |
 | `active` | integer | No | `1` | Whether this entry is enabled for selection or use. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_shipment_package_type.sql`, `htdocs/core/class/cgenericdic.class.php:163`.
 
 <a id="record-c_socialnetworks"></a>
 
@@ -1069,8 +983,6 @@ An additional unique key comprises `entity`, `code`.
 | `icon` | varchar(20) | Yes | — | Icon associated with the social network. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_socialnetworks.sql`, `htdocs/install/mysql/tables/llx_c_socialnetworks.key.sql`, `htdocs/api/class/api_setup.class.php:2242`.
-
 <a id="record-c_stcomm"></a>
 
 ## Party prospecting state
@@ -1090,8 +1002,6 @@ An additional unique key comprises `code`.
 | `sortorder` | smallint | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_stcomm.sql`, `htdocs/install/mysql/tables/llx_c_stcomm.key.sql`, `htdocs/admin/dict.php:295`.
-
 <a id="record-c_stcommcontact"></a>
 
 ## Contact prospecting state
@@ -1109,8 +1019,6 @@ An additional unique key comprises `code`.
 | `libelle` | varchar(128) | Yes | — | Display label for the record. |
 | `picto` | varchar(128) | Yes | — | Icon identifier used for presentation. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_stcommcontact.sql`, `htdocs/install/mysql/tables/llx_c_stcommcontact.key.sql`, `htdocs/admin/dict.php:308`.
 
 <a id="record-c_ticket_category"></a>
 
@@ -1137,8 +1045,6 @@ An additional unique key comprises `code`, `entity`.
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
 | `fk_ticket_type` | integer | Yes | — | Ticket type to which this category applies. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_ticket_category-ticket.sql`, `htdocs/install/mysql/tables/llx_c_ticket_category-ticket.key.sql`, `htdocs/core/class/html.formticket.class.php:1121`.
-
 <a id="record-c_ticket_resolution"></a>
 
 ## Ticket resolution
@@ -1159,8 +1065,6 @@ An additional unique key comprises `code`, `entity`.
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
 | `use_default` | integer | Yes | `1` | Marks the candidate used as a default where the applicable selection permits it. |
 | `description` | varchar(255) | Yes | — | Descriptive text associated with this entry. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_ticket_resolution-ticket.sql`, `htdocs/install/mysql/tables/llx_c_ticket_resolution-ticket.key.sql`, `htdocs/core/modules/modTicket.class.php:200`.
 
 <a id="record-c_ticket_severity"></a>
 
@@ -1184,8 +1088,6 @@ An additional unique key comprises `code`, `entity`.
 | `use_default` | integer | Yes | `1` | Marks the candidate used as a default where the applicable selection permits it. |
 | `description` | varchar(255) | Yes | — | Descriptive text associated with this entry. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_ticket_severity-ticket.sql`, `htdocs/install/mysql/tables/llx_c_ticket_severity-ticket.key.sql`, `htdocs/api/class/api_setup.class.php:2370`.
-
 <a id="record-c_ticket_type"></a>
 
 ## Ticket type
@@ -1207,8 +1109,6 @@ An additional unique key comprises `code`, `entity`.
 | `use_default` | integer | Yes | `1` | Marks the candidate used as a default where the applicable selection permits it. |
 | `description` | varchar(255) | Yes | — | Descriptive text associated with this entry. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_ticket_type-ticket.sql`, `htdocs/install/mysql/tables/llx_c_ticket_type-ticket.key.sql`, `htdocs/api/class/api_setup.class.php:2435`.
-
 <a id="record-c_transport_mode"></a>
 
 ## Transport mode
@@ -1226,8 +1126,6 @@ An additional unique key comprises `code`, `entity`.
 | `code` | varchar(3) | No | — | Machine-readable code identifying a dictionary entry or feature value. |
 | `label` | varchar(255) | No | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_transport_mode.sql`, `htdocs/install/mysql/tables/llx_c_transport_mode.key.sql`, `htdocs/core/class/html.form.class.php:5742`.
 
 <a id="record-c_tva"></a>
 
@@ -1260,8 +1158,6 @@ An additional unique key comprises `entity`, `fk_pays`, `code`, `taux`, `recuper
 | `accountancy_code_sell` | varchar(32) | Yes | `NULL` | Account code used for the respective sales or purchase accounting mapping. |
 | `accountancy_code_buy` | varchar(32) | Yes | `NULL` | Account code used for the respective sales or purchase accounting mapping. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_tva.sql`, `htdocs/install/mysql/tables/llx_c_tva.key.sql`, `htdocs/core/class/html.form.class.php:7917`.
-
 <a id="record-c_type_contact"></a>
 
 ## Contact role
@@ -1285,8 +1181,6 @@ An additional unique key comprises `element`, `source`, `code`.
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_type_contact.sql`, `htdocs/install/mysql/tables/llx_c_type_contact.key.sql`, `htdocs/core/class/commonobject.class.php:1385`.
-
 <a id="record-c_type_container"></a>
 
 ## Page container type
@@ -1307,8 +1201,6 @@ An additional unique key comprises `code`, `entity`.
 | `typecontainer` | varchar(10) | Yes | `'page'` | Name of the supported web content container type. |
 | `position` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_type_container-website.sql`, `htdocs/install/mysql/tables/llx_c_type_container-website.key.sql`, `htdocs/core/class/html.formwebsite.class.php:123`.
 
 <a id="record-c_type_fees"></a>
 
@@ -1331,8 +1223,6 @@ An additional unique key comprises `code`.
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_type_fees.sql`, `htdocs/install/mysql/tables/llx_c_type_fees.key.sql`, `htdocs/core/class/html.form.class.php:1761`.
-
 <a id="record-c_type_resource"></a>
 
 ## Resource type
@@ -1349,8 +1239,6 @@ An additional unique key comprises `label`, `code`.
 | `code` | varchar(32) | No | — | Machine-readable code identifying a dictionary entry or feature value. |
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_type_resource.sql`, `htdocs/install/mysql/tables/llx_c_type_resource.key.sql`, `htdocs/core/class/ctyperesource.class.php:45`.
 
 <a id="record-c_typent"></a>
 
@@ -1371,8 +1259,6 @@ An additional unique key comprises `code`.
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 | `module` | varchar(32) | Yes | — | Feature or extension to which this entry belongs. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_typent.sql`, `htdocs/install/mysql/tables/llx_c_typent.key.sql`, `htdocs/core/class/ctypent.class.php:93`.
 
 <a id="record-c_units"></a>
 
@@ -1397,8 +1283,6 @@ An additional unique key comprises `code`.
 | `unit_type` | varchar(10) | Yes | — | Measurement family of the unit. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_c_units.sql`, `htdocs/install/mysql/tables/llx_c_units.key.sql`, `htdocs/core/class/cunits.class.php:121`.
-
 <a id="record-c_ziptown"></a>
 
 ## Postal locality
@@ -1419,5 +1303,3 @@ An additional unique key comprises `zip`, `town`, `fk_pays`.
 | `town` | varchar(180) | No | — | Town or city. |
 | `town_up` | varchar(180) | Yes | — | Uppercase representation of the town name for lookup. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_c_ziptown.sql`, `htdocs/install/mysql/tables/llx_c_ziptown.key.sql`, `htdocs/api/class/api_setup.class.php:1850`.

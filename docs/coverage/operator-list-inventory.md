@@ -1,51 +1,41 @@
-# Operator list coverage in release 24.0.3
+# Operator register coverage
 
-The release contains **56 tracked application files whose basename is exactly `list.php`**. Of these, 55 have stable module owners. Eighteen have field-by-field filter guides. **37 stable paths still need a full selector trace**, including three with screen-specific evidence in other chapters. One further file belongs to a development module. These counts measure a reproducible subset of navigation. A percentage for the entire interface or the ERP would require a broader inventory. [Release baseline](../baseline.md) · [Annotated screen inventory](../list-filters/screen-index.csv)
+A search result can represent a party, a document, an individual line, a template or a payment. Identify that unit before comparing counts or adding amounts. The [register inventory](../list-filters/screen-index.csv) classifies 56 screens by their business purpose, owning module and depth of documentation. The [filter dictionary](../list-filters/README.md) describes the inputs and comparisons for 18 of them.
 
-| Predicate coverage | Paths | What a reader can establish |
+| Register family | Screens | Unit selected and examples |
 | --- | ---: | --- |
-| Predicate guide | 18 | The guide identifies selected records, input names, comparisons, role and entity scope, and screen-specific differences. |
-| Partial screen evidence | 3 | Chapters trace bookmark visibility, third-party representative assignment and the supplier invoice line assignment queue. The last also follows selected lines through posting. These screens are outside the 18-register selector dictionary. [Workspace and bookmarks](../integrations/authoring-and-workspace.md) · [Third-party selection and sales attribution](../operator-reports/people-and-sales-attribution.md) · [Supplier account preparation](../finance/supplier-account-preparation.md) |
-| Open for selector trace | 34 | Screen purpose and release ownership are recorded. Coverage of related records or workflows elsewhere does not establish the screen's selection behavior. |
-| Excluded by maturity | 1 | `htdocs/intracommreport/list.php:181–191` explicitly requires the intra-community reporting module. Its descriptor declares development maturity at `htdocs/core/modules/modIntracommreport.class.php:53`. |
-| **Total** | **56** | **55 stable-owned, one development-owned, zero unresolved owners.** |
+| Business registers | 43 | Parties, customer and supplier documents, service requests, projects, claims, stock and payment records. A row on the customer payment register can settle several invoices. |
+| Accounting assignment | 3 | A customer invoice line, supplier invoice line or expense line. Group by source document only after evaluating the assignment on each eligible line. [Supplier invoice assignment](../finance/supplier-account-preparation.md) · [Expense assignment](../expense-accounting/README.md) |
+| Setup catalogues | 3 | A bookkeeping template, asset model or variant attribute definition. A definition may have many transactions or item variants. |
+| Identity and operations | 4 | An account, access group, per-user integration credential or scheduled job. The credential list is restricted to the selected user and depends on the feature being enabled. |
+| Workspace tools | 1 | A bookmark with private or shared visibility. |
+| Public self-service | 1 | A requester’s support ticket, subject to public-interface settings and requester verification. |
+| Development reporting | 1 | A separately enabled intra-community report. |
 
-## What operators actually open
+## What each coverage level establishes
 
-The filename contains both ordinary transaction registers and lists with narrower audiences. Each candidate has one primary surface for counting. The descriptor column in the CSV can name multiple modules when a selection is shared or a supplier workflow supports both permission arrangements.
+All 56 named registers have a linked guide covering the unit selected, eligibility, filters and important differences between totals. The inventory retains module maturity separately: 55 registers belong to stable modules and the [intra-community register](../registers-accounts/intra-community.md) belongs to a development-stage module. The [literal input index](../list-filters/request-keys.csv) contains 1,222 distinct register/input pairs found across 54 registers. The local-tax list and supplier-price list use other controls.
 
-| Primary surface | Count | Examples and remaining distinctions |
-| --- | ---: | --- |
-| Business register | 43 | Quotations, orders, invoices, parties, contacts, payment records, bank accounts, asset records, loans, stock, service cases and projects. The 18 detailed guides all belong here. Twenty-five other business registers remain, including the partially traced third-party register. |
-| Accounting assignment queue | 3 | These pages work on customer invoice **lines**, supplier invoice **lines** and expense **lines**. A single source document can create several assignment decisions. |
-| Setup catalogue | 3 | Bookkeeping templates, fixed-asset models and product variant **attribute definitions** are reusable records. The variants list selects attributes, while the ordinary product register selects items. |
-| Identity and operations | 4 | Users, groups, per-user API token records and scheduled jobs. The token list is scoped to a user. The user card exposes it when API access and the token-table option are enabled. |
-| Workspace tools | 1 | The bookmarks register includes ownership and visibility behavior. |
-| Public self-service | 1 | The public ticket page uses the public-interface setting and requester verification. Internal ticket queue filters describe a different entry point. |
-| Development report | 1 | The release tree retains the intra-community list under its development descriptor. |
-
-Source examples include `htdocs/accountancy/customer/list.php:302–321`, `htdocs/accountancy/supplier/list.php:306–325`, `htdocs/accountancy/expensereport/list.php:276–291`, `htdocs/variants/list.php:72–74,246–270`, `htdocs/user/card.php:2200–2214`, `htdocs/user/api_token/list.php:45–63` and `htdocs/public/ticket/list.php:92–96,120–126,133–167`.
-
-## Other filenames with distinct business selections
-
-A reviewer looking only for `list.php` would miss the following operator entry points. These examples identify additional selection contracts and give a path to existing behavior documentation where available. Their number does not increase the 56-file denominator.
-
-| Entry point under `htdocs/` | Unit selected and reason it matters |
+| Lookup | Registers and decisions |
 | --- | --- |
-| `commande/list_det.php:421–437` | An individual customer order line joins its order and catalog item. Several lines can belong to one order, and order margin can repeat on those lines. [Customer order line report](../operator-reports/customer-order-line-list.md) |
-| `compta/bank/bankentries_list.php:585–615` | A bank transaction belongs to an account. The bank-account directory counts accounts, while this register supports reconciliation at entry level. |
-| `compta/prelevement/orders_list.php:215–231` | Direct-debit and credit-transfer **batch headers**. The exact-basename register at `compta/prelevement/list.php:145–179,207–218` joins the batch to its payment lines. |
-| `compta/facture/invoicetemplate_list.php:320–338,400–416` | Recurring invoice definitions and their template lines. An issued invoice may reference one of these templates, and many issued invoices may come from the same definition. |
-| `accountancy/bookkeeping/listbyaccount.php:24–30` and `accountancy/journal/sellsjournal.php:170–221` | Account-ordered ledger entries support matching. The sales journal instead considers source invoice lines and whether the invoice has already been transferred to bookkeeping. [Account matching](../specification/financial/manual-ledger-and-account-matching.md) · [Source journal posting](../specification/accounting/source-journal-postings.md) |
-| `product/stock/movement_list.php:639–684,971–988` | Each movement records a dated quantity change. A warehouse or physical-count session can lead to many movements. [Movement journal](../warehouse-corrections/movement-journal-and-counts.md) |
-| `product/stock/productlot_list.php:80,244–260` and `product/stock/stocktransfer/stocktransfer_list.php:235–254` | Lot master records and stock transfer documents each have their own search. A lot can appear in several movements, and a transfer can cover several lines. |
+| [Commercial and operational filter guides](../list-filters/README.md) | Eighteen customer, supplier, warehouse, project, service and staffing lists, including line-based dates, category intersections and result grain. |
+| [Finance and capital](../registers-accounts/README.md) | Journal legs, reusable templates, sales line assignments, fixed assets, models, loans and the development-stage declaration register. |
+| [Payments and collections](../registers-payments/README.md) | Customer and supplier payments, bank accounts, miscellaneous cash, cheque deposits, remittance lines, local tax, VAT, social charges, donations and their receipts. |
+| [People, catalogue and communications](../registers-operations/README.md) | Members, activities, campaigns, contacts, supplier prices, surveys, resources and variant attributes. |
+| [Workforce, identity and self-service](../registers-administration/README.md) | Salary obligations, users, groups, personal integration credentials, scheduled jobs and the requester’s ticket queue. |
+| [Parties and assignments](../registers-partners/README.md) | Party search, bookmarks and supplier line account assignments; company, user and chart selection each delimit a different population. |
+| [Claims and reimbursements](../expense-accounting/README.md) and [membership subscriptions](../specification/people-and-services/member-subscription-register.md) | A claim line awaiting account assignment, a payment allocated to a claim, and a member's subscription charge have independent identities. |
 
-## How to continue the inventory
+## Related selections with different units
 
-Use the supplier assignment and purchase-journal trace as a reference for the customer and expense assignment queues, then follow those records into their source journals. The expected evidence includes which line appears, which account is presented, what happens after a binding change, and which list confirms that a posting reached the ledger. [Supplier account preparation](../finance/supplier-account-preparation.md)
+| Operator selection | Unit and relationship |
+| --- | --- |
+| [Customer order lines](../operator-reports/customer-order-line-list.md) | One line joins one order and can identify a catalogue item. An order-wide margin can repeat over several rows. |
+| Bank entries | A bank movement belongs to an account. Reconciliation matches movements to a statement. An account balance aggregates multiple movements. |
+| Collection or transfer batches | A batch header can contain several payment lines. Counting the eligible lines and counting the selected batches yield different totals. |
+| Recurring invoice definitions | A definition contains template lines. Each generated invoice can carry the definition as its origin. Several issued documents can share it. |
+| [Ledger account matching](../specification/financial/manual-ledger-and-account-matching.md) and [sales journal posting](../specification/accounting/source-journal-postings.md) | Matching selects posted entries. The sales journal starts from invoice lines and tests whether that document has already been transferred. |
+| [Stock movement journal](../warehouse-corrections/movement-journal-and-counts.md) | One dated change in quantity. A count or transfer can create several movements. Lot identity, warehouse balance and transfer document are separate units. |
+| [Salary settlement](../expense-accounting/README.md) | A salary obligation and its individual payments have separate identities. Reconcile the obligation with its allocated payments and linked bank movements. |
 
-The payment registers form a second tractable group: customer, supplier, expense reimbursement, donation, miscellaneous, VAT and local tax payments, followed by the bank-entry and remittance-batch registers.
-
-For another release, enumerate tracked files below `htdocs/` and compare the final path component exactly with `list.php`. Record the release's file tree before applying the stable-module selection. Identify ownership from each page's records, module guard, permission or module navigation and the version in its top-level descriptor. The CSV provides the page line ranges and the descriptor path and line for that evidence. The cross-reference uses paths from the documentation repository root. [Module maturity inventory](modules.json)
-
-This pass found no exact-basename matches in vendor/include trees, framework internals, custom add-ons or generator scaffolding. For instance, `htdocs/modulebuilder/template/myobject_list.php` is an authoring template with a different filename. The accounting `admin/template/list.php` is a working register of bookkeeping templates with a chart-of-accounts permission and a query on persisted records. It belongs in the inventory. Menu aliases, tabs, parameterized modes, dashboards, AJAX selectors, cards, generated reports and endpoint collections require separate discovery. [Bookkeeping template source locator in the inventory](../list-filters/screen-index.csv)
+Individual card histories, navigation aliases, report variants, interactive selectors and organisation-defined fields can introduce further populations. A register selector identifies which rows are presented. Its result does not establish whether a user can execute a subsequent write or whether a posting will clear the corresponding open item.

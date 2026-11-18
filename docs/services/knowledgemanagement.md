@@ -2,8 +2,6 @@
 
 A knowledge record has a lifecycle and can belong to categories. The article's content and publication state are distinct from the category classification returned for that record.
 
-The implementation locations below refer to `htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php`.
-
 ## `get` — Read a knowledge article
 
 Route `GET knowledgerecords/{id}`.
@@ -16,8 +14,6 @@ Route `GET knowledgerecords/{id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — knowledge article missing.
-
-Source lines `73–89`.
 
 ## `getCategories` — Read categories
 
@@ -33,8 +29,6 @@ The method reads classification links.
 
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `104–119`.
 
 ## `index` — List records
 
@@ -52,8 +46,6 @@ The article list applies its entity scope, optional category and supplied search
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `142–243`.
-
 ## `post` — Create a knowledge article
 
 Route `POST knowledgerecords/`.
@@ -69,8 +61,6 @@ The optional caller marker is placed in event context for synchronization.
 - `400` — required request field absent.
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `257–283` with `_validate 529–545`.
 
 ## `put` — Update a knowledge article
 
@@ -88,8 +78,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — knowledge article missing.
 - `500` — business operation failed.
 
-Source lines `298–341` with `get 73–89`.
-
 ## `delete` — Delete a knowledge article
 
 Route `DELETE knowledgerecords/{id}`.
@@ -103,8 +91,6 @@ Route `DELETE knowledgerecords/{id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — knowledge article missing.
 - `500` — removal failed.
-
-Source lines `355–379`.
 
 ## `validate` — Validate a knowledge article
 
@@ -123,8 +109,6 @@ The method validates the record.
 - `404` — knowledge article missing.
 - `500` — business operation failed.
 
-Source lines `462–482`.
-
 ## `cancel` — Cancel
 
 Route `POST {id}/cancel`.
@@ -141,5 +125,3 @@ The method cancels the record.
 - `403` — access refused.
 - `404` — knowledge article missing.
 - `500` — business operation failed.
-
-Source lines `499–519`.

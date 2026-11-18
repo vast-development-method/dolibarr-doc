@@ -2,8 +2,6 @@
 
 A bill defines the components needed to make an output. The header, its individual component rows and the validation transition have separate operations. Producing finished units belongs to the production-order service.
 
-The implementation locations below refer to `htdocs/bom/class/api_boms.class.php`.
-
 ## `get` — Read a bill of materials
 
 Route `GET {id}`.
@@ -16,8 +14,6 @@ Route `GET {id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — bom missing.
-
-Source lines `72–88`.
 
 ## `index` — List records
 
@@ -33,8 +29,6 @@ The bill list applies the entity scope of the model and the supplied search crit
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `110–183`.
-
 ## `post` — Create a bill of materials
 
 **Arguments** `request_data = null` (collection).
@@ -49,8 +43,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `196–220` with `_validate 662–678`.
-
 ## `put` — Update a bill of materials
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -64,8 +56,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — bom missing.
 - `500` — business operation failed.
-
-Source lines `237–278` with `get 72–88`.
 
 ## `validate` — Validate a bill of materials
 
@@ -84,8 +74,6 @@ The method validates the record.
 - `404` — bom missing.
 - `500` — business operation failed.
 
-Source lines `294–314`.
-
 ## `delete` — Delete a bill of materials
 
 **Arguments** `id` (integer).
@@ -97,8 +85,6 @@ Source lines `294–314`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — bom missing.
 - `500` — removal failed.
-
-Source lines `328–352`.
 
 ## `getLines` — Read document lines
 
@@ -112,8 +98,6 @@ Route `GET {id}/lines`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — bom missing.
-
-Source lines `368–388`.
 
 ## `postLine` — Add a line
 
@@ -133,8 +117,6 @@ The method adds a line.
 - `404` — bom missing.
 - `500` — business operation failed.
 
-Source lines `406–442`.
-
 ## `putLine` — Amend a line
 
 Route `PUT {id}/lines/{lineid}`.
@@ -152,8 +134,6 @@ The method amends a line.
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this BOM.
 - `404` — bom missing, bom line missing.
 
-Source lines `460–506`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{lineid}`.
@@ -169,5 +149,3 @@ The method removes a line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — bom missing.
 - `500` — removal failed, business operation failed.
-
-Source lines `525–563`.

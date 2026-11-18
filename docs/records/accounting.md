@@ -55,8 +55,6 @@ An additional unique key comprises `pcg_version`.
 | `date_creation` | datetime | Yes | — | When the row was created. |
 | `fk_user_author` | integer | Yes | — | Account recorded as creator or author. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_system.sql`, `htdocs/install/mysql/tables/llx_accounting_system.key.sql`, `htdocs/accountancy/class/lettering.class.php:543`.
-
 <a id="record-accounting_account"></a>
 
 ## Ledger account
@@ -88,8 +86,6 @@ An additional unique key comprises `account_number`, `entity`, `fk_pcg_version`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_account.sql`, `htdocs/install/mysql/tables/llx_accounting_account.key.sql`, `htdocs/install/mysql/tables/llx_accounting_system.key.sql`, `htdocs/accountancy/class/lettering.class.php:542`.
-
 <a id="record-accounting_category_account"></a>
 
 ## Report category membership
@@ -106,8 +102,6 @@ An additional unique key comprises `fk_accounting_category`, `fk_accounting_acco
 | `fk_accounting_category` | integer | Yes | — | Financial reporting category identity. |
 | `fk_accounting_account` | bigint | Yes | — | General ledger account identity. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_category_account-accounting.sql`, `htdocs/install/mysql/tables/llx_accounting_category_account-accounting.key.sql`, `htdocs/accountancy/class/accountancycategory.class.php:929`.
-
 <a id="record-accounting_fiscalyear"></a>
 
 ## Fiscal period
@@ -117,7 +111,7 @@ Records period start and end, entity, and whether operations have closed the per
 **Storage** `accounting_fiscalyear`.
 The primary key is `rowid`.
 
-The record class defines `0` open, `1` closed. See `htdocs/core/class/fiscalyear.class.php`.
+The stored state codes are `0` open, `1` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -131,8 +125,6 @@ The record class defines `0` open, `1` closed. See `htdocs/core/class/fiscalyear
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_author` | integer | Yes | `NULL` | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | `NULL` | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_accounting_fiscalyear.sql`, `htdocs/accountancy/class/lettering.class.php:570`.
 
 <a id="record-accounting_journal"></a>
 
@@ -154,8 +146,6 @@ An additional unique key comprises `code`, `entity`.
 | `label` | varchar(128) | No | — | Display label for the record. |
 | `nature` | smallint | No | `1` | Journal family. The declaration distinguishes general, sales, purchases, bank, expense claims and opening entries. |
 | `active` | smallint | Yes | `0` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_accounting_journal.sql`, `htdocs/install/mysql/tables/llx_accounting_journal.key.sql`, `htdocs/compta/bank/class/account.class.php:1133`.
 
 <a id="record-accounting_bookkeeping"></a>
 
@@ -205,8 +195,6 @@ The primary key is `rowid`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_bookkeeping-accounting.sql`, `htdocs/asset/class/asset.class.php:750`.
-
 <a id="record-accounting_bookkeeping_tmp"></a>
 
 ## Staged ledger line
@@ -254,8 +242,6 @@ The primary key is `rowid`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_bookkeeping_tmp-accounting.sql`, `htdocs/accountancy/class/bookkeeping.class.php:759`.
-
 <a id="record-accounting_transaction_template"></a>
 
 ## Journal template
@@ -280,8 +266,6 @@ An additional unique key comprises `code`, `entity`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_accounting_transaction_template-accounting.sql`, `htdocs/install/mysql/tables/llx_accounting_transaction_template-accounting.key.sql`, `htdocs/accountancy/class/bookkeepingtemplate.class.php:48`.
-
 <a id="record-accounting_transaction_template_det"></a>
 
 ## Journal template line
@@ -302,8 +286,6 @@ The primary key is `rowid`.
 | `operation_label` | varchar(255) | Yes | — | Operation Label. |
 | `debit` | double(24,8) | Yes | — | Value entered on the debit side of the posting. |
 | `credit` | double(24,8) | Yes | — | Value entered on the credit side of the posting. |
-
-Source locations include `htdocs/install/mysql/tables/llx_accounting_transaction_template_det-accounting.sql`, `htdocs/install/mysql/tables/llx_accounting_transaction_template_det-accounting.key.sql`, `htdocs/accountancy/class/bookkeepingtemplate.class.php:155`.
 
 <a id="record-chargesociales"></a>
 
@@ -339,8 +321,6 @@ The primary key is `rowid`.
 | `note_public` | text | Yes | — | Note intended for external-facing output where the document model includes it. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_chargesociales.sql`, `htdocs/compta/sociales/class/chargesociales.class.php:52`.
-
 <a id="record-paiementcharge"></a>
 
 ## Statutory charge payment
@@ -364,8 +344,6 @@ The primary key is `rowid`.
 | `fk_bank` | integer | No | — | Related bank movement. Bank account identities use a different key. |
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_paiementcharge.sql`, `htdocs/compta/sociales/class/chargesociales.class.php:390`.
 
 <a id="record-tva"></a>
 
@@ -395,8 +373,6 @@ The primary key is `rowid`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_tva.sql`, `htdocs/compta/tva/class/tva.class.php:48`.
-
 <a id="record-localtax"></a>
 
 ## Local tax liability
@@ -420,8 +396,6 @@ The primary key is `rowid`.
 | `fk_bank` | integer | Yes | — | Related bank movement. Bank account identities use a different key. |
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_localtax.sql`, `htdocs/compta/localtax/class/localtax.class.php:41`.
 
 <a id="record-payment_vat"></a>
 
@@ -447,8 +421,6 @@ The primary key is `rowid`.
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 
-Source locations include `htdocs/install/mysql/tables/llx_payment_vat.sql`, `htdocs/compta/tva/class/tva.class.php:842`.
-
 <a id="record-asset"></a>
 
 ## Fixed asset
@@ -460,7 +432,7 @@ The primary key is `rowid`.
 
 **Referenced by** [asset_accountancy_codes_economic](accounting.md#record-asset_accountancy_codes_economic) (fk_asset), [asset_accountancy_codes_fiscal](accounting.md#record-asset_accountancy_codes_fiscal) (fk_asset), [asset_depreciation](accounting.md#record-asset_depreciation) (fk_asset), [asset_depreciation_options_economic](accounting.md#record-asset_depreciation_options_economic) (fk_asset), [asset_depreciation_options_fiscal](accounting.md#record-asset_depreciation_options_fiscal) (fk_asset).
 
-The record class defines `0` draft, `1` validated, `9` disposed. See `htdocs/asset/class/asset.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` disposed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -497,8 +469,6 @@ The record class defines `0` draft, `1` validated, `9` disposed. See `htdocs/ass
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_asset-asset.sql`, `htdocs/install/mysql/tables/llx_asset-asset.key.sql`, `htdocs/asset/class/asset.class.php:48`.
-
 <a id="record-asset_model"></a>
 
 ## Asset model
@@ -511,7 +481,7 @@ An additional unique key comprises `entity`, `ref`.
 
 **Referenced by** [asset](accounting.md#record-asset) (fk_asset_model), [asset_accountancy_codes_economic](accounting.md#record-asset_accountancy_codes_economic) (fk_asset_model), [asset_accountancy_codes_fiscal](accounting.md#record-asset_accountancy_codes_fiscal) (fk_asset_model), [asset_depreciation_options_economic](accounting.md#record-asset_depreciation_options_economic) (fk_asset_model), [asset_depreciation_options_fiscal](accounting.md#record-asset_depreciation_options_fiscal) (fk_asset_model).
 
-The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/asset/class/assetmodel.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -530,8 +500,6 @@ The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/ass
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | smallint | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
-
-Source locations include `htdocs/install/mysql/tables/llx_asset_model-asset.sql`, `htdocs/install/mysql/tables/llx_asset_model-asset.key.sql`, `htdocs/asset/class/assetmodel.class.php:50`.
 
 <a id="record-asset_accountancy_codes_economic"></a>
 
@@ -559,8 +527,6 @@ Additional unique keys comprise `fk_asset` / `fk_asset_model`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. References [user](foundation.md#record-user) (rowid). |
 
-Source locations include `htdocs/install/mysql/tables/llx_asset_accountancy_codes_economic-asset.sql`, `htdocs/install/mysql/tables/llx_asset_accountancy_codes_economic-asset.key.sql`, `htdocs/asset/class/assetaccountancycodes.class.php:39`.
-
 <a id="record-asset_accountancy_codes_fiscal"></a>
 
 ## Fiscal depreciation accounts
@@ -581,8 +547,6 @@ Additional unique keys comprise `fk_asset` / `fk_asset_model`.
 | `provision_accelerated_depreciation` | varchar(32) | Yes | — | Fiscal provision account code for accelerated depreciation. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. References [user](foundation.md#record-user) (rowid). |
-
-Source locations include `htdocs/install/mysql/tables/llx_asset_accountancy_codes_fiscal-asset.sql`, `htdocs/install/mysql/tables/llx_asset_accountancy_codes_fiscal-asset.key.sql`, `htdocs/asset/class/assetaccountancycodesfiscal.class.php:38`.
 
 <a id="record-asset_depreciation_options_economic"></a>
 
@@ -610,8 +574,6 @@ Additional unique keys comprise `fk_asset` / `fk_asset_model`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. References [user](foundation.md#record-user) (rowid). |
 
-Source locations include `htdocs/install/mysql/tables/llx_asset_depreciation_options_economic-asset.sql`, `htdocs/install/mysql/tables/llx_asset_depreciation_options_economic-asset.key.sql`, `htdocs/asset/class/asset.class.php:604`.
-
 <a id="record-asset_depreciation_options_fiscal"></a>
 
 ## Fiscal depreciation parameters
@@ -637,8 +599,6 @@ Additional unique keys comprise `fk_asset` / `fk_asset_model`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. References [user](foundation.md#record-user) (rowid). |
 
-Source locations include `htdocs/install/mysql/tables/llx_asset_depreciation_options_fiscal-asset.sql`, `htdocs/install/mysql/tables/llx_asset_depreciation_options_fiscal-asset.key.sql`, `htdocs/asset/class/asset.class.php:601`.
-
 <a id="record-asset_depreciation"></a>
 
 ## Depreciation schedule row
@@ -662,8 +622,6 @@ An additional unique key comprises `fk_asset`, `depreciation_mode`, `ref`.
 | `accountancy_code_credit` | varchar(32) | Yes | — | Account to credit for the recorded depreciation. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. References [user](foundation.md#record-user) (rowid). |
-
-Source locations include `htdocs/install/mysql/tables/llx_asset_depreciation-asset.sql`, `htdocs/install/mysql/tables/llx_asset_depreciation-asset.key.sql`, `htdocs/asset/class/asset.class.php:607`.
 
 <a id="record-loan"></a>
 
@@ -701,8 +659,6 @@ The primary key is `rowid`.
 | `fk_user_modif` | integer | Yes | `NULL` | Account recorded for the latest modification. |
 | `active` | tinyint | No | `1` | Whether this entry is enabled for selection or use. |
 
-Source locations include `htdocs/install/mysql/tables/llx_loan-loan.sql`, `htdocs/loan/class/loan.class.php:48`.
-
 <a id="record-loan_schedule"></a>
 
 ## Loan instalment
@@ -732,8 +688,6 @@ An additional unique key comprises `fk_loan`, `datep`.
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 
-Source locations include `htdocs/install/mysql/tables/llx_loan_schedule-loan.sql`, `htdocs/install/mysql/tables/llx_loan_schedule-loan.key.sql`, `htdocs/loan/class/loanschedule.class.php:42`.
-
 <a id="record-payment_loan"></a>
 
 ## Loan payment
@@ -760,5 +714,3 @@ The primary key is `rowid`.
 | `fk_bank` | integer | No | — | Related bank movement. Bank account identities use a different key. |
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_payment_loan.sql`, `htdocs/loan/class/loan.class.php:366`.

@@ -8,15 +8,11 @@ The optional credential exchange accepts a login, password, entity selector and 
 
 For an existing key, a normal exchange returns the current key. For a first key or a requested rotation, the user must have permission to modify their own user record. Rotation writes a replacement to that record. Integrations using the previous user key then need the replacement for future requests. The successful response carries a result code, token, entity and message. No business record is created by this exchange.
 
-See `htdocs/api/class/api_login.class.php:39–46`, `70–73` and `96–193`.
-
 ## Resolving a protected request
 
 The access layer can resolve credentials stored on a user record or use the configured token table associated with users. Entity and group-membership rules affect candidate selection in multi-company configurations. Ambiguous credentials are an error. The token’s entity must match the working entity. A user record must still be enabled and within its account validity interval. Session invalidation is honored where a recorded session date applies.
 
 Once resolved, the user’s rights are loaded. An ordinary internal user takes the user role, a user linked to a customer or supplier takes the external role and administrator status takes precedence. The dispatcher compares the resolved role against the service's allowed roles. Entity scope, a party association and operation-specific rights continue to apply at the business resource. Depending on configuration the access layer also updates usage counters. In token-table mode it records usage and last access against the selected credential.
-
-See `htdocs/api/class/api_access.class.php:91–170`, `175–259`, `266–349` and `363–379`.
 
 ## Consequences for callers
 

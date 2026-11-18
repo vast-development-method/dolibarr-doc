@@ -2,8 +2,6 @@
 
 The category record and its links to classified objects have separate lifecycles. Membership can be changed by object identifier or reference. Asking for the types or objects of a category is a read operation.
 
-The implementation locations below refer to `htdocs/categories/class/api_categories.class.php`.
-
 ## `get` — Read a category
 
 **Arguments** `id` (integer), `include_childs = false` (boolean).
@@ -15,8 +13,6 @@ The implementation locations below refer to `htdocs/categories/class/api_categor
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — category missing.
 - `500` — business operation failed.
-
-Source lines `81–108`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `category`. The properties selector
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `128–185`.
-
 ## `getTypes` — Read types
 
 Route `GET /types`.
@@ -43,8 +37,6 @@ Route `GET /types`.
 **Result** A collection of matching entries.
 
 - `403` — access refused.
-
-Source lines `197–205`.
 
 ## `post` — Create a category
 
@@ -62,8 +54,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `215–237` with `_validate 864–877`.
-
 ## `put` — Update a category
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -78,8 +68,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — category missing.
 - `500` — business operation failed.
 
-Source lines `250–290` with `get 81–108`.
-
 ## `delete` — Delete a category
 
 **Arguments** `id` (integer).
@@ -91,8 +79,6 @@ Source lines `250–290` with `get 81–108`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — category missing.
 - `500` — removal failed.
-
-Source lines `301–325`.
 
 ## `getListForObject` — Read list for object
 
@@ -108,8 +94,6 @@ The method reads classification links.
 
 - `403` — access or input restriction, access refused.
 - `600` — domain operation rejected.
-
-Source lines `346–397`.
 
 ## `linkObjectById` — Link object by id
 
@@ -128,8 +112,6 @@ The method adds a category link.
 - `404` — category missing.
 - `500` — business operation failed.
 
-Source lines `413–501` with `_checkAccessToLinkedObject 973–994`.
-
 ## `linkObjectByRef` — Link object by ref
 
 Route `POST {id}/objects/{type}/ref/{object_ref}`.
@@ -146,8 +128,6 @@ The method adds a category link. The requested object type must match the catego
 - `403` — access or input restriction, missing operation rights, record outside the caller’s scope.
 - `404` — category missing.
 - `500` — business operation failed.
-
-Source lines `517–600` with `_checkAccessToLinkedObject 973–994`.
 
 ## `unlinkObjectById` — Unlink object by id
 
@@ -166,8 +146,6 @@ The method removes a category link.
 - `404` — category missing.
 - `500` — business operation failed.
 
-Source lines `616–686` with `_checkAccessToLinkedObject 973–994`.
-
 ## `unlinkObjectByRef` — Unlink object by ref
 
 Route `DELETE {id}/objects/{type}/ref/{object_ref}`.
@@ -185,8 +163,6 @@ The method removes a category link.
 - `404` — category missing.
 - `500` — business operation failed.
 
-Source lines `702–772` with `_checkAccessToLinkedObject 973–994`.
-
 ## `getObjects` — Read objects
 
 Route `GET {id}/objects`.
@@ -201,5 +177,3 @@ Route `GET {id}/objects`.
 - `404` — category missing.
 - `500` — the "type" parameter required.
 - `503` — record lookup or write failed.
-
-Source lines `890–960`.

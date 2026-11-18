@@ -2,8 +2,6 @@
 
 A template can be addressed by its identifier or label. Creation, updates and deletion work on the template definition. Message dispatch is a separate operation.
 
-The implementation locations below refer to `htdocs/api/class/api_emailtemplates.class.php`.
-
 ## `deleteById` — Remove by identifier
 
 Route `DELETE {id}`.
@@ -17,8 +15,6 @@ Route `DELETE {id}`.
 - `403` — removal failed, access refused, access or input restriction.
 - `404` — email template missing.
 - `500` — removal failed.
-
-Source lines `93–119` with `_checkAccessRights 674–698`.
 
 ## `deleteByLabel` — Delete by label
 
@@ -34,8 +30,6 @@ Route `DELETE label/{label}`.
 - `404` — email template with label missing.
 - `500` — removal failed.
 
-Source lines `135–161` with `_checkAccessRights 674–698`.
-
 ## `getById` — Read by identifier
 
 Route `GET {id}`.
@@ -48,8 +42,6 @@ Route `GET {id}`.
 - `403` — access or input restriction.
 - `404` — email template missing, email template with label missing.
 
-Source lines `178–181` with `_fetch 515–543`, `_checkAccessRights 674–698`.
-
 ## `getByLabel` — Read by label
 
 Route `GET label/{label}`.
@@ -61,8 +53,6 @@ Route `GET label/{label}`.
 - `400` — unknown error in your request, invalid request data.
 - `403` — access or input restriction.
 - `404` — email template missing, email template with label missing.
-
-Source lines `198–201` with `_fetch 515–543`, `_checkAccessRights 674–698`.
 
 ## `index` — List records
 
@@ -77,8 +67,6 @@ The properties selector projects the returned fields.
 - `400` — invalid filter expression.
 - `403` — access or input restriction.
 - `503` — query or persistence failure.
-
-Source lines `225–304` with `_checkAccessRights 674–698`.
 
 ## `post` — Create an email template
 
@@ -98,8 +86,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access or input restriction.
 - `500` — business operation failed.
 
-Source lines `324–365` with `_checkAccessRights 674–698`, `_validate 653–663`.
-
 ## `putById` — Amend by identifier
 
 Route `PUT {id}`.
@@ -117,8 +103,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — email template missing, email template with label missing.
 - `500` — business operation failed.
 
-Source lines `387–430` with `_checkAccessRights 674–698`, `_fetch 515–543`.
-
 ## `putbyLabel` — Putby label
 
 Route `PUT label/{label}`.
@@ -135,5 +119,3 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access or input restriction, access refused.
 - `404` — email template missing, email template with label missing.
 - `500` — business operation failed.
-
-Source lines `451–498` with `_checkAccessRights 674–698`, `_fetch 515–543`.

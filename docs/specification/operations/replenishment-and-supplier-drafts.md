@@ -20,8 +20,6 @@ Warehouse limits can replace both the target and balance in the suggestion. A mi
 
 For example, a product has desired stock 60, alert 35, physical stock 18 and 22 outstanding. The warning appears and the editable suggestion is 20. If another 15 units on draft orders are included, the suggestion falls to 5. In projected mode a projected balance of 29 produces a suggestion of 31. Subtracting the same purchase commitments again would understate demand. When a buyer enters 24 instead of 20, the purchase operation uses 24.
 
-The quantities come from `htdocs/product/stock/replenish.php` and the supplier-order and reception statistics in `htdocs/product/class/product.class.php`. Supplier order states are defined in `htdocs/fourn/class/fournisseur.commande.class.php`.
-
 ## Selecting and pricing lines
 
 The buyer selects individual rows. A selected row needs a supplier price selector value. The operation resolves the selected price record to its supplier and product, then searches for a price valid for the submitted quantity. The selected price record qualifies if its minimum quantity is at most the positive order quantity. When a selected offer is too large, a fallback search can find an eligible tier for the same product and supplier. If the initially selected price record cannot be resolved, the lookup falls back without those identifiers. When the buyer filtered by supplier, a mismatch with the resolved supplier excludes the line.
@@ -30,8 +28,6 @@ A valid nonzero quantity produces a line with the supplier reference, product, u
 
 A shortage of three units can be smaller than the smallest supplier tier of five. The buyer may choose a valid order quantity or a different offer. An unresolved minimum produces a warning for that selection. Other valid selections remain eligible for ordering in the same submission. The suggested quantity field does not round a shortage up to the supplier's minimum.
 
-Offer lookup and calculation are in `htdocs/product/class/product.class.php` under `get_buyprice`. The selection and conversion of offers into order lines are in `htdocs/product/stock/replenish.php`.
-
 ## Draft consolidation and resubmission
 
 The operation groups accepted lines by supplier. For each supplier it searches the accessible order entities for a draft whose source is replenishment. The most recently created eligible draft receives the new lines. Manually created drafts have a different source and remain separate. Where no eligible draft exists, a new replenishment draft takes the supplier's currency and default payment terms and method. This operation appends commercial lines. Repeating the same submission can append the same demand a second time.
@@ -39,5 +35,3 @@ The operation groups accepted lines by supplier. For each supplier it searches t
 With three selected products, two from supplier S and one from supplier T, an existing replenishment draft for S receives two lines. T gets a separate replenishment draft even when T already has a manually prepared order. If the selected price for one of S's products has an unmet minimum, the remaining valid S and T lines can still be committed.
 
 The operation wraps the suppliers in a database transaction. A recorded failure to create an order or append a line group rolls the submission back. In the existing-draft branch, the result variable is overwritten on each append and inspected after the loop. A later successful append can hide an earlier failed append in that group. The selected-line warning and the order-creation result therefore convey different information. The persisted order lines identify precisely which products and quantities the buyer obtained.
-
-The draft selection and transaction are in `htdocs/product/stock/replenish.php`. The replenishment source and order-line write behavior are in `htdocs/fourn/class/fournisseur.commande.class.php`.

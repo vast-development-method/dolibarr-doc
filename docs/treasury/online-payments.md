@@ -1,6 +1,6 @@
 # Online invoice collection through Stripe and PayPal
 
-The payer opens an online payment page for a business source such as an invoice. Provider confirmation and local posting have separate outcomes. A successful charge can require operator reconciliation when the local invoice transaction fails. Capture the provider reference, amount, currency, target invoice and local posting outcome so the operator can match the two. [Online payment architecture][guide] · [Stripe module][stripewiki] · [PayPal module][paypalwiki]
+The payer opens an online payment page for a business source such as an invoice. Provider confirmation and local posting have separate outcomes. A successful charge can require operator reconciliation when the local invoice transaction fails. Capture the provider reference, amount, currency, target invoice and local posting outcome so the operator can match the two.
 
 | Stage | Stripe | PayPal |
 | --- | --- | --- |
@@ -9,9 +9,7 @@ The payer opens an online payment page for a business source such as an invoice.
 | Identify and record | Persist provider service and external transaction ID. A Stripe record can store an extended identifier beginning with the payment-intent ID. | Persist provider service and transaction ID. As on Stripe, later use the invoice settlement record for the allocation and the configured payment bank account for cash. |
 | Additional notifications | The Stripe notification handler verifies the provider-signed event. Its succeeded-intent branch distinguishes payment methods. The supported SEPA-debit request path can post the receipt and match the request. Other event types include payout and dispute-related changes. | The documented invoice return path uses the confirmed checkout result. Its evidence is the checkout confirmation and recorded local payment. |
 
-[Provider selection][start] · [PayPal acknowledgement and Stripe verification][verify] · [Stripe event processing][ipn]
-
-**Post a confirmed invoice payment.** The return handler checks the transaction ID against recorded customer payments and donations, including the supported extended-ID form, before local posting. It loads the target invoice and resolves the payment-mode dictionary ID. For a supported company-currency receipt, it opens a database transaction, validates a draft invoice if necessary, records payment with automatic closure enabled and, when banking is enabled, posts to the configured provider bank account (or hook-selected account). Errors in local receipt or bank posting roll back this local transaction. A return in a currency different from the company currency takes the unsupported-currency error branch on this invoice path, despite the separate [distributed collection service](../finance/collections.md) supporting foreign allocations. Preserve the distinction in integration tests. [Duplicate lookup][repeat] · [Invoice post-actions][book]
+**Post a confirmed invoice payment.** The return handler checks the transaction ID against recorded customer payments and donations, including the supported extended-ID form, before local posting. It loads the target invoice and resolves the payment-mode dictionary ID. For a supported company-currency receipt, it opens a database transaction, validates a draft invoice if necessary, records payment with automatic closure enabled and, when banking is enabled, posts to the configured provider bank account (or hook-selected account). Errors in local receipt or bank posting roll back this local transaction. A return in a currency different from the company currency takes the unsupported-currency error branch on this invoice path, despite the separate [distributed collection service](../finance/collections.md) supporting foreign allocations. Preserve the distinction in integration tests.
 
 | Acceptance case | Input | Expected outcome |
 | --- | --- | --- |
@@ -20,12 +18,3 @@ The payer opens an online payment page for a business source such as an invoice.
 | TR-WEB-03 | Success return arrives again for a transaction already recorded. | Existing transaction lookup prevents a second recording through this path. This sequential replay test does not establish a guarantee for simultaneous callbacks. |
 | TR-WEB-04 | Provider confirms a payment, but local company-currency expectation or account configuration fails. | Report the local allocation failure against the provider transaction. Reconcile actual provider funds before any attempt to collect again. |
 | TR-WEB-05 | PayPal confirm response contains failure acknowledgement, even though the customer reached the return page. | No normal successful-payment posting for that response. |
-
-[guide]: ../reference/locators/treasury.md#ref-0158cf6e2016
-[stripewiki]: ../reference/locators/treasury.md#ref-4cdd18e345c9
-[paypalwiki]: ../reference/locators/treasury.md#ref-9c937445f597
-[start]: ../reference/locators/treasury.md#ref-c2342ddb70b7
-[verify]: ../reference/locators/treasury.md#ref-c7cd1cd025fa
-[ipn]: ../reference/locators/treasury.md#ref-22ada40e613a
-[repeat]: ../reference/locators/treasury.md#ref-c352dd270176
-[book]: ../reference/locators/treasury.md#ref-64af0fb1d3b6

@@ -11,17 +11,15 @@ A replacement supersedes an issued document. A credit note documents a reduction
 | Apply as invoice line | Native invoice API checks create permission and destination access. The line operation also checks that the credit belongs to the invoice customer, and rejects a credit already bound at header level. | Insert a negative adjustment line, recalculate invoice totals and link the adjustment to that line in the transaction. Applied tax components reduce the invoice itself. |
 | Apply as settlement | Native use-credit-note API checks create permission, destination invoice resource access and existence of the adjustment. The link helper accepts either a line ID or a header ID in one call. | Bind the adjustment to the destination invoice header. Its value enters the applicable credit/deposit sum. No new negative invoice line or bank cash receipt is required. The REST method's own prechecks differ from the line route, so independently verify ownership and availability when designing a normalized cross-customer service. |
 
-[Correction selectors][eligible] · [Validation transaction][replacement] · [Progress correction][creditprogress] · [Deposit generation][deposit] · [Source conversion][convert] · [Line consumption][lineapply] · [Settlement path][settlement] · [Target links][links]
-
 ## Tax bases and amounts
 
-For a percentage deposit with multi-VAT splitting, let the intended gross deposit be origin gross × deposit percent / 100. For each VAT-rate/code bucket, the fraction is its gross divided by origin gross (zero if origin gross is zero). Multiply this fraction by the intended gross deposit, then divide by (1 + numeric VAT rate / 100) to obtain the net line input. The non-split-setting branch also forms VAT-keyed lines, using the percentage of each included line's net. The exact final amounts pass through line precision and tax rules. These steps describe this source-generation operation, which treats marked special lines separately. [Deposit buckets and lines][deposit]
+For a percentage deposit with multi-VAT splitting, let the intended gross deposit be origin gross × deposit percent / 100. For each VAT-rate/code bucket, the fraction is its gross divided by origin gross (zero if origin gross is zero). Multiply this fraction by the intended gross deposit, then divide by (1 + numeric VAT rate / 100) to obtain the net line input. The non-split-setting branch also forms VAT-keyed lines, using the percentage of each included line's net. The exact final amounts pass through line precision and tax rules. These steps describe this source-generation operation, which treats marked special lines separately.
 
-For a standard invoice with excess settlement, the API's conversion arithmetic sets available credit = sum of cash allocations + sum of header-bound credit/deposit adjustments − invoiced gross, with zero VAT on that excess. Use an actual positive surplus in this operation. A legal or tax rate is not implied by the worked examples. For a negative credit note, refunding in cash uses a negative allocation and bank movement. Converting it instead makes a positive usable credit. Applying the same financial entitlement twice would double the customer benefit. [Excess credit calculation][excess] · [Cash refunds and allocation](../finance/collections.md)
+For a standard invoice with excess settlement, the API's conversion arithmetic sets available credit = sum of cash allocations + sum of header-bound credit/deposit adjustments − invoiced gross, with zero VAT on that excess. Use an actual positive surplus in this operation. A legal or tax rate is not implied by the worked examples. For a negative credit note, refunding in cash uses a negative allocation and bank movement. Converting it instead makes a positive usable credit. Applying the same financial entitlement twice would double the customer benefit. [Cash refunds and allocation](../finance/collections.md)
 
 ## Goods returned with a credit note
 
-With stock enabled, invoice-based stock movements active and a warehouse selected, validating a credit note calls the stock reception operation for referenced product lines, passing the line quantity, warehouse and batch. A deposit skips invoice-based stock movements. Reverting the validated credit note to draft takes the opposite stock direction and aborts the draft transition if the movement operation reports an error. Creating the usable monetary credit and posting a cash refund are separate operations from this physical return. [Invoice validation][stock] · [Return to draft][unstock]
+With stock enabled, invoice-based stock movements active and a warehouse selected, validating a credit note calls the stock reception operation for referenced product lines, passing the line quantity, warehouse and batch. A deposit skips invoice-based stock movements. Reverting the validated credit note to draft takes the opposite stock direction and aborts the draft transition if the movement operation reports an error. Creating the usable monetary credit and posting a cash refund are separate operations from this physical return.
 
 ## Acceptance criteria
 
@@ -35,17 +33,4 @@ With stock enabled, invoice-based stock movements active and a warehouse selecte
 | EX-ADJ-06 | Try to delete available adjustments from one source after one of the source's adjustment rows has already been applied. | The source-group deletion check finds the consumed line/header association and rejects deletion. |
 | EX-ADJ-07 | Stock changes at invoice validation. A customer returns two units of a stock-managed product and receives a credit note for the goods. | Validating the credit note receives two units into the selected warehouse. Verify the quantity movement independently of whether the customer elects a cash refund or reusable credit. |
 
-The service contract's [application command](../../schemas/finance-exceptions/apply-credit.schema.json) names a single destination mode. Matching customer, unused status, sufficient balance and concurrency are service-level checks. A rebuild should atomically claim a credit before applying it and verify that exactly one eligible record changed. [Adjustment deletion and links][adjustment]
-
-[eligible]: ../reference/locators/finance-exceptions.md#ref-758f1ed40a00
-[replacement]: ../reference/locators/finance-exceptions.md#ref-f93355c1536c
-[creditprogress]: ../reference/locators/finance-exceptions.md#ref-17ef3197566d
-[deposit]: ../reference/locators/finance-exceptions.md#ref-3bd5145796e6
-[convert]: ../reference/locators/finance-exceptions.md#ref-c799eedbfa84
-[excess]: ../reference/locators/finance-exceptions.md#ref-aa0ab384ca5a
-[lineapply]: ../reference/locators/finance-exceptions.md#ref-92a14856b8ac
-[settlement]: ../reference/locators/finance-exceptions.md#ref-71914fffb84e
-[links]: ../reference/locators/finance-exceptions.md#ref-b78181d3fca1
-[adjustment]: ../reference/locators/finance-exceptions.md#ref-c417c07d52d7
-[stock]: ../reference/locators/finance-exceptions.md#ref-2c131f43a23b
-[unstock]: ../reference/locators/finance-exceptions.md#ref-fc83a0ecbade
+The service contract's [application command](../../schemas/finance-exceptions/apply-credit.schema.json) names a single destination mode. Matching customer, unused status, sufficient balance and concurrency are service-level checks. A rebuild should atomically claim a credit before applying it and verify that exactly one eligible record changed.

@@ -1,89 +1,89 @@
 # Cash, billing and accounting events
 
-Each entry identifies an operator-selectable event or a named signal emitted by a business operation. A numbered agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. See the [event contract](README.md) for shared dispatch rules and source keys.
+Each entry identifies an operator-selectable event or a named signal emitted by a business operation. An agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. See the [event contract](README.md) for shared dispatch and subscription rules.
 
-| Event | Setup meaning or origin | Direct emission site | Specific subscriber branches |
+| Event | Setup meaning or origin | Emitting operation | Specific subscriber branches |
 | --- | --- | --- | --- |
-| `ASSETMODEL_VALIDATE` | Named operation signal | `asset/class/assetmodel.class.php:494 (validate)` | No dedicated branch listed |
-| `ASSET_ACCOUNTANCY_CODES_MODIFY` | Named operation signal | `asset/class/assetaccountancycodes.class.php:324 (updateAccountancyCodes)` | No dedicated branch listed |
-| `ASSET_DEPRECIATION_OPTIONS_MODIFY` | Named operation signal | `asset/class/assetdepreciationoptions.class.php:581 (updateDeprecationOptions)` | No dedicated branch listed |
-| `ASSET_VALIDATE` | Named operation signal | `asset/class/asset.class.php:1779 (validate)` | No dedicated branch listed |
-| `BANKACCOUNTLINE_DELETE` | Named operation signal | `compta/bank/class/account.class.php:2446 (delete)` | No dedicated branch listed |
-| `BANKACCOUNT_CREATE` | Named operation signal | `compta/bank/class/account.class.php:895 (create)` | No dedicated branch listed |
-| `BANKACCOUNT_MODIFY` | Named operation signal | `compta/bank/class/account.class.php:1030 (update)` | No dedicated branch listed |
-| `BILLREC_CREATE` | Template invoices created (dictionary row at line 218) | `compta/facture/class/facture-rec.class.php:557 (create)` | No dedicated branch listed |
-| `BILLREC_DELETE` | Template invoices deleted (dictionary row at line 220) | `compta/facture/class/facture-rec.class.php:942 (delete)` | No dedicated branch listed |
-| `BILLREC_MODIFY` | Template invoices update (dictionary row at line 219) | `compta/facture/class/facture-rec.class.php:627 (update)` · `compta/facture/class/facture-rec.class.php:2261 (setFrequencyAndUnit)` · `compta/facture/class/facture-rec.class.php:2320 (setNextDate)` · `compta/facture/class/facture-rec.class.php:2363 (setMaxPeriod)` · `compta/facture/class/facture-rec.class.php:2432 (setGeneratePdf)` · `compta/facture/class/facture-rec.class.php:2471 (setModelPdf)` · `compta/facture/class/facture-rec.class.php:2507 (setMailTemplate)` | No dedicated branch listed |
-| `BILL_CANCEL` | Customer invoice canceled (dictionary row at line 66) | `compta/facture/class/facture.class.php:3579 (setCanceled)` | Agenda 499, Notification 146 |
-| `BILL_CREATE` | Named operation signal | `compta/facture/class/facture.class.php:1181 (create)` | No dedicated branch listed |
-| `BILL_DELETE` | Customer invoice deleted (dictionary row at line 69) | `compta/facture/class/facture.class.php:3201 (delete)` | No dedicated branch listed |
-| `BILL_MODIFY` | Customer invoice modified (dictionary row at line 64) | `compta/facture/class/facture.class.php:2899 (update)` · `compta/facture/class/facture.class.php:3085 (set_ref_client)` · `compta/facture/class/facture.class.php:3145 (setInputReason)` · `compta/facture/class/facture.class.php:5087 (setDiscount)` · `compta/facture/class/facture.class.php:5937 (setFinal)` | No dedicated branch listed |
-| `BILL_PAYED` | Customer invoice payed (dictionary row at line 65) | `compta/facture/class/facture.class.php:3431 (setPaid)` | Workflow 419, Agenda 481, Notification 148 |
-| `BILL_SENTBYMAIL` | Customer invoice sent by mail (dictionary row at line 67) | Resolved by operation-specific or shared dispatch; literal call site unassigned. | Agenda 463 |
-| `BILL_SUPPLIER_CANCELED` | Supplier invoice cancelled (dictionary row at line 96) | `fourn/class/fournisseur.facture.class.php:1814 (setCanceled)` | Agenda 1051 |
-| `BILL_SUPPLIER_CREATE` | Named operation signal | `fourn/class/fournisseur.facture.class.php:845 (create)` | Agenda 965 |
-| `BILL_SUPPLIER_DELETE` | Supplier invoice deleted (dictionary row at line 97) | `fourn/class/fournisseur.facture.class.php:1513 (delete)` | No dedicated branch listed |
-| `BILL_SUPPLIER_MODIFY` | Supplier invoice modified (dictionary row at line 92) | `fourn/class/fournisseur.facture.class.php:1351 (update)` | No dedicated branch listed |
-| `BILL_SUPPLIER_PAYED` | Supplier invoice payed (dictionary row at line 94) | `fourn/class/fournisseur.facture.class.php:1692 (setPaid)` | Agenda 1034 |
-| `BILL_SUPPLIER_SENTBYMAIL` | Supplier invoice sent by mail (dictionary row at line 95) | Resolved by operation-specific or shared dispatch; literal call site unassigned. | Agenda 1016 |
-| `BILL_SUPPLIER_UNPAYED` | Named operation signal | `fourn/class/fournisseur.facture.class.php:1757 (setUnpaid)` | No dedicated branch listed |
-| `BILL_SUPPLIER_UNVALIDATE` | Supplier invoice unvalidated (dictionary row at line 93) | `fourn/class/fournisseur.facture.class.php:2109 (setDraft)` | Agenda 999 |
-| `BILL_SUPPLIER_VALIDATE` | Supplier invoice validated (dictionary row at line 91) | `fourn/class/fournisseur.facture.class.php:1975 (validate)` | Workflow 309, Agenda 982 |
-| `BILL_UNPAYED` | Named operation signal | `compta/facture/class/facture.class.php:3498 (setUnpaid)` | No dedicated branch listed |
-| `BILL_UNVALIDATE` | Customer invoice unvalidated (dictionary row at line 68) | `compta/facture/class/facture.class.php:4198 (setDraft)` | Agenda 446 |
-| `BILL_VALIDATE` | Customer invoice validated (dictionary row at line 63) | `compta/facture/class/facture.class.php:3966 (validate)` | Workflow 175, Agenda 429, Notification 147 |
-| `BOOKKEEPING_CREATE` | Named operation signal | `accountancy/class/bookkeeping.class.php:503 (create)` · `accountancy/class/bookkeeping.class.php:822 (createStd)` | No dedicated branch listed |
-| `BOOKKEEPING_DELETE` | Named operation signal | `accountancy/class/bookkeeping.class.php:1693 (delete)` · `accountancy/class/bookkeeping.class.php:1842 (deleteMvtNum)` | No dedicated branch listed |
-| `BOOKKEEPING_MODIFY` | Named operation signal | `accountancy/class/bookkeeping.class.php:1598 (update)` | No dedicated branch listed |
-| `CASHCONTROL_CLOSE` | Named operation signal | `compta/cashcontrol/class/cashcontrol.class.php:458 (close)` | No dedicated branch listed |
-| `CASHCONTROL_VALIDATE` | Named operation signal | `compta/cashcontrol/class/cashcontrol.class.php:390 (valid)` | No dedicated branch listed |
-| `CURRENCYRATE_CREATE` | Named operation signal | `multicurrency/class/currencyrate.class.php:142 (create)` | No dedicated branch listed |
-| `CURRENCYRATE_DELETE` | Named operation signal | `multicurrency/class/currencyrate.class.php:277 (delete)` | No dedicated branch listed |
-| `CURRENCYRATE_MODIFY` | Named operation signal | `multicurrency/class/currencyrate.class.php:243 (update)` | No dedicated branch listed |
-| `CURRENCY_CREATE` | Named operation signal | `multicurrency/class/multicurrency.class.php:178 (create)` | No dedicated branch listed |
-| `CURRENCY_DELETE` | Named operation signal | `multicurrency/class/multicurrency.class.php:361 (delete)` | No dedicated branch listed |
-| `CURRENCY_MODIFY` | Named operation signal | `multicurrency/class/multicurrency.class.php:327 (update)` | No dedicated branch listed |
-| `DISCOUNT_MODIFY` | Named operation signal | `core/class/discount.class.php:623 (link_to_invoice)` · `core/class/discount.class.php:663 (unlink_invoice)` | No dedicated branch listed |
-| `DONATION_PAYMENT_CREATE` | Named operation signal | `don/class/paymentdonation.class.php:256 (create)` | No dedicated branch listed |
-| `DONATION_PAYMENT_DELETE` | Named operation signal | `don/class/paymentdonation.class.php:471 (delete)` | No dedicated branch listed |
-| `DONATION_PAYMENT_MODIFY` | Named operation signal | `don/class/paymentdonation.class.php:410 (update)` | No dedicated branch listed |
-| `DON_CREATE` | Named operation signal | `don/class/don.class.php:468 (create)` | No dedicated branch listed |
-| `DON_DELETE` | Named operation signal | `don/class/don.class.php:606 (delete)` | No dedicated branch listed |
-| `DON_MODIFY` | Named operation signal | `don/class/don.class.php:557 (update)` | No dedicated branch listed |
-| `DON_VALIDATE` | Named operation signal | `don/class/don.class.php:782 (valid_promesse)` | No dedicated branch listed |
-| `LINEBILLREC_DELETE` | Named operation signal | `compta/facture/class/facture-rec.class.php:2613 (delete)` | No dedicated branch listed |
-| `LINEBILLREC_MODIFY` | Named operation signal | `compta/facture/class/facture-rec.class.php:2804 (update)` | No dedicated branch listed |
-| `LINEBILL_DELETE` | Named operation signal | `compta/facture/class/factureligne.class.php:834 (delete)` | No dedicated branch listed |
-| `LINEBILL_INSERT` | Named operation signal | `compta/facture/class/factureligne.class.php:607 (insert)` | No dedicated branch listed |
-| `LINEBILL_MODIFY` | Named operation signal | `compta/facture/class/factureligne.class.php:792 (update)` | No dedicated branch listed |
-| `LINEBILL_SUPPLIER_CREATE` | Named operation signal | `fourn/class/fournisseur.facture.ligne.class.php:799 (insert)` | No dedicated branch listed |
-| `LINEBILL_SUPPLIER_DELETE` | Named operation signal | `fourn/class/fournisseur.facture.ligne.class.php:425 (delete)` | No dedicated branch listed |
-| `LINEBILL_SUPPLIER_MODIFY` | Named operation signal | `fourn/class/fournisseur.facture.ligne.class.php:582 (update)` | No dedicated branch listed |
-| `LINESUPPLIERBILLREC_DELETE` | Named operation signal | `fourn/class/fournisseur.facture-rec.ligne.class.php:200 (delete)` | No dedicated branch listed |
-| `LINESUPPLIERBILLREC_MODIFY` | Named operation signal | `fourn/class/fournisseur.facture-rec.ligne.class.php:380 (update)` | No dedicated branch listed |
-| `LOCALTAX_CREATE` | Named operation signal | `compta/localtax/class/localtax.class.php:178 (create)` | No dedicated branch listed |
-| `LOCALTAX_DELETE` | Named operation signal | `compta/localtax/class/localtax.class.php:330 (delete)` | No dedicated branch listed |
-| `LOCALTAX_MODIFY` | Named operation signal | `compta/localtax/class/localtax.class.php:242 (update)` | No dedicated branch listed |
-| `ORDER_CLASSIFY_UNBILLED` | Named operation signal | `commande/class/commande.class.php:3130 (classifyUnBilled)` | No dedicated branch listed |
-| `ORDER_SUPPLIER_CLASSIFY_UNBILLED` | Named operation signal | `fourn/class/fournisseur.commande.class.php:1276 (classifyUnBilled)` | No dedicated branch listed |
-| `PAYMENTSALARY_CREATE` | Named operation signal | `salaries/class/paymentsalary.class.php:303 (create)` | No dedicated branch listed |
-| `PAYMENTSOCIALCONTRIBUTION_CREATE` | Named operation signal | `compta/sociales/class/paymentsocialcontribution.class.php:276 (create)` | No dedicated branch listed |
-| `PAYMENTVAT_CREATE` | Named operation signal | `compta/tva/class/paymentvat.class.php:279 (create)` | No dedicated branch listed |
-| `PAYMENT_ADD_TO_BANK` | Named operation signal | `compta/paiement/class/paiement.class.php:998 (addPaymentToBank)` | No dedicated branch listed |
-| `PAYMENT_CUSTOMER_CREATE` | Named operation signal | `compta/paiement/class/paiement.class.php:682 (create)` | No dedicated branch listed |
-| `PAYMENT_CUSTOMER_DELETE` | Named operation signal | `compta/paiement/class/paiement.class.php:767 (delete)` | No dedicated branch listed |
-| `PAYMENT_SUPPLIER_CREATE` | Named operation signal | `fourn/class/paiementfourn.class.php:448 (create)` | No dedicated branch listed |
-| `PAYMENT_SUPPLIER_DELETE` | Named operation signal | `fourn/class/paiementfourn.class.php:553 (delete)` | No dedicated branch listed |
-| `PAYMENT_VARIOUS_CREATE` | Named operation signal | `compta/bank/class/paymentvarious.class.php:612 (create)` | No dedicated branch listed |
-| `PAYMENT_VARIOUS_DELETE` | Named operation signal | `compta/bank/class/paymentvarious.class.php:391 (delete)` | No dedicated branch listed |
-| `PAYMENT_VARIOUS_MODIFY` | Named operation signal | `compta/bank/class/paymentvarious.class.php:284 (update)` | No dedicated branch listed |
-| `RECEPTION_BILLED` | Named operation signal | `reception/class/reception.class.php:2258 (setBilled)` | No dedicated branch listed |
-| `SALARY_CREATE` | Named operation signal | `salaries/class/salary.class.php:572 (create)` | No dedicated branch listed |
-| `SALARY_MODIFY` | Named operation signal | `salaries/class/salary.class.php:343 (update)` | No dedicated branch listed |
-| `SHIPPING_BILLED` | Named operation signal | `expedition/class/expedition.class.php:3159 (setBilled)` | No dedicated branch listed |
-| `SOCIALCONTRIBUTION_CREATE` | Named operation signal | `compta/sociales/class/chargesociales.class.php:318 (create)` | No dedicated branch listed |
-| `SOCIALCONTRIBUTION_MODIFY` | Named operation signal | `compta/sociales/class/chargesociales.class.php:455 (update)` | No dedicated branch listed |
-| `SUPPLIERBILLREC_CREATE` | Named operation signal | `fourn/class/fournisseur.facture-rec.class.php:546 (create)` | No dedicated branch listed |
-| `SUPPLIERBILLREC_DELETE` | Named operation signal | `fourn/class/fournisseur.facture-rec.class.php:946 (delete)` | No dedicated branch listed |
-| `SUPPLIERBILLREC_MODIFY` | Named operation signal | `fourn/class/fournisseur.facture-rec.class.php:641 (update)` | No dedicated branch listed |
-| `TVA_ADDPAYMENT` | Named operation signal | `compta/tva/class/tva.class.php:684 (addPayment)` | No dedicated branch listed |
+| `ASSETMODEL_VALIDATE` | Operation signal | `assetmodel.validate` | No dedicated branch listed |
+| `ASSET_ACCOUNTANCY_CODES_MODIFY` | Operation signal | `assetaccountancycodes.updateAccountancyCodes` | No dedicated branch listed |
+| `ASSET_DEPRECIATION_OPTIONS_MODIFY` | Operation signal | `assetdepreciationoptions.updateDeprecationOptions` | No dedicated branch listed |
+| `ASSET_VALIDATE` | Operation signal | `asset.validate` | No dedicated branch listed |
+| `BANKACCOUNTLINE_DELETE` | Operation signal | `account.delete` | No dedicated branch listed |
+| `BANKACCOUNT_CREATE` | Operation signal | `account.create` | No dedicated branch listed |
+| `BANKACCOUNT_MODIFY` | Operation signal | `account.update` | No dedicated branch listed |
+| `BILLREC_CREATE` | Template invoices created (setup dictionary) | `facture-rec.create` | No dedicated branch listed |
+| `BILLREC_DELETE` | Template invoices deleted (setup dictionary) | `facture-rec.delete` | No dedicated branch listed |
+| `BILLREC_MODIFY` | Template invoices update (setup dictionary) | `facture-rec.update` · `facture-rec.setFrequencyAndUnit` · `facture-rec.setNextDate` · `facture-rec.setMaxPeriod` · `facture-rec.setGeneratePdf` · `facture-rec.setModelPdf` · `facture-rec.setMailTemplate` | No dedicated branch listed |
+| `BILL_CANCEL` | Customer invoice canceled (setup dictionary) | `facture.setCanceled` | Agenda, Notification |
+| `BILL_CREATE` | Operation signal | `facture.create` | No dedicated branch listed |
+| `BILL_DELETE` | Customer invoice deleted (setup dictionary) | `facture.delete` | No dedicated branch listed |
+| `BILL_MODIFY` | Customer invoice modified (setup dictionary) | `facture.update` · `facture.set_ref_client` · `facture.setInputReason` · `facture.setDiscount` · `facture.setFinal` | No dedicated branch listed |
+| `BILL_PAYED` | Customer invoice payed (setup dictionary) | `facture.setPaid` | Workflow, Agenda, Notification |
+| `BILL_SENTBYMAIL` | Customer invoice sent by mail (setup dictionary) | Resolved by operation-specific or shared dispatch; literal call site unassigned. | Agenda |
+| `BILL_SUPPLIER_CANCELED` | Supplier invoice cancelled (setup dictionary) | `fournisseur.setCanceled` | Agenda |
+| `BILL_SUPPLIER_CREATE` | Operation signal | `fournisseur.create` | Agenda |
+| `BILL_SUPPLIER_DELETE` | Supplier invoice deleted (setup dictionary) | `fournisseur.delete` | No dedicated branch listed |
+| `BILL_SUPPLIER_MODIFY` | Supplier invoice modified (setup dictionary) | `fournisseur.update` | No dedicated branch listed |
+| `BILL_SUPPLIER_PAYED` | Supplier invoice payed (setup dictionary) | `fournisseur.setPaid` | Agenda |
+| `BILL_SUPPLIER_SENTBYMAIL` | Supplier invoice sent by mail (setup dictionary) | Resolved by operation-specific or shared dispatch; literal call site unassigned. | Agenda |
+| `BILL_SUPPLIER_UNPAYED` | Operation signal | `fournisseur.setUnpaid` | No dedicated branch listed |
+| `BILL_SUPPLIER_UNVALIDATE` | Supplier invoice unvalidated (setup dictionary) | `fournisseur.setDraft` | Agenda |
+| `BILL_SUPPLIER_VALIDATE` | Supplier invoice validated (setup dictionary) | `fournisseur.validate` | Workflow, Agenda |
+| `BILL_UNPAYED` | Operation signal | `facture.setUnpaid` | No dedicated branch listed |
+| `BILL_UNVALIDATE` | Customer invoice unvalidated (setup dictionary) | `facture.setDraft` | Agenda |
+| `BILL_VALIDATE` | Customer invoice validated (setup dictionary) | `facture.validate` | Workflow, Agenda, Notification |
+| `BOOKKEEPING_CREATE` | Operation signal | `bookkeeping.create` · `bookkeeping.createStd` | No dedicated branch listed |
+| `BOOKKEEPING_DELETE` | Operation signal | `bookkeeping.delete` · `bookkeeping.deleteMvtNum` | No dedicated branch listed |
+| `BOOKKEEPING_MODIFY` | Operation signal | `bookkeeping.update` | No dedicated branch listed |
+| `CASHCONTROL_CLOSE` | Operation signal | `cashcontrol.close` | No dedicated branch listed |
+| `CASHCONTROL_VALIDATE` | Operation signal | `cashcontrol.valid` | No dedicated branch listed |
+| `CURRENCYRATE_CREATE` | Operation signal | `currencyrate.create` | No dedicated branch listed |
+| `CURRENCYRATE_DELETE` | Operation signal | `currencyrate.delete` | No dedicated branch listed |
+| `CURRENCYRATE_MODIFY` | Operation signal | `currencyrate.update` | No dedicated branch listed |
+| `CURRENCY_CREATE` | Operation signal | `multicurrency.create` | No dedicated branch listed |
+| `CURRENCY_DELETE` | Operation signal | `multicurrency.delete` | No dedicated branch listed |
+| `CURRENCY_MODIFY` | Operation signal | `multicurrency.update` | No dedicated branch listed |
+| `DISCOUNT_MODIFY` | Operation signal | `discount.link_to_invoice` · `discount.unlink_invoice` | No dedicated branch listed |
+| `DONATION_PAYMENT_CREATE` | Operation signal | `paymentdonation.create` | No dedicated branch listed |
+| `DONATION_PAYMENT_DELETE` | Operation signal | `paymentdonation.delete` | No dedicated branch listed |
+| `DONATION_PAYMENT_MODIFY` | Operation signal | `paymentdonation.update` | No dedicated branch listed |
+| `DON_CREATE` | Operation signal | `don.create` | No dedicated branch listed |
+| `DON_DELETE` | Operation signal | `don.delete` | No dedicated branch listed |
+| `DON_MODIFY` | Operation signal | `don.update` | No dedicated branch listed |
+| `DON_VALIDATE` | Operation signal | `don.valid_promesse` | No dedicated branch listed |
+| `LINEBILLREC_DELETE` | Operation signal | `facture-rec.delete` | No dedicated branch listed |
+| `LINEBILLREC_MODIFY` | Operation signal | `facture-rec.update` | No dedicated branch listed |
+| `LINEBILL_DELETE` | Operation signal | `factureligne.delete` | No dedicated branch listed |
+| `LINEBILL_INSERT` | Operation signal | `factureligne.insert` | No dedicated branch listed |
+| `LINEBILL_MODIFY` | Operation signal | `factureligne.update` | No dedicated branch listed |
+| `LINEBILL_SUPPLIER_CREATE` | Operation signal | `fournisseur.insert` | No dedicated branch listed |
+| `LINEBILL_SUPPLIER_DELETE` | Operation signal | `fournisseur.delete` | No dedicated branch listed |
+| `LINEBILL_SUPPLIER_MODIFY` | Operation signal | `fournisseur.update` | No dedicated branch listed |
+| `LINESUPPLIERBILLREC_DELETE` | Operation signal | `fournisseur.delete` | No dedicated branch listed |
+| `LINESUPPLIERBILLREC_MODIFY` | Operation signal | `fournisseur.update` | No dedicated branch listed |
+| `LOCALTAX_CREATE` | Operation signal | `localtax.create` | No dedicated branch listed |
+| `LOCALTAX_DELETE` | Operation signal | `localtax.delete` | No dedicated branch listed |
+| `LOCALTAX_MODIFY` | Operation signal | `localtax.update` | No dedicated branch listed |
+| `ORDER_CLASSIFY_UNBILLED` | Operation signal | `commande.classifyUnBilled` | No dedicated branch listed |
+| `ORDER_SUPPLIER_CLASSIFY_UNBILLED` | Operation signal | `fournisseur.classifyUnBilled` | No dedicated branch listed |
+| `PAYMENTSALARY_CREATE` | Operation signal | `paymentsalary.create` | No dedicated branch listed |
+| `PAYMENTSOCIALCONTRIBUTION_CREATE` | Operation signal | `paymentsocialcontribution.create` | No dedicated branch listed |
+| `PAYMENTVAT_CREATE` | Operation signal | `paymentvat.create` | No dedicated branch listed |
+| `PAYMENT_ADD_TO_BANK` | Operation signal | `paiement.addPaymentToBank` | No dedicated branch listed |
+| `PAYMENT_CUSTOMER_CREATE` | Operation signal | `paiement.create` | No dedicated branch listed |
+| `PAYMENT_CUSTOMER_DELETE` | Operation signal | `paiement.delete` | No dedicated branch listed |
+| `PAYMENT_SUPPLIER_CREATE` | Operation signal | `paiementfourn.create` | No dedicated branch listed |
+| `PAYMENT_SUPPLIER_DELETE` | Operation signal | `paiementfourn.delete` | No dedicated branch listed |
+| `PAYMENT_VARIOUS_CREATE` | Operation signal | `paymentvarious.create` | No dedicated branch listed |
+| `PAYMENT_VARIOUS_DELETE` | Operation signal | `paymentvarious.delete` | No dedicated branch listed |
+| `PAYMENT_VARIOUS_MODIFY` | Operation signal | `paymentvarious.update` | No dedicated branch listed |
+| `RECEPTION_BILLED` | Operation signal | `reception.setBilled` | No dedicated branch listed |
+| `SALARY_CREATE` | Operation signal | `salary.create` | No dedicated branch listed |
+| `SALARY_MODIFY` | Operation signal | `salary.update` | No dedicated branch listed |
+| `SHIPPING_BILLED` | Operation signal | `expedition.setBilled` | No dedicated branch listed |
+| `SOCIALCONTRIBUTION_CREATE` | Operation signal | `chargesociales.create` | No dedicated branch listed |
+| `SOCIALCONTRIBUTION_MODIFY` | Operation signal | `chargesociales.update` | No dedicated branch listed |
+| `SUPPLIERBILLREC_CREATE` | Operation signal | `fournisseur.create` | No dedicated branch listed |
+| `SUPPLIERBILLREC_DELETE` | Operation signal | `fournisseur.delete` | No dedicated branch listed |
+| `SUPPLIERBILLREC_MODIFY` | Operation signal | `fournisseur.update` | No dedicated branch listed |
+| `TVA_ADDPAYMENT` | Operation signal | `tva.addPayment` | No dedicated branch listed |

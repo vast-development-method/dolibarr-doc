@@ -25,8 +25,6 @@ Neither nested handler applies the invoice-header validator or fills a request f
 
 This distinction matters on update. A caller that loads an invoice from the read service sees display labels, calculated totals and catalogue metadata. A change request must supply the writable financial values it wants to retain. The line’s custom-field merge and the rank rule are specific exceptions to ordinary replacement.
 
-Sources include `htdocs/fourn/class/api_supplier_invoices.class.php:753–805, 824–882`, `htdocs/fourn/class/fournisseur.facture.class.php:2164–2409, 2440–2605`, `htdocs/fourn/class/fournisseur.facture.ligne.class.php:331–404, 468–597, 605–750` and `htdocs/core/lib/price.lib.php:42–55, 178–200`.
-
 ## Three prices with different origins
 
 **Direct input.** An ordinary catalogue line can use the submitted unit amount without selecting a supplier-price record. For two units at 50 excluding tax, a 10% discount and 20% VAT produce 90 net, 18 VAT and 108 gross, assuming ordinary recoverable VAT and no local tax. Changing the quantity to three while resending the same price, rate and discount gives 135 net, 27 VAT and 162 gross. The header reprices from its lines following either operation.
@@ -39,7 +37,7 @@ The recurring branch separately looks for a missing internal buying cost. It con
 
 On credit notes the stored quantity is the absolute quantity. The normal sign rule forces the unit and base net, VAT and gross totals negative. Keeping originating discount-line signs requires both the negative-lines option and the keep-origin-discount-lines option. Creation also applies its sign rule to local tax and foreign totals. The update path separately writes calculated local and foreign totals and uses its sign rule on the base net, VAT and gross fields.
 
-Sources include `htdocs/product/class/product.class.php:2683–2845`, `htdocs/core/lib/price.lib.php:178–200, 299–346, 408–442`, `htdocs/fourn/class/fournisseur.facture.class.php:446–465, 747–827, 2213–2274, 2311–2370, 2535–2597` and `htdocs/fourn/class/fournisseur.facture-rec.class.php:809–875`. See [recurring invoice generation](../specification/financial/recurring-invoice-generation.md).
+See [recurring invoice generation](../specification/financial/recurring-invoice-generation.md).
 
 ## Events, totals and return values
 
@@ -54,5 +52,3 @@ Sources include `htdocs/product/class/product.class.php:2683–2845`, `htdocs/co
 Parent access or write-grant rejection returns 403. Missing invoices or missing target lines return 404 through their respective lookup paths. A mismatched line and invoice return 403. A fresh create request has no request-level idempotency key. After an interrupted response, reading the invoice and its lines can distinguish an already-created line from an unsuccessful attempt before a second insertion.
 
 The nested routes do not interpret a body `caller` field as synchronization context. The separate invoice-header creation service does. An enabled webhook with a matching event can observe the line event before the enclosing invoice operation finishes. A blocking target failure can veto the operation in the transaction that emitted the event. A successful remote delivery survives any subsequent database rollback. The [finance event catalogue](../events/finance.md) identifies the exact emission sites.
-
-Sources include `htdocs/fourn/class/api_supplier_invoices.class.php:69–89, 231–261, 753–805, 824–882, 901–938`, `htdocs/fourn/class/fournisseur.facture.class.php:827–863, 2373–2410, 2583–2607, 2615–2659`, `htdocs/fourn/class/fournisseur.facture.ligne.class.php:414–457, 563–594, 749–815` and `htdocs/core/triggers/interface_95_modWebhook_WebhookTriggers.class.php:68–108, 137–201`.

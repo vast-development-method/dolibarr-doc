@@ -14,8 +14,6 @@ The production page's delete action carries the production line and, for an actu
 
 In the movement-identifier branch, compensation errors are copied to the order. A failed compensation leaves the branch without a positive deletion result and its transaction is rolled back. When a posting is disputed, distinguish the surviving actual row, the signed warehouse journal and the result reported by the operation. The movement plus its compensation can net to zero while the manufacturing register shows only surviving actuals.
 
-Sources are `htdocs/mrp/mo_production.php:101–111,633–637,1376–1385,1466–1475`, `htdocs/core/actions_addupdatedelete.inc.php:524–540` and `htdocs/mrp/class/mo.class.php:1012–1131`.
-
 ## Canceling versus reopening the job
 
 The order card accepts a separate choice to compensate actual consumption and production during cancellation or deletion. Cancellation with compensation runs both populations, requests deletion of the actual rows and then requests the canceled state. Without compensation, the header action itself does not unwind warehouse movements. Order deletion with compensation invokes the movement pass first, then delegates removal of the order and its related records. The stock-cancel routine exits before processing either population when the stock module is disabled.
@@ -23,8 +21,6 @@ The order card accepts a separate choice to compensate actual consumption and pr
 For a full compensation, positive recorded consumption is an incoming movement. Positive finished output is an outgoing movement. Negative stored actuals reverse these directions. Each split supplies its own product, warehouse, lot and quantity. The method processes all eligible consumed splits first and then all produced splits. A finished lot that can no longer supply the return quantity can fail the entire compensation transaction, including earlier restored materials and any associated actual-row deletions. The resulting reported failure does not mean that the first input lot was independently restored.
 
 The two ordinary ways of reopening manufacturing also differ. On the production page a produced order can return to **in progress**, allowing additional work against existing actuals. The general order reopen method accepts produced or canceled and moves the order to **validated/to produce**. Neither reopening method creates a warehouse movement or recreates an actual row removed by an earlier cancellation. On a job already canceled with full compensation, reopening the header alone does not manufacture stock a second time.
-
-Sources are `htdocs/mrp/mo_card.php:198–218,592–611,662–673,950–972`, `htdocs/mrp/mo_production.php:225–243`, `htdocs/core/actions_addupdatedelete.inc.php:657–670` and `htdocs/mrp/class/mo.class.php:963–999,1342–1367,1404–1466,1494–1600`.
 
 ## Worked correction and material reconciliation
 

@@ -18,8 +18,6 @@ The chart loads tasks for the accessible project so a child can be displayed und
 
 The standard chart builds no scheduling dependency edges. Its grouping parent controls nesting. Changing a parent or moving a preceding task's finish date does not establish a finish-to-start rule in this view. A four-hour inspection planned across Monday and Tuesday can therefore appear underneath an installation scheduled to finish on Wednesday. No resource conflict follows from that hierarchy alone. A dated reservation must be assessed on its own calendar event.
 
-The task fields and date comparison are in `htdocs/projet/class/task.class.php`. Hierarchy assembly and rendering are in `htdocs/projet/ganttview.php` and `htdocs/projet/ganttchart.inc.php`.
-
 ## Reporting progress and closing work
 
 The task edit action stores the submitted progress. Entering exactly 100 changes the task to closed, and an intermediate nonzero value changes it to ongoing. Entering zero through this form does not explicitly reset the existing task status. The separate validate, close and reopen actions request their respective workflow states directly. Reopen returns the task to draft. A reader who needs the progress percentage must read that field in addition to status.
@@ -29,8 +27,6 @@ When automatic project closure is enabled, the task update operation loads the c
 For example, two tasks can have consumed all sixteen hours budgeted for them while reporting 100% and 80%. The progress-based project closure still waits for the second task. Setting that task to 100 through edit can close the validated project. With automatic closure disabled, updating the two percentages leaves project closure to a separate action.
 
 Task actions on the card require the project creation/modification grant for edit, clone, merge, validate, close and reopen. Ordinary task deletion uses the project deletion grant. Project visibility and access to the containing record still apply. The chart's create action also evaluates project-level write access or the project's public setting.
-
-The card commands are in `htdocs/projet/tasks/task.php`. Project-wide progress evaluation is in `htdocs/projet/class/task.class.php` under `update`.
 
 ## Cloning a task versus merging recorded work
 
@@ -42,8 +38,6 @@ A merge has a different accounting effect. The destination task keeps its identi
 
 For a destination with four hours planned and two hours logged, merging a source with three hours planned and one logged retains the four-hour plan and yields three logged hours. Planned hours are filled when empty rather than added. A source task with dependent child tasks cannot be deleted by the ordinary deletion operation. The merge cannot complete its final removal in that case. Ordinary deletion also refuses an object still identified as in use, then removes linked contacts, remaining time and extra fields before deleting an eligible task. Direct deletion and merge have very different consequences for historical hours.
 
-Cloning, contact and time transfer, merge and deletion are in `htdocs/projet/class/task.class.php` under `createFromClone`, `mergeContactTask`, `mergeTimeSpentTask`, `mergeTask` and `delete`.
-
 ## Calendar resource conflicts
 
 A resource allocation identifies the resource and object by both type and ID. It records whether the resource is busy and whether its attendance is mandatory. The calendar interval comes from the linked event. The resource-link page requires write permission for additions and edits and delete permission for unlinking. Before editing or deleting a link it verifies that the link belongs to the object being viewed.
@@ -52,4 +46,4 @@ When event resource conflict detection is enabled, adding or updating a busy equ
 
 A room reserved from 09:00 to 10:00 conflicts with a second busy reservation starting at exactly 10:00 on that day under the inclusive comparison. Marking the second association informational leaves the room unreserved by that association. Changing a task's parent or dates does not itself modify either event reservation. When there is a detected conflict the linking operation reports the conflicting events and keeps the requested busy link from being written. The common association operation inserts the link and invokes its add-resource event in one transaction. A failed event rolls back the insert.
 
-The allocation record is in `htdocs/install/mysql/tables/llx_element_resources.sql`. The interval comparison and access rules are in `htdocs/resource/element_resource.php`. Event creation and date-edit behavior are in `htdocs/comm/action/card.php`. The insertion and removal transactions are in `htdocs/core/class/commonobject.class.php`.
+Related records include [Resource association](../../records/parties.md#record-element_resources).

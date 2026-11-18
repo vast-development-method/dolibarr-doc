@@ -1,10 +1,10 @@
 # Recurring billing, direct debits and credit transfers
 
-A recurring invoice template sets billing dates. A debit instruction asks a bank to collect money. A credit transfer instructs the bank to pay a supplier or employee. These have separate identifiers and lifecycles. Generating the invoice or the bank file produces no evidence of cash settlement. [Recurring invoice selector][recur] · [Order model][order]
+A recurring invoice template sets billing dates. A debit instruction asks a bank to collect money. A credit transfer instructs the bank to pay a supplier or employee. These have separate identifiers and lifecycles. Generating the invoice or the bank file produces no evidence of cash settlement.
 
 ## Bill on schedule
 
-Scheduled and interactive generation select templates from the active entity with positive frequency, an unset or due next date through the end of the current server day, suspension off, and generated count below the cap (zero cap means unlimited). The new draft uses the scheduled date where available. A template can request validation, document generation and sending. Exchange rates can be refreshed during generation. The template stores its next date and generated count separately from the issued invoice. A collection request is an additional business record, even for periodic invoices. [Selection, generation and validation][recur] · [Template schedule update][schedule]
+Scheduled and interactive generation select templates from the active entity with positive frequency, an unset or due next date through the end of the current server day, suspension off, and generated count below the cap (zero cap means unlimited). The new draft uses the scheduled date where available. A template can request validation, document generation and sending. Exchange rates can be refreshed during generation. The template stores its next date and generated count separately from the issued invoice. A collection request is an additional business record, even for periodic invoices.
 
 ## Prepare and settle a bank file
 
@@ -16,7 +16,7 @@ Scheduled and interactive generation select templates from the active entity wit
 | Record bank credit or debit | Transmitted order, date on or after transmission, selected bank account. Direct-debit credit permission or credit-transfer debit permission. | Group allocations by customer/supplier, or by employee for salaries. Record invoice or salary payments with the order reference, attempt to mark qualifying documents paid, write corresponding bank movements and mark lines processed. The header reaches status 2, credited for collections or debited for outbound transfers. A payment or bank write error rolls back the settlement transaction. |
 | Record returned customer debit | Existing debit-order line, rejection reason and date, originating order. | Record a negative payment for the rejected allocation, write the linked opposite bank movement and request that the invoice reopen. The original receipt stays available for tracing. |
 
-Observe document classification separately after settlement or rejection. The settlement loop records an error message if an individual paid-state update fails, without incrementing its transaction error counter at that point. The rejection loop calls the unpaid-state update without checking its return. A successful batch or reversal operation therefore does not establish the final invoice state. The normal card workflow offers settlement only from transmitted state. The settlement implementation conditionally updates the header but does not test the affected-row count before processing payments. For a rebuild, make claiming the transition and posting its resulting cash rows one atomic operation sized to the order. That stronger replay guarantee is an implementation requirement for the rebuild. [Generation and eligibility][generate] · [Encoding and totals][encode] · [Action rights][rights] · [Settlement][settle] · [Rejection][reject]
+Observe document classification separately after settlement or rejection. The settlement loop records an error message if an individual paid-state update fails, without incrementing its transaction error counter at that point. The rejection loop calls the unpaid-state update without checking its return. A successful batch or reversal operation therefore does not establish the final invoice state. The normal card workflow offers settlement only from transmitted state. The settlement implementation conditionally updates the header but does not test the affected-row count before processing payments. For a rebuild, make claiming the transition and posting its resulting cash rows one atomic operation sized to the order. That stronger replay guarantee is an implementation requirement for the rebuild.
 
 ### Worked acceptance cases
 
@@ -29,12 +29,3 @@ Observe document classification separately after settlement or rejection. The se
 | TR-ORD-05 | Outgoing transfer against an unpaid supplier invoice or a salary. | Selected source determines payee, allocation type and outgoing bank label. The same numeric terminal state means debited on this order. |
 
 [Bank-order schema](../../schemas/treasury/bank-order.schema.json) · [One-off debit example](../../examples/treasury/bank-order--debit.json). The normalized command captures one order kind and source category. Eligibility, actual mandate data, amount aggregation and lifecycle guards require the live records.
-
-[recur]: ../reference/locators/treasury.md#ref-a7d01543b59c
-[schedule]: ../reference/locators/treasury.md#ref-02952cf7fb6f
-[order]: ../reference/locators/treasury.md#ref-987537844471
-[generate]: ../reference/locators/treasury.md#ref-e9871a92b36d
-[encode]: ../reference/locators/treasury.md#ref-282bdc09e732
-[rights]: ../reference/locators/treasury.md#ref-2a0476935da8
-[settle]: ../reference/locators/treasury.md#ref-7b977f6d8ed4
-[reject]: ../reference/locators/treasury.md#ref-118b565f8b4b

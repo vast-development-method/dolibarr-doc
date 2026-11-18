@@ -1,6 +1,6 @@
 # Commercial proposals and customer orders
 
-A proposal records an offer on agreed terms. The customer order records the commitment to fulfil it. Conversion creates another document with its own ID, lines, dates and number. Both remain available for audit. A sale can also begin with an order or proceed from a signed proposal to an invoice. [Proposal guide](../reference/locators/sales.md#ref-46aeac828309) · [Order guide](../reference/locators/sales.md#ref-f143b34bfa12) · [Proposal card actions](../reference/locators/sales.md#ref-639ffb0174aa)
+A proposal records an offer on agreed terms. The customer order records the commitment to fulfil it. Conversion creates another document with its own ID, lines, dates and number. Both remain available for audit. A sale can also begin with an order or proceed from a signed proposal to an invoice.
 
 ## Model
 
@@ -11,8 +11,6 @@ A proposal records an offer on agreed terms. The customer order records the comm
 | Commercial line | Belongs to one stage-specific header. Catalogue reference is optional. Retain description, quantity, unit, unit selling price, percentage discount, VAT and local tax treatment, resulting net/tax/gross, rank and service dates. Store the purchase price basis used for margin separately from selling price. Titles or options have distinct semantics. |
 | Document link | Each end has an object type and ID. Proposal → order remains discoverable after either receives a new reference. The order-creation path conditionally retains line-origin information depending on configuration. Do not infer a one-to-one correspondence by matching descriptions or product IDs. |
 
-[Proposal header](../reference/locators/sales.md#ref-8be51a51d379) · [Proposal lines](../reference/locators/sales.md#ref-02d87a43cff1) · [Order header](../reference/locators/sales.md#ref-f20a3329930f) · [Order lines](../reference/locators/sales.md#ref-b2a5c09e0837) · [Document links](../reference/locators/sales.md#ref-a60539e97f35) · [Order construction and line origins](../reference/locators/sales.md#ref-c142503e6b77)
-
 ## State transitions
 
 | Document | Normal path and alternatives | Effects |
@@ -21,13 +19,11 @@ A proposal records an offer on agreed terms. The customer order records the comm
 | Reopened proposal | In the card flow, signed, refused, billed and cancelled documents can return to validated, subject to permissions and available actions. With `PROPAL_SKIP_ACCEPT_REFUSE` the card can decide a draft and can reopen to draft. | Reopening updates the existing proposal. Creating a later order is a different operation. |
 | Order | Draft (0) → validated (1) → shipment in process (2) → closed/delivered (3). Closing can also take a validated order directly to delivered. Cancelled is −1. | Validation promotes the party, numbers the order, records validator/date and can issue stock. Closing records closer/date and emits `ORDER_CLOSE`. Billing is independently classified on a post-draft order. |
 
-[Proposal states](../reference/locators/sales.md#ref-25cb60f1f168) · [Validation](../reference/locators/sales.md#ref-48893cc623d0) · [Decision and billing](../reference/locators/sales.md#ref-933af08d80a1) · [Card decision and reopen guards](../reference/locators/sales.md#ref-6afa259924ea) · [Order states](../reference/locators/sales.md#ref-dc70e48f393a) · [Order validation](../reference/locators/sales.md#ref-1ff960c70d54) · [Order closure](../reference/locators/sales.md#ref-8b3f7d655539) · [Billing classification](../reference/locators/sales.md#ref-a56aa8fb72f6)
-
 ## Pricing a line
 
-For an ordinary taxable product with tax-exclusive input, one VAT rate, full progress and no local taxes, the net is quantity × unit price × (1 − discount / 100). VAT is net × VAT rate / 100. Gross is net + VAT. Example: 10 units at 50, discount 10%, VAT 15% gives 450 net, 67.50 VAT and 517.50 gross. The stored unit price remains 50. This example uses exact amounts at two decimal places. [Line calculation and persistence](../reference/locators/sales.md#ref-5b199ae553ef) · [Pricing engine](../reference/locators/sales.md#ref-5b9bd87f7df8)
+For an ordinary taxable product with tax-exclusive input, one VAT rate, full progress and no local taxes, the net is quantity × unit price × (1 − discount / 100). VAT is net × VAT rate / 100. Gross is net + VAT. Example: 10 units at 50, discount 10%, VAT 15% gives 450 net, 67.50 VAT and 517.50 gross. The stored unit price remains 50. This example uses exact amounts at two decimal places.
 
-The engine distinguishes tax-exclusive and tax-inclusive price input, local tax types, progress and document currency. Use each line's tax basis and then aggregate stored totals. A single rate applied to the header total cannot reconstruct mixed-rate sales. When customer packaging is enabled the order line quantity may be adjusted to packaging before pricing. Date-bounded services reject an end before the start. A zero-quantity ordinary line receives the option marker. [Line input rules](../reference/locators/sales.md#ref-4fd63243fa97) · [Option marker](../reference/locators/sales.md#ref-aab2542031a8) · [Header recalculation after creating lines](../reference/locators/sales.md#ref-c9baf0bd2fb1)
+The engine distinguishes tax-exclusive and tax-inclusive price input, local tax types, progress and document currency. Use each line's tax basis and then aggregate stored totals. A single rate applied to the header total cannot reconstruct mixed-rate sales. When customer packaging is enabled the order line quantity may be adjusted to packaging before pricing. Date-bounded services reject an end before the start. A zero-quantity ordinary line receives the option marker.
 
 ## Conversion contract
 
@@ -35,8 +31,6 @@ The engine distinguishes tax-exclusive and tax-inclusive price input, local tax 
 2. Create a new order dated now. Copy the party, project, payment terms, deposit, shipping details and customer reference. Copy line quantities, descriptions, units, price, discount and tax inputs. Recompute the margin basis and new totals. Notes propagate unless disabled. Only header extra fields supported on the destination are selected.
 3. If multicurrency is enabled, carry the currency. Reuse the proposal rate when the origin-rate option is enabled and a rate is present. Otherwise the lookup uses the order date. A failed currency-ID resolution falls back to company currency at rate 1.
 4. Save the draft order with its source document link and run the creation hooks. Validation is a subsequent command. With the Workflow module and `WORKFLOW_PROPAL_AUTOCREATE_ORDER`, signing can perform order creation. That workflow first checks for an already linked order. The explicit REST conversion does not implement the same duplicate check. After an uncertain response, read the proposal's linked orders before creating another.
-
-[Card action](../reference/locators/sales.md#ref-591accd90d03) · [REST conversion](../reference/locators/sales.md#ref-626f6537b329) · [Business mapping](../reference/locators/sales.md#ref-4520f9981bc6) · [Signing automation](../reference/locators/sales.md#ref-1f69e4910603)
 
 ## Service contracts and acceptance cases
 
@@ -48,7 +42,5 @@ The engine distinguishes tax-exclusive and tax-inclusive price input, local tax 
 | SALES-2 | Change a catalogue selling price after issuing the quote and convert the quote. | The newly constructed line uses the proposal's unit price and discount. The pricing trace uses those document inputs. |
 | SALES-3 | Record 10 × 50 as in the example and mark the delivered order billed. | Sales amounts remain 450 / 67.50 / 517.50. Status remains delivered with billed=true. No payment amount is implied. |
 | SALES-4 | Try to validate a draft containing a catalogue item disabled for sale with the default active-product check enabled. | Validation rejects it before numbering or stock issue. Each of the two sales documents has its own option to disable this check. |
-
-[Proposal REST creation](../reference/locators/sales.md#ref-da7c1c488a5f) · [Order REST creation](../reference/locators/sales.md#ref-70e878b49f83) · [REST validation outcomes](../reference/locators/sales.md#ref-90db55026bc0) · [Proposal active-item check](../reference/locators/sales.md#ref-5aa710746933) · [Order validation rules](../reference/locators/sales.md#ref-9f0d323376ee)
 
 The [commercial document schema](../../schemas/sales/commercial-document.schema.json) specifies a portable read projection for a proposal or order and its ordinary sale lines. Consumers resolve party and product IDs and verify derived amounts under their configured precision. [Fulfilment and billing](dispatch-to-invoice.md) follows the order into the warehouse and accounts receivable.

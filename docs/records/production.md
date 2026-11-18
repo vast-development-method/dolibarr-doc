@@ -36,7 +36,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [bom_bomline](production.md#record-bom_bomline) (fk_bom).
 
-The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/bom/class/bom.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -64,8 +64,6 @@ The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/bom
 | `last_main_doc` | varchar(255) | Yes | — | Location of the latest main document generated for the record. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bom_bom-bom.sql`, `htdocs/install/mysql/tables/llx_bom_bom-bom.key.sql`, `htdocs/bom/class/bom.class.php:62`.
-
 <a id="record-bom_bomline"></a>
 
 ## Bill component
@@ -92,8 +90,6 @@ The primary key is `rowid`.
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `fk_default_workstation` | integer | Yes | `NULL` | Workstation proposed for the production operation. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bom_bomline-bom.sql`, `htdocs/install/mysql/tables/llx_bom_bomline-bom.key.sql`, `htdocs/bom/class/bom.class.php:223`.
-
 <a id="record-mrp_mo"></a>
 
 ## Manufacturing order
@@ -105,7 +101,7 @@ The primary key is `rowid`.
 
 **Referenced by** [categorie_mo](categories.md#record-categorie_mo) (fk_mo), [mrp_production](production.md#record-mrp_production) (fk_mo).
 
-The record class defines `0` draft, `1` validated, `2` inprogress, `3` produced, `9` canceled. See `htdocs/mrp/class/mo.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` inprogress, `3` produced, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -136,8 +132,6 @@ The record class defines `0` draft, `1` validated, `2` inprogress, `3` produced,
 | `last_main_doc` | varchar(255) | Yes | — | Location of the latest main document generated for the record. |
 | `fk_parent_line` | integer | Yes | — | Parent line for hierarchical document content. |
 | `extraparams` | varchar(255) | Yes | `NULL` | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_mrp_mo-mrp.sql`, `htdocs/install/mysql/tables/llx_mrp_mo-mrp.key.sql`, `htdocs/mrp/class/mo.class.php:44`.
 
 <a id="record-mrp_production"></a>
 
@@ -172,8 +166,6 @@ The primary key is `rowid`.
 | `fk_default_workstation` | integer | Yes | `NULL` | Workstation proposed for the production operation. |
 | `fk_unit` | integer | Yes | `NULL` | Unit of measure associated with the quantity. |
 
-Source locations include `htdocs/install/mysql/tables/llx_mrp_production-mrp.sql`, `htdocs/install/mysql/tables/llx_mrp_production-mrp.key.sql`, `htdocs/mrp/class/mo.class.php:234`.
-
 <a id="record-workstation_workstation"></a>
 
 ## Workstation
@@ -183,7 +175,7 @@ Defines an operation centre and its machine and labour rates or capacity attribu
 **Storage** `workstation_workstation`.
 The primary key is `rowid`.
 
-The record class defines `0` disabled, `1` enabled. See `htdocs/workstation/class/workstation.class.php`.
+The stored state codes are `0` disabled, `1` enabled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -204,8 +196,6 @@ The record class defines `0` disabled, `1` enabled. See `htdocs/workstation/clas
 | `thm_operator_estimated` | double | Yes | — | Estimated operator THM. |
 | `thm_machine_estimated` | double | Yes | — | Estimated machine THM. |
 
-Source locations include `htdocs/install/mysql/tables/llx_workstation_workstation-workstation.sql`, `htdocs/install/mysql/tables/llx_workstation_workstation-workstation.key.sql`, `htdocs/workstation/class/workstation.class.php:48`.
-
 <a id="record-workstation_workstation_resource"></a>
 
 ## Workstation resource assignment
@@ -221,8 +211,6 @@ The primary key is `rowid`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `fk_resource` | integer | Yes | — | User group. |
 | `fk_workstation` | integer | Yes | — | Workstation. |
-
-Source locations include `htdocs/install/mysql/tables/llx_workstation_workstation_resource-workstation.sql`, `htdocs/workstation/class/workstationresource.class.php:34`.
 
 <a id="record-workstation_workstation_usergroup"></a>
 
@@ -240,8 +228,6 @@ The primary key is `rowid`.
 | `fk_usergroup` | integer | Yes | — | Access or personnel group. |
 | `fk_workstation` | integer | Yes | — | Workstation. |
 
-Source locations include `htdocs/install/mysql/tables/llx_workstation_workstation_usergroup-workstation.sql`, `htdocs/workstation/class/workstationusergroup.class.php:33`.
-
 <a id="record-projet"></a>
 
 ## Project or opportunity
@@ -254,7 +240,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_project](categories.md#record-categorie_project) (fk_project), [commande](commercial.md#record-commande) (fk_projet), [facture](billing.md#record-facture) (fk_projet), [facture_fourn](billing.md#record-facture_fourn) (fk_projet), [facture_fourn_rec](billing.md#record-facture_fourn_rec) (fk_projet), [facture_rec](billing.md#record-facture_rec) (fk_projet), [fichinter_rec](people.md#record-fichinter_rec) (fk_projet), [projet_task](production.md#record-projet_task) (fk_projet), [propal](commercial.md#record-propal) (fk_projet).
 
-The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/projet/class/project.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -303,8 +289,6 @@ The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/proje
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_projet.sql`, `htdocs/install/mysql/tables/llx_projet.key.sql`, `htdocs/projet/class/task.class.php:1188`.
-
 <a id="record-projet_task"></a>
 
 ## Project task
@@ -317,7 +301,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_project_task](categories.md#record-categorie_project_task) (fk_project_task).
 
-The record class defines `0` draft, `1` validated, `2` ongoing, `3` closed, `4` transferred, `9` canceled. See `htdocs/projet/class/task.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` ongoing, `3` closed, `4` transferred, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -349,8 +333,6 @@ The record class defines `0` draft, `1` validated, `2` ongoing, `3` closed, `4` 
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `billable` | smallint | Yes | `1` | Whether time on the task can be billed. |
 
-Source locations include `htdocs/install/mysql/tables/llx_projet_task.sql`, `htdocs/install/mysql/tables/llx_projet_task.key.sql`, `htdocs/projet/class/task.class.php:51`.
-
 <a id="record-element_time"></a>
 
 ## Time entry
@@ -381,8 +363,6 @@ The primary key is `rowid`.
 | `datec` | datetime | Yes | — | When the row was created. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
-
-Source locations include `htdocs/install/mysql/tables/llx_element_time.sql`, `htdocs/projet/class/task.class.php:837`.
 
 <a id="record-resource"></a>
 
@@ -424,8 +404,6 @@ An additional unique key comprises `ref`, `entity`.
 | `fk_state` | integer | Yes | `NULL` | Administrative subdivision identity in an address. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_resource.sql`, `htdocs/install/mysql/tables/llx_resource.key.sql`, `htdocs/resource/class/dolresource.class.php:46`.
-
 <a id="record-actioncomm"></a>
 
 ## Calendar activity
@@ -437,7 +415,7 @@ The primary key is `id`.
 
 **Referenced by** [categorie_actioncomm](categories.md#record-categorie_actioncomm) (fk_actioncomm).
 
-The record class defines `0` draft, `1` suggested, `2` confirmed, `3` not qualified, `4` done, `9` canceled. See `htdocs/eventorganization/class/conferenceorbooth.class.php`.
+The stored state codes are `0` draft, `1` suggested, `2` confirmed, `3` not qualified, `4` done, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -492,8 +470,6 @@ The record class defines `0` draft, `1` suggested, `2` confirmed, `3` not qualif
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_actioncomm.sql`, `htdocs/comm/action/class/actioncomm.class.php:57`.
-
 <a id="record-actioncomm_resources"></a>
 
 ## Activity participant
@@ -514,8 +490,6 @@ An additional unique key comprises `fk_actioncomm`, `element_type`, `fk_element`
 | `mandatory` | smallint | Yes | — | Whether participation or association is required. |
 | `transparency` | smallint | Yes | `1` | Calendar availability indicator, used to distinguish busy from available participation. |
 
-Source locations include `htdocs/install/mysql/tables/llx_actioncomm_resources.sql`, `htdocs/install/mysql/tables/llx_actioncomm_resources.key.sql`, `htdocs/comm/action/class/actioncomm.class.php:720`.
-
 <a id="record-actioncomm_reminder"></a>
 
 ## Activity reminder
@@ -526,7 +500,7 @@ Schedules a notification for an activity and recipient at an interval before the
 The primary key is `rowid`.
 An additional unique key comprises `fk_actioncomm`, `fk_user`, `fk_soc`, `fk_contact`, `typeremind`, `offsetvalue`, `offsetunit`.
 
-The record class defines `0` todo, `1` done, `-1` error. See `htdocs/comm/action/class/actioncommreminder.class.php`.
+The stored state codes are `0` todo, `1` done, `-1` error.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -545,8 +519,6 @@ The record class defines `0` todo, `1` done, `-1` error. See `htdocs/comm/action
 | `fk_actioncomm` | integer | No | — | Associated calendar activity or event. |
 | `fk_email_template` | integer | Yes | — | Selected message template. |
 
-Source locations include `htdocs/install/mysql/tables/llx_actioncomm_reminder.sql`, `htdocs/install/mysql/tables/llx_actioncomm_reminder.key.sql`, `htdocs/comm/action/class/actioncomm.class.php:1150`.
-
 <a id="record-eventorganization_conferenceorboothattendee"></a>
 
 ## Event registration
@@ -557,7 +529,7 @@ Associates an attendee with an event session or stand and records its registrati
 The primary key is `rowid`.
 Additional unique keys comprise `ref` / `fk_project`, `email`, `fk_actioncomm` / `fk_replacement`.
 
-The record class defines `0` draft, `1` validated, `5` used, `9` canceled. See `htdocs/eventorganization/class/conferenceorboothattendee.class.php`.
+The stored state codes are `0` draft, `1` validated, `5` used, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -585,5 +557,3 @@ The record class defines `0` draft, `1` validated, `5` used, `9` canceled. See `
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 | `status` | smallint | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `fk_replacement` | integer | Yes | — | Attendee entry linked as a replacement. |
-
-Source locations include `htdocs/install/mysql/tables/llx_eventorganization_conferenceorboothattendee.sql`, `htdocs/install/mysql/tables/llx_eventorganization_conferenceorboothattendee.key.sql`, `htdocs/eventorganization/class/conferenceorboothattendee.class.php:49`.

@@ -124,8 +124,6 @@ Additional unique keys comprise `ref`, `entity` / `barcode`, `fk_barcode_type`, 
 | `last_main_doc` | varchar(255) | Yes | — | Location of the latest main document generated for the record. |
 | `packaging` | float(24,8) | Yes | `NULL` | Packaging quantity or unit arrangement. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product.sql`, `htdocs/install/mysql/tables/llx_product.key.sql`, `htdocs/product/class/product.class.php:75`.
-
 <a id="record-product_lang"></a>
 
 ## Translated product text
@@ -146,8 +144,6 @@ An additional unique key comprises `fk_product`, `lang`.
 | `note` | mediumtext | Yes | — | Free-text annotation retained with the record. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_lang.sql`, `htdocs/install/mysql/tables/llx_product_lang.key.sql`, `htdocs/product/class/product.class.php:2075`.
-
 <a id="record-product_association"></a>
 
 ## Kit component
@@ -167,8 +163,6 @@ An additional unique key comprises `fk_product_pere`, `fk_product_fils`.
 | `incdec` | integer | Yes | `1` | Identifies whether a stock change on the parent also changes this component. |
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_association.sql`, `htdocs/install/mysql/tables/llx_product_association.key.sql`, `htdocs/product/class/product.class.php:1950`.
 
 <a id="record-product_price"></a>
 
@@ -213,8 +207,6 @@ The primary key is `rowid`.
 | `multicurrency_price` | double(24,8) | Yes | `NULL` | Price expressed in the secondary currency. |
 | `multicurrency_price_ttc` | double(24,8) | Yes | `NULL` | Tax-inclusive price in the secondary currency. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_price.sql`, `htdocs/install/mysql/tables/llx_product_price.key.sql`, `htdocs/product/class/product.class.php:2364`.
-
 <a id="record-product_price_by_qty"></a>
 
 ## Quantity price break
@@ -245,8 +237,6 @@ An additional unique key comprises `fk_product_price`, `quantity`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_price_by_qty.sql`, `htdocs/install/mysql/tables/llx_product_price_by_qty.key.sql`, `htdocs/product/class/product.class.php:2393`.
-
 <a id="record-product_pricerules"></a>
 
 ## Price-level variation
@@ -264,8 +254,6 @@ An additional unique key comprises `level`.
 | `fk_level` | integer | No | — | Base price level to which the rule applies its variation. |
 | `var_percent` | real | No | — | Percentage variation from the base price. |
 | `var_min_percent` | real | No | — | Percentage variation used to calculate the minimum price. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_pricerules.sql`, `htdocs/install/mysql/tables/llx_product_pricerules.key.sql`, `htdocs/product/class/product.class.php:7333`.
 
 <a id="record-product_customer_price"></a>
 
@@ -305,8 +293,6 @@ An additional unique key comprises `fk_product`, `fk_soc`, `date_begin`.
 | `price_label` | varchar(255) | Yes | — | Label attached to a price or pricing condition. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_customer_price.sql`, `htdocs/install/mysql/tables/llx_product_customer_price.key.sql`, `htdocs/product/class/product.class.php:7303`.
-
 <a id="record-product_customer_price_log"></a>
 
 ## Customer tariff event
@@ -343,8 +329,6 @@ The primary key is `rowid`.
 | `price_label` | varchar(255) | Yes | — | Label attached to a price or pricing condition. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_customer_price_log.sql`, `htdocs/product/class/productcustomerprice.class.php:684`.
-
 <a id="record-product_fournisseur_price"></a>
 
 ## Supplier offer
@@ -355,7 +339,7 @@ Holds a supplier's reference, quantity break, purchase price, discount and procu
 The primary key is `rowid`.
 Additional unique keys comprise `ref_fourn`, `fk_soc`, `quantity`, `entity` / `barcode`, `fk_barcode_type`, `entity`.
 
-The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/product/class/productfournisseurprice.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -396,8 +380,6 @@ The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/pro
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | Yes | `1` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_fournisseur_price.sql`, `htdocs/install/mysql/tables/llx_product_fournisseur_price.key.sql`, `htdocs/product/class/product.class.php:1901`.
-
 <a id="record-product_fournisseur_price_log"></a>
 
 ## Supplier tariff event
@@ -421,8 +403,6 @@ The primary key is `rowid`.
 | `multicurrency_unitprice` | double(24,8) | Yes | `NULL` | Unit price in the secondary currency. |
 | `multicurrency_price` | double(24,8) | Yes | `NULL` | Price expressed in the secondary currency. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_fournisseur_price_log.sql`, `htdocs/product/class/product.class.php:1899`.
-
 <a id="record-product_attribute"></a>
 
 ## Variant axis
@@ -442,8 +422,6 @@ An additional unique key comprises `ref`.
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_attribute-variants.sql`, `htdocs/install/mysql/tables/llx_product_attribute-variants.key.sql`, `htdocs/variants/class/ProductAttribute.class.php:57`.
-
 <a id="record-product_attribute_value"></a>
 
 ## Variant option
@@ -462,8 +440,6 @@ An additional unique key comprises `fk_product_attribute`, `ref`.
 | `value` | varchar(255) | No | — | Label or value of this available product option. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `position` | integer | No | `0` | Ordering value used within the relevant list, hierarchy or document. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_attribute_value-variants.sql`, `htdocs/install/mysql/tables/llx_product_attribute_value-variants.key.sql`, `htdocs/variants/class/ProductAttribute.class.php:62`.
 
 <a id="record-product_attribute_combination"></a>
 
@@ -485,8 +461,6 @@ The primary key is `rowid`.
 | `variation_ref_ext` | varchar(255) | Yes | — | External reference for this variant combination. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_attribute_combination-variants.sql`, `htdocs/product/class/product.class.php:5751`.
-
 <a id="record-product_attribute_combination2val"></a>
 
 ## Variant composition
@@ -502,8 +476,6 @@ The primary key is `rowid`.
 | `fk_prod_combination` | int | No | — | Variant combination receiving the attribute value. |
 | `fk_prod_attr` | int | No | — | Attribute being assigned to the combination. |
 | `fk_prod_attr_val` | int | No | — | Selected value from the attribute's allowed values. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_attribute_combination2val-variants.sql`, `htdocs/variants/class/ProductAttribute.class.php:854`.
 
 <a id="record-product_attribute_combination_price_level"></a>
 
@@ -522,5 +494,3 @@ An additional unique key comprises `fk_product_attribute_combination`, `fk_price
 | `fk_price_level` | integer | No | `1` | Selling price level for this variant's adjustment. |
 | `variation_price` | double(24,8) | No | — | Price adjustment for this variant relative to its base product. |
 | `variation_price_percentage` | integer | Yes | — | Interprets the variant price adjustment as a percentage where selected. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_attribute_combination_price_level-variants.sql`, `htdocs/install/mysql/tables/llx_product_attribute_combination_price_level-variants.key.sql`, `htdocs/variants/class/ProductCombination.class.php:459`.

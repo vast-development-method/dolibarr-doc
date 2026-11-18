@@ -2,8 +2,6 @@
 
 The account, bank entries and links from an entry to another business object are distinct records. A transfer posts a debit and a credit and links the two bank entries inside one database transaction.
 
-The implementation locations below refer to `htdocs/compta/bank/class/api_bankaccounts.class.php`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
@@ -18,8 +16,6 @@ The lookup uses the visible entity scope for `bank_account`. The properties sele
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `71–126`.
-
 ## `get` — Read a bank account
 
 **Arguments** `id` (integer).
@@ -30,8 +26,6 @@ Source lines `71–126`.
 
 - `403` — access refused.
 - `404` — account missing.
-
-Source lines `136–149`.
 
 ## `post` — Create a bank account
 
@@ -48,8 +42,6 @@ The optional caller marker is placed in event context for synchronization. The s
 - `400` — required request field absent.
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `159–184` with `_validate 413–426`.
 
 ## `transfer` — Transfer
 
@@ -68,8 +60,6 @@ The method adds a line and links a bank entry to its counterpart. The method ope
 - `422` — destination amount missing for cross-currency transfer, negative destination amount, source and destination coincide.
 - `500` — business operation failed.
 
-Source lines `210–325`.
-
 ## `put` — Update a bank account
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -84,8 +74,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — account missing.
 - `500` — business operation failed.
 
-Source lines `336–372` with `get 136–149`.
-
 ## `delete` — Delete a bank account
 
 **Arguments** `id` (integer).
@@ -97,8 +85,6 @@ Source lines `336–372` with `get 136–149`.
 - `403` — access refused.
 - `404` — account missing.
 - `500` — removal failed.
-
-Source lines `382–403`.
 
 ## `getLines` — Read document lines
 
@@ -115,8 +101,6 @@ Route `GET {id}/lines`.
 - `404` — account missing.
 - `503` — query or persistence failure.
 
-Source lines `461–506`.
-
 ## `addLine` — Add line
 
 Route `POST {id}/lines`.
@@ -132,8 +116,6 @@ The method adds a line.
 - `403` — access refused.
 - `404` — account missing.
 - `503` — record lookup or write failed.
-
-Source lines `527–565`.
 
 ## `addLink` — Add link
 
@@ -152,8 +134,6 @@ The method links a bank entry to its counterpart.
 - `404` — account missing, account line missing.
 - `503` — record lookup or write failed.
 
-Source lines `580–611`.
-
 ## `getLinks` — Read links
 
 Route `GET {id}/lines/{line_id}/links`.
@@ -167,8 +147,6 @@ Route `GET {id}/lines/{line_id}/links`.
 - `403` — access refused.
 - `404` — account missing.
 
-Source lines `626–644`.
-
 ## `getDetailAccountLine` — Read detail account line
 
 Route `GET /lines/{line_id}`.
@@ -181,8 +159,6 @@ Route `GET /lines/{line_id}`.
 
 - `403` — access refused.
 - `404` — account line missing.
-
-Source lines `655–668`.
 
 ## `updateLine` — Update line
 
@@ -201,8 +177,6 @@ The method updates the label.
 - `404` — account missing, account line missing.
 - `503` — record lookup or write failed.
 
-Source lines `680–709`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{line_id}`.
@@ -218,8 +192,6 @@ Route `DELETE {id}/lines/{line_id}`.
 - `404` — account missing, account line missing.
 - `500` — removal failed.
 
-Source lines `722–754`.
-
 ## `getBalance` — Read balance
 
 Route `GET {id}/balance`.
@@ -234,5 +206,3 @@ The method evaluates the outstanding balance.
 
 - `403` — access refused.
 - `404` — account missing.
-
-Source lines `765–781`.

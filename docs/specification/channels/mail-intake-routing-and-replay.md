@@ -10,8 +10,6 @@ Date selection uses a day-granular mailbox search with an overlap from the previ
 
 A reply-only filter recognizes several localized reply prefixes and a recognized system reference. The operator can also elect to use the In-Reply-To header. The new-message filter ignores an arbitrary nonempty References header by default, since forwarded or rewritten mail can carry one. A separate setting opts into counting generic references for that filter. Mail routed from a sent folder or matching a configured outgoing sender is recorded as outgoing. Other mail starts as incoming.
 
-See `htdocs/emailcollector/class/emailcollector.class.php:757–815`, `1350–1567`, `1700–1773`, `2053–2100` and `2730–2762`.
-
 ## From sender to business action
 
 | Action | Resolution and write |
@@ -26,13 +24,9 @@ Tracking context can associate a message with an existing document such as a pro
 
 After a new activity is successfully created on a resolved ticket, the collector reopens tickets in closed, cancelled, needs-more-information or waiting status. An existing assignee puts the ticket in assigned status. Without an assignee it moves to unread. The reopen is in the new-event branch, so rereading an already recorded message does not replay this transition.
 
-See `htdocs/emailcollector/class/emailcollector.class.php:2375–2510`, `2785–2824`, `2924–3041`, `3162–3290`, `3467–3658` and `3779–3890`.
-
 ## Attachment identity
 
 For intake paths using the content-aware attachment helper, the destination already holds the file population against which duplicates are compared. The helper computes a content hash, reuses an existing file with matching contents when present and chooses a suffixed filename if a different file already occupies the requested name. It skips empty contents. Stored metadata includes the actual saved name and content hash. The sender's filename alone cannot identify a business attachment. Identical bytes in two different ticket directories are separate destination populations.
-
-See `htdocs/emailcollector/class/emailcollector.class.php:4311–4446` and `4448–4515`.
 
 ## Completion and failure
 
@@ -41,5 +35,3 @@ In production a successful message commits its database work. A failing message 
 Mail moves are deferred until the batch has been examined. The move loop and final mailbox expunge are guarded by the run error flag. A later failure can leave earlier, already-committed messages in the source folder. A move can itself fail after the business transaction commits. Retrying can therefore revisit durable activities, tickets and files. The implementation provides different replay protections for events, object creation and attachments. Operators can reconcile a specific message using its external Message-ID, the resolved ticket or project, the stored file name and the collector's run report.
 
 For example, a waiting ticket has an assignee. Its customer's reply creates an incoming activity and moves the ticket to assigned. The next message in the batch fails a party lookup because two parties have the same address. The first transaction stays committed even if both messages remain in the source folder. When the address ambiguity is resolved and the collector runs again, the first activity's Message-ID identifies the prior write.
-
-See `htdocs/emailcollector/class/emailcollector.class.php:3928–3986` and `3990–4088`.

@@ -47,5 +47,3 @@ The flags for using opportunities, tasks, time billing and event organization ar
 If two categories and “none” are combined with “any”, untagged projects and projects meeting either tag qualify. Using “all” for a tag together with “none” leaves no matches. These existence tests preserve one project row when it satisfies several categories.
 
 The project statistics page answers questions grouped by creation period. The project list instead exposes individual records and can filter the independent planned, creation and modification dates. [Project pipeline, time and staff costs](../reporting/projects-time-and-staff-costs.md)
-
-Source locations include `htdocs/projet/list.php:151–165,198–229,394–405,589–675,687–815,819–911,1395–1399,1547–1553` and `htdocs/projet/class/project.class.php:391–401,1659–1738`.

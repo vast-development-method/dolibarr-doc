@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expense claim journal transfer reconciliation",
+  "description": "One approved positive claim with separate recoverable VAT, in one currency and an open period. Each attempted transfer captures the current bindings, its own newly committed rows and the difference from the full claim. Amounts are decimal strings in currency units. Local tax, adjustments and prior journal movements are outside this projection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entityId", "claimId", "reference", "employeeSubsidiary", "employeeControl", "inputTaxAccount", "currency", "declaredGross", "details", "attempts"],
+  "properties": {
+    "entityId": {"$ref": "#/$defs/id"},
+    "claimId": {"$ref": "#/$defs/id"},
+    "reference": {"$ref": "#/$defs/text"},
+    "employeeSubsidiary": {"$ref": "#/$defs/text"},
+    "employeeControl": {"$ref": "#/$defs/text"},
+    "inputTaxAccount": {"$ref": "#/$defs/text"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "declaredGross": {"$ref": "#/$defs/amount"},
+    "details": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description", "net", "vat", "gross"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "description": {"$ref": "#/$defs/text"},
+          "net": {"$ref": "#/$defs/amount"},
+          "vat": {"$ref": "#/$defs/amount"},
+          "gross": {"$ref": "#/$defs/amount"}
+        }
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/attempt"}
+    }
+  },
+  "$defs": {
+    "id": {"type": "integer", "minimum": 1},
+    "text": {"type": "string", "minLength": 1},
+    "amount": {"type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]{1,8})?$"},
+    "positiveAmount": {"$ref": "#/$defs/amount", "not": {"pattern": "^0(\\.0+)?$"}},
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["detailId", "accountId", "accountNumber"],
+      "properties": {
+        "detailId": {"$ref": "#/$defs/id"},
+        "accountId": {"type": ["integer", "null"]},
+        "accountNumber": {"type": ["string", "null"]}
+      },
+      "if": {"properties": {"accountId": {"type": "integer", "minimum": 1}}},
+      "then": {"properties": {"accountNumber": {"$ref": "#/$defs/text"}}},
+      "else": {"properties": {"accountNumber": {"type": "null"}}}
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "account", "side", "amount"],
+      "properties": {
+        "role": {"enum": ["expense", "inputVat", "employeeControl"]},
+        "account": {"$ref": "#/$defs/text"},
+        "subsidiary": {"$ref": "#/$defs/text"},
+        "side": {"enum": ["debit", "credit"]},
+        "amount": {"$ref": "#/$defs/positiveAmount"}
+      },
+      "if": {"properties": {"role": {"const": "employeeControl"}}},
+      "then": {"required": ["subsidiary"], "properties": {"side": {"const": "credit"}}},
+      "else": {"properties": {"side": {"const": "debit"}}, "not": {"required": ["subsidiary"]}}
+    },
+    "attempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bindings", "outcome", "committedEntries", "claimLessBookedLiability"],
+      "properties": {
+        "bindings": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/binding"}},
+        "outcome": {"enum": ["blockedByUnboundLine", "posted"]},
+        "committedEntries": {"type": "array", "items": {"$ref": "#/$defs/entry"}},
+        "claimLessBookedLiability": {"$ref": "#/$defs/amount"}
+      },
+      "if": {"properties": {"outcome": {"const": "blockedByUnboundLine"}}},
+      "then": {"properties": {"committedEntries": {"maxItems": 0}}},
+      "else": {"properties": {"committedEntries": {"minItems": 2, "contains": {"properties": {"role": {"const": "employeeControl"}}}, "minContains": 1, "maxContains": 1}}}
+    }
+  }
+}

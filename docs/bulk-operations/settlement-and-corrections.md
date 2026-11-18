@@ -17,7 +17,7 @@ A literal zero base remainder produces a warning and a rollback for that invoice
 
 If an invoice has a foreign gross of 180, foreign cash allocations of 60 and settlement credits applied in addition, the foreign expression supplies 120 even while the base expression subtracts the credits. The posted result is also subject to the downstream payment method's own currency handling and closure rules. Preserve the two source quantities to explain differences. The scope here is the bulk payment initializer, not a general formula for all foreign balances.
 
-See `htdocs/compta/facture/list.php:513–610,1575–1588` and [payment terms and adjustments](../specification/financial/payment-terms-and-settlement-adjustments.md).
+[payment terms and adjustments](../specification/financial/payment-terms-and-settlement-adjustments.md)
 
 ## Request money through the bank
 
@@ -30,8 +30,6 @@ Both paths distinguish the candidate-screening pass from the request writer. The
 
 Suppose the supplier payable's open base amount is 490. An untreated transfer request already reserves 100 and another generated, pending transfer line reserves 140. The available amount for this action is 250. Creation reserves 250 for transfer. The three reservations still do not amount to a confirmed withdrawal from the bank. For customer direct debit, an untreated request has an earlier exclusion even if it covers only part of the balance.
 
-See `htdocs/compta/facture/list.php:610–750`, `htdocs/fourn/facture/list.php:364–528` and `htdocs/core/class/commoninvoice.class.php:1456–1590`.
-
 ## Reverse a set of sales using credit notes
 
 The customer invoice list offers cancellation by credit when invoice creation is allowed and inventory does not move on billing. Confirmation can display subscribed notifications associated with issuing credit notes. Each distinct source invoice is processed separately. The ordinary path accepts standard invoices, the pro forma type in the writer's type test, and deposit invoices where deposits are treated as invoices. Replacement invoices, credit notes and stage invoices fail the type gate for this bulk operation. A stored source type still needs to exist and pass the current status and settlement tests.
@@ -42,4 +40,4 @@ For conversion into settlement credit the writer groups ordinary non-zero-net li
 
 An eligible original can therefore be reversed even when a second source with a previous partial payment is skipped or a separate mixed-rate original rolls back. The correction creates documentary and settlement evidence. The ordinary reversal described here posts no customer cash receipt and generates no supplier transfer.
 
-See `htdocs/core/tpl/massactions_pre.tpl.php:465–481` and `htdocs/core/actions_massactions.inc.php:2097–2219,2305–2378,2384–2498,2519–2554`. [Credits, replacements and deposits](../finance-exceptions/corrections-and-deposits.md)
+[Credits, replacements and deposits](../finance-exceptions/corrections-and-deposits.md)

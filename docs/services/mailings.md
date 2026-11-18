@@ -2,8 +2,6 @@
 
 A campaign has a header and target rows. A target can be amended, deleted or reset independently of the campaign. The service also exposes duplication and transitions between draft and validated status.
 
-The implementation locations below refer to `htdocs/comm/mailing/class/api_mailings.class.php`.
-
 ## `get` — Read a campaign
 
 **Arguments** `id` (integer).
@@ -14,8 +12,6 @@ The implementation locations below refer to `htdocs/comm/mailing/class/api_maili
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing.
-
-Source lines `85–88` with `_fetch 100–122`.
 
 ## `index` — List records
 
@@ -30,8 +26,6 @@ The lookup uses the visible entity scope for `mailing`. The properties selector 
 - `400` — invalid filter expression.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `503` — query or persistence failure.
-
-Source lines `147–231`.
 
 ## `indexTargets` — Index targets
 
@@ -50,8 +44,6 @@ The properties selector projects the returned fields.
 - `404` — mass mailing missing.
 - `503` — query or persistence failure.
 
-Source lines `258–339`.
-
 ## `clone` — Clone
 
 **Arguments** `id` (integer), `cloneContent = 1` (integer), `cloneRecipients = 1` (integer), `notrigger = 0` (integer).
@@ -65,8 +57,6 @@ The method duplicates the source record.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing to clone missing, mass mailing missing.
 - `500` — business operation failed.
-
-Source lines `356–380` with `get 85–88`, `_fetch 100–122`.
 
 ## `post` — Create a campaign
 
@@ -84,8 +74,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `500` — business operation failed.
 
-Source lines `395–423` with `_validate 976–989`.
-
 ## `put` — Update a campaign
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -100,8 +88,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — mass mailing missing.
 - `500` — business operation failed.
 
-Source lines `440–482` with `get 85–88`, `_fetch 100–122`.
-
 ## `delete` — Delete a campaign
 
 **Arguments** `id` (integer).
@@ -113,8 +99,6 @@ Source lines `440–482` with `get 85–88`, `_fetch 100–122`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing.
 - `500` — removal failed.
-
-Source lines `498–526`.
 
 ## `updateTarget` — Update target
 
@@ -133,8 +117,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — mass mailing missing, mass mailing target missing, target belongs to another campaign.
 - `500` — business operation failed.
 
-Source lines `546–592` with `getTarget 677–680`, `_fetchTarget 694–721`.
-
 ## `postTarget` — Post target
 
 Route `POST {id}/createTarget`.
@@ -152,8 +134,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — mass mailing missing.
 - `500` — business operation failed.
 
-Source lines `612–660` with `_validateTarget 999–1012`.
-
 ## `getTarget` — Read target
 
 Route `GET {id}/getTarget/{targetid}`.
@@ -166,8 +146,6 @@ Route `GET {id}/getTarget/{targetid}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing, mass mailing target missing, target belongs to another campaign.
-
-Source lines `677–680` with `_fetchTarget 694–721`.
 
 ## `deleteTarget` — Delete target
 
@@ -182,8 +160,6 @@ Route `DELETE {id}/deleteTarget/{targetid}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing, mass mailing target missing, target belongs to another campaign.
 - `500` — removal failed.
-
-Source lines `740–774`.
 
 ## `deleteTargets` — Delete targets
 
@@ -201,8 +177,6 @@ The method counts campaign targets and removes campaign targets.
 - `404` — mass mailing missing.
 - `500` — removal failed.
 
-Source lines `792–821`.
-
 ## `resetTargetsStatus` — Reset targets status
 
 Route `PUT {id}/resetTargetsStatus`.
@@ -218,8 +192,6 @@ The method counts campaign targets and resets campaign target statuses.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing.
 - `500` — business operation failed.
-
-Source lines `839–868`.
 
 ## `settodraft` — Return to draft
 
@@ -238,8 +210,6 @@ The method restores draft state and loads related business records.
 - `404` — mass mailing missing.
 - `500` — business operation failed.
 
-Source lines `885–914`.
-
 ## `validate` — Validate a campaign
 
 Route `PUT {id}/validate`.
@@ -256,5 +226,3 @@ The method validates the record and loads related business records.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — mass mailing missing.
 - `500` — business operation failed.
-
-Source lines `937–966`.

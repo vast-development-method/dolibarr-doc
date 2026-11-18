@@ -26,8 +26,6 @@ One result identifies one project. The same header can represent an opportunity,
 
 For example, a project created by an engineer and managed by a consultant can qualify under the engineer's user category and the consultant's internal assignment at the same time. Selecting the consultant's category instead searches the creator's memberships and can remove that row. Neither category assigns a person to the project.
 
-Sources are `htdocs/projet/list.php:96–165,167–255,394–404,588–615,624–675,677–752,753–835,838–899`, `htdocs/projet/class/project.class.php:347–371` and `htdocs/categories/class/categorie.class.php:58–60`.
-
 ## Task register
 
 A task must belong to a project in the shared project entities. The ordinary project visibility restriction applies to its parent. A positive `id` selects one project. Showing billed or to-bill time joins time entries and groups the result by task, separating their duration according to whether an invoice is linked. These duration columns do not add a numeric filter. The ordinary task register starts on open projects by default. A nonempty broad search removes that default project-state restriction.
@@ -47,5 +45,3 @@ A task must belong to a project in the shared project entities. The ordinary pro
 | `search_opp_status` | Read and carried to navigation for certain values, without a corresponding base task-query criterion. Project opportunity stage filtering is provided in the project register. |
 
 Consider an open project containing a completed design task and an unfinished installation task. Selecting the default open-project status still returns both tasks. Selecting a task status adds a second criterion. Assignment to the project alone will not satisfy the task's `mine` view unless the person also has an internal task contact role.
-
-Sources are `htdocs/projet/tasks/list.php:58–115,128–136,156–166,313–354,358–410,412–476,477–549,555–568,709–712`.

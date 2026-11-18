@@ -10,9 +10,7 @@ The model has independent controls for ordered quantity, shipped quantity, weigh
 
 An order for 12 units, each weighing 1.25 kg, has a delivery of five. With both quantity columns and weight enabled the note shows 12 ordered, five shipped and 6.25 kg. If two lots supplied two and three of those five, their separate detail descriptions can show their lot, quantity, use-by and sell-by dates when recorded. With the warehouse-on-shipment option, the description can append the originating warehouse reference after resolving the stock record for that lot. A shipment without batch details does not acquire a warehouse label through this lot-specific branch.
 
-When the cost display is enabled, the note shows the prepared net line amount beside the unit price. On a shipment line with one source detail, that value uses shipped quantity, unit price and the line discount. For multiple warehouse details grouped into one product line, the source loader adds each detail's price to the shipment header totals but assigns each detail's calculated net amount to the combined line as it iterates. The last assigned line amount can differ from the sum displayed at shipment level. Combining split quantities with an independently recomputed monetary total would conceal this release behavior.
-
-Release references include `htdocs/expedition/class/expedition.class.php:2187–2248,2273–2332,3333–3352`, `htdocs/core/modules/expedition/doc/pdf_rouget.modules.php:513–527,578–614,1015–1047` and `htdocs/core/lib/pdf.lib.php:2257–2299`.
+When the cost display is enabled, the note shows the prepared net line amount beside the unit price. On a shipment line with one source detail, that value uses shipped quantity, unit price and the line discount. For multiple warehouse details grouped into one product line, the source loader adds each detail's price to the shipment header totals but assigns each detail's calculated net amount to the combined line as it iterates. The last assigned line amount can differ from the sum displayed at shipment level. Combining split quantities with an independently recomputed monetary total would conceal the difference between the printed line and the header.
 
 New installations configure Espadon. Its line columns, contact source and measured totals are described in [Shipping, transfer and progress certificate layouts](../../document-models/physical-and-stage-documents.md).
 
@@ -28,12 +26,8 @@ The optional price display computes each received amount as unit price times *re
 
 The receipt summary obtains actual quantity, total weight and total volume from the logistics document. Measured weight can replace the calculated weight. Entered package width, height and depth can determine a measured volume, which supersedes the product-derived total for display. The summary uses suitable units for the resulting measures. A physical package can legitimately weigh more than the sum of its catalog item weights.
 
-Release references include `htdocs/reception/class/reception.class.php:1649–1703,2586–2608` and `htdocs/core/modules/reception/doc/pdf_squille.modules.php:542–590,730–789,993–1040,1073–1092`.
-
 ## Build and disclose the right copy
 
 Shipment uses the common document-building action. It requires source create/modify permission or explicit document-generation capability. The reception card's dedicated build action uses reception-read permission. That action can persist a selected model, choose an explicit language in multilingual mode, fall back to the supplier's language, and deliver any generation error to the operator. The ability to obtain either note is therefore determined by the source card and action.
 
 An operator can request the same shipment with prices on an internal copy and without prices under the settings of the recipient-facing model. The two copies can describe the same items and batches. Generating a note does not create a new stock movement, close the order or initiate a customer or supplier payment.
-
-Release references include `htdocs/expedition/card.php:155–163,222–230`, `htdocs/core/actions_builddoc.inc.php:60–92` and `htdocs/reception/card.php:705–731`.

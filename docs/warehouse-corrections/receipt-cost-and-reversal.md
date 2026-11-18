@@ -14,8 +14,6 @@ The reopen and draft paths use a join from each receipt allocation to its origin
 
 Reopening emits the receipt-reopened event. When the origin is a supplier order, the operation sets that order back to partially received. A movement, event or source-status failure rolls back the transaction. The reopen routine restores the pre-operation state and billed flag on the loaded object on failure. On returning to draft, the source-order adjustment has a narrower branch. For a partially received order it inspects the linked receipts and can return the order to ordered if no linked receipt has a positive state. A document header's status and the physically available stock answer different questions.
 
-Source locations are `htdocs/reception/class/reception.class.php:695–759,1445–1518,2077–2211,2282–2417,2426–2568` and `htdocs/product/stock/class/mouvementstock.class.php:877–907`. The interactive grants for receiving, validating, reopening and deleting are mapped in `htdocs/reception/card.php:175–196,261–277,578–618,743–759`.
-
 ## How the cost changes
 
 For an ordinary stock-managed product in a single entity, the movements from a positive receipt use the acquisition cost carried on each allocation. Cost is averaged across the product's included warehouse stock. The writer collects the existing product quantity and average. For an eligible incoming-type movement with a positive price:
@@ -27,8 +25,6 @@ For an ordinary stock-managed product in a single entity, the movements from a p
 A zero price usually preserves the previous average. A separate setting permits weighted zero-price entries for movements whose origin type is supplier order or supplier invoice. The receipt-document origin has a different type. Ordinary outgoing-type movements preserve the current average even if they carry a stored price. Thus reopening a receipt can issue the exact original quantity at the exact original location and still leave the product with the average established *after* that receipt. A later reclose weights the acquisition cost again against the quantity and average then on hand.
 
 The recorded movement price, the product's average and the value produced by a dated inquiry are distinct. A dated quantity report can apply the current price basis to a reconstructed historical quantity. For a historical reconciliation identify the calculation basis and the time at which each price was read. [Stock at a date and value](../specification/operations/stock-at-date-and-value.md)
-
-Source locations are `htdocs/product/stock/class/mouvementstock.class.php:276–282,342–350,530–565,588–615,653–671` and `htdocs/product/class/product.class.php:6484–6542`.
 
 ## Worked receipt with two lots
 

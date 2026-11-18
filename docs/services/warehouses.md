@@ -2,8 +2,6 @@
 
 A warehouse can be created or amended independently of its stock. Listing its products reports the inventory stored there. Moving quantity uses the stock-movement service.
 
-The implementation locations below refer to `htdocs/product/stock/class/api_warehouses.class.php`.
-
 ## `get` — Read a warehouse
 
 Route `GET {id}`.
@@ -17,8 +15,6 @@ Route `GET {id}`.
 - `400` — no warehouse missing.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — warehouse missing.
-
-Source lines `74–92`.
 
 ## `index` — List records
 
@@ -35,8 +31,6 @@ The lookup uses the visible entity scope for `stock`. The properties selector pr
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `120–196`.
 
 ## `post` — Create a warehouse
 
@@ -56,8 +50,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused, changing entity of a user using the APIs is not possible.
 - `500` — business operation failed.
 
-Source lines `216–245` with `_validate 554–567`.
-
 ## `put` — Update a warehouse
 
 Route `PUT {id}`.
@@ -75,8 +67,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — warehouse missing.
 - `500` — business operation failed.
 
-Source lines `266–316` with `get 74–92`.
-
 ## `delete` — Delete a warehouse
 
 Route `DELETE {id}`.
@@ -91,8 +81,6 @@ Route `DELETE {id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — warehouse missing.
 - `500` — removal failed.
-
-Source lines `336–363`.
 
 ## `listProducts` — List products
 
@@ -110,5 +98,3 @@ The lookup uses the visible entity scope for `stock`. The properties selector pr
 - `403` — access refused.
 - `404` — warehouse missing.
 - `500` — query or persistence failure.
-
-Source lines `396–462`.

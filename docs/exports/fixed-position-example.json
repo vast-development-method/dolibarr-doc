@@ -1,6 +1,5 @@
 {
   "title": "One customer receivable in three ledger formats",
-  "release": "24.0.3",
   "input": {
     "movementId": 316,
     "piece": 72,

@@ -1,6 +1,6 @@
 # Warehouse corrections and reconciliation
 
-A physical correction needs the product, warehouse, quantity, lot where applicable, posting event and unit-cost rule. The document that initiated a movement may have a separate commercial state. These chapters cover the ordinary bundled operations in release 24.0.3.
+A physical correction needs the product, warehouse, quantity, lot where applicable, posting event and unit-cost rule. The document that initiated a movement may have a separate commercial state. These chapters cover the ordinary bundled operations.
 
 | Warehouse decision | Evidence and worked outcome |
 | --- | --- |

@@ -8,8 +8,6 @@ Chart management requires the chart-of-accounts permission. Before switching awa
 
 For example, a posted purchase points to account number 6010. If the incoming chart has an active entry numbered 6010 under a different reporting category, the historical movement can contribute to that new category when a report is regenerated. If the new chart lacks that account, it cannot contribute to a report based on the new chart's list of category members. Its ledger debit remains available to inquiries reading movements directly.
 
-Release references include `htdocs/accountancy/admin/account.php:71–81,172–246` and `htdocs/accountancy/class/accountancycategory.class.php:851–895`.
-
 ## Build a custom statement
 
 A report definition organizes a set of categories. A category has a code, label, report identifier, company or shared country scope, entity, activation flag, presentation position, balance direction and category type. A simple category gathers account balances. A calculated category contains a formula over category codes. The bookkeeping report chooses active categories for the selected report, entity and company country or country-neutral group. It processes them in increasing position. A company without a country or with no applicable categories cannot derive a populated statement from this path.
@@ -25,20 +23,16 @@ Consider a June statement with revenue of 1,000 credit and sales returns of 100 
 
 The account-category component also provides a separate many-to-many relation. A category can add or remove an account, enumerate linked accounts and ask which reports contain a particular account. Adding an existing pair returns a no-change result. The custom statement renderer above calls the account's direct-category lookup for its simple rows. A link present solely in the many-to-many relation does not place the account into that renderer's calculation. This distinction matters when importing or maintaining several statements for the same chart.
 
-Release references include `htdocs/accountancy/admin/categories_list.php:114–150`, `htdocs/accountancy/class/accountancycategory.class.php:635–704,786–833,851–895,922–969,982–1058` and `htdocs/compta/resultat/result.php:303–317,343–430,439–488,509–579`.
-
 ## Different scopes for a balance, a statement and an analytical allocation
 
 A general ledger balance reads the posted accounts for an entity, including those with no report-category mapping. A custom financial statement additionally depends on the selected chart, active account, category membership, report scope, formula and balance direction. A cost-center distribution would require yet another fact identifying the share of a source line assigned to an analytical account. A general-account category cannot express that a single expense is split 70/30 between departments.
 
 The stable schema defines the following three records.
 
-| Record | Required identity and business meaning | Constraints visible in the release |
+| Record | Required identity and business meaning | Accounting constraints |
 | --- | --- | --- |
 | Analytical axis | Entity, code, label, active flag and creator identify a classification such as department. | Code is unique per entity. Creation and update metadata are recorded. |
 | Analytical account | Entity, code, label, owning axis and creator identify a member. Optional fields include description and start/end dates. | Code is unique per entity, rather than separately per axis. The account table requires an axis identifier. |
 | Analytical distribution | Source-line identifier and source type, analytical account identifier, optional amount, percentage defaulting to 100, entity and creator. | The installed key links the share to an analytical account. The source link is polymorphic and depends on its source type. |
 
-These definitions can represent two distribution rows for a 1,000 expense linked to the same invoice line, with 70% assigned to one department and 30% to another. The released source defines no active accounting posting routine or statement query for those three tables. The schema supplies no percentage-total constraint, precedence rule for percentage versus amount, automatic rounding-residual assignment, cost-center validation against the document date or recovery behavior after an edited invoice line. A reporting-group sum in the active ERP therefore cannot be interpreted as a completed 700/300 analytical allocation.
-
-Release references include `htdocs/install/mysql/tables/llx_accounting_analytic_axis-accounting.sql`, `htdocs/install/mysql/tables/llx_accounting_analytic_account-accounting.sql` and `htdocs/install/mysql/tables/llx_accounting_analytic_distribution-accounting.sql` with their companion key definitions.
+These definitions can represent two distribution rows for a 1,000 expense linked to the same invoice line, with 70% assigned to one department and 30% to another. The documented journal and statement operations do not consume these three tables. The schema supplies no percentage-total constraint, precedence rule for percentage versus amount, automatic rounding-residual assignment, cost-center validation against the document date or recovery behavior after an edited invoice line. A reporting-group sum in the active ERP therefore cannot be interpreted as a completed 700/300 analytical allocation.

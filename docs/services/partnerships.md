@@ -2,8 +2,6 @@
 
 The service operates on the business relationship held by the partnership record. List and detail access are evaluated on that resource. The related party has a separate service and lifecycle.
 
-The implementation locations below refer to `htdocs/partnership/class/api_partnerships.class.php`.
-
 ## `get` — Read a partnership
 
 Route `GET partnerships/{id}`.
@@ -16,8 +14,6 @@ Route `GET partnerships/{id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — partnership missing.
-
-Source lines `70–86`.
 
 ## `index` — List records
 
@@ -35,8 +31,6 @@ In party-managed mode, the list applies the caller’s linked party or the sales
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `108–182`.
-
 ## `post` — Create a partnership
 
 Route `POST partnerships/`.
@@ -52,8 +46,6 @@ The optional caller marker is placed in event context for synchronization.
 - `400` — required request field absent.
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `196–222` with `_validate 395–411`.
 
 ## `put` — Update a partnership
 
@@ -71,8 +63,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — partnership missing.
 - `500` — business operation failed.
 
-Source lines `237–279` with `get 70–86`.
-
 ## `delete` — Delete a partnership
 
 Route `DELETE partnerships/{id}`.
@@ -86,5 +76,3 @@ Route `DELETE partnerships/{id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — partnership missing.
 - `500` — removal failed.
-
-Source lines `293–317`.

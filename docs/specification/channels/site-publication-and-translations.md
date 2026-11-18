@@ -10,7 +10,7 @@ Page creation allows letters, digits, dashes and underscores in the primary alia
 
 The page record can hold a container type, title, description, keywords, representative image, search-engine directives, framing permission, page header, body and an optional business-object type and identifier. It records its creator and creation time, a modifying user, modification time and an optional public author alias. Public credit and internal authorship serve different purposes.
 
-See `htdocs/website/class/website.class.php:143–229`, `htdocs/website/class/websitepage.class.php:267–308`, `htdocs/install/mysql/tables/llx_website_page-website.sql:20–52` and `htdocs/install/mysql/tables/llx_website_page-website.key.sql:19`.
+Related records include [Site page](../../records/content.md#record-website_page).
 
 ## Copy and translation
 
@@ -22,8 +22,6 @@ See `htdocs/website/class/website.class.php:143–229`, `htdocs/website/class/we
 
 A translation carries its own text, alias, publication state and editor. Editing the main page does not update its translations in this operation. The fetch contract supports both site/alias lookup and lookup by translation parent and language. A rebuild needs to preserve the numeric links when URLs or titles change.
 
-See `htdocs/website/class/websitepage.class.php:325–430` and `htdocs/website/class/websitepage.class.php:801–913`.
-
 ## Making an edit visible
 
 1. The editor selects a site and page. A saved body edit requires site editing permission. Changing embedded server-side content is subject to an additional authoring permission. The page creation interface also disallows server-side content in a page header.
@@ -34,8 +32,6 @@ See `htdocs/website/class/websitepage.class.php:325–430` and `htdocs/website/c
 The site's online/offline transition requires editing permission. The editor suppresses the individual page switch on an offline site and for setup containers. On an online site it enables the switch for an existing ordinary container when the user has site-write permission. A page copy therefore provides an offline working record with its own address. Saving an edit directly on the published record uses the existing address and can regenerate its public content immediately.
 
 The page table declares a history-retention field defaulting to five. The body-save operation described above overwrites the current record and regenerates output. The field alone does not establish a snapshot-restore interface, a scheduled release or an approval workflow.
-
-See `htdocs/website/index.php:449–459`, `htdocs/website/index.php:2074–2104`, `htdocs/website/index.php:2452–2576`, `htdocs/website/index.php:3532–3551` and `htdocs/install/mysql/tables/llx_website_page-website.sql:49–52`.
 
 ## Example — moving the home page to a new language
 

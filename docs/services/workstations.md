@@ -2,8 +2,6 @@
 
 This read service exposes a single workstation by identifier or reference and a list of workstations. A production order's output and consumed materials are posted through the manufacturing service.
 
-The implementation locations below refer to `htdocs/workstation/class/api_workstations.class.php`.
-
 ## `get` — Read a workstation
 
 Route `GET {id}`.
@@ -18,8 +16,6 @@ Route `GET {id}`.
 - `401` — record outside the caller’s scope.
 - `403` — access or input restriction.
 - `404` — workstation missing.
-
-Source lines `71–74` with `_fetch 311–333`.
 
 ## `getByRef` — Read by business reference
 
@@ -36,8 +32,6 @@ Route `GET ref/{ref}`.
 - `403` — access or input restriction.
 - `404` — workstation missing.
 
-Source lines `91–94` with `_fetch 311–333`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text).
@@ -51,5 +45,3 @@ The properties selector projects the returned fields.
 - `400` — invalid filter expression.
 - `403` — access or input restriction.
 - `503` — query or persistence failure.
-
-Source lines `111–183`.

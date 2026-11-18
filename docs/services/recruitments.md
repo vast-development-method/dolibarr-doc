@@ -2,8 +2,6 @@
 
 A job position and a candidature are different resource types with their own rows. The API has distinct reads, lists, creates, updates and deletions for each.
 
-The implementation locations below refer to `htdocs/recruitment/class/api_recruitments.class.php`.
-
 ## `getJobPosition` — Read job position
 
 Route `GET jobposition/{id}`.
@@ -17,8 +15,6 @@ Route `GET jobposition/{id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — jobposition missing.
 
-Source lines `78–94`.
-
 ## `getCandidature` — Read candidature
 
 Route `GET candidature/{id}`.
@@ -31,8 +27,6 @@ Route `GET candidature/{id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — candidature missing.
-
-Source lines `109–125`.
 
 ## `indexJobPosition` — Index job position
 
@@ -50,8 +44,6 @@ The selection includes a representative-assignment restriction in its customer-v
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `147–243`.
-
 ## `indexCandidature` — Index candidature
 
 Route `GET /candidature/`.
@@ -67,8 +59,6 @@ The application list applies the entity scope of the model and the supplied sear
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `265–360`.
 
 ## `postJobPosition` — Post job position
 
@@ -86,8 +76,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `374–400` with `_validate 699–715`.
-
 ## `postCandidature` — Post candidature
 
 Route `POST candidature/`.
@@ -103,8 +91,6 @@ The optional caller marker is placed in event context for synchronization.
 - `400` — required request field absent.
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `414–442` with `_validate 699–715`.
 
 ## `putJobPosition` — Put job position
 
@@ -122,8 +108,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — jobposition missing.
 - `500` — business operation failed.
 
-Source lines `457–493` with `getJobPosition 78–94`.
-
 ## `putCandidature` — Put candidature
 
 Route `PUT candidature/{id}`.
@@ -140,8 +124,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — candidature missing.
 - `500` — business operation failed.
 
-Source lines `508–544` with `getCandidature 109–125`.
-
 ## `deleteJobPosition` — Delete job position
 
 Route `DELETE jobposition/{id}`.
@@ -156,8 +138,6 @@ Route `DELETE jobposition/{id}`.
 - `404` — jobposition missing.
 - `500` — removal failed.
 
-Source lines `559–583`.
-
 ## `deleteCandidature` — Delete candidature
 
 Route `DELETE candidature/{id}`.
@@ -171,5 +151,3 @@ Route `DELETE candidature/{id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — candidature missing.
 - `500` — removal failed.
-
-Source lines `597–621`.

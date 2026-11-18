@@ -19,8 +19,6 @@ The movement method is invoked on the fetched original, so ordinary source and p
 
 A change of +5 and its later −5 net to zero in quantity. Their timestamps place them in two different period-end reports if the reversal occurred after cutoff. A receipt document that remains validated can still show five received against its order while the warehouse movement history nets to zero. Recover the document through its own correction path when the receiving status also needs to change.
 
-Sources are `htdocs/product/stock/movement_list.php:206–208,639–684,1134–1138,1172–1174` and `htdocs/product/stock/class/mouvementstock.class.php:276–281,510–546,727–783,1352–1387`.
-
 ## Posting a count while trade is in progress
 
 A counted quantity, expected opening quantity and quantity at posting can all differ. The count reads the current quantity at posting, including the current lot position when tracking is enabled. It applies the counted quantity less this live comparison at stock precision. A missing current lot is compared with zero. An unobserved row is skipped. An explicit zero is a count. For a tracked row the live balance search is case-insensitive. The movement still passes the batch text from the count line to the stock writer. A differently cased identifier can therefore match the stocktake's comparison while the outgoing sufficiency decision uses its own string comparison. Use the stored identifier consistently when a negative adjustment must pass the latter decision.
@@ -31,7 +29,7 @@ For a nonzero difference the action writes an input-type correction when the cou
 
 The count wraps processing and recorded-status handling in a transaction. Movement and line-update failures are inspected. The final call to mark the count recorded does not inspect that operation's return before committing. A failure result or an interrupted response needs the count state, line movement IDs and physical quantities read together. A separately reversed count movement does not replace the count line's pointer to the original correction.
 
-Sources are `htdocs/product/inventory/inventory.php:163–307,327–358` and `htdocs/product/inventory/class/inventory.class.php:247–343,402–425,835–848`. [Opening and posting a stocktake](../specification/operations/stocktake-and-transfer.md)
+[Opening and posting a stocktake](../specification/operations/stocktake-and-transfer.md)
 
 ## Immediate transfer and transfer document
 
@@ -42,5 +40,3 @@ A transfer document captures cost earlier. Draft line creation or editing stores
 **Worked delayed arrival.** Begin with 12 units at 10. A transfer line for four captures unit cost 10. Departure removes four, leaving eight units at 10. A supplier then delivers eight more at 14. The product now has 16 units at 12, worth 192 at current average. Arrival reintroduces the four in-transit units at the captured 10. The new whole-product average is `(16 × 12 + 4 × 10) / 20 = 11.60`. The ending warehouses together hold 20 units worth 232, equal to opening value 120 plus supplier acquisition 112. While goods were in transit, warehouse-only value omitted four units at 10. Undoing the arrival through its source transfer issues four and preserves 11.60. Undoing departure then receives four at 10. Reversing the two legs can restore physical custody without restoring the original price history.
 
 The transfer card commits a leg's collection of movements before writing the header's new status and actual time. A subsequent header or event failure can leave upstream goods movement already committed. The header state, selected source/destination, lot, operation code and quantities together identify which part occurred. A movement-list reversal compensates quantities only; it does not change the transfer's in-transit status or its timestamps.
-
-Sources are `htdocs/product/stock/movement_list.php:475–529,530–635`, `htdocs/product/class/product.class.php:6363–6404,6427–6470`, `htdocs/product/stock/stocktransfer/stocktransfer_card.php:225–238,300–422` and `htdocs/product/stock/stocktransfer/class/stocktransferline.class.php:434–507`.

@@ -6,6 +6,6 @@
   "lateCount": 1,
   "warningDelayDays": 7,
   "totalAmount": 400,
-  "list": "/compta/facture/list.php?search_status=1&mainmenu=billing&leftmenu=customers_bills",
-  "lateList": "/compta/facture/list.php?search_option=late&mainmenu=billing&leftmenu=customers_bills"
+  "list": "/billing/customer-invoices?search_status=1",
+  "lateList": "/billing/customer-invoices?search_option=late"
 }

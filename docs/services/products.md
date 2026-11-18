@@ -2,8 +2,6 @@
 
 Catalog records, variant axes, values, combinations, supplier-price rows and customer-price views are distinct resources within this service. A product identifier is different from a variant combination identifier or an attribute-value identifier.
 
-The implementation locations below refer to `htdocs/product/class/api_products.class.php`.
-
 ## `get` — Read a product
 
 **Arguments** `id` (integer), `includestockdata = 0` (integer), `includesubproducts = false` (boolean), `includeparentid = false` (boolean), `includetrans = false` (boolean).
@@ -15,8 +13,6 @@ The implementation locations below refer to `htdocs/product/class/api_products.c
 - `400` — no product missing, bad value for parameter id, ref, ref_ext or barcode.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
-
-Source lines `92–98` with `_fetch 2489–2549`.
 
 ## `getByRef` — Read by business reference
 
@@ -32,8 +28,6 @@ Route `GET ref/{ref}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
 
-Source lines `121–124` with `_fetch 2489–2549`.
-
 ## `getByRefExt` — Read by external reference
 
 Route `GET ref_ext/{ref_ext}`.
@@ -47,8 +41,6 @@ Route `GET ref_ext/{ref_ext}`.
 - `400` — bad value for parameter id, ref, ref_ext or barcode.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
-
-Source lines `147–150` with `_fetch 2489–2549`.
 
 ## `getByBarcode` — Read by barcode
 
@@ -64,8 +56,6 @@ Route `GET barcode/{barcode}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
 
-Source lines `173–176` with `_fetch 2489–2549`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.ref"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `mode = 0` (integer), `category = 0` (integer), `sqlfilters = ''` (text), `ids_only = false` (boolean), `variant_filter = 0` (integer), `pagination_data = false` (boolean), `includestockdata = 0` (integer), `properties = ''` (text).
@@ -79,8 +69,6 @@ The lookup uses the visible entity scope for `product`. The properties selector 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `203–321`.
 
 ## `post` — Create a product
 
@@ -98,8 +86,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `335–379` with `_validate 2455–2468`.
-
 ## `put` — Update a product
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -115,8 +101,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — product missing.
 - `500` — business operation failed.
 
-Source lines `400–555` with `get 92–98`, `_fetch 2489–2549`.
-
 ## `delete` — Delete a product
 
 **Arguments** `id` (integer).
@@ -131,8 +115,6 @@ Source lines `400–555` with `get 92–98`, `_fetch 2489–2549`.
 - `409` — removal failed.
 - `500` — removal failed.
 
-Source lines `573–607`.
-
 ## `getSubproducts` — Read subproducts
 
 Route `GET {id}/subproducts`.
@@ -146,8 +128,6 @@ Each component result includes its identifier, quantity, product type, label, st
 **Result** An array of component rows with product and association identifiers, quantity and rank.
 
 - `403` — missing operation rights, record outside the caller’s scope.
-
-Source lines `625–644`.
 
 ## `addSubproducts` — Add subproducts
 
@@ -164,8 +144,6 @@ The method adds a component product.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `500` — business operation failed.
 
-Source lines `665–680`.
-
 ## `delSubproducts` — Del subproducts
 
 Route `DELETE {id}/subproducts/remove/{subproduct_id}`.
@@ -181,8 +159,6 @@ The method removes a component product.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `500` — business operation failed.
 
-Source lines `698–713`.
-
 ## `getCategories` — Read categories
 
 Route `GET {id}/categories`.
@@ -197,8 +173,6 @@ The method reads classification links.
 
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `733–748`.
 
 ## `getCustomerPricesPerSegment` — Read customer prices per segment
 
@@ -217,8 +191,6 @@ The response separates prices and minimum prices before and including tax, tax r
 - `404` — product missing.
 - `503` — query or persistence failure.
 
-Source lines `763–793`.
-
 ## `getCustomerPricesPerCustomer` — Read customer prices per customer
 
 Route `GET {id}/selling_multiprices/per_customer`.
@@ -234,8 +206,6 @@ Prices negotiated specifically with customers are returned as separate customer-
 - `400` — invalid request data.
 - `403` — access refused.
 - `404` — product missing, prices missing.
-
-Source lines `809–847`.
 
 ## `getCustomerPricesPerQuantity` — Read customer prices per quantity
 
@@ -254,8 +224,6 @@ The response distinguishes quantity-price settings from the detailed list of qua
 - `404` — product missing.
 - `503` — query or persistence failure.
 
-Source lines `862–887`.
-
 ## `addPurchasePrice` — Add purchase price
 
 Route `POST {id}/purchase_prices`.
@@ -272,8 +240,6 @@ The method associates a supplier and updates supplier pricing.
 - `404` — product missing, supplier missing.
 - `500` — query or persistence failure.
 
-Source lines `927–969`.
-
 ## `deletePurchasePrice` — Delete purchase price
 
 Route `DELETE {id}/purchase_prices/{priceid}`.
@@ -288,8 +254,6 @@ The method removes the supplier price.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
-
-Source lines `986–1006`.
 
 ## `getSupplierProducts` — Read supplier products
 
@@ -307,8 +271,6 @@ The lookup uses the visible entity scope for `product`.
 - `403` — access refused, access or input restriction.
 - `503` — query or persistence failure.
 
-Source lines `1029–1117`.
-
 ## `getPurchasePrices` — Read purchase prices
 
 Route `GET {id}/purchase_prices`.
@@ -323,8 +285,6 @@ Route `GET {id}/purchase_prices`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
 
-Source lines `1141–1176`.
-
 ## `getPurchasePriceLogs` — Read purchase price logs
 
 Route `GET {id}/purchase_prices/logs`.
@@ -338,8 +298,6 @@ Route `GET {id}/purchase_prices/logs`.
 - `400` — bad value for parameter id, ref, ref_ext or barcode.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
-
-Source lines `1197–1219`.
 
 ## `getAttributes` — Read attributes
 
@@ -357,8 +315,6 @@ The lookup uses the visible entity scope for `product`. The properties selector 
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `1242–1291`.
-
 ## `getAttributeById` — Read attribute by id
 
 Route `GET attributes/{id}`.
@@ -373,8 +329,6 @@ The lookup uses the visible entity scope for `product`.
 
 - `403` — access refused.
 - `404` — product attribute missing.
-
-Source lines `1306–1336`.
 
 ## `getAttributesByRef` — Read attributes by ref
 
@@ -391,8 +345,6 @@ The lookup uses the visible entity scope for `product`.
 - `403` — access refused.
 - `404` — requested data unavailable.
 
-Source lines `1353–1390`.
-
 ## `getAttributesByRefExt` — Read attributes by ref ext
 
 Route `GET attributes/ref_ext/{ref_ext}`.
@@ -408,8 +360,6 @@ The lookup uses the visible entity scope for `product`.
 - `403` — access refused.
 - `404` — requested data unavailable.
 
-Source lines `1407–1444`.
-
 ## `addAttributes` — Add attributes
 
 Route `POST attributes`.
@@ -422,8 +372,6 @@ Route `POST attributes`.
 
 - `403` — access refused.
 - `500` — business operation failed.
-
-Source lines `1461–1478`.
 
 ## `putAttributes` — Put attributes
 
@@ -441,8 +389,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — attribute missing.
 - `500` — business operation failed.
 
-Source lines `1497–1536`.
-
 ## `deleteAttributes` — Delete attributes
 
 Route `DELETE attributes/{id}`.
@@ -455,8 +401,6 @@ Route `DELETE attributes/{id}`.
 
 - `403` — access refused.
 - `500` — removal failed.
-
-Source lines `1551–1566`.
 
 ## `getAttributeValueById` — Read attribute value by id
 
@@ -473,8 +417,6 @@ The lookup uses the visible entity scope for `product`.
 - `403` — access refused, access or input restriction.
 - `404` — attribute value missing.
 
-Source lines `1583–1610`.
-
 ## `getAttributeValueByRef` — Read attribute value by ref
 
 Route `GET attributes/{id}/values/ref/{ref}`.
@@ -489,8 +431,6 @@ The lookup uses the visible entity scope for `product`.
 
 - `403` — access refused, access or input restriction.
 - `404` — attribute value missing.
-
-Source lines `1628–1657`.
 
 ## `deleteAttributeValueByRef` — Delete attribute value by ref
 
@@ -508,8 +448,6 @@ The lookup uses the visible entity scope for `product`.
 - `404` — attribute value missing.
 - `500` — removal failed.
 
-Source lines `1672–1702`.
-
 ## `getAttributeValues` — Read attribute values
 
 Route `GET attributes/{id}/values`.
@@ -523,8 +461,6 @@ Route `GET attributes/{id}/values`.
 - `403` — access refused.
 - `404` — attribute values missing.
 
-Source lines `1719–1738`.
-
 ## `getAttributeValuesByRef` — Read attribute values by ref
 
 Route `GET attributes/ref/{ref}/values`.
@@ -536,8 +472,6 @@ Route `GET attributes/ref/{ref}/values`.
 **Result** A collection of values for the selected attribute.
 
 - `403` — access refused.
-
-Source lines `1754–1781`.
 
 ## `addAttributeValue` — Add attribute value
 
@@ -551,8 +485,6 @@ Route `POST attributes/{id}/values`.
 
 - `403` — access refused, access or input restriction.
 - `500` — business operation failed.
-
-Source lines `1798–1817`.
 
 ## `putAttributeValue` — Put attribute value
 
@@ -570,8 +502,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — attribute value missing, attribute missing.
 - `500` — business operation failed.
 
-Source lines `1835–1874`.
-
 ## `deleteAttributeValueById` — Delete attribute value by id
 
 Route `DELETE attributes/values/{id}`.
@@ -584,8 +514,6 @@ Route `DELETE attributes/values/{id}`.
 
 - `403` — access refused.
 - `500` — removal failed.
-
-Source lines `1889–1902`.
 
 ## `getVariants` — Read variants
 
@@ -601,8 +529,6 @@ The method reads warehouse balances. The service loads combinations for the pare
 
 - `403` — access refused.
 
-Source lines `1920–1943`.
-
 ## `getVariantsByProdRef` — Read variants by prod ref
 
 Route `GET ref/{ref}/variants`.
@@ -615,8 +541,6 @@ Route `GET ref/{ref}/variants`.
 
 - `403` — access refused.
 - `404` — product missing.
-
-Source lines `1960–1981`.
 
 ## `addVariant` — Add variant
 
@@ -635,8 +559,6 @@ The method creates a product variant. Each selected attribute value is normalize
 - `404` — product missing.
 - `500` — business operation failed.
 
-Source lines `2007–2050`.
-
 ## `addVariantByProductRef` — Add variant by product ref
 
 Route `POST ref/{ref}/variants`.
@@ -652,8 +574,6 @@ The method creates a product variant.
 - `403` — access refused, access or input restriction.
 - `404` — requested data unavailable, product missing.
 - `500` — business operation failed.
-
-Source lines `2074–2116`.
 
 ## `putVariant` — Put variant
 
@@ -671,8 +591,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — variant missing.
 - `500` — business operation failed.
 
-Source lines `2135–2164`.
-
 ## `deleteVariant` — Delete variant
 
 Route `DELETE variants/{id}`.
@@ -686,8 +604,6 @@ Route `DELETE variants/{id}`.
 - `403` — access refused.
 - `404` — variant missing.
 - `500` — removal failed.
-
-Source lines `2180–2195`.
 
 ## `getStock` — Read stock
 
@@ -703,8 +619,6 @@ The method reads warehouse balances. The result includes physical and theoretica
 
 - `403` — missing operation rights, record outside the caller’s scope.
 
-Source lines `2214–2241`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -719,8 +633,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
-
-Source lines `2256–2278`.
 
 ## `postContact` — Attach a contact role
 
@@ -739,8 +651,6 @@ The method attaches a participant role.
 - `404` — product missing.
 - `500` — business operation failed.
 
-Source lines `2295–2326`.
-
 ## `deleteContact` — Remove a contact role
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
@@ -756,5 +666,3 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product missing.
 - `500` — removal failed.
-
-Source lines `2343–2377`.

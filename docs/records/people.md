@@ -55,7 +55,7 @@ Additional unique keys comprise `login`, `entity` / `ref`, `entity` / `fk_soc`.
 
 **Referenced by** [categorie_member](categories.md#record-categorie_member) (fk_member).
 
-The record class defines `-1` draft, `1` validated, `0` resiliated, `-2` excluded. See `htdocs/adherents/class/adherent.class.php`.
+The stored state codes are `-1` draft, `1` validated, `0` resiliated, `-2` excluded.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -105,8 +105,6 @@ The record class defines `-1` draft, `1` validated, `0` resiliated, `-2` exclude
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_adherent.sql`, `htdocs/install/mysql/tables/llx_adherent.key.sql`, `htdocs/adherents/class/adherent.class.php:60`.
-
 <a id="record-adherent_type"></a>
 
 ## Membership class
@@ -137,8 +135,6 @@ An additional unique key comprises `libelle`, `entity`.
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `mail_valid` | text | Yes | — | Mail Validation. |
 
-Source locations include `htdocs/install/mysql/tables/llx_adherent_type.sql`, `htdocs/install/mysql/tables/llx_adherent_type.key.sql`, `htdocs/adherents/class/adherent_type.class.php:42`.
-
 <a id="record-adherent_type_lang"></a>
 
 ## Translated membership class
@@ -157,8 +153,6 @@ The primary key is `rowid`.
 | `description` | text | Yes | — | Descriptive text associated with this entry. |
 | `email` | text | Yes | — | Email address associated with this record. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_adherent_type_lang.sql`, `htdocs/adherents/class/adherent_type.class.php:281`.
 
 <a id="record-subscription"></a>
 
@@ -188,8 +182,6 @@ An additional unique key comprises `fk_adherent`, `dateadh`.
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_subscription.sql`, `htdocs/install/mysql/tables/llx_subscription.key.sql`, `htdocs/adherents/class/subscription.class.php:45`.
-
 <a id="record-don"></a>
 
 ## Donation pledge
@@ -200,7 +192,7 @@ Describes a donation, its donor, value, dates and processing state. One or more 
 The primary key is `rowid`.
 An additional unique key comprises `ref`, `entity`.
 
-The record class defines `0` draft, `1` validated, `2` paid, `-1` canceled. See `htdocs/don/class/don.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` paid, `-1` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -220,7 +212,7 @@ The record class defines `0` draft, `1` validated, `2` paid, `-1` canceled. See 
 | `address` | text | Yes | — | Postal or street address. |
 | `zip` | varchar(30) | Yes | — | Postal code. |
 | `town` | varchar(50) | Yes | — | Town or city. |
-| `country` | varchar(50) | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `country` | varchar(50) | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `fk_country` | integer | No | — | Country associated with the record. |
 | `email` | varchar(255) | Yes | — | Email address associated with this record. |
 | `phone` | varchar(24) | Yes | — | Telephone number. |
@@ -238,8 +230,6 @@ The record class defines `0` draft, `1` validated, `2` paid, `-1` canceled. See 
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
-
-Source locations include `htdocs/install/mysql/tables/llx_don-don.sql`, `htdocs/install/mysql/tables/llx_don-don.key.sql`, `htdocs/don/class/don.class.php:52`.
 
 <a id="record-payment_donation"></a>
 
@@ -267,8 +257,6 @@ The primary key is `rowid`.
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 
-Source locations include `htdocs/install/mysql/tables/llx_payment_donation.sql`, `htdocs/don/class/don.class.php:1187`.
-
 <a id="record-salary"></a>
 
 ## Salary obligation
@@ -293,7 +281,7 @@ An additional unique key comprises `ref`, `entity`.
 | `amount` | double(24,8) | No | `0` | Monetary amount. Its operational meaning follows the record purpose. |
 | `fk_projet` | integer | Yes | `NULL` | Associated project identity. |
 | `fk_typepayment` | integer | No | — | Payment method or instrument. |
-| `num_payment` | varchar(50) | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `num_payment` | varchar(50) | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `label` | varchar(255) | Yes | — | Display label for the record. |
 | `datesp` | date | Yes | — | Start date. |
 | `dateep` | date | Yes | — | End date. |
@@ -306,8 +294,6 @@ An additional unique key comprises `ref`, `entity`.
 | `fk_account` | integer | Yes | — | Financial account identifier as used by the owning record. |
 | `fk_user_author` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_salary.sql`, `htdocs/install/mysql/tables/llx_salary.key.sql`, `htdocs/salaries/class/salary.class.php:51`.
 
 <a id="record-payment_salary"></a>
 
@@ -342,8 +328,6 @@ The primary key is `rowid`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `fk_salary` | integer | Yes | — | Salary obligation identity. |
 
-Source locations include `htdocs/install/mysql/tables/llx_payment_salary.sql`, `htdocs/install/mysql/tables/llx_payment_salary.key.sql`, `htdocs/salaries/class/salary.class.php:741`.
-
 <a id="record-holiday"></a>
 
 ## Leave request
@@ -353,7 +337,7 @@ Records one employee's absence interval, leave type, half-day selection, validat
 **Storage** `holiday`.
 The primary key is `rowid`.
 
-The record class defines `1` draft, `2` validated, `3` approved, `4` canceled, `5` refused. See `htdocs/holiday/class/holiday.class.php`.
+The stored state codes are `1` draft, `2` validated, `3` approved, `4` canceled, `5` refused.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -388,8 +372,6 @@ The record class defines `1` draft, `2` validated, `3` approved, `4` canceled, `
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_holiday.sql`, `htdocs/holiday/class/holiday.class.php:52`.
-
 <a id="record-holiday_config"></a>
 
 ## Leave configuration
@@ -406,8 +388,6 @@ An additional unique key comprises `entity`, `name`.
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `name` | varchar(128) | No | — | Name under which this record is presented or identified. |
 | `value` | text | Yes | — | Stored value of this leave-management setting. |
-
-Source locations include `htdocs/install/mysql/tables/llx_holiday_config.sql`, `htdocs/install/mysql/tables/llx_holiday_config.key.sql`, `htdocs/holiday/class/holiday.class.php:1653`.
 
 <a id="record-holiday_logs"></a>
 
@@ -429,8 +409,6 @@ The primary key is `rowid`.
 | `prev_solde` | varchar( 255 ) | No | — | Entitlement balance before the recorded change. |
 | `new_solde` | varchar( 255 ) | No | — | Entitlement balance after the recorded change. |
 
-Source locations include `htdocs/install/mysql/tables/llx_holiday_logs.sql`, `htdocs/holiday/class/holiday.class.php:2304`.
-
 <a id="record-holiday_users"></a>
 
 ## Employee leave entitlement
@@ -448,8 +426,6 @@ An additional unique key comprises `fk_user`, `fk_type`.
 | `nb_holiday` | real | No | `0` | Recorded number of leave days for this employee and type. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_holiday_users.sql`, `htdocs/install/mysql/tables/llx_holiday_users.key.sql`, `htdocs/holiday/class/holiday.class.php:1871`.
-
 <a id="record-expensereport"></a>
 
 ## Expense claim
@@ -460,7 +436,7 @@ Groups an employee's expense lines over a date interval with approval, totals an
 The primary key is `rowid`.
 An additional unique key comprises `ref`, `entity`.
 
-The record class defines `0` draft, `2` validated, `4` canceled, `5` approved, `6` closed, `99` refused. See `htdocs/expensereport/class/expensereport.class.php`.
+The stored state codes are `0` draft, `2` validated, `4` canceled, `5` approved, `6` closed, `99` refused.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -492,12 +468,12 @@ The record class defines `0` draft, `2` validated, `4` canceled, `5` approved, `
 | `fk_user_cancel` | integer | Yes | `NULL` | Actor recorded for refusal or cancellation respectively. |
 | `fk_statut` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `fk_c_paiement` | integer | Yes | `NULL` | Payment instrument selected for the expense claim. |
-| `paid` | smallint | No | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `paid` | smallint | No | `0` | Legacy storage. Use the current business representation described for the owning record. |
 | `note_public` | text | Yes | — | Note intended for external-facing output where the document model includes it. |
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 | `detail_refuse` | varchar(255) | Yes | `NULL` | Explanation supplied on refusal. |
 | `detail_cancel` | varchar(255) | Yes | `NULL` | Detail cancel. |
-| `integration_compta` | integer | Yes | `NULL` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `integration_compta` | integer | Yes | `NULL` | Legacy storage. Use the current business representation described for the owning record. |
 | `fk_bank_account` | integer | Yes | `NULL` | Bank or cash account. Actual movements have their own identities. |
 | `model_pdf` | varchar(255) | Yes | `NULL` | Selected document output model. |
 | `last_main_doc` | varchar(255) | Yes | — | Location of the latest main document generated for the record. |
@@ -509,8 +485,6 @@ The record class defines `0` draft, `2` validated, `4` canceled, `5` approved, `
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_expensereport.sql`, `htdocs/install/mysql/tables/llx_expensereport.key.sql`, `htdocs/expensereport/class/expensereport.class.php:50`.
 
 <a id="record-expensereport_det"></a>
 
@@ -565,8 +539,6 @@ The primary key is `rowid`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `rule_warning_message` | text | Yes | — | Text retained for a rule warning on the expense line. |
 
-Source locations include `htdocs/install/mysql/tables/llx_expensereport_det.sql`, `htdocs/expensereport/class/expensereport.class.php:55`.
-
 <a id="record-expensereport_ik"></a>
 
 ## Mileage scale band
@@ -586,8 +558,6 @@ The primary key is `rowid`.
 | `coef` | double | No | `0` | Rate multiplier applied by the mileage scale. |
 | `ikoffset` | double | No | `0` | Fixed amount added to the distance-based part of the allowance. |
 | `active` | integer | Yes | `1` | Whether this entry is enabled for selection or use. |
-
-Source locations include `htdocs/install/mysql/tables/llx_expensereport_ik-expensereport.sql`, `htdocs/expensereport/class/expensereport_ik.class.php:42`.
 
 <a id="record-expensereport_rules"></a>
 
@@ -614,8 +584,6 @@ The primary key is `rowid`.
 | `is_for_all` | tinyint | Yes | `0` | Is For All. |
 | `entity` | integer | Yes | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_expensereport_rules-expensereport.sql`, `htdocs/expensereport/class/expensereport_rule.class.php:42`.
-
 <a id="record-payment_expensereport"></a>
 
 ## Expense reimbursement
@@ -640,8 +608,6 @@ The primary key is `rowid`.
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 
-Source locations include `htdocs/install/mysql/tables/llx_payment_expensereport.sql`, `htdocs/expensereport/class/expensereport.class.php:1232`.
-
 <a id="record-hrm_job"></a>
 
 ## Job profile
@@ -663,8 +629,6 @@ The primary key is `rowid`.
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_hrm_job-hrm.sql`, `htdocs/hrm/class/job.class.php:52`.
 
 <a id="record-hrm_job_user"></a>
 
@@ -691,8 +655,6 @@ The primary key is `rowid`.
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 | `fk_user_creat` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_hrm_job_user-hrm.sql`, `htdocs/hrm/class/position.class.php:51`.
 
 <a id="record-hrm_skill"></a>
 
@@ -721,8 +683,6 @@ The primary key is `rowid`.
 | `note_public` | text | Yes | — | Note intended for external-facing output where the document model includes it. |
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 
-Source locations include `htdocs/install/mysql/tables/llx_hrm_skill-hrm.sql`, `htdocs/install/mysql/tables/llx_hrm_skill-hrm.key.sql`, `htdocs/hrm/class/skill.class.php:51`.
-
 <a id="record-hrm_skilldet"></a>
 
 ## Skill level descriptor
@@ -740,8 +700,6 @@ The primary key is `rowid`.
 | `description` | text | Yes | — | Descriptive text associated with this entry. |
 | `fk_user_creat` | integer | No | — | Account recorded as creator or author. References [user](foundation.md#record-user) (rowid). |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
-
-Source locations include `htdocs/install/mysql/tables/llx_hrm_skilldet-hrm.sql`, `htdocs/install/mysql/tables/llx_hrm_skilldet-hrm.key.sql`, `htdocs/hrm/class/skilldet.class.php:51`.
 
 <a id="record-hrm_skillrank"></a>
 
@@ -764,8 +722,6 @@ The primary key is `rowid`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `objecttype` | varchar(128) | No | — | Object type used with a separate record identifier. |
 
-Source locations include `htdocs/install/mysql/tables/llx_hrm_skillrank-hrm.sql`, `htdocs/install/mysql/tables/llx_hrm_skillrank-hrm.key.sql`, `htdocs/hrm/class/job.class.php:1043`.
-
 <a id="record-hrm_evaluation"></a>
 
 ## Employee evaluation
@@ -777,7 +733,7 @@ The primary key is `rowid`.
 
 **Referenced by** [hrm_evaluationdet](people.md#record-hrm_evaluationdet) (fk_evaluation).
 
-The record class defines `0` draft, `1` validated, `9` canceled, `6` closed. See `htdocs/hrm/class/evaluation.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` canceled, `6` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -799,8 +755,6 @@ The record class defines `0` draft, `1` validated, `9` canceled, `6` closed. See
 | `date_eval` | date | Yes | — | Competency assessment date. |
 | `fk_user` | integer | No | — | User account associated with this record. |
 | `fk_job` | integer | No | — | Job profile identity. |
-
-Source locations include `htdocs/install/mysql/tables/llx_hrm_evaluation-hrm.sql`, `htdocs/install/mysql/tables/llx_hrm_evaluation-hrm.key.sql`, `htdocs/hrm/class/evaluation.class.php:53`.
 
 <a id="record-hrm_evaluationdet"></a>
 
@@ -825,8 +779,6 @@ The primary key is `rowid`.
 | `comment` | text | Yes | — | Free-text annotation retained with the record. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_hrm_evaluationdet-hrm.sql`, `htdocs/install/mysql/tables/llx_hrm_evaluationdet-hrm.key.sql`, `htdocs/hrm/class/evaluation.class.php:167`.
-
 <a id="record-recruitment_recruitmentjobposition"></a>
 
 ## Vacancy
@@ -836,7 +788,7 @@ Defines a position offered for recruitment and its publication and lifecycle inf
 **Storage** `recruitment_recruitmentjobposition`.
 The primary key is `rowid`.
 
-The record class defines `0` draft, `1` validated, `3` recruited, `9` canceled. See `htdocs/recruitment/class/recruitmentjobposition.class.php`.
+The stored state codes are `0` draft, `1` validated, `3` recruited, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -865,8 +817,6 @@ The record class defines `0` draft, `1` validated, `3` recruited, `9` canceled. 
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 | `status` | smallint | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_recruitment_recruitmentjobposition-recruitment.sql`, `htdocs/install/mysql/tables/llx_recruitment_recruitmentjobposition-recruitment.key.sql`, `htdocs/recruitment/class/recruitmentjobposition.class.php:50`.
-
 <a id="record-recruitment_recruitmentcandidature"></a>
 
 ## Application
@@ -877,7 +827,7 @@ Stores an applicant and the position applied for, with dates and processing stat
 The primary key is `rowid`.
 An additional unique key comprises `email_msgid`.
 
-The record class defines `0` draft, `1` validated, `3` contract proposed, `5` contract signed, `6` contract refused, `8` refused, `9` canceled. See `htdocs/recruitment/class/recruitmentcandidature.class.php`.
+The stored state codes are `0` draft, `1` validated, `3` contract proposed, `5` contract signed, `6` contract refused, `8` refused, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -905,10 +855,8 @@ The record class defines `0` draft, `1` validated, `3` contract proposed, `5` co
 | `remuneration_proposed` | integer | Yes | — | Proposed salary. |
 | `email_msgid` | varchar(175) | Yes | — | Mail message identifier supplied in the message headers. |
 | `email_date` | datetime | Yes | — | Date associated with the stored email. |
-| `fk_recruitment_origin` | integer | Yes | — | Stored application origin. The release's origin field is gated in the application form declaration. |
+| `fk_recruitment_origin` | integer | Yes | — | Stored application origin. The field is retained in storage. The standard application form does not expose an origin selector. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
-
-Source locations include `htdocs/install/mysql/tables/llx_recruitment_recruitmentcandidature-recruitment.sql`, `htdocs/install/mysql/tables/llx_recruitment_recruitmentcandidature-recruitment.key.sql`, `htdocs/recruitment/class/recruitmentcandidature.class.php:50`.
 
 <a id="record-contrat"></a>
 
@@ -922,7 +870,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [contratdet](people.md#record-contratdet) (fk_contrat).
 
-The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/contrat/class/contrat.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -962,8 +910,6 @@ The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/contr
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_contrat.sql`, `htdocs/install/mysql/tables/llx_contrat.key.sql`, `htdocs/contrat/class/contrat.class.php:62`.
-
 <a id="record-contratdet"></a>
 
 ## Contract service line
@@ -973,7 +919,7 @@ Specifies a product or service, price and planned or actual start and end of the
 **Storage** `contratdet`.
 The primary key is `rowid`.
 
-The record class defines `0` initial, `4` open, `5` closed. See `htdocs/contrat/class/contratligne.class.php`.
+The stored state codes are `0` initial, `4` open, `5` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -1024,8 +970,6 @@ The record class defines `0` initial, `4` open, `5` closed. See `htdocs/contrat/
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_contratdet.sql`, `htdocs/install/mysql/tables/llx_contratdet.key.sql`, `htdocs/contrat/class/contrat.class.php:67`.
-
 <a id="record-fichinter"></a>
 
 ## Intervention report
@@ -1038,7 +982,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_fichinter](categories.md#record-categorie_fichinter) (fk_fichinter), [fichinterdet](people.md#record-fichinterdet) (fk_fichinter).
 
-The record class defines `0` draft, `1` validated, `2` billed, `3` closed. See `htdocs/fichinter/class/fichinter.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` billed, `3` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -1073,8 +1017,6 @@ The record class defines `0` draft, `1` validated, `2` billed, `3` closed. See `
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_fichinter.sql`, `htdocs/install/mysql/tables/llx_fichinter.key.sql`, `htdocs/fichinter/class/fichinter.class.php:98`.
-
 <a id="record-fichinterdet"></a>
 
 ## Intervention activity
@@ -1096,8 +1038,6 @@ The primary key is `rowid`.
 | `duree` | integer | Yes | — | Duration of the activity or period in the unit used by the owning feature. |
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_fichinterdet.sql`, `htdocs/install/mysql/tables/llx_fichinterdet.key.sql`, `htdocs/fichinter/class/fichinter.class.php:103`.
 
 <a id="record-fichinter_rec"></a>
 
@@ -1132,8 +1072,6 @@ An additional unique key comprises `title`, `entity`.
 | `nb_gen_max` | integer | Yes | `NULL` | Occurrence limit stored on the template. |
 | `auto_validate` | integer | Yes | `NULL` | Requests automatic validation of generated documents. |
 | `status` | smallint | Yes | `0` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
-
-Source locations include `htdocs/install/mysql/tables/llx_fichinter_rec.sql`, `htdocs/install/mysql/tables/llx_fichinter_rec.key.sql`, `htdocs/fichinter/class/fichinterrec.class.php:45`.
 
 <a id="record-fichinterdet_rec"></a>
 
@@ -1183,8 +1121,6 @@ The primary key is `rowid`.
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_fichinterdet_rec.sql`, `htdocs/fichinter/class/fichinterrec.class.php:46`.
-
 <a id="record-ticket"></a>
 
 ## Support ticket
@@ -1197,7 +1133,7 @@ Additional unique keys comprise `track_id` / `ref`, `entity` / `barcode`, `fk_ba
 
 **Referenced by** [categorie_ticket](categories.md#record-categorie_ticket) (fk_ticket).
 
-The record class defines `0` not read, `1` read, `2` assigned, `3` in progress, `5` need more info, `7` waiting, `8` closed, `9` canceled. See `htdocs/ticket/class/ticket.class.php`.
+The stored state codes are `0` not read, `1` read, `2` assigned, `3` in progress, `5` need more info, `7` waiting, `8` closed, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -1241,8 +1177,6 @@ The record class defines `0` not read, `1` read, `2` assigned, `3` in progress, 
 | `fk_barcode_type` | integer | Yes | `NULL` | Symbology used for the barcode. References [c_barcode_type](dictionaries.md#record-c_barcode_type) (rowid). |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_ticket-ticket.sql`, `htdocs/install/mysql/tables/llx_ticket-ticket.key.sql`, `htdocs/ticket/class/ticket.class.php:56`.
-
 <a id="record-knowledgemanagement_knowledgerecord"></a>
 
 ## Knowledge article
@@ -1254,7 +1188,7 @@ The primary key is `rowid`.
 
 **Referenced by** [categorie_knowledgemanagement](categories.md#record-categorie_knowledgemanagement) (fk_knowledgemanagement).
 
-The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/knowledgemanagement/class/knowledgerecord.class.php`.
+The stored state codes are `0` draft, `1` validated, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -1276,5 +1210,3 @@ The record class defines `0` draft, `1` validated, `9` canceled. See `htdocs/kno
 | `fk_ticket` | integer | Yes | — | Support ticket identity. |
 | `fk_c_ticket_category` | integer | Yes | — | Suggested on tickets creation. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
-
-Source locations include `htdocs/install/mysql/tables/llx_knowledgemanagement_knowledgerecord-knowledgemanagement.sql`, `htdocs/install/mysql/tables/llx_knowledgemanagement_knowledgerecord-knowledgemanagement.key.sql`, `htdocs/knowledgemanagement/class/knowledgerecord.class.php:49`.

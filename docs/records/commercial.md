@@ -37,7 +37,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_propal](categories.md#record-categorie_propal) (fk_propal), [propaldet](commercial.md#record-propaldet) (fk_propal).
 
-The record class defines `-1` canceled, `0` draft, `1` validated, `2` signed, `3` notsigned, `4` billed. See `htdocs/comm/propal/class/propal.class.php`.
+The stored state codes are `-1` canceled, `0` draft, `1` validated, `2` signed, `3` notsigned, `4` billed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -61,10 +61,10 @@ The record class defines `-1` canceled, `0` draft, `1` validated, `2` signed, `3
 | `fk_user_signature` | integer | Yes | — | References [user](foundation.md#record-user) (rowid). |
 | `fk_user_cloture` | integer | Yes | — | Account that recorded closure. References [user](foundation.md#record-user) (rowid). |
 | `fk_statut` | smallint | No | `0` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
-| `price` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise_percent` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise_absolue` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise` | real | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `price` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise_percent` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise_absolue` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise` | real | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
 | `total_ht` | double(24,8) | Yes | `0` | Total before tax in base currency after applicable line adjustments. |
 | `total_tva` | double(24,8) | Yes | `0` | VAT component of the base-currency total. |
 | `localtax1` | double(24,8) | Yes | `0` | Value of the corresponding local tax component on the record. |
@@ -98,8 +98,6 @@ The record class defines `-1` canceled, `0` draft, `1` validated, `2` signed, `3
 | `multicurrency_total_ht` | double(24,8) | Yes | `0` | Document-currency total before tax. |
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
-
-Source locations include `htdocs/install/mysql/tables/llx_propal.sql`, `htdocs/install/mysql/tables/llx_propal.key.sql`, `htdocs/comm/propal/class/propal.class.php:73`.
 
 <a id="record-propaldet"></a>
 
@@ -155,8 +153,6 @@ The primary key is `rowid`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_propaldet.sql`, `htdocs/install/mysql/tables/llx_propaldet.key.sql`, `htdocs/comm/propal/class/propal.class.php:78`.
-
 <a id="record-propal_merge_pdf_product"></a>
 
 ## Proposal product attachments
@@ -178,8 +174,6 @@ The primary key is `rowid`.
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_propal_merge_pdf_product.sql`, `htdocs/product/class/propalmergepdfproduct.class.php:44`.
-
 <a id="record-commande"></a>
 
 ## Customer order
@@ -192,7 +186,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_order](categories.md#record-categorie_order) (fk_order), [commandedet](commercial.md#record-commandedet) (fk_commande).
 
-The record class defines `-1` canceled, `0` draft, `1` validated, `2` shipmentonprocess, `2` accepted, `3` closed, `0` no signature, `1` signed sender, `2` signed receiver, `9` signed all. See `htdocs/commande/class/commande.class.php`.
+The stored state codes are `-1` canceled, `0` draft, `1` validated, `2` shipmentonprocess, `2` accepted, `3` closed, `0` no signature, `1` signed sender, `2` signed receiver, `9` signed all.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -256,8 +250,6 @@ The record class defines `-1` canceled, `0` draft, `1` validated, `2` shipmenton
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 | `user_agent` | varchar(255) | Yes | — | Client application identification retained with the event. |
 
-Source locations include `htdocs/install/mysql/tables/llx_commande.sql`, `htdocs/install/mysql/tables/llx_commande.key.sql`, `htdocs/commande/class/commande.class.php:71`.
-
 <a id="record-commandedet"></a>
 
 ## Customer order line
@@ -314,8 +306,6 @@ The primary key is `rowid`.
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_commandedet.sql`, `htdocs/install/mysql/tables/llx_commandedet.key.sql`, `htdocs/delivery/class/delivery.class.php:677`.
-
 <a id="record-expedition"></a>
 
 ## Shipment
@@ -328,7 +318,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [expeditiondet](commercial.md#record-expeditiondet) (fk_expedition).
 
-The record class defines `0` draft, `1` validated, `2` closed, `-1` canceled, `3` shipment in progress. See `htdocs/expedition/class/expedition.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed, `-1` canceled, `3` shipment in progress.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -370,8 +360,6 @@ The record class defines `0` draft, `1` validated, `2` closed, `-1` canceled, `3
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_expedition.sql`, `htdocs/install/mysql/tables/llx_expedition.key.sql`, `htdocs/expedition/class/expedition.class.php:77`.
-
 <a id="record-expeditiondet"></a>
 
 ## Shipment allocation
@@ -399,8 +387,6 @@ The primary key is `rowid`.
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_expeditiondet.sql`, `htdocs/install/mysql/tables/llx_expeditiondet.key.sql`, `htdocs/commande/class/commande.class.php:2429`.
-
 <a id="record-expeditiondet_batch"></a>
 
 ## Shipment lot allocation
@@ -421,8 +407,6 @@ The primary key is `rowid`.
 | `fk_origin_stock` | integer | No | — | Batch-level warehouse position identified on the shipment allocation. |
 | `fk_warehouse` | integer | Yes | `NULL` | Warehouse or stock location. |
 
-Source locations include `htdocs/install/mysql/tables/llx_expeditiondet_batch.sql`, `htdocs/install/mysql/tables/llx_expeditiondet_batch.key.sql`, `htdocs/expedition/class/expedition.class.php:3073`.
-
 <a id="record-delivery"></a>
 
 ## Delivery acknowledgement
@@ -435,7 +419,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [deliverydet](commercial.md#record-deliverydet) (fk_delivery).
 
-The record class defines `0` draft, `1` validated, `-1` canceled. See `htdocs/delivery/class/delivery.class.php`.
+The stored state codes are `0` draft, `1` validated, `-1` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -451,7 +435,7 @@ The record class defines `0` draft, `1` validated, `-1` canceled. See `htdocs/de
 | `date_valid` | datetime | Yes | — | When validation was recorded. |
 | `fk_user_valid` | integer | Yes | — | Account that validated the record. References [user](foundation.md#record-user) (rowid). |
 | `date_delivery` | datetime | Yes | `NULL` | Delivery date retained on the originating record. |
-| `fk_address` | integer | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `fk_address` | integer | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `fk_statut` | smallint | Yes | `0` | State of the delivery acknowledgement; the originating shipment keeps its own state. |
 | `total_ht` | double(24,8) | Yes | `0` | Total before tax in base currency after applicable line adjustments. |
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
@@ -462,8 +446,6 @@ The record class defines `0` draft, `1` validated, `-1` canceled. See `htdocs/de
 | `location_incoterms` | varchar(255) | Yes | — | Named place associated with the selected delivery term. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_delivery.sql`, `htdocs/install/mysql/tables/llx_delivery.key.sql`, `htdocs/delivery/class/delivery.class.php:70`.
 
 <a id="record-deliverydet"></a>
 
@@ -488,8 +470,6 @@ The primary key is `rowid`.
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_deliverydet.sql`, `htdocs/install/mysql/tables/llx_deliverydet.key.sql`, `htdocs/delivery/class/delivery.class.php:75`.
-
 <a id="record-supplier_proposal"></a>
 
 ## Supplier price request
@@ -502,7 +482,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_supplier_proposal](categories.md#record-categorie_supplier_proposal) (fk_supplier_proposal), [supplier_proposaldet](commercial.md#record-supplier_proposaldet) (fk_supplier_proposal).
 
-The record class defines `0` draft, `1` validated, `2` signed, `3` notsigned, `4` close. See `htdocs/supplier_proposal/class/supplier_proposal.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` signed, `3` notsigned, `4` close.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -522,9 +502,9 @@ The record class defines `0` draft, `1` validated, `2` signed, `3` notsigned, `4
 | `fk_user_cloture` | integer | Yes | `NULL` | Account that recorded closure. |
 | `fk_statut` | smallint | No | `0` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `price` | double | Yes | `0` | Price retained at this point in the workflow. Its unit or tax basis follows the owning record. |
-| `remise_percent` | double | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise_absolue` | double | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
-| `remise` | double | Yes | `0` | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `remise_percent` | double | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise_absolue` | double | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
+| `remise` | double | Yes | `0` | Legacy storage. Use the current business representation described for the owning record. |
 | `total_ht` | double(24,8) | Yes | `0` | Total before tax in base currency after applicable line adjustments. |
 | `total_tva` | double(24,8) | Yes | `0` | VAT component of the base-currency total. |
 | `localtax1` | double(24,8) | Yes | `0` | Value of the corresponding local tax component on the record. |
@@ -549,8 +529,6 @@ The record class defines `0` draft, `1` validated, `2` signed, `3` notsigned, `4
 | `multicurrency_total_ht` | double(24,8) | Yes | `0` | Document-currency total before tax. |
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
-
-Source locations include `htdocs/install/mysql/tables/llx_supplier_proposal.sql`, `htdocs/install/mysql/tables/llx_supplier_proposal.key.sql`, `htdocs/supplier_proposal/class/supplier_proposal.class.php:65`.
 
 <a id="record-supplier_proposaldet"></a>
 
@@ -606,8 +584,6 @@ The primary key is `rowid`.
 | `fk_unit` | integer | Yes | `NULL` | Unit of measure associated with the quantity. References [c_units](dictionaries.md#record-c_units) (rowid). |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_supplier_proposaldet.sql`, `htdocs/install/mysql/tables/llx_supplier_proposaldet.key.sql`, `htdocs/supplier_proposal/class/supplier_proposal.class.php:70`.
-
 <a id="record-commande_fournisseur"></a>
 
 ## Purchase order
@@ -620,7 +596,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_supplier_order](categories.md#record-categorie_supplier_order) (fk_supplier_order).
 
-The record class defines `0` draft, `1` validated, `2` accepted, `3` ordersent, `4` received partially, `5` received completely, `6` canceled, `7` canceled after order, `9` refused. See `htdocs/fourn/class/fournisseur.commande.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` accepted, `3` ordersent, `4` received partially, `5` received completely, `6` canceled, `7` canceled after order, `9` refused.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -675,8 +651,6 @@ The record class defines `0` draft, `1` validated, `2` accepted, `3` ordersent, 
 | `multicurrency_total_tva` | double(24,8) | Yes | `0` | VAT amount in document currency. |
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 
-Source locations include `htdocs/install/mysql/tables/llx_commande_fournisseur.sql`, `htdocs/install/mysql/tables/llx_commande_fournisseur.key.sql`, `htdocs/fourn/class/fournisseur.class.php:88`.
-
 <a id="record-commande_fournisseurdet"></a>
 
 ## Purchase order line
@@ -730,8 +704,6 @@ The primary key is `rowid`.
 | `multicurrency_total_ttc` | double(24,8) | Yes | `0` | Document-currency total including tax. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_commande_fournisseurdet.sql`, `htdocs/install/mysql/tables/llx_commande_fournisseurdet.key.sql`, `htdocs/reception/class/reception.class.php:706`.
-
 <a id="record-reception"></a>
 
 ## Goods receipt
@@ -744,7 +716,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [receptiondet_batch](commercial.md#record-receptiondet_batch) (fk_reception).
 
-The record class defines `-1` canceled, `0` draft, `1` validated, `2` closed. See `htdocs/reception/class/reception.class.php`.
+The stored state codes are `-1` canceled, `0` draft, `1` validated, `2` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -781,8 +753,6 @@ The record class defines `-1` canceled, `0` draft, `1` validated, `2` closed. Se
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
 
-Source locations include `htdocs/install/mysql/tables/llx_reception.sql`, `htdocs/install/mysql/tables/llx_reception.key.sql`, `htdocs/reception/class/reception.class.php:82`.
-
 <a id="record-receptiondet_batch"></a>
 
 ## Supplier receipt allocation
@@ -816,5 +786,3 @@ The primary key is `rowid`.
 | `cost_price` | double(24,8) | Yes | `0` | Stored cost price used by the applicable cost and margin policy. |
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `extraparams` | varchar(255) | Yes | — | Additional values encoded for the owning feature. |
-
-Source locations include `htdocs/install/mysql/tables/llx_receptiondet_batch.sql`, `htdocs/install/mysql/tables/llx_receptiondet_batch.key.sql`, `htdocs/reception/class/reception.class.php:87`.

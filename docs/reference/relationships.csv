@@ -1,332 +1,332 @@
-table,kind,fields,references_table,references_fields,source_file,line
-const,unique,"name, entity",,,llx_const.key.sql,20
-rights_def,primary,"id, entity",,,llx_rights_def.key.sql,20
-user,unique,"login, entity",,,llx_user.key.sql,22
-user,unique,fk_socpeople,,,llx_user.key.sql,29
-user,unique,fk_member,,,llx_user.key.sql,30
-user,unique,api_key,,,llx_user.key.sql,31
-usergroup,unique,"nom, entity",,,llx_usergroup.key.sql,20
-usergroup_rights,unique,"entity, fk_usergroup, fk_id",,,llx_usergroup_rights.key.sql,24
-usergroup_rights,foreign,fk_usergroup,usergroup,rowid,llx_usergroup_rights.key.sql,26
-user_rights,unique,"entity, fk_user, fk_id",,,llx_user_rights.key.sql,25
-user_rights,foreign,fk_user,user,rowid,llx_user_rights.key.sql,27
-usergroup_user,unique,"entity,fk_user,fk_usergroup",,,llx_usergroup_user.key.sql,19
-usergroup_user,foreign,fk_user,user,rowid,llx_usergroup_user.key.sql,21
-usergroup_user,foreign,fk_usergroup,usergroup,rowid,llx_usergroup_user.key.sql,22
-user_param,unique,"fk_user,param,entity",,,llx_user_param.key.sql,20
-default_values,unique,"type, entity, user_id, page, param",,,llx_default_values.key.sql,20
-element_contact,unique,"element_id, fk_c_type_contact, fk_socpeople",,,llx_element_contact.key.sql,21
-element_contact,foreign,fk_c_type_contact,c_type_contact,rowid,llx_element_contact.key.sql,23
-element_element,unique,"fk_source, sourcetype, fk_target, targettype",,,llx_element_element.key.sql,20
-extrafields,unique,"name, entity, elementtype",,,llx_extrafields.key.sql,21
-cronjob,unique,"label, entity",,,llx_cronjob.key.sql,25
-c_action_trigger,unique,code,,,llx_c_action_trigger.key.sql,20
-societe,unique,"prefix_comm, entity",,,llx_societe.key.sql,20
-societe,unique,"code_client, entity",,,llx_societe.key.sql,21
-societe,unique,"code_fournisseur, entity",,,llx_societe.key.sql,22
-societe,unique,"barcode, fk_barcode_type, entity",,,llx_societe.key.sql,24
-societe_rib,unique,"entity, label, fk_soc",,,llx_societe_rib.key.sql,21
-societe_rib,foreign,fk_soc,societe,rowid,llx_societe_rib.key.sql,23
-socpeople,foreign,fk_soc,societe,rowid,llx_socpeople.key.sql,25
-socpeople,foreign,fk_user_creat,user,rowid,llx_socpeople.key.sql,26
-societe_contacts,unique,"entity, fk_soc, fk_c_type_contact, fk_socpeople",,,llx_societe_contacts.key.sql,19
-societe_contacts,foreign,fk_c_type_contact,c_type_contact,rowid,llx_societe_contacts.key.sql,20
-societe_contacts,foreign,fk_soc,societe,rowid,llx_societe_contacts.key.sql,21
-societe_contacts,foreign,fk_socpeople,socpeople,rowid,llx_societe_contacts.key.sql,22
-societe_commerciaux,unique,"fk_soc, fk_user, fk_c_type_contact_code",,,llx_societe_commerciaux.key.sql,19
-societe_commerciaux,foreign,fk_soc,societe,rowid,llx_societe_commerciaux.key.sql,21
-societe_commerciaux,foreign,fk_user,user,rowid,llx_societe_commerciaux.key.sql,22
-societe_remise_except,foreign,fk_user,user,rowid,llx_societe_remise_except.key.sql,32
-societe_remise_except,foreign,fk_soc,societe,rowid,llx_societe_remise_except.key.sql,33
-societe_remise_except,foreign,fk_facture_line,facturedet,rowid,llx_societe_remise_except.key.sql,35
-societe_remise_except,foreign,fk_facture,facture,rowid,llx_societe_remise_except.key.sql,36
-societe_remise_except,foreign,fk_facture_source,facture,rowid,llx_societe_remise_except.key.sql,37
-societe_remise_except,foreign,fk_invoice_supplier_line,facture_fourn_det,rowid,llx_societe_remise_except.key.sql,39
-societe_remise_except,foreign,fk_invoice_supplier,facture_fourn,rowid,llx_societe_remise_except.key.sql,40
-societe_remise_except,foreign,fk_invoice_supplier,facture_fourn,rowid,llx_societe_remise_except.key.sql,41
-propal,unique,"ref, entity",,,llx_propal.key.sql,22
-propal,foreign,fk_soc,societe,rowid,llx_propal.key.sql,34
-propal,foreign,fk_user_author,user,rowid,llx_propal.key.sql,35
-propal,foreign,fk_user_valid,user,rowid,llx_propal.key.sql,36
-propal,foreign,fk_user_signature,user,rowid,llx_propal.key.sql,37
-propal,foreign,fk_user_cloture,user,rowid,llx_propal.key.sql,38
-propal,foreign,fk_projet,projet,rowid,llx_propal.key.sql,39
-propaldet,foreign,fk_unit,c_units,rowid,llx_propaldet.key.sql,25
-propaldet,foreign,fk_propal,propal,rowid,llx_propaldet.key.sql,26
-commande,unique,"ref, entity",,,llx_commande.key.sql,24
-commande,foreign,fk_soc,societe,rowid,llx_commande.key.sql,34
-commande,foreign,fk_user_author,user,rowid,llx_commande.key.sql,35
-commande,foreign,fk_user_valid,user,rowid,llx_commande.key.sql,36
-commande,foreign,fk_user_cloture,user,rowid,llx_commande.key.sql,37
-commande,foreign,fk_projet,projet,rowid,llx_commande.key.sql,38
-commandedet,foreign,fk_unit,c_units,rowid,llx_commandedet.key.sql,26
-commandedet,foreign,fk_commande,commande,rowid,llx_commandedet.key.sql,27
-commandedet,foreign,fk_commandefourndet,commande_fournisseurdet,rowid,llx_commandedet.key.sql,28
-expedition,unique,"ref, entity",,,llx_expedition.key.sql,21
-expedition,foreign,fk_soc,societe,rowid,llx_expedition.key.sql,28
-expedition,foreign,fk_user_author,user,rowid,llx_expedition.key.sql,29
-expedition,foreign,fk_user_valid,user,rowid,llx_expedition.key.sql,30
-expedition,foreign,fk_shipping_method,c_shipment_mode,rowid,llx_expedition.key.sql,31
-expeditiondet,foreign,fk_expedition,expedition,rowid,llx_expeditiondet.key.sql,26
-expeditiondet_batch,foreign,fk_expeditiondet,expeditiondet,rowid,llx_expeditiondet_batch.key.sql,20
-c_payment_term,unique,"entity, code",,,llx_c_payment_term.key.sql,20
-c_shipment_mode,unique,"code, entity",,,llx_c_shipment_mode.key.sql,19
-c_propalst,unique,code,,,llx_c_propalst.key.sql,19
-c_type_contact,unique,"element, source, code",,,llx_c_type_contact.key.sql,20
-partnership,unique,"ref, entity",,,llx_partnership-partnership.key.sql,21
-partnership,unique,"fk_type, fk_soc, date_partnership_start",,,llx_partnership-partnership.key.sql,23
-partnership,unique,"fk_type, fk_member, date_partnership_start",,,llx_partnership-partnership.key.sql,24
-product,unique,"ref, entity",,,llx_product.key.sql,24
-product,unique,"barcode, fk_barcode_type, entity",,,llx_product.key.sql,35
-product,foreign,fk_unit,c_units,rowid,llx_product.key.sql,36
-product,foreign,finished,c_product_nature,code,llx_product.key.sql,37
-product,foreign,fk_country,c_country,rowid,llx_product.key.sql,39
-product,foreign,fk_barcode_type,c_barcode_type,rowid,llx_product.key.sql,40
-product_association,unique,"fk_product_pere, fk_product_fils",,,llx_product_association.key.sql,20
-product_attribute,unique,ref,,,llx_product_attribute-variants.key.sql,19
-product_attribute_value,unique,"fk_product_attribute, ref",,,llx_product_attribute_value-variants.key.sql,19
-product_attribute_combination_price_level,unique,"fk_product_attribute_combination, fk_price_level",,,llx_product_attribute_combination_price_level-variants.key.sql,20
-product_batch,foreign,fk_product_stock,product_stock,rowid,llx_product_batch.key.sql,21
-product_batch,unique,"fk_product_stock, batch",,,llx_product_batch.key.sql,23
-product_lot,unique,"fk_product, batch",,,llx_product_lot.key.sql,19
-product_stock,foreign,fk_product,product,rowid,llx_product_stock.key.sql,23
-product_stock,foreign,fk_entrepot,entrepot,rowid,llx_product_stock.key.sql,24
-product_stock,unique,"fk_product,fk_entrepot",,,llx_product_stock.key.sql,26
-stocktransfer_stocktransfer,foreign,fk_user_creat,user,rowid,llx_stocktransfer_stocktransfer-stocktransfer.key.sql,22
-entrepot,unique,"ref, entity",,,llx_entrepot.key.sql,20
-product_warehouse_properties,foreign,fk_product,product,rowid,llx_product_warehouse_properties-stock.key.sql,22
-product_warehouse_properties,foreign,fk_entrepot,entrepot,rowid,llx_product_warehouse_properties-stock.key.sql,23
-inventory,unique,"ref, entity",,,llx_inventory-stock.key.sql,20
-inventorydet,unique,"fk_inventory, fk_warehouse, fk_product, batch",,,llx_inventorydet-stock.key.sql,24
-product_price,foreign,fk_product,product,rowid,llx_product_price.key.sql,22
-product_price_by_qty,unique,"fk_product_price, quantity",,,llx_product_price_by_qty.key.sql,22
-product_price_by_qty,foreign,fk_product_price,product_price,rowid,llx_product_price_by_qty.key.sql,26
-product_customer_price,unique,"fk_product, fk_soc, date_begin",,,llx_product_customer_price.key.sql,23
-product_customer_price,foreign,fk_user,user,rowid,llx_product_customer_price.key.sql,25
-product_customer_price,foreign,fk_product,product,rowid,llx_product_customer_price.key.sql,26
-product_customer_price,foreign,fk_soc,societe,rowid,llx_product_customer_price.key.sql,27
-c_units,unique,code,,,llx_c_units.key.sql,21
-c_product_nature,unique,code,,,llx_c_product_nature.key.sql,19
-c_productbatch_qcstatus,unique,"code, entity",,,llx_c_productbatch_qcstatus-productbatch.key.sql,19
-supplier_proposal,unique,"ref, entity",,,llx_supplier_proposal.key.sql,20
-supplier_proposaldet,foreign,fk_unit,c_units,rowid,llx_supplier_proposaldet.key.sql,25
-supplier_proposaldet,foreign,fk_supplier_proposal,supplier_proposal,rowid,llx_supplier_proposaldet.key.sql,26
-commande_fournisseur,unique,"ref, entity",,,llx_commande_fournisseur.key.sql,24
-commande_fournisseur,foreign,fk_soc,societe,rowid,llx_commande_fournisseur.key.sql,27
-commande_fournisseurdet,foreign,fk_unit,c_units,rowid,llx_commande_fournisseurdet.key.sql,19
-reception,unique,"ref, entity",,,llx_reception.key.sql,21
-reception,foreign,fk_soc,societe,rowid,llx_reception.key.sql,28
-reception,foreign,fk_user_author,user,rowid,llx_reception.key.sql,29
-reception,foreign,fk_user_valid,user,rowid,llx_reception.key.sql,30
-reception,foreign,fk_shipping_method,c_shipment_mode,rowid,llx_reception.key.sql,31
-receptiondet_batch,foreign,fk_reception,reception,rowid,llx_receptiondet_batch.key.sql,21
-product_fournisseur_price,foreign,fk_user,user,rowid,llx_product_fournisseur_price.key.sql,24
-product_fournisseur_price,unique,"ref_fourn, fk_soc, quantity, entity",,,llx_product_fournisseur_price.key.sql,26
-product_fournisseur_price,foreign,fk_product,product,rowid,llx_product_fournisseur_price.key.sql,31
-product_fournisseur_price,unique,"barcode, fk_barcode_type, entity",,,llx_product_fournisseur_price.key.sql,35
-product_fournisseur_price,foreign,fk_barcode_type,c_barcode_type,rowid,llx_product_fournisseur_price.key.sql,36
-facture_fourn,unique,"ref, entity",,,llx_facture_fourn.key.sql,20
-facture_fourn,unique,"ref_supplier, fk_soc, entity",,,llx_facture_fourn.key.sql,21
-facture_fourn,foreign,fk_soc,societe,rowid,llx_facture_fourn.key.sql,31
-facture_fourn,foreign,fk_user_author,user,rowid,llx_facture_fourn.key.sql,32
-facture_fourn,foreign,fk_user_valid,user,rowid,llx_facture_fourn.key.sql,33
-facture_fourn,foreign,fk_projet,projet,rowid,llx_facture_fourn.key.sql,34
-facture_fourn_det,unique,"fk_remise_except, fk_facture_fourn",,,llx_facture_fourn_det.key.sql,26
-facture_fourn_det,foreign,fk_facture_fourn,facture_fourn,rowid,llx_facture_fourn_det.key.sql,28
-facture_fourn_det,foreign,fk_unit,c_units,rowid,llx_facture_fourn_det.key.sql,29
-facture_fourn_rec,unique,"titre, entity",,,llx_facture_fourn_rec.key.sql,19
-facture_fourn_rec,foreign,fk_soc,societe,rowid,llx_facture_fourn_rec.key.sql,25
-facture_fourn_rec,foreign,fk_user_author,user,rowid,llx_facture_fourn_rec.key.sql,26
-facture_fourn_rec,foreign,fk_projet,projet,rowid,llx_facture_fourn_rec.key.sql,27
-facture_fourn_det_rec,foreign,fk_unit,c_units,rowid,llx_facture_fourn_det_rec.key.sql,18
-paiementfourn_facturefourn,unique,"fk_paiementfourn, fk_facturefourn",,,llx_paiementfourn_facturefourn.key.sql,25
-c_incoterms,unique,code,,,llx_c_incoterms.key.sql,19
-facture,unique,"ref, entity",,,llx_facture.key.sql,22
-facture,foreign,fk_soc,societe,rowid,llx_facture.key.sql,36
-facture,foreign,fk_user_author,user,rowid,llx_facture.key.sql,37
-facture,foreign,fk_user_valid,user,rowid,llx_facture.key.sql,38
-facture,foreign,fk_facture_source,facture,rowid,llx_facture.key.sql,39
-facture,foreign,fk_projet,projet,rowid,llx_facture.key.sql,40
-facture,foreign,fk_input_reason,c_input_reason,rowid,llx_facture.key.sql,41
-facturedet,unique,"fk_remise_except, fk_facture",,,llx_facturedet.key.sql,29
-facturedet,foreign,fk_facture,facture,rowid,llx_facturedet.key.sql,30
-facturedet,foreign,fk_unit,c_units,rowid,llx_facturedet.key.sql,31
-facture_rec,unique,"titre, entity",,,llx_facture_rec.key.sql,22
-facture_rec,foreign,fk_soc,societe,rowid,llx_facture_rec.key.sql,29
-facture_rec,foreign,fk_user_author,user,rowid,llx_facture_rec.key.sql,30
-facture_rec,foreign,fk_projet,projet,rowid,llx_facture_rec.key.sql,31
-facturedet_rec,foreign,fk_unit,c_units,rowid,llx_facturedet_rec.key.sql,21
-paiement_facture,foreign,fk_facture,facture,rowid,llx_paiement_facture.key.sql,25
-paiement_facture,foreign,fk_paiement,paiement,rowid,llx_paiement_facture.key.sql,28
-paiement_facture,unique,"fk_paiement, fk_facture",,,llx_paiement_facture.key.sql,31
-bank_account,unique,"label,entity",,,llx_bank_account.key.sql,21
-bank_account,foreign,fk_accountancy_journal,accounting_journal,rowid,llx_bank_account.key.sql,24
-bank_url,unique,"fk_bank, url_id, type",,,llx_bank_url.key.sql,20
-bank_record,foreign,fk_bank,bank_account,rowid,llx_bank_record-bank.key.sql,23
-bank_record_link,foreign,fk_bank_record,bank_record,rowid,llx_bank_record_link-bank.key.sql,20
-bank_record_link,foreign,fk_bank_import,bank_import,rowid,llx_bank_record_link-bank.key.sql,21
-bordereau_cheque,unique,"ref, entity",,,llx_bordereau_cheque.key.sql,20
-takepos_floor_tables,unique,"entity,label",,,llx_takepos_floor_tables-takepos.key.sql,16
-prelevement,foreign,fk_prelevement_lignes,prelevement_lignes,rowid,llx_prelevement.key.sql,24
-prelevement_bons,unique,"ref, entity",,,llx_prelevement_bons.key.sql,20
-prelevement_lignes,foreign,fk_prelevement_bons,prelevement_bons,rowid,llx_prelevement_lignes.key.sql,24
-c_paiement,unique,"entity, code",,,llx_c_paiement.key.sql,20
-c_invoice_subtype,unique,"entity, code, fk_country",,,llx_c_invoice_subtype.key.sql,19
-c_tva,unique,"entity, fk_pays, code, taux, recuperableonly",,,llx_c_tva.key.sql,20
-c_tva,foreign,fk_department_buyer,c_departements,rowid,llx_c_tva.key.sql,25
-accounting_account,unique,"account_number, entity, fk_pcg_version",,,llx_accounting_account.key.sql,24
-accounting_journal,unique,"code,entity",,,llx_accounting_journal.key.sql,20
-accounting_system,unique,pcg_version,,,llx_accounting_system.key.sql,21
-accounting_account,foreign,fk_pcg_version,accounting_system,pcg_version,llx_accounting_system.key.sql,24
-accounting_bookkeeping_piece,unique,"ref, entity",,,llx_accounting_bookkeeping_piece-accounting.key.sql,19
-accounting_balance_snapshot,unique,"entity, fk_fiscalyear, account_number, subledger_account",,,llx_accounting_balance_snapshot-accounting.key.sql,20
-accounting_analytic_axis,unique,"code, entity",,,llx_accounting_analytic_axis-accounting.key.sql,19
-accounting_analytic_account,unique,"code, entity",,,llx_accounting_analytic_account-accounting.key.sql,19
-accounting_analytic_distribution,foreign,fk_analytic_account,accounting_analytic_account,rowid,llx_accounting_analytic_distribution-accounting.key.sql,19
-asset,foreign,fk_asset_model,asset_model,rowid,llx_asset-asset.key.sql,21
-asset,foreign,fk_disposal_type,c_asset_disposal_type,rowid,llx_asset-asset.key.sql,22
-asset,foreign,fk_user_creat,user,rowid,llx_asset-asset.key.sql,23
-asset,foreign,fk_user_modif,user,rowid,llx_asset-asset.key.sql,24
-asset_model,unique,"entity, ref",,,llx_asset_model-asset.key.sql,22
-asset_depreciation,unique,"fk_asset, depreciation_mode, ref",,,llx_asset_depreciation-asset.key.sql,22
-asset_depreciation,foreign,fk_asset,asset,rowid,llx_asset_depreciation-asset.key.sql,24
-asset_depreciation,foreign,fk_user_modif,user,rowid,llx_asset_depreciation-asset.key.sql,25
-asset_accountancy_codes_economic,unique,fk_asset,,,llx_asset_accountancy_codes_economic-asset.key.sql,21
-asset_accountancy_codes_economic,unique,fk_asset_model,,,llx_asset_accountancy_codes_economic-asset.key.sql,22
-asset_accountancy_codes_economic,foreign,fk_asset,asset,rowid,llx_asset_accountancy_codes_economic-asset.key.sql,24
-asset_accountancy_codes_economic,foreign,fk_asset_model,asset_model,rowid,llx_asset_accountancy_codes_economic-asset.key.sql,25
-asset_accountancy_codes_economic,foreign,fk_user_modif,user,rowid,llx_asset_accountancy_codes_economic-asset.key.sql,26
-asset_accountancy_codes_fiscal,unique,fk_asset,,,llx_asset_accountancy_codes_fiscal-asset.key.sql,19
-asset_accountancy_codes_fiscal,unique,fk_asset_model,,,llx_asset_accountancy_codes_fiscal-asset.key.sql,20
-asset_accountancy_codes_fiscal,foreign,fk_asset,asset,rowid,llx_asset_accountancy_codes_fiscal-asset.key.sql,22
-asset_accountancy_codes_fiscal,foreign,fk_asset_model,asset_model,rowid,llx_asset_accountancy_codes_fiscal-asset.key.sql,23
-asset_accountancy_codes_fiscal,foreign,fk_user_modif,user,rowid,llx_asset_accountancy_codes_fiscal-asset.key.sql,24
-asset_depreciation_options_economic,unique,fk_asset,,,llx_asset_depreciation_options_economic-asset.key.sql,19
-asset_depreciation_options_economic,unique,fk_asset_model,,,llx_asset_depreciation_options_economic-asset.key.sql,20
-asset_depreciation_options_economic,foreign,fk_asset,asset,rowid,llx_asset_depreciation_options_economic-asset.key.sql,22
-asset_depreciation_options_economic,foreign,fk_asset_model,asset_model,rowid,llx_asset_depreciation_options_economic-asset.key.sql,23
-asset_depreciation_options_economic,foreign,fk_user_modif,user,rowid,llx_asset_depreciation_options_economic-asset.key.sql,24
-asset_depreciation_options_fiscal,unique,fk_asset,,,llx_asset_depreciation_options_fiscal-asset.key.sql,19
-asset_depreciation_options_fiscal,unique,fk_asset_model,,,llx_asset_depreciation_options_fiscal-asset.key.sql,20
-asset_depreciation_options_fiscal,foreign,fk_asset,asset,rowid,llx_asset_depreciation_options_fiscal-asset.key.sql,22
-asset_depreciation_options_fiscal,foreign,fk_asset_model,asset_model,rowid,llx_asset_depreciation_options_fiscal-asset.key.sql,23
-asset_depreciation_options_fiscal,foreign,fk_user_modif,user,rowid,llx_asset_depreciation_options_fiscal-asset.key.sql,24
-loan_schedule,unique,"fk_loan, datep",,,llx_loan_schedule-loan.key.sql,19
-c_asset_disposal_type,unique,"code, entity",,,llx_c_asset_disposal_type-asset.key.sql,18
-bom_bom,foreign,fk_user_creat,user,rowid,llx_bom_bom-bom.key.sql,20
-bom_bom,unique,"ref, entity",,,llx_bom_bom-bom.key.sql,25
-bom_bomline,foreign,fk_bom,bom_bom,rowid,llx_bom_bomline-bom.key.sql,25
-mrp_mo,foreign,fk_user_creat,user,rowid,llx_mrp_mo-mrp.key.sql,21
-mrp_production,foreign,fk_mo,mrp_mo,rowid,llx_mrp_production-mrp.key.sql,16
-mrp_production,foreign,fk_product,product,rowid,llx_mrp_production-mrp.key.sql,17
-mrp_production,foreign,fk_stock_movement,stock_mouvement,rowid,llx_mrp_production-mrp.key.sql,18
-workstation_workstation,foreign,fk_user_creat,user,rowid,llx_workstation_workstation-workstation.key.sql,20
-projet,unique,"ref, entity",,,llx_projet.key.sql,22
-projet,foreign,fk_soc,societe,rowid,llx_projet.key.sql,29
-projet_task,unique,"ref, entity",,,llx_projet_task.key.sql,20
-projet_task,foreign,fk_projet,projet,rowid,llx_projet_task.key.sql,26
-projet_task,foreign,fk_user_creat,user,rowid,llx_projet_task.key.sql,27
-projet_task,foreign,fk_user_valid,user,rowid,llx_projet_task.key.sql,28
-actioncomm_resources,unique,"fk_actioncomm, element_type, fk_element",,,llx_actioncomm_resources.key.sql,21
-actioncomm_reminder,unique,"fk_actioncomm, fk_user, fk_soc, fk_contact, typeremind, offsetvalue, offsetunit",,,llx_actioncomm_reminder.key.sql,25
-resource,unique,"ref, entity",,,llx_resource.key.sql,19
-resource,foreign,fk_country,c_country,rowid,llx_resource.key.sql,24
-element_resources,unique,"resource_id, resource_type, element_id, element_type",,,llx_element_resources.key.sql,20
-eventorganization_conferenceorboothattendee,unique,ref,,,llx_eventorganization_conferenceorboothattendee.key.sql,27
-eventorganization_conferenceorboothattendee,unique,"fk_project, email, fk_actioncomm",,,llx_eventorganization_conferenceorboothattendee.key.sql,28
-eventorganization_conferenceorboothattendee,unique,fk_replacement,,,llx_eventorganization_conferenceorboothattendee.key.sql,29
-c_lead_status,unique,code,,,llx_c_lead_status.key.sql,19
-holiday_config,unique,"entity, name",,,llx_holiday_config.key.sql,20
-holiday_users,unique,"fk_user, fk_type",,,llx_holiday_users.key.sql,19
-c_holiday_types,unique,"entity, code",,,llx_c_holiday_types.key.sql,19
-c_hrm_public_holiday,unique,"entity, code",,,llx_c_hrm_public_holiday.key.sql,19
-c_hrm_public_holiday,unique,"entity, fk_country, dayrule, day, month, year",,,llx_c_hrm_public_holiday.key.sql,20
-expensereport,unique,"ref, entity",,,llx_expensereport.key.sql,21
-salary,unique,"ref, entity",,,llx_salary.key.sql,17
-payment_salary,foreign,fk_user,user,rowid,llx_payment_salary.key.sql,26
-user_employment,unique,"ref,entity",,,llx_user_employment.key.sql,19
-user_employment,foreign,fk_user,user,rowid,llx_user_employment.key.sql,21
-hrm_evaluation,foreign,fk_user_creat,user,rowid,llx_hrm_evaluation-hrm.key.sql,22
-hrm_evaluationdet,foreign,fk_user_creat,user,rowid,llx_hrm_evaluationdet-hrm.key.sql,21
-hrm_evaluationdet,foreign,fk_evaluation,hrm_evaluation,rowid,llx_hrm_evaluationdet-hrm.key.sql,28
-hrm_skill,foreign,fk_user_creat,user,rowid,llx_hrm_skill-hrm.key.sql,21
-hrm_skilldet,foreign,fk_user_creat,user,rowid,llx_hrm_skilldet-hrm.key.sql,21
-hrm_skilldet,foreign,fk_skill,hrm_skill,rowid,llx_hrm_skilldet-hrm.key.sql,26
-hrm_skillrank,foreign,fk_user_creat,user,rowid,llx_hrm_skillrank-hrm.key.sql,21
-hrm_skillrank,foreign,fk_skill,hrm_skill,rowid,llx_hrm_skillrank-hrm.key.sql,26
-recruitment_recruitmentjobposition,foreign,fk_user_recruiter,user,rowid,llx_recruitment_recruitmentjobposition-recruitment.key.sql,22
-recruitment_recruitmentjobposition,foreign,fk_user_supervisor,user,rowid,llx_recruitment_recruitmentjobposition-recruitment.key.sql,23
-recruitment_recruitmentjobposition,foreign,fk_establishment,establishment,rowid,llx_recruitment_recruitmentjobposition-recruitment.key.sql,24
-recruitment_recruitmentjobposition,foreign,fk_user_creat,user,rowid,llx_recruitment_recruitmentjobposition-recruitment.key.sql,25
-recruitment_recruitmentcandidature,foreign,fk_user_creat,user,rowid,llx_recruitment_recruitmentcandidature-recruitment.key.sql,20
-recruitment_recruitmentcandidature,unique,email_msgid,,,llx_recruitment_recruitmentcandidature-recruitment.key.sql,24
-contrat,unique,"ref, entity",,,llx_contrat.key.sql,27
-contrat,foreign,fk_soc,societe,rowid,llx_contrat.key.sql,32
-contrat,foreign,fk_user_author,user,rowid,llx_contrat.key.sql,33
-contratdet,foreign,fk_contrat,contrat,rowid,llx_contratdet.key.sql,29
-contratdet,foreign,fk_product,product,rowid,llx_contratdet.key.sql,30
-contratdet,foreign,fk_unit,c_units,rowid,llx_contratdet.key.sql,32
-fichinter,unique,"ref, entity",,,llx_fichinter.key.sql,20
-fichinter,foreign,fk_soc,societe,rowid,llx_fichinter.key.sql,23
-fichinterdet,foreign,fk_fichinter,fichinter,rowid,llx_fichinterdet.key.sql,21
-fichinter_rec,unique,"title, entity",,,llx_fichinter_rec.key.sql,23
-fichinter_rec,foreign,fk_user_author,user,rowid,llx_fichinter_rec.key.sql,29
-fichinter_rec,foreign,fk_projet,projet,rowid,llx_fichinter_rec.key.sql,30
-ticket,unique,track_id,,,llx_ticket-ticket.key.sql,17
-ticket,unique,"ref, entity",,,llx_ticket-ticket.key.sql,18
-ticket,unique,"barcode, fk_barcode_type, entity",,,llx_ticket-ticket.key.sql,25
-ticket,foreign,fk_barcode_type,c_barcode_type,rowid,llx_ticket-ticket.key.sql,26
-knowledgemanagement_knowledgerecord,foreign,fk_user_creat,user,rowid,llx_knowledgemanagement_knowledgerecord-knowledgemanagement.key.sql,20
-c_ticket_type,unique,"code, entity",,,llx_c_ticket_type-ticket.key.sql,18
-c_ticket_category,unique,"code, entity",,,llx_c_ticket_category-ticket.key.sql,18
-c_ticket_severity,unique,"code, entity",,,llx_c_ticket_severity-ticket.key.sql,18
-c_ticket_resolution,unique,"code, entity",,,llx_c_ticket_resolution-ticket.key.sql,18
-adherent,unique,"login, entity",,,llx_adherent.key.sql,21
-adherent,unique,"ref, entity",,,llx_adherent.key.sql,22
-adherent,unique,fk_soc,,,llx_adherent.key.sql,23
-adherent,foreign,fk_soc,societe,rowid,llx_adherent.key.sql,27
-adherent,foreign,fk_adherent_type,adherent_type,rowid,llx_adherent.key.sql,28
-adherent_type,unique,"libelle, entity",,,llx_adherent_type.key.sql,21
-subscription,unique,"fk_adherent, dateadh",,,llx_subscription.key.sql,19
-don,unique,"ref, entity",,,llx_don-don.key.sql,20
-website,unique,"ref, entity",,,llx_website-website.key.sql,19
-website_page,unique,"fk_website, pageurl",,,llx_website_page-website.key.sql,19
-website_page,foreign,fk_website,website,rowid,llx_website_page-website.key.sql,21
-mailing,unique,"titre, entity",,,llx_mailing-mailing.key.sql,20
-mailing_cibles,unique,"fk_mailing, email",,,llx_mailing_cibles-mailing.key.sql,20
-mailing_advtarget,unique,name,,,llx_mailing_advtarget-mailing.key.sql,17
-mailing_unsubscribe,unique,"email, entity, unsubscribegroup",,,llx_mailing_unsubscribe.key.sql,20
-emailcollector_emailcollector,unique,"ref, entity",,,llx_emailcollector_emailcollector.key.sql,22
-emailcollector_emailcollectoraction,foreign,fk_emailcollector,emailcollector_emailcollector,rowid,llx_emailcollector_emailcollectoraction.key.sql,19
-emailcollector_emailcollectoraction,unique,"fk_emailcollector, type",,,llx_emailcollector_emailcollectoraction.key.sql,22
-emailcollector_emailcollectorfilter,foreign,fk_emailcollector,emailcollector_emailcollector,rowid,llx_emailcollector_emailcollectorfilter.key.sql,19
-emailcollector_emailcollectorfilter,unique,"fk_emailcollector, type, rulevalue",,,llx_emailcollector_emailcollectorfilter.key.sql,22
-c_email_senderprofile,unique,"entity, label, email",,,llx_c_email_senderprofile.key.sql,20
-c_email_templates,unique,"entity, label, lang",,,llx_c_email_templates.key.sql,20
-categorie,unique,"entity, fk_parent, label, type",,,llx_categorie.key.sql,20
-categorie_product,primary,"fk_categorie, fk_product",,,llx_categorie_product.key.sql,21
-categorie_product,foreign,fk_categorie,categorie,rowid,llx_categorie_product.key.sql,25
-categorie_product,foreign,fk_product,product,rowid,llx_categorie_product.key.sql,26
-categorie_contact,primary,"fk_categorie, fk_socpeople",,,llx_categorie_contact.key.sql,19
-categorie_contact,foreign,fk_categorie,categorie,rowid,llx_categorie_contact.key.sql,23
-categorie_contact,foreign,fk_socpeople,socpeople,rowid,llx_categorie_contact.key.sql,24
-categorie_project,primary,"fk_categorie, fk_project",,,llx_categorie_project.key.sql,19
-categorie_project,foreign,fk_categorie,categorie,rowid,llx_categorie_project.key.sql,23
-categorie_project,foreign,fk_project,projet,rowid,llx_categorie_project.key.sql,24
-categorie_member,primary,"fk_categorie, fk_member",,,llx_categorie_member.key.sql,21
-categorie_member,foreign,fk_categorie,categorie,rowid,llx_categorie_member.key.sql,25
-categorie_member,foreign,fk_member,adherent,rowid,llx_categorie_member.key.sql,26
-categorie_warehouse,primary,"fk_categorie, fk_warehouse",,,llx_categorie_warehouse-stock.key.sql,20
-categorie_warehouse,foreign,fk_categorie,categorie,rowid,llx_categorie_warehouse-stock.key.sql,24
-categorie_warehouse,foreign,fk_warehouse,entrepot,rowid,llx_categorie_warehouse-stock.key.sql,25
-ecm_directories,unique,"label, fk_parent, entity",,,llx_ecm_directories.key.sql,21
-ecm_directories,foreign,fk_user_c,user,rowid,llx_ecm_directories.key.sql,26
-ecm_directories,foreign,fk_user_m,user,rowid,llx_ecm_directories.key.sql,27
-ecm_files,unique,"filepath, filename, entity",,,llx_ecm_files.key.sql,20
-document_model,unique,"nom,type,entity",,,llx_document_model.key.sql,21
-import_model,unique,"label,type",,,llx_import_model.key.sql,20
-export_model,unique,"label,type",,,llx_export_model.key.sql,21
-bookmark,unique,"fk_user, entity, title",,,llx_bookmark.key.sql,20
-printer_receipt,unique,"name, entity",,,llx_printing_receipt-receiptprinter.key.sql,19
-c_barcode_type,unique,"code, entity",,,llx_c_barcode_type.key.sql,19
-c_socialnetworks,unique,"entity, code",,,llx_c_socialnetworks.key.sql,19
+table,kind,fields,references_table,references_fields
+const,unique,"name, entity",,
+rights_def,primary,"id, entity",,
+user,unique,"login, entity",,
+user,unique,fk_socpeople,,
+user,unique,fk_member,,
+user,unique,api_key,,
+usergroup,unique,"nom, entity",,
+usergroup_rights,unique,"entity, fk_usergroup, fk_id",,
+usergroup_rights,foreign,fk_usergroup,usergroup,rowid
+user_rights,unique,"entity, fk_user, fk_id",,
+user_rights,foreign,fk_user,user,rowid
+usergroup_user,unique,"entity,fk_user,fk_usergroup",,
+usergroup_user,foreign,fk_user,user,rowid
+usergroup_user,foreign,fk_usergroup,usergroup,rowid
+user_param,unique,"fk_user,param,entity",,
+default_values,unique,"type, entity, user_id, page, param",,
+element_contact,unique,"element_id, fk_c_type_contact, fk_socpeople",,
+element_contact,foreign,fk_c_type_contact,c_type_contact,rowid
+element_element,unique,"fk_source, sourcetype, fk_target, targettype",,
+extrafields,unique,"name, entity, elementtype",,
+cronjob,unique,"label, entity",,
+c_action_trigger,unique,code,,
+societe,unique,"prefix_comm, entity",,
+societe,unique,"code_client, entity",,
+societe,unique,"code_fournisseur, entity",,
+societe,unique,"barcode, fk_barcode_type, entity",,
+societe_rib,unique,"entity, label, fk_soc",,
+societe_rib,foreign,fk_soc,societe,rowid
+socpeople,foreign,fk_soc,societe,rowid
+socpeople,foreign,fk_user_creat,user,rowid
+societe_contacts,unique,"entity, fk_soc, fk_c_type_contact, fk_socpeople",,
+societe_contacts,foreign,fk_c_type_contact,c_type_contact,rowid
+societe_contacts,foreign,fk_soc,societe,rowid
+societe_contacts,foreign,fk_socpeople,socpeople,rowid
+societe_commerciaux,unique,"fk_soc, fk_user, fk_c_type_contact_code",,
+societe_commerciaux,foreign,fk_soc,societe,rowid
+societe_commerciaux,foreign,fk_user,user,rowid
+societe_remise_except,foreign,fk_user,user,rowid
+societe_remise_except,foreign,fk_soc,societe,rowid
+societe_remise_except,foreign,fk_facture_line,facturedet,rowid
+societe_remise_except,foreign,fk_facture,facture,rowid
+societe_remise_except,foreign,fk_facture_source,facture,rowid
+societe_remise_except,foreign,fk_invoice_supplier_line,facture_fourn_det,rowid
+societe_remise_except,foreign,fk_invoice_supplier,facture_fourn,rowid
+societe_remise_except,foreign,fk_invoice_supplier,facture_fourn,rowid
+propal,unique,"ref, entity",,
+propal,foreign,fk_soc,societe,rowid
+propal,foreign,fk_user_author,user,rowid
+propal,foreign,fk_user_valid,user,rowid
+propal,foreign,fk_user_signature,user,rowid
+propal,foreign,fk_user_cloture,user,rowid
+propal,foreign,fk_projet,projet,rowid
+propaldet,foreign,fk_unit,c_units,rowid
+propaldet,foreign,fk_propal,propal,rowid
+commande,unique,"ref, entity",,
+commande,foreign,fk_soc,societe,rowid
+commande,foreign,fk_user_author,user,rowid
+commande,foreign,fk_user_valid,user,rowid
+commande,foreign,fk_user_cloture,user,rowid
+commande,foreign,fk_projet,projet,rowid
+commandedet,foreign,fk_unit,c_units,rowid
+commandedet,foreign,fk_commande,commande,rowid
+commandedet,foreign,fk_commandefourndet,commande_fournisseurdet,rowid
+expedition,unique,"ref, entity",,
+expedition,foreign,fk_soc,societe,rowid
+expedition,foreign,fk_user_author,user,rowid
+expedition,foreign,fk_user_valid,user,rowid
+expedition,foreign,fk_shipping_method,c_shipment_mode,rowid
+expeditiondet,foreign,fk_expedition,expedition,rowid
+expeditiondet_batch,foreign,fk_expeditiondet,expeditiondet,rowid
+c_payment_term,unique,"entity, code",,
+c_shipment_mode,unique,"code, entity",,
+c_propalst,unique,code,,
+c_type_contact,unique,"element, source, code",,
+partnership,unique,"ref, entity",,
+partnership,unique,"fk_type, fk_soc, date_partnership_start",,
+partnership,unique,"fk_type, fk_member, date_partnership_start",,
+product,unique,"ref, entity",,
+product,unique,"barcode, fk_barcode_type, entity",,
+product,foreign,fk_unit,c_units,rowid
+product,foreign,finished,c_product_nature,code
+product,foreign,fk_country,c_country,rowid
+product,foreign,fk_barcode_type,c_barcode_type,rowid
+product_association,unique,"fk_product_pere, fk_product_fils",,
+product_attribute,unique,ref,,
+product_attribute_value,unique,"fk_product_attribute, ref",,
+product_attribute_combination_price_level,unique,"fk_product_attribute_combination, fk_price_level",,
+product_batch,foreign,fk_product_stock,product_stock,rowid
+product_batch,unique,"fk_product_stock, batch",,
+product_lot,unique,"fk_product, batch",,
+product_stock,foreign,fk_product,product,rowid
+product_stock,foreign,fk_entrepot,entrepot,rowid
+product_stock,unique,"fk_product,fk_entrepot",,
+stocktransfer_stocktransfer,foreign,fk_user_creat,user,rowid
+entrepot,unique,"ref, entity",,
+product_warehouse_properties,foreign,fk_product,product,rowid
+product_warehouse_properties,foreign,fk_entrepot,entrepot,rowid
+inventory,unique,"ref, entity",,
+inventorydet,unique,"fk_inventory, fk_warehouse, fk_product, batch",,
+product_price,foreign,fk_product,product,rowid
+product_price_by_qty,unique,"fk_product_price, quantity",,
+product_price_by_qty,foreign,fk_product_price,product_price,rowid
+product_customer_price,unique,"fk_product, fk_soc, date_begin",,
+product_customer_price,foreign,fk_user,user,rowid
+product_customer_price,foreign,fk_product,product,rowid
+product_customer_price,foreign,fk_soc,societe,rowid
+c_units,unique,code,,
+c_product_nature,unique,code,,
+c_productbatch_qcstatus,unique,"code, entity",,
+supplier_proposal,unique,"ref, entity",,
+supplier_proposaldet,foreign,fk_unit,c_units,rowid
+supplier_proposaldet,foreign,fk_supplier_proposal,supplier_proposal,rowid
+commande_fournisseur,unique,"ref, entity",,
+commande_fournisseur,foreign,fk_soc,societe,rowid
+commande_fournisseurdet,foreign,fk_unit,c_units,rowid
+reception,unique,"ref, entity",,
+reception,foreign,fk_soc,societe,rowid
+reception,foreign,fk_user_author,user,rowid
+reception,foreign,fk_user_valid,user,rowid
+reception,foreign,fk_shipping_method,c_shipment_mode,rowid
+receptiondet_batch,foreign,fk_reception,reception,rowid
+product_fournisseur_price,foreign,fk_user,user,rowid
+product_fournisseur_price,unique,"ref_fourn, fk_soc, quantity, entity",,
+product_fournisseur_price,foreign,fk_product,product,rowid
+product_fournisseur_price,unique,"barcode, fk_barcode_type, entity",,
+product_fournisseur_price,foreign,fk_barcode_type,c_barcode_type,rowid
+facture_fourn,unique,"ref, entity",,
+facture_fourn,unique,"ref_supplier, fk_soc, entity",,
+facture_fourn,foreign,fk_soc,societe,rowid
+facture_fourn,foreign,fk_user_author,user,rowid
+facture_fourn,foreign,fk_user_valid,user,rowid
+facture_fourn,foreign,fk_projet,projet,rowid
+facture_fourn_det,unique,"fk_remise_except, fk_facture_fourn",,
+facture_fourn_det,foreign,fk_facture_fourn,facture_fourn,rowid
+facture_fourn_det,foreign,fk_unit,c_units,rowid
+facture_fourn_rec,unique,"titre, entity",,
+facture_fourn_rec,foreign,fk_soc,societe,rowid
+facture_fourn_rec,foreign,fk_user_author,user,rowid
+facture_fourn_rec,foreign,fk_projet,projet,rowid
+facture_fourn_det_rec,foreign,fk_unit,c_units,rowid
+paiementfourn_facturefourn,unique,"fk_paiementfourn, fk_facturefourn",,
+c_incoterms,unique,code,,
+facture,unique,"ref, entity",,
+facture,foreign,fk_soc,societe,rowid
+facture,foreign,fk_user_author,user,rowid
+facture,foreign,fk_user_valid,user,rowid
+facture,foreign,fk_facture_source,facture,rowid
+facture,foreign,fk_projet,projet,rowid
+facture,foreign,fk_input_reason,c_input_reason,rowid
+facturedet,unique,"fk_remise_except, fk_facture",,
+facturedet,foreign,fk_facture,facture,rowid
+facturedet,foreign,fk_unit,c_units,rowid
+facture_rec,unique,"titre, entity",,
+facture_rec,foreign,fk_soc,societe,rowid
+facture_rec,foreign,fk_user_author,user,rowid
+facture_rec,foreign,fk_projet,projet,rowid
+facturedet_rec,foreign,fk_unit,c_units,rowid
+paiement_facture,foreign,fk_facture,facture,rowid
+paiement_facture,foreign,fk_paiement,paiement,rowid
+paiement_facture,unique,"fk_paiement, fk_facture",,
+bank_account,unique,"label,entity",,
+bank_account,foreign,fk_accountancy_journal,accounting_journal,rowid
+bank_url,unique,"fk_bank, url_id, type",,
+bank_record,foreign,fk_bank,bank_account,rowid
+bank_record_link,foreign,fk_bank_record,bank_record,rowid
+bank_record_link,foreign,fk_bank_import,bank_import,rowid
+bordereau_cheque,unique,"ref, entity",,
+takepos_floor_tables,unique,"entity,label",,
+prelevement,foreign,fk_prelevement_lignes,prelevement_lignes,rowid
+prelevement_bons,unique,"ref, entity",,
+prelevement_lignes,foreign,fk_prelevement_bons,prelevement_bons,rowid
+c_paiement,unique,"entity, code",,
+c_invoice_subtype,unique,"entity, code, fk_country",,
+c_tva,unique,"entity, fk_pays, code, taux, recuperableonly",,
+c_tva,foreign,fk_department_buyer,c_departements,rowid
+accounting_account,unique,"account_number, entity, fk_pcg_version",,
+accounting_journal,unique,"code,entity",,
+accounting_system,unique,pcg_version,,
+accounting_account,foreign,fk_pcg_version,accounting_system,pcg_version
+accounting_bookkeeping_piece,unique,"ref, entity",,
+accounting_balance_snapshot,unique,"entity, fk_fiscalyear, account_number, subledger_account",,
+accounting_analytic_axis,unique,"code, entity",,
+accounting_analytic_account,unique,"code, entity",,
+accounting_analytic_distribution,foreign,fk_analytic_account,accounting_analytic_account,rowid
+asset,foreign,fk_asset_model,asset_model,rowid
+asset,foreign,fk_disposal_type,c_asset_disposal_type,rowid
+asset,foreign,fk_user_creat,user,rowid
+asset,foreign,fk_user_modif,user,rowid
+asset_model,unique,"entity, ref",,
+asset_depreciation,unique,"fk_asset, depreciation_mode, ref",,
+asset_depreciation,foreign,fk_asset,asset,rowid
+asset_depreciation,foreign,fk_user_modif,user,rowid
+asset_accountancy_codes_economic,unique,fk_asset,,
+asset_accountancy_codes_economic,unique,fk_asset_model,,
+asset_accountancy_codes_economic,foreign,fk_asset,asset,rowid
+asset_accountancy_codes_economic,foreign,fk_asset_model,asset_model,rowid
+asset_accountancy_codes_economic,foreign,fk_user_modif,user,rowid
+asset_accountancy_codes_fiscal,unique,fk_asset,,
+asset_accountancy_codes_fiscal,unique,fk_asset_model,,
+asset_accountancy_codes_fiscal,foreign,fk_asset,asset,rowid
+asset_accountancy_codes_fiscal,foreign,fk_asset_model,asset_model,rowid
+asset_accountancy_codes_fiscal,foreign,fk_user_modif,user,rowid
+asset_depreciation_options_economic,unique,fk_asset,,
+asset_depreciation_options_economic,unique,fk_asset_model,,
+asset_depreciation_options_economic,foreign,fk_asset,asset,rowid
+asset_depreciation_options_economic,foreign,fk_asset_model,asset_model,rowid
+asset_depreciation_options_economic,foreign,fk_user_modif,user,rowid
+asset_depreciation_options_fiscal,unique,fk_asset,,
+asset_depreciation_options_fiscal,unique,fk_asset_model,,
+asset_depreciation_options_fiscal,foreign,fk_asset,asset,rowid
+asset_depreciation_options_fiscal,foreign,fk_asset_model,asset_model,rowid
+asset_depreciation_options_fiscal,foreign,fk_user_modif,user,rowid
+loan_schedule,unique,"fk_loan, datep",,
+c_asset_disposal_type,unique,"code, entity",,
+bom_bom,foreign,fk_user_creat,user,rowid
+bom_bom,unique,"ref, entity",,
+bom_bomline,foreign,fk_bom,bom_bom,rowid
+mrp_mo,foreign,fk_user_creat,user,rowid
+mrp_production,foreign,fk_mo,mrp_mo,rowid
+mrp_production,foreign,fk_product,product,rowid
+mrp_production,foreign,fk_stock_movement,stock_mouvement,rowid
+workstation_workstation,foreign,fk_user_creat,user,rowid
+projet,unique,"ref, entity",,
+projet,foreign,fk_soc,societe,rowid
+projet_task,unique,"ref, entity",,
+projet_task,foreign,fk_projet,projet,rowid
+projet_task,foreign,fk_user_creat,user,rowid
+projet_task,foreign,fk_user_valid,user,rowid
+actioncomm_resources,unique,"fk_actioncomm, element_type, fk_element",,
+actioncomm_reminder,unique,"fk_actioncomm, fk_user, fk_soc, fk_contact, typeremind, offsetvalue, offsetunit",,
+resource,unique,"ref, entity",,
+resource,foreign,fk_country,c_country,rowid
+element_resources,unique,"resource_id, resource_type, element_id, element_type",,
+eventorganization_conferenceorboothattendee,unique,ref,,
+eventorganization_conferenceorboothattendee,unique,"fk_project, email, fk_actioncomm",,
+eventorganization_conferenceorboothattendee,unique,fk_replacement,,
+c_lead_status,unique,code,,
+holiday_config,unique,"entity, name",,
+holiday_users,unique,"fk_user, fk_type",,
+c_holiday_types,unique,"entity, code",,
+c_hrm_public_holiday,unique,"entity, code",,
+c_hrm_public_holiday,unique,"entity, fk_country, dayrule, day, month, year",,
+expensereport,unique,"ref, entity",,
+salary,unique,"ref, entity",,
+payment_salary,foreign,fk_user,user,rowid
+user_employment,unique,"ref,entity",,
+user_employment,foreign,fk_user,user,rowid
+hrm_evaluation,foreign,fk_user_creat,user,rowid
+hrm_evaluationdet,foreign,fk_user_creat,user,rowid
+hrm_evaluationdet,foreign,fk_evaluation,hrm_evaluation,rowid
+hrm_skill,foreign,fk_user_creat,user,rowid
+hrm_skilldet,foreign,fk_user_creat,user,rowid
+hrm_skilldet,foreign,fk_skill,hrm_skill,rowid
+hrm_skillrank,foreign,fk_user_creat,user,rowid
+hrm_skillrank,foreign,fk_skill,hrm_skill,rowid
+recruitment_recruitmentjobposition,foreign,fk_user_recruiter,user,rowid
+recruitment_recruitmentjobposition,foreign,fk_user_supervisor,user,rowid
+recruitment_recruitmentjobposition,foreign,fk_establishment,establishment,rowid
+recruitment_recruitmentjobposition,foreign,fk_user_creat,user,rowid
+recruitment_recruitmentcandidature,foreign,fk_user_creat,user,rowid
+recruitment_recruitmentcandidature,unique,email_msgid,,
+contrat,unique,"ref, entity",,
+contrat,foreign,fk_soc,societe,rowid
+contrat,foreign,fk_user_author,user,rowid
+contratdet,foreign,fk_contrat,contrat,rowid
+contratdet,foreign,fk_product,product,rowid
+contratdet,foreign,fk_unit,c_units,rowid
+fichinter,unique,"ref, entity",,
+fichinter,foreign,fk_soc,societe,rowid
+fichinterdet,foreign,fk_fichinter,fichinter,rowid
+fichinter_rec,unique,"title, entity",,
+fichinter_rec,foreign,fk_user_author,user,rowid
+fichinter_rec,foreign,fk_projet,projet,rowid
+ticket,unique,track_id,,
+ticket,unique,"ref, entity",,
+ticket,unique,"barcode, fk_barcode_type, entity",,
+ticket,foreign,fk_barcode_type,c_barcode_type,rowid
+knowledgemanagement_knowledgerecord,foreign,fk_user_creat,user,rowid
+c_ticket_type,unique,"code, entity",,
+c_ticket_category,unique,"code, entity",,
+c_ticket_severity,unique,"code, entity",,
+c_ticket_resolution,unique,"code, entity",,
+adherent,unique,"login, entity",,
+adherent,unique,"ref, entity",,
+adherent,unique,fk_soc,,
+adherent,foreign,fk_soc,societe,rowid
+adherent,foreign,fk_adherent_type,adherent_type,rowid
+adherent_type,unique,"libelle, entity",,
+subscription,unique,"fk_adherent, dateadh",,
+don,unique,"ref, entity",,
+website,unique,"ref, entity",,
+website_page,unique,"fk_website, pageurl",,
+website_page,foreign,fk_website,website,rowid
+mailing,unique,"titre, entity",,
+mailing_cibles,unique,"fk_mailing, email",,
+mailing_advtarget,unique,name,,
+mailing_unsubscribe,unique,"email, entity, unsubscribegroup",,
+emailcollector_emailcollector,unique,"ref, entity",,
+emailcollector_emailcollectoraction,foreign,fk_emailcollector,emailcollector_emailcollector,rowid
+emailcollector_emailcollectoraction,unique,"fk_emailcollector, type",,
+emailcollector_emailcollectorfilter,foreign,fk_emailcollector,emailcollector_emailcollector,rowid
+emailcollector_emailcollectorfilter,unique,"fk_emailcollector, type, rulevalue",,
+c_email_senderprofile,unique,"entity, label, email",,
+c_email_templates,unique,"entity, label, lang",,
+categorie,unique,"entity, fk_parent, label, type",,
+categorie_product,primary,"fk_categorie, fk_product",,
+categorie_product,foreign,fk_categorie,categorie,rowid
+categorie_product,foreign,fk_product,product,rowid
+categorie_contact,primary,"fk_categorie, fk_socpeople",,
+categorie_contact,foreign,fk_categorie,categorie,rowid
+categorie_contact,foreign,fk_socpeople,socpeople,rowid
+categorie_project,primary,"fk_categorie, fk_project",,
+categorie_project,foreign,fk_categorie,categorie,rowid
+categorie_project,foreign,fk_project,projet,rowid
+categorie_member,primary,"fk_categorie, fk_member",,
+categorie_member,foreign,fk_categorie,categorie,rowid
+categorie_member,foreign,fk_member,adherent,rowid
+categorie_warehouse,primary,"fk_categorie, fk_warehouse",,
+categorie_warehouse,foreign,fk_categorie,categorie,rowid
+categorie_warehouse,foreign,fk_warehouse,entrepot,rowid
+ecm_directories,unique,"label, fk_parent, entity",,
+ecm_directories,foreign,fk_user_c,user,rowid
+ecm_directories,foreign,fk_user_m,user,rowid
+ecm_files,unique,"filepath, filename, entity",,
+document_model,unique,"nom,type,entity",,
+import_model,unique,"label,type",,
+export_model,unique,"label,type",,
+bookmark,unique,"fk_user, entity, title",,
+printer_receipt,unique,"name, entity",,
+c_barcode_type,unique,"code, entity",,
+c_socialnetworks,unique,"entity, code",,

@@ -31,7 +31,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [categorie_warehouse](categories.md#record-categorie_warehouse) (fk_warehouse), [product_stock](warehouse.md#record-product_stock) (fk_entrepot), [product_warehouse_properties](warehouse.md#record-product_warehouse_properties) (fk_entrepot).
 
-The record class defines `0` closed, `1` open all, `2` open internal. See `htdocs/product/stock/class/entrepot.class.php`.
+The stored state codes are `0` closed, `1` open all, `2` open internal.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -59,8 +59,6 @@ The record class defines `0` closed, `1` open all, `2` open internal. See `htdoc
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `fk_parent` | integer | Yes | `0` | Record one level above this one in the owning hierarchy. |
 
-Source locations include `htdocs/install/mysql/tables/llx_entrepot.sql`, `htdocs/install/mysql/tables/llx_entrepot.key.sql`, `htdocs/product/stock/class/entrepot.class.php:46`.
-
 <a id="record-product_stock"></a>
 
 ## Warehouse balance
@@ -82,8 +80,6 @@ An additional unique key comprises `fk_product`, `fk_entrepot`.
 | `reel` | real | Yes | — | Physical on-hand quantity of this product in this warehouse. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_stock.sql`, `htdocs/install/mysql/tables/llx_product_stock.key.sql`, `htdocs/product/class/product.class.php:1730`.
-
 <a id="record-product_batch"></a>
 
 ## Warehouse lot balance
@@ -104,8 +100,6 @@ An additional unique key comprises `fk_product_stock`, `batch`.
 | `batch` | varchar(128) | No | — | Batch or serial identifier used on stock positions and movements. |
 | `qty` | double | No | `0` | Quantity of this lot within the associated product/warehouse balance. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_batch.sql`, `htdocs/install/mysql/tables/llx_product_batch.key.sql`, `htdocs/product/class/product.class.php:1562`.
 
 <a id="record-product_lot"></a>
 
@@ -142,8 +136,6 @@ An additional unique key comprises `fk_product`, `batch`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `import_key` | integer | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_product_lot.sql`, `htdocs/install/mysql/tables/llx_product_lot.key.sql`, `htdocs/product/class/product.class.php:6798`.
-
 <a id="record-product_warehouse_properties"></a>
 
 ## Warehouse-specific item policy
@@ -162,8 +154,6 @@ The primary key is `rowid`.
 | `seuil_stock_alerte` | float | Yes | `'0'` | Stock quantity at which the low-stock alert applies. |
 | `desiredstock` | float | Yes | `'0'` | Desired replenished stock level. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_product_warehouse_properties-stock.sql`, `htdocs/install/mysql/tables/llx_product_warehouse_properties-stock.key.sql`, `htdocs/product/stock/class/productstockentrepot.class.php:50`.
 
 <a id="record-stock_mouvement"></a>
 
@@ -198,8 +188,6 @@ The primary key is `rowid`.
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 | `fk_projet` | integer | No | `0` | Project-link field in the stored layout; confirm the origin-specific field used by the posting path. |
 
-Source locations include `htdocs/install/mysql/tables/llx_stock_mouvement.sql`, `htdocs/product/class/productbatch.class.php:514`.
-
 <a id="record-stocktransfer_stocktransfer"></a>
 
 ## Warehouse transfer
@@ -209,7 +197,7 @@ Groups the planned movement from one warehouse to another and records the transf
 **Storage** `stocktransfer_stocktransfer`.
 The primary key is `rowid`.
 
-The record class defines `0` draft, `1` validated, `2` transfered, `3` closed. See `htdocs/product/stock/stocktransfer/class/stocktransfer.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` transfered, `3` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -240,8 +228,6 @@ The record class defines `0` draft, `1` validated, `2` transfered, `3` closed. S
 | `fk_incoterms` | integer | Yes | — | Trade delivery term selected for the document. |
 | `location_incoterms` | varchar(255) | Yes | — | Named place associated with the selected delivery term. |
 
-Source locations include `htdocs/install/mysql/tables/llx_stocktransfer_stocktransfer-stocktransfer.sql`, `htdocs/install/mysql/tables/llx_stocktransfer_stocktransfer-stocktransfer.key.sql`, `htdocs/product/stock/stocktransfer/class/stocktransfer.class.php:48`.
-
 <a id="record-stocktransfer_stocktransferline"></a>
 
 ## Transfer item
@@ -265,8 +251,6 @@ The primary key is `rowid`.
 | `rang` | integer | Yes | `0` | Ordering value used within the relevant list, hierarchy or document. |
 | `fk_parent_line` | integer | Yes | — | Parent line for hierarchical document content. |
 
-Source locations include `htdocs/install/mysql/tables/llx_stocktransfer_stocktransferline-stocktransfer.sql`, `htdocs/product/stock/stocktransfer/class/stocktransfer.class.php:53`.
-
 <a id="record-inventory"></a>
 
 ## Stock count
@@ -277,7 +261,7 @@ Identifies a counting exercise, its reference, warehouse or product scope and li
 The primary key is `rowid`.
 An additional unique key comprises `ref`, `entity`.
 
-The record class defines `0` draft, `1` validated, `2` recorded, `9` canceled. See `htdocs/product/inventory/class/inventory.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` recorded, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -297,8 +281,6 @@ The record class defines `0` draft, `1` validated, `2` recorded, `9` canceled. S
 | `date_inventory` | datetime | Yes | `NULL` | Value date. |
 | `date_validation` | datetime | Yes | `NULL` | Validation date. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
-
-Source locations include `htdocs/install/mysql/tables/llx_inventory-stock.sql`, `htdocs/install/mysql/tables/llx_inventory-stock.key.sql`, `htdocs/product/inventory/class/inventory.class.php:49`.
 
 <a id="record-inventorydet"></a>
 
@@ -325,5 +307,3 @@ An additional unique key comprises `fk_inventory`, `fk_warehouse`, `fk_product`,
 | `pmp_real` | double | Yes | `NULL` | Recorded actual or expected weighted valuation for the count position. |
 | `pmp_expected` | double | Yes | `NULL` | Recorded actual or expected weighted valuation for the count position. |
 | `fk_movement` | integer | Yes | — | Stock movement that records the physical adjustment. |
-
-Source locations include `htdocs/install/mysql/tables/llx_inventorydet-stock.sql`, `htdocs/install/mysql/tables/llx_inventorydet-stock.key.sql`, `htdocs/product/inventory/class/inventory.class.php:176`.

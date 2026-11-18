@@ -2,8 +2,6 @@
 
 Leave requests have submission, approval, refusal, cancellation and reopening transitions. Their authorization depends on the employee and the rights of the actor. Balance entries and request state can both change during a transition.
 
-The implementation locations below refer to `htdocs/holiday/class/api_holidays.class.php`.
-
 ## `get` — Read a leave request
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — leave missing.
-
-Source lines `96–113`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `holiday`. The properties selector 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `134–234`.
 
 ## `post` — Create a leave request
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `248–286` with `_validate 821–834`.
-
 ## `put` — Update a leave request
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -68,8 +60,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — leave missing.
 - `500` — business operation failed.
 
-Source lines `306–361` with `get 96–113`.
-
 ## `delete` — Delete a leave request
 
 **Arguments** `id` (integer).
@@ -84,8 +74,6 @@ Only draft, cancelled or refused requests qualify for deletion.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — leave missing.
 - `500` — removal failed.
-
-Source lines `375–405`.
 
 ## `validate` — Validate a leave request
 
@@ -105,8 +93,6 @@ The method resolves descendant records and validates the record. The starting st
 - `404` — leave missing.
 - `500` — business operation failed.
 
-Source lines `426–458`.
-
 ## `approve` — Approve
 
 Route `POST {id}/approve`.
@@ -124,8 +110,6 @@ The method approves the record, writes a leave-balance log entry, and adjusts th
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — leave missing.
 - `500` — business operation failed.
-
-Source lines `480–540`.
 
 ## `cancel` — Cancel
 
@@ -145,8 +129,6 @@ The method resolves descendant records, dispatches the domain event, writes a le
 - `404` — leave missing.
 - `500` — business operation failed.
 
-Source lines `561–643`.
-
 ## `refuse` — Refuse
 
 Route `POST {id}/refuse`.
@@ -165,8 +147,6 @@ A validated request can be refused with the supplied refusal detail. The request
 - `404` — leave missing.
 - `500` — business operation failed.
 
-Source lines `665–701`.
-
 ## `reopen` — Reopen the record
 
 Route `POST {id}/reopen`.
@@ -183,5 +163,3 @@ The method validates the record. Only a cancelled request can be reopened. The t
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — leave missing.
 - `500` — business operation failed.
-
-Source lines `725–751`.

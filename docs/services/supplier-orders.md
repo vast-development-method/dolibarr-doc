@@ -2,8 +2,6 @@
 
 Validation, approval, placement with a supplier and receipt are separate phases of procurement. The order, its individual lines and its role-based contacts are independently addressable.
 
-The implementation locations below refer to `htdocs/fourn/class/api_supplier_orders.class.php`.
-
 ## `get` — Read a supplier order
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier order missing.
-
-Source lines `65–82`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `supplier_order`. A caller linked t
 - `400` — invalid filter expression, invalid request data.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `106–236`.
 
 ## `post` — Create a supplier order
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `248–286` with `_validate 872–885`.
-
 ## `put` — Update a supplier order
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -66,8 +58,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier order missing.
 - `500` — business operation failed.
-
-Source lines `298–337` with `get 65–82`.
 
 ## `postLine` — Add a line
 
@@ -87,8 +77,6 @@ The method adds a line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier order missing.
 
-Source lines `351–404`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -103,8 +91,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier order missing.
-
-Source lines `420–447`.
 
 ## `postContact` — Attach a contact role
 
@@ -123,8 +109,6 @@ The method attaches a participant role.
 - `404` — supplier order missing.
 - `500` — business operation failed.
 
-Source lines `465–496`.
-
 ## `deleteContact` — Remove a contact role
 
 Route `DELETE {id}/contact/{contactid}/{type}/{source}`.
@@ -141,8 +125,6 @@ The method loads contacts by role and removes a participant role.
 - `404` — supplier order missing, linked contact missing.
 - `500` — removal failed.
 
-Source lines `516–557`.
-
 ## `delete` — Delete a supplier order
 
 **Arguments** `id` (integer).
@@ -154,8 +136,6 @@ Source lines `516–557`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — supplier order missing.
 - `500` — removal failed.
-
-Source lines `567–591`.
 
 ## `validate` — Validate a supplier order
 
@@ -174,8 +154,6 @@ The method validates the record.
 - `404` — order missing.
 - `500` — business operation failed.
 
-Source lines `615–643`.
-
 ## `approve` — Approve
 
 Route `POST {id}/approve`.
@@ -192,8 +170,6 @@ The method approves the record. The caller can supply a warehouse and a second-l
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `500` — business operation failed.
-
-Source lines `666–694`.
 
 ## `makeOrder` — Make order
 
@@ -212,8 +188,6 @@ The method records placement with the supplier.
 - `404` — order missing.
 - `500` — business operation failed.
 
-Source lines `720–748`.
-
 ## `receiveOrder` — Receive order
 
 Route `POST {id}/receive`.
@@ -230,5 +204,3 @@ The method records the stock receipt. The service dispatches each specified prod
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — order missing.
 - `500` — business operation failed.
-
-Source lines `787–838`.

@@ -39,5 +39,3 @@ Two further rules affect reconciliation.
 
 - For incoming receipts the summary follows each receipt allocation to its source purchase order. Its distinct document count is the number of **purchase orders** represented. Ten units received in two receipt documents on one purchase order can produce one referring document, ten units and two receipt lines in the detailed history.
 - When configured to include parents for stock-affecting kit/component relationships, the customer order, invoice and shipment summaries add their parent items' results. Parent quantity is multiplied by the child's quantity per parent, while party and document counts are added from the parent subtotals. A document listing both the component and its parent can enter those counts twice. The item line drill-down still selects lines directly referencing the component.
-
-Evidence is in `htdocs/product/stats/index.php:50–85,319–365,393–505,542–568`, `htdocs/product/class/product.class.php:3790–3843,4004–4062,4089–4123,4341–4393,4592–4659,4673–5090` and `htdocs/core/lib/product.lib.php:527–548,585–669,703–741`.

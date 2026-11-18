@@ -1,57 +1,57 @@
-screen_path,register,coverage,guide,literal_bindings,surface,descriptor_keys,maturity,trace_status,other_evidence_guide,screen_source_lines,descriptor_source
-htdocs/accountancy/admin/template/list.php,Bookkeeping templates,outside this edition,,,setup catalogue,Accounting,stable,open for selector trace,,135-143,htdocs/core/modules/modAccounting.class.php:53
-htdocs/accountancy/bookkeeping/list.php,Bookkeeping,outside this edition,,,business register,Accounting,stable,open for selector trace,,223-231,htdocs/core/modules/modAccounting.class.php:53
-htdocs/accountancy/customer/list.php,Customer invoice line account assignment,outside this edition,,,accounting assignment queue,Accounting,stable,open for selector trace,,"122-130,302-321",htdocs/core/modules/modAccounting.class.php:53
-htdocs/accountancy/expensereport/list.php,Expense line account assignment,outside this edition,,,accounting assignment queue,Accounting,stable,open for selector trace,,"112-120,276-291",htdocs/core/modules/modAccounting.class.php:53
-htdocs/accountancy/supplier/list.php,Supplier invoice line account assignment,outside this edition,,,accounting assignment queue,Accounting,stable,partial screen evidence,docs/finance/supplier-account-preparation.md,"116-124,306-325",htdocs/core/modules/modAccounting.class.php:53
-htdocs/adherents/list.php,Members,outside this edition,,,business register,Adherent,stable,open for selector trace,,229-233,htdocs/core/modules/modAdherent.class.php:59
-htdocs/adherents/subscription/list.php,Membership subscriptions,outside this edition,,,business register,Adherent,stable,open for selector trace,,139-146,htdocs/core/modules/modAdherent.class.php:59
-htdocs/asset/list.php,Fixed assets,outside this edition,,,business register,Asset,stable,open for selector trace,,146-163,htdocs/core/modules/modAsset.class.php:66
-htdocs/asset/model/list.php,Fixed asset models,outside this edition,,,setup catalogue,Asset,stable,open for selector trace,,143-160,htdocs/core/modules/modAsset.class.php:66
-htdocs/bookmarks/list.php,Bookmarks,outside this edition,,,workspace tools,Bookmark,stable,partial screen evidence,docs/integrations/authoring-and-workspace.md,"93-106,182-207",htdocs/core/modules/modBookmark.class.php:51
-htdocs/comm/action/list.php,Calendar activities,outside this edition,,,business register,Agenda,stable,open for selector trace,,"168-175,210-216",htdocs/core/modules/modAgenda.class.php:60
-htdocs/comm/mailing/list.php,Email campaigns,outside this edition,,,business register,Mailing,stable,open for selector trace,,138-144,htdocs/core/modules/modMailing.class.php:57
-htdocs/comm/propal/list.php,Customer quotations,predicate guide,sales-and-purchasing.md,63,business register,Propale,stable,predicate guide,,"193-205,624-642",htdocs/core/modules/modPropale.class.php:61
-htdocs/commande/list.php,Customer orders,predicate guide,sales-and-purchasing.md,66,business register,Commande,stable,predicate guide,,"294-309,1039-1051",htdocs/core/modules/modCommande.class.php:62
-htdocs/compta/bank/list.php,Bank accounts,outside this edition,,,business register,Banque,stable,open for selector trace,,148-153,htdocs/core/modules/modBanque.class.php:58
-htdocs/compta/bank/various_payment/list.php,Miscellaneous payments,outside this edition,,,business register,Banque,stable,open for selector trace,,199-203,htdocs/core/modules/modBanque.class.php:58
-htdocs/compta/facture/list.php,Customer invoices,predicate guide,sales-and-purchasing.md,75,business register,Facture,stable,predicate guide,,383-397,htdocs/core/modules/modFacture.class.php:60
-htdocs/compta/localtax/list.php,Local tax payments,outside this edition,,,business register,Tax,stable,open for selector trace,,"49-53,79-91",htdocs/core/modules/modTax.class.php:58
-htdocs/compta/paiement/cheque/list.php,Cheque deposits,outside this edition,,,business register,Banque,stable,open for selector trace,,116-119,htdocs/core/modules/modBanque.class.php:58
-htdocs/compta/paiement/list.php,Customer payments,outside this edition,,,business register,Facture,stable,open for selector trace,,148-157,htdocs/core/modules/modFacture.class.php:60
-htdocs/compta/prelevement/list.php,Direct debit and credit transfer lines,outside this edition,,,business register,Prelevement | PaymentByBankTransfer,stable,open for selector trace,,"90-100,145-168",htdocs/core/modules/modPrelevement.class.php:57 | htdocs/core/modules/modPaymentByBankTransfer.class.php:57
-htdocs/compta/sociales/list.php,Social and fiscal charges,outside this edition,,,business register,Tax,stable,open for selector trace,,136-141,htdocs/core/modules/modTax.class.php:58
-htdocs/compta/tva/list.php,VAT payments,outside this edition,,,business register,Tax,stable,open for selector trace,,121-127,htdocs/core/modules/modTax.class.php:58
-htdocs/contact/list.php,Contacts,outside this edition,,,business register,Societe,stable,open for selector trace,,"33-36,215-221",htdocs/core/modules/modSociete.class.php:61
-htdocs/contrat/list.php,Contracts,predicate guide,people-and-services.md,44,business register,Contrat,stable,predicate guide,,153-158,htdocs/core/modules/modContrat.class.php:56
-htdocs/cron/list.php,Scheduled jobs,outside this edition,,,identity and operations,Cron,stable,open for selector trace,,144-154,htdocs/core/modules/modCron.class.php:52
-htdocs/don/list.php,Donations,outside this edition,,,business register,Don,stable,open for selector trace,,149-154,htdocs/core/modules/modDon.class.php:53
-htdocs/don/paiement/list.php,Donation payments,outside this edition,,,business register,Don,stable,open for selector trace,,"124-128,192-198",htdocs/core/modules/modDon.class.php:53
-htdocs/expedition/list.php,Outbound shipments,predicate guide,catalog-and-fulfillment.md,39,business register,Expedition,stable,predicate guide,,175-180,htdocs/core/modules/modExpedition.class.php:60
-htdocs/expensereport/list.php,Expense reports,predicate guide,people-and-services.md,19,business register,ExpenseReport,stable,predicate guide,,146-151,htdocs/core/modules/modExpenseReport.class.php:55
-htdocs/expensereport/payment/list.php,Expense reimbursements,outside this edition,,,business register,ExpenseReport,stable,open for selector trace,,139-145,htdocs/core/modules/modExpenseReport.class.php:55
-htdocs/fichinter/list.php,Field interventions,predicate guide,people-and-services.md,18,business register,Ficheinter,stable,predicate guide,,195-200,htdocs/core/modules/modFicheinter.class.php:60
-htdocs/fourn/commande/list.php,Supplier orders,predicate guide,sales-and-purchasing.md,54,business register,SupplierOrder | Fournisseur,stable,predicate guide,,254-265,htdocs/core/modules/modSupplierOrder.class.php:62 | htdocs/core/modules/modFournisseur.class.php:62
-htdocs/fourn/facture/list.php,Supplier invoices,predicate guide,sales-and-purchasing.md,50,business register,SupplierInvoice | Fournisseur,stable,predicate guide,,259-266,htdocs/core/modules/modSupplierInvoice.class.php:63 | htdocs/core/modules/modFournisseur.class.php:62
-htdocs/fourn/paiement/list.php,Supplier payments,outside this edition,,,business register,SupplierInvoice | Fournisseur,stable,open for selector trace,,146-154,htdocs/core/modules/modSupplierInvoice.class.php:63 | htdocs/core/modules/modFournisseur.class.php:62
-htdocs/fourn/product/list.php,Supplier products and prices,outside this edition,,,business register,Product | Service,stable,open for selector trace,,"90-101,188-206",htdocs/core/modules/modProduct.class.php:63 | htdocs/core/modules/modService.class.php:58
-htdocs/holiday/list.php,Leave requests,predicate guide,people-and-services.md,15,business register,Holiday,stable,predicate guide,,162-168,htdocs/core/modules/modHoliday.class.php:68
-htdocs/intracommreport/list.php,Intra-community reporting,outside this edition,,,development report,Intracommreport,development,excluded by maturity,,181-191,htdocs/core/modules/modIntracommreport.class.php:53
-htdocs/loan/list.php,Loans,outside this edition,,,business register,Loan,stable,open for selector trace,,121-125,htdocs/core/modules/modLoan.class.php:52
-htdocs/opensurvey/list.php,Surveys,outside this edition,,,business register,OpenSurvey,stable,open for selector trace,,91-97,htdocs/core/modules/modOpenSurvey.class.php:59
-htdocs/product/inventory/list.php,Inventory sessions,predicate guide,catalog-and-fulfillment.md,3,business register,Stock,stable,predicate guide,,150-158,htdocs/core/modules/modStock.class.php:59
-htdocs/product/list.php,Products and services,predicate guide,catalog-and-fulfillment.md,40,business register,Product | Service,stable,predicate guide,,368-379,htdocs/core/modules/modProduct.class.php:63 | htdocs/core/modules/modService.class.php:58
-htdocs/product/stock/list.php,Warehouse directory,predicate guide,catalog-and-fulfillment.md,4,business register,Stock,stable,predicate guide,,160-164,htdocs/core/modules/modStock.class.php:59
-htdocs/projet/list.php,Projects and opportunities,predicate guide,projects-and-tasks.md,74,business register,Projet,stable,predicate guide,,509-518,htdocs/core/modules/modProjet.class.php:60
-htdocs/projet/tasks/list.php,Project tasks,predicate guide,projects-and-tasks.md,31,business register,Projet,stable,predicate guide,,129-135,htdocs/core/modules/modProjet.class.php:60
-htdocs/public/ticket/list.php,Public ticket queue,outside this edition,,,public self-service,Ticket,stable,open for selector trace,,"30-32,92-96,120-126,133-167",htdocs/core/modules/modTicket.class.php:70
-htdocs/reception/list.php,Inbound receipts,predicate guide,catalog-and-fulfillment.md,26,business register,Reception,stable,predicate guide,,169-174,htdocs/core/modules/modReception.class.php:56
-htdocs/resource/list.php,Resources,outside this edition,,,business register,Resource,stable,open for selector trace,,201-206,htdocs/core/modules/modResource.class.php:70
-htdocs/salaries/list.php,Salaries,outside this edition,,,business register,Salaries,stable,open for selector trace,,164-169,htdocs/core/modules/modSalaries.class.php:62
-htdocs/societe/list.php,Third parties,outside this edition,,,business register,Societe,stable,partial screen evidence,docs/operator-reports/people-and-sales-attribution.md,"362-367,637-666",htdocs/core/modules/modSociete.class.php:61
-htdocs/supplier_proposal/list.php,Supplier quotations,predicate guide,sales-and-purchasing.md,40,business register,SupplierProposal,stable,predicate guide,,220-235,htdocs/core/modules/modSupplierProposal.class.php:57
-htdocs/ticket/list.php,Internal ticket queue,predicate guide,people-and-services.md,22,business register,Ticket,stable,predicate guide,,173-179,htdocs/core/modules/modTicket.class.php:70
-htdocs/user/api_token/list.php,User API tokens,outside this edition,,,identity and operations,User,stable,open for selector trace,,"45-63,228-240",htdocs/core/modules/modUser.class.php:57
-htdocs/user/group/list.php,User groups,outside this edition,,,identity and operations,User,stable,open for selector trace,,109-115,htdocs/core/modules/modUser.class.php:57
-htdocs/user/list.php,Users,outside this edition,,,identity and operations,User,stable,open for selector trace,,224-237,htdocs/core/modules/modUser.class.php:57
-htdocs/variants/list.php,Product variant attribute definitions,outside this edition,,,setup catalogue,Variants,stable,open for selector trace,,"72-74,163-173",htdocs/core/modules/modVariants.class.php:64
+screen_key,register,coverage,guide,literal_bindings,surface,descriptor_keys,maturity,trace_status,other_evidence_guide
+bookkeeping-templates,Bookkeeping templates,register guide,../registers-accounts/templates.md,1,setup catalogue,Accounting,stable,register guide,
+bookkeeping,Bookkeeping,register guide,../registers-accounts/bookkeeping.md,36,business register,Accounting,stable,register guide,
+customer-invoice-line-account-assignment,Customer invoice line account assignment,register guide,../registers-accounts/customer-assignment.md,17,accounting assignment queue,Accounting,stable,register guide,
+expense-line-account-assignment,Expense line account assignment,register guide,../expense-accounting/account-assignment.md,14,accounting assignment queue,Accounting,stable,register guide,
+supplier-invoice-line-account-assignment,Supplier invoice line account assignment,register guide,../registers-partners/supplier-line-accounts.md,18,accounting assignment queue,Accounting,stable,register guide,docs/finance/supplier-account-preparation.md
+members,Members,register guide,../registers-operations/members.md,37,business register,Adherent,stable,register guide,
+membership-subscriptions,Membership subscriptions,register guide,../specification/people-and-services/member-subscription-register.md,21,business register,Adherent,stable,register guide,
+fixed-assets,Fixed assets,register guide,../registers-accounts/assets.md,2,business register,Asset,stable,register guide,
+fixed-asset-models,Fixed asset models,register guide,../registers-accounts/asset-models.md,1,setup catalogue,Asset,stable,register guide,
+bookmarks,Bookmarks,register guide,../registers-partners/bookmarks.md,1,workspace tools,Bookmark,stable,register guide,docs/integrations/authoring-and-workspace.md
+calendar-activities,Calendar activities,register guide,../registers-operations/calendar.md,15,business register,Agenda,stable,register guide,
+email-campaigns,Email campaigns,register guide,../registers-operations/campaigns.md,7,business register,Mailing,stable,register guide,
+customer-quotations,Customer quotations,predicate guide,sales-and-purchasing.md,63,business register,Propale,stable,predicate guide,
+customer-orders,Customer orders,predicate guide,sales-and-purchasing.md,66,business register,Commande,stable,predicate guide,
+bank-accounts,Bank accounts,register guide,../registers-payments/bank-accounts-and-miscellaneous-cash.md,4,business register,Banque,stable,register guide,
+miscellaneous-payments,Miscellaneous payments,register guide,../registers-payments/bank-accounts-and-miscellaneous-cash.md,27,business register,Banque,stable,register guide,
+customer-invoices,Customer invoices,predicate guide,sales-and-purchasing.md,75,business register,Facture,stable,predicate guide,
+local-tax-payments,Local tax payments,register guide,../registers-payments/tax-and-contribution-registers.md,0,business register,Tax,stable,register guide,
+cheque-deposits,Cheque deposits,register guide,../registers-payments/deposits-and-transfer-lines.md,9,business register,Banque,stable,register guide,
+customer-payments,Customer payments,register guide,../registers-payments/customer-and-supplier-payments.md,16,business register,Facture,stable,register guide,
+direct-debit-and-credit-transfer-lines,Direct debit and credit transfer lines,register guide,../registers-payments/deposits-and-transfer-lines.md,4,business register,Prelevement | PaymentByBankTransfer,stable,register guide,
+social-and-fiscal-charges,Social and fiscal charges,register guide,../registers-payments/tax-and-contribution-registers.md,21,business register,Tax,stable,register guide,
+vat-payments,VAT payments,register guide,../registers-payments/tax-and-contribution-registers.md,18,business register,Tax,stable,register guide,
+contacts,Contacts,register guide,../registers-operations/contacts.md,54,business register,Societe,stable,register guide,
+contracts,Contracts,predicate guide,people-and-services.md,44,business register,Contrat,stable,predicate guide,
+scheduled-jobs,Scheduled jobs,register guide,../registers-administration/scheduled-jobs.md,5,identity and operations,Cron,stable,register guide,
+donations,Donations,register guide,../registers-payments/donations-and-receipts.md,13,business register,Don,stable,register guide,
+donation-payments,Donation payments,register guide,../registers-payments/donations-and-receipts.md,14,business register,Don,stable,register guide,
+outbound-shipments,Outbound shipments,predicate guide,catalog-and-fulfillment.md,39,business register,Expedition,stable,predicate guide,
+expense-reports,Expense reports,predicate guide,people-and-services.md,19,business register,ExpenseReport,stable,predicate guide,
+expense-reimbursements,Expense reimbursements,register guide,../expense-accounting/employee-payment-registers.md,13,business register,ExpenseReport,stable,register guide,
+field-interventions,Field interventions,predicate guide,people-and-services.md,18,business register,Ficheinter,stable,predicate guide,
+supplier-orders,Supplier orders,predicate guide,sales-and-purchasing.md,54,business register,SupplierOrder | Fournisseur,stable,predicate guide,
+supplier-invoices,Supplier invoices,predicate guide,sales-and-purchasing.md,50,business register,SupplierInvoice | Fournisseur,stable,predicate guide,
+supplier-payments,Supplier payments,register guide,../registers-payments/customer-and-supplier-payments.md,14,business register,SupplierInvoice | Fournisseur,stable,register guide,
+supplier-products-and-prices,Supplier products and prices,register guide,../registers-operations/supplier-prices.md,0,business register,Product | Service,stable,register guide,
+leave-requests,Leave requests,predicate guide,people-and-services.md,15,business register,Holiday,stable,predicate guide,
+intra-community-reporting,Intra-community reporting,register guide,../registers-accounts/intra-community.md,4,development report,Intracommreport,development,register guide,
+loans,Loans,register guide,../registers-accounts/loans.md,4,business register,Loan,stable,register guide,
+surveys,Surveys,register guide,../registers-operations/surveys.md,5,business register,OpenSurvey,stable,register guide,
+inventory-sessions,Inventory sessions,predicate guide,catalog-and-fulfillment.md,3,business register,Stock,stable,predicate guide,
+products-and-services,Products and services,predicate guide,catalog-and-fulfillment.md,40,business register,Product | Service,stable,predicate guide,
+warehouse-directory,Warehouse directory,predicate guide,catalog-and-fulfillment.md,4,business register,Stock,stable,predicate guide,
+projects-and-opportunities,Projects and opportunities,predicate guide,projects-and-tasks.md,74,business register,Projet,stable,predicate guide,
+project-tasks,Project tasks,predicate guide,projects-and-tasks.md,31,business register,Projet,stable,predicate guide,
+public-ticket-queue,Public ticket queue,register guide,../registers-administration/requester-tickets.md,7,public self-service,Ticket,stable,register guide,
+inbound-receipts,Inbound receipts,predicate guide,catalog-and-fulfillment.md,26,business register,Reception,stable,predicate guide,
+resources,Resources,register guide,../registers-operations/resources.md,12,business register,Resource,stable,register guide,
+salaries,Salaries,register guide,../registers-administration/salaries.md,20,business register,Salaries,stable,register guide,
+third-parties,Third parties,register guide,../registers-partners/third-parties.md,62,business register,Societe,stable,register guide,docs/operator-reports/people-and-sales-attribution.md
+supplier-quotations,Supplier quotations,predicate guide,sales-and-purchasing.md,40,business register,SupplierProposal,stable,predicate guide,
+internal-ticket-queue,Internal ticket queue,predicate guide,people-and-services.md,22,business register,Ticket,stable,predicate guide,
+user-api-tokens,User API tokens,register guide,../registers-administration/user-api-tokens.md,13,identity and operations,User,stable,register guide,
+user-groups,User groups,register guide,../registers-administration/user-groups.md,2,identity and operations,User,stable,register guide,
+users,Users,register guide,../registers-administration/users.md,24,identity and operations,User,stable,register guide,
+product-variant-attribute-definitions,Product variant attribute definitions,register guide,../registers-operations/attributes.md,4,setup catalogue,Variants,stable,register guide,

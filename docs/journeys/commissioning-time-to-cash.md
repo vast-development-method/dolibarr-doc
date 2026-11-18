@@ -14,7 +14,7 @@ The customer is attached to a validated project. Time billing is enabled. The si
 
 The time recorder needs permission to enter time for the applicable task and worker. The project remains a cost carrier even for the nonbillable work. The site task records 14,400 seconds and 210 labor cost. Handover records 3,600 seconds and 35. The combined cost is 245. Recorded rates belong to individual entries, so rerunning the cost sum after a later change to Technician B's master rate ordinarily still uses the rate recorded on the entry. Editing the entry can refresh its rate under the applicable policy. Reaching the four planned hours does not automatically measure task progress or authorize billing.
 
-Task time, rate capture and invoice conversion are described in [Project work, actual cost and time billing](../operations/project-time.md). Detailed cost and report scope are in [Project budgets and realized margin](../specification/planning/project-budget-and-realized-margin.md). Source operations are in `htdocs/projet/class/task.class.php` and `htdocs/projet/tasks/time.php`.
+Task time, rate capture and invoice conversion are described in [Project work, actual cost and time billing](../operations/project-time.md). Detailed cost and report scope are in [Project budgets and realized margin](../specification/planning/project-budget-and-realized-margin.md).
 
 ## Converting the work into an invoice
 
@@ -28,7 +28,7 @@ The billing user has invoice creation rights and selects the two uninvoiced site
 
 Each source time row receives the invoice ID and the specific invoice-line ID generated for it. Those entries fall out of the normal uninvoiced selection. The nonbillable handover remains associated with the project and has no invoice-line backlink. A second invoice for this same work cannot be justified by simply reading the customer's four hours from the task total. A project with no customer cannot enter this billing path. If a later line fails during generation, the conversion's rollback covers the new lines and their corresponding billing links.
 
-Finance validates the draft. The customer owes 576 under the case assumptions, while the project has 480 of tax-exclusive sales value. Nothing in invoice validation produces four more time entries or a bank receipt. The billing conversion is in `htdocs/projet/tasks/time.php`. Invoice validation and balance operations are in `htdocs/compta/facture/class/facture.class.php` and [Customer invoicing](../finance/customer-invoices.md).
+Finance validates the draft. The customer owes 576 under the case assumptions, while the project has 480 of tax-exclusive sales value. Nothing in invoice validation produces four more time entries or a bank receipt. [Customer invoicing](../finance/customer-invoices.md)
 
 ## Two payments and one settled invoice
 
@@ -42,4 +42,4 @@ Each payment creates its own receipt. The payment-to-invoice associations identi
 
 A finance user reconstructs `576 − 200 − 376 = 0` from the allocations. The project manager sees 480 in eligible customer invoices and labor costs of 245, giving a tax-exclusive contribution of 235 and a margin of `235 ÷ 480 × 100 = 49.0%` at one decimal. This assumes the default positive invoice and negative task-time contributions, financial access, and no other project transactions. If the overview includes only paid customer invoices, the 480 becomes eligible at closure. Collecting the second payment must not add another 376 to project sales. Warehouse stock remains unchanged throughout this service case.
 
-The payment record, allocations, bank link and optional invoice closure are implemented in `htdocs/compta/paiement/class/paiement.class.php`. The report's paid-invoice option and denominator are in `htdocs/projet/element.php`. See [Customer collections](../finance/collections.md) and [Bank statements and deposits](../specification/financial/bank-statements-and-cheque-deposits.md).
+See [Customer collections](../finance/collections.md) and [Bank statements and deposits](../specification/financial/bank-statements-and-cheque-deposits.md).

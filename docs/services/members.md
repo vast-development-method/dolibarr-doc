@@ -2,8 +2,6 @@
 
 The member record, its linked party and its subscriptions have separate identifiers. Lookup by external account first resolves the site and account key to exactly one party and then resolves its member. Date-series operations return membership statistics independently of individual records.
 
-The implementation locations below refer to `htdocs/adherents/class/api_members.class.php`.
-
 ## `get` — Read a member
 
 **Arguments** `id` (integer).
@@ -17,8 +15,6 @@ Identifier zero selects a specimen.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — member missing.
 
-Source lines `74–95`.
-
 ## `getByThirdparty` — Read by party
 
 Route `GET thirdparty/{thirdparty}`.
@@ -31,8 +27,6 @@ Route `GET thirdparty/{thirdparty}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — member missing.
-
-Source lines `111–128`.
 
 ## `getByThirdpartyAccounts` — Read by party accounts
 
@@ -49,8 +43,6 @@ The lookup uses the visible entity scope for `adherent`. The site and external k
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, member missing, account key absent or ambiguous.
 
-Source lines `142–177`.
-
 ## `getByThirdpartyEmail` — Read by party email
 
 Route `GET thirdparty/email/{email}`.
@@ -66,8 +58,6 @@ The service resolves the party email first and then loads the membership attache
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, member missing.
 
-Source lines `193–216`.
-
 ## `getByThirdpartyBarcode` — Read by party barcode
 
 Route `GET thirdparty/barcode/{barcode}`.
@@ -80,8 +70,6 @@ Route `GET thirdparty/barcode/{barcode}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — party missing, member missing.
-
-Source lines `232–255`.
 
 ## `index` — List records
 
@@ -96,8 +84,6 @@ The lookup uses the visible entity scope for `adherent`. The properties selector
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `281–360`.
 
 ## `post` — Create a member
 
@@ -114,8 +100,6 @@ The optional caller marker is placed in event context for synchronization.
 - `405` — field unavailable for this write.
 - `500` — business operation failed.
 
-Source lines `373–403` with `_validate 544–562`.
-
 ## `put` — Update a member
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -131,8 +115,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `405` — field unavailable for this write.
 - `500` — business operation failed.
 
-Source lines `418–492` with `get 74–95`.
-
 ## `delete` — Delete a member
 
 **Arguments** `id` (integer).
@@ -144,8 +126,6 @@ Source lines `418–492` with `get 74–95`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — member missing.
 - `500` — removal failed.
-
-Source lines `506–533`.
 
 ## `getSubscriptions` — Read subscriptions
 
@@ -159,8 +139,6 @@ Route `GET {id}/subscriptions`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — member missing.
-
-Source lines `669–690`.
 
 ## `createSubscription` — Create subscription
 
@@ -179,8 +157,6 @@ The method creates a coverage period.
 - `422` — business rule or input rejected.
 - `500` — business operation failed.
 
-Source lines `709–737`.
-
 ## `getCategories` — Read categories
 
 Route `GET {id}/categories`.
@@ -197,8 +173,6 @@ The method reads classification links.
 - `404` — member missing.
 - `503` — query or persistence failure.
 
-Source lines `756–781`.
-
 ## `getType` — Read type
 
 Route `GET /types/{id}`.
@@ -211,8 +185,6 @@ Route `GET /types/{id}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — member type missing.
-
-Source lines `799–816`.
 
 ## `indexType` — Index type
 
@@ -228,8 +200,6 @@ The lookup uses the visible entity scope for `member_type`. The properties selec
 
 - `403` — access refused.
 - `503` — invalid filter expression, query or persistence failure.
-
-Source lines `840–909`.
 
 ## `postType` — Post type
 
@@ -247,8 +217,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `924–946` with `_validateType 1143–1156`.
-
 ## `putType` — Put type
 
 Route `PUT /types/{id}`.
@@ -265,8 +233,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — member type missing, member missing.
 - `500` — business operation failed.
 
-Source lines `963–1006` with `get 74–95`.
-
 ## `deleteType` — Delete type
 
 Route `DELETE /types/{id}`.
@@ -281,8 +247,6 @@ Route `DELETE /types/{id}`.
 - `404` — member type missing.
 - `500` — removal failed.
 
-Source lines `1022–1048`.
-
 ## `getNbByMonth` — Read nb by month
 
 Route `GET stats/nbbymonth`.
@@ -295,8 +259,6 @@ Route `GET stats/nbbymonth`.
 
 - `403` — access refused.
 
-Source lines `1064–1071`.
-
 ## `getNbByYear` — Read nb by year
 
 Route `GET stats/nbbyyear`.
@@ -306,8 +268,6 @@ Route `GET stats/nbbyyear`.
 **Result** A collection of matching entries.
 
 - `403` — access refused.
-
-Source lines `1083–1090`.
 
 ## `getAmountByMonth` — Read amount by month
 
@@ -321,8 +281,6 @@ Route `GET stats/amountbymonth`.
 
 - `403` — access refused.
 
-Source lines `1104–1111`.
-
 ## `getLastModifiedMembers` — Read last modified members
 
 Route `GET stats/lastmodifiedmembers`.
@@ -334,5 +292,3 @@ Route `GET stats/lastmodifiedmembers`.
 **Result** A collection of matching entries.
 
 - `403` — access refused.
-
-Source lines `1126–1133`.

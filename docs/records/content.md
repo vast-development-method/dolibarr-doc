@@ -50,7 +50,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [website_page](content.md#record-website_page) (fk_website).
 
-The record class defines `0` draft, `1` validated. See `htdocs/website/class/website.class.php`.
+The stored state codes are `0` draft, `1` validated.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -81,8 +81,6 @@ The record class defines `0` draft, `1` validated. See `htdocs/website/class/web
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `name_template` | varchar(255) | Yes | — | Name of the template imported for this site. |
 
-Source locations include `htdocs/install/mysql/tables/llx_website-website.sql`, `htdocs/install/mysql/tables/llx_website-website.key.sql`, `htdocs/website/class/website.class.php:48`.
-
 <a id="record-website_page"></a>
 
 ## Site page
@@ -95,7 +93,7 @@ An additional unique key comprises `fk_website`, `pageurl`.
 
 **Referenced by** [categorie_website_page](categories.md#record-categorie_website_page) (fk_website_page).
 
-The record class defines `0` draft, `1` validated. See `htdocs/website/class/websitepage.class.php`.
+The stored state codes are `0` draft, `1` validated.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -126,8 +124,6 @@ The record class defines `0` draft, `1` validated. See `htdocs/website/class/web
 | `fk_object` | varchar(255) | Yes | — | Identifier of the business record holding these values. |
 | `keep_history` | integer | Yes | `5` | Retention limit for page revisions. Zero keeps all revisions, one keeps the latest, and higher values retain that number of changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_website_page-website.sql`, `htdocs/install/mysql/tables/llx_website_page-website.key.sql`, `htdocs/website/class/website.class.php:612`.
-
 <a id="record-opensurvey_sondage"></a>
 
 ## Survey
@@ -137,7 +133,7 @@ Defines a poll's title, type, owner, closing date and participation settings.
 **Storage** `opensurvey_sondage`.
 The primary key is `id_sondage`.
 
-The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/opensurvey/class/opensurveysondage.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -156,8 +152,6 @@ The record class defines `0` draft, `1` validated, `2` closed. See `htdocs/opens
 | `allow_spy` | tinyint | No | `1` | Allowspy. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `sujet` | text | Yes | — | Subject of the message or poll. |
-
-Source locations include `htdocs/install/mysql/tables/llx_opensurvey_sondage-opensurvey.sql`, `htdocs/opensurvey/class/opensurveysondage.class.php:45`.
 
 <a id="record-opensurvey_user_studs"></a>
 
@@ -178,8 +172,6 @@ The primary key is `id_users`.
 | `date_creation` | datetime | No | — | When the row was created. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 
-Source locations include `htdocs/install/mysql/tables/llx_opensurvey_user_studs-opensurvey.sql`, `htdocs/opensurvey/class/opensurveysondage.class.php:489`.
-
 <a id="record-opensurvey_comments"></a>
 
 ## Poll comment
@@ -199,8 +191,6 @@ The primary key is `id_comment`.
 | `date_creation` | datetime | No | — | When the row was created. |
 | `ip` | varchar(250) | Yes | — | Network address recorded for the relevant submission or event. |
 
-Source locations include `htdocs/install/mysql/tables/llx_opensurvey_comments-opensurvey.sql`, `htdocs/opensurvey/class/opensurveysondage.class.php:486`.
-
 <a id="record-mailing"></a>
 
 ## Bulk mailing
@@ -211,7 +201,7 @@ Defines a campaign, its sender, subject, body, status and processing dates.
 The primary key is `rowid`.
 An additional unique key comprises `titre`, `entity`.
 
-The record class defines `0` draft, `1` validated, `2` sentpartialy, `3` sentcompletely. See `htdocs/comm/mailing/class/mailing.class.php`.
+The stored state codes are `0` draft, `1` validated, `2` sentpartialy, `3` sentcompletely.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -250,8 +240,6 @@ The record class defines `0` draft, `1` validated, `2` sentpartialy, `3` sentcom
 | `note_public` | text | Yes | — | Note intended for external-facing output where the document model includes it. |
 | `fk_project` | integer | Yes | `NULL` | Associated project identity. |
 
-Source locations include `htdocs/install/mysql/tables/llx_mailing-mailing.sql`, `htdocs/install/mysql/tables/llx_mailing-mailing.key.sql`, `htdocs/comm/mailing/class/mailing.class.php:45`.
-
 <a id="record-mailing_advtarget"></a>
 
 ## Recipient filter
@@ -275,8 +263,6 @@ An additional unique key comprises `name`.
 | `fk_user_mod` | integer | No | — | Account recorded for the latest modification. |
 | `tms` | timestamp | No | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_mailing_advtarget-mailing.sql`, `htdocs/install/mysql/tables/llx_mailing_advtarget-mailing.key.sql`, `htdocs/comm/mailing/class/advtargetemailing.class.php:46`.
-
 <a id="record-mailing_cibles"></a>
 
 ## Mailing recipient
@@ -287,7 +273,7 @@ Identifies a recipient for one campaign and retains per-recipient sending status
 The primary key is `rowid`.
 An additional unique key comprises `fk_mailing`, `email`.
 
-The record class defines `0` notsent, `1` sent, `2` read, `3` readandunsubscribed, `-1` error. See `htdocs/comm/mailing/class/mailing_targets.class.php`.
+The stored state codes are `0` notsent, `1` sent, `2` read, `3` readandunsubscribed, `-1` error.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -306,8 +292,6 @@ The record class defines `0` notsent, `1` sent, `2` read, `3` readandunsubscribe
 | `date_envoi` | datetime | Yes | — | Date of sending. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `error_text` | varchar(255) | Yes | — | Delivery error recorded against the recipient after a failed send. |
-
-Source locations include `htdocs/install/mysql/tables/llx_mailing_cibles-mailing.sql`, `htdocs/install/mysql/tables/llx_mailing_cibles-mailing.key.sql`, `htdocs/comm/mailing/class/mailing.class.php:655`.
 
 <a id="record-mailing_unsubscribe"></a>
 
@@ -328,8 +312,6 @@ An additional unique key comprises `email`, `entity`, `unsubscribegroup`.
 | `ip` | varchar(128) | Yes | — | Network address recorded for the relevant submission or event. |
 | `date_creat` | datetime | Yes | — | When the row was created. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
-
-Source locations include `htdocs/install/mysql/tables/llx_mailing_unsubscribe.sql`, `htdocs/install/mysql/tables/llx_mailing_unsubscribe.key.sql`, `htdocs/comm/mailing/class/advtargetemailing.class.php:754`.
 
 <a id="record-notify"></a>
 
@@ -355,8 +337,6 @@ The primary key is `rowid`.
 | `objet_id` | integer | No | — | Target identity within the associated object type. |
 | `email` | varchar(255) | Yes | — | Email address associated with this record. |
 
-Source locations include `htdocs/install/mysql/tables/llx_notify.sql`, `htdocs/core/class/notify.class.php:1048`.
-
 <a id="record-notify_def"></a>
 
 ## Notification subscription
@@ -381,8 +361,6 @@ The primary key is `rowid`.
 | `context` | varchar(128) | Yes | — | Limits a notification to its configured event context. |
 | `type` | varchar(16) | Yes | `'email'` | Type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_notify_def.sql`, `htdocs/core/class/notify.class.php:286`.
-
 <a id="record-emailcollector_emailcollector"></a>
 
 ## Inbound mail collector
@@ -395,7 +373,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [emailcollector_emailcollectoraction](content.md#record-emailcollector_emailcollectoraction) (fk_emailcollector), [emailcollector_emailcollectorfilter](content.md#record-emailcollector_emailcollectorfilter) (fk_emailcollector).
 
-The record class defines `0` disabled, `1` enabled. See `htdocs/emailcollector/class/emailcollector.class.php`.
+The stored state codes are `0` disabled, `1` enabled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -430,8 +408,6 @@ The record class defines `0` disabled, `1` enabled. See `htdocs/emailcollector/c
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_emailcollector_emailcollector.sql`, `htdocs/install/mysql/tables/llx_emailcollector_emailcollector.key.sql`, `htdocs/emailcollector/class/emailcollector.class.php:71`.
-
 <a id="record-emailcollector_emailcollectoraction"></a>
 
 ## Mail processing action
@@ -456,8 +432,6 @@ An additional unique key comprises `fk_emailcollector`, `type`.
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_emailcollector_emailcollectoraction.sql`, `htdocs/install/mysql/tables/llx_emailcollector_emailcollectoraction.key.sql`, `htdocs/emailcollector/class/emailcollector.class.php:794`.
-
 <a id="record-emailcollector_emailcollectorfilter"></a>
 
 ## Mail selection condition
@@ -480,8 +454,6 @@ An additional unique key comprises `fk_emailcollector`, `type`, `rulevalue`.
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | No | — | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
-
-Source locations include `htdocs/install/mysql/tables/llx_emailcollector_emailcollectorfilter.sql`, `htdocs/install/mysql/tables/llx_emailcollector_emailcollectorfilter.key.sql`, `htdocs/emailcollector/class/emailcollector.class.php:762`.
 
 <a id="record-ecm_directories"></a>
 
@@ -510,8 +482,6 @@ An additional unique key comprises `label`, `fk_parent`, `entity`.
 | `note_private` | text | Yes | — | Internal note for users handling the record. |
 | `note_public` | text | Yes | — | Note intended for external-facing output where the document model includes it. |
 | `acl` | text | Yes | — | Directory access-control information. |
-
-Source locations include `htdocs/install/mysql/tables/llx_ecm_directories.sql`, `htdocs/install/mysql/tables/llx_ecm_directories.key.sql`, `htdocs/ecm/class/ecmdirectory.class.php:40`.
 
 <a id="record-ecm_files"></a>
 
@@ -556,8 +526,6 @@ An additional unique key comprises `filepath`, `filename`, `entity`.
 | `geopoint` | point | Yes | `NULL` | Geographic point value retained by the location field. |
 | `georesultcode` | varchar(16) | Yes | — | Geocoding result or accuracy code. |
 
-Source locations include `htdocs/install/mysql/tables/llx_ecm_files.sql`, `htdocs/install/mysql/tables/llx_ecm_files.key.sql`, `htdocs/ecm/class/ecmfiles.class.php:47`.
-
 <a id="record-document_model"></a>
 
 ## Document template registration
@@ -577,8 +545,6 @@ An additional unique key comprises `nom`, `type`, `entity`.
 | `libelle` | varchar(255) | Yes | — | Display label for the record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `description` | text | Yes | — | Descriptive text associated with this entry. |
-
-Source locations include `htdocs/install/mysql/tables/llx_document_model.sql`, `htdocs/install/mysql/tables/llx_document_model.key.sql`, `htdocs/core/lib/admin.lib.php:2026`.
 
 <a id="record-links"></a>
 
@@ -602,8 +568,6 @@ An additional unique key comprises `objectid`, `objecttype`, `label`.
 | `share` | varchar(128) | Yes | — | Token identifying the publicly shared link. |
 | `share_pass` | varchar(32) | Yes | — | Protected access value for opening a shared item. |
 
-Source locations include `htdocs/install/mysql/tables/llx_links.sql`, `htdocs/install/mysql/tables/llx_links.key.sql`, `htdocs/core/class/link.class.php:41`.
-
 <a id="record-comment"></a>
 
 ## Object comment
@@ -626,8 +590,6 @@ The primary key is `rowid`.
 | `entity` | integer | Yes | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `import_key` | varchar(125) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_comment.sql`, `htdocs/core/class/comment.class.php:33`.
-
 <a id="record-object_lang"></a>
 
 ## Translated property
@@ -648,8 +610,6 @@ An additional unique key comprises `fk_object`, `type_object`, `property`, `lang
 | `value` | text | Yes | — | Translated value of the named property in the selected language. |
 | `import_key` | varchar(14) | Yes | `NULL` | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_object_lang.sql`, `htdocs/install/mysql/tables/llx_object_lang.key.sql`, `htdocs/core/class/commonobject.class.php:6683`.
-
 <a id="record-overwrite_trans"></a>
 
 ## Translation override
@@ -667,8 +627,6 @@ An additional unique key comprises `entity`, `lang`, `transkey`.
 | `lang` | varchar(5) | Yes | — | Language code under which this text or presentation is stored. |
 | `transkey` | varchar(128) | Yes | — | Translation key whose displayed text is overridden. |
 | `transvalue` | text | Yes | — | Local text supplied for the translation key. |
-
-Source locations include `htdocs/install/mysql/tables/llx_overwrite_trans.sql`, `htdocs/install/mysql/tables/llx_overwrite_trans.key.sql`, `htdocs/core/class/translate.class.php:542`.
 
 <a id="record-import_model"></a>
 
@@ -688,8 +646,6 @@ An additional unique key comprises `label`, `type`.
 | `label` | varchar(50) | No | — | Display label for the record. |
 | `type` | varchar(64) | No | — | Type. |
 | `field` | text | No | — | Field selection stored by the saved exchange profile. |
-
-Source locations include `htdocs/install/mysql/tables/llx_import_model.sql`, `htdocs/install/mysql/tables/llx_import_model.key.sql`, `htdocs/core/class/html.formother.class.php:225`.
 
 <a id="record-export_model"></a>
 
@@ -711,8 +667,6 @@ An additional unique key comprises `label`, `type`.
 | `field` | text | No | — | Field selection stored by the saved exchange profile. |
 | `filter` | text | Yes | — | Filter settings saved with the export selection. |
 
-Source locations include `htdocs/install/mysql/tables/llx_export_model.sql`, `htdocs/install/mysql/tables/llx_export_model.key.sql`, `htdocs/core/class/html.form.class.php:11498`.
-
 <a id="record-webhook_target"></a>
 
 ## Outbound event target
@@ -722,7 +676,7 @@ Configures a destination, matching event codes and whether delivery failure shou
 **Storage** `webhook_target`.
 The primary key is `rowid`.
 
-The record class defines `0` draft, `1` validated, `1` automatic trigger, `2` manual trigger, `9` canceled. See `htdocs/webhook/class/target.class.php`.
+The stored state codes are `0` draft, `1` validated, `1` automatic trigger, `2` manual trigger, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -745,8 +699,6 @@ The record class defines `0` draft, `1` validated, `1` automatic trigger, `2` ma
 | `connection_data` | varchar(255) | Yes | — | Authentication parameters required by the selected connection method. |
 | `trigger_codes` | text | Yes | — | Set of business events this target subscribes to. |
 
-Source locations include `htdocs/install/mysql/tables/llx_webhook_target-webhook.sql`, `htdocs/webhook/class/target.class.php:50`.
-
 <a id="record-webhook_history"></a>
 
 ## Outbound delivery attempt
@@ -756,7 +708,7 @@ Records what event was sent to which target and the outcome retained for subsequ
 **Storage** `webhook_history`.
 The primary key is `rowid`.
 
-The record class defines `1` success, `-1` error. See `htdocs/webhook/class/triggerhistory.class.php`.
+The stored state codes are `1` success, `-1` error.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -773,8 +725,6 @@ The record class defines `1` success, `-1` error. See `htdocs/webhook/class/trig
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 | `status` | integer | No | `1` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 
-Source locations include `htdocs/install/mysql/tables/llx_webhook_history-webhook.sql`, `htdocs/webhook/class/triggerhistory.class.php:49`.
-
 <a id="record-oauth_token"></a>
 
 ## Delegated authorisation token
@@ -788,7 +738,7 @@ The primary key is `rowid`.
 | --- | --- | --- | --- | --- |
 | `rowid` | integer (generated) | No | — | Internal row identifier. |
 | `service` | varchar(36) | Yes | — | Provider or credential family used to interpret the token. |
-| `token` | text | Yes | — | Compatibility storage in this release. Use the current business representation described for the owning record. |
+| `token` | text | Yes | — | Legacy storage. Use the current business representation described for the owning record. |
 | `tokenstring` | text | Yes | — | Credential material in the representation expected by its provider. |
 | `tokenstring_refresh` | text | Yes | — | Provider-specific material used to refresh an expiring credential. |
 | `expire_at` | datetime | Yes | — | Time after which the credential expires. |
@@ -804,8 +754,6 @@ The primary key is `rowid`.
 | `apicount_previous_month` | bigint unsigned | Yes | `0` | Number of accesses recorded for the preceding monthly bucket. |
 | `apicount_month` | bigint unsigned | Yes | `0` | Number of accesses recorded in the current month. |
 | `apicount_total` | bigint unsigned | Yes | `0` | Cumulative recorded accesses for this credential. |
-
-Source locations include `htdocs/install/mysql/tables/llx_oauth_token.sql`, `htdocs/stripe/class/stripe.class.php:112`.
 
 <a id="record-printing"></a>
 
@@ -829,8 +777,6 @@ The primary key is `rowid`.
 | `driver` | varchar(16) | No | — | Configured print backend for the device. |
 | `userid` | integer | Yes | — | User whose printer configuration is being stored. |
 
-Source locations include `htdocs/install/mysql/tables/llx_printing.sql`, `htdocs/printing/admin/printing.php:408`.
-
 <a id="record-printer_receipt"></a>
 
 ## Receipt printer
@@ -850,8 +796,6 @@ An additional unique key comprises `name`, `entity`.
 | `parameter` | varchar(128) | Yes | — | Setting value used with the receipt printer profile. |
 | `entity` | integer | Yes | — | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_printing_receipt-receiptprinter.sql`, `htdocs/install/mysql/tables/llx_printing_receipt-receiptprinter.key.sql`, `htdocs/takepos/class/dolreceiptprinter.class.php:290`.
-
 <a id="record-printer_receipt_template"></a>
 
 ## Receipt layout
@@ -867,5 +811,3 @@ The primary key is `rowid`.
 | `name` | varchar(128) | Yes | — | Name under which this record is presented or identified. |
 | `template` | text | Yes | — | Template contents used to render the printed receipt. |
 | `entity` | integer | Yes | — | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
-
-Source locations include `htdocs/install/mysql/tables/llx_printing_receipt_template-receiptprinter.sql`, `htdocs/takepos/class/dolreceiptprinter.class.php:366`.

@@ -2,8 +2,6 @@
 
 Exports booked entries for a reporting period. The caller chooses whether previously exported entries qualify, whether to include lettering and whether a successful export should mark entries as exported. The returned metadata identifies the generated document for a separate download.
 
-The implementation locations below refer to `htdocs/accountancy/class/api_accountancy.class.php`.
-
 ## `exportData` — Export data
 
 Route `GET exportdata`.
@@ -19,5 +17,3 @@ The method generates the accounting export. The method opens a database transact
 - `403` — access refused.
 - `404` — accountancy export period missing, requested data unavailable, accountancy export format missing.
 - `500` — business operation failed, accounting export generated no downloadable file.
-
-Source lines `91–294`.

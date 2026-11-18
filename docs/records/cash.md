@@ -61,8 +61,6 @@ The primary key is `rowid`.
 | `fk_export_compta` | integer | No | `0` | Accounting export marker for the receipt. Zero identifies a receipt that has not been exported. |
 | `pos_change` | double(24,8) | Yes | `0` | Change returned to the customer at checkout where recorded. |
 
-Source locations include `htdocs/install/mysql/tables/llx_paiement.sql`, `htdocs/compta/paiement/class/paiement.class.php:54`.
-
 <a id="record-paiement_facture"></a>
 
 ## Receipt allocation
@@ -82,8 +80,6 @@ An additional unique key comprises `fk_paiement`, `fk_facture`.
 | `multicurrency_code` | varchar(3) | Yes | — | Currency code used for the document-currency values. |
 | `multicurrency_tx` | double(24,8) | Yes | `1` | Exchange rate retained for the transaction or price record. |
 | `multicurrency_amount` | double(24,8) | Yes | `0` | Amount allocated or paid in the secondary currency. |
-
-Source locations include `htdocs/install/mysql/tables/llx_paiement_facture.sql`, `htdocs/install/mysql/tables/llx_paiement_facture.key.sql`, `htdocs/compta/paiement/class/paiement.class.php:494`.
 
 <a id="record-paiementfourn"></a>
 
@@ -113,8 +109,6 @@ The primary key is `rowid`.
 | `statut` | smallint | No | `0` | Lifecycle state of this record. Numeric values are specific to the owning workflow. |
 | `model_pdf` | varchar(255) | Yes | — | Selected document output model. |
 
-Source locations include `htdocs/install/mysql/tables/llx_paiementfourn.sql`, `htdocs/fourn/class/paiementfourn.class.php:51`.
-
 <a id="record-paiementfourn_facturefourn"></a>
 
 ## Supplier payment allocation
@@ -134,8 +128,6 @@ An additional unique key comprises `fk_paiementfourn`, `fk_facturefourn`.
 | `multicurrency_code` | varchar(3) | Yes | — | Currency code used for the document-currency values. |
 | `multicurrency_tx` | double(24,8) | Yes | `1` | Exchange rate retained for the transaction or price record. |
 | `multicurrency_amount` | double(24,8) | Yes | `0` | Amount allocated or paid in the secondary currency. |
-
-Source locations include `htdocs/install/mysql/tables/llx_paiementfourn_facturefourn.sql`, `htdocs/install/mysql/tables/llx_paiementfourn_facturefourn.key.sql`, `htdocs/fourn/class/paiementfourn.class.php:293`.
 
 <a id="record-bank_account"></a>
 
@@ -195,8 +187,6 @@ An additional unique key comprises `label`, `entity`.
 | `ics` | varchar(32) | Yes | — | Creditor identifier used when issuing collection instructions. |
 | `ics_transfer` | varchar(32) | Yes | — | Creditor identifier recorded for transfer instructions. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bank_account.sql`, `htdocs/install/mysql/tables/llx_bank_account.key.sql`, `htdocs/compta/bank/class/account.class.php:51`.
-
 <a id="record-bank"></a>
 
 ## Bank movement
@@ -234,8 +224,6 @@ The primary key is `rowid`.
 | `origin_type` | varchar(64) | Yes | — | Type of originating record used to interpret the origin ID. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bank.sql`, `htdocs/compta/bank/class/account.class.php:1342`.
-
 <a id="record-bank_url"></a>
 
 ## Bank source link
@@ -255,8 +243,6 @@ An additional unique key comprises `fk_bank`, `url_id`, `type`.
 | `label` | varchar(255) | Yes | — | Display label for the record. |
 | `type` | varchar(24) | No | — | Family of object referenced by the bank entry. Interpret together with url_id. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bank_url.sql`, `htdocs/install/mysql/tables/llx_bank_url.key.sql`, `htdocs/compta/bank/class/account.class.php:513`.
-
 <a id="record-bordereau_cheque"></a>
 
 ## Cheque deposit slip
@@ -267,7 +253,7 @@ Groups cheques submitted for deposit under a dated slip and bank account.
 The primary key is `rowid`.
 An additional unique key comprises `ref`, `entity`.
 
-The record class defines `0` draft, `1` validated. See `htdocs/compta/paiement/cheque/class/remisecheque.class.php`.
+The stored state codes are `0` draft, `1` validated.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -287,8 +273,6 @@ The record class defines `0` draft, `1` validated. See `htdocs/compta/paiement/c
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `entity` | integer | No | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 
-Source locations include `htdocs/install/mysql/tables/llx_bordereau_cheque.sql`, `htdocs/install/mysql/tables/llx_bordereau_cheque.key.sql`, `htdocs/compta/paiement/cheque/class/remisecheque.class.php:46`.
-
 <a id="record-prelevement"></a>
 
 ## Debit processing record
@@ -306,8 +290,6 @@ The primary key is `rowid`.
 | `fk_salary` | integer | Yes | — | Salary obligation identity. |
 | `fk_prelevement_lignes` | integer | No | — | Bank-order instruction associated with this payable item. References [prelevement_lignes](cash.md#record-prelevement_lignes) (rowid). |
 
-Source locations include `htdocs/install/mysql/tables/llx_prelevement.sql`, `htdocs/install/mysql/tables/llx_prelevement.key.sql`, `htdocs/compta/prelevement/class/bonprelevement.class.php:370`.
-
 <a id="record-prelevement_bons"></a>
 
 ## Bank order batch
@@ -320,7 +302,7 @@ An additional unique key comprises `ref`, `entity`.
 
 **Referenced by** [prelevement_lignes](cash.md#record-prelevement_lignes) (fk_prelevement_bons).
 
-The record class defines `0` draft, `1` transfered, `2` credited, `2` debited, `9` canceled. See `htdocs/compta/prelevement/class/bonprelevement.class.php`.
+The stored state codes are `0` draft, `1` transfered, `2` credited, `2` debited, `9` canceled.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -341,8 +323,6 @@ The record class defines `0` draft, `1` transfered, `2` credited, `2` debited, `
 | `fk_bank_account` | integer | Yes | `NULL` | Bank or cash account. Actual movements have their own identities. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
-
-Source locations include `htdocs/install/mysql/tables/llx_prelevement_bons.sql`, `htdocs/install/mysql/tables/llx_prelevement_bons.key.sql`, `htdocs/compta/prelevement/class/bonprelevement.class.php:58`.
 
 <a id="record-prelevement_demande"></a>
 
@@ -376,8 +356,6 @@ The primary key is `rowid`.
 | `ext_payment_id` | varchar(255) | Yes | — | Provider's identifier for a transaction. |
 | `ext_payment_site` | varchar(128) | Yes | — | External payment service or provider identifier. |
 
-Source locations include `htdocs/install/mysql/tables/llx_prelevement_demande.sql`, `htdocs/compta/prelevement/class/bonprelevement.class.php:955`.
-
 <a id="record-prelevement_lignes"></a>
 
 ## Bank order instruction
@@ -402,8 +380,6 @@ The primary key is `rowid`.
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_prelevement_lignes.sql`, `htdocs/install/mysql/tables/llx_prelevement_lignes.key.sql`, `htdocs/compta/prelevement/class/bonprelevement.class.php:435`.
-
 <a id="record-prelevement_rejet"></a>
 
 ## Rejected instruction
@@ -424,8 +400,6 @@ The primary key is `rowid`.
 | `note` | text | Yes | — | Free-text annotation retained with the record. |
 | `afacturer` | tinyint | Yes | `0` | Indicates whether the rejected collection is marked for invoicing. |
 | `fk_facture` | integer | Yes | — | Customer invoice identifier. |
-
-Source locations include `htdocs/install/mysql/tables/llx_prelevement_rejet.sql`, `htdocs/compta/prelevement/class/rejetprelevement.class.php:144`.
 
 <a id="record-payment_various"></a>
 
@@ -458,8 +432,6 @@ The primary key is `rowid`.
 | `fk_user_author` | integer | Yes | — | Account recorded as creator or author. |
 | `fk_user_modif` | integer | Yes | — | Account recorded for the latest modification. |
 
-Source locations include `htdocs/install/mysql/tables/llx_payment_various.sql`, `htdocs/compta/bank/class/paymentvarious.class.php:44`.
-
 <a id="record-pos_cash_fence"></a>
 
 ## Cash-desk closing record
@@ -469,7 +441,7 @@ Records expected and counted amounts for a point-of-sale cash closing and associ
 **Storage** `pos_cash_fence`.
 The primary key is `rowid`.
 
-The record class defines `0` draft, `1` validated, `1` closed. See `htdocs/compta/cashcontrol/class/cashcontrol.class.php`.
+The stored state codes are `0` draft, `1` validated, `1` closed.
 
 | Field | Stored type | Null allowed | Declared default | Meaning |
 | --- | --- | --- | --- | --- |
@@ -504,8 +476,6 @@ The record class defines `0` draft, `1` validated, `1` closed. See `htdocs/compt
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 | `import_key` | varchar(14) | Yes | — | Identifier carried by an import operation for grouping or tracing imported rows. |
 
-Source locations include `htdocs/install/mysql/tables/llx_pos_cash_fence.sql`, `htdocs/takepos/index.php:1189`.
-
 <a id="record-takepos_floor_tables"></a>
 
 ## Point-of-sale table
@@ -524,8 +494,6 @@ An additional unique key comprises `entity`, `label`.
 | `leftpos` | float | Yes | — | Table position on the point-of-sale floor plan. |
 | `toppos` | float | Yes | — | Table position on the point-of-sale floor plan. |
 | `floor` | smallint | Yes | — | Floor plan containing the checkout table. |
-
-Source locations include `htdocs/install/mysql/tables/llx_takepos_floor_tables-takepos.sql`, `htdocs/install/mysql/tables/llx_takepos_floor_tables-takepos.key.sql`, `htdocs/takepos/class/dolreceiptprinter.class.php:1017`.
 
 <a id="record-multicurrency"></a>
 
@@ -546,8 +514,6 @@ The primary key is `rowid`.
 | `fk_user` | integer | Yes | `NULL` | User account associated with this record. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
 
-Source locations include `htdocs/install/mysql/tables/llx_multicurrency.sql`, `htdocs/multicurrency/class/multicurrency.class.php:49`.
-
 <a id="record-multicurrency_rate"></a>
 
 ## Dated exchange rate
@@ -566,5 +532,3 @@ The primary key is `rowid`.
 | `fk_multicurrency` | integer | No | — | Configured document currency record. |
 | `entity` | integer | Yes | `1` | Organisational entity owning or scoping this row. Sharing rules depend on record type. |
 | `tms` | timestamp | Yes | `CURRENT_TIMESTAMP` | Timestamp maintained when the stored row changes. |
-
-Source locations include `htdocs/install/mysql/tables/llx_multicurrency_rate.sql`, `htdocs/multicurrency/class/currencyrate.class.php:47`.

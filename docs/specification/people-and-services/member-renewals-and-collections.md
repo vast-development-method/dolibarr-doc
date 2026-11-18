@@ -15,8 +15,6 @@ A member can have both an application user and a billing party. Assigning a user
 
 On a changed member record, ordinary identity synchronization copies the reference, names, gender, birth date, address, email, social accounts, office and mobile numbers and language to the linked user. If a member login is optional, the existing user login survives. The linked party receives shared address, email, main phone, country, region, social accounts and language. Updating the party or user through this path suppresses reciprocal synchronization. These are field assignments to existing records. Linking the member’s billing party does not itself place the linked user into the party’s external-user role.
 
-Implementation evidence appears in `htdocs/adherents/class/adherent.class.php` (status constants, `validate`, `resiliate`, `exclude`, `update`, `setUserId`, `setThirdPartyId`) and `htdocs/adherents/subscription.php:726–740`.
-
 ## Constructing the inclusive service period
 
 1. Suggest the start on the day after the member’s paid-through date. On first enrollment suggest the validation date. The operator may supply a different start. A configured relative start can offset today, and alignment options can move the suggestion to the beginning of a month or year. The three-month option takes the first of the month three months before the prior expiry.
@@ -26,8 +24,6 @@ Implementation evidence appears in `htdocs/adherents/class/adherent.class.php` (
 5. Read all subscriptions and write the greatest nonempty end date back to the member. The period with the most recent start supplies a separate last-period end value. Neither insertion order nor a gap in the historical periods establishes uninterrupted coverage.
 
 For example, a member has an annual period from 1 January to 31 December and a second period from 1 June to 30 September in the same year. The latest-starting entry ends in September. The member’s paid-through date remains 31 December. Removing the annual entry shortens the paid-through date to 30 September. Removing both clears it. A calendar-year period starting 1 January has 31 December as its default end even in a leap year.
-
-Implementation evidence appears in `htdocs/adherents/subscription.php:236–301`, `htdocs/adherents/subscription.php:1009–1056`, `htdocs/adherents/class/adherent.class.php` (`subscription`, `update_end_date`) and `htdocs/adherents/class/subscription.class.php:167–284`.
 
 ## Receivable and cash choices
 
@@ -44,12 +40,10 @@ The staff form requires a valid start. Both cash routes require a payment date. 
 
 The staff action groups the new period and selected complementary financial actions into one transaction. A reported failure in generating the invoice or posting the receipt rolls back that action. The optional confirmation email runs after commit. Failure to send a confirmation requires a communication follow-up and does not void the recorded period.
 
-Implementation evidence appears in `htdocs/adherents/subscription.php:236–442` and `htdocs/adherents/class/adherent.class.php:2002–2282`.
-
 ## Correcting or removing a period
 
 The subscription update writes a numeric amount, type, member reference, public note, period dates, creation date and direct bank reference. It reloads the member, refreshes the paid-through date and raises a modification event. Recording the amount on the subscription and maintaining a posted invoice or reconciled receipt are separate operations. The subscription update contains no invoice repricing or cash adjustment.
 
 Deletion raises the subscription-deletion event and removes the period. If the row existed it rebuilds the member’s expiration and attempts to remove an associated bank row when one is found. A reconciled bank row can refuse deletion and roll back the operation. A missing subscription returns a distinct no-change outcome. The deletion path makes no corresponding call to cancel a sales invoice. A treasurer correcting a billed renewal therefore needs both the membership history and the associated receivable to understand the result.
 
-Implementation evidence appears in `htdocs/adherents/class/subscription.class.php:334–459`.
+The [subscription register](member-subscription-register.md) shows how period charges, bank account filters and current membership status contribute to a treasurer’s search.

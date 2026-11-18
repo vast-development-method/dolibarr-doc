@@ -2,8 +2,6 @@
 
 A lot identifies a batch of a particular product and carries the lot's own descriptive data. Lot master data and warehouse stock movements have separate operations.
 
-The implementation locations below refer to `htdocs/product/stock/class/api_productlots.class.php`.
-
 ## `get` — Read a product lot
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads additional fields and loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product lots missing.
-
-Source lines `71–94`.
 
 ## `index` — List records
 
@@ -35,8 +31,6 @@ The lookup uses the visible entity scope for `productlot`. The properties select
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `119–206`.
-
 ## `post` — Create a product lot
 
 **Arguments** `request_data = null` (collection).
@@ -53,8 +47,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `222–253` with `_validate 365–381`.
-
 ## `put` — Update a product lot
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -67,8 +59,6 @@ The optional caller marker is placed in event context for synchronization. The m
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — productlot missing, product lots missing.
-
-Source lines `269–311` with `get 71–94`.
 
 ## `delete` — Delete a product lot
 
@@ -83,5 +73,3 @@ The method loads additional fields.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — product lot missing.
 - `500` — removal failed.
-
-Source lines `326–356`.

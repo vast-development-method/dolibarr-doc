@@ -2,8 +2,6 @@
 
 Validation belongs to the contract header. Activation and termination belong to an identified service line with its own effective dates. Closing the contract is another transition.
 
-The implementation locations below refer to `htdocs/contrat/class/api_contracts.class.php`.
-
 ## `get` — Read a contract
 
 **Arguments** `id` (integer), `properties = ''` (text), `withLines = true` (boolean).
@@ -18,8 +16,6 @@ The properties selector projects the returned fields. The method loads related b
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
 
-Source lines `71–95`.
-
 ## `index` — List records
 
 **Arguments** `sortfield = "t.rowid"` (text), `sortorder = 'ASC'` (text), `limit = 100` (integer), `page = 0` (integer), `thirdparty_ids = ''` (text), `sqlfilters = ''` (text), `properties = ''` (text), `pagination_data = false` (boolean), `withLines = true` (boolean).
@@ -33,8 +29,6 @@ The lookup uses the visible entity scope for `contrat`. A caller linked to a par
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `119–215`.
 
 ## `post` — Create a contract
 
@@ -53,8 +47,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — party missing.
 - `500` — business operation failed.
 
-Source lines `230–286` with `_validate 1009–1022`.
-
 ## `getLines` — Read document lines
 
 Route `GET {id}/lines`.
@@ -72,8 +64,6 @@ The lookup uses the visible entity scope for `contrat`. The properties selector 
 - `404` — contract missing.
 - `503` — query or persistence failure.
 
-Source lines `308–385`.
-
 ## `postLine` — Add a line
 
 Route `POST {id}/lines`.
@@ -90,8 +80,6 @@ The method adds a line.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
-
-Source lines `399–444`.
 
 ## `putLine` — Amend a line
 
@@ -111,8 +99,6 @@ The method amends a line.
 - `404` — contract missing, contract line missing.
 - `500` — business operation failed.
 
-Source lines `459–600`.
-
 ## `activateLine` — Activate line
 
 Route `PUT {id}/lines/{lineid}/activate`.
@@ -128,8 +114,6 @@ The method activates a service line.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
 
-Source lines `618–642`.
-
 ## `unactivateLine` — Unactivate line
 
 Route `PUT {id}/lines/{lineid}/unactivate`.
@@ -144,8 +128,6 @@ The method closes a service line.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
-
-Source lines `659–683`.
 
 ## `deleteLine` — Remove a line
 
@@ -164,8 +146,6 @@ The method removes a line.
 - `404` — contract missing, contract line missing.
 - `405` — operation unavailable.
 
-Source lines `699–728` with `get 71–95`.
-
 ## `put` — Update a contract
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -181,8 +161,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — contract missing, party missing.
 - `500` — business operation failed.
 
-Source lines `744–819` with `get 71–95`.
-
 ## `delete` — Delete a contract
 
 **Arguments** `id` (integer).
@@ -195,8 +173,6 @@ Source lines `744–819` with `get 71–95`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
 - `500` — removal failed.
-
-Source lines `835–862`.
 
 ## `validate` — Validate a contract
 
@@ -216,8 +192,6 @@ The method validates the record.
 - `404` — contract missing.
 - `500` — business operation failed.
 
-Source lines `888–919`.
-
 ## `close` — Close the record
 
 Route `POST {id}/close`.
@@ -235,5 +209,3 @@ The method closes the contract lines.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — contract missing.
 - `500` — business operation failed.
-
-Source lines `945–976`.

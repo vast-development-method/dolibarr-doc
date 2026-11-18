@@ -22,8 +22,6 @@ The merge delegates relationship replacement to each participating domain. The s
 
 A failed participating domain replacement or extension can roll back the business transaction. Before deletion the survivor emits a company-modified event carrying the origin identifier and name. The operation deletes the retired party through the normal deletion routine and attempts to move its documents under the survivor's directory using their relative paths. Individual filesystem moves are not checked as a group before database commit. A successful response confirms the party consolidation. Attachment availability must be determined from the actual stored files.
 
-Source locations include `htdocs/societe/class/api_thirdparties.class.php:merge`, `htdocs/societe/class/societe.class.php:mergeCompany` and `htdocs/societe/class/societe.class.php:replaceThirdparty`.
-
 ## Measuring exposure after consolidation
 
 The party's commercial aggregates can be requested for customers and suppliers. Each uses the party identity and the document type's permitted entities. A document reference in one projection can also appear as the source for another transaction. Adding quotation, order and invoice amounts indiscriminately would count successive stages of the same transaction several times.
@@ -40,5 +38,3 @@ The party's commercial aggregates can be requested for customers and suppliers. 
 Three offers with gross amounts of 115 issued, 230 signed and 57.50 draft give a gross offer total of 402.50 and an opened offer value of 345. On an eligible invoice for 115, a payment allocation of 60, applied credit of 10 and deposit of 5 leave **40** opened. Receiving the remaining 40 can reduce the open invoice measure to zero without changing its invoiced turnover. On the supplier side, an unused converted credit of 12 reduces a payable exposure of 40 to 28.
 
 The invoice response contains one reference map for the selected rows and a second for invoices whose calculated balance is nonzero. A closed or zero-balance invoice can appear only in the first. The customer-offer page displays open invoice exposure against a configured nonzero party credit limit and signals excess when the balance is **greater than** the limit. Equality does not trigger this display warning.
-
-Source locations include `htdocs/societe/class/societe.class.php:getOutstandingProposals`, `htdocs/societe/class/societe.class.php:getOutstandingOrders`, `htdocs/societe/class/societe.class.php:getOutstandingBills` and `htdocs/comm/propal/card.php:3374–3382`.

@@ -1,6 +1,6 @@
 # Customer invoices and pricing
 
-A customer invoice records the amount billed for goods or services. Validation assigns the commercial reference. Payment allocation, bank reconciliation and transfer to double-entry bookkeeping each have their own records and dates. The model below follows the shipped customer invoice operations in 24.0.3. [Invoice lifecycle][invoice] · [Operator terminology][wiki]
+A customer invoice records the amount billed for goods or services. Validation assigns the commercial reference. Payment allocation, bank reconciliation and transfer to double-entry bookkeeping each have their own records and dates.
 
 ## Records and relationships
 
@@ -11,7 +11,7 @@ A customer invoice records the amount billed for goods or services. Validation a
 | Customer adjustment | Belongs to a customer, may originate on a deposit, credit note or overpayment. One application command takes either an invoice-line target or an invoice-header target. | Net, tax, gross, foreign amounts, source invoice and destination link. A line application affects the bill. A settlement application affects its outstanding balance. |
 | Origin link | Sales order to invoice or contract to invoice. The order conversion copies the amounts, quantities, taxes and discounts onto new lines. | Preserve both records and their references so the issued bill remains intelligible when an upstream record is viewed later. |
 
-The invoice-line table stores the selling price and acquisition cost separately. The pricing example models the selling-price inputs and tax amounts. Margin calculation also needs the acquisition cost. An invoice payment links through an allocation record, covered in [Customer payments](collections.md). [Header definition][header] · [Line definition][line] · [Order conversion][fromorder] · [Adjustment application][adjust]
+The invoice-line table stores the selling price and acquisition cost separately. The pricing example models the selling-price inputs and tax amounts. Margin calculation also needs the acquisition cost. An invoice payment links through an allocation record, covered in [Customer payments](collections.md).
 
 ## Lifecycle and command contracts
 
@@ -24,9 +24,9 @@ The invoice-line table stores the selling price and acquisition cost separately.
 | Close or reopen | The set-to-paid REST action checks invoice-create permission and visibility. A settlement application can also request automatic closure. | Ordinary closure sets status closed and the persisted paid flag. Closure with a reason can leave the flag unset. Reopen restores validated, clears paid, closing reason, actor and date. Neither command records cash. |
 | Abandon | Used for an unpaid invoice or a replaced one. | Persist abandonment and release header-bound adjustments. Abandonment alone does not return shipped merchandise to stock. |
 
-Standard invoices, replacements, credit notes, deposits and progress invoices are distinguished by document kind. The state codes for the lifecycle are draft (0), validated (1), closed (2) and abandoned (3). A partial payment normally leaves a validated invoice open. A close reason may record short payment, bad debt or bank charges. Read the monetary balance independently of the label “closed”. [Create and validate service][api] · [Validation and stock movement][validate] · [Close, reopen and cancel][close]
+Standard invoices, replacements, credit notes, deposits and progress invoices are distinguished by document kind. The state codes for the lifecycle are draft (0), validated (1), closed (2) and abandoned (3). A partial payment normally leaves a validated invoice open. A close reason may record short payment, bad debt or bank charges. Read the monetary balance independently of the label “closed”.
 
-When stock is configured to move on billing, validation with a warehouse can issue a stock movement for a catalogued item. Deposit invoices bypass this branch. A credit note takes the receiving branch. The invoice, warehouse, direction and stock trigger setting determine the expected effect. For an order already physically fulfilled, inspect the installed stock trigger policy when tracing inventory. [Stock integration][stock]
+When stock is configured to move on billing, validation with a warehouse can issue a stock movement for a catalogued item. Deposit invoices bypass this branch. A credit note takes the receiving branch. The invoice, warehouse, direction and stock trigger setting determine the expected effect. For an order already physically fulfilled, inspect the installed stock trigger policy when tracing inventory.
 
 ## Pricing in a single currency
 
@@ -37,9 +37,9 @@ Let quantity be q, unit price u, discount percentage d, and the percentage of wo
 | Excluding ordinary VAT | Round the input-basis line value to the configured total precision. | Independently round its unrounded value × (1 + VAT rate/100). | Subtract rounded net from rounded gross. |
 | Including ordinary VAT | Divide the discounted input-basis line value by (1 + VAT rate/100), then round. | Round the discounted input-basis line value. | Subtract rounded net from rounded gross. |
 
-With unit-first discounting enabled, round the discount on one unit and the resulting discounted unit price at the configured precision **before** multiplying by quantity and progress. Unit precision and amount precision can differ. Each of the two optional local taxes has its own rate, enablement and basis. Types 1/3/5 use a VAT-exclusive base for all items/products/services respectively. Types 2/4/6 use a main-VAT-inclusive base for the same selectors. Under the special non-collected VAT flag, the informational VAT and collectible gross follow separate branches. [Price calculations][price]
+With unit-first discounting enabled, round the discount on one unit and the resulting discounted unit price at the configured precision **before** multiplying by quantity and progress. Unit precision and amount precision can differ. Each of the two optional local taxes has its own rate, enablement and basis. Types 1/3/5 use a VAT-exclusive base for all items/products/services respectively. Types 2/4/6 use a main-VAT-inclusive base for the same selectors. Under the special non-collected VAT flag, the informational VAT and collectible gross follow separate branches.
 
-The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALOFROUND=1`, the customer document routine instead checks cumulative VAT within each rate in persistent line-ID order and can adjust the current line's VAT and gross. The implementation identifies this adjustment as company-currency specific. The separate `MAIN_ROUNDING_RULE_TOT` can round components to a configured increment. When foreign currency is active, the pricing function runs the line calculation again with the foreign unit price. Consequently converting a rounded header total can disagree with the stored foreign total. [Line rounding and currency][price] · [Header accumulation][totals]
+The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALOFROUND=1`, the customer document routine instead checks cumulative VAT within each rate in persistent line-ID order and can adjust the current line's VAT and gross. The implementation identifies this adjustment as company-currency specific. The separate `MAIN_ROUNDING_RULE_TOT` can round components to a configured increment. When foreign currency is active, the pricing function runs the line calculation again with the foreign unit price. Consequently converting a rounded header total can disagree with the stored foreign total.
 
 ## Worked acceptance cases
 
@@ -55,15 +55,4 @@ The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALO
 
 [Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate example](../../examples/finance/pricing-case--rate-rounding.json). The schema describes the example's data shape. [Invoice rounding examples](rounding-examples.md) show the monetary outcomes for different calculation policies.
 
-[invoice]: ../reference/locators/finance.md#ref-f0205e8de33b
-[wiki]: ../reference/locators/finance.md#ref-07f1d5ed7e3b
-[header]: ../reference/locators/finance.md#ref-f000f1cdd363
-[line]: ../reference/locators/finance.md#ref-cf1cf1aaf15e
-[adjust]: ../reference/locators/finance.md#ref-b78181d3fca1
-[fromorder]: ../reference/locators/finance.md#ref-25929f528366
-[api]: ../reference/locators/finance.md#ref-7bca854bc316
-[validate]: ../reference/locators/finance.md#ref-09777759efa1
-[stock]: ../reference/locators/finance.md#ref-bff0b4f7532a
-[close]: ../reference/locators/finance.md#ref-6c301ccf3091
-[price]: ../reference/locators/finance.md#ref-81f305a3c1e2
-[totals]: ../reference/locators/finance.md#ref-b3033fb6dd03
+The [invoice processing guide](../invoice-processing/README.md) gives the inputs for adding or amending a line, converting an order, applying a deposit and assigning a ledger account.

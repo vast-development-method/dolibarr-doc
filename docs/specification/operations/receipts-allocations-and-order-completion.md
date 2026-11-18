@@ -10,7 +10,7 @@ A product with stock management enabled requires a receiving warehouse unless th
 
 An order for 12 cartridges on line 41 arrives in two lots. Record seven from lot L1 in warehouse A and two from lot L2 in warehouse B, both against line 41. The undelivered three remain on the same commercial order line. A later receipt with three from lot L3 points back to line 41. For a trace inquiry, all three allocation rows matter. For comparison against the order quantity their combined quantity is twelve.
 
-The allocation fields and preconditions are in `htdocs/reception/class/reception.class.php` under `addline`. The physical storage is in `htdocs/install/mysql/tables/llx_receptiondet_batch.sql`.
+Related records include [Supplier receipt allocation](../../records/commercial.md#record-receptiondet_batch).
 
 ## Validation and the supplier order
 
@@ -21,8 +21,6 @@ To determine the order's receiving status, collect allocations for the source or
 An optional over-receipt policy also permits completion for reported differing products whose received quantity meets or exceeds the ordered amount. The extra branch iterates differences found on the received side. It does not repeat the missing-order-product test used for exact equality. An order for X and Y, with X received exactly and no allocation at all for Y, can therefore be classified as completely received by that branch. The order's individual allocations and outstanding lines retain the information needed to identify Y.
 
 Validation groups by product. If two order lines both carry the same product, receiving a combined quantity equal to their combined ordered quantity satisfies the product comparison, even if the references on the allocations distribute the quantities unevenly. Closing a receipt uses a separate order-line comparison. For line 41 ordered at five and line 42 ordered at seven, twelve booked against line 41 can satisfy the product comparison but leaves line 42 short in the closed-receipt comparison.
-
-The validation transaction and product totals are in `htdocs/reception/class/reception.class.php` under `valid` and `getStatusDispatch`. The available grants and actions are in `htdocs/reception/card.php`.
 
 ## Posting, closing and reversing
 
@@ -39,14 +37,10 @@ When closing a receipt from a supplier order, the closure operation loads quanti
 
 One other list used by replenishment compares goods ordered and dispatched by product and treats a product as pending while ordered quantity exceeds dispatched quantity. It excludes service lines when stock support for services is disabled. It reads dispatch rows for the order directly. Its boolean answer and the receipt's validated or closed state are distinct facts.
 
-Lifecycle and stock compensation are in `htdocs/reception/class/reception.class.php` under `setClosed`, `reOpen` and `setDraft`. The replenishment list's comparison is in `htdocs/product/stock/lib/replenishment.lib.php` under `dolDispatchToDo`.
-
 ## Outbound carrier information and physical allocations
 
 An outgoing shipment carries its carrier method, tracking number, actual weight, weight unit, depth, width, height and shared length unit on the shipment header. The create operation removes whitespace from the sanitized tracking number. Fetching the shipment reads that identifier and resolves its carrier tracking link. An order-line shipment allocation answers how many units of that order line left a warehouse, and its batch splits identify the goods. Neither a carrier tracking number nor a lot identifier identifies an individual carton within the shipment.
 
 The physical schema also defines parcel rows with a shipment ID, description of contents, value, package type, dimensions, weight, handling information and rank. The ordinary shipment create/fetch path above writes and reads the measurements and tracking at header level. That path establishes no carton-level mapping from each parcel to its individual dispatch allocations. In a delivery of two cartons from different lots, the shipment and allocation records support a lot trace across the delivery. A carton-content manifest requires an explicit association beyond those records.
-
-The shipment header and split-line operations are in `htdocs/expedition/class/expedition.class.php`. The parcel structure is in `htdocs/install/mysql/tables/llx_expedition_package.sql`.
 
 The [receipt reconciliation schema](../../../schemas/supply/receipt-completion.schema.json) and [two-line allocation example](../../../examples/supply/receipt-completion.json) show both completion decisions on the same goods. Origin line identity survives the grouping by product. The example compares the two decisions against one set of facts, independently of which transition last set the order's status.

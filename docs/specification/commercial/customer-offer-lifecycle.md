@@ -19,8 +19,6 @@ With the stock sufficiency option enabled, adding a stock-managed item compares 
 
 Line edits recalculate amounts and ordinarily update the header totals. Moving a child to a new group can put it after the group's existing children. A client editing only wording should carry forward the intended price basis. Reconstructing a previously entered gross price from a rounded net amount can change the extended total.
 
-Source locations include `htdocs/comm/propal/card.php:135–149`, `htdocs/comm/propal/class/propal.class.php:addline`, `htdocs/comm/propal/class/propal.class.php:updateline` and `htdocs/core/class/commonobject.class.php:roundQtyToPackaging`.
-
 ## Issuing and revising an offer
 
 Validation changes a draft to the issued state and records the validating user and date. A provisional or missing reference is replaced using the customer's numbering context. An existing definitive reference survives. For a provisional reference the process also renames the document directory and updates indexed file references. The validation event can reject the transition.
@@ -36,8 +34,6 @@ Reopening and cloning produce different customer histories.
 
 For a clone with price refresh, a selected supplier-price record, if still present, supplies its discounted unit cost. A missing supplier price clears that reference, leaving cost determination to line creation. A newly negotiated customer price alone leaves an already-issued offer intact. Cloning without the refresh flag preserves the offer's existing commercial starting point.
 
-Source locations include `htdocs/comm/propal/class/propal.class.php:valid`, `htdocs/comm/propal/class/propal.class.php:createFromClone` and `htdocs/comm/propal/class/propal.class.php:setDraft`.
-
 ## Recording a decision
 
 Staff closure appends supplied private and public notes to their respective histories. Acceptance stamps the signature date, records the internal signature user and classifies the party as a customer. Refusal selects its own event. Automatic document regeneration uses the configured model for the outcome and can be disabled. An error updating the customer or handling the closing event can roll back the business transaction.
@@ -45,5 +41,3 @@ Staff closure appends supplied private and public notes to their respective hist
 The public signature channel has a different evidence trail. It resolves the document link and requires an issued offer and a PNG signature. It writes a timestamped image. For a supported PDF it prepares a signed document and indexes the file. Formats without signature embedding can retain the signature image separately. The state change stamps the signature time and connection address and can also record the entered name and note. The update qualifies the offer by its current issued state. If a concurrent request has already changed that state, the later request cannot accept it a second time. The image or document may already exist because file creation precedes the conditional state change.
 
 The public acceptance event and customer-role promotion are part of the database transaction. A file on disk alone consequently cannot establish that the offer was accepted. Public refusal uses a different sequence. It records the refusal, private note and response date, commits the record, then notifies the refusal event. An event failure there can coexist with a stored refusal. Readers tracing the decision need the document status, response metadata and artifact relevant to that channel.
-
-Source locations include `htdocs/comm/propal/class/propal.class.php:closeProposal`, `htdocs/core/ajax/onlineSign.php:120–361` and `htdocs/public/onlinesign/newonlinesign.php:198–226`.

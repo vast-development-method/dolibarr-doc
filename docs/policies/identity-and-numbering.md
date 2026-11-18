@@ -26,9 +26,3 @@ The zeros in the sequence token set its width. A reset option can start a new an
 An offset sets the starting counter baseline. In next-number mode the counter is incremented and padded. When offset-only-on-first is disabled, a retrieved count below the offset can be raised to the offset before increment. An overflow beyond the configured width is an error. Increasing the width is a series design decision because it changes which strings match the format.
 
 For example, use `INV{yyyy}{mm}-{000@99}` with no offset. If the November 2026 series contains `INV202611-001` and `INV202611-002`, the next candidate for another November invoice is `INV202611-003`. With an empty December series the first December candidate is `INV202612-001`. A December entry backdated to November consults the November scope. With three digits, the next value after `999` cannot be represented. A different rule applies when year and month are part of the displayed reference but the mask does not request a reset; display tokens alone do not define a monthly sequence.
-
-## Evidence
-
-- Generic masks, party tokens, period windows and offsets: `htdocs/core/lib/functions2.lib.php`, `get_next_value`, lines 805–1400.
-- Invoice type, sharing key and effective date: `htdocs/core/modules/facture/mod_facture_mercure.php`, `getNextValue`. Customer orders: `htdocs/core/modules/commande/mod_commande_saphir.php`, `getNextValue`.
-- Entity-level uniqueness: `htdocs/install/mysql/tables/llx_facture.key.sql`, `llx_commande.key.sql`, `llx_propal.key.sql`, `llx_expedition.key.sql` and `llx_reception.key.sql`.

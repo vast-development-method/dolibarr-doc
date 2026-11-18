@@ -2,8 +2,6 @@
 
 The document service distinguishes a stored file, a generated business document and a file listing for a business element. Identity includes the document area, relative path and owning record where applicable.
 
-The implementation locations below refer to `htdocs/api/class/api_documents.class.php`.
-
 ## `index` — List records
 
 Route `GET /download`.
@@ -17,8 +15,6 @@ Route `GET /download`.
 - `400` — bad value for parameter modulepart, bad value for parameter original_file.
 - `403` — access or input restriction, access refused.
 - `404` — file missing.
-
-Source lines `72–145`.
 
 ## `builddoc` — Builddoc
 
@@ -36,8 +32,6 @@ The method generates the business document. The return identifies the template a
 - `403` — access or input restriction, access refused.
 - `404` — invoice missing, supplier invoice missing, order missing, proposal missing, contract missing, shipment missing, mo missing, expense report missing, holiday missing, product missing, warehouse missing, intervention missing, file missing.
 - `500` — document generation failed.
-
-Source lines `178–440`.
 
 ## `getDocumentsListByElement` — Read documents list by element
 
@@ -57,8 +51,6 @@ Authorization is selected by the requested document area. Rights for unrelated b
 - `500` — unsupported operation or value.
 - `503` — query or persistence failure.
 
-Source lines `471–713`.
-
 ## `post` — Create a document
 
 Route `POST /upload`.
@@ -76,8 +68,6 @@ The method generates image previews. The named area determines where the content
 - `404` — owning record missing.
 - `500` — business operation failed, reference incompatible with this document area, unsupported operation or value, file write failed, file move failed.
 
-Source lines `766–1106`.
-
 ## `delete` — Delete a document
 
 Route `DELETE /`.
@@ -91,5 +81,3 @@ Route `DELETE /`.
 - `400` — bad value for parameter modulepart, bad value for parameter original_file.
 - `403` — access or input restriction, access refused.
 - `404` — file missing.
-
-Source lines `1127–1208`.

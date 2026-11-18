@@ -10,7 +10,7 @@ On create, submitted group and resource identifiers are normalized and deduplica
 
 A product can name the station as its default. A recipe line can select it for that operation and a manufacturing plan copies the leaf recipe line's selected station. A manually added service operation takes the service product's default station. A service with a duration unit can provide the initial time quantity and unit. These links allow two different recipes for the same commercial product to use different equipment and cost assumptions.
 
-The station record and relation updates are in `htdocs/workstation/class/workstation.class.php`. The relation tables are `htdocs/install/mysql/tables/llx_workstation_workstation_usergroup-workstation.sql` and `htdocs/install/mysql/tables/llx_workstation_workstation_resource-workstation.sql`. Plan derivation is in `htdocs/mrp/class/mo.class.php` and `htdocs/mrp/mo_production.php`.
+Related records include [Workstation group assignment](../../records/production.md#record-workstation_workstation_usergroup), [Workstation resource assignment](../../records/production.md#record-workstation_workstation_resource).
 
 ## Estimating a timed operation
 
@@ -20,12 +20,10 @@ A station requires two operators, has an operator estimate of 45 per hour and a 
 
 Recipe cost sums the service and material line amounts. For a recipe with a positive base output quantity, unit cost divides the rounded recipe total by that output. For example, the original 90 station cost and 210 of other component cost for a batch of six give an estimated cost of 50 per output unit. The manufacturing order also builds an estimate from its own planned consumption lines, including manually added operations. For a timed input with a station it divides the calculated station amount by the order quantity for its per-output contribution. A supplier price, average material cost, product cost and hourly workstation estimate can therefore enter a calculation at different stages. A change to the estimate is distinct from the actual unit value carried by an output stock receipt.
 
-Recipe and manufacturing-order calculations are in `htdocs/bom/class/bom.class.php` under `calculateCosts` and in `htdocs/mrp/mo_production.php`.
-
 ## Capacity and calendars
 
 A manufacturing order carries optional planned start and finish timestamps. The order's plan records product, role, quantity, unit, station and other production attributes per line. Posted actuals refer back to the plan line and record the operator who entered the posting. These facts can answer which station was intended for a 90-minute operation and which user reported its completion. They do not identify two specific operators expected to work from 08:00 to 09:30 or record that either person attended for that period.
 
 The station agenda lists its related calendar activities and provides an event creation action to users with appropriate agenda rights. Creating a manufacturing plan with a default station does not, in that plan-creation transaction, create a calendar reservation, assign a shift, compare concurrent station load to the required operator count or move other manufacturing orders' dates. Two orders can consequently have overlapping planned dates and refer to the same station. Whether a dated calendar allocation blocks another use of its equipment depends on the relevant busy resource links.
 
-The header dates are defined by `htdocs/mrp/class/mo.class.php`. Production line fields are in `htdocs/install/mysql/tables/llx_mrp_production-mrp.sql`. Calendar activity and associated permissions are in `htdocs/workstation/workstation_agenda.php`.
+Related records include [Planned or actual production position](../../records/production.md#record-mrp_production).

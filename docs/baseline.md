@@ -1,7 +1,7 @@
-# Specification baseline
+# Reading the ERP specification
 
-The behaviour described here is pinned to release **24.0.3**, revision `5c6c7ff6a5112413b1c27221c8d11750afad56f8`, published on 11 November 2026. The pull request identifies the originating project and its official documentation. Source locations in the book use paths relative to that revision. A path followed by a range identifies the relevant lines. Source hashes identify objects where a path would depend on product naming.
+A business operation starts with a particular actor, company, record and configuration. Its contract describes the admission decision, calculation, changes to durable records, failure outcome and downstream effects. A sales order, shipment, invoice, payment and ledger entry can refer to the same trade while each retains its own identity, date and state.
 
-The unit of specification is a business operation under stated settings. Its contract identifies the actor, records, decision, amounts or quantities, durable changes, failure behaviour and interactions with neighbouring operations. Names in the service and storage references support traceability. Business rules and schema examples are independent of implementation language.
+Worked transactions use illustrative business dates. An approval time, stock movement date, bank value date and journal date can legitimately differ for the same transaction.
 
-The [coverage ledger](coverage/checkpoint.md) distinguishes the subjects described at operation level from areas that still need a fuller design treatment.
+Use the [record dictionary](records/README.md) for the roles of stored records, the [relational model](relational-model/README.md) for columns, keys and constraints, the [business specification](specification/README.md) for operating rules, and the [coverage register](coverage/checkpoint.md) for the boundaries of the documented behaviour.

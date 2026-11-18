@@ -2,8 +2,6 @@
 
 Claim lines, approval decisions and reimbursement payments have separate identities. Validation, approval, denial, cancellation and setting a report paid are independently authorized transitions.
 
-The implementation locations below refer to `htdocs/expensereport/class/api_expensereports.class.php`.
-
 ## `get` — Read an expense report
 
 **Arguments** `id` (integer).
@@ -16,8 +14,6 @@ The method loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
-
-Source lines `109–126`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `expensereport`. The properties sel
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `149–232`.
 
 ## `post` — Create an expense report
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `246–297` with `_validate 1258–1271`.
-
 ## `getLines` — Read document lines
 
 Route `GET {id}/lines`.
@@ -65,8 +57,6 @@ Route `GET {id}/lines`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
-
-Source lines `315–335`.
 
 ## `postLine` — Add a line
 
@@ -89,8 +79,6 @@ The method adds a line. The report must be in draft. A claim line is a separate 
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `353–396` with `_validateLine 1303–1316`.
-
 ## `putLine` — Amend a line
 
 Route `PUT {id}/lines/{lineid}`.
@@ -109,8 +97,6 @@ The method amends a line. The report must still be draft to edit a claim line.
 - `404` — expense report missing, expense report line missing.
 - `500` — business operation failed.
 
-Source lines `417–467`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE {id}/lines/{lineid}`.
@@ -127,8 +113,6 @@ The method removes a line. The report must still be draft to remove a claim line
 - `404` — expense report missing, line missing.
 - `500` — removal failed.
 
-Source lines `485–524` with `get 109–126`.
-
 ## `put` — Update an expense report
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -143,8 +127,6 @@ The optional caller marker is placed in event context for synchronization. The r
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `543–592` with `get 109–126`.
-
 ## `delete` — Delete an expense report
 
 **Arguments** `id` (integer).
@@ -156,8 +138,6 @@ Source lines `543–592` with `get 109–126`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
 - `500` — removal failed.
-
-Source lines `606–631`.
 
 ## `setToDraft` — Return to draft
 
@@ -176,8 +156,6 @@ The method changes the record state.
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `648–671`.
-
 ## `validate` — Validate an expense report
 
 Route `POST {id}/validate`.
@@ -194,8 +172,6 @@ The method validates the record.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
 - `500` — business operation failed.
-
-Source lines `692–715`.
 
 ## `approve` — Approve
 
@@ -214,8 +190,6 @@ The method approves the record.
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `737–760`.
-
 ## `deny` — Deny
 
 Route `POST {id}/deny`.
@@ -232,8 +206,6 @@ The method records refusal.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
 - `500` — business operation failed.
-
-Source lines `783–808`.
 
 ## `setPaid` — Set paid
 
@@ -252,8 +224,6 @@ The method records paid status.
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `829–852`.
-
 ## `cancel` — Cancel
 
 Route `POST {id}/cancel`.
@@ -270,8 +240,6 @@ The method cancels the record.
 - `404` — expense report missing.
 - `500` — business operation failed.
 
-Source lines `871–895`.
-
 ## `getAllPayments` — Read all payments
 
 Route `GET /payments`.
@@ -287,8 +255,6 @@ The lookup uses the visible entity scope for `expensereport`. The method resolve
 - `403` — access refused.
 - `503` — query or persistence failure.
 
-Source lines `914–960`.
-
 ## `getPayment` — Read payment
 
 Route `GET /payments/{pid}`.
@@ -301,8 +267,6 @@ Route `GET /payments/{pid}`.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — paymentexpensereport missing, expense report missing.
-
-Source lines `974–997`.
 
 ## `addPayment` — Add payment
 
@@ -324,8 +288,6 @@ The method reads recorded payments, posts and links the bank entry, and records 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — expense report missing.
 
-Source lines `1013–1085` with `_validatepayment 1280–1293`.
-
 ## `updatePayment` — Update payment
 
 Route `PUT {id}/payments/{idp}`.
@@ -342,5 +304,3 @@ The method reads recorded payments.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — payment of expense report missing, payment id does not belongs to the Expense id, expense report missing, paymentexpensereport missing.
 - `500` — business operation failed.
-
-Source lines `1102–1159` with `getPayment 974–997`.

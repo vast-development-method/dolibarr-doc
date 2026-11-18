@@ -9,16 +9,12 @@ A catalogue entry connects sales, purchasing, stock and production. The internal
 | Supplier offer | Product ID, supplier ID, supplier reference, entity, minimum quantity, pack size, currency, tax rate, price and discount | The database enforces uniqueness on supplier reference, supplier, quantity and entity. Multiple quantity breaks may describe the same vendor article. |
 | Document line | Reference to catalogue product when selected, description, unit price, tax, discount and quantity on the transaction | The entered commercial terms live on the order or invoice line. Subsequent catalogue changes support future transactions. |
 
-[Product keys](../reference/locators/supply.md#ref-1c901c2d9546) · [Stock eligibility](../reference/locators/supply.md#ref-93f59a3ec6d0) · [Variant creation](../reference/locators/supply.md#ref-040047f9e0e2) · [Supplier offer keys](../reference/locators/supply.md#ref-bb144f689ecb) · [Purchase order lines](../reference/locators/supply.md#ref-e09a0f497379)
-
 ## Pricing decisions
 
 1. For a vendor offer entered inclusive of VAT, divide the quoted price by `1 + rate/100`. Divide the resulting total price by its quoted quantity to derive the unit price, using unit-price precision. Packaging defaults to the quoted quantity when omitted. The supplier can require a minimum of 100 and ship packs of 50.
 2. For a requested quantity above zero, the lowest-price lookup considers active suppliers and offers whose minimum quantity is at most the requested quantity, within the allowed entities. It can restrict the search to one supplier. In its ordinary fixed-price branch it compares unit prices after the percentage discount. Freight charges and lead time are separate fields.
 3. For a buyer on combined customer-specific and price-level pricing, the selling-price resolver looks for an effective customer price using its validity dates. If no applicable customer price exists and the buyer has a price level, it looks up the level. An optional value-added-tax rate per level changes tax selection. The resolver also supports other pricing modes.
 4. A child variant's price adjustment can be an absolute amount or a percentage of the parent price. Apply the adjustment in the configured parent price basis, inclusive or exclusive of tax. With multiple price levels, the combination can have a separate adjustment for each level. A weight adjustment adds to the parent weight.
-
-[Supplier conversion and minimum selection](../reference/locators/supply.md#ref-45d384880803) · [Offer comparison](../reference/locators/supply.md#ref-18ba23c80573) · [Selling-price resolver](../reference/locators/supply.md#ref-1dba9996b5cc) · [Variant updates](../reference/locators/supply.md#ref-36aca060e0c7)
 
 ## Service and acceptance cases
 
@@ -28,5 +24,3 @@ A catalogue entry connects sales, purchasing, stock and production. The internal
 | Read a product listing with balances | Product-read permission, stock detail requested | Stock detail is included only for a caller with stock-read permission. |
 | Select purchase offer | Vendor A offers 10 for 115 including 15% VAT. Vendor B offers a minimum of 20 at 11 tax-exclusive each, with 15% discount. | At 10, only A qualifies at 10 per unit before tax. At 20, B qualifies at 9.35 and wins the discounted unit-price comparison. |
 | Store a service | A stockable service and an ordinary stockable product have the same transaction quantity | With service stock support disabled, only the product qualifies for a normal stock movement. |
-
-[Product API](../reference/locators/supply.md#ref-b7e716531355) · [Movement eligibility](../reference/locators/supply.md#ref-7b7614614886)

@@ -10,8 +10,6 @@ Both invoice paths select document status 1 or 2 in the corresponding source ent
 
 VAT reports can separate identical numeric percentages by the line's tax-source code. For example, 20% with code A and 20% with code B can be distinct rate groups. An installation can filter out zero-rate/zero-tax rows. For a local-tax report the group key uses the selected additional-tax rate. The detailed records retain invoice and line values, invoice identity and date, party, product and service period, main and local tax amounts and, for payment rows, allocated amount and payment date. A purchase-side branch additionally reads paid expense reports and their reimbursement payments in the period.
 
-Release references include `htdocs/core/lib/tax.lib.php:747–890,907–977,983–1085,1102–1166,1178–1278` and `htdocs/compta/tva/quadri_detail.php:149–199,269–275,488–516`.
-
 ## Apportion a partial settlement
 
 In the ordinary mixed or payment-based detail calculation, the payment fraction equals amount allocated **to the invoice** divided by that invoice's gross amount. For each applicable line, multiply both net base and recorded line tax by this fraction. On an invoice-basis line the fraction is one. The detailed page also has a debit-option display mode that uses a fraction of one. Changing only this presentation parameter does not change the four query-side settings used to select dates and rows. For a zero-gross denominator the detail code leaves the fraction at one.
@@ -19,8 +17,6 @@ In the ordinary mixed or payment-based detail calculation, the payment fraction 
 Consider a customer invoice dated 20 March. It includes goods of 100 plus 20 tax and services of 200 plus 40 tax, for a gross invoice of 360. Configure goods on invoice and services on payment. If the customer pays 90 on 8 April and 270 on 12 May, March recognizes the goods base of 100 and tax of 20. April recognizes services base of 50 and tax of 10 because 90/360 is one quarter. May recognizes the remaining services base of 150 and tax of 30. No operator assigned the first payment to the goods line. The division uses the gross invoice even though only service rows are being apportioned. A payment covering several invoices contributes only the allocation to this invoice.
 
 The report distinguishes line totals from detail rows. When a single invoice line joins to several payments, the source reader adds its original full totals once per line and retains separate dated payment details. Summing the original line tax from every detail row would overstate the invoice. The recognized total follows the calculated payment shares. The purchase detail uses the same proportional principle with its independent purchase settings.
-
-Release references include `htdocs/core/lib/tax.lib.php:849–889,907–977,1044–1084,1105–1166` and `htdocs/compta/tva/quadri_detail.php:488–517,603–649,730–756,839–886`.
 
 ## Price a line with additional taxes or withholding
 
@@ -39,12 +35,8 @@ For a service priced at 100 excluding main VAT and 20 main VAT, an enabled type 
 
 The counterparty report separates amounts retained by customers on sales from amounts retained on supplier transactions. It selects the first or second local-tax field and can filter by counterparty net turnover and exclude parties with zero local tax. Local-tax remittance is a separate record with tax type, label, payment date, value date, positive amount, entity, creator and optional note. With banking active it requires an account and payment mode and registers a negative bank movement. The transaction records the link back to that movement.
 
-Release references include `htdocs/core/lib/price.lib.php:143–153,243–302,333–390`, `htdocs/compta/localtax/clients.php:194–230,261–289` and `htdocs/compta/localtax/class/localtax.class.php:507–608`.
-
 ## Record and correct a VAT payment
 
 The VAT card represents a declared amount and the period to which it relates. Authorized users can edit the period, payment method and bank account or change paid/unpaid status. The payment record separately carries a dated amount, method, payment reference, creator, note and bank relation. A payment requires a date and nonzero total. Negative amounts are accepted by the VAT payment service. A positive tax remittance produces an outgoing bank entry and a negative remittance produces an incoming entry. The payment-to-bank link and authority-charge link allow tracing from the bank register to the source charge.
 
 On the card, record creation, payment creation and bank registration in the combined flow are enclosed in transactions. Failure registering the requested bank payment rolls back the payment operation. Optional closure checks the charge's remaining amount after payments and marks it paid when rounded remainder reaches zero. Reopening changes the charge status. Payment deletion follows its own transaction. A linked bank line is deleted first. If bank deletion fails, the operation retains the payment. The VAT charge can be deleted only when its payment-total inquiry succeeds and returns zero. The check uses the signed total, so offsetting payments can yield a different result from a count of payment records.
-
-Release references include `htdocs/compta/tva/card.php:93–105,126–170,200–268`, `htdocs/compta/tva/class/paymentvat.class.php:177–289,451–497,584–663` and `htdocs/compta/tva/class/tva.class.php:301–337,402–451,839–862`.

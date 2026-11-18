@@ -1,6 +1,6 @@
 # Business setup decisions
 
-This catalogue covers **47 operator settings on 14 setup screens** in release 24.0.3. Each setting has a visible control, at least one identified business operation that reads it, and a description of its observable effect. The chapters name module prerequisites, choices, declared initial values and read-time defaults where established. A company can override defaults. Each field's stored name serves as a locator for the pinned implementation.
+This catalogue covers **47 operator settings on 14 setup screens**. Each setting has a visible control, at least one identified business operation that reads it, and a description of its observable effect. The chapters name module prerequisites, choices, declared initial values and read-time defaults where established. A company can override defaults. Each setting is keyed by its stored name.
 
 | Business question | Settings | Setup screens |
 | --- | ---: | --- |

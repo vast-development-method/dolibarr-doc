@@ -1,0 +1,15 @@
+# Salary obligations and their payments
+
+One row is one `salary.rowid` linked to its employee through `fk_user`. Payments join through `payment_salary.fk_salary` and aggregate as the amount already paid. Bank account and intended payment method are optional header relationships. Employee salary from the current personnel record, the salary period's recorded values, the obligation amount and the aggregated cash paid are separate measures.
+
+| Decision | Register rule |
+| --- | --- |
+| Access | The salary area applies its read access and salary entity scope. Without the read-subordinates grant the row must belong to the current user. Without the read-all grant it must be in the set comprising the current user and all reporting descendants. Both predicates apply independently when both grants are absent. |
+| Identifiers and descriptions | A nonempty reference filter compares the numeric salary row ID. Employee text searches login, surname, first name or email. The label search applies to the salary obligation. Optional configured salary fields can supply additional criteria. |
+| Pay period | Start-from and start-to compare `datesp`. End-from and end-to compare `dateep`. Each bound is independent and inclusive. Lower day boundaries use midnight, upper boundaries the end of the selected day. These are employment pay-period dates, not dates of individual payments. |
+| Amount, account and payment method | Amount performs a numeric comparison on `salary.amount`. A positive account selection matches the salary header's `fk_account`. A specified payment type compares the header's `fk_typepayment` to the selected numeric ID. Neither filters individual payment rows. |
+| Status and count | The status filter compares `paye`. Rendering also receives the sum paid and can indicate a partial payment. The default order uses salary `datep`, then row ID, both descending. With a full count enabled, the count query strips grouping but retains the payment join. Multiple payments on one salary can therefore increase the pagination count above the number of displayed salary obligations. |
+
+For a salary of 2,000 with payments of 600 and 400, the register displays one obligation with 1,000 paid. An amount filter for 2,000 can find it. A filter for 1,000 does not select it by paid total. To find obligations overlapping a chosen period, use start **on or before** that period's end and end **on or after** its start. Using start-from and end-to instead selects obligations wholly contained within the interval.
+
+A bank-transfer request is a subsequent action with its own create permission. It recomputes remaining amount from salary amount less payments at monetary precision. A paid salary, a zero remainder or a negative remainder stops eligibility. An existing unprocessed request for the same salary is reported and excluded from the new request set. A nonempty payment-mode code other than bank transfer is also ineligible. The batch checks all selected salaries before beginning individual request transactions. The example above can request the remaining 1,000 if otherwise eligible. That request is separate from the two existing payments.

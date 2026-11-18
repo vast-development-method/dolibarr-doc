@@ -12,7 +12,7 @@ An order can move from approved to fulfilled while the linked proposal, customer
 | [People, membership and support](people-and-service.md) | Which event describes a leave decision, claim, ticket, employment record or membership payment? |
 | [Other shared records](other.md) | Which changes concern categories, documents, subscriptions to messages or general associations? |
 
-The catalogue covers the 161 named entries in the standard event dictionary and additional literal emissions in the surveyed business classes and shared action handlers. Together they identify 371 distinct codes. A dictionary entry establishes a name offered to setup. A direct emission site identifies an operation that actually sends the name. Generic create/update/delete paths can construct an event name from the object type at runtime. A blank emission site means the catalogue does not assign that code to a literal call. Extension-defined names and every dynamically assembled code are outside this count.
+The catalogue covers the 161 named entries in the standard event dictionary and additional literal emissions in the surveyed business classes and shared action handlers. Together they identify 371 distinct codes. A dictionary entry establishes a name offered to setup. A direct emission site identifies an operation that actually sends the name. Generic create/update/delete paths can construct an event name from the object type at runtime. The emitting-operation column identifies the record or action and its operation. Where dispatch is shared or assembled at runtime, the entry states that a literal call has not been assigned. Extension-defined names and every dynamically assembled code are outside this count.
 
 ## What reaches the next module
 
@@ -28,16 +28,6 @@ An automatic calendar record is one possible consumer. It ignores activity event
 
 A notification subscription is a separate decision. The notification handler tests its module, a list of supported event codes and applicable recipient subscriptions. Extensions can contribute support. An event listed as notification-eligible still requires a matching recipient. A webhook instead matches configured target, event and mode, performs the outbound request and records its outcome. Delivery can precede the final commit of the originating operation. A record receiver needs its own durable identity for any payment, stock or fulfilment consequence.
 
-## Where to read a subscriber reference
-
-Paths in the event-family tables start below the release's `htdocs/` directory. The dictionary line is in `install/mysql/data/llx_c_action_trigger.sql`. The numbered subscriber locators refer to these files:
-
-| Key | Implementation |
-| --- | --- |
-| Workflow | `core/triggers/interface_20_modWorkflow_WorkflowManager.class.php` |
-| Agenda | `core/triggers/interface_50_modAgenda_ActionsAuto.class.php` |
-| Notification | `core/class/notify.class.php`, the built-in supported-event list |
-| Dispatcher | `core/class/interfaces.class.php`, `run_triggers` |
-| External delivery | `core/triggers/interface_95_modWebhook_WebhookTriggers.class.php`, `runTrigger` |
+## Commercial subscribers
 
 The [commercial automation decisions](commercial-automation.md) describe specific effects with their eligibility, totals, linked records and failure conditions.

@@ -8,8 +8,6 @@ The product card captures the previous product before applying the edit. For an 
 
 The product update determines the direction of conversion from the previous and proposed **has-tracking** values. Its fallback clones the current product where a usable prior product object is unavailable. A caller that supplies only the final mode and fails to supply the effective previous value cannot expect the same transition detection as the edit card. Moving from one tracked mode to another is different from crossing the tracked/untracked boundary.
 
-Sources are `htdocs/product/card.php:542–554,795–826,860–870,936–955` and `htdocs/product/class/product.class.php:1525–1556`.
-
 ## Introduce tracking
 
 The update loads warehouse positions and their active lot details. For each warehouse with a stock row:
@@ -22,8 +20,6 @@ The conversion establishes identities for existing warehouse quantities. Its all
 
 Suppose East holds 12 units and its existing named lots account for four under N1 and three under N2. West holds five units with no named splits. Enabling lot tracking creates default balances of five in East and five in West, using the same product-level default lot master. East now reconciles as `4 + 3 + 5 = 12`. West reconciles as `5 = 5`. If the named positions instead total 14 against East's warehouse balance of 12, the arithmetic residual is −2 in this branch. The conversion does not silently reduce one of the named lots to make it balance.
 
-Sources are `htdocs/product/class/product.class.php:1545–1602,6484–6540` and `htdocs/product/class/productbatch.class.php:489–521`.
-
 ## Remove tracking or change to serial tracking
 
 When switching from a tracked to an untracked product, the update reads its lot positions together with their warehouses. For each positive split it removes that quantity from the named lot and adds the same quantity to untracked stock at the same warehouse. For a negative split it performs the opposite pair. The first operation explicitly directs the writer to update the batch position even though the product now has its untracked mode. Both calls carry the same generated operation code, zero price and the warehouse from the selected position. The effects pass through the stock movement writer with its normal stock and component policies. The lot master and earlier journal rows are independently retained records.
@@ -31,7 +27,5 @@ When switching from a tracked to an untracked product, the update reads its lot 
 For an ordinary stock-managed item with lot A=4 and B=3, removing tracking makes two separate pairs of entries. Their signed sum is zero. After success the warehouse still holds seven and the lot positions have been cleared. Counting only positive journal entries for the conversion would falsely report a new seven-unit receipt. A product-level query against old movements can continue to identify A and B after there are no current positions to pick from.
 
 Changing a tracked product from lot to serial mode crosses neither boundary above. On the product card the new mode elicits a warning that units can already share a batch. The conversion branch does not split an existing five-unit lot into five new serial identifiers. Subsequent positive serial movements run the ordinary product/serial quantity rule. A blueprint needs to keep the operator's change in policy separate from any individually substantiated reassignment of historical identifiers.
-
-Sources are `htdocs/product/card.php:2142–2174`, `htdocs/product/class/product.class.php:1545–1602,1623–1628,1727–1762,6363–6404,6427–6469` and `htdocs/product/stock/class/mouvementstock.class.php:638–650,688–705,984–1008`.
 
 [Lot identity and expiry](../specification/operations/lot-identity-and-traceability.md) · [Warehouse record dictionary](../records/warehouse.md)

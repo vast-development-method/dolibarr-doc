@@ -6,31 +6,31 @@ A customer invoice can generate several posted ledger rows sharing a piece numbe
 
 The interactive export requires the movement-export grant. Confirmation uses the current filters, sort order and entity scope, with no page limit. Already exported rows are normally excluded. The re-export option changes that population. The operator can omit lettering from the output without clearing it from the ledger. Export and validation dates on the selected rows have distinct controls. Downloading a previously generated file and generating another extract have different consequences. See [trial balances, exports and fiscal close](../specification/financial/trial-balances-and-ledger-exports.md) for the marking transaction and the service's period choices.
 
-There are 21 named built-in formats. The registry gives each a numeric selector. An extension can add others. The table identifies the distinctive representation and a release-relative writer line in `htdocs/accountancy/class/accountancyexport.class.php`.
+There are 21 named built-in formats. The registry gives each a numeric selector. An extension can add others.
 
-| ID | Format | Record representation | Writer line |
-| ---: | --- | --- | ---: |
-| 1 | Configurable | Ten ordered fields, independently configurable date, separator and line ending. Carries both sides and a signed difference. | 1374 |
-| 10 | Agiris | Semicolon-separated with account number plus label, debit, credit, absolute amount and direction. Text fields pass through an encoding conversion. | 1289 |
-| 15 | EBP | Comma-separated, repeats document date at the end, selects the auxiliary account where present. | 1246 |
-| 20 | Cegid | Semicolon-separated, preserves both general and auxiliary accounts. Direction and unsigned amount are separate. | 665 |
-| 25 | Cogilog | Tab-separated, resolves the source invoice number, replaces the general account with the auxiliary where present and emits debit or credit according to direction. | 701 |
-| 30 | Coala | Semicolon-separated with separate debit and credit, piece number, reference, literal entry marker and separate auxiliary account. | 765 |
-| 35 | BOB50 | Semicolon-separated with a general/customer/supplier discriminator and one account column in the recognised cases. | 802 |
-| 40 | Ciel XIMPORT | Concatenated padded fields with a version trailer and carriage-return/line-feed ending. | 857 |
-| 45 | Sage 50 Swiss | Twenty-column comma-separated header. Supports collective postings by comparing nearby rows with the same piece. The document date uses dots. | 1962 |
-| 50 | Charlemagne | A translated tab-separated header introduces amount, direction and positions for three analytical code/label pairs. | 2536 |
-| 60 | Quadratus | Fixed-position movement records. Auxiliary values and optional source-document attachments have separate handling. | 912 |
-| 70 | Winfic | Padded fields separated by vertical bars, with operation date and entry day both derived from document date. | 1159 |
-| 100 | OpenConcerto | Seven semicolon-separated fields, including account, source reference, label, debit and credit. | 1336 |
-| 110 | LDCompta | Semicolon-separated entry records, with a two-character journal prefix and a source-specific subsidiary treatment. | 2116 |
-| 120 | LDCompta 10 | Includes separate party-information and movement record types. A customer record and a journal row have different shapes. | 2256 |
-| 130 | Gestimum V3 | Enriches invoice rows with the invoice reference and party name. Skips entries whose debit and credit are both zero. Uses a literal EUR indicator. | 2614 |
-| 135 | Gestimum V5 | Carries document reference and piece separately, formats the document date without slashes, and ends with a literal EUR indicator. | 2722 |
-| 200 | iSuite Expert | Semicolon-separated. Exports document date and year/month/day components. Text conversion uses Windows-1252. Generic customer/supplier accounts can be replaced by a trimmed auxiliary number. | 2773 |
-| 205 | ISTEA | Twelve quoted fields. Resolves a party label per piece, computes separate account representations and converts output to ISO-8859-1. | 1412 |
-| 1000 | FEC | Tab-separated, 21 named fields, with separate piece/entry dates, validation date, lettering, optional document file and source invoice reference. | 1474 |
-| 1010 | FEC variant | Same header as 1000. Uses a different mapping of document and creation dates. | 1720 |
+| ID | Format | Record representation |
+| ---: | --- | --- |
+| 1 | Configurable | Ten ordered fields, independently configurable date, separator and line ending. Carries both sides and a signed difference. |
+| 10 | Agiris | Semicolon-separated with account number plus label, debit, credit, absolute amount and direction. Text fields pass through an encoding conversion. |
+| 15 | EBP | Comma-separated, repeats document date at the end, selects the auxiliary account where present. |
+| 20 | Cegid | Semicolon-separated, preserves both general and auxiliary accounts. Direction and unsigned amount are separate. |
+| 25 | Cogilog | Tab-separated, resolves the source invoice number, replaces the general account with the auxiliary where present and emits debit or credit according to direction. |
+| 30 | Coala | Semicolon-separated with separate debit and credit, piece number, reference, literal entry marker and separate auxiliary account. |
+| 35 | BOB50 | Semicolon-separated with a general/customer/supplier discriminator and one account column in the recognised cases. |
+| 40 | Ciel XIMPORT | Concatenated padded fields with a version trailer and carriage-return/line-feed ending. |
+| 45 | Sage 50 Swiss | Twenty-column comma-separated header. Supports collective postings by comparing nearby rows with the same piece. The document date uses dots. |
+| 50 | Charlemagne | A translated tab-separated header introduces amount, direction and positions for three analytical code/label pairs. |
+| 60 | Quadratus | Fixed-position movement records. Auxiliary values and optional source-document attachments have separate handling. |
+| 70 | Winfic | Padded fields separated by vertical bars, with operation date and entry day both derived from document date. |
+| 100 | OpenConcerto | Seven semicolon-separated fields, including account, source reference, label, debit and credit. |
+| 110 | LDCompta | Semicolon-separated entry records, with a two-character journal prefix and a source-specific subsidiary treatment. |
+| 120 | LDCompta 10 | Includes separate party-information and movement record types. A customer record and a journal row have different shapes. |
+| 130 | Gestimum V3 | Enriches invoice rows with the invoice reference and party name. Skips entries whose debit and credit are both zero. Uses a literal EUR indicator. |
+| 135 | Gestimum V5 | Carries document reference and piece separately, formats the document date without slashes, and ends with a literal EUR indicator. |
+| 200 | iSuite Expert | Semicolon-separated. Exports document date and year/month/day components. Text conversion uses Windows-1252. Generic customer/supplier accounts can be replaced by a trimmed auxiliary number. |
+| 205 | ISTEA | Twelve quoted fields. Resolves a party label per piece, computes separate account representations and converts output to ISO-8859-1. |
+| 1000 | FEC | Tab-separated, 21 named fields, with separate piece/entry dates, validation date, lettering, optional document file and source invoice reference. |
+| 1010 | FEC variant | Same header as 1000. Uses a different mapping of document and creation dates. |
 
 ## Detailed writer specifications
 
@@ -77,4 +77,4 @@ Suppose a tax-free sale of 100 produces piece 72 in journal SALES, dated 30 Apri
 
 The two signed amounts sum to zero. The Cegid amount column on its own sums to 200. The receiver must apply the direction to balance the piece. OpenConcerto exports the customer subsidiary in the account column, so reconstructing the control account in the receiving system also needs its chart or subsidiary mapping.
 
-The release registry and dispatch are at `htdocs/accountancy/class/accountancyexport.class.php:50–94,144–199,245–341,495–558`. Row selection and marking are at `htdocs/accountancy/bookkeeping/export.php:504–610,611–735`. General and subsidiary account lengths are at `htdocs/core/lib/accounting.lib.php:152–219`. Numeric presentation is at `htdocs/core/lib/functions2.lib.php:2783–2804`. The related specifications above cover the remaining built-in writers. They describe files emitted by this release. Import behavior, error handling and reconciliation in third-party packages depend on their own versions and configuration.
+The related specifications above cover the remaining built-in writers. Import behavior, error handling and reconciliation in third-party packages depend on their own versions and configuration.

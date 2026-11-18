@@ -2,8 +2,6 @@
 
 A support case can be addressed by local identifier, business reference or tracking identifier. Adding a message records correspondence on a case. Editing the ticket header and assigning a contact role use separate operations.
 
-The implementation locations below refer to `htdocs/ticket/class/api_tickets.class.php`.
-
 ## `get` — Read a ticket
 
 **Arguments** `id` (integer), `contact_list = 1` (integer).
@@ -17,8 +15,6 @@ The detail reader includes message subject, text, creation and occurrence dates,
 - `400` — invalid request data.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — ticket missing.
-
-Source lines `78–81` with `getCommon 133–211`.
 
 ## `getByTrackId` — Read by tracking identifier
 
@@ -34,8 +30,6 @@ Route `GET track_id/{track_id}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — ticket missing.
 
-Source lines `98–101` with `getCommon 133–211`.
-
 ## `getByRef` — Read by business reference
 
 Route `GET ref/{ref}`.
@@ -50,8 +44,6 @@ Route `GET ref/{ref}`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — ticket missing.
 
-Source lines `118–121` with `getCommon 133–211`.
-
 ## `index` — List records
 
 **Arguments** `socid = 0` (integer), `sortfield = "t.rowid"` (text), `sortorder = "ASC"` (text), `limit = 100` (integer), `page = 0` (integer), `sqlfilters = ''` (text), `properties = ''` (text), `loadcontacts = 0` (integer), `pagination_data = false` (boolean).
@@ -65,8 +57,6 @@ The lookup uses the visible entity scope for `ticket`. The selection includes a 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `232–341`.
 
 ## `post` — Create a ticket
 
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — party missing.
 - `500` — business operation failed.
 
-Source lines `351–395` with `_validate 637–650`.
-
 ## `postNewMessage` — Post new message
 
 **Arguments** `request_data = null` (collection).
@@ -108,8 +96,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `404` — ticket missing.
 - `500` — business operation failed, file write failed, file move failed.
 
-Source lines `407–529` with `_validateMessage 660–673`.
-
 ## `put` — Update a ticket
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -127,8 +113,6 @@ The optional caller marker is placed in event context for synchronization.
 - `404` — ticket missing, party missing.
 - `500` — business operation failed.
 
-Source lines `540–593` with `get 78–81`, `getCommon 133–211`.
-
 ## `delete` — Delete a ticket
 
 **Arguments** `id` (integer).
@@ -140,8 +124,6 @@ Source lines `540–593` with `get 78–81`, `getCommon 133–211`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — ticket missing.
 - `500` — removal failed.
-
-Source lines `603–627`.
 
 ## `postContact` — Attach a contact role
 
@@ -159,8 +141,6 @@ The method attaches a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — external contact missing, internal contact missing, ticket missing.
 
-Source lines `788–877`.
-
 ## `deleteContact` — Remove a contact role
 
 Route `DELETE {id}/contact/{contactid}/{type}`.
@@ -177,5 +157,3 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — ticket missing.
 - `500` — removal failed.
-
-Source lines `898–940`.

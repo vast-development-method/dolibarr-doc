@@ -2,8 +2,6 @@
 
 A work report combines a customer, intervention lines and people with assigned contact roles. Draft, validation and closure concern the report header, while line methods address work details individually.
 
-The implementation locations below refer to `htdocs/fichinter/class/api_interventions.class.php`.
-
 ## `get` — Read a field intervention
 
 **Arguments** `id` (integer), `ref = ''` (text), `ref_ext = ''` (text), `contact_list = 1` (integer).
@@ -16,8 +14,6 @@ The method loads contacts by role and loads related business records.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — intervention missing.
-
-Source lines `91–121`.
 
 ## `index` — List records
 
@@ -32,8 +28,6 @@ The lookup uses the visible entity scope for `intervention`. A caller linked to 
 - `400` — invalid filter expression.
 - `403` — access refused.
 - `503` — query or persistence failure.
-
-Source lines `146–258`.
 
 ## `post` — Create a field intervention
 
@@ -51,8 +45,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — access refused.
 - `500` — business operation failed.
 
-Source lines `272–294` with `_validate 876–886`.
-
 ## `put` — Update a field intervention
 
 **Arguments** `id` (integer), `request_data = null` (collection).
@@ -66,8 +58,6 @@ The optional caller marker is placed in event context for synchronization.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — fichinter missing, intervention missing.
 - `500` — business operation failed.
-
-Source lines `309–347` with `get 91–121`.
 
 ## `postLine` — Add a line
 
@@ -87,8 +77,6 @@ The optional caller marker is placed in event context for synchronization. The m
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — intervention missing.
 
-Source lines `398–437` with `_validateLine 918–931`.
-
 ## `delete` — Delete a field intervention
 
 **Arguments** `id` (integer).
@@ -100,8 +88,6 @@ Source lines `398–437` with `_validateLine 918–931`.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — intervention missing.
 - `500` — removal failed.
-
-Source lines `451–475`.
 
 ## `validate` — Validate a field intervention
 
@@ -120,8 +106,6 @@ The method validates the record and loads related business records.
 - `404` — intervention missing.
 - `500` — business operation failed.
 
-Source lines `496–521`.
-
 ## `close` — Close the record
 
 Route `POST {id}/close`.
@@ -139,8 +123,6 @@ The method closes the record and loads related business records.
 - `404` — intervention missing.
 - `500` — business operation failed.
 
-Source lines `544–569`.
-
 ## `deleteLine` — Remove a line
 
 Route `DELETE /{id}/lines/{lineid}`.
@@ -156,8 +138,6 @@ The method removes a line. Only a draft field intervention accepts this line rem
 - `403` — missing operation rights, access or input restriction, record outside the caller’s scope, line does not belong to this intervention.
 - `404` — intervention missing, intervention line missing.
 - `405` — operation unavailable.
-
-Source lines `587–621`.
 
 ## `settodraft` — Return to draft
 
@@ -176,8 +156,6 @@ The method restores draft state and loads related business records.
 - `404` — intervention missing.
 - `500` — business operation failed.
 
-Source lines `639–663`.
-
 ## `addContact` — Add contact
 
 Route `POST {id}/contacts`.
@@ -194,8 +172,6 @@ The method attaches a participant role.
 - `404` — interventional missing.
 - `500` — business operation failed.
 
-Source lines `683–708`.
-
 ## `getContacts` — List attached contacts
 
 Route `GET {id}/contacts`.
@@ -210,8 +186,6 @@ The method loads contacts by role.
 
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — interventional missing.
-
-Source lines `724–753`.
 
 ## `deleteContact` — Remove a contact role
 
@@ -228,8 +202,6 @@ The method loads contacts by role and removes a participant role.
 - `403` — missing operation rights, record outside the caller’s scope.
 - `404` — interventional missing.
 - `500` — removal failed.
-
-Source lines `770–798`.
 
 ## `putLine` — Amend a line
 
@@ -248,5 +220,3 @@ Only a draft field intervention accepts this line change.
 - `403` — access or input restriction, record outside the caller’s scope, line does not belong to this intervention.
 - `404` — intervention missing, intervention line missing.
 - `500` — business operation failed.
-
-Source lines `816–865`.

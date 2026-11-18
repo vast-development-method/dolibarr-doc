@@ -82,6 +82,7 @@ Follow requests and obligations into approvals, delivery, renewal and settlement
 - [Mileage allowances and claim ceilings](people-and-services/expense-scales-and-ceilings.md)
 - [Leave entitlements across reporting months](people-and-services/leave-entitlement-ledger.md)
 - [Member status, renewal periods and collection of dues](people-and-services/member-renewals-and-collections.md)
+- [Subscription register, filters and charge reconciliation](people-and-services/member-subscription-register.md)
 - [Ticket routing, conversations and resolution](people-and-services/ticket-routing-and-conversation.md)
 
 ## Hiring, career development and partner relationships
