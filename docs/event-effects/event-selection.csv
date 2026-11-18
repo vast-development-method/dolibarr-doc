@@ -1,0 +1,212 @@
+event_or_pattern,subscriber,priority,selection
+*PAYMENT*,Immutable log,99,Further qualifying payment events except PAYMENT_ADD_TO_BANK
+<configured activity event>,Automatic calendar activity,50,Per-code switch and generic activity fallback
+<configured extra event>,Immutable log,99,Tracked or controlled event and qualified object required
+<configured target event>,Webhook targets,95,Configured event codes on each target
+<extension event>,Subscription notifications,50,Merged supported-event list from notification hook
+ACTION_*,Automatic calendar activity,50,Excluded to prevent recursive activity creation
+ACTION_CREATE,Subscription notifications,50,Built-in notification subscription
+ACTION_CREATE,Automation connector,95,External subscription delivery
+BILL_CANCEL,Automatic calendar activity,50,Dedicated calendar branch
+BILL_CANCEL,Subscription notifications,50,Built-in notification subscription
+BILL_CREATE,Party default contact roles,90,Resolve default party contacts
+BILL_DELETE,Immutable log,99,Explicit evidence or control branch
+BILL_MODIFY,Immutable log,99,Explicit evidence or control branch
+BILL_PAYED,Commercial workflow,20,Commercial decision branch
+BILL_PAYED,Automatic calendar activity,50,Dedicated calendar branch
+BILL_PAYED,Subscription notifications,50,Built-in notification subscription
+BILL_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SENTBYMAIL,Immutable log,99,Explicit evidence or control branch
+BILL_SUPPLIER_CANCELED,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_CREATE,Party default contact roles,90,Resolve default party contacts
+BILL_SUPPLIER_DELETE,Immutable log,99,Explicit evidence or control branch
+BILL_SUPPLIER_PAYED,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_SENTBYMAIL,Immutable log,99,Explicit evidence or control branch
+BILL_SUPPLIER_UNVALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_VALIDATE,Commercial workflow,20,Commercial decision branch
+BILL_SUPPLIER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+BILL_SUPPLIER_VALIDATE,Immutable log,99,Explicit evidence or control branch
+BILL_UNVALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+BILL_UNVALIDATE,Immutable log,99,Explicit evidence or control branch
+BILL_VALIDATE,Commercial workflow,20,Commercial decision branch
+BILL_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+BILL_VALIDATE,Subscription notifications,50,Built-in notification subscription
+BILL_VALIDATE,Immutable log,99,Explicit evidence or control branch
+CASHCONTROL_CLOSE,Immutable log,99,Explicit evidence or control branch
+CASHCONTROL_DELETE,Immutable log,99,Explicit evidence or control branch
+CATEGORY_MODIFY,Membership mailing lists,50,Mailing-list operation
+COMPANYPAYMENTMODE_DELETE,Payment provider,80,Customer or card synchronisation
+COMPANYPAYMENTMODE_MODIFY,Payment provider,80,Customer or card synchronisation
+COMPANY_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+COMPANY_CREATE,Automation connector,95,External subscription delivery
+COMPANY_DELETE,Payment provider,80,Customer or card synchronisation
+COMPANY_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+COMPANY_MODIFY,Payment provider,80,Customer or card synchronisation
+COMPANY_MODIFY,Automation connector,95,External subscription delivery
+COMPANY_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+CONTACT_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+CONTACT_CREATE,Directory synchronisation,50,Directory operation
+CONTACT_CREATE,Automation connector,95,External subscription delivery
+CONTACT_DELETE,Directory synchronisation,50,Directory operation
+CONTACT_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+CONTACT_MODIFY,Directory synchronisation,50,Directory operation
+CONTACT_MODIFY,Automation connector,95,External subscription delivery
+CONTRACT_CREATE,Party default contact roles,90,Resolve default party contacts
+CONTRACT_MODIFY,Subscription notifications,50,Built-in notification subscription
+CONTRACT_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+CONTRACT_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+DOC_DOWNLOAD,Immutable log,99,Explicit evidence or control branch
+DOC_PREVIEW,Immutable log,99,Explicit evidence or control branch
+DONATION_PAYMENT_CREATE,Immutable log,99,Explicit evidence or control branch
+DONATION_PAYMENT_DELETE,Immutable log,99,Explicit evidence or control branch
+DON_DELETE,Immutable log,99,Explicit evidence or control branch
+DON_MODIFY,Immutable log,99,Explicit evidence or control branch
+DON_VALIDATE,Immutable log,99,Explicit evidence or control branch
+EXPENSE_REPORT_APPROVE,Subscription notifications,50,Built-in notification subscription
+EXPENSE_REPORT_VALIDATE,Subscription notifications,50,Built-in notification subscription
+FICHINTER_ADD_CONTACT,Subscription notifications,50,Built-in notification subscription
+FICHINTER_CLASSIFY_BILLED,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_CLASSIFY_UNBILLED,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_CLOSE,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_CLOSE,Subscription notifications,50,Built-in notification subscription
+FICHINTER_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_CREATE,Party default contact roles,90,Resolve default party contacts
+FICHINTER_DELETE,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_MODIFY,Subscription notifications,50,Built-in notification subscription
+FICHINTER_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+FICHINTER_VALIDATE,Subscription notifications,50,Built-in notification subscription
+HOLIDAY_APPROVE,Subscription notifications,50,Built-in notification subscription
+HOLIDAY_VALIDATE,Subscription notifications,50,Built-in notification subscription
+MEMBER_CREATE,Directory synchronisation,50,Directory operation
+MEMBER_CREATE,Automation connector,95,External subscription delivery
+MEMBER_DELETE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_DELETE,Directory synchronisation,50,Directory operation
+MEMBER_DELETE,Membership mailing lists,50,Mailing-list operation
+MEMBER_EXCLUDE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_MODIFY,Directory synchronisation,50,Directory operation
+MEMBER_MODIFY,Membership mailing lists,50,Mailing-list operation
+MEMBER_MODIFY,Automation connector,95,External subscription delivery
+MEMBER_NEW_PASSWORD,Directory synchronisation,50,Directory operation
+MEMBER_RESILIATE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_RESILIATE,Directory synchronisation,50,Directory operation
+MEMBER_RESILIATE,Membership mailing lists,50,Mailing-list operation
+MEMBER_SUBSCRIPTION,Directory synchronisation,50,Directory operation
+MEMBER_SUBSCRIPTION_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_SUBSCRIPTION_CREATE,Immutable log,99,Explicit evidence or control branch
+MEMBER_SUBSCRIPTION_DELETE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_SUBSCRIPTION_DELETE,Immutable log,99,Explicit evidence or control branch
+MEMBER_SUBSCRIPTION_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_SUBSCRIPTION_MODIFY,Immutable log,99,Explicit evidence or control branch
+MEMBER_TYPE_CREATE,Directory synchronisation,50,Directory operation
+MEMBER_TYPE_DELETE,Directory synchronisation,50,Directory operation
+MEMBER_TYPE_MODIFY,Directory synchronisation,50,Directory operation
+MEMBER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+MEMBER_VALIDATE,Directory synchronisation,50,Directory operation
+MEMBER_VALIDATE,Membership mailing lists,50,Mailing-list operation
+ORDER_CANCEL,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_CANCEL,Subscription notifications,50,Built-in notification subscription
+ORDER_CLASSIFY_BILLED,Commercial workflow,20,Commercial decision branch
+ORDER_CLASSIFY_BILLED,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_CLOSE,Commercial workflow,20,Commercial decision branch
+ORDER_CLOSE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_CLOSE,Subscription notifications,50,Built-in notification subscription
+ORDER_CREATE,Subscription notifications,50,Built-in notification subscription
+ORDER_CREATE,Party default contact roles,90,Resolve default party contacts
+ORDER_CREATE,Automation connector,95,External subscription delivery
+ORDER_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_APPROVE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_APPROVE,Subscription notifications,50,Built-in notification subscription
+ORDER_SUPPLIER_CANCEL,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_CANCEL,Subscription notifications,50,Built-in notification subscription
+ORDER_SUPPLIER_CLASSIFY_BILLED,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_CREATE,Party default contact roles,90,Resolve default party contacts
+ORDER_SUPPLIER_RECEIVE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_REFUSE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_REFUSE,Subscription notifications,50,Built-in notification subscription
+ORDER_SUPPLIER_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_SUBMIT,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_SUBMIT,Subscription notifications,50,Built-in notification subscription
+ORDER_SUPPLIER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_SUPPLIER_VALIDATE,Subscription notifications,50,Built-in notification subscription
+ORDER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+ORDER_VALIDATE,Subscription notifications,50,Built-in notification subscription
+PAYMENT_CUSTOMER_CREATE,Immutable log,99,Explicit evidence or control branch
+PAYMENT_CUSTOMER_DELETE,Immutable log,99,Explicit evidence or control branch
+PAYMENT_SUPPLIER_CREATE,Immutable log,99,Explicit evidence or control branch
+PAYMENT_SUPPLIER_DELETE,Immutable log,99,Explicit evidence or control branch
+PROJECT_CLOSE,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_CREATE,Party default contact roles,90,Resolve default party contacts
+PROJECT_DELETE,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+PROJECT_VALIDATE,Event project planning,50,Project task creation
+PROPAL_CLASSIFY_BILLED,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_CLOSE_REFUSED,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_CLOSE_REFUSED,Subscription notifications,50,Built-in notification subscription
+PROPAL_CLOSE_SIGNED,Commercial workflow,20,Commercial decision branch
+PROPAL_CLOSE_SIGNED,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_CLOSE_SIGNED,Subscription notifications,50,Built-in notification subscription
+PROPAL_CREATE,Party default contact roles,90,Resolve default party contacts
+PROPAL_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+PROPAL_VALIDATE,Subscription notifications,50,Built-in notification subscription
+PROPOSAL_SUPPLIER_CLOSE_REFUSED,Automatic calendar activity,50,Dedicated calendar branch
+PROPOSAL_SUPPLIER_CLOSE_SIGNED,Automatic calendar activity,50,Dedicated calendar branch
+PROPOSAL_SUPPLIER_CREATE,Party default contact roles,90,Resolve default party contacts
+PROPOSAL_SUPPLIER_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+PROPOSAL_SUPPLIER_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+RECEPTION_CLOSED,Commercial workflow,20,Commercial decision branch
+RECEPTION_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+RECEPTION_VALIDATE,Commercial workflow,20,Commercial decision branch
+RECEPTION_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+SHIPPING_CLOSED,Commercial workflow,20,Commercial decision branch
+SHIPPING_MODIFY,Subscription notifications,50,Built-in notification subscription
+SHIPPING_SENTBYMAIL,Automatic calendar activity,50,Dedicated calendar branch
+SHIPPING_VALIDATE,Commercial workflow,20,Commercial decision branch
+SHIPPING_VALIDATE,Automatic calendar activity,50,Dedicated calendar branch
+SHIPPING_VALIDATE,Subscription notifications,50,Built-in notification subscription
+STOCKTRANSFER_CLOSE,Subscription notifications,50,Built-in notification subscription
+STOCKTRANSFER_CREATE,Subscription notifications,50,Built-in notification subscription
+STOCKTRANSFER_MODIFY,Subscription notifications,50,Built-in notification subscription
+STOCKTRANSFER_UNVALIDATE,Subscription notifications,50,Built-in notification subscription
+STOCKTRANSFER_VALIDATE,Subscription notifications,50,Built-in notification subscription
+TASK_CREATE,Automatic calendar activity,50,Dedicated calendar branch
+TASK_DELETE,Automatic calendar activity,50,Dedicated calendar branch
+TASK_MODIFY,Automatic calendar activity,50,Dedicated calendar branch
+TICKET_ASSIGNED,Automatic calendar activity,50,Dedicated calendar branch
+TICKET_ASSIGNED,Ticket mail,50,Ticket mail branch
+TICKET_CLOSE,Ticket mail,50,Ticket mail branch
+TICKET_CREATE,Commercial workflow,20,Commercial decision branch
+TICKET_CREATE,Ticket mail,50,Ticket mail branch
+TICKET_CREATE,Party default contact roles,90,Resolve default party contacts
+TICKET_CREATE,Automation connector,95,External subscription delivery
+USERGROUP_CREATE,Security event log,20,Security label dictionary
+USERGROUP_CREATE,Directory synchronisation,50,Directory operation
+USERGROUP_DELETE,Security event log,20,Security label dictionary
+USERGROUP_DELETE,Directory synchronisation,50,Directory operation
+USERGROUP_MODIFY,Security event log,20,Security label dictionary
+USERGROUP_MODIFY,Directory synchronisation,50,Directory operation
+USER_CREATE,Security event log,20,Security label dictionary
+USER_CREATE,Directory synchronisation,50,Directory operation
+USER_CREATE,Automation connector,95,External subscription delivery
+USER_DELETE,Security event log,20,Security label dictionary
+USER_DELETE,Directory synchronisation,50,Directory operation
+USER_ENABLEDISABLE,Security event log,20,Security label dictionary
+USER_ENABLEDISABLE,Directory synchronisation,50,Directory operation
+USER_LOGIN,Security event log,20,Security label dictionary
+USER_LOGIN_FAILED,Security event log,20,Security label dictionary
+USER_LOGOUT,Security event log,20,Security label dictionary
+USER_MODIFY,Security event log,20,Security label dictionary
+USER_MODIFY,Directory synchronisation,50,Directory operation
+USER_MODIFY,Automation connector,95,External subscription delivery
+USER_NEW_PASSWORD,Security event log,20,Security label dictionary
+USER_NEW_PASSWORD,Directory synchronisation,50,Directory operation

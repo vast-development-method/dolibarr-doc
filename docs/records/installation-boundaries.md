@@ -1,6 +1,6 @@
-# Installation definitions outside the functional model
+# Installation and operating roles
 
-The physical model includes tables for disabled features, optional external modules and structures whose operational use still needs direct evidence. Keeping them visible here allows a maintainer to identify a physical table without assigning a business workflow to it.
+These 41 physical definitions cover feature-specific stores, reserved structures, a retired state store and a diagnostic log. Each has a field and key definition in the [relational model](../relational-model/README.md). Its operating role determines when an installation or a business action actually writes rows.
 
 ## Feature and extension exclusions
 
@@ -25,11 +25,11 @@ The physical model includes tables for disabled features, optional external modu
 | `societe_perentity` | Separate multi-entity extension schema. |
 | `zapier_hook` | Experimental connector. |
 
-## Operational use unresolved or separately gated
+## Reserved structures, retired state and diagnostic logging
 
-The [operational evidence register](operational-evidence.md) traces all 23 definitions to their setup paths and the corresponding business operations. One has confirmed request logging behind separately enabled features, one is explicitly deprecated, and the other 21 have no confirmed core operational reader or writer for the named table.
+The [operation-by-operation register](operational-evidence.md) classifies all 23 definitions and identifies which active records each business action uses. Twenty-one are schema-only in the standard business workflows. One stores diagnostic requests when enabled. One is a retired authorization-state table.
 
-| Record | Declared purpose or open question |
+| Record | Stored concept and operating role |
 | --- | --- |
 | `accounting_analytic_account` | Analytic account definition. |
 | `accounting_analytic_axis` | Analytic reporting axis. |
@@ -42,7 +42,7 @@ The [operational evidence register](operational-evidence.md) traces all 23 defin
 | `bank_record` | Bank statement header. |
 | `bank_record_link` | Association between a statement header and an imported source transaction. |
 | `c_product_thirdparty_relation_type` | Dictionary for product/party relationship kinds. |
-| `c_recruitment_origin` | Dictionary for application origins. The application field is present, while its form declaration is commented out. |
+| `c_recruitment_origin` | Dictionary for application origins. The application holds an optional field. Its standard editor omits the origin selector. |
 | `commande_fournisseur_log` | Dedicated supplier-order action log. |
 | `element_categorie` | Generic element/category association. Current classification also uses object-specific association tables. |
 | `expedition_package` | Dedicated shipment package header. Package types have a separate dictionary. |

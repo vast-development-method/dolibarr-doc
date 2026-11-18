@@ -1,0 +1,47 @@
+# How configuration changes the physical model
+
+An item can have a locally defined storage-bin field even though the base item declaration has no such column. Three records answer different questions. The item lives in `product`. A definition in `extrafields` controls how the field is presented. The actual bin value lives in a new column on `product_extrafields`, on a row whose `fk_object` identifies the item. The same mechanism works for document lines as well as headers. The owner map identifies the exact key for each of the 84 companion stores. [Owner map](../relational-model/application-associations.csv)
+
+## A field from definition to deletion
+
+| Operation | Effect on definitions | Effect on values |
+| --- | --- | --- |
+| Add an ordinary field | Requires a nonempty code and label. The definition key is `(name,entity,elementtype)`. The service normalises `thirdparty` to `societe` and `contact` to `socpeople`. | Adds the named column to the owner's companion table before writing the definition. Category values use `categories_extrafields`. A request for uniqueness attempts a single-column unique index across the whole companion table. |
+| Add a separator | Both accepted spellings are stored as `separate`. Required and unique flags are cleared. | Skips column creation. The separator has a position and label on the form. |
+| Add a calculated field | Stores the formula in `fieldcomputed` and clears required and unique flags on creation. | Creates the column. The common object writer stores a calculated result when persistence of computed fields is enabled. Its ordinary computed branch otherwise prepares a null stored value. |
+| Read or edit the owner's options | The definition loader reads definitions for the owner type ordered by position. It selects global and current-entity definitions for display. It also identifies mandatory fields from other entities that lack defaults. | The owner exposes an attribute named `options_` followed by the code. Use the owner ID to load the value row. Unique or empty-on-clone fields are cleared when the common writer receives the clone context. |
+| Change the field | The update path changes the physical declaration before writing definition changes. An extension can intervene before the schema update. | A type or nullability change applies to the shared column. An existing value and the database engine determine whether the alteration succeeds. A display rule alone does not remove values. |
+| Remove the field | Deletes matching names for the owner type in the current entity **and entity zero**. Then counts the same name and type across every entity. | If another definition survives, its column and stored values survive. A zero count triggers a column drop, which removes that attribute's values for all owners. A failed drop can leave the column after the definition is gone. |
+
+A definition describes display, validation and storage separately. `pos`, `label`, `help`, `list`, `printable` and `showintooltip` control presentation. `type`, `size`, `fielddefault`, `fieldrequired`, `fieldunique`, `param` and `fieldcomputed` describe values or constraints. `enabled`, `perms`, `alwayseditable` and `emptyonclone` affect the contexts in which the value can be used or carried forward. For the exact remaining metadata and nullability, select `extrafields` in the [field catalogue](../relational-model/fields.csv).
+
+| Configured type | Physical declaration requested at creation |
+| --- | --- |
+| Boolean, duration, single object link | `int(1)`, `int(11)`, `int(11)` respectively. The link's target comes from configuration. |
+| Price, price with currency | `double(24,8)` and `varchar(64)` respectively. |
+| Phone, mail/email, IP, icon, password | `varchar(20)` for phone and `varchar(128)` for the rest. |
+| URL, select, list selector, radio, checkbox, multi-list selector | `varchar(255)`. A selector can therefore store an identifier in a character column. Read its option definition to resolve the target. |
+| HTML, star rating | Text and integer, respectively, with the supplied size passed to the driver. |
+| Point, multiple points, line string, polygon | `point`, `multipoint`, `linestring`, `polygon`. Support for the requested physical type comes from the database driver. |
+| Other declared types | The service passes the type and length to the driver. An ordinary `varchar` without a length requests 255. |
+
+### Retried definition and shared values
+
+Two companies define `store_bin` on the item. Item 7 stores `East`. Creating the second definition reuses the physical column. Repeating the same definition can return success on the pair of duplicate-column and duplicate-definition outcomes. This return code does not compare the two sets of requested field properties. Removing the first company's definition retains `East`. Removing the last definition drops the column. These transitions ran against the field service with a SQLite adapter for column addition and removal.
+
+An ordinary field returns `-1` when the column stage fails and cannot be accepted as an existing column. If column creation succeeds and the definition insert fails, it returns `-2`. A forced definition failure left one new physical column and zero definitions in the same exercise. Retrying added the missing definition. There is a separate failure mode for uniqueness. After adding a new column, the service issues the index statement without using its return value to decide column-stage success. An observed unique key in the database is the evidence for an enforced constraint.
+
+## Fresh setup, activation and upgrades
+
+| Stage | What the operation actually selects | What to inspect afterwards |
+| --- | --- | --- |
+| Base setup | Base declarations cover 275 tables. The other 135 declared tables have a selection group. Table creation and the separate key pass can succeed independently. A create-if-absent guard accepts an existing table as it stands. | Compare physical table names, ordered columns, defaults, key components and parent targets against the [declared model](../relational-model/README.md). |
+| Enable a feature | For example, accounting requests the accounting tables. Bills of materials request their own table group. The feature also installs or enables its administrative registrations. | A usable feature needs its tables and applicable configuration, rights, active dependencies and company context. A table by itself cannot establish exposure in a user's menu. |
+| Disable a feature | Common removal clears the activation entry, tab and feature-part settings, the marked delete-on-disable constants, and the module's permission definitions. It removes menu registrations with handler `all`. Job cleanup selects the module's current-entity entries with `test = '1'`. Jobs with a feature-enable condition can retain their setup. The removal mode can preserve boxes. The feature can supply complementary SQL. | Accounting and bills of materials supply no complementary deletion statements on their removal calls. Their normal disable operation retains ledger/chart and recipe rows. Record presence and menu visibility can therefore disagree. |
+| Upgrade an existing database | The installer selects ordered migration scripts for the requested transition. Along the core sequence it scans for matching extension scripts, runs those of enabled extensions, and skips those of disabled extensions. It records an attempted extension script separately from core migration success. | Compare the resulting columns, keys and constraint targets. A previously disabled extension can have skipped its own migration even after core migration completes. Re-enabling controls visibility and runs its activation routine. Check the actual definition required by that extension. |
+
+On a controlled database, the normal accounting and bill-of-materials removal operations both returned success. One chart account and one recipe survived. Module activation entries and grant definitions disappeared, as did the all-handler menu entries. A different-handler menu, and the suspense-account setting marked to persist, survived. The required-company-code setting marked for removal disappeared. The current process also removed both module flags.
+
+Two observable differences distinguish fresh and migrated schemas. The analytic account's required `fk_axis` can have a foreign key to `accounting_analytic_axis.rowid` after migration. In a native database exercise the fresh accounting declarations accepted an account pointing to absent axis 99. After removing that test row and applying the migration's constraint, the database rejected the identical insert with a foreign-key violation. A database-specific migration can also add a prefix lookup index on 255 characters of `blockedlog.linktoref`. The active table's field type alone reveals neither difference. [Key and foreign-key declarations](../relational-model/README.md)
+
+For a particular installation, match each logical definition to its physical companion and owner key. Record column type, size, nullability and default, followed by index type, column order and foreign-key endpoints. Use an owner-level row count and a value count to distinguish an absent column, a present column with no value, and a hidden definition with retained data. For a disabled feature inspect its stored rows separately from its activation setting. For the known reserved, retired and diagnostic stores see the [operating-role register](../records/operational-evidence.md).

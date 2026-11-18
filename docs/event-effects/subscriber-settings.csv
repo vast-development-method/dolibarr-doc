@@ -1,0 +1,74 @@
+subscriber,key,kind,decision
+Dispatcher,MAIN_FRANCE_TODO_LOI_FINANCE,Setting,Rejects qualifying sales invoice validation before dispatch if immutable logging is disabled.
+Dispatcher,MAIN_TRIGGER_DEBUG,Setting,Writes the extra dispatcher entry trace.
+Security event log,MAIN_LOGEVENTS_<event>,Key pattern,Selects security logging for the exact event code.
+Security event log,MAIN_LOGEVENTS_DISABLE_ALL,Setting,Stops security-event recording before per-event settings are tested.
+Commercial workflow,BANK_ASK_PAYMENT_BANK_DURING_ORDER,Setting,If enabled the auto-created invoice skips the fallback to the party's bank account.
+Commercial workflow,FICHEINTER_ADDON_PDF,Setting,Selects the document model on an intervention created from a ticket.
+Commercial workflow,STOCK_SUPPORTS_SERVICES,Setting,Includes services in the ordered quantities compared with cumulative dispatches or receipts. Type 9 presentation lines are always excluded.
+Commercial workflow,TICKET_PRODUCT_CATEGORY,Setting,Selects the category of contract services eligible for automatic ticket linking.
+Commercial workflow,WORKFLOW_CLASSIFY_IF_AMOUNTS_ARE_DIFFERENTS,Setting,Waives equality only for branches using the shared pre-tax comparison.
+Commercial workflow,WORKFLOW_INVOICE_AMOUNT_CLASSIFY_BILLED_ORDER,Setting,On customer invoice validation compares the current amount with eligible source orders and requests billed classification.
+Commercial workflow,WORKFLOW_INVOICE_AMOUNT_CLASSIFY_BILLED_SUPPLIER_ORDER,Setting,On supplier bill validation can classify purchase orders using their base totals or qualifying same-currency foreign totals.
+Commercial workflow,WORKFLOW_INVOICE_CLASSIFY_BILLED_ORDER,Setting,On a customer invoice classified paid compares against eligible orders and can classify them billed.
+Commercial workflow,WORKFLOW_INVOICE_CLASSIFY_BILLED_PROPAL,Setting,On customer invoice validation compares signed or already billed proposals and can classify them billed.
+Commercial workflow,WORKFLOW_INVOICE_CLASSIFY_BILLED_SUPPLIER_PROPOSAL,Setting,On supplier bill validation compares signed or closed supplier quotes and can classify them billed.
+Commercial workflow,WORKFLOW_ORDER_AUTOCREATE_INVOICE,Setting,Converts the closed customer order to a customer invoice.
+Commercial workflow,WORKFLOW_ORDER_CLASSIFY_BILLED_PROPAL,Setting,When an order is classified billed compares linked proposals and can classify them billed.
+Commercial workflow,WORKFLOW_ORDER_CLASSIFY_RECEIVED_RECEPTION,Setting,Checks purchase order completion when a receipt validates.
+Commercial workflow,WORKFLOW_ORDER_CLASSIFY_RECEIVED_RECEPTION_CLOSED,Setting,Checks purchase order completion when a receipt closes.
+Commercial workflow,WORKFLOW_ORDER_CLASSIFY_SHIPPED_SHIPPING,Setting,Checks sales order completion when a shipment validates.
+Commercial workflow,WORKFLOW_ORDER_CLASSIFY_SHIPPED_SHIPPING_CLOSED,Setting,Checks sales order completion when a shipment closes.
+Commercial workflow,WORKFLOW_PROPAL_AUTOCREATE_ORDER,Setting,Creates an order on proposal acceptance when the subscriber finds no existing linked order.
+Commercial workflow,WORKFLOW_RECEPTION_CLASSIFY_BILLED_INVOICE,Setting,On supplier bill validation compares the unrounded sum of eligible receipt pre-tax totals against the bill and can mark receipts billed.
+Commercial workflow,WORKFLOW_SHIPPING_CLASSIFY_BILLED_INVOICE,Setting,On customer invoice validation compares validated or closed shipments against the invoice and can mark them billed.
+Commercial workflow,WORKFLOW_SHIPPING_CLASSIFY_CLOSED_INVOICE,Setting,On customer invoice validation compares validated shipments against the invoice and can close them.
+Commercial workflow,WORKFLOW_SUM_INVOICES_AMOUNT_CLASSIFY_BILLED_ORDER,Setting,Checks cumulative linked invoices for a single source order. Requires every other linked invoice to be validated or closed and equal rounded totals.
+Commercial workflow,WORKFLOW_TICKET_CREATE_INTERVENTION,Setting,Attempts to create an intervention linked to the newly created ticket.
+Commercial workflow,WORKFLOW_TICKET_LINK_CONTRACT,Setting,Searches eligible contracts and writes the ticket's single contract field at the first matching party.
+Commercial workflow,WORKFLOW_TICKET_USE_PARENT_COMPANY_CONTRACTS,Setting,Extends the automatic contract search from the ticket party to its ancestors.
+Automatic calendar activity,MAIN_AGENDA_ACTIONAUTO_<event>,Key pattern,Enables automatic activity creation for one exact code after the activity recursion guard.
+Automatic calendar activity,MAIN_COPY_FILE_IN_EVENT_AUTO,Setting,After a successful activity insert attempts to move listed attachments and index them against the source and activity.
+Event project planning,EVENTORGANIZATION_TASK_LABEL,Setting,Newline-separated tasks to create when a project used for organising an event validates.
+Event project planning,PROJECT_TASK_ADDON,Setting,Chooses the numbering model for each automatic project task when the configured model can be loaded.
+Directory synchronisation,DISABLE_LDAP_SYNCHRO,Process constant,Defining this process constant skips all operations in the directory subscriber.
+Directory synchronisation,LDAP_CONTACT_ACTIVE,Setting,A truthy value enables contact create/update/delete synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_END_LASTSUBSCRIPTION,Setting,A configured last subscription expiry attribute qualifies member subscription synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_FIRSTSUBSCRIPTION_AMOUNT,Setting,A configured first subscription amount attribute qualifies member subscription synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_FIRSTSUBSCRIPTION_DATE,Setting,A configured first subscription date attribute qualifies member subscription synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_LASTSUBSCRIPTION_AMOUNT,Setting,A configured last subscription amount attribute qualifies member subscription synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_LASTSUBSCRIPTION_DATE,Setting,A configured last subscription date attribute qualifies member subscription synchronisation.
+Directory synchronisation,LDAP_FIELD_MEMBER_STATUS,Setting,A configured member status attribute qualifies outbound updates on validation and termination.
+Directory synchronisation,LDAP_FIELD_PASSWORD,Setting,A configured password attribute qualifies the member password change update.
+Directory synchronisation,LDAP_FIELD_PASSWORD_CRYPTED,Setting,A configured encrypted-password attribute also qualifies the member password change update.
+Directory synchronisation,LDAP_GROUP_FIELD_GROUPID,Setting,Checks this mapped group ID before allocating the next numeric ID for a POSIX group.
+Directory synchronisation,LDAP_MEMBER_ACTIVE,Setting,Selects outbound member synchronisation for membership events.
+Directory synchronisation,LDAP_MEMBER_TYPE_ACTIVE,Setting,Selects outbound type synchronisation and group-membership updates associated with affected members.
+Directory synchronisation,LDAP_SEND_EMPTY_MEMBERS_TO_GROUP,Setting,Controls whether to include an empty group membership attribute and whether to load missing group members on update.
+Directory synchronisation,LDAP_SERVER_TYPE,Setting,Active Directory mode qualifies the account status change branch for outbound user synchronisation.
+Directory synchronisation,LDAP_SYNCHRO_ACTIVE,Setting,Selects the synchronisation direction for users and user groups.
+Directory synchronisation,LDAP_USERACCOUNTCONTROL,Setting,Sets the account-control attribute on outbound user creation for Active Directory.
+Subscription notifications,MAIN_MAIL_EMAIL_FROM,Setting,Fallback sender when the subscription notification sender is empty.
+Subscription notifications,NOTIFICATION_EMAIL_FROM,Setting,Selects the sender for subscribed notifications.
+Subscription notifications,NOTIFICATION_FIXEDEMAIL_<event>_THRESHOLD_HIGHER_<amount>,Key pattern,Configures a fixed recipient by event and minimum threshold. A nonempty pre-tax amount must exceed the threshold.
+Ticket mail,MAIN_INFO_SOCIETE_NOM,Setting,Supplies the sender display name on customer and administrator ticket mail.
+Ticket mail,MAIN_MAIL_AUTOCOPY_TO,Setting,Supplies the sitewide automatic mail copy. Ticket-specific suppression can temporarily clear it.
+Ticket mail,TICKET_DISABLE_ALL_MAILS,Setting,Suppresses the assignee-mail branches that check this key. Customer and administrator paths have independent conditions.
+Ticket mail,TICKET_DISABLE_MAIL_AUTOCOPY_TO,Setting,Temporarily suppresses the sitewide automatic copy for ticket mail.
+Ticket mail,TICKET_ENABLE_PUBLIC_INTERFACE,Setting,Includes the tracking link when composing a ticket message to a customer.
+Ticket mail,TICKET_NOTIFICATION_EMAIL_FROM,Setting,Provides the sender address for ticket administrator and customer mail.
+Ticket mail,TICKET_NOTIFICATION_EMAIL_TEMPLATE,Setting,Supplies a template label and optional type for message substitution.
+Ticket mail,TICKET_NOTIFICATION_EMAIL_TO,Setting,Provides the administrator recipients at ticket creation and closure.
+Ticket mail,TICKET_NOTIFY_AT_CLOSING,Setting,Supplies a fallback party address when the closing ticket has no linked contacts.
+Ticket mail,TICKET_NOTIFY_CUSTOMER_TICKET_ASSIGNED,Setting,Sends customer assignment mail on the first assignment when recipients exist.
+Ticket mail,TICKET_URL_PUBLIC_INTERFACE,Setting,Supplies the public ticket base address used to construct the tracking link.
+Payment provider,STRIPE_DELETE_STRIPE_ACCOUNT_WHEN_DELETING_THIRDPARTY,Setting,On party deletion attempts to delete the matching remote customer as well as locally removing the provider link.
+Payment provider,STRIPE_LIVE,Setting,Selects the live provider account when enabled and the test account when disabled.
+Payment provider,STRIPE_SAVE_TAX_IDS,Setting,When updating a provider customer adds an eligible EU VAT ID or attempts to remove remote tax IDs when the local VAT ID is empty.
+Webhook targets,WEBHOOK_POST_SEND_DATA_AS_PARAM_STRING,Setting,Selects the alternate POST parameter-string handling for the serialised JSON payload.
+Immutable log,BLOCKEDLOG_ADD_ACTIONS_SUPPORTED,Setting,Comma-separated extension also consulted for element qualification and action eligibility when building audit evidence.
+Immutable log,BLOCKEDLOG_REGISTRATION_EMAIL,Setting,Included in the diagnostic for an incomplete registration check.
+Immutable log,BLOCKEDLOG_REGISTRATION_NAME,Setting,Included in the diagnostic for an incomplete registration check.
+Immutable log,MAIN_FIRST_REGISTRATION_OK_DATE,Setting,Included in the diagnostic for an incomplete registration check.
+Immutable log,MAIN_INFO_SIREN,Setting,Issuer business identifier included in the incomplete registration diagnostic.
+Immutable log,MAIN_INFO_SIRET,Setting,Issuer establishment identifier included in the incomplete registration diagnostic.

@@ -27,7 +27,7 @@ The arrows from order and shipment to invoice show alternative document origins.
 | How much has shipped? | Shipment allocation and source order-line ID, qualified by shipment state | Two lines for the same product can produce different outcomes under the built-in closure check and configured workflow. |
 | How much was invoiced? | Validated invoice lines and document totals | Reproduce stored line rounding and document-level adjustments in the selected currency/precision. |
 | What remains to be paid? | Invoice gross, allocated payments and applied credits/deposits | Split a receipt across two invoices. Preserve each invoice's due amount and the one cash receipt. |
-| Has cash cleared the statement? | Bank movement, statement and reconciliation fields | A receipt can reduce the amount due before statement reconciliation. |
+| Has cash cleared the statement? | Bank movement’s statement reference (`bank.num_releve`), reconciliation flag and user | A receipt can reduce the amount due before statement reconciliation. |
 | Has the accountant posted it? | Source document or bank-row identity in the journal, bound accounts and period | A commercially validated invoice can still await transfer to the ledger. |
 
 ## Names, inputs and service contracts
@@ -41,7 +41,7 @@ Test commands under a named installation profile. Apply the following decisions 
 - **Status and balance.** An invoice can have zero due and remain open when automatic closure is disabled. [Collections](../finance/collections.md)
 - **Reference cost and actual receipt cost.** A supplier offer supplies commercial terms. Weighted stock value changes when a priced movement is posted under the active policy. [Catalogue](../supply/catalogue.md) · [Stock](../supply/stock.md)
 - **Grant and record visibility.** A user can have the domain permission and still be denied a record belonging to another party or entity. [Effective access](execution-and-access.md)
-- **Business completion and durable side effects.** A failed later operation can leave an earlier transfer movement or an accepted external payment in place. Compare persisted records before replaying the command. [Transfers](../supply/stock.md) · [Point of sale](../commerce/point-of-sale.md)
-- **Record shape and cross-record semantics.** A valid receipt shape can still exceed an invoice's outstanding balance. The application enforces that invariant against current records. [Receipt schema](../../schemas/finance/receipt-request.schema.json) · [Settlement scenarios](../finance/collections.md)
+- **Business completion and durable side effects.** A failed later operation can leave an earlier transfer movement or an accepted external payment in place. A mail relay can also accept the invoice before a database rollback removes its send event. Before retrying, read committed source and target records and check the external acknowledgement. [Billing recovery](../conversion-recovery/README.md) · [Mail submission](../delivery-evidence/README.md) · [Transfers](../supply/stock.md) · [Point of sale](../commerce/point-of-sale.md)
+- **Record shape and cross-record semantics.** A valid receipt shape can still exceed an invoice’s outstanding balance. Distributed payment checks each allocation against the current remainder and rejects an excess unless the caller enables higher payments. [Receipt schema](../../schemas/finance/receipt-request.schema.json) · [Settlement scenarios](../finance/collections.md)
 
 An implementation can demonstrate one complete slice by reproducing the [ten-step trading cycle](../trade/worked-cycle.md), then running a second case with a different stock timing, VAT rounding policy or permission. Record the intended differences in the acceptance evidence.

@@ -1,13 +1,13 @@
 # Other shared records events
 
-Each entry identifies an operator-selectable event or a named signal emitted by a business operation. An agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. See the [event contract](README.md) for shared dispatch and subscription rules.
+Each entry identifies an operator-selectable event or a named signal emitted by a business operation. An agenda entry identifies a dedicated branch for building the activity. Notification indicates built-in eligibility subject to subscription. Workflow indicates a branch whose settings govern downstream changes. The [subscriber register](../event-effects/event-selection.csv) gives the full selection rules, including configurable and generic handlers. See the [event contract](README.md) for shared dispatch and subscription rules.
 
 | Event | Setup meaning or origin | Emitting operation | Specific subscriber branches |
 | --- | --- | --- | --- |
 | `CATEGORY_CREATE` | Operation signal | `categorie.create` | No dedicated branch listed |
 | `CATEGORY_DELETE` | Operation signal | `categorie.delete` | No dedicated branch listed |
 | `CATEGORY_DEL_MULTILANGS` | Operation signal | `categorie.delMultiLangs` | No dedicated branch listed |
-| `CATEGORY_MODIFY` | Operation signal | `categorie.update` · `categorie.add_type` · `categorie.del_type` | No dedicated branch listed |
+| `CATEGORY_MODIFY` | Operation signal | `categorie.update` · `categorie.add_type` · `categorie.del_type` | Membership mailing lists |
 | `CATEGORY_SET_MULTILANGS` | Operation signal | `categorie.setMultiLangs` | No dedicated branch listed |
 | `LINK_CREATE` | Operation signal | `link.create` | No dedicated branch listed |
 | `LINK_DELETE` | Operation signal | `link.delete` | No dedicated branch listed |

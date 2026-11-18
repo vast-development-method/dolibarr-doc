@@ -12,7 +12,7 @@ An order can move from approved to fulfilled while the linked proposal, customer
 | [People, membership and support](people-and-service.md) | Which event describes a leave decision, claim, ticket, employment record or membership payment? |
 | [Other shared records](other.md) | Which changes concern categories, documents, subscriptions to messages or general associations? |
 
-The catalogue covers the 161 named entries in the standard event dictionary and additional literal emissions in the surveyed business classes and shared action handlers. Together they identify 371 distinct codes. A dictionary entry establishes a name offered to setup. A direct emission site identifies an operation that actually sends the name. Generic create/update/delete paths can construct an event name from the object type at runtime. The emitting-operation column identifies the record or action and its operation. Where dispatch is shared or assembled at runtime, the entry states that a literal call has not been assigned. Extension-defined names and every dynamically assembled code are outside this count.
+The catalogue covers the 161 named entries in the standard event dictionary and additional literal emissions in the surveyed business classes and shared action handlers. Together they identify 371 distinct codes. A dictionary entry establishes a name offered to setup. A direct emission site identifies an operation that actually sends the name. Generic create/update/delete paths can construct an event name from the object type at runtime. The emitting-operation column identifies the record or action and its operation. Where dispatch is shared or assembled at runtime, the entry states that a literal call has not been assigned. The [constructed event register](../event-effects/constructed-codes.csv) resolves 176 runtime-built codes for 212 routes on 57 record types. Sixteen overlap the named catalogue, giving 531 distinct codes across both. Further codes can depend on caller-supplied status actions and installed extensions.
 
 ## What reaches the next module
 
@@ -30,4 +30,4 @@ A notification subscription is a separate decision. The notification handler tes
 
 ## Commercial subscribers
 
-The [commercial automation decisions](commercial-automation.md) describe specific effects with their eligibility, totals, linked records and failure conditions.
+The [subscriber execution order](../event-effects/README.md) covers the thirteen built-in subscribers, constructed event names, setting interactions and failure outcomes. The [commercial automation decisions](commercial-automation.md) describe specific effects with their eligibility, totals, linked records and failure conditions.

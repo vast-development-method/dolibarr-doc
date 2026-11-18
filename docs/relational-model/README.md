@@ -9,7 +9,7 @@ Use the table name to move from a business record to its ordered fields, keys an
 | [Keys and indexes](keys.csv) | 406 primary keys, 257 other unique keys and 491 lookup indexes | Read the ordered column list as one key. Each row gives the declaration stage and how many times the same definition occurs. |
 | [Foreign keys](foreign-keys.csv) | 235 declared child-to-parent constraints | Filter on the child to find its required or optional references. Filter on the parent to find its direct dependants. The fields catalogue gives nullability. |
 | [Application associations](application-associations.csv) | 84 configurable-field stores and their owners, plus 32 resolvable relationships explicitly named in reviewed field metadata | Follow relationships maintained by object operations. The final column says whether the same endpoints also have a declared database constraint. |
-| [Supplemental field meanings](supplemental-field-roles.csv) | All 411 fields of the 41 tables outside the main business-family dictionary | Match table and field for the meaning of a value in an optional feature, an older structure or a record with limited operational evidence. The other 4,951 field positions are described in the [business record dictionary](../records/README.md). |
+| [Supplemental field meanings](supplemental-field-roles.csv) | All 411 fields of the 41 tables outside the main business-family dictionary | Look up field meanings for optional features, reserved structures, retired state and diagnostic logging. The [operating roles](../records/operational-evidence.md) identify the records used in standard workflows. The other 4,951 field positions are described in the [business record dictionary](../records/README.md). |
 
 ## Reading a field
 

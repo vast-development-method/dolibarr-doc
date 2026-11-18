@@ -76,3 +76,5 @@ The table counts public method declarations. Of 586 declarations, 584 own an eff
 | `response` | Describes the returned shape or an absent body. The source label distinguishes a directly returned shape, a delegated result and a declared return type. Property maps give concrete names where declared. An empty property schema leaves that value unconstrained. A model title identifies a record family. |
 
 As an example, the bank-transfer handler defaults the destination-currency amount to zero. A cross-currency transfer still requires a destination amount. The operation chapter gives that conditional rule. Likewise, a default-null request-data argument may lead immediately to a missing-member error when a named field is required. Explicit null, omission in transport and a missing body member have distinct meanings.
+
+[Inputs and outcomes of all write routes](../service-writes/README.md) · [Reads that change business records](reads-with-effects.md)
