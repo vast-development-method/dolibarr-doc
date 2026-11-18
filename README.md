@@ -2,16 +2,16 @@
 
 A language-neutral blueprint for rebuilding an integrated ERP. It describes how Dolibarr **24.0.3** joins customer and supplier documents, stock, services, people, cash and accounting. Each chapter connects a business decision to its data, permissions, state changes, failure behaviour and acceptance cases. Schemas use portable business terms. Source links resolve to the implementation used to derive them. [Release baseline](docs/baseline.md)
 
-**Start with the [worked trading cycle](docs/trade/worked-cycle.md).** Trace ten units received and six sold through two shipments, two collections, a supplier payment and the ledger. The example explains why stock value, commercial margin, cash and tax end at different amounts. Follow an individual document into the chapters below to see its rules and alternatives.
+**Start with the [worked trading cycle](docs/trade/worked-cycle.md).** Trace ten units received and six sold through two shipments, two collections, a supplier payment and the ledger. The example explains why stock value, commercial margin, cash and tax end at different amounts. The [rebuild contract](docs/platform/rebuild-contract.md) shows which records own each fact and which results an equivalent implementation should reproduce.
 
 ## Find a business operation
 
 | Business question | Read |
 | --- | --- |
 | Who can act on a record? What commits together? | [Execution, entity scope and access](docs/platform/execution-and-access.md) · [Document origins and relationship contracts](docs/platform/document-relationships.md) |
-| How does an offer become a fulfilled sale? | [Parties and contacts](docs/sales/parties-and-contacts.md) · [Proposals and orders](docs/sales/proposals-and-orders.md) · [Dispatch and invoice origin](docs/sales/dispatch-to-invoice.md) |
+| How does an offer become a fulfilled sale? | [Parties and contacts](docs/sales/parties-and-contacts.md) · [Proposals and orders](docs/sales/proposals-and-orders.md) · [Dispatch and invoice origin](docs/sales/dispatch-to-invoice.md) · [Returns, cancellations and refunds](docs/returns/customer-returns.md) |
 | How is a supplier order priced, approved and received? | [Catalogue, variants and prices](docs/supply/catalogue.md) · [Purchasing and receiving](docs/supply/purchasing.md) · [Warehouse valuation and transfers](docs/supply/stock.md) · [Supplier invoices and payments](docs/supply/payables.md) |
-| How are an invoice and its outstanding balance calculated? | [Customer invoices, discounts and rounding](docs/finance/customer-invoices.md) · [Collection and reconciliation](docs/finance/collections.md) · [Pricing verification](docs/finance/pricing-verification.md) |
+| How are an invoice and its outstanding balance calculated? | [Customer invoices, discounts and rounding](docs/finance/customer-invoices.md) · [Collection and reconciliation](docs/finance/collections.md) · [Progress billing and retention](docs/finance-exceptions/progress-and-retention.md) · [Credits, replacements and deposits](docs/finance-exceptions/corrections-and-deposits.md) · [Pricing verification](docs/finance/pricing-verification.md) |
 | What posts to the ledger and when? | [Chart, account binding and report selection](docs/additional-domains/chart-and-reporting.md) · [Bookkeeping](docs/finance/bookkeeping.md) · [Fiscal close](docs/treasury/fiscal-close.md) · [Tax geography and rounding](docs/additional-domains/tax-geography-and-rounding.md) |
 | How do funds move? | [Payment orders and collections](docs/treasury/payment-orders.md) · [Online settlement](docs/treasury/online-payments.md) · [Bank transfers and obligations](docs/treasury/bank-and-obligations.md) |
 | What happens at a till and how is margin calculated? | [TakePOS](docs/commerce/takepos.md) · [Commercial margins](docs/commerce/commercial-margins.md) |

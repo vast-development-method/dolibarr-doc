@@ -13,7 +13,7 @@ Every descriptor that passes the release's stable filter has a [functional readi
 | [Actual release pricing code](../finance/pricing-verification.md) | Four blueprint invoice fixtures ran through the upstream calculator and invoice-line aggregation. A separate run compared 14 expected arrays in the upstream pricing test. |
 | [Reference indexes](../reference/README.md) and [permission declarations](../permissions/README.md) | The indexes expose the source behind fields, declared keys, API methods and permissions. Effective rights and state transitions are further constrained by module settings, actor and record. |
 
-The transaction and failure scenarios outside the recorded runtime pricing checks were traced to code. End-to-end UI and REST execution against a configured Dolibarr installation, real payment-provider callbacks and country-specific return preparation remain separate verification work.
+The transaction and failure scenarios outside the recorded runtime pricing checks were traced to code. The [progress-invoicing chapter](../finance-exceptions/progress-and-retention.md) also records a retention edge case. [After-sales corrections](../returns/customer-returns.md) distinguish shipment cancellation, a return movement, a customer credit and a cash refund. End-to-end UI and REST execution against a configured Dolibarr installation, real payment-provider callbacks and country-specific return preparation remain separate verification work.
 
 ## Resume one bounded investigation
 

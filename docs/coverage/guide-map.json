@@ -36,7 +36,8 @@
       "key": "Api",
       "guides": [
         "docs/platform/execution-and-access.md",
-        "docs/platform/document-relationships.md"
+        "docs/platform/document-relationships.md",
+        "docs/platform/rebuild-contract.md"
       ],
       "focus": "Resource discovery, entity and record access, link creation and retrieval."
     },
@@ -179,7 +180,8 @@
     {
       "key": "Expedition",
       "guides": [
-        "docs/sales/dispatch-to-invoice.md"
+        "docs/sales/dispatch-to-invoice.md",
+        "docs/returns/customer-returns.md"
       ],
       "focus": "Source order quantities, shipment validation, warehouse effects and billing from dispatched lines."
     },
@@ -210,7 +212,10 @@
         "docs/finance/customer-invoices.md",
         "docs/finance/collections.md",
         "docs/treasury/payment-orders.md",
-        "docs/additional-domains/tax-geography-and-rounding.md"
+        "docs/additional-domains/tax-geography-and-rounding.md",
+        "docs/finance-exceptions/progress-and-retention.md",
+        "docs/finance-exceptions/corrections-and-deposits.md",
+        "docs/returns/customer-returns.md"
       ],
       "focus": "Invoice state, tax-inclusive and exclusive line pricing, cash allocation and recurring billing."
     },
@@ -482,7 +487,8 @@
     {
       "key": "Stock",
       "guides": [
-        "docs/supply/stock.md"
+        "docs/supply/stock.md",
+        "docs/returns/customer-returns.md"
       ],
       "focus": "Warehouse balances, inventory movements, weighted average cost, replenishment and counts."
     },
