@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application decisions",
+  "description": "Command projection of recruiting review and applicant offer decisions. The service checks actor and stored state.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "decision": {
+          "const": "reviewApplication"
+        },
+        "outcome": {
+          "enum": [
+            "makeOffer",
+            "declineApplication"
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "decision",
+        "outcome"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "decision": {
+          "const": "recordOfferOutcome"
+        },
+        "outcome": {
+          "enum": [
+            "signed",
+            "declinedByCandidate"
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "decision",
+        "outcome"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}
