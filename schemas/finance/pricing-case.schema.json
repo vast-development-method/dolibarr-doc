@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pricing Case",
+  "type": "object",
+  "properties": {
+    "vatRounding": {
+      "enum": [
+        "perLine",
+        "perRate"
+      ]
+    },
+    "amountScale": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "basis": {
+            "enum": [
+              "net",
+              "gross"
+            ]
+          },
+          "unitPrice": {
+            "$ref": "#/$defs/decimal"
+          },
+          "quantity": {
+            "$ref": "#/$defs/positive"
+          },
+          "discountPercent": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "vatPercent": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "basis",
+          "unitPrice",
+          "quantity",
+          "discountPercent",
+          "vatPercent"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "expected": {
+      "type": "object",
+      "properties": {
+        "net": {
+          "$ref": "#/$defs/decimal"
+        },
+        "vat": {
+          "$ref": "#/$defs/decimal"
+        },
+        "gross": {
+          "$ref": "#/$defs/decimal"
+        }
+      },
+      "required": [
+        "net",
+        "vat",
+        "gross"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "vatRounding",
+    "amountScale",
+    "lines",
+    "expected"
+  ],
+  "additionalProperties": false,
+  "description": "Worked benchmark for full-progress ordinary VAT lines with no local tax, increment or unit-first discount rounding. Decimal strings preserve exact input; totals are arithmetic assertions evaluated separately.",
+  "$defs": {
+    "decimal": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "positive": {
+      "type": "string",
+      "pattern": "^([1-9][0-9]*(\\.[0-9]+)?|0\\.0*[1-9][0-9]*)$"
+    }
+  }
+}

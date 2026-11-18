@@ -1,0 +1,29 @@
+{
+  "entityId": 1,
+  "journal": "SALES",
+  "source": {
+    "kind": "customerInvoice",
+    "id": 101,
+    "reference": "INV-101",
+    "date": "2026-11-10"
+  },
+  "currency": "EUR",
+  "lines": [
+    {
+      "account": "AR",
+      "auxiliaryAccount": "CUS-21",
+      "side": "credit",
+      "amount": "62.10"
+    },
+    {
+      "account": "SALES",
+      "side": "credit",
+      "amount": "54.00"
+    },
+    {
+      "account": "OUTPUT-VAT",
+      "side": "credit",
+      "amount": "8.10"
+    }
+  ]
+}

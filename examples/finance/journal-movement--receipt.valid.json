@@ -1,0 +1,24 @@
+{
+  "entityId": 1,
+  "journal": "BANK",
+  "source": {
+    "kind": "bankMovement",
+    "id": 303,
+    "reference": "RECEIPT-303",
+    "date": "2026-11-11"
+  },
+  "currency": "EUR",
+  "lines": [
+    {
+      "account": "BANK",
+      "side": "debit",
+      "amount": "40.00"
+    },
+    {
+      "account": "AR",
+      "auxiliaryAccount": "CUS-21",
+      "side": "credit",
+      "amount": "40.00"
+    }
+  ]
+}
