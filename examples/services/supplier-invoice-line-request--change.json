@@ -1,0 +1,18 @@
+{
+  "operation": "change",
+  "invoiceId": 82,
+  "lineId": 406,
+  "body": {
+    "description": "Supplier calibration service",
+    "ref_supplier": "CAL-SVC",
+    "pu_ht": 50,
+    "price_base_type": "HT",
+    "qty": 3,
+    "remise_percent": 10,
+    "tva_tx": "20(VAT20)",
+    "localtax1_tx": 0,
+    "localtax2_tx": 0,
+    "product_type": 1,
+    "info_bits": 0
+  }
+}

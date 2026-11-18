@@ -2,6 +2,8 @@
 
 Supplier billing and payment use the purchase-side authorization scope. The service exposes payable invoice lines, supplier payments, draft restoration and paid or unpaid classifications.
 
+For nested line request bodies, pricing and transaction outcomes, see [supplier invoice line inputs and pricing](supplier-invoice-line-inputs.md).
+
 The implementation locations below refer to `htdocs/fourn/class/api_supplier_invoices.class.php`.
 
 ## `get` — Read a supplier invoice
@@ -244,7 +246,7 @@ The method amends a line.
 
 **Result** A record with internal service properties removed.
 
-- `304` — unchanged state.
+- `304` — line amendment or subsequent header repricing returned a nonpositive result.
 - `403` — missing operation rights, record outside the caller’s scope, line does not belong to this supplier invoice.
 - `404` — supplier invoice missing, supplier invoice line missing.
 
