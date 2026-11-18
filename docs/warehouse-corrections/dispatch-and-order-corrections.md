@@ -1,0 +1,46 @@
+# Reverse a dispatch or reopen its source order
+
+A customer order owns a commercial commitment. A shipment owns a set of dispatch allocations. The warehouse owns goods at locations, often subdivided by lot. When these records disagree, identify which transition issued the stock before changing the document's status.
+
+## Posting at shipment closure
+
+For a shipment selected for closure, an already closed object reports that there is nothing to do. Closing a draft first requests validation. The close operation then updates the stored header only if it has a positive state other than closed. If the update changes no record, the method rolls back its close attempt and returns without creating a close movement. If the shipment lacks an actual dispatch date, closing supplies it. Under closure posting, the stock movements and closing event run inside the close transaction. If validation was invoked first, it had its own transaction.
+
+Each dispatch line supplies product and originating warehouse. A line without a batch split supplies its full quantity. When splits exist, the movement loop uses the positive split quantities and skips nonpositive ones. It does not also issue the parent line quantity. A left join to the sales line permits shipment lines without an originating order line to reach the loop. The shipment supplies the movement origin. The issue can carry the original sale-line unit price in its journal row. As an outgoing-type movement it preserves the product average.
+
+For a customer-order origin, the close operation reloads the order's shipped quantities from **closed** shipments and compares them with ordered quantities by source line. In the covered goods/service population it uses equality. An over-shipment is a mismatch just as a shortage is. The order can therefore retain its in-progress status even after a warehouse clerk closes the latest shipment. A quantity equal at product level can still be uneven across two source lines for the same product.
+
+Reopening a closed shipment in closure-posting mode issues an opposite movement for every applicable positive dispatch allocation. It uses the **issue** operation with a negative argument. This writes a positive quantity under the ordinary issue movement type, retaining the sale-line price passed by the caller. The writer picks the average-cost branch by movement type, so stock increases without repricing the product. Lot text and the original stock-split ID are supplied for a batch allocation. Where a depleted lot-position row has disappeared, the movement writer can re-establish it by warehouse stock identity and the batch number. Current master dates apply. In validation-posting mode reopening the close alone has no stock movement.
+
+The reopen's persisted update sets the header state to validated only if it is still closed. An object already observed as validated yields no work. A stale closed object that loses the conditional update returns a state error before moving any stock. The reopen code resets the in-memory billed flag. Its header update writes the state field alone. A fresh read can therefore retain the previous persisted billed value. The reopen method does not invoke a corresponding source sales-order reclassification. An order previously classified delivered warrants a separate state reconciliation.
+
+Sources are `htdocs/expedition/class/expedition.class.php:995–1088,2950–3040,3060–3131,3200–3318` and `htdocs/product/stock/class/mouvementstock.class.php:588–615,638–650,877–882,960–1005`.
+
+## Cancellation, deletion and draft
+
+| Normal entry | Allocation and state effect |
+| --- | --- |
+| Return an open shipment to draft | The shipping card offers the action on a validated shipment when validation is not the configured shipment stock event. The business method delegates a status change and emits an unvalidation event. That method contains no stock reversal. |
+| Cancel through the shipping card | Requires shipment creation authority and confirmation. The card supplies an explicit stock-update choice. Cancellation processes and removes dispatch lines and splits while retaining the header. The card separately changes the retained header to canceled after the cancellation operation succeeds. |
+| Delete through the shipping card | Requires shipment deletion authority. The card passes the chosen stock-update flag. Deletion removes the lines and header. The service deletion operation calls the business method using its default stock-update argument. |
+| Cancel/delete a stock-posted shipment | With validation posting, stock is restored for eligible lines when the shipment state is above draft. With closure posting, the shipment must be closed **and** the caller must request stock restoration. A closed document can be deleted by an entry point that supplies the default false. The resulting document history and stock balances depend on the entry point. |
+
+Cancellation and deletion inspect each line's warehouse and current component-movement rules. Ordinary eligible stock items restore the line quantity when there is no batch detail. When batch details exist, they restore nonzero split quantities using the recorded lot. These receipt-type movements pass unit price zero and omit a stock origin pointing to the affected shipment. For a canceled source sales order shipment, the cancellation routine can take an order still classified shipment-in-progress back to validated when its dispatched quantities have been removed. That condition is distinct from reopening a closed shipment.
+
+A cancellation commits removal/restoration before cleaning generated documents. A document-file failure can consequently return an unsuccessful result after stock and line changes have committed. The card's separate status change then need not have occurred. Re-read the header, lines and reversal movements before interpreting such a result. [Event and transaction boundaries](../events/README.md)
+
+Sources are `htdocs/expedition/card.php:240–259,674–690,3816–3831`, `htdocs/expedition/class/expedition.class.php:1768–1816,1830–1892,1900–1950,1961–2068,3185–3193` and `htdocs/expedition/class/api_shipments.class.php:549–578`.
+
+## Worked split dispatch
+
+One warehouse holds six red-lot units and four blue-lot units at an average of 12. Close a shipment for five units, split into three red and two blue. Closing writes two negative movements. Warehouse on-hand is now red three and blue two, or five units valued at 60. Reopening under closure posting writes two positive movements, red three and blue two, while average cost stays 12. A later successful close creates two fresh negative movements. The journal now has six rows whose signed quantity totals −5. The customer's net cumulative dispatch under this sequence is five units, even though the sum of all positive journal rows is also five.
+
+If the original dispatch posted at **validation**, the same closed shipment had its two negative movements at validation. Reopening it leaves both balances at three and two. Restoring stock through cancellation under that policy adds the two splits once, subject to the eligibility of the lines. Dates, entry points and current settings are part of a comparison across the two cases.
+
+## Reopening an order
+
+With sales stock posting on order validation, the customer order issues its product lines at the warehouse supplied to validation. Returning it to draft or canceling it receives eligible product quantities at the warehouse supplied to that operation, at zero price. The order routine does not look up the validation movement to choose that warehouse. For four untracked units, an original issue at East and a later draft return at West can restore whole-product quantity while leaving East down four and West up four. In a shipment-posting regime those order transitions do not execute the order-stock branch.
+
+The supplier order follows different rules. In supplier-order approval posting mode the approval that reaches accepted posts the increase. Its cancellation routine accepts a warehouse argument for interface compatibility but has no compensating stock call. Its reopen operation steps the order to a previous administrative state. For example, accepted returns to draft with both approval users/dates cleared, ordered returns to accepted, and fully received returns to partially received. These status changes issue no warehouse movement in the traced methods. Interpreting reopening as a physical supplier return would create a mismatch between the purchase register and actual stock. [Purchasing approvals](../specification/commercial/supplier-sourcing-and-approval.md)
+
+Sources are `htdocs/commande/card.php:1818–1844,1914–1936,1964–1986`, `htdocs/commande/class/commande.class.php:585–612,688–748,910–952` and `htdocs/fourn/class/fournisseur.commande.class.php:1348–1395,1482–1527,2896–2944`.
