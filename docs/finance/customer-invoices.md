@@ -53,7 +53,7 @@ The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALO
 | FIN-INV-06 | Invoiced line at 100.00 net, VAT 20%, local tax 2% on applicable items, no discount. | A type 1 local tax is 2.00 and gross is 122.00. A type 2 local tax is 2.40 and gross is 122.40. |
 | FIN-INV-07 | Validated invoice with an empty cash journal, close with a reason and a shortfall. | Closing metadata changes. Payment allocations and bank lines stay at their previous counts. A write-off or bank transaction needs its own evidence. |
 
-[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate example](../../examples/finance/pricing-case--rate-rounding.json). The schema describes the example's data shape. [Pricing verification](pricing-verification.md) records which calculations were executed against the pinned source.
+[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate example](../../examples/finance/pricing-case--rate-rounding.json). The schema describes the example's data shape. [Invoice rounding examples](rounding-examples.md) show the monetary outcomes for different calculation policies.
 
 [invoice]: ../reference/locators/finance.md#ref-f0205e8de33b
 [wiki]: ../reference/locators/finance.md#ref-07f1d5ed7e3b
