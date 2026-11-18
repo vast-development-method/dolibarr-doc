@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Banked loan repayment projection",
+  "description": "Repayment and bank entry after the ordinary outgoing-payment workflow. Compare bankDelta with the negative sum of the payment components.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["loanId", "paymentId", "date", "currency", "principal", "interest", "insurance", "bankLineId", "bankDelta"],
+  "properties": {
+    "loanId": {"$ref": "#/$defs/id"},
+    "paymentId": {"$ref": "#/$defs/id"},
+    "termId": {"$ref": "#/$defs/id"},
+    "bankLineId": {"$ref": "#/$defs/id"},
+    "date": {"type": "string", "format": "date"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "principal": {"$ref": "#/$defs/amount"},
+    "interest": {"$ref": "#/$defs/amount"},
+    "insurance": {"$ref": "#/$defs/amount"},
+    "bankDelta": {"type": "string", "pattern": "^-(0|[1-9][0-9]*)([.][0-9]+)?$"}
+  },
+  "$defs": {
+    "id": {"type": "integer", "minimum": 1},
+    "amount": {"type": "string", "pattern": "^(0|[1-9][0-9]*)([.][0-9]+)?$"}
+  }
+}

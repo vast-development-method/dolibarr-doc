@@ -1,0 +1,11 @@
+{
+  "assetId": 41,
+  "mode": "economic",
+  "currency": "EUR",
+  "openingDepreciation": "0.00",
+  "lines": [
+    {"periodEnd": "2026-01-31", "amount": "333.33", "cumulative": "333.33", "posted": true},
+    {"periodEnd": "2026-02-28", "amount": "333.33", "cumulative": "666.66", "posted": false},
+    {"periodEnd": "2026-03-31", "amount": "333.34", "cumulative": "1000.00", "posted": false}
+  ]
+}
