@@ -4,7 +4,7 @@ A shipping clerk needs to know which items left the warehouse and under which lo
 
 ## Delivery note
 
-The standard delivery note loads the originating document and, when available, prints the source order reference, customer reference and order date. The shipment detail reader retrieves both the ordered quantity and the quantity shipped from each warehouse. Consecutive detail records for one source line are gathered into one product line. The combined quantity sums shipped quantities, while the warehouse-detail list keeps the warehouse, shipped amount and individual shipment detail identifier. The first warehouse identifier on the combined line is cleared when several detail rows contribute.
+The Rouget delivery note, used when neither a saved nor a configured shipment model is available, loads the originating document and, when available, prints the source order reference, customer reference and order date. The shipment detail reader retrieves both the ordered quantity and the quantity shipped from each warehouse. Consecutive detail records for one source line are gathered into one product line. The combined quantity sums shipped quantities, while the warehouse-detail list keeps the warehouse, shipped amount and individual shipment detail identifier. The first warehouse identifier on the combined line is cleared when several detail rows contribute.
 
 The model has independent controls for ordered quantity, shipped quantity, weight/volume, volume alone and display of prices excluding tax. For a physical product the writer multiplies unit weight and volume by quantity shipped. Each measure uses the product's unit and a configurable rounding precision, defaulting to five decimal places. Hiding volume can leave weight visible. Service-type items do not acquire a computed product weight simply because a quantity was shipped.
 
@@ -13,6 +13,8 @@ An order for 12 units, each weighing 1.25 kg, has a delivery of five. With both 
 When the cost display is enabled, the note shows the prepared net line amount beside the unit price. On a shipment line with one source detail, that value uses shipped quantity, unit price and the line discount. For multiple warehouse details grouped into one product line, the source loader adds each detail's price to the shipment header totals but assigns each detail's calculated net amount to the combined line as it iterates. The last assigned line amount can differ from the sum displayed at shipment level. Combining split quantities with an independently recomputed monetary total would conceal this release behavior.
 
 Release references include `htdocs/expedition/class/expedition.class.php:2187–2248,2273–2332,3333–3352`, `htdocs/core/modules/expedition/doc/pdf_rouget.modules.php:513–527,578–614,1015–1047` and `htdocs/core/lib/pdf.lib.php:2257–2299`.
+
+New installations configure Espadon. Its line columns, contact source and measured totals are described in [Shipping, transfer and progress certificate layouts](../../document-models/physical-and-stage-documents.md).
 
 ## Supplier receipt note
 

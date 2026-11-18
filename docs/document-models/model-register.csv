@@ -1,0 +1,68 @@
+record_family,writer_kind,model_file_stem,purpose,release_disposition,source
+General ledger,PDF,pdf_balance,Account balance listing,bundled,htdocs/core/modules/accountancy/doc/pdf_balance.modules.php
+General ledger,PDF,pdf_bookkeeping,Bookkeeping movements,bundled,htdocs/core/modules/accountancy/doc/pdf_bookkeeping.modules.php
+General ledger,PDF,pdf_ledger,General ledger,bundled,htdocs/core/modules/accountancy/doc/pdf_ledger.modules.php
+Calendar activity,PDF,pdf_standard_actions,Monthly event report,special-purpose output,htdocs/core/modules/action/doc/pdf_standard_actions.class.php
+Fixed asset,office,doc_generic_asset_odt,Asset record,bundled,htdocs/core/modules/asset/doc/doc_generic_asset_odt.modules.php
+Fixed asset,PDF,pdf_standard_asset,Fixed asset sheet,bundled,htdocs/core/modules/asset/doc/pdf_standard_asset.modules.php
+Bank and mandate,PDF,pdf_ban,Unfinished bank model,development,htdocs/core/modules/bank/doc/pdf_ban.modules.php
+Bank and mandate,PDF,pdf_sepamandate,Direct-debit mandate,bundled,htdocs/core/modules/bank/doc/pdf_sepamandate.modules.php
+Bill of materials,office,doc_generic_bom_odt,Bill of materials and component rows,bundled,htdocs/core/modules/bom/doc/doc_generic_bom_odt.modules.php
+Cheque deposit,PDF,pdf_blochet,Cheque deposit slip,special-purpose output,htdocs/core/modules/cheque/doc/pdf_blochet.class.php
+Customer order,office,doc_generic_order_odt,Customer order,bundled,htdocs/core/modules/commande/doc/doc_generic_order_odt.modules.php
+Customer order,PDF,pdf_einstein,"Customer order, predecessor to Eratosthene",earlier layout identified by release,htdocs/core/modules/commande/doc/pdf_einstein.modules.php
+Customer order,PDF,pdf_eratosthene,Customer order with configurable columns,bundled,htdocs/core/modules/commande/doc/pdf_eratosthene.modules.php
+Customer order,PDF,pdf_proforma,Customer order as pro forma,bundled,htdocs/core/modules/commande/doc/pdf_proforma.modules.php
+Service contract,office,doc_generic_contract_odt,Contract and services,bundled,htdocs/core/modules/contract/doc/doc_generic_contract_odt.modules.php
+Service contract,PDF,pdf_strato,Service agreement,bundled,htdocs/core/modules/contract/doc/pdf_strato.modules.php
+Delivery acknowledgment,PDF,pdf_storm,Delivery receipt with custom-field support,delivery acknowledgment feature,htdocs/core/modules/delivery/doc/pdf_storm.modules.php
+Delivery acknowledgment,PDF,pdf_typhon,Delivery receipt,delivery acknowledgment feature,htdocs/core/modules/delivery/doc/pdf_typhon.modules.php
+Shipment,office,doc_generic_shipment_odt,Shipment and allocated items,bundled,htdocs/core/modules/expedition/doc/doc_generic_shipment_odt.modules.php
+Shipment,PDF,pdf_espadon,Shipment with configurable columns,bundled,htdocs/core/modules/expedition/doc/pdf_espadon.modules.php
+Shipment,PDF,pdf_merou,A5 delivery note,bundled,htdocs/core/modules/expedition/doc/pdf_merou.modules.php
+Shipment,PDF,pdf_rouget,"Shipment, earlier layout",earlier layout identified by release,htdocs/core/modules/expedition/doc/pdf_rouget.modules.php
+Expense claim,PDF,pdf_standard_expensereport,Expense claim,bundled,htdocs/core/modules/expensereport/doc/pdf_standard_expensereport.modules.php
+Customer invoice,office,doc_generic_invoice_odt,Invoice and lines,bundled,htdocs/core/modules/facture/doc/doc_generic_invoice_odt.modules.php
+Customer invoice,PDF,pdf_octopus,Progress certificate with cycle detail,progress billing mode 2,htdocs/core/modules/facture/doc/pdf_octopus.modules.php
+Customer invoice,PDF,pdf_sponge,Invoice and settlement details,bundled,htdocs/core/modules/facture/doc/pdf_sponge.modules.php
+Field intervention,PDF,pdf_soleil,Intervention sheet,bundled,htdocs/core/modules/fichinter/doc/pdf_soleil.modules.php
+Employee review,PDF,pdf_standard_evaluation,Employee evaluation,bundled,htdocs/core/modules/hrm/doc/pdf_standard_evaluation.modules.php
+Association membership,office,doc_generic_member_odt,Membership record,bundled,htdocs/core/modules/member/doc/doc_generic_member_odt.class.php
+Association membership,PDF,pdf_standard_member,Membership cards,bundled,htdocs/core/modules/member/doc/pdf_standard_member.class.php
+Stock movement,PDF,pdf_standard_movementstock,Stock movement sheet,bundled,htdocs/core/modules/movement/doc/pdf_standard_movementstock.modules.php
+Manufacturing order,office,doc_generic_mo_odt,Manufacturing order,bundled,htdocs/core/modules/mrp/doc/doc_generic_mo_odt.modules.php
+Manufacturing order,PDF,pdf_vinci,Manufacturing order,bundled,htdocs/core/modules/mrp/doc/pdf_vinci.modules.php
+Label sheet,PDF,pdf_standardlabel,Grid of labels from supplied records,special-purpose output,htdocs/core/modules/printsheet/doc/pdf_standardlabel.class.php
+Label sheet,PDF,pdf_tcpdflabel,Alternative label-sheet renderer,special-purpose output,htdocs/core/modules/printsheet/doc/pdf_tcpdflabel.class.php
+Product,office,doc_generic_product_odt,Product sheet,bundled,htdocs/core/modules/product/doc/doc_generic_product_odt.modules.php
+Product,PDF,pdf_standard,Record sheet,bundled,htdocs/core/modules/product/doc/pdf_standard.modules.php
+Project,office,doc_generic_project_odt,Project with tasks and associated records,bundled,htdocs/core/modules/project/doc/doc_generic_project_odt.modules.php
+Project,PDF,pdf_baleine,Project task structure,bundled,htdocs/core/modules/project/doc/pdf_baleine.modules.php
+Project,PDF,pdf_beluga,Project and associated documents,bundled,htdocs/core/modules/project/doc/pdf_beluga.modules.php
+Project,PDF,pdf_timespent,Project time report,bundled,htdocs/core/modules/project/doc/pdf_timespent.modules.php
+Project task,office,doc_generic_task_odt,Task summary,bundled,htdocs/core/modules/project/task/doc/doc_generic_task_odt.modules.php
+Customer proposal,office,doc_generic_proposal_odt,Customer proposal,bundled,htdocs/core/modules/propale/doc/doc_generic_proposal_odt.modules.php
+Customer proposal,PDF,pdf_azur,"Customer offer, predecessor to Cyan",earlier layout identified by release,htdocs/core/modules/propale/doc/pdf_azur.modules.php
+Customer proposal,PDF,pdf_cyan,Customer offer with configurable columns,bundled,htdocs/core/modules/propale/doc/pdf_cyan.modules.php
+Supplier receipt,office,doc_generic_reception_odt,Receipt and allocations,bundled,htdocs/core/modules/reception/doc/doc_generic_reception_odt.modules.php
+Supplier receipt,PDF,pdf_squille,Receipt quantities and allocations,bundled,htdocs/core/modules/reception/doc/pdf_squille.modules.php
+Salary obligation,PDF,pdf_standard_salary,Salary obligation document,bundled,htdocs/core/modules/salaries/doc/pdf_standard_salary.modules.php
+Third party,office,doc_generic_odt,Party data and supported contact segment,bundled,htdocs/core/modules/societe/doc/doc_generic_odt.modules.php
+Warehouse,office,doc_generic_stock_odt,Warehouse sheet,bundled,htdocs/core/modules/stock/doc/doc_generic_stock_odt.modules.php
+Warehouse,PDF,pdf_standard_stock,Warehouse sheet,bundled,htdocs/core/modules/stock/doc/pdf_standard_stock.modules.php
+Warehouse transfer,PDF,pdf_eagle,Inter-warehouse transfer sheet,bundled,htdocs/core/modules/stocktransfer/doc/pdf_eagle.modules.php
+Warehouse transfer,PDF,pdf_eagle_proforma,Pro forma value of a transfer,bundled,htdocs/core/modules/stocktransfer/doc/pdf_eagle_proforma.modules.php
+Supplier invoice,office,doc_generic_supplier_invoice_odt,Supplier invoice,bundled,htdocs/core/modules/supplier_invoice/doc/doc_generic_supplier_invoice_odt.modules.php
+Supplier invoice,PDF,pdf_canelle,Supplier invoice,bundled,htdocs/core/modules/supplier_invoice/doc/pdf_canelle.modules.php
+Supplier order,office,doc_generic_supplier_order_odt,Purchase order,bundled,htdocs/core/modules/supplier_order/doc/doc_generic_supplier_order_odt.modules.php
+Supplier order,PDF,pdf_cornas,Purchase order with configurable columns,bundled,htdocs/core/modules/supplier_order/doc/pdf_cornas.modules.php
+Supplier order,PDF,pdf_muscadet,"Purchase order, predecessor to Cornas",earlier layout identified by release,htdocs/core/modules/supplier_order/doc/pdf_muscadet.modules.php
+Supplier payment,PDF,pdf_standard_supplierpayment,Supplier payment record,bundled,htdocs/core/modules/supplier_payment/doc/pdf_standard_supplierpayment.modules.php
+Supplier quotation request,office,doc_generic_supplier_proposal_odt,Supplier quotation request,bundled,htdocs/core/modules/supplier_proposal/doc/doc_generic_supplier_proposal_odt.modules.php
+Supplier quotation request,PDF,pdf_aurore,"Supplier price request, predecessor to Zenith",earlier layout identified by release,htdocs/core/modules/supplier_proposal/doc/pdf_aurore.modules.php
+Supplier quotation request,PDF,pdf_zenith,Supplier price request with configurable columns,bundled,htdocs/core/modules/supplier_proposal/doc/pdf_zenith.modules.php
+Support ticket,office,doc_generic_ticket_odt,Ticket record,bundled,htdocs/core/modules/ticket/doc/doc_generic_ticket_odt.modules.php
+User account,office,doc_generic_user_odt,User record,bundled,htdocs/core/modules/user/doc/doc_generic_user_odt.modules.php
+Access group,office,doc_generic_usergroup_odt,Group record and users,bundled,htdocs/core/modules/usergroup/doc/doc_generic_usergroup_odt.modules.php
+Recruitment vacancy,office,doc_generic_recruitmentjobposition_odt,Vacancy record,bundled,htdocs/recruitment/core/modules/recruitment/doc/doc_generic_recruitmentjobposition_odt.modules.php
+Recruitment vacancy,PDF,pdf_standard_recruitmentjobposition,Vacancy sheet,bundled,htdocs/recruitment/core/modules/recruitment/doc/pdf_standard_recruitmentjobposition.modules.php
