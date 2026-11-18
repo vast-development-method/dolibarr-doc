@@ -25,7 +25,7 @@ Source lines `72–88`.
 
 **Access** The decision uses right `bom.read`.
 
-The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+The bill list applies the entity scope of the model and the supplied search criteria. The properties selector projects the returned fields.
 
 **Result** A collection of matching records.
 

@@ -60,7 +60,7 @@ Route `GET /candidature/`.
 
 **Access** The decision uses right `recruitment.recruitmentjobposition.read`.
 
-The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+The application list applies the entity scope of the model and the supplied search criteria. The properties selector projects the returned fields.
 
 **Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
 

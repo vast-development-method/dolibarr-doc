@@ -27,7 +27,7 @@ Route `GET /partnerships/`.
 
 **Access** The decision uses right `partnership.read`.
 
-The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+In party-managed mode, the list applies the caller’s linked party or the sales representative restriction for a user limited to assigned customers. In member-managed mode this party predicate is inactive. The properties selector projects the returned fields.
 
 **Result** A collection of matching records.
 
