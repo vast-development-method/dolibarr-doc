@@ -1,0 +1,12 @@
+{
+  "partyId": 31,
+  "entityId": 1,
+  "name": "Acacia Trading",
+  "salesRole": "supplier",
+  "supplier": true,
+  "customerCode": "CU31",
+  "supplierCode": "SU31",
+  "representativeUserIds": [
+    8
+  ]
+}
