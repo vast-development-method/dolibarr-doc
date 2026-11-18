@@ -1,0 +1,57 @@
+screen_path,register,coverage,guide,literal_bindings
+htdocs/accountancy/admin/template/list.php,Bookkeeping templates,outside this edition,,
+htdocs/accountancy/bookkeeping/list.php,Bookkeeping,outside this edition,,
+htdocs/accountancy/customer/list.php,Customer invoice accounting,outside this edition,,
+htdocs/accountancy/expensereport/list.php,Expense report accounting,outside this edition,,
+htdocs/accountancy/supplier/list.php,Supplier invoice accounting,outside this edition,,
+htdocs/adherents/list.php,Members,outside this edition,,
+htdocs/adherents/subscription/list.php,Membership subscriptions,outside this edition,,
+htdocs/asset/list.php,Fixed assets,outside this edition,,
+htdocs/asset/model/list.php,Fixed asset models,outside this edition,,
+htdocs/bookmarks/list.php,Bookmarks,outside this edition,,
+htdocs/comm/action/list.php,Calendar activities,outside this edition,,
+htdocs/comm/mailing/list.php,Email campaigns,outside this edition,,
+htdocs/comm/propal/list.php,Customer quotations,predicate guide,sales-and-purchasing.md,63
+htdocs/commande/list.php,Customer orders,predicate guide,sales-and-purchasing.md,66
+htdocs/compta/bank/list.php,Bank accounts,outside this edition,,
+htdocs/compta/bank/various_payment/list.php,Miscellaneous payments,outside this edition,,
+htdocs/compta/facture/list.php,Customer invoices,predicate guide,sales-and-purchasing.md,75
+htdocs/compta/localtax/list.php,Local tax,outside this edition,,
+htdocs/compta/paiement/cheque/list.php,Cheque deposits,outside this edition,,
+htdocs/compta/paiement/list.php,Customer payments,outside this edition,,
+htdocs/compta/prelevement/list.php,Direct debit and credit transfer lines,outside this edition,,
+htdocs/compta/sociales/list.php,Social and fiscal charges,outside this edition,,
+htdocs/compta/tva/list.php,VAT,outside this edition,,
+htdocs/contact/list.php,Contacts,outside this edition,,
+htdocs/contrat/list.php,Contracts,predicate guide,people-and-services.md,44
+htdocs/cron/list.php,Scheduled jobs,outside this edition,,
+htdocs/don/list.php,Donations,outside this edition,,
+htdocs/don/paiement/list.php,Donation payments,outside this edition,,
+htdocs/expedition/list.php,Outbound shipments,predicate guide,catalog-and-fulfillment.md,39
+htdocs/expensereport/list.php,Expense reports,predicate guide,people-and-services.md,19
+htdocs/expensereport/payment/list.php,Expense reimbursements,outside this edition,,
+htdocs/fichinter/list.php,Field interventions,predicate guide,people-and-services.md,18
+htdocs/fourn/commande/list.php,Supplier orders,predicate guide,sales-and-purchasing.md,54
+htdocs/fourn/facture/list.php,Supplier invoices,predicate guide,sales-and-purchasing.md,50
+htdocs/fourn/paiement/list.php,Supplier payments,outside this edition,,
+htdocs/fourn/product/list.php,Supplier products and prices,outside this edition,,
+htdocs/holiday/list.php,Leave requests,predicate guide,people-and-services.md,15
+htdocs/intracommreport/list.php,Intra-community reporting,outside this edition,,
+htdocs/loan/list.php,Loans,outside this edition,,
+htdocs/opensurvey/list.php,Surveys,outside this edition,,
+htdocs/product/inventory/list.php,Inventory sessions,predicate guide,catalog-and-fulfillment.md,3
+htdocs/product/list.php,Products and services,predicate guide,catalog-and-fulfillment.md,40
+htdocs/product/stock/list.php,Warehouse directory,predicate guide,catalog-and-fulfillment.md,4
+htdocs/projet/list.php,Projects and opportunities,predicate guide,projects-and-tasks.md,74
+htdocs/projet/tasks/list.php,Project tasks,predicate guide,projects-and-tasks.md,31
+htdocs/public/ticket/list.php,Public ticket queue,outside this edition,,
+htdocs/reception/list.php,Inbound receipts,predicate guide,catalog-and-fulfillment.md,26
+htdocs/resource/list.php,Resources,outside this edition,,
+htdocs/salaries/list.php,Salaries,outside this edition,,
+htdocs/societe/list.php,Third parties,outside this edition,,
+htdocs/supplier_proposal/list.php,Supplier quotations,predicate guide,sales-and-purchasing.md,40
+htdocs/ticket/list.php,Internal ticket queue,predicate guide,people-and-services.md,22
+htdocs/user/api_token/list.php,User API tokens,outside this edition,,
+htdocs/user/group/list.php,User groups,outside this edition,,
+htdocs/user/list.php,Users,outside this edition,,
+htdocs/variants/list.php,Product variants,outside this edition,,
