@@ -1,0 +1,1291 @@
+{
+  "release": "24.0.3",
+  "commit": "5c6c7ff6a5112413b1c27221c8d11750afad56f8",
+  "descriptor_directory": "htdocs/core/modules",
+  "selection": "Top-level mod*.class.php files in the core descriptor directory",
+  "maturity_counts": {
+    "deprecated": 3,
+    "development": 4,
+    "experimental": 4,
+    "stable": 84
+  },
+  "areas": {
+    "platform": "Platform and access",
+    "documents-data": "Documents, reference data and productivity",
+    "parties-sales": "Partners, selling and margin",
+    "catalog-stock": "Catalogue and warehouse",
+    "purchasing": "Purchasing and receipt",
+    "invoicing-cash": "Billing, payments and checkout",
+    "accounting": "Accounting, assets and other financial records",
+    "production": "Manufacturing",
+    "projects-events": "Projects, agenda and events",
+    "people-membership": "People and association membership",
+    "service-support": "Contracts, field service and support",
+    "communications-portals": "Communication, websites and portals",
+    "integrations": "Automation, identity and external interfaces"
+  },
+  "modules": [
+    {
+      "key": "Accounting",
+      "label": "Double-entry accounting",
+      "id": 50400,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modAccounting.class.php#L53",
+      "dependencies": {
+        "always": [
+          "Facture",
+          "Banque",
+          "Tax"
+        ]
+      },
+      "conflicts": [
+        "Comptabilite"
+      ]
+    },
+    {
+      "key": "Adherent",
+      "label": "Members and subscriptions",
+      "id": 310,
+      "area": "people-membership",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modAdherent.class.php#L59",
+      "conflicts": [
+        "MailmanSpip"
+      ]
+    },
+    {
+      "key": "Agenda",
+      "label": "Calendar events",
+      "id": 2400,
+      "area": "projects-events",
+      "setup_family": "projects",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modAgenda.class.php#L60"
+    },
+    {
+      "key": "Ai",
+      "label": "AI services",
+      "id": 4560,
+      "area": "integrations",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modAi.class.php#L73"
+    },
+    {
+      "key": "Api",
+      "label": "REST interface",
+      "id": 2610,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modApi.class.php#L63"
+    },
+    {
+      "key": "Asset",
+      "label": "Fixed assets",
+      "id": 51000,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modAsset.class.php#L66"
+    },
+    {
+      "key": "Banque",
+      "label": "Bank and cash",
+      "id": 85,
+      "area": "invoicing-cash",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBanque.class.php#L58"
+    },
+    {
+      "key": "Barcode",
+      "label": "Barcodes",
+      "id": 55,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBarcode.class.php#L51"
+    },
+    {
+      "key": "BlockedLog",
+      "label": "Unalterable business-event log",
+      "id": 3200,
+      "area": "platform",
+      "setup_family": "base",
+      "maturity": "stable",
+      "descriptor_version": "3.0.0",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBlockedLog.class.php#L61",
+      "dependencies": {
+        "always": [
+          "Facture"
+        ]
+      },
+      "disable_rule": "Setup protects an enabled log that has already been used when the organisation country is listed in BLOCKEDLOG_DISABLE_NOT_ALLOWED_FOR_COUNTRY."
+    },
+    {
+      "key": "Bom",
+      "label": "Bills of materials",
+      "id": 650,
+      "area": "production",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBom.class.php#L73",
+      "dependencies": {
+        "always": [
+          "Product"
+        ]
+      }
+    },
+    {
+      "key": "BookCal",
+      "label": "Appointment booking",
+      "id": 2430,
+      "area": "projects-events",
+      "setup_family": "portal",
+      "maturity": "experimental",
+      "descriptor_version": "experimental",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBookCal.class.php#L72"
+    },
+    {
+      "key": "Bookmark",
+      "label": "Bookmarks",
+      "id": 330,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modBookmark.class.php#L51"
+    },
+    {
+      "key": "Categorie",
+      "label": "Categories and tags",
+      "id": 1780,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modCategorie.class.php#L61"
+    },
+    {
+      "key": "ClickToDial",
+      "label": "Click-to-dial",
+      "id": 58,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modClickToDial.class.php#L51"
+    },
+    {
+      "key": "Collab",
+      "label": "Collaborative messaging",
+      "id": 30000,
+      "area": "documents-data",
+      "setup_family": "ecm",
+      "maturity": "development",
+      "descriptor_version": "development",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modCollab.class.php#L52",
+      "visibility": "hidden when MODULE_COLLAB_DISABLED is set to a nonzero integer"
+    },
+    {
+      "key": "Commande",
+      "label": "Customer orders",
+      "id": 25,
+      "area": "parties-sales",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modCommande.class.php#L62",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      }
+    },
+    {
+      "key": "Comptabilite",
+      "label": "Simplified accounting",
+      "id": 10,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modComptabilite.class.php#L55",
+      "dependencies": {
+        "always": [
+          "Facture",
+          "Banque"
+        ]
+      },
+      "conflicts": [
+        "Accounting"
+      ]
+    },
+    {
+      "key": "Contrat",
+      "label": "Service contracts",
+      "id": 54,
+      "area": "service-support",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modContrat.class.php#L56",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      }
+    },
+    {
+      "key": "Cron",
+      "label": "Scheduled jobs",
+      "id": 2300,
+      "area": "platform",
+      "setup_family": "base",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modCron.class.php#L52",
+      "visibility": "hidden when MODULE_CRON_DISABLED is set to a nonzero integer"
+    },
+    {
+      "key": "DataPolicy",
+      "label": "Data retention and anonymisation",
+      "id": 4100,
+      "area": "platform",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDataPolicy.class.php#L69",
+      "dependencies": {
+        "always": [
+          "Cron"
+        ]
+      }
+    },
+    {
+      "key": "Dav",
+      "label": "DAV interface",
+      "id": 50310,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDav.class.php#L68"
+    },
+    {
+      "key": "DebugBar",
+      "label": "Developer debug bar",
+      "id": 43,
+      "area": "platform",
+      "setup_family": "base",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDebugBar.class.php#L54"
+    },
+    {
+      "key": "DocumentGeneration",
+      "label": "Document generation module",
+      "id": 1520,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "development",
+      "descriptor_version": "development",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDocumentGeneration.class.php#L52"
+    },
+    {
+      "key": "Don",
+      "label": "Donations",
+      "id": 700,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDon.class.php#L53"
+    },
+    {
+      "key": "DynamicPrices",
+      "label": "Dynamic pricing",
+      "id": 2200,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "experimental",
+      "descriptor_version": "experimental",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modDynamicPrices.class.php#L50"
+    },
+    {
+      "key": "ECM",
+      "label": "Document management",
+      "id": 2500,
+      "area": "documents-data",
+      "setup_family": "ecm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modECM.class.php#L60"
+    },
+    {
+      "key": "EmailCollector",
+      "label": "Incoming email collection",
+      "id": 50320,
+      "area": "communications-portals",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modEmailCollector.class.php#L68",
+      "dependencies": {
+        "always": [
+          "Cron"
+        ]
+      }
+    },
+    {
+      "key": "EventOrganization",
+      "label": "Event organisation",
+      "id": 2450,
+      "area": "projects-events",
+      "setup_family": "projects",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modEventOrganization.class.php#L62",
+      "dependencies": {
+        "always": [
+          "Projet",
+          "Categorie",
+          "Agenda"
+        ]
+      }
+    },
+    {
+      "key": "Expedition",
+      "label": "Customer shipments",
+      "id": 80,
+      "area": "parties-sales",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modExpedition.class.php#L60",
+      "dependencies": {
+        "always": [
+          "Commande"
+        ]
+      }
+    },
+    {
+      "key": "ExpenseReport",
+      "label": "Expense reports",
+      "id": 770,
+      "area": "people-membership",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modExpenseReport.class.php#L55"
+    },
+    {
+      "key": "Export",
+      "label": "Data export",
+      "id": 240,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modExport.class.php#L52"
+    },
+    {
+      "key": "ExternalRss",
+      "label": "External RSS feeds",
+      "id": 320,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modExternalRss.class.php#L53"
+    },
+    {
+      "key": "FTP",
+      "label": "FTP interface",
+      "id": 2800,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "deprecated",
+      "descriptor_version": "dolibarr_deprecated",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modFTP.class.php#L57"
+    },
+    {
+      "key": "Facture",
+      "label": "Customer invoicing",
+      "id": 30,
+      "area": "invoicing-cash",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modFacture.class.php#L60",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      }
+    },
+    {
+      "key": "Fckeditor",
+      "label": "Rich-text editing",
+      "id": 2000,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modFckeditor.class.php#L53"
+    },
+    {
+      "key": "Ficheinter",
+      "label": "Interventions",
+      "id": 70,
+      "area": "service-support",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modFicheinter.class.php#L60",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      }
+    },
+    {
+      "key": "Fournisseur",
+      "label": "Combined supplier management",
+      "id": 40,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modFournisseur.class.php#L62",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      },
+      "visibility": "descriptor class available only when MAIN_USE_NEW_SUPPLIERMOD is off"
+    },
+    {
+      "key": "GeoIPMaxmind",
+      "label": "IP geolocation",
+      "id": 2900,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modGeoIPMaxmind.class.php#L52"
+    },
+    {
+      "key": "Gravatar",
+      "label": "Gravatar avatars",
+      "id": 2700,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modGravatar.class.php#L60"
+    },
+    {
+      "key": "HRM",
+      "label": "Human resources",
+      "id": 4000,
+      "area": "people-membership",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modHRM.class.php#L62"
+    },
+    {
+      "key": "Holiday",
+      "label": "Leave",
+      "id": 20000,
+      "area": "people-membership",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modHoliday.class.php#L68"
+    },
+    {
+      "key": "Import",
+      "label": "Data import",
+      "id": 250,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modImport.class.php#L51"
+    },
+    {
+      "key": "Incoterm",
+      "label": "International delivery terms",
+      "id": 62000,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modIncoterm.class.php#L57"
+    },
+    {
+      "key": "Intracommreport",
+      "label": "Intra-community reporting",
+      "id": 68000,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "development",
+      "descriptor_version": "development",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modIntracommreport.class.php#L53",
+      "dependencies": {
+        "always": [
+          "Facture",
+          "Tax",
+          "Categorie"
+        ]
+      }
+    },
+    {
+      "key": "KnowledgeManagement",
+      "label": "Knowledge base",
+      "id": 57000,
+      "area": "service-support",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modKnowledgeManagement.class.php#L72"
+    },
+    {
+      "key": "Label",
+      "label": "Label printing module",
+      "id": 60,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "development",
+      "descriptor_version": "development",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modLabel.class.php#L51"
+    },
+    {
+      "key": "Ldap",
+      "label": "LDAP integration",
+      "id": 200,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modLdap.class.php#L53"
+    },
+    {
+      "key": "Loan",
+      "label": "Loans",
+      "id": 520,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modLoan.class.php#L52"
+    },
+    {
+      "key": "Mailing",
+      "label": "Bulk email campaigns",
+      "id": 22,
+      "area": "communications-portals",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modMailing.class.php#L57"
+    },
+    {
+      "key": "MailmanSpip",
+      "label": "Mailman and SPIP integration",
+      "id": 105,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "deprecated",
+      "descriptor_version": "dolibarr_deprecated",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modMailmanSpip.class.php#L55",
+      "dependencies": {
+        "always": [
+          "Adherent"
+        ]
+      }
+    },
+    {
+      "key": "Margin",
+      "label": "Commercial margin",
+      "id": 59000,
+      "area": "parties-sales",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modMargin.class.php#L59",
+      "dependencies": {
+        "always": [
+          "Propale",
+          "Product"
+        ]
+      }
+    },
+    {
+      "key": "ModuleBuilder",
+      "label": "Module builder",
+      "id": 3300,
+      "area": "platform",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modModuleBuilder.class.php#L54"
+    },
+    {
+      "key": "Mrp",
+      "label": "Manufacturing orders",
+      "id": 660,
+      "area": "production",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modMrp.class.php#L67",
+      "dependencies": {
+        "always": [
+          "Bom"
+        ]
+      }
+    },
+    {
+      "key": "MultiCurrency",
+      "label": "Document currencies and exchange rates",
+      "id": 40000,
+      "area": "invoicing-cash",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modMultiCurrency.class.php#L66"
+    },
+    {
+      "key": "Notification",
+      "label": "Event notifications",
+      "id": 600,
+      "area": "communications-portals",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modNotification.class.php#L54"
+    },
+    {
+      "key": "Oauth",
+      "label": "OAuth token management",
+      "id": 66000,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modOauth.class.php#L56"
+    },
+    {
+      "key": "OpenSurvey",
+      "label": "Surveys",
+      "id": 55000,
+      "area": "communications-portals",
+      "setup_family": "portal",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modOpenSurvey.class.php#L59"
+    },
+    {
+      "key": "Partnership",
+      "label": "Partnerships",
+      "id": 58000,
+      "area": "parties-sales",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPartnership.class.php#L79"
+    },
+    {
+      "key": "PaymentByBankTransfer",
+      "label": "Outbound credit-transfer orders",
+      "id": 56,
+      "area": "invoicing-cash",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPaymentByBankTransfer.class.php#L57",
+      "dependencies": {
+        "supplier_split_on": [
+          "SupplierInvoice",
+          "Banque"
+        ],
+        "supplier_split_off": [
+          "Fournisseur",
+          "Banque"
+        ]
+      }
+    },
+    {
+      "key": "Paypal",
+      "label": "PayPal payments",
+      "id": 50200,
+      "area": "invoicing-cash",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPaypal.class.php#L59"
+    },
+    {
+      "key": "Prelevement",
+      "label": "Direct debits",
+      "id": 57,
+      "area": "invoicing-cash",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPrelevement.class.php#L57",
+      "dependencies": {
+        "always": [
+          "Facture",
+          "Banque"
+        ]
+      }
+    },
+    {
+      "key": "Printing",
+      "label": "External printing",
+      "id": 64000,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPrinting.class.php#L55"
+    },
+    {
+      "key": "Product",
+      "label": "Products",
+      "id": 50,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modProduct.class.php#L63"
+    },
+    {
+      "key": "ProductBatch",
+      "label": "Lot and serial tracking",
+      "id": 39000,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modProductBatch.class.php#L58",
+      "dependencies": {
+        "supplier_split_on": [
+          "Product",
+          "Stock",
+          "Expedition",
+          "SupplierOrder"
+        ],
+        "supplier_split_off": [
+          "Product",
+          "Stock",
+          "Expedition",
+          "Fournisseur"
+        ]
+      }
+    },
+    {
+      "key": "Projet",
+      "label": "Projects and tasks",
+      "id": 400,
+      "area": "projects-events",
+      "setup_family": "projects",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modProjet.class.php#L60"
+    },
+    {
+      "key": "Propale",
+      "label": "Commercial proposals",
+      "id": 20,
+      "area": "parties-sales",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modPropale.class.php#L61",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      }
+    },
+    {
+      "key": "QuickMemo",
+      "label": "Quick memos",
+      "id": 141916,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "experimental",
+      "descriptor_version": "experimental",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modQuickMemo.class.php#L81",
+      "visibility": "hidden when MODULE_QUICKMEMO_DISABLED is set to a nonzero integer"
+    },
+    {
+      "key": "ReceiptPrinter",
+      "label": "POS receipt printing",
+      "id": 67000,
+      "area": "invoicing-cash",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modReceiptPrinter.class.php#L56"
+    },
+    {
+      "key": "Reception",
+      "label": "Supplier receipts",
+      "id": 94160,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modReception.class.php#L56",
+      "dependencies": {
+        "always": [
+          "Fournisseur"
+        ]
+      }
+    },
+    {
+      "key": "Recruitment",
+      "label": "Recruitment",
+      "id": 750,
+      "area": "people-membership",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modRecruitment.class.php#L66"
+    },
+    {
+      "key": "Resource",
+      "label": "Resources",
+      "id": 63000,
+      "area": "projects-events",
+      "setup_family": "projects",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modResource.class.php#L70"
+    },
+    {
+      "key": "Salaries",
+      "label": "Salary payments",
+      "id": 510,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSalaries.class.php#L62"
+    },
+    {
+      "key": "Service",
+      "label": "Services catalogue",
+      "id": 53,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modService.class.php#L58"
+    },
+    {
+      "key": "SocialNetworks",
+      "label": "Social network profiles",
+      "id": 3400,
+      "area": "communications-portals",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSocialNetworks.class.php#L52",
+      "visibility": "hidden when MODULE_SOCIALNETWORKS_DISABLED is set to a nonzero integer"
+    },
+    {
+      "key": "Societe",
+      "label": "Third parties and contacts",
+      "id": 1,
+      "area": "parties-sales",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSociete.class.php#L61"
+    },
+    {
+      "key": "Stock",
+      "label": "Warehouses and stock",
+      "id": 52,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modStock.class.php#L59",
+      "dependencies": {
+        "always": [
+          "Product"
+        ]
+      }
+    },
+    {
+      "key": "StockTransfer",
+      "label": "Stock transfer orders",
+      "id": 701,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modStockTransfer.class.php#L67",
+      "dependencies": {
+        "always": [
+          "Stock",
+          "Product"
+        ]
+      }
+    },
+    {
+      "key": "Stripe",
+      "label": "Stripe payments",
+      "id": 50300,
+      "area": "invoicing-cash",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modStripe.class.php#L58"
+    },
+    {
+      "key": "Subtotals",
+      "label": "Document sections and subtotals",
+      "id": 81,
+      "area": "documents-data",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSubtotals.class.php#L69"
+    },
+    {
+      "key": "SupplierInvoice",
+      "label": "Supplier invoices (split module)",
+      "id": 41,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSupplierInvoice.class.php#L63",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      },
+      "visibility": "hidden unless MAIN_USE_NEW_SUPPLIERMOD is enabled"
+    },
+    {
+      "key": "SupplierOrder",
+      "label": "Supplier orders (split module)",
+      "id": 39,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSupplierOrder.class.php#L62",
+      "dependencies": {
+        "always": [
+          "Societe"
+        ]
+      },
+      "visibility": "hidden unless MAIN_USE_NEW_SUPPLIERMOD is enabled"
+    },
+    {
+      "key": "SupplierProposal",
+      "label": "Supplier quotations",
+      "id": 1120,
+      "area": "purchasing",
+      "setup_family": "srm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSupplierProposal.class.php#L57",
+      "dependencies": {
+        "supplier_split_on": [
+          "SupplierOrder"
+        ],
+        "supplier_split_off": [
+          "Fournisseur"
+        ]
+      }
+    },
+    {
+      "key": "Syslog",
+      "label": "Application logs",
+      "id": 42,
+      "area": "platform",
+      "setup_family": "base",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modSyslog.class.php#L57"
+    },
+    {
+      "key": "TakePos",
+      "label": "Point of sale",
+      "id": 50150,
+      "area": "invoicing-cash",
+      "setup_family": "portal",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modTakePos.class.php#L70",
+      "dependencies": {
+        "always": [
+          "Banque",
+          "Facture",
+          "Product",
+          "Categorie"
+        ],
+        "country_FR_or_unset": [
+          "BlockedLog"
+        ]
+      }
+    },
+    {
+      "key": "Tax",
+      "label": "Taxes and social charges",
+      "id": 500,
+      "area": "accounting",
+      "setup_family": "financial",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modTax.class.php#L58"
+    },
+    {
+      "key": "Ticket",
+      "label": "Support tickets",
+      "id": 56000,
+      "area": "service-support",
+      "setup_family": "crm",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modTicket.class.php#L70",
+      "dependencies": {
+        "always": [
+          "Agenda"
+        ]
+      }
+    },
+    {
+      "key": "User",
+      "label": "Users and groups",
+      "id": 0,
+      "area": "platform",
+      "setup_family": "hr",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modUser.class.php#L57",
+      "disable_rule": "Always enabled in the setup UI"
+    },
+    {
+      "key": "Variants",
+      "label": "Product variants",
+      "id": 610,
+      "area": "catalog-stock",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modVariants.class.php#L64",
+      "dependencies": {
+        "always": [
+          "Product"
+        ]
+      }
+    },
+    {
+      "key": "WebPortal",
+      "label": "External portal",
+      "id": 11000,
+      "area": "communications-portals",
+      "setup_family": "portal",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWebPortal.class.php#L74"
+    },
+    {
+      "key": "WebServices",
+      "label": "SOAP web services",
+      "id": 2600,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "deprecated",
+      "descriptor_version": "dolibarr_deprecated",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWebServices.class.php#L48"
+    },
+    {
+      "key": "Webhook",
+      "label": "Outbound webhooks",
+      "id": 68305,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWebhook.class.php#L72"
+    },
+    {
+      "key": "Website",
+      "label": "Websites",
+      "id": 10000,
+      "area": "communications-portals",
+      "setup_family": "portal",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWebsite.class.php#L52",
+      "dependencies": {
+        "always": [
+          "Fckeditor"
+        ]
+      },
+      "visibility": "hidden when MODULE_WEBSITE_DISABLED is set to a nonzero integer"
+    },
+    {
+      "key": "Workflow",
+      "label": "Cross-module workflow options",
+      "id": 6000,
+      "area": "integrations",
+      "setup_family": "technic",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWorkflow.class.php#L56"
+    },
+    {
+      "key": "Workstation",
+      "label": "Manufacturing workstations",
+      "id": 690,
+      "area": "production",
+      "setup_family": "products",
+      "maturity": "stable",
+      "descriptor_version": "dolibarr",
+      "eligible": true,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modWorkstation.class.php#L67",
+      "dependencies": {
+        "always": [
+          "Mrp"
+        ]
+      }
+    },
+    {
+      "key": "Zapier",
+      "label": "Zapier integration",
+      "id": 50330,
+      "area": "integrations",
+      "setup_family": "interface",
+      "maturity": "experimental",
+      "descriptor_version": "experimental",
+      "eligible": false,
+      "source": "https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/modZapier.class.php#L64",
+      "dependencies": {
+        "always": [
+          "Api"
+        ]
+      }
+    }
+  ]
+}
