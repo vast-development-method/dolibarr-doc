@@ -1,0 +1,29 @@
+# Pricing verification against Dolibarr 24.0.3
+
+The executable check uses the release's unmodified line calculator, decimal helper and invoice total updater. For each positive pricing fixture it inserts the calculated components in a temporary SQLite table, runs the upstream invoice aggregation, and asserts both the returned totals and the sum of the persisted lines. The test adapter supplies a disabled hook dispatcher and the database methods used by this operation. It skips writing the invoice header. The header values reported here are the upstream invoice object's calculated totals.
+
+Run from the blueprint repository root with PHP CLI and SQLite3 available. The commands fetch the pinned source into a temporary directory.
+
+```sh
+checkout=$(mktemp -d)
+git clone --quiet --depth 1 --branch 24.0.3 https://github.com/Dolibarr/dolibarr.git "$checkout/dolibarr"
+php tools/verify-upstream-pricing.php "$checkout/dolibarr"
+```
+
+The command checks source-file digests, exits nonzero for mismatched amounts and prints net, VAT and gross at the fixture's declared precision. [Harness](../../tools/verify-upstream-pricing.php) · [Calculator][price] · [Document updater][update]
+
+| Executed fixture | Net | VAT | Gross | Retained line totals |
+| --- | ---: | ---: | ---: | --- |
+| 3 × 20.00 net, 10% discount, 15% VAT | 54.00 | 8.10 | 62.10 | Match |
+| Two lines of 0.03 net, 20% VAT, per-line rounding | 0.06 | 0.02 | 0.08 | Match |
+| Same inputs, per-rate rounding | 0.06 | 0.01 | 0.07 | Match |
+| 2 × 11.50 including 15% VAT | 20.00 | 3.00 | 23.00 | Match |
+
+On 18 November 2026 these four fixtures passed with PHP 8.5.12 CLI (WebAssembly build) and in-memory SQLite. In an additional isolated check, the unmodified upstream method `PricesTest::testCalculPriceTotal` ran against the same pricing functions, with the corresponding upstream country-tax dictionary rows, a lightweight assertion adapter and a test bootstrap. All 14 expected result arrays matched. These vectors include negative prices, currency conversion and local taxes on goods and services. The command above runs the four blueprint fixtures. Running the upstream suite through PHPUnit requires its application/test-database setup. [Upstream test vectors][official] · [Tax dictionary][tax]
+
+This execution covers arithmetic and the updater's database operations on invoice lines. Full invoice submission, bank and payment operations, real extension hooks and complete MariaDB/PostgreSQL transactions require a running ERP instance. Their chapter acceptance scenarios remain source-traced specifications.
+
+[price]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/lib/price.lib.php#L90-L473
+[update]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/commonobject.class.php#L4079-L4417
+[official]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/test/phpunit/PricesTest.php#L68-L233
+[tax]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/data/llx_c_tva.sql

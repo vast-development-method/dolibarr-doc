@@ -11,7 +11,7 @@ A customer invoice records the amount billed for goods or services. Validation a
 | Customer adjustment | Belongs to a customer, may originate on a deposit, credit note or overpayment. One application command takes either an invoice-line target or an invoice-header target. | Net, tax, gross, foreign amounts, source invoice and destination link. A line application affects the bill. A settlement application affects its outstanding balance. |
 | Origin link | Sales order to invoice or contract to invoice. The order conversion copies the amounts, quantities, taxes and discounts onto new lines. | Preserve both records and their references so the issued bill remains intelligible when an upstream record is viewed later. |
 
-The schema separates the line's selling price from the stored acquisition cost. Calculating sales margin uses a different input from calculating the customer's tax base. An invoice payment links through an allocation record, covered in [Customer payments](collections.md). [Header definition][header] · [Line definition][line] · [Order conversion][fromorder] · [Adjustment application][adjust]
+The invoice-line table stores the selling price and acquisition cost separately. The pricing fixture models the selling-price inputs and tax amounts. Margin calculation also needs the acquisition cost. An invoice payment links through an allocation record, covered in [Customer payments](collections.md). [Header definition][header] · [Line definition][line] · [Order conversion][fromorder] · [Adjustment application][adjust]
 
 ## Lifecycle and command contracts
 
@@ -53,7 +53,7 @@ The default document mode sums rounded lines. With `MAIN_ROUNDOFTOTAL_NOT_TOTALO
 | FIN-INV-06 | Invoiced line at 100.00 net, VAT 20%, local tax 2% on applicable items, no discount. | A type 1 local tax is 2.00 and gross is 122.00. A type 2 local tax is 2.40 and gross is 122.40. |
 | FIN-INV-07 | Validated invoice with an empty cash journal, close with a reason and a shortfall. | Closing metadata changes. Payment allocations and bank lines stay at their previous counts. A write-off or bank transaction needs its own evidence. |
 
-[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate fixture](../../examples/finance/pricing-case--rate-rounding.valid.json). The schema describes the benchmark's data shape. Arithmetic expectations are specified in the cases.
+[Normalized pricing example schema](../../schemas/finance/pricing-case.schema.json) · [VAT-by-rate fixture](../../examples/finance/pricing-case--rate-rounding.valid.json). The schema describes the benchmark's data shape. [Pricing verification](pricing-verification.md) records which calculations were executed against the pinned source.
 
 [invoice]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L399-L460
 [wiki]: https://wiki.dolibarr.org/index.php/Module_Customers_Invoices
