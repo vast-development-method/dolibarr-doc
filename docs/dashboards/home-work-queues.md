@@ -1,6 +1,6 @@
 # Home work queues
 
-A queue reports one count per qualifying business object or line. Its domain provider determines the unit counted, eligibility, warning delay, monetary value when supported and destination list. The homepage checks the enabled domain, section visibility and applicable grant before invoking the provider. A successful response enters the workboard. An error return is omitted. A successful empty response can have zero counts. Extensions can contribute additional rows and groups.
+A queue reports one count per qualifying business object or line. Its domain provider determines the unit counted, eligibility, warning delay, monetary value when supported and destination list. The standard home page assembles 27 distinct queue keys in 15 domain groups. It checks the enabled domain, section visibility and applicable grant before invoking the provider. A successful response enters the workboard. An error return is omitted. A successful empty response can have zero counts. Extensions can contribute additional rows and groups.
 
 ## Commercial and service queues
 

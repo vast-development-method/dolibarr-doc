@@ -2,7 +2,7 @@
 
 Each chapter describes one service resource. The chapter headings retain the method names used by the implementation. Arguments appear in declaration order. An omitted default in the argument list means the parameter has no declaration default. A default of null can still lead to a missing-field response when required values are absent from the request body. An empty list is written as `[]`.
 
-A route shown beside an operation is the relative route explicitly registered on that operation. The [effective route register](routes.csv) gives the resolved verb, resource path and argument locations, including convention-based routes and index aliases. [Route selection](route-selection.md) explains the two colliding declarations. Response codes refer to failure branches in the operation and its cited local delegates. Domain validators, the authentication layer and document delivery can also return errors.
+A route shown beside an operation is the relative route explicitly annotated in its declaration. The [effective route register](routes.csv) gives the resolved verb, resource path and argument locations, including convention-based routes and index aliases. [Route selection](route-selection.md) explains the two colliding declarations. Response codes refer to failure branches in the operation and its cited local delegates. Domain validators, the authentication layer and document delivery can also return errors.
 
 | Resource | Operations |
 | --- | ---: |
