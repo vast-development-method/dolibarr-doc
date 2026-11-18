@@ -86,9 +86,11 @@ Follow intake, decisions, effective dates, publication and partner status.
 
 Read the contracts for tills, payment intake, mail routing, websites and authenticated customer access.
 
+- [Campaign targets, delivery and suppression](channels/campaign-target-delivery-and-suppression.md)
 - [Mail intake, routing and replay](channels/mail-intake-routing-and-replay.md)
 - [Applying online funds to an order, membership or event](channels/payment-to-order-membership-and-event.md)
 - [Portal identity and document delivery](channels/portal-identity-and-document-delivery.md)
+- [Payment notices, payouts and disputes](channels/provider-notices-and-payout-reconciliation.md)
 - [Register periods, counted tender and closing differences](channels/register-periods-and-counts.md)
 - [Site publication, translation and revisions](channels/site-publication-and-translations.md)
 - [Moving sale lines and dividing tender](channels/split-bills-and-tender.md)
@@ -110,3 +112,12 @@ Reconcile printed amounts and quantities against their business records.
 - [Document model selection, template data and delivery](output/document-models-and-delivery.md)
 - [Invoice print calculations and settlement evidence](output/invoice-print-calculations.md)
 - [Shipment and reception notes](output/shipment-and-reception-notes.md)
+
+## Notifications, dispatch and administration
+
+Trace communication and operational evidence across automatic actions and their recipients.
+
+- [Delivering an offer, order or invoice](administration/commercial-message-delivery.md)
+- [Financial event evidence and period archives](administration/evidence-and-period-archives.md)
+- [Scheduled work, overlapping attempts and recovery](administration/job-attempts-and-recovery.md)
+- [Outbound events and campaign delivery](administration/outbound-events-and-campaign-delivery.md)
