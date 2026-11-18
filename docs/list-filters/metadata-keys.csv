@@ -1,0 +1,68 @@
+screen_path,selector,header_field,field_label_key,direct_field_comparison,declared_visibility,definition_path,definition_line,screen_predicate_lines
+htdocs/ticket/list.php,search_rowid,rowid,TechnicalID,numeric comparison,-2,htdocs/ticket/class/ticket.class.php,291,396–444
+htdocs/ticket/list.php,search_entity,entity,Entity,numeric comparison,0,htdocs/ticket/class/ticket.class.php,292,396–444
+htdocs/ticket/list.php,search_ref,ref,Ref,text,1,htdocs/ticket/class/ticket.class.php,293,396–444
+htdocs/ticket/list.php,search_track_id,track_id,TicketTrackId,text,-2,htdocs/ticket/class/ticket.class.php,294,396–444
+htdocs/ticket/list.php,search_fk_user_create,fk_user_create,Author,positive linked ID,1,htdocs/ticket/class/ticket.class.php,295,396–444
+htdocs/ticket/list.php,search_origin_email,origin_email,OriginEmail,text,-2,htdocs/ticket/class/ticket.class.php,296,396–444
+htdocs/ticket/list.php,search_origin_replyto,origin_replyto,EmailReplyto,text,-2,htdocs/ticket/class/ticket.class.php,297,396–444
+htdocs/ticket/list.php,search_origin_references,origin_references,EmailReferences,text,-2,htdocs/ticket/class/ticket.class.php,298,396–444
+htdocs/ticket/list.php,search_subject,subject,Subject,text,1,htdocs/ticket/class/ticket.class.php,299,396–444
+htdocs/ticket/list.php,search_type_code,type_code,Type,set of type codes,1,htdocs/ticket/class/ticket.class.php,300,396–444
+htdocs/ticket/list.php,search_category_code,category_code,TicketCategory,text,-1,htdocs/ticket/class/ticket.class.php,301,396–444
+htdocs/ticket/list.php,search_severity_code,severity_code,Severity,text,1,htdocs/ticket/class/ticket.class.php,302,396–444
+htdocs/ticket/list.php,search_fk_soc,fk_soc,ThirdParty,numeric comparison,1,htdocs/ticket/class/ticket.class.php,303,396–444
+htdocs/ticket/list.php,search_notify_tiers_at_create,notify_tiers_at_create,NotifyThirdparty,numeric comparison,-1,htdocs/ticket/class/ticket.class.php,304,396–444
+htdocs/ticket/list.php,search_fk_project,fk_project,Project,positive linked ID,-1,htdocs/ticket/class/ticket.class.php,305,396–444
+htdocs/ticket/list.php,search_fk_contract,fk_contract,Contract,positive linked ID,-1,htdocs/ticket/class/ticket.class.php,306,396–444
+htdocs/ticket/list.php,search_datec,datec,DateCreation,text,1,htdocs/ticket/class/ticket.class.php,308,396–444
+htdocs/ticket/list.php,search_tms,tms,DateModification,text,-1,htdocs/ticket/class/ticket.class.php,309,396–444
+htdocs/ticket/list.php,search_date_read,date_read,DateReading,text,-1,htdocs/ticket/class/ticket.class.php,310,396–444
+htdocs/ticket/list.php,search_date_last_msg_sent,date_last_msg_sent,TicketLastMessageDate,text,0,htdocs/ticket/class/ticket.class.php,311,396–444
+htdocs/ticket/list.php,search_fk_user_assign,fk_user_assign,AssignedTo,positive linked ID,1,htdocs/ticket/class/ticket.class.php,312,396–444
+htdocs/ticket/list.php,search_date_close,date_close,TicketCloseOn,text,-1,htdocs/ticket/class/ticket.class.php,313,396–444
+htdocs/ticket/list.php,search_message,message,Message,text,-2,htdocs/ticket/class/ticket.class.php,314,396–444
+htdocs/ticket/list.php,search_note_private,note_private,NotePrivate,text,0,htdocs/ticket/class/ticket.class.php,315,396–444
+htdocs/ticket/list.php,search_note_public,note_public,NotePublic,text,0,htdocs/ticket/class/ticket.class.php,316,396–444
+htdocs/ticket/list.php,search_email_msgid,email_msgid,EmailMsgID,text,-2,htdocs/ticket/class/ticket.class.php,317,396–444
+htdocs/ticket/list.php,search_email_date,email_date,EmailDate,text,-2,htdocs/ticket/class/ticket.class.php,318,396–444
+htdocs/ticket/list.php,search_progress,progress,Progression,numeric comparison,-1,htdocs/ticket/class/ticket.class.php,319,396–444
+htdocs/ticket/list.php,search_resolution,resolution,Resolution,numeric comparison,-1,htdocs/ticket/class/ticket.class.php,320,396–444
+htdocs/ticket/list.php,search_model_pdf,model_pdf,PDFTemplate,text,0,htdocs/ticket/class/ticket.class.php,321,396–444
+htdocs/ticket/list.php,search_extraparams,extraparams,Extraparams,text,0,htdocs/ticket/class/ticket.class.php,322,396–444
+htdocs/ticket/list.php,search_fk_statut,fk_statut,Status,selected states and state groups,1,htdocs/ticket/class/ticket.class.php,323,396–444
+htdocs/ticket/list.php,search_import_key,import_key,ImportId,text,-2,htdocs/ticket/class/ticket.class.php,324,396–444
+htdocs/product/stock/list.php,search_rowid,rowid,ID,numeric comparison,0,htdocs/product/stock/class/entrepot.class.php,174,274–305
+htdocs/product/stock/list.php,search_entity,entity,Entity,explicitly skipped,0,htdocs/product/stock/class/entrepot.class.php,175,274–305
+htdocs/product/stock/list.php,search_ref,ref,Ref,text,1,htdocs/product/stock/class/entrepot.class.php,176,274–305
+htdocs/product/stock/list.php,search_description,description,Description,text,-2,htdocs/product/stock/class/entrepot.class.php,177,274–305
+htdocs/product/stock/list.php,search_lieu,lieu,LocationSummary,text,1,htdocs/product/stock/class/entrepot.class.php,178,274–305
+htdocs/product/stock/list.php,search_fk_parent,fk_parent,ParentWarehouse,set of IDs,-2,htdocs/product/stock/class/entrepot.class.php,179,274–305
+htdocs/product/stock/list.php,search_fk_project,fk_project,Project,set of IDs,-1,htdocs/product/stock/class/entrepot.class.php,180,274–305
+htdocs/product/stock/list.php,search_address,address,Address,text,-2,htdocs/product/stock/class/entrepot.class.php,181,274–305
+htdocs/product/stock/list.php,search_zip,zip,Zip,text,-2,htdocs/product/stock/class/entrepot.class.php,182,274–305
+htdocs/product/stock/list.php,search_town,town,Town,text,-2,htdocs/product/stock/class/entrepot.class.php,183,274–305
+htdocs/product/stock/list.php,search_fk_departement,fk_departement,State,numeric comparison,0,htdocs/product/stock/class/entrepot.class.php,184,274–305
+htdocs/product/stock/list.php,search_fk_pays,fk_pays,Country,set of IDs,-1,htdocs/product/stock/class/entrepot.class.php,185,274–305
+htdocs/product/stock/list.php,search_phone,phone,Phone,text,-2,htdocs/product/stock/class/entrepot.class.php,186,274–305
+htdocs/product/stock/list.php,search_fax,fax,Fax,text,-2,htdocs/product/stock/class/entrepot.class.php,187,274–305
+htdocs/product/stock/list.php,search_datec,datec,DateCreation,text,-2,htdocs/product/stock/class/entrepot.class.php,189,274–305
+htdocs/product/stock/list.php,search_tms,tms,DateModification,text,-2,htdocs/product/stock/class/entrepot.class.php,190,274–305
+htdocs/product/stock/list.php,search_warehouse_usage,warehouse_usage,WarehouseUsage,set of IDs,1,htdocs/product/stock/class/entrepot.class.php,191,274–305
+htdocs/product/stock/list.php,search_status,statut,Status,set of IDs,1,htdocs/product/stock/class/entrepot.class.php,194,274–305
+htdocs/product/inventory/list.php,search_rowid,rowid,TechnicalID,numeric comparison,-1,htdocs/product/inventory/class/inventory.class.php,92,255–283
+htdocs/product/inventory/list.php,search_ref,ref,Ref,text,1,htdocs/product/inventory/class/inventory.class.php,93,255–283
+htdocs/product/inventory/list.php,search_entity,entity,Entity,numeric comparison,0,htdocs/product/inventory/class/inventory.class.php,94,255–283
+htdocs/product/inventory/list.php,search_title,title,Label,text,1,htdocs/product/inventory/class/inventory.class.php,95,255–283
+htdocs/product/inventory/list.php,search_fk_warehouse,fk_warehouse,Warehouse,set of IDs,1,htdocs/product/inventory/class/inventory.class.php,96,255–283
+htdocs/product/inventory/list.php,search_fk_product,fk_product,Product,set of IDs,1,htdocs/product/inventory/class/inventory.class.php,97,255–283
+htdocs/product/inventory/list.php,search_categories_product,categories_product,OrProductsWithCategories,text,3,htdocs/product/inventory/class/inventory.class.php,98,255–283
+htdocs/product/inventory/list.php,search_date_inventory,date_inventory,DateValue,text,1,htdocs/product/inventory/class/inventory.class.php,99,255–283
+htdocs/product/inventory/list.php,search_date_creation,date_creation,DateCreation,text,-2,htdocs/product/inventory/class/inventory.class.php,100,255–283
+htdocs/product/inventory/list.php,search_tms,tms,DateModification,text,-2,htdocs/product/inventory/class/inventory.class.php,101,255–283
+htdocs/product/inventory/list.php,search_date_validation,date_validation,DateValidation,text,-2,htdocs/product/inventory/class/inventory.class.php,102,255–283
+htdocs/product/inventory/list.php,search_fk_user_creat,fk_user_creat,UserAuthor,set of IDs,-2,htdocs/product/inventory/class/inventory.class.php,103,255–283
+htdocs/product/inventory/list.php,search_fk_user_modif,fk_user_modif,UserModif,set of IDs,-2,htdocs/product/inventory/class/inventory.class.php,104,255–283
+htdocs/product/inventory/list.php,search_fk_user_valid,fk_user_valid,UserValidation,set of IDs,-2,htdocs/product/inventory/class/inventory.class.php,105,255–283
+htdocs/product/inventory/list.php,search_import_key,import_key,ImportId,text,-2,htdocs/product/inventory/class/inventory.class.php,106,255–283
+htdocs/product/inventory/list.php,search_status,status,Status,set of IDs,4,htdocs/product/inventory/class/inventory.class.php,107,255–283
