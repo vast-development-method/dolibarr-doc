@@ -1,0 +1,312 @@
+# Projects and project participation
+
+Project lookup supports local, internal, external and message references. Time summaries, roles and assignment links refer to the project or its tasks. Linking a participant and updating a project header are different writes.
+
+The implementation locations below refer to `htdocs/projet/class/api_projects.class.php`.
+
+## `get` — Read a project
+
+**Arguments** `id`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads related business records.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project with supplied id missing.
+
+Source lines `78–95`.
+
+## `getByRef` — Read by business reference
+
+Route `GET ref/{ref}`.
+
+**Arguments** `ref`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads related business records.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project with supplied ref missing.
+
+Source lines `110–127`.
+
+## `getByRefExt` — Read by external reference
+
+Route `GET ref_ext/{ref_ext}`.
+
+**Arguments** `ref_ext`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads related business records.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project with supplied ref_ext missing.
+
+Source lines `142–159`.
+
+## `getByMsgId` — Read by msg id
+
+Route `GET email_msgid/{email_msgid}`.
+
+**Arguments** `email_msgid`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads related business records.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project with supplied email_msgid missing.
+
+Source lines `174–191`.
+
+## `index` — List records
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+
+**Access** The decision uses right `projet.lire`.
+
+The lookup uses the visible entity scope for `project`. A caller linked to a party receives that party restriction. The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `212–316`.
+
+## `post` — Create a project
+
+**Arguments** `request_data = null`.
+
+The request-field validator requires `ref`, `title`.
+
+**Access** The decision uses right `projet.creer`.
+
+The optional caller marker is placed in event context for synchronization.
+
+**Result** The record identifier.
+
+- `400` — required request field absent.
+- `403` — access refused.
+- `500` — business operation failed.
+
+Source lines `327–400` with `_validate 1065–1075`.
+
+## `addContact` — Add contact
+
+Route `POST {id}/contacts`.
+
+**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+
+**Access** The decision uses right `projet.creer`, intervention record scope.
+
+The method attaches a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — business operation failed.
+
+Source lines `421–442`.
+
+## `deleteContact` — Remove a contact role
+
+Route `DELETE {id}/contact/{contactid}/{type}`.
+
+**Arguments** `id`, `contactid`, `type`.
+
+**Access** The decision uses right `projet.creer`, project record scope.
+
+The method loads contacts by role and removes a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — removal failed.
+
+Source lines `459–487`.
+
+## `getLines` — Read document lines
+
+Route `GET {id}/tasks`.
+
+**Arguments** `id`, `includetimespent = 0`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method totals recorded time and reads task time entries.
+
+**Result** A collection of line records for the selected parent.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+
+Source lines `501–527`.
+
+## `getRoles` — Read roles
+
+Route `GET {id}/roles`.
+
+**Arguments** `id`, `userid = 0`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads role assignments.
+
+**Result** Available contact-role assignments.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+
+Source lines `542–571`.
+
+## `put` — Update a project
+
+**Arguments** `id`, `request_data = null`.
+
+**Access** The decision uses right `projet.creer`, project record scope, right `projet.lire`.
+
+The optional caller marker is placed in event context for synchronization.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing, project with supplied id missing.
+- `500` — business operation failed.
+
+Source lines `721–759` with `get 78–95`.
+
+## `delete` — Delete a project
+
+**Arguments** `id`.
+
+**Access** The decision uses right `projet.supprimer`, project record scope.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — removal failed.
+
+Source lines `771–795`.
+
+## `validate` — Validate a project
+
+Route `POST {id}/validate`.
+
+**Arguments** `id`, `notrigger = 0`.
+
+**Access** The decision uses right `projet.creer`, project record scope.
+
+The method validates the record.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `304` — no transition applied (possibly already validated).
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — business operation failed.
+
+Source lines `820–848`.
+
+## `listTimespent` — List timespent
+
+Route `GET /alltimespent`.
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+
+**Access** The decision uses right `projet.lire`.
+
+The lookup uses the visible entity scope for `project`. A caller linked to a party receives that party restriction. The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `868–1001`.
+
+## `getContacts` — List attached contacts
+
+Route `GET {id}/contacts`.
+
+**Arguments** `id`, `type = ''`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method loads contacts by role.
+
+**Result** A collection of attached contacts and their roles.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+
+Source lines `1094–1115`.
+
+## `addToContact` — Add to contact
+
+Route `POST {id}/contacts`.
+
+**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`, `affect_to_tasks = null`.
+
+**Access** The decision uses right `projet.creer`, project record scope.
+
+The method attaches a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — business operation failed.
+
+Source lines `1137–1181`.
+
+## `deleteToContact` — Delete to contact
+
+Route `DELETE {id}/contact/{contactid}/{type}`.
+
+**Arguments** `id`, `contactid`, `type`.
+
+**Access** The decision uses right `projet.creer`, project record scope.
+
+The method loads contacts by role and removes a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+- `500` — removal failed.
+
+Source lines `1197–1227`.
+
+## `getTimespent` — Read timespent
+
+Route `GET {id}/timespent`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `projet.lire`, project record scope.
+
+The method totals recorded time.
+
+**Result** A collection of matching entries.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — project missing.
+
+Source lines `1240–1268`.

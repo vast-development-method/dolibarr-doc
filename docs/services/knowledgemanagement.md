@@ -1,0 +1,145 @@
+# Knowledge articles
+
+A knowledge record has a lifecycle and can belong to categories. The article's content and publication state are distinct from the category classification returned for that record.
+
+The implementation locations below refer to `htdocs/knowledgemanagement/class/api_knowledgemanagement.class.php`.
+
+## `get` — Read a knowledge article
+
+Route `GET knowledgerecords/{id}`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.read`, knowledgerecord record scope.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — knowledge article missing.
+
+Source lines `73–89`.
+
+## `getCategories` — Read categories
+
+Route `GET /knowledgerecords/{id}/categories`.
+
+**Arguments** `id`, `sortfield = "s.rowid"`, `sortorder = 'ASC'`, `limit = 0`, `page = 0`.
+
+**Access** The decision uses right `categorie.lire`.
+
+The method reads classification links.
+
+**Result** The classifications assigned to the selected record.
+
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `104–119`.
+
+## `index` — List records
+
+Route `GET /knowledgerecords/`.
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `category = 0`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.read`.
+
+The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `142–243`.
+
+## `post` — Create a knowledge article
+
+Route `POST knowledgerecords/`.
+
+**Arguments** `request_data = null`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
+
+The optional caller marker is placed in event context for synchronization.
+
+**Result** The record identifier.
+
+- `400` — required request field absent.
+- `403` — access refused.
+- `500` — business operation failed.
+
+Source lines `257–283` with `_validate 529–545`.
+
+## `put` — Update a knowledge article
+
+Route `PUT knowledgerecords/{id}`.
+
+**Arguments** `id`, `request_data = null`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.write`, knowledgerecord record scope, right `knowledgemanagement.knowledgerecord.read`.
+
+The optional caller marker is placed in event context for synchronization.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — knowledge article missing.
+- `500` — business operation failed.
+
+Source lines `298–341` with `get 73–89`.
+
+## `delete` — Delete a knowledge article
+
+Route `DELETE knowledgerecords/{id}`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.delete`, knowledgerecord record scope.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — knowledge article missing.
+- `500` — removal failed.
+
+Source lines `355–379`.
+
+## `validate` — Validate a knowledge article
+
+Route `POST {id}/validate`.
+
+**Arguments** `id`, `notrigger = 0`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
+
+The method validates the record.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied (possibly already validated).
+- `403` — access refused.
+- `404` — knowledge article missing.
+- `500` — business operation failed.
+
+Source lines `462–482`.
+
+## `cancel` — Cancel
+
+Route `POST {id}/cancel`.
+
+**Arguments** `id`, `notrigger = 0`.
+
+**Access** The decision uses right `knowledgemanagement.knowledgerecord.write`.
+
+The method cancels the record.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied (possibly already validated).
+- `403` — access refused.
+- `404` — knowledge article missing.
+- `500` — business operation failed.
+
+Source lines `499–519`.

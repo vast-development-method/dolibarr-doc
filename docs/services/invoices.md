@@ -1,0 +1,562 @@
+# Customer invoices and settlement
+
+Invoice retrieval calculates the remaining balance after payments, credit notes and deposits. The service separately exposes conversion from orders or contracts, fixed discounts, credit-note application, single-invoice receipts, distributed receipts and recurring templates.
+
+The implementation locations below refer to `htdocs/compta/facture/class/api_invoices.class.php`.
+
+## `get` — Read a customer invoice
+
+**Arguments** `id`, `contact_list = 1`, `properties = ''`, `withLines = true`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+The properties selector projects the returned fields. The returned balance deducts allocated receipts, applied credit notes and applied deposits from the invoice total. The detail reader loads linked credit-note identifiers and an online payment address.
+
+**Result** The selected record with its response fields projected or cleaned.
+
+- `400` — no invoice can be found with no criteria.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `82–91` with `_fetch 146–191`.
+
+## `getByRef` — Read by business reference
+
+Route `GET ref/{ref}`.
+
+**Arguments** `ref`, `contact_list = 1`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+**Result** A record with internal service properties removed.
+
+- `400` — no invoice can be found with no criteria.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `108–111` with `_fetch 146–191`.
+
+## `getByRefExt` — Read by external reference
+
+Route `GET ref_ext/{ref_ext}`.
+
+**Arguments** `ref_ext`, `contact_list = 1`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+**Result** A record with internal service properties removed.
+
+- `400` — no invoice can be found with no criteria.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `128–131` with `_fetch 146–191`.
+
+## `index` — List records
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `status = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`, `withLines = true`.
+
+**Access** The decision uses right `facture.lire`.
+
+The lookup uses the visible entity scope for `invoice`. A caller linked to a party receives that party restriction. The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields. The method reads allocated payments, reads applied credits, reads applied deposits, loads related credit notes, loads contacts by role, and loads related business records.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `218–349`.
+
+## `post` — Create a customer invoice
+
+**Arguments** `request_data = null`.
+
+The request-field validator requires `socid`.
+
+Named body fields used by the handler include `date_lim_reglement`.
+
+**Access** The decision uses right `facture.creer`.
+
+The optional caller marker is placed in event context for synchronization.
+
+**Result** The record identifier.
+
+- `400` — body includes a forbidden identifier, required request field absent.
+- `403` — access refused, requested entity differs from the acting entity.
+- `404` — party missing.
+- `500` — business operation failed.
+
+Source lines `361–417` with `_validate 2106–2119`.
+
+## `createInvoiceFromOrder` — Create invoice from order
+
+Route `POST /createfromorder/{orderid}`.
+
+**Arguments** `orderid`.
+
+**Access** The decision uses right `commande.lire`, right `facture.creer`, order record scope.
+
+The method creates the document from the order and loads related business records. The source order must have progressed beyond draft and must still be unbilled. A previously billed order and a draft order are both ineligible for this conversion.
+
+**Result** A record with internal service properties removed.
+
+- `400` — order id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — order missing.
+- `405` — order is not eligible for invoicing: its status does not allow creating an invoice, operation unavailable.
+
+Source lines `435–470`.
+
+## `createInvoiceFromContract` — Create invoice from contract
+
+Route `POST /createfromcontract/{contractid}`.
+
+**Arguments** `contractid`.
+
+**Access** The decision uses right `contrat.lire`, right `facture.creer`, contract record scope.
+
+The method creates an invoice from contract lines and loads related business records.
+
+**Result** A record with internal service properties removed.
+
+- `400` — contract id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — contract missing.
+- `405` — operation unavailable.
+
+Source lines `487–516`.
+
+## `getLines` — Read document lines
+
+Route `GET {id}/lines`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+**Result** A collection of line records for the selected parent.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `530–550`.
+
+## `putLine` — Amend a line
+
+Route `PUT {id}/lines/{lineid}`.
+
+**Arguments** `id`, `lineid`, `request_data = null`.
+
+Named body fields used by the handler include `desc`, `label`, `subprice`, `qty`, `remise_percent`, `date_start`, `date_end`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `price_base_type`, `info_bits`, `product_type`, `fk_parent_line`, `fk_fournprice`, `pa_ht`, `special_code`, `array_options`, `situation_percent`, `fk_unit`, `multicurrency_subprice`, `ref_ext`, `rang`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method amends a line.
+
+**Result** A record with internal service properties removed.
+
+- `304` — unchanged state.
+- `403` — missing operation rights, record outside the caller’s scope, line does not belong to this invoice.
+- `404` — invoice missing, invoice line missing.
+
+Source lines `570–636`.
+
+## `postContact` — Attach a contact role
+
+Route `POST {id}/contact/{contactid}/{type}`.
+
+**Arguments** `id`, `contactid`, `type`, `source = 'external'`, `notrigger = 0`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method attaches a participant role.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `400` — source required, unknown contact source and role combination, type required, duplicate record or association, invalid request data, access refused, dB_ERROR_RECORD_ALREADY_EXISTS.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+- `503` — query or persistence failure.
+
+Source lines `657–763`.
+
+## `getContacts` — List attached contacts
+
+Route `GET {id}/contacts`.
+
+**Arguments** `id`, `type = ''`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+The method loads contacts by role.
+
+**Result** A collection of attached contacts and their roles.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `780–801`.
+
+## `deleteContact` — Remove a contact role
+
+Route `DELETE {id}/contact/{contactid}/{type}`.
+
+**Arguments** `id`, `contactid`, `type`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method loads contacts by role and removes a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — removal failed.
+
+Source lines `819–848`.
+
+## `deleteLine` — Remove a line
+
+Route `DELETE {id}/lines/{lineid}`.
+
+**Arguments** `id`, `lineid`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope, right `facture.lire`.
+
+The method removes a line. Only an invoice in draft state accepts line deletion through this method.
+
+**Result** The selected record with its response fields projected or cleaned.
+
+- `400` — line id required, no invoice can be found with no criteria.
+- `403` — missing operation rights, record outside the caller’s scope, access or input restriction.
+- `404` — invoice missing.
+- `405` — operation unavailable.
+
+Source lines `866–893` with `get 82–91`, `_fetch 146–191`.
+
+## `put` — Update a customer invoice
+
+**Arguments** `id`, `request_data = null`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope, right `facture.lire`.
+
+The optional caller marker is placed in event context for synchronization. The method calculates the payment due date and records a bank-account association.
+
+**Result** The selected record with its response fields projected or cleaned.
+
+- `400` — no invoice missing, invalid request data, no invoice can be found with no criteria.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `906–959` with `get 82–91`, `_fetch 146–191`.
+
+## `delete` — Delete a customer invoice
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.supprimer`, invoice record scope.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `400` — no invoice missing.
+- `403` — missing operation rights, record outside the caller’s scope, access or input restriction.
+- `404` — invoice missing.
+- `500` — removal failed.
+
+Source lines `971–1001`.
+
+## `postLine` — Add a line
+
+Route `POST {id}/lines`.
+
+**Arguments** `id`, `request_data = null`.
+
+Named body fields used by the handler include `desc`, `label`, `product_type`, `fk_parent_line`, `subprice`, `remise_percent`, `tva_tx`, `localtax1_tx`, `localtax2_tx`, `fk_fournprice`, `pa_ht`, `qty`, `fk_product`, `date_start`, `date_end`, `fk_code_ventilation`, `info_bits`, `fk_remise_except`, `price_base_type`, `rang`, `special_code`, `origin`, `origin_id`, `array_options`, `situation_percent`, `fk_prev_id`, `fk_unit`, `ref_ext`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method adds a line.
+
+**Result** The identifier returned by the line insertion.
+
+- `400` — line creation failed.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `1030–1097`.
+
+## `addContact` — Add contact
+
+Route `POST {id}/contacts`.
+
+**Arguments** `id`, `fk_socpeople`, `type_contact`, `source`, `notrigger = 0`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method attaches a participant role.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `1119–1149`.
+
+## `settodraft` — Return to draft
+
+Route `POST {id}/settodraft`.
+
+**Arguments** `id`, `idwarehouse = -1`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method restores draft state.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `1169–1197`.
+
+## `validate` — Validate a customer invoice
+
+Route `POST {id}/validate`.
+
+**Arguments** `id`, `force_number = ''`, `idwarehouse = 0`, `notrigger = 0`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method validates the record.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied (possibly already validated).
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `1219–1256`.
+
+## `settopaid` — Mark paid
+
+Route `POST {id}/settopaid`.
+
+**Arguments** `id`, `close_code = ''`, `close_note = ''`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method records paid status.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied (possibly already validated).
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `1275–1309`.
+
+## `settounpaid` — Return to unpaid
+
+Route `POST {id}/settounpaid`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method restores unpaid status.
+
+**Result** A record with internal service properties removed.
+
+- `304` — no transition applied.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed.
+
+Source lines `1327–1361`.
+
+## `getDiscount` — Read discount
+
+Route `GET {id}/discount`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+**Result** The selected record with its response fields projected or cleaned.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing, discount missing.
+- `500` — business operation failed.
+
+Source lines `1373–1401`.
+
+## `markAsCreditAvailable` — Mark as credit available
+
+Route `POST {id}/markAsCreditAvailable`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The lookup uses the visible entity scope for `invoice`. The method records paid status. The method opens a database transaction and provides commit and rollback paths. This operation turns the source credit-note balance into usable credit. Applying the available credit to a destination invoice is a separate operation with its own invoice and discount identifiers.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `500` — business operation failed, could not set paid.
+
+Source lines `1418–1596`.
+
+## `useDiscount` — Use discount
+
+Route `POST {id}/usediscount/{discountid}`.
+
+**Arguments** `id`, `discountid`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method records a discount.
+
+**Result** The result of applying the fixed discount to the invoice.
+
+- `400` — invoice id required, discount id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `405` — operation unavailable.
+
+Source lines `1616–1643`.
+
+## `useCreditNote` — Use credit note
+
+Route `POST {id}/usecreditnote/{discountid}`.
+
+**Arguments** `id`, `discountid`.
+
+**Access** The decision uses right `facture.creer`, invoice record scope.
+
+The method links the credit to the invoice.
+
+**Result** The integer result of associating the available credit with the invoice.
+
+- `400` — invoice id required, credit id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — credit missing.
+- `405` — operation unavailable.
+
+Source lines `1663–1692`.
+
+## `getPayments` — Read payments
+
+Route `GET {id}/payments`.
+
+**Arguments** `id`.
+
+**Access** The decision uses right `facture.lire`, invoice record scope.
+
+The method reads linked payment allocations.
+
+**Result** Payment records or allocations associated with the selected parent.
+
+- `400` — invoice id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+- `405` — operation unavailable.
+
+Source lines `1711–1735`.
+
+## `addPayment` — Add payment
+
+Route `POST {id}/payments`.
+
+**Arguments** `id`, `datepaye`, `paymentid`, `closepaidinvoices`, `accountid`, `num_payment = ''`, `comment = ''`, `chqemetteur = ''`, `chqbank = ''`.
+
+**Access** The decision uses right `facture.paiement`, invoice record scope.
+
+The method reads allocated payments, reads applied credits, reads applied deposits, and posts and links the bank entry. The method opens a database transaction and provides commit and rollback paths. The amount is the outstanding balance after receipt, credit and deposit allocations. A credit note uses a negative amount. Closing covered invoices is controlled by the close-paid option. With banking active this path also posts the payment to the selected account and requires an issuer for a cheque.
+
+**Result** The record identifier.
+
+- `400` — invoice id required, account id required, payment id or payment code required, invalid request data, emetteur required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice missing.
+
+Source lines `1761–1856`.
+
+## `addPaymentDistributed` — Add payment distributed
+
+Route `POST /paymentsdistributed`.
+
+**Arguments** `arrayofamounts`, `datepaye`, `paymentid`, `closepaidinvoices`, `accountid`, `num_payment = ''`, `comment = ''`, `chqemetteur = ''`, `chqbank = ''`, `ref_ext = ''`, `accepthigherpayment = false`.
+
+**Access** The decision uses right `facture.paiement`, invoice record scope.
+
+The method reads allocated payments, reads applied credits, reads applied deposits, and posts and links the bank entry. The method opens a database transaction and provides commit and rollback paths. Each keyed invoice may use an explicit amount or the remaining balance after receipts, credit notes and deposits. Choose either entity or document currency for a given allocation. The service compares absolute values to detect overpayment unless explicitly permitted. Credit-note shares are forced negative. For invoices with balances of 60 and 40, assigning 50 and “remain” creates one receipt allocated 50 and 40, leaving 10 on the first invoice.
+
+**Result** The record identifier.
+
+- `400` — invoice id required, account id required, payment id or payment code required, invalid request data, amount exceeds the open balance, emetteur required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — invoice id missing.
+
+Source lines `1888–2011`.
+
+## `putPayment` — Put payment
+
+Route `PUT payments/{id}`.
+
+**Arguments** `id`, `num_payment = ''`.
+
+**Access** The decision uses right `facture.paiement`, invoice record scope.
+
+The method changes the payment number.
+
+**Result** Acknowledgement under `success` with `code`, `message`.
+
+- `400` — payment id required.
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — payment missing.
+- `500` — business operation failed.
+
+Source lines `2031–2070`.
+
+## `getTemplateInvoice` — Read template invoice
+
+Route `GET templates/{id}`.
+
+**Arguments** `id`, `contact_list = 1`.
+
+**Access** The decision uses right `facture.lire`, facturerec record scope.
+
+**Result** A record with internal service properties removed.
+
+- `403` — missing operation rights, record outside the caller’s scope.
+- `404` — template invoice missing.
+
+Source lines `2137–2140` with `_fetchTemplateInvoice 2297–2322`.
+
+## `indexTemplateInvoices` — Index template invoices
+
+Route `GET templates`.
+
+**Arguments** `sortfield = "t.rowid"`, `sortorder = 'ASC'`, `limit = 100`, `page = 0`, `thirdparty_ids = ''`, `status = ''`, `sqlfilters = ''`, `properties = ''`, `pagination_data = false`, `loadlinkedobjects = 0`, `withLines = true`.
+
+**Access** The decision uses right `facture.lire`.
+
+The lookup uses the visible entity scope for `invoice`. A caller linked to a party receives that party restriction. The selection includes a representative-assignment restriction in its customer-visibility branch. The properties selector projects the returned fields. The method loads related business records.
+
+**Result** An ordered collection. With `pagination_data` enabled, `data` carries the rows and `pagination` carries `total`, `page`, `page_count`, `limit`.
+
+- `400` — invalid filter expression.
+- `403` — access refused.
+- `503` — query or persistence failure.
+
+Source lines `2170–2282`.
