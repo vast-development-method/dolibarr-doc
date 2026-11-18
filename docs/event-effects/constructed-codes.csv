@@ -1,0 +1,213 @@
+event_code,business_record,entry_operation,dispatch_point,suppression
+ACTIONCOMMREMINDER_CREATE,Calendar reminder,ActionCommReminder.create,"After record write, before commit",Uses caller suppression
+ACTIONCOMMREMINDER_DELETE,Calendar reminder,ActionCommReminder.delete,"After child handling, before parent deletion",Uses caller suppression
+ACTIONCOMMREMINDER_MODIFY,Calendar reminder,ActionCommReminder.update,"After record write, before commit",Uses caller suppression
+ASSETACCOUNTANCYCODESFISCAL_DELETE,Fixed asset fiscal account codes,AssetAccountancyCodesFiscal.delete,"After child handling, before parent deletion",Uses caller suppression
+ASSETACCOUNTANCYCODES_DELETE,Fixed asset account codes,AssetAccountancyCodes.delete,"After child handling, before parent deletion",Uses caller suppression
+ASSETMODEL_CREATE,Fixed asset model,AssetModel.create,"After record write, before commit",Uses caller suppression
+ASSETMODEL_CREATE,Fixed asset model,AssetModel.createFromClone,"After record write, before commit",Suppression omitted
+ASSETMODEL_DELETE,Fixed asset model,AssetModel.delete,"After child handling, before parent deletion",Uses caller suppression
+ASSETMODEL_MODIFY,Fixed asset model,AssetModel.update,"After record write, before commit",Uses caller suppression
+ASSET_CREATE,Fixed asset,Asset.create,"After record write, before commit",Uses caller suppression
+ASSET_DELETE,Fixed asset,Asset.delete,"After child handling, before parent deletion",Uses caller suppression
+ASSET_MODIFY,Fixed asset,Asset.update,"After record write, before commit",Uses caller suppression
+AVAILABILITIES_CREATE,Booking availability,Availabilities.create,"After record write, before commit",Uses caller suppression
+AVAILABILITIES_CREATE,Booking availability,Availabilities.createFromClone,"After record write, before commit",Suppression omitted
+AVAILABILITIES_DELETE,Booking availability,Availabilities.delete,"After child handling, before parent deletion",Uses caller suppression
+AVAILABILITIES_MODIFY,Booking availability,Availabilities.update,"After record write, before commit",Uses caller suppression
+BOMLINE_CREATE,Bill of materials line,BOMLine.create,"After record write, before commit",Uses caller suppression
+BOMLINE_DELETE,Bill of materials line,BOMLine.delete,"After child handling, before parent deletion",Uses caller suppression
+BOMLINE_MODIFY,Bill of materials line,BOMLine.update,"After record write, before commit",Uses caller suppression
+BOM_CREATE,Bill of materials,BOM.create,"After record write, before commit",Uses caller suppression
+BOM_CREATE,Bill of materials,BOM.createFromClone,"After record write, before commit",Suppression omitted
+BOM_DELETE,Bill of materials,BOM.delete,"After child handling, before parent deletion",Uses caller suppression
+BOM_MODIFY,Bill of materials,BOM.update,"After record write, before commit",Uses caller suppression
+BONPRELEVEMENT_MODIFY,Direct debit order,BonPrelevement.update,"After record write, before commit",Uses caller suppression
+BOOKKEEPINGTEMPLATELINE_CREATE,Journal template line,BookkeepingTemplate.createFromClone,"After record write, before commit",Suppression omitted
+BOOKKEEPINGTEMPLATELINE_CREATE,Journal template line,BookkeepingTemplateLine.create,"After record write, before commit",Uses caller suppression
+BOOKKEEPINGTEMPLATELINE_DELETE,Journal template line,BookkeepingTemplateLine.delete,"After child handling, before parent deletion",Uses caller suppression
+BOOKKEEPINGTEMPLATELINE_MODIFY,Journal template line,BookkeepingTemplateLine.update,"After record write, before commit",Uses caller suppression
+BOOKKEEPINGTEMPLATE_CREATE,Journal template,BookkeepingTemplate.create,"After record write, before commit",Uses caller suppression
+BOOKKEEPINGTEMPLATE_CREATE,Journal template,BookkeepingTemplate.createFromClone,"After record write, before commit",Suppression omitted
+BOOKKEEPINGTEMPLATE_MODIFY,Journal template,BookkeepingTemplate.update,"After record write, before commit",Uses caller suppression
+CALENDAR_CREATE,Booking calendar,Calendar.create,"After record write, before commit",Uses caller suppression
+CALENDAR_CREATE,Booking calendar,Calendar.createFromClone,"After record write, before commit",Suppression omitted
+CALENDAR_DELETE,Booking calendar,Calendar.delete,"After child handling, before parent deletion",Uses caller suppression
+CALENDAR_MODIFY,Booking calendar,Calendar.update,"After record write, before commit",Uses caller suppression
+CASHCONTROL_DELETE,Cash control,CashControl.delete,"After child handling, before parent deletion",Uses caller suppression
+CASHCONTROL_MODIFY,Cash control,CashControl.update,"After record write, before commit",Uses caller suppression
+COMPANYPAYMENTMODE_CREATE,Party payment mode,CompanyPaymentMode.create,"After record write, before commit",Uses caller suppression
+COMPANYPAYMENTMODE_CREATE,Party payment mode,CompanyPaymentMode.createFromClone,"After record write, before commit",Suppression omitted
+COMPANYPAYMENTMODE_DELETE,Party payment mode,CompanyPaymentMode.delete,"After child handling, before parent deletion",Uses caller suppression
+COMPANYPAYMENTMODE_MODIFY,Party payment mode,CompanyPaymentMode.update,"After record write, before commit",Uses caller suppression
+CONFERENCEORBOOTHATTENDEE_CREATE,Conference or booth attendee,ConferenceOrBoothAttendee.create,"After record write, before commit",Uses caller suppression
+CONFERENCEORBOOTHATTENDEE_CREATE,Conference or booth attendee,ConferenceOrBoothAttendee.createFromClone,"After record write, before commit",Suppression omitted
+CONFERENCEORBOOTHATTENDEE_DELETE,Conference or booth attendee,ConferenceOrBoothAttendee.delete,"After child handling, before parent deletion",Uses caller suppression
+CONFERENCEORBOOTHATTENDEE_MODIFY,Conference or booth attendee,ConferenceOrBoothAttendee.update,"After record write, before commit",Uses caller suppression
+CTICKETCATEGORY_CREATE,Ticket category,CTicketCategory.create,"After record write, before commit",Uses caller suppression
+CTICKETCATEGORY_CREATE,Ticket category,CTicketCategory.createFromClone,"After record write, before commit",Suppression omitted
+CTICKETCATEGORY_DELETE,Ticket category,CTicketCategory.delete,"After child handling, before parent deletion",Uses caller suppression
+CTICKETCATEGORY_MODIFY,Ticket category,CTicketCategory.update,"After record write, before commit",Uses caller suppression
+DEFAULTVALUES_CREATE,Record defaults,DefaultValues.create,"After record write, before commit",Uses caller suppression
+DEFAULTVALUES_CREATE,Record defaults,DefaultValues.createFromClone,"After record write, before commit",Suppression omitted
+DEFAULTVALUES_DELETE,Record defaults,DefaultValues.delete,"After child handling, before parent deletion",Uses caller suppression
+DEFAULTVALUES_MODIFY,Record defaults,DefaultValues.update,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTORACTION_CREATE,Inbound mail action,EmailCollectorAction.create,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTORACTION_CREATE,Inbound mail action,EmailCollectorAction.createFromClone,"After record write, before commit",Suppression omitted
+EMAILCOLLECTORACTION_DELETE,Inbound mail action,EmailCollectorAction.delete,"After child handling, before parent deletion",Uses caller suppression
+EMAILCOLLECTORACTION_MODIFY,Inbound mail action,EmailCollectorAction.update,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTORFILTER_CREATE,Inbound mail filter,EmailCollectorFilter.create,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTORFILTER_CREATE,Inbound mail filter,EmailCollectorFilter.createFromClone,"After record write, before commit",Suppression omitted
+EMAILCOLLECTORFILTER_DELETE,Inbound mail filter,EmailCollectorFilter.delete,"After child handling, before parent deletion",Uses caller suppression
+EMAILCOLLECTORFILTER_MODIFY,Inbound mail filter,EmailCollectorFilter.update,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTOR_CREATE,Inbound mail collector,EmailCollector.create,"After record write, before commit",Uses caller suppression
+EMAILCOLLECTOR_DELETE,Inbound mail collector,EmailCollector.delete,"After child handling, before parent deletion",Uses caller suppression
+EMAILCOLLECTOR_MODIFY,Inbound mail collector,EmailCollector.update,"After record write, before commit",Uses caller suppression
+EMAILSENDERPROFILE_CREATE,Mail sender profile,EmailSenderProfile.create,"After record write, before commit",Uses caller suppression
+EMAILSENDERPROFILE_CREATE,Mail sender profile,EmailSenderProfile.createFromClone,"After record write, before commit",Suppression omitted
+EMAILSENDERPROFILE_DELETE,Mail sender profile,EmailSenderProfile.delete,"After child handling, before parent deletion",Uses caller suppression
+EMAILSENDERPROFILE_MODIFY,Mail sender profile,EmailSenderProfile.update,"After record write, before commit",Uses caller suppression
+EVALUATIONLINE_CREATE,Staff evaluation line,EvaluationLine.create,"After record write, before commit",Uses caller suppression
+EVALUATIONLINE_DELETE,Staff evaluation line,EvaluationLine.delete,"After child handling, before parent deletion",Uses caller suppression
+EVALUATIONLINE_MODIFY,Staff evaluation line,EvaluationLine.update,"After record write, before commit",Uses caller suppression
+EVALUATION_CREATE,Staff evaluation,Evaluation.create,"After record write, before commit",Uses caller suppression
+EVALUATION_CREATE,Staff evaluation,Evaluation.createFromClone,"After record write, before commit",Suppression omitted
+EVALUATION_DELETE,Staff evaluation,Evaluation.delete,"After child handling, before parent deletion",Uses caller suppression
+EVALUATION_MODIFY,Staff evaluation,Evaluation.update,"After record write, before commit",Uses caller suppression
+EXPENSEREPORTIK_CREATE,Mileage reimbursement rate,ExpenseReportIk.create,"After record write, before commit",Uses caller suppression
+EXPENSEREPORTIK_DELETE,Mileage reimbursement rate,ExpenseReportIk.delete,"After child handling, before parent deletion",Uses caller suppression
+EXPENSEREPORTIK_MODIFY,Mileage reimbursement rate,ExpenseReportIk.update,"After record write, before commit",Uses caller suppression
+EXPENSEREPORTRULE_CREATE,Expense rule,ExpenseReportRule.create,"After record write, before commit",Uses caller suppression
+EXPENSEREPORTRULE_DELETE,Expense rule,ExpenseReportRule.delete,"After child handling, before parent deletion",Uses caller suppression
+EXPENSEREPORTRULE_MODIFY,Expense rule,ExpenseReportRule.update,"After record write, before commit",Uses caller suppression
+HOOK_CREATE,Automation subscription,Hook.create,"After record write, before commit",Uses caller suppression
+HOOK_CREATE,Automation subscription,Hook.createFromClone,"After record write, before commit",Suppression omitted
+HOOK_DELETE,Automation subscription,Hook.delete,"After child handling, before parent deletion",Uses caller suppression
+HOOK_MODIFY,Automation subscription,Hook.update,"After record write, before commit",Uses caller suppression
+INTRACOMMREPORT_CREATE,Intra-community report,IntracommReport.create,"After record write, before commit",Uses caller suppression
+INTRACOMMREPORT_DELETE,Intra-community report,IntracommReport.delete,"After child handling, before parent deletion",Uses caller suppression
+INVENTORYLINE_CREATE,Stock count line,InventoryLine.create,"After record write, before commit",Uses caller suppression
+INVENTORYLINE_DELETE,Stock count line,InventoryLine.delete,"After child handling, before parent deletion",Uses caller suppression
+INVENTORYLINE_MODIFY,Stock count line,InventoryLine.update,"After record write, before commit",Uses caller suppression
+INVENTORY_CREATE,Stock count,Inventory.create,"After record write, before commit",Uses caller suppression
+INVENTORY_CREATE,Stock count,Inventory.createFromClone,"After record write, before commit",Suppression omitted
+INVENTORY_DELETE,Stock count,Inventory.delete,"After child handling, before parent deletion",Uses caller suppression
+INVENTORY_MODIFY,Stock count,Inventory.update,"After record write, before commit",Uses caller suppression
+JOB_CREATE,Job definition,Job.create,"After record write, before commit",Uses caller suppression
+JOB_CREATE,Job definition,Job.createFromClone,"After record write, before commit",Suppression omitted
+JOB_DELETE,Job definition,Job.delete,"After child handling, before parent deletion",Uses caller suppression
+JOB_MODIFY,Job definition,Job.update,"After record write, before commit",Uses caller suppression
+KNOWLEDGERECORD_CREATE,Knowledge article,KnowledgeRecord.create,"After record write, before commit",Uses caller suppression
+KNOWLEDGERECORD_CREATE,Knowledge article,KnowledgeRecord.createFromClone,"After record write, before commit",Suppression omitted
+KNOWLEDGERECORD_DELETE,Knowledge article,KnowledgeRecord.delete,"After child handling, before parent deletion",Uses caller suppression
+KNOWLEDGERECORD_MODIFY,Knowledge article,KnowledgeRecord.update,"After record write, before commit",Uses caller suppression
+LINEAVAILABILITIES_DELETE,Booking availability,Availabilities.deleteLine,Before child deletion,Shared method always dispatches
+LINECALENDAR_DELETE,Booking calendar,Calendar.deleteLine,Before child deletion,Shared method always dispatches
+LINECONFERENCEORBOOTHATTENDEE_DELETE,Conference or booth attendee,ConferenceOrBoothAttendee.deleteLine,Before child deletion,Shared method always dispatches
+LINECTICKETCATEGORY_DELETE,Ticket category,CTicketCategory.deleteLine,Before child deletion,Shared method always dispatches
+LINEEVALUATIONLINE_DELETE,Staff evaluation line,EvaluationLine.deleteLine,Before child deletion,Shared method always dispatches
+LINEEVALUATION_DELETE,Staff evaluation,Evaluation.deleteLine,Before child deletion,Shared method always dispatches
+LINEINVENTORY_DELETE,Stock count,Inventory.deleteLine,Before child deletion,Shared method always dispatches
+LINEJOB_DELETE,Job definition,Job.deleteLine,Before child deletion,Shared method always dispatches
+LINEKNOWLEDGERECORD_DELETE,Knowledge article,KnowledgeRecord.deleteLine,Before child deletion,Shared method always dispatches
+LINEMEMO_DELETE,Memo,Memo.deleteLine,Before child deletion,Shared method always dispatches
+LINEMO_DELETE,Manufacturing order,Mo.cancelConsumedAndProducedLines,Before child deletion,Shared method always dispatches
+LINEMO_DELETE,Manufacturing order,Mo.deleteLine,Before child deletion,Shared method always dispatches
+LINEPARTNERSHIP_DELETE,Partnership,Partnership.deleteLine,Before child deletion,Shared method always dispatches
+LINEPOSITION_DELETE,Staff position,Position.deleteLine,Before child deletion,Shared method always dispatches
+LINERECRUITMENTCANDIDATURE_DELETE,Recruitment application,RecruitmentCandidature.deleteLine,Before child deletion,Shared method always dispatches
+LINERECRUITMENTJOBPOSITION_DELETE,Recruitment opening,RecruitmentJobPosition.deleteLine,Before child deletion,Shared method always dispatches
+LINESKILLDET_DELETE,Skill detail,Skilldet.deleteLine,Before child deletion,Shared method always dispatches
+LINESKILLRANK_DELETE,Skill rank,SkillRank.deleteLine,Before child deletion,Shared method always dispatches
+LINESKILL_DELETE,Staff skill,Skill.deleteLine,Before child deletion,Shared method always dispatches
+LINESTOCKTRANSFERLINE_DELETE,Stock transfer line,StockTransferLine.deleteLine,Before child deletion,Shared method always dispatches
+LINESTOCKTRANSFER_DELETE,Stock transfer,StockTransfer.deleteLine,Before child deletion,Shared method always dispatches
+LINETARGET_DELETE,Webhook target,Target.deleteLine,Before child deletion,Shared method always dispatches
+LINETIMESPENT_DELETE,Recorded work time,TimeSpent.deleteLine,Before child deletion,Shared method always dispatches
+LINETRIGGERHISTORY_DELETE,Webhook delivery history,TriggerHistory.deleteLine,Before child deletion,Shared method always dispatches
+LINEWORKSTATION_DELETE,Workstation,Workstation.deleteLine,Before child deletion,Shared method always dispatches
+MEMO_CREATE,Memo,Memo.create,"After record write, before commit",Uses caller suppression
+MEMO_CREATE,Memo,Memo.createFromClone,"After record write, before commit",Suppression omitted
+MEMO_DELETE,Memo,Memo.delete,"After child handling, before parent deletion",Uses caller suppression
+MEMO_MODIFY,Memo,Memo.update,"After record write, before commit",Uses caller suppression
+MOLINE_CREATE,Manufacturing order line,MoLine.create,"After record write, before commit",Uses caller suppression
+MOLINE_DELETE,Manufacturing order line,MoLine.delete,"After child handling, before parent deletion",Uses caller suppression
+MOLINE_MODIFY,Manufacturing order line,MoLine.update,"After record write, before commit",Uses caller suppression
+MOUVEMENTSTOCK_DELETE,Stock movement,MouvementStock.delete,"After child handling, before parent deletion",Uses caller suppression
+MO_CREATE,Manufacturing order,Mo.create,"After record write, before commit",Uses caller suppression
+MO_CREATE,Manufacturing order,Mo.createFromClone,"After record write, before commit",Suppression omitted
+MO_DELETE,Manufacturing order,Mo.delete,"After child handling, before parent deletion",Uses caller suppression
+MO_MODIFY,Manufacturing order,Mo.update,"After record write, before commit",Uses caller suppression
+PARTNERSHIPTYPE_CREATE,Partnership type,PartnershipType.create,"After record write, before commit",Uses caller suppression
+PARTNERSHIPTYPE_DELETE,Partnership type,PartnershipType.delete,"After child handling, before parent deletion",Uses caller suppression
+PARTNERSHIPTYPE_MODIFY,Partnership type,PartnershipType.update,"After record write, before commit",Uses caller suppression
+PARTNERSHIP_CREATE,Partnership,Partnership.create,"After record write, before commit",Uses caller suppression
+PARTNERSHIP_CREATE,Partnership,Partnership.createFromClone,"After record write, before commit",Suppression omitted
+PARTNERSHIP_DELETE,Partnership,Partnership.delete,"After child handling, before parent deletion",Uses caller suppression
+PARTNERSHIP_MODIFY,Partnership,Partnership.update,"After record write, before commit",Uses caller suppression
+POSITION_CREATE,Staff position,Position.create,"After record write, before commit",Uses caller suppression
+POSITION_CREATE,Staff position,Position.createFromClone,"After record write, before commit",Suppression omitted
+POSITION_DELETE,Staff position,Position.delete,"After child handling, before parent deletion",Uses caller suppression
+POSITION_MODIFY,Staff position,Position.update,"After record write, before commit",Uses caller suppression
+PRODUCTFOURNISSEURPRICE_CREATE,Supplier product price,ProductFournisseurPrice.create,"After record write, before commit",Uses caller suppression
+PRODUCTFOURNISSEURPRICE_CREATE,Supplier product price,ProductFournisseurPrice.createFromClone,"After record write, before commit",Suppression omitted
+PRODUCTFOURNISSEURPRICE_DELETE,Supplier product price,ProductFournisseurPrice.delete,"After child handling, before parent deletion",Uses caller suppression
+PRODUCTFOURNISSEURPRICE_MODIFY,Supplier product price,ProductFournisseurPrice.update,"After record write, before commit",Uses caller suppression
+RECRUITMENTCANDIDATURE_CREATE,Recruitment application,RecruitmentCandidature.create,"After record write, before commit",Uses caller suppression
+RECRUITMENTCANDIDATURE_CREATE,Recruitment application,RecruitmentCandidature.createFromClone,"After record write, before commit",Suppression omitted
+RECRUITMENTCANDIDATURE_DELETE,Recruitment application,RecruitmentCandidature.delete,"After child handling, before parent deletion",Uses caller suppression
+RECRUITMENTCANDIDATURE_MODIFY,Recruitment application,RecruitmentCandidature.update,"After record write, before commit",Uses caller suppression
+RECRUITMENTJOBPOSITION_CREATE,Recruitment opening,RecruitmentJobPosition.create,"After record write, before commit",Uses caller suppression
+RECRUITMENTJOBPOSITION_CREATE,Recruitment opening,RecruitmentJobPosition.createFromClone,"After record write, before commit",Suppression omitted
+RECRUITMENTJOBPOSITION_DELETE,Recruitment opening,RecruitmentJobPosition.delete,"After child handling, before parent deletion",Uses caller suppression
+RECRUITMENTJOBPOSITION_MODIFY,Recruitment opening,RecruitmentJobPosition.update,"After record write, before commit",Uses caller suppression
+SALARY_DELETE,Salary,Salary.delete,"After child handling, before parent deletion",Uses caller suppression
+SKILLDET_CREATE,Skill detail,Skilldet.create,"After record write, before commit",Uses caller suppression
+SKILLDET_CREATE,Skill detail,Skilldet.createFromClone,"After record write, before commit",Suppression omitted
+SKILLDET_DELETE,Skill detail,Skilldet.delete,"After child handling, before parent deletion",Uses caller suppression
+SKILLDET_MODIFY,Skill detail,Skilldet.update,"After record write, before commit",Uses caller suppression
+SKILLRANK_CREATE,Skill rank,SkillRank.create,"After record write, before commit",Uses caller suppression
+SKILLRANK_CREATE,Skill rank,SkillRank.createFromClone,"After record write, before commit",Suppression omitted
+SKILLRANK_DELETE,Skill rank,SkillRank.delete,"After child handling, before parent deletion",Uses caller suppression
+SKILLRANK_MODIFY,Skill rank,SkillRank.update,"After record write, before commit",Uses caller suppression
+SKILL_CREATE,Staff skill,Skill.create,"After record write, before commit",Uses caller suppression
+SKILL_CREATE,Staff skill,Skill.createFromClone,"After record write, before commit",Suppression omitted
+SKILL_DELETE,Staff skill,Skill.delete,"After child handling, before parent deletion",Uses caller suppression
+SKILL_MODIFY,Staff skill,Skill.update,"After record write, before commit",Uses caller suppression
+SOCIETEACCOUNT_CREATE,Party external account link,SocieteAccount.create,"After record write, before commit",Uses caller suppression
+SOCIETEACCOUNT_CREATE,Party external account link,SocieteAccount.createFromClone,"After record write, before commit",Suppression omitted
+SOCIETEACCOUNT_DELETE,Party external account link,SocieteAccount.delete,"After child handling, before parent deletion",Uses caller suppression
+SOCIETEACCOUNT_MODIFY,Party external account link,SocieteAccount.update,"After record write, before commit",Uses caller suppression
+STOCKTRANSFERLINE_CREATE,Stock transfer line,StockTransferLine.create,"After record write, before commit",Uses caller suppression
+STOCKTRANSFERLINE_CREATE,Stock transfer line,StockTransferLine.createFromClone,"After record write, before commit",Suppression omitted
+STOCKTRANSFERLINE_DELETE,Stock transfer line,StockTransferLine.delete,"After child handling, before parent deletion",Uses caller suppression
+STOCKTRANSFERLINE_MODIFY,Stock transfer line,StockTransferLine.update,"After record write, before commit",Uses caller suppression
+STOCKTRANSFER_CREATE,Stock transfer,StockTransfer.create,"After record write, before commit",Uses caller suppression
+STOCKTRANSFER_CREATE,Stock transfer,StockTransfer.createFromClone,"After record write, before commit",Suppression omitted
+STOCKTRANSFER_DELETE,Stock transfer,StockTransfer.delete,"After child handling, before parent deletion",Uses caller suppression
+STOCKTRANSFER_MODIFY,Stock transfer,StockTransfer.update,"After record write, before commit",Uses caller suppression
+TARGET_CREATE,Webhook target,Target.create,"After record write, before commit",Uses caller suppression
+TARGET_CREATE,Webhook target,Target.createFromClone,"After record write, before commit",Suppression omitted
+TARGET_DELETE,Webhook target,Target.delete,"After child handling, before parent deletion",Uses caller suppression
+TARGET_MODIFY,Webhook target,Target.update,"After record write, before commit",Uses caller suppression
+TIMESPENT_CREATE,Recorded work time,TimeSpent.create,"After record write, before commit",Uses caller suppression
+TIMESPENT_CREATE,Recorded work time,TimeSpent.createFromClone,"After record write, before commit",Suppression omitted
+TIMESPENT_DELETE,Recorded work time,TimeSpent.delete,"After child handling, before parent deletion",Uses caller suppression
+TIMESPENT_MODIFY,Recorded work time,TimeSpent.update,"After record write, before commit",Uses caller suppression
+TRIGGERHISTORY_CREATE,Webhook delivery history,TriggerHistory.create,"After record write, before commit",Uses caller suppression
+TRIGGERHISTORY_DELETE,Webhook delivery history,TriggerHistory.delete,"After child handling, before parent deletion",Uses caller suppression
+TRIGGERHISTORY_MODIFY,Webhook delivery history,TriggerHistory.update,"After record write, before commit",Uses caller suppression
+USERGROUP_CREATE,User group,UserGroup.create,"After record write, before commit",Uses caller suppression
+USERGROUP_DELETE,User group,UserGroup.delete,"After child handling, before parent deletion",Suppression omitted
+USERGROUP_MODIFY,User group,UserGroup.update,"After record write, before commit",Uses caller suppression
+WEBSITEPAGE_CREATE,Website page,WebsitePage.create,"After record write, before commit",Uses caller suppression
+WEBSITEPAGE_DELETE,Website page,WebsitePage.delete,"After child handling, before parent deletion",Uses caller suppression
+WEBSITEPAGE_MODIFY,Website page,WebsitePage.update,"After record write, before commit",Uses caller suppression
+WEBSITE_DELETE,Website,Website.delete,"After child handling, before parent deletion",Uses caller suppression
+WORKSTATIONRESOURCE_CREATE,Workstation resource association,Workstation.create,"After record write, before commit",Suppression omitted
+WORKSTATIONRESOURCE_CREATE,Workstation resource association,Workstation.update,"After record write, before commit",Suppression omitted
+WORKSTATIONUSERGROUP_CREATE,Workstation user group association,Workstation.create,"After record write, before commit",Suppression omitted
+WORKSTATIONUSERGROUP_CREATE,Workstation user group association,Workstation.update,"After record write, before commit",Suppression omitted
+WORKSTATION_CREATE,Workstation,Workstation.create,"After record write, before commit",Uses caller suppression
+WORKSTATION_DELETE,Workstation,Workstation.delete,"After child handling, before parent deletion",Uses caller suppression
+WORKSTATION_MODIFY,Workstation,Workstation.update,"After record write, before commit",Uses caller suppression

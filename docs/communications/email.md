@@ -32,6 +32,8 @@ The notification module's global setup requires an administrator. When a support
 
 **Acceptance.** Process an allowed message on a ticket-enabled collector with no matching ticket. Expect the ticket action to create one when required fields and dependencies are satisfied. Supply a reply carrying that ticket's tracking information. Expect a new event on the existing ticket. Fail a later action within a message's database transaction and verify rollback for that message. A mailbox move and its database commit occur at different times; reconciliation should inspect both before replaying a failed move.
 
+[Incoming message filters, ordered actions and recovery](incoming-message-actions.md)
+
 ## Social profiles on parties and contacts
 
 The SocialNetworks module directs administrators to the social-network dictionary. A contact stores its network-to-profile values as a map. Contact reads decode that map, and an edit can propagate revised profiles to a linked user along with other synchronised properties. A third party has its own profile map. These stored addresses are contact attributes; they do not imply delivery of a campaign or subscription to an event.

@@ -29,7 +29,10 @@
         "docs/registers-partners/supplier-line-accounts.md",
         "docs/expense-accounting/README.md",
         "docs/invoice-processing/account-assignment.md",
-        "docs/registers-accounts/README.md"
+        "docs/registers-accounts/README.md",
+        "docs/concurrent-posting/journal-transfers.md",
+        "docs/services/reads-with-effects.md",
+        "docs/operating-boundaries/record-history-and-reports.md"
       ],
       "focus": "Chart import and balance accounts, source bindings, journal transfer and fiscal close."
     },
@@ -76,7 +79,9 @@
         "docs/services/credential-lifecycle.md",
         "docs/services/README.md",
         "docs/services/route-selection.md",
-        "docs/services/supplier-invoice-line-inputs.md"
+        "docs/services/supplier-invoice-line-inputs.md",
+        "docs/service-writes/README.md",
+        "docs/services/reads-with-effects.md"
       ],
       "focus": "Resource discovery, entity and record access, link creation and retrieval."
     },
@@ -109,7 +114,8 @@
         "docs/international/currency-from-quotation-to-settlement.md",
         "docs/records/operational-evidence.md",
         "docs/registers-payments/bank-accounts-and-miscellaneous-cash.md",
-        "docs/registers-payments/deposits-and-transfer-lines.md"
+        "docs/registers-payments/deposits-and-transfer-lines.md",
+        "docs/operating-boundaries/settlement-and-declarations.md"
       ],
       "focus": "Inter-account transfers, payment links, reconciliation and bank-journal mapping."
     },
@@ -186,7 +192,9 @@
         "docs/operator-reports/customer-order-line-list.md",
         "docs/list-filters/README.md",
         "docs/document-models/README.md",
-        "docs/list-filters/sales-and-purchasing.md"
+        "docs/list-filters/sales-and-purchasing.md",
+        "docs/conversion-recovery/single-document.md",
+        "docs/conversion-recovery/selected-documents.md"
       ],
       "focus": "Customer order validation, proposal conversion, partial dispatch and billed classification."
     },
@@ -214,7 +222,8 @@
         "docs/workforce-operations/service-teams-and-batch-resolution.md",
         "docs/list-filters/README.md",
         "docs/public-workflows/document-decisions.md",
-        "docs/list-filters/people-and-services.md"
+        "docs/list-filters/people-and-services.md",
+        "docs/conversion-recovery/single-document.md"
       ],
       "focus": "Contract validation, activation and closure of individual service lines."
     },
@@ -275,7 +284,8 @@
       "key": "EmailCollector",
       "guides": [
         "docs/communications/email.md",
-        "docs/specification/channels/mail-intake-routing-and-replay.md"
+        "docs/specification/channels/mail-intake-routing-and-replay.md",
+        "docs/communications/incoming-message-actions.md"
       ],
       "focus": "Collector configuration, ordered message actions, ticket creation and follow-up events."
     },
@@ -306,7 +316,8 @@
         "docs/list-filters/README.md",
         "docs/document-models/README.md",
         "docs/public-workflows/document-decisions.md",
-        "docs/list-filters/catalog-and-fulfillment.md"
+        "docs/list-filters/catalog-and-fulfillment.md",
+        "docs/conversion-recovery/selected-documents.md"
       ],
       "focus": "Source order quantities, shipment validation, warehouse effects and billing from dispatched lines."
     },
@@ -384,7 +395,9 @@
         "docs/list-filters/sales-and-purchasing.md",
         "docs/registers-payments/customer-and-supplier-payments.md",
         "docs/invoice-processing/README.md",
-        "docs/document-lifecycle/README.md"
+        "docs/document-lifecycle/README.md",
+        "docs/conversion-recovery/selected-documents.md",
+        "docs/delivery-evidence/README.md"
       ],
       "focus": "Invoice state, tax-inclusive and exclusive line pricing, cash allocation and recurring billing."
     },
@@ -509,7 +522,8 @@
         "docs/communications/email.md",
         "docs/specification/channels/campaign-target-delivery-and-suppression.md",
         "docs/specification/administration/outbound-events-and-campaign-delivery.md",
-        "docs/registers-operations/campaigns.md"
+        "docs/registers-operations/campaigns.md",
+        "docs/services/reads-with-effects.md"
       ],
       "focus": "Campaign validation, recipient status, duplicate policy and delivery tracking."
     },
@@ -526,7 +540,8 @@
     {
       "key": "ModuleBuilder",
       "guides": [
-        "docs/administration/audit-and-extensions.md"
+        "docs/administration/audit-and-extensions.md",
+        "docs/operating-boundaries/configured-model.md"
       ],
       "focus": "Builder permission, generation of objects and configuration of business fields."
     },
@@ -542,7 +557,8 @@
         "docs/warehouse-corrections/manufacturing-actuals.md",
         "docs/document-models/project-and-manufacturing-sheets.md",
         "docs/production-control/README.md",
-        "docs/production-control/posting-modes.md"
+        "docs/production-control/posting-modes.md",
+        "docs/concurrent-posting/warehouse-and-lot-balances.md"
       ],
       "focus": "Manufacturing order quantities, material consumption, production and correction."
     },
@@ -560,7 +576,9 @@
       "guides": [
         "docs/communications/email.md",
         "docs/specification/planning/calendar-series-and-reminders.md",
-        "docs/specification/administration/commercial-message-delivery.md"
+        "docs/specification/administration/commercial-message-delivery.md",
+        "docs/event-effects/README.md",
+        "docs/delivery-evidence/README.md"
       ],
       "focus": "Event subscriptions, recipient selection and outbound business notifications."
     },
@@ -654,7 +672,8 @@
         "docs/specification/operations/lot-identity-and-traceability.md",
         "docs/warehouse-corrections/receipt-cost-and-reversal.md",
         "docs/warehouse-corrections/shared-lot-and-posting-order.md",
-        "docs/warehouse-corrections/tracking-mode-conversion.md"
+        "docs/warehouse-corrections/tracking-mode-conversion.md",
+        "docs/concurrent-posting/warehouse-and-lot-balances.md"
       ],
       "focus": "Lot identity and dates, per-warehouse quantities, movement and count adjustments."
     },
@@ -672,7 +691,8 @@
         "docs/document-models/project-and-manufacturing-sheets.md",
         "docs/operator-reports/project-list-and-opportunity-filters.md",
         "docs/list-filters/README.md",
-        "docs/list-filters/projects-and-tasks.md"
+        "docs/list-filters/projects-and-tasks.md",
+        "docs/operating-boundaries/record-history-and-reports.md"
       ],
       "focus": "Project visibility, task work, historical labour cost and invoicing of selected time."
     },
@@ -691,7 +711,8 @@
         "docs/bulk-operations/README.md",
         "docs/document-models/README.md",
         "docs/public-workflows/document-decisions.md",
-        "docs/list-filters/sales-and-purchasing.md"
+        "docs/list-filters/sales-and-purchasing.md",
+        "docs/conversion-recovery/single-document.md"
       ],
       "focus": "Proposal state changes, prices and conversion to a customer order."
     },
@@ -717,7 +738,8 @@
         "docs/bulk-operations/README.md",
         "docs/list-filters/README.md",
         "docs/document-models/README.md",
-        "docs/list-filters/catalog-and-fulfillment.md"
+        "docs/list-filters/catalog-and-fulfillment.md",
+        "docs/conversion-recovery/selected-documents.md"
       ],
       "focus": "Order-linked receipt validation, quantities and configurable stock posting."
     },
@@ -789,7 +811,9 @@
         "docs/operator-reports/people-and-sales-attribution.md",
         "docs/list-filters/README.md",
         "docs/registers-operations/contacts.md",
-        "docs/registers-partners/third-parties.md"
+        "docs/registers-partners/third-parties.md",
+        "docs/operating-boundaries/configured-model.md",
+        "docs/services/reads-with-effects.md"
       ],
       "focus": "Party roles, contacts, sales ownership and consolidation of duplicate accounts."
     },
@@ -814,7 +838,8 @@
         "docs/list-filters/README.md",
         "docs/list-filters/catalog-and-fulfillment.md",
         "docs/production-control/lot-reconciliation.md",
-        "docs/production-control/posting-modes.md"
+        "docs/production-control/posting-modes.md",
+        "docs/concurrent-posting/warehouse-and-lot-balances.md"
       ],
       "focus": "Warehouse balances, inventory movements, weighted average cost, replenishment and counts."
     },
@@ -857,7 +882,8 @@
         "docs/services/supplier-invoice-line-inputs.md",
         "docs/finance/supplier-account-preparation.md",
         "docs/list-filters/sales-and-purchasing.md",
-        "docs/registers-payments/customer-and-supplier-payments.md"
+        "docs/registers-payments/customer-and-supplier-payments.md",
+        "docs/conversion-recovery/selected-documents.md"
       ],
       "focus": "Split supplier invoice activation, validation, payment allocation and closure."
     },
@@ -875,7 +901,8 @@
         "docs/settings/commercial.md",
         "docs/bulk-operations/README.md",
         "docs/list-filters/README.md",
-        "docs/list-filters/sales-and-purchasing.md"
+        "docs/list-filters/sales-and-purchasing.md",
+        "docs/conversion-recovery/selected-documents.md"
       ],
       "focus": "Split supplier order activation, approval levels, dispatch and receipt."
     },
@@ -914,7 +941,8 @@
         "docs/specification/accounting/tax-recognition-and-remittance.md",
         "docs/localization/tax-selection.md",
         "docs/regional-reporting/README.md",
-        "docs/registers-payments/tax-and-contribution-registers.md"
+        "docs/registers-payments/tax-and-contribution-registers.md",
+        "docs/operating-boundaries/settlement-and-declarations.md"
       ],
       "focus": "VAT and social-charge obligations and their settlement, with related geographic rate selection for invoice lines."
     },
@@ -950,7 +978,8 @@
         "docs/dashboards/README.md",
         "docs/registers-administration/user-api-tokens.md",
         "docs/registers-administration/user-groups.md",
-        "docs/registers-administration/users.md"
+        "docs/registers-administration/users.md",
+        "docs/services/reads-with-effects.md"
       ],
       "focus": "Entity scope, group and direct grants, advanced rights and record-level checks."
     },
@@ -976,7 +1005,8 @@
       "key": "Webhook",
       "guides": [
         "docs/platform/execution-and-access.md",
-        "docs/specification/administration/outbound-events-and-campaign-delivery.md"
+        "docs/specification/administration/outbound-events-and-campaign-delivery.md",
+        "docs/event-effects/README.md"
       ],
       "focus": "Event target selection, blocking and nonblocking delivery errors and separately recorded history."
     },
@@ -995,7 +1025,8 @@
         "docs/sales/dispatch-to-invoice.md",
         "docs/supply/payables.md",
         "docs/people-services/service-delivery.md",
-        "docs/events/commercial-automation.md"
+        "docs/events/commercial-automation.md",
+        "docs/event-effects/README.md"
       ],
       "focus": "Configured billing classification of sales and purchase documents and ticket-to-intervention closure."
     },

@@ -10,8 +10,8 @@ This blueprint describes how an integrated ERP records agreements, moves stock, 
 | --- | --- |
 | How the decisions in a business process fit together | [Detailed business specifications](docs/specification/README.md) |
 | Who owns an amount, quantity, status or relationship | [Complete physical field and key catalogue](docs/relational-model/README.md) · [Application field relationships](docs/relational-model-usage/README.md) · [Business record dictionary](docs/records/README.md) · [Installation structures and their status](docs/records/installation-boundaries.md) |
-| What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Effective routes and argument binding](docs/services/route-selection.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) |
-| Which changes can trigger action in another module | [Business events and subscribers](docs/events/README.md) · [Commercial automation](docs/events/commercial-automation.md) |
+| What an integration can request and receive | [Service contracts by resource](docs/services/README.md) · [Effective routes and argument binding](docs/services/route-selection.md) · [Credential lifecycle and acting identity](docs/services/credential-lifecycle.md) · [Write payloads and child records](docs/service-writes/README.md) · [Reads that change business records](docs/services/reads-with-effects.md) |
+| Which changes can trigger action in another module | [Business events and subscribers](docs/events/README.md) · [Commercial automation](docs/events/commercial-automation.md) · [Subscriber settings, order and replay](docs/event-effects/README.md) |
 | Why two reports disagree | [Reporting and reconciliation](docs/reporting/README.md) · [Accounting layouts](docs/exports/ledger-layouts.md) · [Country charts and tax dictionaries](docs/localization/README.md) |
 | How policy changes a transaction | [47 operator settings](docs/settings/README.md) · [Company settings](docs/policies/company-and-settings.md) · [Reference numbers](docs/policies/identity-and-numbering.md) · [Stock posting](docs/policies/stock-posting-decisions.md) · [Invoice admission](docs/policies/form-defaults-and-invoice-admission.md) |
 | How to reconcile a whole transaction | [Trading and settlement](docs/trade/worked-cycle.md) · [Make to order with a shortage](docs/journeys/building-against-a-shortage.md) · [Commissioning time to cash](docs/journeys/commissioning-time-to-cash.md) |
@@ -21,10 +21,13 @@ This blueprint describes how an integrated ERP records agreements, moves stock, 
 | When you need to reproduce this result | Follow these operations |
 | --- | --- |
 | A customer accepts a foreign-currency offer and pays in instalments | [Rate selection through final settlement](docs/international/currency-from-quotation-to-settlement.md) · [Language, addresses and negotiated wording](docs/international/language-and-business-identity.md) · [Recipient document and template fields](docs/document-models/README.md) · [Rendered invoice, attachment and delivery history](docs/document-lifecycle/README.md) |
-| An operator bills several deliveries or reverses a lot receipt after some units have shipped | [Selection, grouped billing and collection](docs/bulk-operations/README.md) · [Warehouse and manufacturing reversals](docs/warehouse-corrections/README.md) |
+| An operator bills several deliveries or reverses a lot receipt after some units have shipped | [Selection, grouped billing and collection](docs/bulk-operations/README.md) · [Conversion failure and recovery](docs/conversion-recovery/README.md) · [Warehouse and manufacturing reversals](docs/warehouse-corrections/README.md) |
 | A visitor applies, registers, donates or signs, or an employee delegates an approval | [Public entry points and records created](docs/public-workflows/README.md) · [Approval, staffing and service teams](docs/workforce-operations/README.md) |
 | A list count disagrees with a tile, printed sheet or monthly report | [All 56 operator registers](docs/coverage/operator-list-inventory.md) · [Filters by screen](docs/list-filters/README.md) · [Dashboard widgets and overdue queues](docs/dashboards/README.md) · [Catalogue, sales and project measures](docs/operator-reports/README.md) |
 | A tax enquiry, journal export and filed document show different amounts or dates | [Regional reporting and evidence](docs/regional-reporting/README.md) · [Ledger layouts by selector](docs/exports/ledger-layouts.md) · [Audit-file dates and currency](docs/exports/audit-file-dates-and-currency.md) |
+| Two people post the same invoice or receive stock at the same time | [Concurrent stock, lot and ledger posting](docs/concurrent-posting/README.md) |
+| A sent invoice, payment confirmation or statutory return is disputed | [Invoice delivery and relay evidence](docs/delivery-evidence/README.md) · [Settlement and declaration evidence](docs/operating-boundaries/settlement-and-declarations.md) |
+| An installation has extra fields, or a record card shows a different history from its register | [Configured records, histories and reports](docs/operating-boundaries/README.md) |
 
 ## Find a business operation
 
@@ -47,9 +50,9 @@ This blueprint describes how an integrated ERP records agreements, moves stock, 
 
 ## Look up an implementation detail
 
-- [Stable module inventory](docs/coverage/README.md) classifies all 95 bundled descriptors and explains which 84 meet the stable filter. [Module-to-chapter map](docs/coverage/guide-map.json)
+- [Stable module inventory](docs/coverage/README.md) classifies all 95 bundled descriptors and explains which 84 meet the stable filter. The [other 11 module definitions](docs/coverage/conditional-modules.md) have their own operating guide. [Module-to-chapter map](docs/coverage/guide-map.json)
 - [Workflow navigation](docs/reference/source-navigation.md) connects operator tasks to their transaction, record and service contracts.
 - [Field, key and service indexes](docs/reference/README.md) connect the business models to installation columns, relationships and API handlers. [Permission declarations](docs/permissions/README.md)
 - [JSON Schemas](schemas/) and [worked data examples](examples/) describe selected business operations. Each schema defines its own input or projection. Cross-record rules, balances, permissions, database transactions and side effects are specified in the corresponding chapter.
 
-[Specification coverage and open questions](docs/coverage/checkpoint.md)
+[Coverage by operation, record and observable outcome](docs/coverage/checkpoint.md)

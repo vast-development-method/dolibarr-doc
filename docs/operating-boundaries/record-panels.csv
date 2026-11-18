@@ -1,0 +1,68 @@
+record,owner_table,panel,record_information,additional_shared_feed
+Agenda event,actioncomm,Information,Yes,None
+Asset model,asset_model,Activity,Yes,None
+Bank movement,bank,Information,Yes,None
+Bill of materials,bom_bom,Activity,Yes,Agenda
+Booking availability,bookcal_availabilities,Activity,Yes,None
+Booking calendar,bookcal_calendar,Activity,Yes,None
+Category,categorie,Information,Yes,None
+Contact,socpeople,Activity,Yes,Agenda
+Contact,socpeople,Correspondence,Yes,Correspondence
+Contact,socpeople,Information,Yes,None
+Customer invoice,facture,Activity,Yes,Agenda
+Customer invoice,facture,Correspondence,Yes,Correspondence
+Customer receipt,paiement,Information,Yes,None
+Donation,don,Information,Yes,None
+Employee evaluation,hrm_evaluation,Activity,Yes,Agenda
+Establishment,establishment,Information,Yes,None
+Expense claim,expensereport,Information,Yes,None
+Expense reimbursement,payment_expensereport,Information,Yes,None
+Fiscal year,accounting_fiscalyear,Information,Yes,None
+Fixed asset,asset,Activity,Yes,Agenda
+Intervention,fichinter,Activity,Yes,Agenda
+Item or service,product,Activity,Yes,Agenda
+Item or service,product,Correspondence,Yes,Correspondence
+Job application,recruitment_recruitmentcandidature,Activity,Yes,Agenda
+Job definition,hrm_job,Activity,Yes,Agenda
+Knowledge article,knowledgemanagement_knowledgerecord,Activity,Yes,Agenda
+Leave request,holiday,Information,Yes,None
+Loan,loan,Information,Yes,None
+Mailing campaign,mailing,Information,Yes,None
+Manufacturing order,mrp_mo,Activity,Yes,Agenda
+Member,adherent,Activity,Yes,Agenda
+Member,adherent,Correspondence,Yes,Correspondence
+Membership subscription,subscription,Information,Yes,None
+Miscellaneous payment,payment_various,Information,Yes,None
+Partnership,partnership,Activity,Yes,Agenda
+Project,projet,Activity,Yes,Agenda
+Project,projet,Correspondence,Yes,Correspondence
+Purchase order,commande_fournisseur,Correspondence,Yes,Correspondence
+Purchase order,commande_fournisseur,Information,Yes,Agenda
+Recruitment opening,recruitment_recruitmentjobposition,Activity,Yes,Agenda
+Recurring customer invoice template,facture_rec,Activity,Yes,Agenda
+Salary,salary,Information,Yes,None
+Sales order,commande,Activity,Yes,Agenda
+Sales order,commande,Correspondence,Yes,Correspondence
+Sales proposal,propal,Activity,Yes,Agenda
+Sales proposal,propal,Correspondence,Yes,Correspondence
+Scheduled job,cronjob,Information,Yes,None
+Service contract,contrat,Activity,Yes,Agenda
+Service contract,contrat,Correspondence,Yes,Correspondence
+Shipment,expedition,Activity,Yes,Agenda
+Shipment,expedition,Correspondence,Yes,Correspondence
+Skill,hrm_skill,Activity,Yes,Agenda
+Social charge,chargesociales,Information,Yes,None
+Staff position,hrm_job_user,Activity,Yes,Agenda
+Stock transfer,stocktransfer_stocktransfer,Activity,Yes,Agenda
+Supplier invoice,facture_fourn,Activity,Yes,Agenda
+Supplier invoice,facture_fourn,Correspondence,Yes,Correspondence
+Supplier invoice,facture_fourn,Information,Yes,None
+Supplier payment,paiementfourn,Information,Yes,None
+Supplier proposal,supplier_proposal,Information,Yes,None
+Third party,societe,Activity,Yes,Agenda
+Third party,societe,Correspondence,Yes,Correspondence
+User,user,Activity,Yes,Agenda
+User,user,Correspondence,Yes,Correspondence
+VAT declaration,tva,Information,Yes,None
+Warehouse,entrepot,Information,Yes,None
+Workstation,workstation_workstation,Activity,Yes,Agenda

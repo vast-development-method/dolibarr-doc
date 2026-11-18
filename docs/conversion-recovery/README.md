@@ -1,0 +1,17 @@
+# Recovering a document conversion
+
+When an operator bills several sources, the first question after an error is whether a target already exists. An invoice may have acquired its permanent reference before a later subscriber reported an error. A visible PDF can also outlive the database transaction that generated it. Read the source record, target status and surviving lines together before repeating a conversion.
+
+| Starting operation | What to reconcile |
+| --- | --- |
+| [Bill selected orders, shipments or receipts](selected-documents.md) | The selected source IDs, party grouping, typed document links, copied lines, issued references, source billing flags and output files. |
+| [Convert one offer, order or contract, or raise a deposit](single-document.md) | The point at which the new draft commits, the return from the after-conversion subscriber and whether a parent transaction remains responsible for a rollback. |
+| [Compare observed recovery outcomes](worked-failures.md) | Isolated runs comparing an early or late validation failure, a rejected link, a failed render, a repeat selection and a failure while posting stock. |
+
+## Read the persisted evidence
+
+1. Locate target candidates in the originating entity by source ID **and type**. In `element_element`, the document reference is an ordered tuple of `fk_source`, `sourcetype`, `fk_target` and `targettype`. Some operations write the relation from the invoice side and some from the fulfilment side. Check both orientations with the correct types. One source can link to several invoices. The unique tuple prevents an identical edge twice, while a second invoice ID forms another valid tuple.
+2. Inspect each candidate’s `rowid`, `ref`, `fk_statut`, party and entity on `facture` or `facture_fourn`. Compare line quantities and amounts on `facturedet` or `facture_fourn_det` through `fk_facture` or `fk_facture_fourn`. Compare the exact originating line or allocation where recorded. Two orders from the same party can contain the same product at different prices. A header link alone says nothing about which quantities made it through.
+3. Reconcile classification and stock independently. The source order’s `billed` flag records its workflow state. An invoice’s issued reference, a linked stock movement, a payment allocation and a ledger entry each have their own identity. For warehouse splits or partial receipts, use the individual allocations and movement origins. [Source quantities and amounts](../bulk-operations/billing-from-selected-documents.md) · [Stock movement reconciliation](../warehouse-corrections/movement-journal-and-counts.md)
+4. Read the result from a fresh transaction. A generated file, a returned target ID and the writer's own view of an open transaction can each survive long enough to misidentify the result. Match output metadata and current bytes to the actual surviving invoice. If the correct invoice exists and only its file is missing, regenerate that invoice's output. [Document lifecycle](../document-lifecycle/README.md)
+5. For a confirmed rollback, reconstruct the selection from still-eligible sources. Where drafts or issued documents survive, reconcile them individually before submitting any remainder. For an issued duplicate, the [customer correction](../finance-exceptions/corrections-and-deposits.md) or [supplier correction](../supply/payables.md) workflow governs the business adjustment. The conversion itself has no automatic compensation for an already delivered message or an artifact retained outside the database.
