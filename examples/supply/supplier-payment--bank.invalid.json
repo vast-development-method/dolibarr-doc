@@ -1,0 +1,8 @@
+{
+  "invoiceId": 154,
+  "paymentDate": "2026-11-18",
+  "paymentMethodId": 2,
+  "amount": 60,
+  "closeIfSettled": true,
+  "bankEnabled": true
+}

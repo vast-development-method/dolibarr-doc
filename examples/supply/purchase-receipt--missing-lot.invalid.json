@@ -1,0 +1,6 @@
+{
+  "orderId": 430,
+  "splits": [
+    {"orderLineId": 988, "warehouseId": 11, "quantity": 7, "unitCost": 10, "tracking": "lot"}
+  ]
+}
