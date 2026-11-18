@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Home work queue row",
+  "description": "Normalized successful response for one domain and operating mode, after evaluation for the current viewer. A failed or suppressed provider has no row.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["queueId", "label", "openCount", "lateCount", "list"],
+  "properties": {
+    "queueId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier assigned to this queue within the page."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shortLabel": {
+      "type": "string"
+    },
+    "openCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Count of qualifying units in the viewer's queue."
+    },
+    "lateCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Subset counted as late by this provider. Cannot exceed openCount."
+    },
+    "warningDelayDays": {
+      "type": "number",
+      "description": "Warning interval in days when returned by the provider. The domain defines which date starts this interval."
+    },
+    "totalAmount": {
+      "type": "number",
+      "description": "Monetary total for a provider which calculates one. Commercial header queues use tax-exclusive face value."
+    },
+    "list": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1
+    },
+    "lateList": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1
+    }
+  }
+}
