@@ -1,5 +1,0 @@
-{
-  "purpose": "parse-document",
-  "outputFormat": "text",
-  "instructions": "Extract purchase order lines."
-}

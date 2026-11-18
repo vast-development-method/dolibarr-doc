@@ -1,6 +1,6 @@
-# Dolibarr ERP blueprint
+# Integrated enterprise resource planning
 
-A language-neutral blueprint for rebuilding an integrated ERP. It describes how Dolibarr **24.0.3** joins customer and supplier documents, stock, services, people, cash and accounting. Each chapter connects a business decision to its data, permissions, state changes, failure behaviour and acceptance cases. Schemas use portable business terms. Source links resolve to the implementation used to derive them. [Release baseline](docs/baseline.md)
+A language-neutral blueprint for rebuilding an integrated ERP. It describes how the ERP joins customer and supplier documents, stock, services, people, cash and accounting. Each chapter connects a business decision to its data, permissions, state changes, failure behaviour and acceptance cases. Schemas use portable business terms. Source locators identify the reference implementation behind individual rules. [Release baseline](docs/baseline.md)
 
 **Start with the [worked trading cycle](docs/trade/worked-cycle.md).** Trace ten units received and six sold through two shipments, two collections, a supplier payment and the ledger. The example explains why stock value, commercial margin, cash and tax end at different amounts. The [rebuild contract](docs/platform/rebuild-contract.md) shows which records own each fact and which results an equivalent implementation should reproduce.
 
@@ -11,7 +11,7 @@ A language-neutral blueprint for rebuilding an integrated ERP. It describes how 
 | Who can act on a record? What commits together? | [Execution, entity scope and access](docs/platform/execution-and-access.md) · [Document origins and relationship contracts](docs/platform/document-relationships.md) |
 | How does an offer become a fulfilled sale? | [Parties and contacts](docs/sales/parties-and-contacts.md) · [Proposals and orders](docs/sales/proposals-and-orders.md) · [Dispatch and invoice origin](docs/sales/dispatch-to-invoice.md) · [Returns, cancellations and refunds](docs/returns/customer-returns.md) |
 | How is a supplier order priced, approved and received? | [Catalogue, variants and prices](docs/supply/catalogue.md) · [Purchasing and receiving](docs/supply/purchasing.md) · [Warehouse valuation and transfers](docs/supply/stock.md) · [Supplier invoices and payments](docs/supply/payables.md) |
-| How are an invoice and its outstanding balance calculated? | [Customer invoices, discounts and rounding](docs/finance/customer-invoices.md) · [Collection and reconciliation](docs/finance/collections.md) · [Progress billing and retention](docs/finance-exceptions/progress-and-retention.md) · [Credits, replacements and deposits](docs/finance-exceptions/corrections-and-deposits.md) · [Pricing verification](docs/finance/pricing-verification.md) |
+| How are an invoice and its outstanding balance calculated? | [Customer invoices, discounts and rounding](docs/finance/customer-invoices.md) · [Collection and reconciliation](docs/finance/collections.md) · [Progress billing and retention](docs/finance-exceptions/progress-and-retention.md) · [Credits, replacements and deposits](docs/finance-exceptions/corrections-and-deposits.md) · [Invoice rounding examples](docs/finance/rounding-examples.md) |
 | What posts to the ledger and when? | [Chart, account binding and report selection](docs/additional-domains/chart-and-reporting.md) · [Bookkeeping](docs/finance/bookkeeping.md) · [Fiscal close](docs/treasury/fiscal-close.md) · [Tax geography and rounding](docs/additional-domains/tax-geography-and-rounding.md) |
 | How do funds move? | [Payment orders and collections](docs/treasury/payment-orders.md) · [Online settlement](docs/treasury/online-payments.md) · [Bank transfers and obligations](docs/treasury/bank-and-obligations.md) |
 | What happens at a till and how is margin calculated? | [TakePOS](docs/commerce/takepos.md) · [Commercial margins](docs/commerce/commercial-margins.md) |
@@ -28,25 +28,6 @@ A language-neutral blueprint for rebuilding an integrated ERP. It describes how 
 - [Stable module inventory](docs/coverage/README.md) classifies all 95 bundled descriptors and explains which 84 meet the stable filter. [Module-to-chapter map](docs/coverage/guide-map.json)
 - [Source navigation](docs/reference/source-navigation.md) pairs operator documentation with the 24.0 Doxygen reference and the pinned implementation.
 - [Field, key and service indexes](docs/reference/README.md) connect the business models to installation columns, relationships and API handlers. [Permission declarations](docs/permissions/README.md)
-- [JSON Schemas](schemas/) and [accepted and rejected examples](examples/) describe selected business operations. Each schema defines its own input or projection. Cross-record rules, balances, permissions, database transactions and side effects are specified in the corresponding chapter.
+- [JSON Schemas](schemas/) and [worked data examples](examples/) describe selected business operations. Each schema defines its own input or projection. Cross-record rules, balances, permissions, database transactions and side effects are specified in the corresponding chapter.
 
-## Verify and continue
-
-With Python 3.10 or later:
-
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r tools/requirements.txt
-.venv/bin/python tools/validate.py
-python3 conformance/trade/check.py
-python3 conformance/sales/check.py
-```
-
-For release evidence checks, clone the pinned source and pass its path to the validator:
-
-```sh
-git clone --depth 1 --branch 24.0.3 https://github.com/Dolibarr/dolibarr.git ../dolibarr-24.0.3
-.venv/bin/python tools/validate.py --upstream ../dolibarr-24.0.3
-```
-
-The [invoice verification](docs/finance/pricing-verification.md) also runs the release's own pricing and invoice-total code. The [coverage checkpoint](docs/coverage/checkpoint.md) records which paths received source review, which checks ran, and the next focused checks for implementation parity.
+[Specification coverage and open questions](docs/coverage/checkpoint.md)

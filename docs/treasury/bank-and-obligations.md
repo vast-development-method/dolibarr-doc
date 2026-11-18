@@ -30,14 +30,14 @@ Retain company currency, transaction currency, unit prices and totals in both, t
 | TR-OBL-03 | VAT payable 300.00, pay 100.00. | VAT obligation remains open for 200.00. A sale's taxable revenue and collected VAT on its issued invoice are unchanged by this remittance. |
 | TR-OBL-04 | Enter an unallocated 12.00 company-currency bank charge as a miscellaneous debit, with an allowed expense account. | A separate cash outflow maps to the chosen counter-account. Creating an invoice allocation for it would misstate customer collections. |
 
-[transfer]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/bank/transfer.php#L58-L234
-[journal]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/bankjournal.php#L829-L968
-[rates]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/multicurrency/class/multicurrency.class.php#L545-L578
-[invoice]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L514-L535
-[salary]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/salaries/payment_salary.php#L61-L162
-[salarycalc]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/salaries/class/paymentsalary.class.php#L258-L304
-[social]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/sociales/class/chargesociales.class.php#L280-L326
-[socialpost]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement_charge.php#L63-L148
-[vat]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement_vat.php#L57-L149
-[vatclose]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/tva/class/paymentvat.class.php#L220-L284
-[various]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/bank/various_payment/card.php#L144-L229
+[transfer]: ../reference/locators/treasury.md#ref-e97826e02c53
+[journal]: ../reference/locators/treasury.md#ref-a71c5dba9af0
+[rates]: ../reference/locators/treasury.md#ref-24555c7338af
+[invoice]: ../reference/locators/treasury.md#ref-b3c4d769b704
+[salary]: ../reference/locators/treasury.md#ref-28e644288a6a
+[salarycalc]: ../reference/locators/treasury.md#ref-b8ea31768255
+[social]: ../reference/locators/treasury.md#ref-213c143f8e10
+[socialpost]: ../reference/locators/treasury.md#ref-cca908acc90d
+[vat]: ../reference/locators/treasury.md#ref-ed0cd366a999
+[vatclose]: ../reference/locators/treasury.md#ref-4aac1c6d9129
+[various]: ../reference/locators/treasury.md#ref-851c688aab49

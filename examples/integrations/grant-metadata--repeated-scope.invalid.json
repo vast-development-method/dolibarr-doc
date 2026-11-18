@@ -1,8 +1,0 @@
-{
-  "provider": "Generic-Calendar",
-  "entityId": 1,
-  "scopes": [
-    "calendar.read",
-    "calendar.read"
-  ]
-}

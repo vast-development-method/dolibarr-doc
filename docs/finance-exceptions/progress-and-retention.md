@@ -33,16 +33,16 @@ The invoice stores the cycle reference, sequence counter, final flag, customer, 
 
 Running the pinned invoice methods under PHP 8.5.12 confirmed the 23.00 per-invoice warranty in EX-PROG-01 and both the true display flag and −1 amount in EX-PROG-04. These calls used the invoice and line values in the cases. Journal postings and full invoice validation in this chapter were traced in source.
 
-[Progress certificate fixture](../../examples/finance-exceptions/progress-certificate--second.valid.json) · [Progress certificate schema](../../schemas/finance-exceptions/progress-certificate.schema.json)
+[Progress certificate example](../../examples/finance-exceptions/progress-certificate--second.json) · [Progress certificate schema](../../schemas/finance-exceptions/progress-certificate.schema.json)
 
-[header]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_facture.sql
-[line]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_facturedet.sql
-[ratio]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/factureligne.class.php#L1006-L1102
-[edit]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/card.php#L3330-L3378
-[percent]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L4920-L4968
-[final]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L3944-L4040
-[warranty]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/facture.class.php#L6071-L6161
-[pdf]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2042-L2069
-[due]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/commoninvoice.class.php#L314-L333
-[split]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/sellsjournal.php#L405-L424
-[posting]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/sellsjournal.php#L631-L665
+[header]: ../reference/locators/finance-exceptions.md#ref-f000f1cdd363
+[line]: ../reference/locators/finance-exceptions.md#ref-cf1cf1aaf15e
+[ratio]: ../reference/locators/finance-exceptions.md#ref-a5a25cf0b106
+[edit]: ../reference/locators/finance-exceptions.md#ref-39cb4dd175c7
+[percent]: ../reference/locators/finance-exceptions.md#ref-c7b823b649ab
+[final]: ../reference/locators/finance-exceptions.md#ref-ad2f58d58fb1
+[warranty]: ../reference/locators/finance-exceptions.md#ref-f050f3bbc707
+[pdf]: ../reference/locators/finance-exceptions.md#ref-bf673f390215
+[due]: ../reference/locators/finance-exceptions.md#ref-bf8801ca18c3
+[split]: ../reference/locators/finance-exceptions.md#ref-e545439eb49b
+[posting]: ../reference/locators/finance-exceptions.md#ref-9e191d9b0d5b

@@ -40,16 +40,16 @@ The ledger writer checks source date against the entity's fiscal-period configur
 | FIN-GL-04 | A source is dated on the last day of a closed period with blocking on closed periods. | Inclusive date check rejects the ledger write. Its invoice or bank source still exists. |
 | FIN-GL-05 | Prepare one movement with debit 62.10 and credits 54.00 and 8.09. | The 0.01 difference fails the per-movement balance check. No partial ledger rows for that source survive. |
 
-[Movement schema](../../schemas/finance/journal-movement.schema.json) · [Sales movement fixture](../../examples/finance/journal-movement--sale.valid.json). The normalized schema distinguishes posting sides and requires origin and journal identity. Equality of aggregate debits and credits is a transaction rule in addition to shape validation.
+[Movement schema](../../schemas/finance/journal-movement.schema.json) · [Sales movement example](../../examples/finance/journal-movement--sale.json). The normalized schema distinguishes posting sides and requires origin and journal identity. Equality of aggregate debits and credits is a transaction rule in addition to shape validation.
 
-[wiki]: https://wiki.dolibarr.org/index.php/Module_Double_Entry_Accounting
-[sales]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/sellsjournal.php#L149-L220
-[ledger]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_accounting_bookkeeping-accounting.sql
-[writer]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L300-L493
-[transfer]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/sellsjournal.php#L543-L795
-[balanced]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/sellsjournal.php#L1139-L1161
-[bank]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/bankjournal.php#L726-L875
-[bankbalance]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/journal/bankjournal.php#L1049-L1069
-[recon]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/bank/class/account.class.php#L2601-L2661
-[period]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/class/bookkeeping.class.php#L2710-L2746
-[closure]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/accountancy/closure/index.php#L140-L195
+[wiki]: ../reference/locators/finance.md#ref-5415216013fc
+[sales]: ../reference/locators/finance.md#ref-cf68d6d152e6
+[ledger]: ../reference/locators/finance.md#ref-2a2765d49eab
+[writer]: ../reference/locators/finance.md#ref-ffd2d5b0807e
+[transfer]: ../reference/locators/finance.md#ref-9a92cf6767e5
+[balanced]: ../reference/locators/finance.md#ref-529d6057b4a4
+[bank]: ../reference/locators/finance.md#ref-61ee8fc8362a
+[bankbalance]: ../reference/locators/finance.md#ref-9743ea6ecf05
+[recon]: ../reference/locators/finance.md#ref-f7b005fa5282
+[period]: ../reference/locators/finance.md#ref-982ac9257b71
+[closure]: ../reference/locators/finance.md#ref-f52c8dc69a64

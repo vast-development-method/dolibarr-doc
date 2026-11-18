@@ -37,17 +37,17 @@ When entering a company-currency allocation, derive the foreign amount using the
 | FIN-PAY-05 | A bank movement for 75.00 is matched to statement NOV-01. | Reconciliation changes the bank line's statement and actor. The balance on B remains 23.10. Attempted payment deletion is blocked by a closed linked invoice or a reconciled bank line. |
 | FIN-PAY-06 | Pay B's exact remaining 23.10 with the close flag off. | New cash allocation leaves zero due. Automatic closure does not run. State and balance can be queried separately. |
 
-[Valid split receipt](../../examples/finance/receipt-request--split.valid.json) · [Invalid cheque without issuer](../../examples/finance/receipt-request--cheque.invalid.json) · [Sales and bank journals](bookkeeping.md)
+[Valid split receipt](../../examples/finance/receipt-request--split.json) · [Sales and bank journals](bookkeeping.md)
 
-[receipt]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_paiement.sql
-[allocation]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_paiement_facture.sql
-[balance]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/commoninvoice.class.php#L314-L391
-[read]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L149-L165
-[adjust]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/core/class/discount.class.php#L532-L614
-[convert]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement/class/paiement.class.php#L505-L636
-[payapi]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/facture/class/api_invoices.class.php#L1761-L2027
-[pay]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement/class/paiement.class.php#L454-L796
-[way]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement/class/paiement.class.php#L1371-L1384
-[fx]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement/class/paiement.class.php#L309-L454
-[bankpost]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/paiement/class/paiement.class.php#L817-L1017
-[recon]: https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/compta/bank/class/account.class.php#L2601-L2661
+[receipt]: ../reference/locators/finance.md#ref-8cccdb3ff750
+[allocation]: ../reference/locators/finance.md#ref-f8cb33fa12ea
+[balance]: ../reference/locators/finance.md#ref-0b836be54fa0
+[read]: ../reference/locators/finance.md#ref-d3e0eb10b8d4
+[adjust]: ../reference/locators/finance.md#ref-ca2384cb06a4
+[convert]: ../reference/locators/finance.md#ref-db3758cf749d
+[payapi]: ../reference/locators/finance.md#ref-51996a52313f
+[pay]: ../reference/locators/finance.md#ref-81d9dc799f24
+[way]: ../reference/locators/finance.md#ref-e4c6f3e3d2ac
+[fx]: ../reference/locators/finance.md#ref-e1f8f4b27c55
+[bankpost]: ../reference/locators/finance.md#ref-6c443f3ab58a
+[recon]: ../reference/locators/finance.md#ref-f7b005fa5282

@@ -9,7 +9,7 @@ A catalogue entry connects sales, purchasing, stock and production. The internal
 | Supplier offer | Product ID, supplier ID, supplier reference, entity, minimum quantity, pack size, currency, tax rate, price and discount | The database enforces uniqueness on supplier reference, supplier, quantity and entity. Multiple quantity breaks may describe the same vendor article. |
 | Document line | Reference to catalogue product when selected, description, unit price, tax, discount and quantity on the transaction | The entered commercial terms live on the order or invoice line. Subsequent catalogue changes support future transactions. |
 
-[Product keys](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_product.key.sql) · [Stock eligibility](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/product/class/product.class.php#L7069-L7099) · [Variant creation](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/variants/class/ProductCombination.class.php#L766-L984) · [Supplier offer keys](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_product_fournisseur_price.key.sql) · [Purchase order lines](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/install/mysql/tables/llx_commande_fournisseurdet.sql)
+[Product keys](../reference/locators/supply.md#ref-1c901c2d9546) · [Stock eligibility](../reference/locators/supply.md#ref-93f59a3ec6d0) · [Variant creation](../reference/locators/supply.md#ref-040047f9e0e2) · [Supplier offer keys](../reference/locators/supply.md#ref-bb144f689ecb) · [Purchase order lines](../reference/locators/supply.md#ref-e09a0f497379)
 
 ## Pricing decisions
 
@@ -18,7 +18,7 @@ A catalogue entry connects sales, purchasing, stock and production. The internal
 3. For a buyer on combined customer-specific and price-level pricing, the selling-price resolver looks for an effective customer price using its validity dates. If no applicable customer price exists and the buyer has a price level, it looks up the level. An optional value-added-tax rate per level changes tax selection. The resolver also supports other pricing modes.
 4. A child variant's price adjustment can be an absolute amount or a percentage of the parent price. Apply the adjustment in the configured parent price basis, inclusive or exclusive of tax. With multiple price levels, the combination can have a separate adjustment for each level. A weight adjustment adds to the parent weight.
 
-[Supplier conversion and minimum selection](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/fourn/class/fournisseur.product.class.php#L439-L494) · [Offer comparison](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/fourn/class/fournisseur.product.class.php#L997-L1085) · [Selling-price resolver](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/product/class/product.class.php#L2473-L2634) · [Variant updates](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/variants/class/ProductCombination.class.php#L523-L632)
+[Supplier conversion and minimum selection](../reference/locators/supply.md#ref-45d384880803) · [Offer comparison](../reference/locators/supply.md#ref-18ba23c80573) · [Selling-price resolver](../reference/locators/supply.md#ref-1dba9996b5cc) · [Variant updates](../reference/locators/supply.md#ref-36aca060e0c7)
 
 ## Service and acceptance cases
 
@@ -29,4 +29,4 @@ A catalogue entry connects sales, purchasing, stock and production. The internal
 | Select purchase offer | Vendor A offers 10 for 115 including 15% VAT. Vendor B offers a minimum of 20 at 11 tax-exclusive each, with 15% discount. | At 10, only A qualifies at 10 per unit before tax. At 20, B qualifies at 9.35 and wins the discounted unit-price comparison. |
 | Store a service | A stockable service and an ordinary stockable product have the same transaction quantity | With service stock support disabled, only the product qualifies for a normal stock movement. |
 
-[Product API](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/product/class/api_products.class.php#L205-L349) · [Movement eligibility](https://github.com/Dolibarr/dolibarr/blob/5c6c7ff6a5112413b1c27221c8d11750afad56f8/htdocs/product/stock/class/mouvementstock.class.php#L328-L353)
+[Product API](../reference/locators/supply.md#ref-b7e716531355) · [Movement eligibility](../reference/locators/supply.md#ref-7b7614614886)

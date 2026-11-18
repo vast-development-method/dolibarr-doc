@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Directed relationship between two persisted business records",
-  "description": "Portable projection of a Dolibarr document link. Existence, access and uniqueness across records require service or storage checks.",
+  "description": "Portable projection of a the ERP document link. Existence, access and uniqueness across records require service or storage checks.",
   "type": "object",
   "required": ["source", "target"],
   "additionalProperties": false,
